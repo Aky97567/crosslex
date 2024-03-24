@@ -1,4 +1,8 @@
 {
-  "name": "@whitelotus",
-  "packageManager": "yarn@4.1.1"
+  "packageManager": "yarn@4.1.1",
+  "private": true,
+  "workspaces": ["sites/*"],
+  "scripts": {
+    "dev:crossplex": "cd sites/crossplex && yarn run dev"
+  }
 }
