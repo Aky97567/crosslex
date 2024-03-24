@@ -1,0 +1,10 @@
+{
+  "name": "@whitelotus/lib-core-types",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Data type management",
+  "main": "src/index",
+  "dependencies": {
+    "jsonschema": "1.4.1"
+  }
+}

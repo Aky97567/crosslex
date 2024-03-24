@@ -1,0 +1,15 @@
+{
+  "name": "@whitelotus/lib-ext-next",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Next JS server host binding",
+  "main": "src/index",
+  "dependencies": {
+    "next": "12.3.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.2.66",
+    "@types/react-dom": "18.2.0"}
+}

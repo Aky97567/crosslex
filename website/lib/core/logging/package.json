@@ -1,0 +1,7 @@
+{
+  "name": "@whitelotus/lib-core-logging",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Exports functionality for handling logging functionality",
+  "main": "src/index"
+}
