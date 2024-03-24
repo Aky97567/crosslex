@@ -1,0 +1,13 @@
+{
+  "name": "@whitelotus/front-pages",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Exports pages to be used in WhiteLotus processes and microsites",
+  "main": "src/index",
+  "dependencies": {
+    "@emotion/react": "11.11.1",
+    "next": "^13.4.19",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  }
+}
