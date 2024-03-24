@@ -6,7 +6,7 @@ interface PackageJson {
   devDependencies?: { [key: string]: string };
 }
 
-function synchronizeDependencies(packagesDirs: string[]): void {
+function updateRootPackageJson(rootDirs: string[]): void {
   // Read the main package.json file
   const rootPackageJsonPath = path.resolve(__dirname, 'package.json');
   const rootPackageJson: PackageJson = require(rootPackageJsonPath);
@@ -15,20 +15,29 @@ function synchronizeDependencies(packagesDirs: string[]): void {
   const allDependencies: { [key: string]: string }[] = [];
   const allDevDependencies: { [key: string]: string }[] = [];
 
-  // Iterate over each package directory
-  packagesDirs.forEach(packageDir => {
-    const packageJsonPath = path.join(packageDir, 'package.json');
+  // Iterate over each root directory
+  rootDirs.forEach(rootDir => {
+    // Get all subdirectories within the root directory
+    const packageDirs = fs
+      .readdirSync(rootDir)
+      .map(subDir => path.join(rootDir, subDir))
+      .filter(dir => fs.statSync(dir).isDirectory());
 
-    // Read the package.json file for the current package
-    const packageJson: PackageJson = require(packageJsonPath);
+    // Iterate over each package directory
+    packageDirs.forEach(packageDir => {
+      const packageJsonPath = path.join(packageDir, 'package.json');
 
-    // Store dependencies and devDependencies in arrays
-    if (packageJson.dependencies) {
-      allDependencies.push(packageJson.dependencies);
-    }
-    if (packageJson.devDependencies) {
-      allDevDependencies.push(packageJson.devDependencies);
-    }
+      // Read the package.json file for the current package
+      const packageJson: PackageJson = require(packageJsonPath);
+
+      // Store dependencies and devDependencies in arrays
+      if (packageJson.dependencies) {
+        allDependencies.push(packageJson.dependencies);
+      }
+      if (packageJson.devDependencies) {
+        allDevDependencies.push(packageJson.devDependencies);
+      }
+    });
   });
 
   // Merge dependencies and devDependencies from all packages into single objects
@@ -67,9 +76,12 @@ function synchronizeDependencies(packagesDirs: string[]): void {
 // Specify an array of directories containing packages
 const packageDirs = [
   path.resolve(__dirname, 'frontend'),
+  path.resolve(__dirname, 'lib', 'core'),
+  path.resolve(__dirname, 'lib', 'external'),
+  path.resolve(__dirname, 'lib', 'system'),
   path.resolve(__dirname, 'sites'),
   // Add more package directory paths as needed
 ];
 
 // Call the function with the array of package directory paths
-synchronizeDependencies(packageDirs);
+updateRootPackageJson(packageDirs);
