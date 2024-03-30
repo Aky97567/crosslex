@@ -2,8 +2,11 @@
   "packageManager": "yarn@4.1.1",
   "private": true,
   "workspaces": [
+    "backend/runtime/*",
     "frontend/*",
-    "lib/*",
+    "lib/core/*",
+    "lib/external/*",
+    "lib/system/*",
     "sites/*"
   ],
   "scripts": {
@@ -13,6 +16,7 @@
     "@emotion/react": "11.11.1",
     "jsonschema": "1.4.1",
     "next": "14.1.4",
+    "next-transpile-modules": "^10.0.1",
     "react": "^18",
     "react-dom": "^18"
   },

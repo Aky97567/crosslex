@@ -1,0 +1,10 @@
+{
+  "name": "@whitelotus/back-runtime-crossplex",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Crossplex runtime intialization layer",
+  "main": "src/index",
+  "dependencies": {
+    "@whitelotus/lib-ext-next": "*"
+  }
+}

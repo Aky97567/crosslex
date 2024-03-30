@@ -60,7 +60,7 @@ abstract class NextServerSideRequestHandler<
 
   public async getServerSideProps(nextContext: GetServerSidePropsContext) {
     const { run } = new NextRequestExecutor(
-      new NextServerSideHostContext(nextContext, this.options?.locale||''),
+      new NextServerSideHostContext(nextContext, this.options?.locale || 'en'),
       'Server Side',
       this.routeName,
       this.executeRequest,

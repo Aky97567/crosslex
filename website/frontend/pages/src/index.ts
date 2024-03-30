@@ -1,1 +1,1 @@
-export * as MarvelGuide from './MarvelGuide';
+export * as Crossplex from './Crosslex';
