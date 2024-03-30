@@ -1034,6 +1034,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@whitelotus/front-entities@workspace:frontend/entities":
+  version: 0.0.0-use.local
+  resolution: "@whitelotus/front-entities@workspace:frontend/entities"
+  languageName: unknown
+  linkType: soft
+
+"@whitelotus/front-features@workspace:frontend/features":
+  version: 0.0.0-use.local
+  resolution: "@whitelotus/front-features@workspace:frontend/features"
+  languageName: unknown
+  linkType: soft
+
 "@whitelotus/front-pages@npm:*, @whitelotus/front-pages@workspace:frontend/pages":
   version: 0.0.0-use.local
   resolution: "@whitelotus/front-pages@workspace:frontend/pages"
@@ -1066,6 +1078,12 @@ __metadata:
     react-dom: "npm:18.2.0"
     tailwindcss: "npm:3.3.3"
     typescript: "npm:5.2.2"
+  languageName: unknown
+  linkType: soft
+
+"@whitelotus/front-widgets@workspace:frontend/widgets":
+  version: 0.0.0-use.local
+  resolution: "@whitelotus/front-widgets@workspace:frontend/widgets"
   languageName: unknown
   linkType: soft
 

@@ -1,0 +1,18 @@
+{
+  "name": "@whitelotus/front-entities",
+  "private": true,
+  "version": "0.0.1",
+  "main": "src/index",
+  "description": "Exports entity modules to be used in features, pages and process for the Crossplex site",
+  "scripts": {
+    "check:precommit": "lint-staged",
+    "test": "jest",
+    "test:ci": "jest --ci --coverage",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:update": "jest --updateSnapshot",
+    "lint": "yarn lint:js && yarn lint:css",
+    "lint:js": "eslint src test",
+    "lint:css": "stylelint \"src/**/*.styles.{ts,tsx}\""
+  }
+}
