@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true,
+    "module": "ESNext",
+    "noEmit": true,
+    "skipLibCheck": true
+  },
+  "include": ["**/*.ts"],
+  "extends": "../../../tsconfig.base.json"
+}
