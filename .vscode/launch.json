@@ -1,0 +1,44 @@
+{
+  "version": "0.1.0",
+  "configurations": [
+    {
+      "name": "Client-side debugging (Chrome)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "!**/node_modules/**"
+      ]
+    },
+    {
+      "name": "Server-side debugging: Crossplex",
+      "type": "node-terminal",
+      "nodeVersionHint": 14,
+      "request": "launch",
+      "command": "yarn dev",
+      "cwd": "${workspaceFolder}/website/sites/crossplex",
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "!**/node_modules/**"
+      ]
+    },
+    {
+      "name": "Full stack debugging: Crossplex",
+      "type": "node-terminal",
+      "nodeVersionHint": 14,
+      "request": "launch",
+      "command": "yarn dev:crossplex",
+      "cwd": "${workspaceFolder}/website",
+      "serverReadyAction": {
+        "pattern": "started server on .+, url: (https?://.+)",
+        "uriFormat": "%s",
+        "action": "debugWithChrome"
+      },
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "!**/node_modules/**"
+      ]
+    }
+  ]
+}
