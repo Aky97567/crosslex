@@ -14,57 +14,58 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "forceConsistentCasingInFileNames": true,
-    // "paths": {
-    //   "@whitelotus/back-app-landingpages": ["backend/app/crossplex/src"],
-    //   "@whitelotus/back-data-api": ["backend/data/api/src"],
-    //   "@whitelotus/back-data-contentful": ["backend/data/contentful/src"],
-    //   "@whitelotus/back-domain-affiliate": ["backend/domain/affiliate/src"],
-    //   "@whitelotus/back-domain-feedback": ["backend/domain/feedback/src"],
-    //   "@whitelotus/back-domain-market": ["backend/domain/market/src"],
-    //   "@whitelotus/back-domain-offer": ["backend/domain/rentalOffer/src"],
-    //   "@whitelotus/back-domain-page": ["backend/domain/page/src"],
-    //   "@whitelotus/back-domain-sitegroup": ["backend/domain/sitegroup/src"],
-    //   "@whitelotus/back-repo-affiliate": ["backend/repository/affiliate/src"],
-    //   "@whitelotus/back-repo-offers": ["backend/repository/offer/src"],
-    //   "@whitelotus/back-repo-pagecontent": [
-    //     "backend/repository/pagecontent/src"
-    //   ],
-    //   "@whitelotus/back-repo-markets": ["backend/repository/market/src"],
-    //   "@whitelotus/back-repo-pagemap": ["backend/repository/pagemap/src"],
-    //   "@whitelotus/back-repo-review": ["backend/repository/review/src"],
-    //   "@whitelotus/back-repo-statictexts": [
-    //     "backend/repository/statictexts/src"
-    //   ],
-    //   "@whitelotus/back-repo-staticlinks": [
-    //     "backend/repository/staticlinks/src"
-    //   ],
-    //   "@whitelotus/back-runtime-crossplex": ["backend/runtime/crossplex/src"],
+    "paths": {
+      "@/*": ["./*"],
+      //   "@whitelotus/back-app-landingpages": ["backend/app/crossplex/src"],
+      //   "@whitelotus/back-data-api": ["backend/data/api/src"],
+      //   "@whitelotus/back-data-contentful": ["backend/data/contentful/src"],
+      //   "@whitelotus/back-domain-affiliate": ["backend/domain/affiliate/src"],
+      //   "@whitelotus/back-domain-feedback": ["backend/domain/feedback/src"],
+      //   "@whitelotus/back-domain-market": ["backend/domain/market/src"],
+      //   "@whitelotus/back-domain-offer": ["backend/domain/rentalOffer/src"],
+      //   "@whitelotus/back-domain-page": ["backend/domain/page/src"],
+      //   "@whitelotus/back-domain-sitegroup": ["backend/domain/sitegroup/src"],
+      //   "@whitelotus/back-repo-affiliate": ["backend/repository/affiliate/src"],
+      //   "@whitelotus/back-repo-offers": ["backend/repository/offer/src"],
+      //   "@whitelotus/back-repo-pagecontent": [
+      //     "backend/repository/pagecontent/src"
+      //   ],
+      //   "@whitelotus/back-repo-markets": ["backend/repository/market/src"],
+      //   "@whitelotus/back-repo-pagemap": ["backend/repository/pagemap/src"],
+      //   "@whitelotus/back-repo-review": ["backend/repository/review/src"],
+      //   "@whitelotus/back-repo-statictexts": [
+      //     "backend/repository/statictexts/src"
+      //   ],
+      //   "@whitelotus/back-repo-staticlinks": [
+      //     "backend/repository/staticlinks/src"
+      //   ],
+      "@whitelotus/back-runtime-crossplex": ["backend/runtime/crossplex/src"],
 
-    //   "@whitelotus/front-entities": ["frontend/entities/src"],
-    //   "@whitelotus/front-features": ["frontend/features/src"],
-    //   "@whitelotus/front-pages": ["frontend/pages/src"],
-    //   "@whitelotus/front-shared": ["frontend/shared/src"],
+      //   "@whitelotus/front-entities": ["frontend/entities/src"],
+      //   "@whitelotus/front-features": ["frontend/features/src"],
+      //   "@whitelotus/front-pages": ["frontend/pages/src"],
+      //   "@whitelotus/front-shared": ["frontend/shared/src"],
 
-    //   "@whitelotus/front-legacy-shared": ["frontend/shared/src/_legacy"],
-    //   "@whitelotus/front-legacy-entities": ["frontend/entities/src/_legacy"],
+      //   "@whitelotus/front-legacy-shared": ["frontend/shared/src/_legacy"],
+      //   "@whitelotus/front-legacy-entities": ["frontend/entities/src/_legacy"],
 
-    //   "@whitelotus/lib-core-logging": ["lib/core/logging/src"],
-    //   "@whitelotus/lib-core-perf": ["lib/core/perf/src"],
-    //   "@whitelotus/lib-core-types": ["lib/core/types/src"],
-    //   "@whitelotus/lib-ext-api": ["lib/external/api/src"],
-    //   "@whitelotus/lib-ext-contentful": ["lib/external/contentful/src"],
-    //   "@whitelotus/lib-ext-next": ["lib/external/next/src"],
-    //   "@whitelotus/lib-sys-app": ["lib/system/app/src"],
-    //   "@whitelotus/lib-sys-cache": ["lib/system/cache/src"],
-    //   "@whitelotus/lib-sys-data": ["lib/system/data/src"],
-    //   "@whitelotus/lib-sys-domain": ["lib/system/domain/src"],
-    //   "@whitelotus/lib-sys-i18n": ["lib/system/i18n/src"],
-    //   "@whitelotus/lib-sys-runtime": ["lib/system/runtime/src"],
-    //   "@whitelotus/lib-sys-settings": ["lib/system/settings/src"],
-    //   "@whitelotus/lib-sys-sitemap": ["lib/system/sitemap/src"],
+      //   "@whitelotus/lib-core-logging": ["lib/core/logging/src"],
+      //   "@whitelotus/lib-core-perf": ["lib/core/perf/src"],
+      //   "@whitelotus/lib-core-types": ["lib/core/types/src"],
+      //   "@whitelotus/lib-ext-api": ["lib/external/api/src"],
+      //   "@whitelotus/lib-ext-contentful": ["lib/external/contentful/src"],
+      "@whitelotus/lib-ext-next": ["lib/external/next/src"]
+      //   "@whitelotus/lib-sys-app": ["lib/system/app/src"],
+      //   "@whitelotus/lib-sys-cache": ["lib/system/cache/src"],
+      //   "@whitelotus/lib-sys-data": ["lib/system/data/src"],
+      //   "@whitelotus/lib-sys-domain": ["lib/system/domain/src"],
+      //   "@whitelotus/lib-sys-i18n": ["lib/system/i18n/src"],
+      //   "@whitelotus/lib-sys-runtime": ["lib/system/runtime/src"],
+      //   "@whitelotus/lib-sys-settings": ["lib/system/settings/src"],
+      //   "@whitelotus/lib-sys-sitemap": ["lib/system/sitemap/src"],
 
-    //   "@whitelotus/mock-test": ["mock/data/src"]
-    // },
+      //   "@whitelotus/mock-test": ["mock/data/src"]
+    },
     "resolveJsonModule": true,
     "rootDir": ".",
     "strict": true,
