@@ -24,11 +24,9 @@ class CrossplexServerSideRequest extends NextServerSideRequestHandler<
   Query
 > {
   constructor(locale?: string) {
-    super(
-      'Dynamic Landing Page',
-      new ApplicationDependencyInitializer(),
+    super('Dynamic Landing Page', new ApplicationDependencyInitializer(), {
       locale,
-    );
+    });
   }
   protected async executeRequest(context: LearnPageContext) {
     return context.response.ok({});
