@@ -1,13 +1,4 @@
-import transpileModules from 'next-transpile-modules';
-import { composeConfig } from '../../.tools/index.js';
-
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-};
-
-const withTranspileModules = transpileModules([
+const packages = [
   //   '@whitelotus/back-app-crossplex',
   //   '@whitelotus/back-data-api',
   //   '@whitelotus/back-data-contentful',
@@ -39,6 +30,13 @@ const withTranspileModules = transpileModules([
   //   '@whitelotus/lib-sys-data',
   //   '@whitelotus/lib-sys-domain',
   //   '@whitelotus/lib-sys-settings',
-]); // pass the modules you would like to see transpiled
+];
 
-export default composeConfig(withTranspileModules)(nextConfig);
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+  transpilePackages: packages,
+};
+
+export default nextConfig;
