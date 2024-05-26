@@ -41,10 +41,10 @@
       //   ],
       "@whitelotus/back-runtime-crossplex": ["backend/runtime/crossplex/src"],
 
-      //   "@whitelotus/front-entities": ["frontend/entities/src"],
-      //   "@whitelotus/front-features": ["frontend/features/src"],
-      //   "@whitelotus/front-pages": ["frontend/pages/src"],
-      //   "@whitelotus/front-shared": ["frontend/shared/src"],
+      "@whitelotus/front-entities": ["frontend/entities/src"],
+      "@whitelotus/front-features": ["frontend/features/src"],
+      "@whitelotus/front-pages": ["frontend/pages/src"],
+      "@whitelotus/front-shared": ["frontend/shared/src"],
 
       //   "@whitelotus/front-legacy-shared": ["frontend/shared/src/_legacy"],
       //   "@whitelotus/front-legacy-entities": ["frontend/entities/src/_legacy"],
