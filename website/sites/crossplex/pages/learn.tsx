@@ -1,10 +1,10 @@
 import type { GetServerSidePropsContext } from 'next';
-import { CrossplexServerSideRequest } from '@whitelotus/back-runtime-crossplex';
-import { Crossplex } from '@whitelotus/front-pages';
+import { CrosslexServerSideRequest } from '@whitelotus/back-runtime-crosslex';
+import { Crosslex } from '@whitelotus/front-pages';
 
 export const getServerSideProps = (nextContext: GetServerSidePropsContext) => {
-  const handler = new CrossplexServerSideRequest();
+  const handler = new CrosslexServerSideRequest();
   return handler.getServerSideProps(nextContext);
 };
 
-export default Crossplex.LearningPage;
+export default Crosslex.LearningPage;

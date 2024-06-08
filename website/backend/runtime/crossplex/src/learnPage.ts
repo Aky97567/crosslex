@@ -5,20 +5,20 @@ import {
 
 import { ApplicationDependencyInitializer } from './initialization';
 
-type CrossplexView = {};
+type CrosslexView = {};
 type Controllers = {};
 type Services = {};
 type Query = {};
 
 type LearnPageContext = ExecutionContext<
-  CrossplexView,
+  CrosslexView,
   Controllers,
   Services,
   Query
 >;
 
-class CrossplexServerSideRequest extends NextServerSideRequestHandler<
-  CrossplexView,
+class CrosslexServerSideRequest extends NextServerSideRequestHandler<
+  CrosslexView,
   Controllers,
   Services,
   Query
@@ -33,4 +33,4 @@ class CrossplexServerSideRequest extends NextServerSideRequestHandler<
   }
 }
 
-export { CrossplexServerSideRequest };
+export { CrosslexServerSideRequest };

@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.1",
   "main": "src/index",
-  "description": "Exports widgets modules to be used in pages and process for the Crossplex site",
+  "description": "Exports widgets modules to be used in pages and process for the Crosslex site",
   "scripts": {
     "check:precommit": "lint-staged",
     "test": "jest",

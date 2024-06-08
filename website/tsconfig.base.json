@@ -16,7 +16,7 @@
     "forceConsistentCasingInFileNames": true,
     "paths": {
       "@/*": ["./*"],
-      //   "@whitelotus/back-app-landingpages": ["backend/app/crossplex/src"],
+      //   "@whitelotus/back-app-landingpages": ["backend/app/crosslex/src"],
       //   "@whitelotus/back-data-api": ["backend/data/api/src"],
       //   "@whitelotus/back-data-contentful": ["backend/data/contentful/src"],
       //   "@whitelotus/back-domain-affiliate": ["backend/domain/affiliate/src"],
@@ -39,7 +39,9 @@
       //   "@whitelotus/back-repo-staticlinks": [
       //     "backend/repository/staticlinks/src"
       //   ],
-      "@whitelotus/back-runtime-crossplex": ["backend/runtime/crossplex/src"],
+      "@whitelotus/back-runtime-crosslex": ["backend/runtime/crosslex/src"],
+
+      "@whitelotus/common-crosslex-view": ["common/crosslex/view/src"],
 
       "@whitelotus/front-entities": ["frontend/entities/src"],
       "@whitelotus/front-features": ["frontend/features/src"],

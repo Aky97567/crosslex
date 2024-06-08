@@ -1,5 +1,5 @@
 const packages = [
-  //   '@whitelotus/back-app-crossplex',
+  //   '@whitelotus/back-app-crosslex',
   //   '@whitelotus/back-data-api',
   //   '@whitelotus/back-data-contentful',
   //   '@whitelotus/back-domain-affiliate',
@@ -12,8 +12,8 @@ const packages = [
   //   '@whitelotus/back-repo-pagecontent',
   //   '@whitelotus/back-repo-pagemap',
   //   '@whitelotus/back-repo-review',
-  '@whitelotus/back-runtime-crossplex',
-  //   '@whitelotus/common-crossplex-view',
+  '@whitelotus/back-runtime-crosslex',
+  //   '@whitelotus/common-crosslex-view',
   '@whitelotus/front-entities',
   '@whitelotus/front-features',
   '@whitelotus/front-pages',

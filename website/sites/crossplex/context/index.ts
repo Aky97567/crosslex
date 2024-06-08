@@ -1,1 +1,1 @@
-export { makeCrossplexClientContext } from './clientContext';
+export { makeCrosslexClientContext } from './clientContext';

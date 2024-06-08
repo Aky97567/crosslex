@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.1",
   "main": "src/index",
-  "description": "Exports entity modules to be used in features, pages and process for the Crossplex site",
+  "description": "Exports entity modules to be used in features, pages and process for the Crosslex site",
   "scripts": {
     "check:precommit": "lint-staged",
     "test": "jest",

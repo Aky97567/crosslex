@@ -3,10 +3,10 @@ import { type AppProps } from 'next/app';
 import { ClientContextProvider } from '@whitelotus/front-shared';
 
 // import '~/styles/globals.css';
-import { makeCrossplexClientContext } from '../context';
+import { makeCrosslexClientContext } from '../context';
 
-const CrossplexApp = ({ Component, pageProps: { ...pageProps } }: AppProps) => {
-  const context = makeCrossplexClientContext();
+const CrosslexApp = ({ Component, pageProps: { ...pageProps } }: AppProps) => {
+  const context = makeCrosslexClientContext();
 
   return (
     <ClientContextProvider value={context}>
@@ -15,4 +15,4 @@ const CrossplexApp = ({ Component, pageProps: { ...pageProps } }: AppProps) => {
   );
 };
 
-export default CrossplexApp;
+export default CrosslexApp;

@@ -1,7 +1,7 @@
-type CrossplexClientContext = Record<string, Record<string, unknown>>;
+type CrosslexClientContext = Record<string, Record<string, unknown>>;
 
-const makeCrossplexClientContext = (): CrossplexClientContext => {
+const makeCrosslexClientContext = (): CrosslexClientContext => {
   return {};
 };
 
-export { makeCrossplexClientContext };
+export { makeCrosslexClientContext };

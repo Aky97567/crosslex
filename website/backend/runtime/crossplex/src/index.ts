@@ -1,1 +1,1 @@
-export { CrossplexServerSideRequest } from './learnPage';
+export { CrosslexServerSideRequest } from './learnPage';
