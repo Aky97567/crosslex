@@ -1,5 +1,5 @@
 {
-  "name": "@whitelotus/crossplex",
+  "name": "@whitelotus/crosslex",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@whitelotus/back-runtime-crossplex": "*",
+    "@whitelotus/back-runtime-crosslex": "*",
     "@whitelotus/front-pages": "*",
     "@whitelotus/front-shared": "*",
     "next": "14.1.4",

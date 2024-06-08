@@ -1,0 +1,8 @@
+{
+  "name": "@whitelotus/common-crosslex-view",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Common Crosslex view layer",
+  "main": "src/index",
+  "dependencies": {}
+}

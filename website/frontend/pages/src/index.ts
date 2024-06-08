@@ -1,1 +1,1 @@
-export * as Crossplex from './Crosslex';
+export * as Crosslex from './Crosslex';
