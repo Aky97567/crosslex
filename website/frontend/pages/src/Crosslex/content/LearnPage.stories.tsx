@@ -44,25 +44,26 @@ const sampleLearnPageContent: LearnPageContent = {
     },
     { word: 'die Kenntnis', translation: 'knowledge', similarityScore: 3 },
   ],
-  representativeImageUrl: 'https://example.com/experience.jpg',
+  representativeImageUrl:
+    'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
   memoryHooks: [
     {
       id: 1,
       content:
         "Think of 'Erfahrung' as gaining 'experience' from traveling far and wide.",
-      imageUrl: 'https://example.com/image1.jpg',
+      imageUrl: 'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
     },
     {
       id: 2,
       content:
         "Erfahrung sounds like 'err' and 'far' – when you go far, you might make errors and learn from them.",
-      imageUrl: 'https://example.com/image2.jpg',
+      imageUrl: 'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
     },
     {
       id: 3,
       content:
         "Imagine an 'experienced' traveler collecting 'far' away 'rings' from different places.",
-      imageUrl: 'https://example.com/image3.jpg',
+      imageUrl: 'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
     },
   ],
   wordTheaterUrl: 'https://example.com/word-theater-video.mp4',
