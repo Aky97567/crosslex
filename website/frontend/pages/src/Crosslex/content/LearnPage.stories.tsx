@@ -1,7 +1,7 @@
 // LearnPage.stories.tsx
 
 import React from 'react';
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { LearnPage } from './LearnPage';
 import {
   ContentLayout,
@@ -68,7 +68,9 @@ const sampleLearnPageContent: LearnPageContent = {
   wordTheaterUrl: 'https://example.com/word-theater-video.mp4',
 };
 
-export const Primary = Template.bind({});
+export const Primary: StoryObj<ContentLayout<LearnPageContent>> = Template.bind(
+  {},
+);
 Primary.args = {
   content: {
     ...sampleLearnPageContent,

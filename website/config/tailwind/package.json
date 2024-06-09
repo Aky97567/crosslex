@@ -1,0 +1,7 @@
+{
+  "name": "@whitelotus/config-tailwindcss",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Common whitelotus tailwind configuration",
+  "main": "tailwind.config.js"
+}

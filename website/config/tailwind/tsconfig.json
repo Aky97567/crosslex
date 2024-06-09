@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true,
+    "target": "es6",
+    "esModuleInterop": true,
+    "module": "ESNext",
+    "noEmit": true,
+    "skipLibCheck": true,
+    "jsx": "react-jsx"
+  },
+  "extends": "../../tsconfig.base.json"
+}

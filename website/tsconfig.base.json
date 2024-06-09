@@ -43,6 +43,8 @@
 
       "@whitelotus/common-crosslex-view": ["common/crosslex/view/src"],
 
+      "@whitelotus/config-tailwindcss": ["config/tailwindcss"],
+
       "@whitelotus/front-entities": ["frontend/entities/src"],
       "@whitelotus/front-features": ["frontend/features/src"],
       "@whitelotus/front-pages": ["frontend/pages/src"],

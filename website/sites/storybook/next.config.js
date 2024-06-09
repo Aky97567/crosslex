@@ -15,6 +15,7 @@ const nextConfig = {
   compiler: {
     emotion: true,
   },
+  transpilePackages: ['@whitelotus/config-tailwindcss'],
 };
 
 // eslint-disable-next-line import/no-extraneous-dependencies
