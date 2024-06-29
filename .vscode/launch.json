@@ -12,23 +12,23 @@
       ]
     },
     {
-      "name": "Server-side debugging: Crossplex",
+      "name": "Server-side debugging: Crosslex",
       "type": "node-terminal",
       "nodeVersionHint": 14,
       "request": "launch",
       "command": "yarn dev",
-      "cwd": "${workspaceFolder}/website/sites/crossplex",
+      "cwd": "${workspaceFolder}/website/sites/crosslex",
       "resolveSourceMapLocations": [
         "${workspaceFolder}/**",
         "!**/node_modules/**"
       ]
     },
     {
-      "name": "Full stack debugging: Crossplex",
+      "name": "Full stack debugging: Crosslex",
       "type": "node-terminal",
       "nodeVersionHint": 14,
       "request": "launch",
-      "command": "yarn dev:crossplex",
+      "command": "yarn dev:crosslex",
       "cwd": "${workspaceFolder}/website",
       "serverReadyAction": {
         "pattern": "started server on .+, url: (https?://.+)",
