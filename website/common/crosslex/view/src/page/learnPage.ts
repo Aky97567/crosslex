@@ -1,12 +1,12 @@
 import { HasContentPageType } from '../common';
 
-type MemoryHook = {
+export type Mnemonic = {
   id: number;
   content: string;
   imageUrl?: string;
 };
 
-type SimilarWord = {
+export type SimilarWord = {
   word: string;
   translation: string;
   similarityScore: number; // 0-5 scale
@@ -17,7 +17,7 @@ type MeaningBestGuessOption = {
   isCorrect: boolean;
 };
 
-type MeaningBestGuessQuestion = {
+export type MeaningBestGuessQuestion = {
   question: string;
   options: MeaningBestGuessOption[];
 };
@@ -32,6 +32,6 @@ export type LearnPageContent = HasContentPageType<'learn'> & {
   etymology: string;
   similarWords: SimilarWord[];
   representativeImageUrl: string;
-  memoryHooks: MemoryHook[];
-  wordTheaterUrl: string;
+  mnemonics: Mnemonic[];
+  wordShowcaseUrl: string;
 };

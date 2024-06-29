@@ -46,7 +46,7 @@ const sampleLearnPageContent: LearnPageContent = {
   ],
   representativeImageUrl:
     'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
-  memoryHooks: [
+  mnemonics: [
     {
       id: 1,
       content:
@@ -66,7 +66,7 @@ const sampleLearnPageContent: LearnPageContent = {
       imageUrl: 'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
     },
   ],
-  wordTheaterUrl: 'https://example.com/word-theater-video.mp4',
+  wordShowcaseUrl: 'https://example.com/word-theater-video.mp4',
 };
 
 export const Primary: StoryObj<ContentLayout<LearnPageContent>> = Template.bind(
