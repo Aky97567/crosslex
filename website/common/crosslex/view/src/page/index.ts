@@ -1,1 +1,6 @@
-export type { LearnPageContent } from './learnPage';
+export type {
+  LearnPageContent,
+  MeaningBestGuessQuestion,
+  Mnemonic,
+  SimilarWord,
+} from './learnPage';

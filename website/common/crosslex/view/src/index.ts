@@ -1,2 +1,7 @@
 export type { ContentLayout } from './layout';
-export type { LearnPageContent } from './page';
+export type {
+  LearnPageContent,
+  MeaningBestGuessQuestion,
+  Mnemonic,
+  SimilarWord,
+} from './page';
