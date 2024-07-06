@@ -8,7 +8,6 @@ import {
   WordMeaning,
   WordShowcase,
 } from '@whitelotus/front-entities';
-import { Card } from '@whitelotus/front-shared';
 import {
   ContentLayout,
   LearnPageContent,
@@ -44,8 +43,8 @@ const LearnPage = ({
       <WordContext paragraphWithUsage={paragraphWithUsage} />
       <Etymology etymology={etymology} />
       <SimilarWords similarWords={similarWords} />
-      {<Mnemonics mnemonics={mnemonics} />}
-      {<WordShowcase wordShowcaseUrl={wordShowcaseUrl} />}
+      <Mnemonics mnemonics={mnemonics} />
+      <WordShowcase wordShowcaseUrl={wordShowcaseUrl} />
     </div>
   );
 };
