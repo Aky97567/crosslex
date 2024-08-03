@@ -3067,7 +3067,6 @@ __metadata:
 "@next/swc-win32-ia32-msvc@npm:14.2.5":
   version: 14.2.5
   resolution: "@next/swc-win32-ia32-msvc@npm:14.2.5"
-
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
