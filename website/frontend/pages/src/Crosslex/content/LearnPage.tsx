@@ -37,10 +37,10 @@ const LearnPage = ({
         representativeImageUrl={representativeImageUrl}
       />
       <WordMeaning meaning={meaning} />
+      <WordContext paragraphWithUsage={paragraphWithUsage} />
       <MeaningGuessQuestion
         meaningBestGuessQuestion={meaningBestGuessQuestion}
       />
-      <WordContext paragraphWithUsage={paragraphWithUsage} />
       <Etymology etymology={etymology} />
       <SimilarWords similarWords={similarWords} />
       <Mnemonics mnemonics={mnemonics} />
