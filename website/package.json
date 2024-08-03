@@ -11,6 +11,7 @@
     "sites/*"
   ],
   "scripts": {
+    "build:storybook": "cd sites/storybook && yarn run build",
     "dev:crosslex": "cd sites/crosslex && yarn run dev",
     "dev:storybook": "cd sites/storybook && yarn run start"
   },
