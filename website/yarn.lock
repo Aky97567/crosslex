@@ -12356,7 +12356,6 @@ __metadata:
       optional: true
     "@playwright/test":
       optional: true
-      optional: true
     sass:
       optional: true
   bin:
