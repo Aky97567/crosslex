@@ -5,12 +5,10 @@ interface CardProps {
   className?: string;
 }
 
-const brand = 'brand1';
-
 const Card: React.FC<CardProps> = ({ children, className = '' }) => {
   return (
     <div
-      className={`bg-white border-solid border-2 border-brand1 shadow-lg rounded-lg p-30 ${className}`}
+      className={`bg-white border-solid border-2 border-brand shadow-lg rounded-lg p-30 ${className}`}
     >
       {children}
     </div>
