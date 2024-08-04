@@ -55,7 +55,7 @@ export const decorators = [
       // Set the `data-theme` attribute based on the selected theme
       document.documentElement.setAttribute(
         'data-theme',
-        context.globals.theme,
+        context.globals.theme ?? 'sober',
       );
     }, [context.globals.theme]);
 
