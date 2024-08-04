@@ -1,3 +1,9 @@
+:root {
+  --color-brand: #007bff;
+  --color-brand-2: #6699cc;
+  --color-brand-3: #336699;
+}
+
 [data-theme='sober'] {
   --color-brand: #007bff;
   --color-brand-2: #6699cc;
