@@ -1,4 +1,55 @@
 /** @type {import('tailwindcss').Config} */
+
+const COLORS = {
+  primary: '#222222',
+  color1: {
+    DEFAULT: '#00977D',
+    800: '#006E5B',
+    900: '#005244',
+  },
+  color2: {
+    400: '#C5E7E2',
+    DEFAULT: '#6EC2B7',
+  },
+  color3: '#FF4B19',
+  color4: '#E4A5A3',
+  color5: '#F5F5F5',
+  color6: '#B6BFC1',
+  color7: '#5E6E6A',
+  color8: '#E8EDEC',
+  white: '#FFFFFF',
+  dark: '#00000080',
+  error: '#880D1E',
+  errorLight: '#FFE8EB',
+  current: 'currentcolor',
+  transparent: 'transparent',
+  green: {
+    gradient: {
+      from: '#0D8C76',
+      to: '#06705F',
+    },
+  },
+  orange: {
+    gradient: {
+      from: '#FF4B19',
+      to: '#FF8664',
+    },
+  },
+  mint: {
+    gradient: {
+      from: '#6EC2B7',
+      to: '#4FBBAD',
+    },
+  },
+  swirl: {
+    gradient: {
+      from: '#FF4B19',
+      via: '#E4A5A3',
+      to: '#6CC2B6',
+    },
+  },
+};
+
 module.exports = {
   theme: {
     screens: {
@@ -10,84 +61,56 @@ module.exports = {
       xl: '1280px',
     },
     colors: {
-      primary: '#222222',
-      brand1: {
-        DEFAULT: '#007bff ',
-        2: '#6699cc',
-        3: '#336699',
-        correct: '#32CD32',
-        wrong: '#FF0000',
-      },
-
-      // Right: Blue (#007bff)
-      // Wrong: Orange (#FF8C00)
-
-      modernBrand: {
-        DEFAULT: '#2196f3',
-        2: '#64b5f6',
-        3: '#0d47a1 ',
-      },
-      coolBlueBrand: {
-        DEFAULT: '#0099cc',
-        2: '#66cccc',
-        3: '#99ffff',
-      },
-      oceanBlueBrand: {
-        DEFAULT: '#006699',
-        2: '#3399cc',
-        3: '#66ccff',
-      },
-      skyBlueBrand: {
-        DEFAULT: '#66b2ff',
-        2: '#99ccff',
-        3: '#ccffff',
-      },
-      color1: {
-        DEFAULT: '#00977D',
-        800: '#006E5B',
-        900: '#005244',
-      },
-      color2: {
-        400: '#C5E7E2',
-        DEFAULT: '#6EC2B7',
-      },
-      color3: '#FF4B19',
-      color4: '#E4A5A3',
-      color5: '#F5F5F5',
-      color6: '#B6BFC1',
-      color7: '#5E6E6A',
-      color8: '#E8EDEC',
-      white: '#FFFFFF',
-      dark: '#00000080',
-      error: '#880D1E',
-      errorLight: '#FFE8EB',
-      current: 'currentcolor',
-      transparent: 'transparent',
-      green: {
-        gradient: {
-          from: '#0D8C76',
-          to: '#06705F',
-        },
-      },
-      orange: {
-        gradient: {
-          from: '#FF4B19',
-          to: '#FF8664',
-        },
-      },
-      mint: {
-        gradient: {
-          from: '#6EC2B7',
-          to: '#4FBBAD',
-        },
-      },
+      ...COLORS,
       brand: {
-        gradient: {
-          from: '#FF4B19',
-          via: '#E4A5A3',
-          to: '#6CC2B6',
-        },
+        DEFAULT: 'var(--color-brand)',
+        2: 'var(--color-brand-2)',
+        3: 'var(--color-brand-3)',
       },
+      // defaultBrand: {
+      //   brand: {
+      //     DEFAULT: '#007bff ',
+      //     2: '#6699cc',
+      //     3: '#336699',
+      //   },
+      //   ...COLORS,
+      // },
+
+      // // Right: Blue (#007bff)
+      // // Wrong: Orange (#FF8C00)
+
+      // modernBrand: {
+      //   brand: {
+      //     DEFAULT: '#2196f3',
+      //     2: '#64b5f6',
+      //     3: '#0d47a1 ',
+      //   },
+      //   ...COLORS,
+      // },
+      // coolBlueBrand: {
+      //   brand: {
+      //     DEFAULT: '#0099cc',
+      //     2: '#66cccc',
+      //     3: '#99ffff',
+      //   },
+      //   ...COLORS,
+      // },
+      // oceanBlueBrand: {
+      //   brand: {
+      //     DEFAULT: '#006699',
+      //     2: '#3399cc',
+      //     3: '#66ccff',
+      //   },
+      //   ...COLORS,
+      // },
+      // skyBlueBrand: {
+      //   brand: {
+      //     DEFAULT: '#66b2ff',
+      //     2: '#99ccff',
+      //     3: '#ccffff',
+      //   },
+      //   ...COLORS,
+      // },
     },
     fontFamily: {
       quicksand: [

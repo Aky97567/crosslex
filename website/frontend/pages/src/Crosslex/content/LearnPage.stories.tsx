@@ -77,3 +77,9 @@ Primary.args = {
     ...sampleLearnPageContent,
   },
 };
+// Primary.argTypes = {
+//   theme: {
+//     control: { type: 'select' },
+//     options: ['light', 'dark'],
+//   },
+// };

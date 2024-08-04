@@ -1,0 +1,41 @@
+[data-theme='sober'] {
+  --color-brand: #007bff;
+  --color-brand-2: #6699cc;
+  --color-brand-3: #336699;
+}
+
+[data-theme='dark'] {
+  --color-brand: #6574cd;
+  --color-brand-2: #ffffff;
+  --color-brand-3: #2d3748;
+}
+
+[data-theme='light'] {
+  --color-brand: #f6ad55;
+  --color-brand-2: #f7fafc;
+  --color-brand-3: #1a202c;
+}
+
+[data-theme='modern'] {
+  --color-brand: #2196f3;
+  --color-brand-2: #64b5f6;
+  --color-brand-3: #0d47a1;
+}
+
+[data-theme='coolBlue'] {
+  --color-brand: #0099cc;
+  --color-brand-2: #66cccc;
+  --color-brand-3: #99ffff;
+}
+
+[data-theme='oceanBlue'] {
+  --color-brand: #006699;
+  --color-brand-2: #3399cc;
+  --color-brand-3: #66ccff;
+}
+
+[data-theme='skyBlue'] {
+  --color-brand: #66b2ff;
+  --color-brand-2: #99ccff;
+  --color-brand-3: #ccffff;
+}
