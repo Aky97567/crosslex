@@ -45,7 +45,7 @@ export const MeaningGuessQuestion: React.FC<MeaningGuessQuestionProps> = ({
                 ? optionStates[index].isCorrect
                   ? 'border-color1 text-white bg-color2'
                   : 'border-color3 text-white bg-color4'
-                : 'border-color7 text-black hover:bg-brand hover:text-white hover:border-brand'
+                : 'border-color7 text-black hover:bg-brand-2 hover:text-white hover:border-brand'
             }`}
             onClick={() => handleOptionClick(index)}
           >
