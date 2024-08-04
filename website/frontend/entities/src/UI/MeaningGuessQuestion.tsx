@@ -33,7 +33,7 @@ export const MeaningGuessQuestion: React.FC<MeaningGuessQuestionProps> = ({
   return meaningBestGuessQuestion ? (
     <Card>
       <div className="mb-6">
-        <h2 className="text-2xl font-semibold mb-2">
+        <h2 className="text-2xlfont-semibold mb-2">
           Meaning Best Guess Question
         </h2>
         <p className="text-lg">{meaningBestGuessQuestion.question}</p>
@@ -43,9 +43,9 @@ export const MeaningGuessQuestion: React.FC<MeaningGuessQuestionProps> = ({
             className={`text-md cursor-pointer border-2 rounded-lg px-40 py-10 mb-10 transition-colors duration-300 ${
               optionStates[index].isClicked
                 ? optionStates[index].isCorrect
-                  ? 'border-color1 text-color1 bg-color1-light'
-                  : 'border-color3 text-color3 bg-color3-light'
-                : 'border-color7 text-black hover:bg-color7-light'
+                  ? 'border-color1 text-white bg-color2'
+                  : 'border-color3 text-white bg-color4'
+                : 'border-color7 text-black hover:bg-color7'
             }`}
             onClick={() => handleOptionClick(index)}
           >

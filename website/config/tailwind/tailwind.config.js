@@ -11,6 +11,37 @@ module.exports = {
     },
     colors: {
       primary: '#222222',
+      brand1: {
+        DEFAULT: '#007bff ',
+        2: '#6699cc',
+        3: '#336699',
+        correct: '#32CD32',
+        wrong: '#FF0000',
+      },
+
+      // Right: Blue (#007bff)
+      // Wrong: Orange (#FF8C00)
+
+      modernBrand: {
+        DEFAULT: '#2196f3',
+        2: '#64b5f6',
+        3: '#0d47a1 ',
+      },
+      coolBlueBrand: {
+        DEFAULT: '#0099cc',
+        2: '#66cccc',
+        3: '#99ffff',
+      },
+      oceanBlueBrand: {
+        DEFAULT: '#006699',
+        2: '#3399cc',
+        3: '#66ccff',
+      },
+      skyBlueBrand: {
+        DEFAULT: '#66b2ff',
+        2: '#99ccff',
+        3: '#ccffff',
+      },
       color1: {
         DEFAULT: '#00977D',
         800: '#006E5B',
