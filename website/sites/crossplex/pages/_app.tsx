@@ -1,5 +1,5 @@
 import { type AppProps } from 'next/app';
-
+import '@/styles/globals.css';
 import { ClientContextProvider } from '@whitelotus/front-shared';
 
 // import '~/styles/globals.css';

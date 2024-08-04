@@ -1,4 +1,6 @@
 import 'tailwindcss/tailwind.css';
+import { useEffect } from 'react';
+import '../../crossplex/styles/globals.css';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -24,17 +26,39 @@ export const parameters = {
   ],
 };
 
+// Adding a custom control for theme switching
+export const globalTypes = {
+  theme: {
+    name: 'Theme',
+    description: 'Global theme for components',
+    defaultValue: 'light',
+    toolbar: {
+      icon: 'paintbrush',
+      items: [
+        { value: 'sober', title: 'Sober' },
+        { value: 'light', title: 'Light' },
+        { value: 'dark', title: 'Dark' },
+        { value: 'modern', title: 'Modern' },
+        { value: 'coolBlue', title: 'Cool Blue' },
+        { value: 'oceanBlue', title: 'Ocean Blue' },
+        { value: 'skyBlue', title: 'Sky Blue' },
+      ],
+      showName: true,
+    },
+  },
+};
+
 export const decorators = [
   // enable default fonts
-  Story => (
-    <>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&amp;family=Source+Sans+Pro:wght@400;600&amp;display=swap"
-        rel="stylesheet"
-      />
-      <div className="font-source">
-        <Story />
-      </div>
-    </>
-  ),
+  (Story, context) => {
+    useEffect(() => {
+      // Set the `data-theme` attribute based on the selected theme
+      document.documentElement.setAttribute(
+        'data-theme',
+        context.globals.theme,
+      );
+    }, [context.globals.theme]);
+
+    return <Story />;
+  },
 ];
