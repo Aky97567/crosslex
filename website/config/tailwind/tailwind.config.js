@@ -53,8 +53,6 @@ const COLORS = {
 module.exports = {
   theme: {
     screens: {
-      // No need for 'xs' (as specified as the smalles viewport by UX), because Tailwind approaches mobile-first
-      // See: https://www.figma.com/file/D6rYLd5IYqWsqcXTDLqZQA/ST-MVP-Pattern-Library?node-id=1861%3A13942
       // xs: '375px',
       md: '768px',
       lg: '992px',
@@ -67,50 +65,6 @@ module.exports = {
         2: 'var(--color-brand-2)',
         3: 'var(--color-brand-3)',
       },
-      // defaultBrand: {
-      //   brand: {
-      //     DEFAULT: '#007bff ',
-      //     2: '#6699cc',
-      //     3: '#336699',
-      //   },
-      //   ...COLORS,
-      // },
-
-      // // Right: Blue (#007bff)
-      // // Wrong: Orange (#FF8C00)
-
-      // modernBrand: {
-      //   brand: {
-      //     DEFAULT: '#2196f3',
-      //     2: '#64b5f6',
-      //     3: '#0d47a1 ',
-      //   },
-      //   ...COLORS,
-      // },
-      // coolBlueBrand: {
-      //   brand: {
-      //     DEFAULT: '#0099cc',
-      //     2: '#66cccc',
-      //     3: '#99ffff',
-      //   },
-      //   ...COLORS,
-      // },
-      // oceanBlueBrand: {
-      //   brand: {
-      //     DEFAULT: '#006699',
-      //     2: '#3399cc',
-      //     3: '#66ccff',
-      //   },
-      //   ...COLORS,
-      // },
-      // skyBlueBrand: {
-      //   brand: {
-      //     DEFAULT: '#66b2ff',
-      //     2: '#99ccff',
-      //     3: '#ccffff',
-      //   },
-      //   ...COLORS,
-      // },
     },
     fontFamily: {
       quicksand: [
