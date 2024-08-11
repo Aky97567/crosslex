@@ -10,7 +10,9 @@ export const WordShowcase: React.FC<WordShowcaseProps> = ({
   wordShowcaseUrl && (
     <Card>
       <div className="mb-6">
-        <h2 className="text-2xl font-semibold mb-2">Word Showcase</h2>
+        <h2 className="text-2xl text-brand font-semibold mb-10">
+          Word Showcase
+        </h2>
         <a href={wordShowcaseUrl} className="text-blue-500 underline">
           Watch here
         </a>
