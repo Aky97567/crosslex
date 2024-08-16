@@ -1,5 +1,6 @@
 import { SimilarWord } from '@/common/crosslex/view/src';
 import { Card } from '@whitelotus/front-shared';
+import { useMemo } from 'react';
 
 const BASE_FACTOR = 1.3;
 const FACTOR_DIVISOR = 20;
@@ -40,6 +41,17 @@ const getColorShadeFromSimilarityScore = (
   );
 };
 
+function hexToRgba(hex: string, alpha: number): string {
+  hex = hex.replace(/^#/, '');
+
+  const bigint = parseInt(hex, 16);
+  const r = (bigint >> 16) & 255;
+  const g = (bigint >> 8) & 255;
+  const b = bigint & 255;
+
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
 type SimilarWordsProps = {
   similarWords: SimilarWord[];
 };
@@ -48,6 +60,12 @@ export const SimilarWords: React.FC<SimilarWordsProps> = ({ similarWords }) => {
   if (!similarWords || similarWords.length === 0) return null;
 
   const theme = document.documentElement.getAttribute('data-theme') || 'light';
+  const strengthWiseColors = useMemo(() => {
+    return Array.from({ length: 5 }, (_, index) =>
+      getColorShadeFromSimilarityScore(index, theme),
+    );
+  }, [theme]);
+  console.log(strengthWiseColors);
 
   return (
     <Card>
@@ -67,10 +85,7 @@ export const SimilarWords: React.FC<SimilarWordsProps> = ({ similarWords }) => {
                   >
                     <span
                       style={{
-                        color: getColorShadeFromSimilarityScore(
-                          similarWord.similarityScore,
-                          theme,
-                        ),
+                        color: strengthWiseColors[similarWord.similarityScore],
                         fontWeight:
                           similarWord.similarityScore > 4 ? 'bold' : 'normal',
                       }}
@@ -87,6 +102,7 @@ export const SimilarWords: React.FC<SimilarWordsProps> = ({ similarWords }) => {
                         border: `2px solid ${themeColors[theme]}`, // Border color
                         borderRadius: '7px',
                         padding: '0.1rem', // Padding around the bars
+                        boxShadow: `5px 5px 5px ${hexToRgba(themeColors[theme], 0.5)}`,
                       }}
                     >
                       {/* Strength Bars */}
