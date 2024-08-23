@@ -1,6 +1,6 @@
 import { SimilarWord } from '@/common/crosslex/view/src';
 import { Card } from '@whitelotus/front-shared';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 const BASE_FACTOR = 1.3;
 const FACTOR_DIVISOR = 20;
@@ -59,6 +59,38 @@ type SimilarWordsProps = {
 export const SimilarWords: React.FC<SimilarWordsProps> = ({ similarWords }) => {
   if (!similarWords || similarWords.length === 0) return null;
 
+  const [maxWidth, setMaxWidth] = useState<number | null>(null);
+  const wordRefs = useRef<Array<HTMLSpanElement | null>>([]);
+
+  useEffect(() => {
+    if (!similarWords || similarWords.length === 0) return;
+
+    const calculateMaxWidth = () => {
+      let currentMaxWidth = 0;
+      wordRefs.current.forEach((ref, i) => {
+        if (ref) {
+          const width = ref.getBoundingClientRect().width;
+          if (width > currentMaxWidth) {
+            currentMaxWidth = width;
+          }
+        }
+      });
+      setMaxWidth(currentMaxWidth);
+    };
+
+    calculateMaxWidth();
+
+    const observer = new ResizeObserver(calculateMaxWidth);
+
+    wordRefs.current.forEach(ref => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [similarWords, maxWidth]);
+
   const theme = document.documentElement.getAttribute('data-theme') || 'sober';
   const strengthWiseColors = useMemo(() => {
     return Array.from({ length: 5 }, (_, index) =>
@@ -80,9 +112,13 @@ export const SimilarWords: React.FC<SimilarWordsProps> = ({ similarWords }) => {
                 <tr key={index} className="text-lg mb-10">
                   <td
                     className="text-0 pr-10"
-                    style={{ verticalAlign: 'middle' }}
+                    style={{
+                      verticalAlign: 'middle',
+                      width: maxWidth ? `${maxWidth + 16}px` : 'auto',
+                    }}
                   >
                     <span
+                      ref={el => (wordRefs.current[index] = el)}
                       style={{
                         color:
                           strengthWiseColors[similarWord.similarityScore - 1],
