@@ -1,4 +1,4 @@
-import { Card } from '@whitelotus/front-shared';
+import { Card, Heading2 } from '@whitelotus/front-shared';
 
 type WordContextProps = {
   paragraphWithUsage: string;
@@ -10,7 +10,7 @@ export const WordContext: React.FC<WordContextProps> = ({
   paragraphWithUsage && (
     <Card>
       <div className="mb-6">
-        <h2 className="text-2xl text-brand font-semibold mb-10">Usage</h2>
+        <Heading2>Usage</Heading2>
         <p className="text-lg">{paragraphWithUsage}</p>
       </div>
     </Card>

@@ -1,4 +1,4 @@
-import { Card } from '@whitelotus/front-shared';
+import { Card, Heading2 } from '@whitelotus/front-shared';
 
 type WordShowcaseProps = {
   wordShowcaseUrl: string;
@@ -10,9 +10,7 @@ export const WordShowcase: React.FC<WordShowcaseProps> = ({
   wordShowcaseUrl && (
     <Card>
       <div className="mb-6">
-        <h2 className="text-2xl text-brand font-semibold mb-10">
-          Word Showcase
-        </h2>
+        <Heading2>Word Showcase</Heading2>
         <a href={wordShowcaseUrl} className="text-blue-500 underline">
           Watch here
         </a>
