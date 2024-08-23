@@ -100,11 +100,9 @@ export const SimilarWords: React.FC<SimilarWordsProps> = ({ similarWords }) => {
 
   return (
     <Card>
-      <div className="mb-10">
-        <h2 className="text-2xl text-brand font-semibold mb-10">
-          Similar Words
-        </h2>
-        <table className="w-full">
+      <h2 className="text-2xl text-brand font-semibold mb-10">Similar Words</h2>
+      <div className="mb-10 flex justify-center">
+        <table>
           <tbody>
             {similarWords
               .sort((a, b) => b.similarityScore - a.similarityScore)
