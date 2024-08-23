@@ -59,13 +59,12 @@ type SimilarWordsProps = {
 export const SimilarWords: React.FC<SimilarWordsProps> = ({ similarWords }) => {
   if (!similarWords || similarWords.length === 0) return null;
 
-  const theme = document.documentElement.getAttribute('data-theme') || 'light';
+  const theme = document.documentElement.getAttribute('data-theme') || 'sober';
   const strengthWiseColors = useMemo(() => {
     return Array.from({ length: 5 }, (_, index) =>
       getColorShadeFromSimilarityScore(index, theme),
     );
   }, [theme]);
-  console.log(strengthWiseColors);
 
   return (
     <Card>
@@ -85,9 +84,10 @@ export const SimilarWords: React.FC<SimilarWordsProps> = ({ similarWords }) => {
                   >
                     <span
                       style={{
-                        color: strengthWiseColors[similarWord.similarityScore],
+                        color:
+                          strengthWiseColors[similarWord.similarityScore - 1],
                         fontWeight:
-                          similarWord.similarityScore > 4 ? 'bold' : 'normal',
+                          similarWord.similarityScore > 3 ? 'bold' : 'normal',
                       }}
                     >
                       {similarWord.word}
