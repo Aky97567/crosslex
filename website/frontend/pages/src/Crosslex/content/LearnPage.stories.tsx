@@ -43,6 +43,9 @@ const sampleLearnPageContent: LearnPageContent = {
       similarityScore: 4,
     },
     { word: 'die Kenntnis', translation: 'knowledge', similarityScore: 3 },
+    { word: 'Test 1', translation: 'knowledge', similarityScore: 5 },
+    { word: 'Test 2', translation: 'knowledge', similarityScore: 2 },
+    { word: 'Test 3', translation: 'knowledge', similarityScore: 1 },
   ],
   representativeImageUrl:
     'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
