@@ -47,13 +47,15 @@ const sampleLearnPageContent: LearnPageContent = {
     { word: 'Test 2', translation: 'knowledge', similarityScore: 2 },
     { word: 'Test 3', translation: 'knowledge', similarityScore: 1 },
   ],
+  // representativeImageUrl: 'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
   representativeImageUrl:
-    'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
+    'https://onecms-res.cloudinary.com/image/upload/s--kCDWxyX7--/c_fill,g_auto,h_676,w_1200/f_auto,q_auto/stella-modern-family-bulldog.jpg?itok=L4ZO6Xno',
   mnemonics: [
     {
       id: 1,
       content:
         "Think of 'Erfahrung' as gaining 'experience' from traveling far and wide.",
+      // imageUrl: 'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
       imageUrl: 'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
     },
     {
