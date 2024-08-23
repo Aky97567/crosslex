@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MeaningBestGuessQuestion } from '@whitelotus/common-crosslex-view';
-import { Card } from '@whitelotus/front-shared';
+import { Card, Heading2 } from '@whitelotus/front-shared';
 
 type MeaningGuessQuestionProps = {
   meaningBestGuessQuestion: MeaningBestGuessQuestion;
@@ -33,9 +33,7 @@ export const MeaningGuessQuestion: React.FC<MeaningGuessQuestionProps> = ({
   return meaningBestGuessQuestion ? (
     <Card>
       <div className="mb-6">
-        <h2 className="text-2xlfont-semibold mb-2">
-          Meaning Best Guess Question
-        </h2>
+        <Heading2>Meaning Best Guess Question</Heading2>
         <p className="text-lg">{meaningBestGuessQuestion.question}</p>
         {meaningBestGuessQuestion.options.map((option, index) => (
           <div

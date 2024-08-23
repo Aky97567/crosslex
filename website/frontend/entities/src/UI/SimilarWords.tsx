@@ -1,6 +1,6 @@
-import { SimilarWord } from '@/common/crosslex/view/src';
-import { Card } from '@whitelotus/front-shared';
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { SimilarWord } from '@/common/crosslex/view/src';
+import { Card, Heading2 } from '@whitelotus/front-shared';
 
 const BASE_FACTOR = 1.3;
 const FACTOR_DIVISOR = 20;
@@ -100,7 +100,7 @@ export const SimilarWords: React.FC<SimilarWordsProps> = ({ similarWords }) => {
 
   return (
     <Card>
-      <h2 className="text-2xl text-brand font-semibold mb-10">Similar Words</h2>
+      <Heading2>Similar Words</Heading2>
       <div className="mb-10 flex justify-center">
         <table>
           <tbody>
