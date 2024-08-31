@@ -5,7 +5,6 @@
   "description": "Exports pages to be used in WhiteLotus processes and microsites",
   "main": "src/index",
   "dependencies": {
-    "@emotion/react": "11.11.1",
     "@whitelotus/config-tailwindcss": "*",
     "@whitelotus/front-shared": "*",
     "next": "^14.2.5",

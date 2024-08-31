@@ -12,9 +12,9 @@ const nextConfig = {
   experimental: {
     externalDir: true,
   },
-  compiler: {
-    emotion: true,
-  },
+  // compiler: {
+  //   emotion: true,
+  // },
   transpilePackages: ['@whitelotus/config-tailwindcss'],
 };
 

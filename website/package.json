@@ -16,7 +16,6 @@
     "dev:storybook": "cd sites/storybook && yarn run start"
   },
   "dependencies": {
-    "@emotion/react": "11.11.1",
     "@whitelotus/back-runtime-crosslex": "*",
     "@whitelotus/front-pages": "*",
     "@whitelotus/front-shared": "*",

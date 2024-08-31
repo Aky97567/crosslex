@@ -1,4 +1,4 @@
-import { dirname, join } from "path";
+import { dirname, join } from 'path';
 /** @type {import('@storybook/types').StorybookConfig} */
 module.exports = {
   stories: ['../../../frontend/*/src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
@@ -12,12 +12,12 @@ module.exports = {
         },
       },
     },
-    getAbsolutePath("@storybook/addon-links"),
-    getAbsolutePath("@storybook/addon-essentials"),
-    getAbsolutePath("@storybook/addon-interactions"),
+    getAbsolutePath('@storybook/addon-links'),
+    getAbsolutePath('@storybook/addon-essentials'),
+    getAbsolutePath('@storybook/addon-interactions'),
   ],
 
-  framework: getAbsolutePath("@storybook/nextjs"),
+  framework: getAbsolutePath('@storybook/nextjs'),
 
   core: {
     disableTelemetry: true,
@@ -41,7 +41,7 @@ module.exports = {
                 { runtime: 'automatic' },
               ],
             ],
-            plugins: ['@emotion'],
+            // plugins: ['@emotion'],
           },
         },
       ],
@@ -62,10 +62,10 @@ module.exports = {
   },
 
   docs: {
-    autodocs: true
-  }
+    autodocs: true,
+  },
 };
 
 function getAbsolutePath(value) {
-  return dirname(require.resolve(join(value, "package.json")));
+  return dirname(require.resolve(join(value, 'package.json')));
 }
