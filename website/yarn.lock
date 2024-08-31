@@ -2657,12 +2657,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/bundle-analyzer@npm:14.2.3":
-  version: 14.2.3
-  resolution: "@next/bundle-analyzer@npm:14.2.3"
+"@next/bundle-analyzer@npm:14.2.7":
+  version: 14.2.7
+  resolution: "@next/bundle-analyzer@npm:14.2.7"
   dependencies:
     webpack-bundle-analyzer: "npm:4.10.1"
-  checksum: 10c0/f219e372ca211b161a530fcbcc7395e049e9dc039c37279cae56eed1ddfc678e8f28b12813548f0901276b932dee591067f4683b8502e03156ce1c79ff3a50a4
+  checksum: 10c0/6886f5e5dcda75e32963f83d79b7a5b5f17feb08727e9b65d4a8e7c9cc34237ca5784e0a20b91161e6da7dc766a99a6271106620c79b032c7da415e0b5472062
   languageName: node
   linkType: hard
 
@@ -5892,7 +5892,7 @@ __metadata:
     "@whitelotus/front-shared": "npm:*"
     eslint: "npm:^8"
     eslint-config-next: "npm:14.1.4"
-    next: "npm:^14.2.5"
+    next: "npm:^14.2.7"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
     typescript: "npm:^5.5.4"
@@ -5917,7 +5917,7 @@ __metadata:
   dependencies:
     "@whitelotus/config-tailwindcss": "npm:*"
     "@whitelotus/front-shared": "npm:*"
-    next: "npm:^14.2.5"
+    next: "npm:^14.2.7"
     prettier: "npm:^3.0.0"
     prettier-plugin-tailwindcss: "npm:^0.5.1"
     react: "npm:18.3.1"
@@ -5982,7 +5982,7 @@ __metadata:
   dependencies:
     "@types/react": "npm:18.3.5"
     "@types/react-dom": "npm:18.3.0"
-    next: "npm:^14.2.5"
+    next: "npm:^14.2.7"
     react: "npm:18.3.1"
     react-dom: "npm:18.3.1"
   languageName: unknown
@@ -11957,7 +11957,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:^14.2.5":
+"next@npm:^14.2.7":
   version: 14.2.7
   resolution: "next@npm:14.2.7"
   dependencies:
@@ -14367,7 +14367,7 @@ __metadata:
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
     "@chromatic-com/storybook": "npm:1.4.0"
-    "@next/bundle-analyzer": "npm:14.2.3"
+    "@next/bundle-analyzer": "npm:14.2.7"
     "@storybook/addon-essentials": "npm:7.6.10"
     "@storybook/addon-interactions": "npm:7.6.10"
     "@storybook/addon-links": "npm:7.6.10"
@@ -14394,7 +14394,7 @@ __metadata:
     eslint-plugin-react-refresh: "npm:^0.4.6"
     eslint-plugin-storybook: "npm:^0.7.0"
     jsonschema: "npm:1.4.1"
-    next: "npm:^14.2.5"
+    next: "npm:^14.2.7"
     postcss: "npm:^8.4.39"
     postcss-preset-env: "npm:9.5.0"
     prettier: "npm:^3.0.0"
