@@ -16,6 +16,7 @@ import {
 const LearnPage = ({
   content: {
     word,
+    article,
     translation,
     partOfSpeech,
     meaning,
@@ -31,7 +32,7 @@ const LearnPage = ({
   return (
     <div className="bg-brand-2 p-20 max-w-4xl mx-auto space-y-10">
       <WordIntro
-        word={word}
+        word={`${article} ${word}`}
         translation={translation}
         partOfSpeech={partOfSpeech}
         representativeImageUrl={representativeImageUrl}

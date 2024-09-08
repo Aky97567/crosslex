@@ -20,7 +20,8 @@ const Template: StoryFn<ContentLayout<LearnPageContent>> = args => (
 const sampleLearnPageContent: LearnPageContent = {
   type: 'learn',
   level: ['B1', 'B2'],
-  word: 'die Erfahrung',
+  word: 'Erfahrung',
+  article: 'die',
   translation: 'experience',
   partOfSpeech: 'noun',
   meaning:
