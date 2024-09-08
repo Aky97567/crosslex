@@ -9,7 +9,7 @@ export type Mnemonic = {
 export type SimilarWord = {
   word: string;
   translation: string;
-  similarityScore: number; // 0-5 scale
+  similarityScore: 1 | 2 | 3 | 4 | 5;
 };
 
 type MeaningBestGuessOption = {
