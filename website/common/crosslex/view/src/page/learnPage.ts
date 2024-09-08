@@ -1,5 +1,7 @@
 import { HasContentPageType } from '../common';
 
+export type Article = 'der' | 'die' | 'das' | null;
+
 export type Mnemonic = {
   id: number;
   content: string;
@@ -8,6 +10,7 @@ export type Mnemonic = {
 
 export type SimilarWord = {
   word: string;
+  article: Article;
   translation: string;
   similarityScore: 1 | 2 | 3 | 4 | 5;
 };
@@ -24,7 +27,7 @@ export type MeaningBestGuessQuestion = {
 
 export type LearnPageContent = HasContentPageType<'learn'> & {
   word: string;
-  article: 'der' | 'die' | 'das' | null;
+  article: Article;
   level: ('A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2')[];
   translation: string;
   partOfSpeech: 'noun' | 'verb' | 'adjective' | 'adverb';

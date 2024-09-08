@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "declaration": true,
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "types": ["node"]
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "./sites/MockData.tsx",
+    "../data/src/sites/MockData.tsx"
+  ],
+  "extends": "../../tsconfig.base.json"
+}
