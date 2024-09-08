@@ -13,7 +13,7 @@ const packages = [
   //   '@whitelotus/back-repo-pagemap',
   //   '@whitelotus/back-repo-review',
   '@whitelotus/back-runtime-crosslex',
-  //   '@whitelotus/common-crosslex-view',
+  '@whitelotus/common-crosslex-view',
   '@whitelotus/front-entities',
   '@whitelotus/front-features',
   '@whitelotus/front-pages',

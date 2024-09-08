@@ -58,7 +58,7 @@
       //   "@whitelotus/lib-core-types": ["lib/core/types/src"],
       //   "@whitelotus/lib-ext-api": ["lib/external/api/src"],
       //   "@whitelotus/lib-ext-contentful": ["lib/external/contentful/src"],
-      "@whitelotus/lib-ext-next": ["lib/external/next/src"]
+      "@whitelotus/lib-ext-next": ["lib/external/next/src"],
       //   "@whitelotus/lib-sys-app": ["lib/system/app/src"],
       //   "@whitelotus/lib-sys-cache": ["lib/system/cache/src"],
       //   "@whitelotus/lib-sys-data": ["lib/system/data/src"],
@@ -68,7 +68,7 @@
       //   "@whitelotus/lib-sys-settings": ["lib/system/settings/src"],
       //   "@whitelotus/lib-sys-sitemap": ["lib/system/sitemap/src"],
 
-      //   "@whitelotus/mock-test": ["mock/data/src"]
+      "@whitelotus/mock-test": ["mock/data/src"]
     },
     "resolveJsonModule": true,
     "rootDir": ".",

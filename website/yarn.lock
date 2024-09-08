@@ -5548,6 +5548,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@whitelotus/common-crosslex-view@npm:*, @whitelotus/common-crosslex-view@workspace:common/crosslex/view":
+  version: 0.0.0-use.local
+  resolution: "@whitelotus/common-crosslex-view@workspace:common/crosslex/view"
+  languageName: unknown
+  linkType: soft
+
 "@whitelotus/config-tailwindcss@npm:*, @whitelotus/config-tailwindcss@workspace:config/tailwind":
   version: 0.0.0-use.local
   resolution: "@whitelotus/config-tailwindcss@workspace:config/tailwind"
@@ -5591,6 +5597,7 @@ __metadata:
   dependencies:
     "@whitelotus/config-tailwindcss": "npm:*"
     "@whitelotus/front-shared": "npm:*"
+    "@whitelotus/mock-test": "npm:*"
     next: "npm:^14.2.7"
     prettier: "npm:^3.0.0"
     prettier-plugin-tailwindcss: "npm:^0.5.1"
@@ -5676,6 +5683,14 @@ __metadata:
   dependencies:
     "@whitelotus/lib-core-logging": "npm:*"
     "@whitelotus/lib-sys-app": "npm:*"
+  languageName: unknown
+  linkType: soft
+
+"@whitelotus/mock-test@npm:*, @whitelotus/mock-test@workspace:mock/data":
+  version: 0.0.0-use.local
+  resolution: "@whitelotus/mock-test@workspace:mock/data"
+  dependencies:
+    "@whitelotus/common-crosslex-view": "npm:*"
   languageName: unknown
   linkType: soft
 
@@ -13830,6 +13845,7 @@ __metadata:
   dependencies:
     "@chromatic-com/storybook": "npm:1.4.0"
     "@next/bundle-analyzer": "npm:14.2.7"
+    "@storybook/addon-controls": "npm:7.6.10"
     "@storybook/addon-essentials": "npm:7.6.10"
     "@storybook/addon-interactions": "npm:7.6.10"
     "@storybook/addon-links": "npm:7.6.10"
@@ -13843,11 +13859,6 @@ __metadata:
     "@types/react-dom": "npm:^18.3.0"
     "@typescript-eslint/eslint-plugin": "npm:^7.2.0"
     "@typescript-eslint/parser": "npm:^7.2.0"
-    "@whitelotus/back-runtime-crosslex": "npm:*"
-    "@whitelotus/front-pages": "npm:*"
-    "@whitelotus/front-shared": "npm:*"
-    "@whitelotus/lib-core-logging": "npm:*"
-    "@whitelotus/lib-sys-app": "npm:*"
     autoprefixer: "npm:10.4.15"
     eslint: "npm:^9.9.1"
     eslint-config-next: "npm:14.2.7"

@@ -124,7 +124,7 @@ export const SimilarWords: React.FC<SimilarWordsProps> = ({ similarWords }) => {
                           similarWord.similarityScore > 3 ? 'bold' : 'normal',
                       }}
                     >
-                      {similarWord.word}
+                      {`${similarWord.article} ${similarWord.word}`.trimStart()}
                     </span>
                   </td>
                   <td>

@@ -7,6 +7,7 @@
   "dependencies": {
     "@whitelotus/config-tailwindcss": "*",
     "@whitelotus/front-shared": "*",
+    "@whitelotus/mock-test": "*",
     "next": "^14.2.7",
     "react": "18.3.1",
     "react-dom": "18.3.1",

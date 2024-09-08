@@ -14,6 +14,7 @@ module.exports = {
     },
     getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-essentials'),
+    getAbsolutePath('@storybook/addon-controls'),
     getAbsolutePath('@storybook/addon-interactions'),
   ],
 
