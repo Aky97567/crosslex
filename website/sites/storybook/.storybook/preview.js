@@ -28,9 +28,9 @@ export const parameters = {
 
 // Adding a custom control for theme switching
 export const globalTypes = {
-  theme: {
-    name: 'Theme',
-    description: 'Global theme for components',
+  palette: {
+    name: 'Palette',
+    description: 'Global palette for components',
     defaultValue: 'light',
     toolbar: {
       icon: 'paintbrush',
@@ -46,16 +46,34 @@ export const globalTypes = {
       showName: true,
     },
   },
+  theme: {
+    name: 'Theme',
+    description: 'Global theme for components',
+    defaultValue: 'light',
+    toolbar: {
+      icon: 'paintbrush',
+      items: [
+        { value: 'light', title: 'Light' },
+        { value: 'dark', title: 'Dark' },
+      ],
+      showName: true,
+    },
+  },
 };
 
 export const decorators = [
-  // enable default fonts
   (Story, context) => {
     useEffect(() => {
-      // Set the `data-theme` attribute based on the selected theme
+      document.documentElement.setAttribute(
+        'data-palette',
+        context.globals.palette ?? 'sober',
+      );
+    }, [context.globals.palette]);
+
+    useEffect(() => {
       document.documentElement.setAttribute(
         'data-theme',
-        context.globals.theme ?? 'sober',
+        context.globals.theme ?? 'light',
       );
     }, [context.globals.theme]);
 

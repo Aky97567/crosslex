@@ -65,6 +65,8 @@ module.exports = {
         2: 'var(--color-brand-2)',
         3: 'var(--color-brand-3)',
       },
+      text: 'var(--color-text)',
+      background: 'var(--color-background)',
     },
     fontFamily: {
       quicksand: [

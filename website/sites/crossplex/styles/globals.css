@@ -2,46 +2,118 @@
   --color-brand: #007bff;
   --color-brand-2: #6699cc;
   --color-brand-3: #336699;
+  --color-text: #000;
+  --color-background: #fff;
 }
 
-[data-theme='sober'] {
+[data-palette='sober'] {
   --color-brand: #007bff;
   --color-brand-2: #6699cc;
   --color-brand-3: #336699;
 }
 
-[data-theme='dark'] {
+[data-palette='sober'][data-theme='light'] {
+  --color-text: #000;
+  --color-background: #fff;
+}
+
+[data-palette='sober'][data-theme='dark'] {
+  --color-text: #fff;
+  --color-background: #000;
+}
+
+[data-palette='dark'] {
   --color-brand: #6574cd;
   --color-brand-2: #ffffff;
   --color-brand-3: #2d3748;
 }
 
-[data-theme='light'] {
+[data-palette='dark'][data-theme='dark'] {
+  --color-text: #fff;
+  --color-background: #000;
+}
+
+[data-palette='dark'][data-theme='light'] {
+  --color-text: #000;
+  --color-background: #fff;
+}
+
+[data-palette='light'] {
   --color-brand: #f6ad55;
   --color-brand-2: #f7fafc;
   --color-brand-3: #1a202c;
 }
 
-[data-theme='modern'] {
+[data-palette='light'][data-theme='dark'] {
+  --color-text: #fff;
+  --color-background: #000;
+}
+
+[data-palette='light'][data-theme='light'] {
+  --color-text: #000;
+  --color-background: #fff;
+}
+
+[data-palette='modern'] {
   --color-brand: #2196f3;
   --color-brand-2: #64b5f6;
   --color-brand-3: #0d47a1;
 }
 
-[data-theme='coolBlue'] {
+[data-palette='modern'][data-theme='dark'] {
+  --color-text: #fff;
+  --color-background: #000;
+}
+
+[data-palette='modern'][data-theme='light'] {
+  --color-text: #000;
+  --color-background: #fff;
+}
+
+[data-palette='coolBlue'] {
   --color-brand: #0099cc;
   --color-brand-2: #66cccc;
   --color-brand-3: #99ffff;
 }
 
-[data-theme='oceanBlue'] {
+[data-palette='coolBlue'][data-theme='dark'] {
+  --color-text: #fff;
+  --color-background: #000;
+}
+
+[data-palette='coolBlue'][data-theme='light'] {
+  --color-text: #000;
+  --color-background: #fff;
+}
+
+[data-palette='oceanBlue'] {
   --color-brand: #006699;
   --color-brand-2: #3399cc;
   --color-brand-3: #66ccff;
 }
 
-[data-theme='skyBlue'] {
+[data-palette='oceanBlue'][data-theme='dark'] {
+  --color-text: #fff;
+  --color-background: #000;
+}
+
+[data-palette='oceanBlue'][data-theme='light'] {
+  --color-text: #000;
+  --color-background: #fff;
+}
+
+[data-palette='skyBlue'] {
   --color-brand: #66b2ff;
   --color-brand-2: #99ccff;
   --color-brand-3: #ccffff;
+}
+
+[data-palette='skyBlue'][data-theme='dark'] {
+  --color-text: #fff;
+  --color-background: #000;
+}
+
+[data-palette='skyBlue'][data-theme='light'] {
+  --color-text: #000;
+  --color-background: #fff;
 }
