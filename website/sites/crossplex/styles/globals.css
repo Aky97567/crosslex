@@ -61,3 +61,7 @@
   --color-brand-2: #99ccff;
   --color-brand-3: #ccffff;
 }
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for aesthetics */
+}

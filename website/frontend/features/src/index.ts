@@ -1,1 +1,1 @@
-export {};
+export { TabbedCarousel } from './Carousel';

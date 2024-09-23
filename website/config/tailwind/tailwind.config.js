@@ -68,6 +68,7 @@ module.exports = {
       text: {
         DEFAULT: 'var(--color-text)',
         cta: 'var(--color-cta-text)',
+        'alpha-50': 'rgba(var(--color-text), 0.5)',
       },
 
       bg: {
