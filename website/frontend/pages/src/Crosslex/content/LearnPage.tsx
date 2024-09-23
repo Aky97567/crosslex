@@ -8,6 +8,8 @@ import {
   WordMeaning,
   WordShowcase,
 } from '@whitelotus/front-entities';
+import { TabbedCarousel } from '@whitelotus/front-features';
+import { useIsMobile, useIsTablet } from '@whitelotus/front-shared';
 import {
   ContentLayout,
   LearnPageContent,
@@ -29,7 +31,20 @@ const LearnPage = ({
     wordShowcaseUrl,
   },
 }: ContentLayout<LearnPageContent>) => {
-  return (
+  const isMobile = useIsMobile();
+  const isTablet = useIsTablet();
+
+  const tabs = [
+    'Meaning',
+    'Context',
+    'Guess Question',
+    'Etymology',
+    'Similar Words',
+    'Mnemonics',
+    'Showcase',
+  ];
+
+  return !isTablet && !isMobile ? (
     <div className="bg-bg-l1 p-20 max-w-4xl mx-auto space-y-10">
       <WordIntro
         word={`${article} ${word}`}
@@ -46,6 +61,26 @@ const LearnPage = ({
       <SimilarWords similarWords={similarWords} />
       <Mnemonics mnemonics={mnemonics} />
       <WordShowcase wordShowcaseUrl={wordShowcaseUrl} />
+    </div>
+  ) : (
+    <div className="bg-bg-l1 p-20 max-w-4xl mx-auto space-y-10">
+      <WordIntro
+        word={`${article} ${word}`}
+        translation={translation}
+        partOfSpeech={partOfSpeech}
+        representativeImageUrl={representativeImageUrl}
+      />
+      <TabbedCarousel tabs={tabs}>
+        <WordMeaning meaning={meaning} />
+        <WordContext paragraphWithUsage={paragraphWithUsage} />
+        <MeaningGuessQuestion
+          meaningBestGuessQuestion={meaningBestGuessQuestion}
+        />
+        <Etymology etymology={etymology} />
+        <SimilarWords similarWords={similarWords} />
+        <Mnemonics mnemonics={mnemonics} />
+        <WordShowcase wordShowcaseUrl={wordShowcaseUrl} />
+      </TabbedCarousel>
     </div>
   );
 };
