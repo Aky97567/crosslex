@@ -30,7 +30,7 @@ const LearnPage = ({
   },
 }: ContentLayout<LearnPageContent>) => {
   return (
-    <div className="bg-brand-2 p-20 max-w-4xl mx-auto space-y-10">
+    <div className="bg-bg-l1 p-20 max-w-4xl mx-auto space-y-10">
       <WordIntro
         word={`${article} ${word}`}
         translation={translation}

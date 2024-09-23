@@ -7,7 +7,7 @@ const FACTOR_DIVISOR = 20;
 const BAR_WIDTH = 3; // Width in rem
 const BAR_HEIGHT = 1.5; // Height in rem
 
-const themeColors: Record<string, string> = {
+const paletteColors: Record<string, string> = {
   sober: '#007bff',
   dark: '#6574cd',
   light: '#f6ad55',
@@ -19,9 +19,9 @@ const themeColors: Record<string, string> = {
 
 const getColorShadeFromSimilarityScore = (
   similarityScore: number,
-  theme: string,
+  palette: string,
 ) => {
-  const baseColor = themeColors[theme] || themeColors.light;
+  const baseColor = paletteColors[palette] || paletteColors.light;
 
   const adjustColorShade = (color: string, factor: number) => {
     const [r1, g1, b1] = [
@@ -67,7 +67,7 @@ export const SimilarWords: React.FC<SimilarWordsProps> = ({ similarWords }) => {
 
     const calculateMaxWidth = () => {
       let currentMaxWidth = 0;
-      wordRefs.current.forEach((ref, i) => {
+      wordRefs.current.forEach(ref => {
         if (ref) {
           const width = ref.getBoundingClientRect().width;
           if (width > currentMaxWidth) {
@@ -91,12 +91,13 @@ export const SimilarWords: React.FC<SimilarWordsProps> = ({ similarWords }) => {
     };
   }, [similarWords, maxWidth]);
 
-  const theme = document.documentElement.getAttribute('data-theme') || 'sober';
+  const palette =
+    document.documentElement.getAttribute('data-palette') || 'sober';
   const strengthWiseColors = useMemo(() => {
     return Array.from({ length: 5 }, (_, index) =>
-      getColorShadeFromSimilarityScore(index, theme),
+      getColorShadeFromSimilarityScore(index, palette),
     );
-  }, [theme]);
+  }, [palette]);
 
   return (
     <Card>
@@ -133,10 +134,10 @@ export const SimilarWords: React.FC<SimilarWordsProps> = ({ similarWords }) => {
                       style={{
                         width: `${BAR_WIDTH * 16 + 24}px`, // Calculate width
                         height: `${BAR_HEIGHT}rem`, // Height of the container
-                        border: `2px solid ${themeColors[theme]}`, // Border color
+                        border: `2px solid ${paletteColors[palette]}`, // Border color
                         borderRadius: '7px',
                         padding: '0.1rem', // Padding around the bars
-                        boxShadow: `5px 5px 5px ${hexToRgba(themeColors[theme], 0.5)}`,
+                        boxShadow: `5px 5px 5px ${hexToRgba(paletteColors[palette], 0.5)}`,
                       }}
                     >
                       {/* Strength Bars */}
@@ -149,7 +150,7 @@ export const SimilarWords: React.FC<SimilarWordsProps> = ({ similarWords }) => {
                           style={{
                             backgroundColor: getColorShadeFromSimilarityScore(
                               similarWord.similarityScore,
-                              theme,
+                              palette,
                             ),
                             width: `${BAR_WIDTH / 10}rem`, // Width of each bar
                             height: '95%', // Height of each bar
