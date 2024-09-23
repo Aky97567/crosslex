@@ -65,8 +65,15 @@ module.exports = {
         2: 'var(--color-brand-2)',
         3: 'var(--color-brand-3)',
       },
-      text: 'var(--color-text)',
-      background: 'var(--color-background)',
+      text: {
+        DEFAULT: 'var(--color-text)',
+        cta: 'var(--color-cta-text)',
+      },
+
+      bg: {
+        l1: 'var(--color-bg-l1)',
+        l2: 'var(--color-bg-l2)',
+      },
     },
     fontFamily: {
       quicksand: [
@@ -160,13 +167,32 @@ module.exports = {
         'radial-gradient(ellipse at bottom right, var(--tw-gradient-stops))',
     },
     extend: {
+      keyframes: {
+        vibrate: {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '25%': { transform: 'translateX(-2px)' },
+          '50%': { transform: 'translateX(2px)' },
+          '75%': { transform: 'translateX(-2px)' },
+        },
+        bounce: {
+          '0%, 20%, 50%, 80%, 100%': { transform: 'translateY(0)' },
+          '40%': { transform: 'translateY(-15px)' },
+          '60%': { transform: 'translateY(-8px)' },
+        },
+        scaleUp: {
+          '0%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.1)' },
+          '100%': { transform: 'scale(1)' },
+        },
+      },
+      animation: {
+        vibrate: 'vibrate 0.4s ease-in-out',
+        bounce: 'bounce 0.6s ease-in-out',
+        scaleUp: 'scaleUp 0.4s ease-in-out',
+      },
       backgroundImage: {
-        'footer-small': process.env.npm_lifecycle_event?.includes('storybook')
-          ? "url('../components/layout/footer/swirl.svg')"
-          : "url('~/components/layout/footer/swirl.svg')",
-        'footer-large': process.env.npm_lifecycle_event?.includes('storybook')
-          ? "url('../components/layout/footer/swirl-large.svg')"
-          : "url('~/components/layout/footer/swirl-large.svg')",
+        'gradient-brand':
+          'linear-gradient(135deg, var(--color-brand) 0%, var(--color-brand-2) 50%, var(--color-brand-3) 100%)',
       },
       transitionDuration: {
         400: '400ms',

@@ -3,55 +3,39 @@
   --color-brand-2: #6699cc;
   --color-brand-3: #336699;
   --color-text: #000;
-  --color-background: #fff;
+  --color-cta-text: #fff;
+  --color-bg-l1: #fff;
+  --color-bg-l2: #fff;
 }
 
 [data-palette='sober'] {
   --color-brand: #007bff;
   --color-brand-2: #6699cc;
   --color-brand-3: #336699;
-}
-
-[data-palette='sober'][data-theme='light'] {
   --color-text: #000;
-  --color-background: #fff;
-}
-
-[data-palette='sober'][data-theme='dark'] {
-  --color-text: #fff;
-  --color-background: #000;
+  --color-cta-text: #fff;
+  --color-bg-l1: #fff;
+  --color-bg-l2: #fff;
 }
 
 [data-palette='dark'] {
-  --color-brand: #6574cd;
-  --color-brand-2: #ffffff;
+  --color-brand: #b9c4ff;
+  --color-brand-2: #6574cd;
   --color-brand-3: #2d3748;
-}
-
-[data-palette='dark'][data-theme='dark'] {
   --color-text: #fff;
-  --color-background: #000;
-}
-
-[data-palette='dark'][data-theme='light'] {
-  --color-text: #000;
-  --color-background: #fff;
+  --color-cta-text: #1f1b54;
+  --color-bg-l1: #1f1b54;
+  --color-bg-l2: #2b284e;
 }
 
 [data-palette='light'] {
   --color-brand: #f6ad55;
-  --color-brand-2: #f7fafc;
-  --color-brand-3: #1a202c;
-}
-
-[data-palette='light'][data-theme='dark'] {
-  --color-text: #fff;
-  --color-background: #000;
-}
-
-[data-palette='light'][data-theme='light'] {
+  --color-brand-2: #ffd7aa;
+  --color-brand-3: #e69945;
   --color-text: #000;
-  --color-background: #fff;
+  --color-cta-text: #fff;
+  --color-bg-l1: #fff;
+  --color-bg-l2: #fff;
 }
 
 [data-palette='modern'] {
@@ -60,30 +44,10 @@
   --color-brand-3: #0d47a1;
 }
 
-[data-palette='modern'][data-theme='dark'] {
-  --color-text: #fff;
-  --color-background: #000;
-}
-
-[data-palette='modern'][data-theme='light'] {
-  --color-text: #000;
-  --color-background: #fff;
-}
-
 [data-palette='coolBlue'] {
   --color-brand: #0099cc;
   --color-brand-2: #66cccc;
   --color-brand-3: #99ffff;
-}
-
-[data-palette='coolBlue'][data-theme='dark'] {
-  --color-text: #fff;
-  --color-background: #000;
-}
-
-[data-palette='coolBlue'][data-theme='light'] {
-  --color-text: #000;
-  --color-background: #fff;
 }
 
 [data-palette='oceanBlue'] {
@@ -92,28 +56,8 @@
   --color-brand-3: #66ccff;
 }
 
-[data-palette='oceanBlue'][data-theme='dark'] {
-  --color-text: #fff;
-  --color-background: #000;
-}
-
-[data-palette='oceanBlue'][data-theme='light'] {
-  --color-text: #000;
-  --color-background: #fff;
-}
-
 [data-palette='skyBlue'] {
   --color-brand: #66b2ff;
   --color-brand-2: #99ccff;
   --color-brand-3: #ccffff;
-}
-
-[data-palette='skyBlue'][data-theme='dark'] {
-  --color-text: #fff;
-  --color-background: #000;
-}
-
-[data-palette='skyBlue'][data-theme='light'] {
-  --color-text: #000;
-  --color-background: #fff;
 }

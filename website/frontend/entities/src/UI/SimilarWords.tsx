@@ -67,7 +67,7 @@ export const SimilarWords: React.FC<SimilarWordsProps> = ({ similarWords }) => {
 
     const calculateMaxWidth = () => {
       let currentMaxWidth = 0;
-      wordRefs.current.forEach((ref, i) => {
+      wordRefs.current.forEach(ref => {
         if (ref) {
           const width = ref.getBoundingClientRect().width;
           if (width > currentMaxWidth) {

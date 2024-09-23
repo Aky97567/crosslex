@@ -13,14 +13,14 @@ export const Mnemonics: React.FC<EtymologyProps> = ({ mnemonics }) => (
           <Heading2>Memory Hooks</Heading2>
           <ul className="list-disc list-inside">
             {mnemonics.map((hook, index) => (
-              <li key={index} className="text-lg">
+              <li key={index} className="text-lg text-text">
                 {hook.content}
               </li>
             ))}
           </ul>
         </>
       ) : (
-        <p className="text-lg text-gray-500">No mnemonics available.</p>
+        <p className="text-lg text-text">No mnemonics available.</p>
       )}
     </div>
   </Card>

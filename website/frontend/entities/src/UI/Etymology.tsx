@@ -9,7 +9,7 @@ export const Etymology: React.FC<EtymologyProps> = ({ etymology }) =>
     <Card>
       <div className="mb-6">
         <Heading2>Etymology</Heading2>
-        <p className="text-lg">{etymology}</p>
+        <p className="text-lg text-text">{etymology}</p>
       </div>
     </Card>
   );
