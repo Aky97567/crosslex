@@ -1,3 +1,3 @@
 export { clientContext, ClientContextProvider } from './context';
 
-export { Card, Heading2 } from './UI';
+export { Card, Heading1, Heading2 } from './UI';

@@ -11,7 +11,7 @@ export const WordContext: React.FC<WordContextProps> = ({
     <Card>
       <div className="mb-6">
         <Heading2>Usage</Heading2>
-        <p className="text-lg">{paragraphWithUsage}</p>
+        <p className="text-lg text-text">{paragraphWithUsage}</p>
       </div>
     </Card>
   );

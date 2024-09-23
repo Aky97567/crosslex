@@ -11,7 +11,10 @@ export const WordShowcase: React.FC<WordShowcaseProps> = ({
     <Card>
       <div className="mb-6">
         <Heading2>Word Showcase</Heading2>
-        <a href={wordShowcaseUrl} className="text-blue-500 underline">
+        <a href={wordShowcaseUrl} className="text-text underline">
+          {/**
+           * TODO: add video player
+           * */}
           Watch here
         </a>
       </div>
