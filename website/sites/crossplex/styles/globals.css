@@ -4,7 +4,7 @@
   --color-brand-3: #336699;
   --color-text: #000;
   --color-cta-text: #fff;
-  --color-bg-l1: #fff;
+  --color-bg-l1: 255, 255, 255;
   --color-bg-l2: #fff;
 }
 
@@ -14,7 +14,7 @@
   --color-brand-3: #336699;
   --color-text: #000;
   --color-cta-text: #fff;
-  --color-bg-l1: #fff;
+  --color-bg-l1: 255, 255, 255;
   --color-bg-l2: #fff;
 }
 
@@ -24,7 +24,7 @@
   --color-brand-3: #2d3748;
   --color-text: #fff;
   --color-cta-text: #1f1b54;
-  --color-bg-l1: #1f1b54;
+  --color-bg-l1: 31, 27, 84;
   --color-bg-l2: #2b284e;
 }
 
@@ -34,7 +34,7 @@
   --color-brand-3: #e69945;
   --color-text: #000;
   --color-cta-text: #fff;
-  --color-bg-l1: #fff;
+  --color-bg-l1: 255, 255, 255;
   --color-bg-l2: #fff;
 }
 
