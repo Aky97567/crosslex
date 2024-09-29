@@ -8,7 +8,7 @@ import {
   WordMeaning,
   WordShowcase,
 } from '@whitelotus/front-entities';
-import { TabbedCarousel } from '@whitelotus/front-features';
+import { FlipCardToTarget } from '@whitelotus/front-features';
 import { useIsMobile, useIsTablet } from '@whitelotus/front-shared';
 import {
   ContentLayout,
@@ -35,13 +35,43 @@ const LearnPage = ({
   const isTablet = useIsTablet();
 
   const tabs = [
-    'Meaning',
     'Context',
     'Guess Question',
     'Etymology',
     'Similar Words',
     'Mnemonics',
     'Showcase',
+  ];
+
+  const sections = [
+    {
+      title: 'Meaning',
+      content: <WordMeaning meaning={meaning} />,
+    },
+    {
+      title: 'Context',
+      content: <WordContext paragraphWithUsage={paragraphWithUsage} />,
+    },
+    {
+      title: 'Meaning Guess',
+      content: (
+        <MeaningGuessQuestion
+          meaningBestGuessQuestion={meaningBestGuessQuestion}
+        />
+      ),
+    },
+    {
+      title: 'Etymology',
+      content: <Etymology etymology={etymology} />,
+    },
+    {
+      title: 'Similar Words',
+      content: <SimilarWords similarWords={similarWords} />,
+    },
+    {
+      title: 'Mnemonics',
+      content: <Mnemonics mnemonics={mnemonics} />,
+    },
   ];
 
   return !isTablet && !isMobile ? (
@@ -70,8 +100,7 @@ const LearnPage = ({
         partOfSpeech={partOfSpeech}
         representativeImageUrl={representativeImageUrl}
       />
-      <TabbedCarousel tabs={tabs}>
-        <WordMeaning meaning={meaning} />
+      {/* <TabbedCarousel tabs={tabs}>
         <WordContext paragraphWithUsage={paragraphWithUsage} />
         <MeaningGuessQuestion
           meaningBestGuessQuestion={meaningBestGuessQuestion}
@@ -80,7 +109,9 @@ const LearnPage = ({
         <SimilarWords similarWords={similarWords} />
         <Mnemonics mnemonics={mnemonics} />
         <WordShowcase wordShowcaseUrl={wordShowcaseUrl} />
-      </TabbedCarousel>
+      </TabbedCarousel> */}
+      {/* <FlipCard sections={sections} /> */}
+      <FlipCardToTarget sections={sections} />
     </div>
   );
 };
