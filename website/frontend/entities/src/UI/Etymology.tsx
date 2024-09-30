@@ -7,6 +7,7 @@ type EtymologyProps = {
   heading: Heading;
   needClose?: boolean;
   onClose?: () => void;
+  showContent?: boolean;
 };
 
 export const Etymology: React.FC<EtymologyProps> = ({
@@ -14,9 +15,15 @@ export const Etymology: React.FC<EtymologyProps> = ({
   heading,
   needClose,
   onClose,
+  showContent = true,
 }) =>
   etymology && (
-    <Card heading={heading} needClose={needClose} onClose={onClose}>
+    <Card
+      heading={heading}
+      needClose={needClose}
+      onClose={onClose}
+      showContent={showContent}
+    >
       <div className="mb-6">
         <p className="text-lg text-text">{etymology}</p>
       </div>

@@ -15,16 +15,18 @@ interface RenderContentModuleProps {
   module: ContentModules;
   needClose?: boolean;
   onClose?: () => void;
+  showContent?: boolean;
 }
 
 export const renderContentModule = ({
   module,
   needClose,
   onClose,
+  showContent = true,
 }: RenderContentModuleProps): React.ReactElement => {
   const getCloseProps = () => {
     if (needClose) {
-      return { needClose, onClose };
+      return { needClose, onClose, showContent };
     }
     return {};
   };

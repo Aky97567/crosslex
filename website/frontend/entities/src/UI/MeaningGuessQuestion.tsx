@@ -15,6 +15,7 @@ type MeaningGuessQuestionProps = {
   heading: Heading;
   needClose?: boolean;
   onClose?: () => void;
+  showContent?: boolean;
 };
 
 export const MeaningGuessQuestion: React.FC<MeaningGuessQuestionProps> = ({
@@ -22,6 +23,7 @@ export const MeaningGuessQuestion: React.FC<MeaningGuessQuestionProps> = ({
   meaningBestGuessQuestion,
   needClose,
   onClose,
+  showContent = true,
 }) => {
   const [optionStates, setOptionStates] = useState<
     Array<{ isClicked: boolean; isCorrect: boolean }>
@@ -45,7 +47,12 @@ export const MeaningGuessQuestion: React.FC<MeaningGuessQuestionProps> = ({
   };
 
   return meaningBestGuessQuestion ? (
-    <Card heading={heading} needClose={needClose} onClose={onClose}>
+    <Card
+      heading={heading}
+      needClose={needClose}
+      onClose={onClose}
+      showContent={showContent}
+    >
       <div className="mb-6">
         <p className="text-lg text-text">{meaningBestGuessQuestion.question}</p>
         {meaningBestGuessQuestion.options.map(

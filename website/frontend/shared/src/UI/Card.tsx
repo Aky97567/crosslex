@@ -8,6 +8,7 @@ interface CardProps {
   heading?: HeadingElement;
   needClose?: boolean;
   onClose?: () => void;
+  showContent?: boolean;
 }
 
 const Card: FC<CardProps> = ({
@@ -16,6 +17,7 @@ const Card: FC<CardProps> = ({
   heading,
   needClose = false,
   onClose,
+  showContent = true,
 }) => {
   return (
     <div
@@ -49,7 +51,13 @@ const Card: FC<CardProps> = ({
       ) : (
         <Heading heading={heading} />
       )}
-      {children}
+      {
+        <div
+          className={`transition-opacity duration-300 ${showContent ? 'opacity-100' : 'opacity-0'}`}
+        >
+          {children}
+        </div>
+      }
     </div>
   );
 };

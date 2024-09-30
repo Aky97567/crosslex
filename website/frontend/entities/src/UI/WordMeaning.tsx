@@ -7,6 +7,7 @@ type WordMeaningProps = {
   meaning: string;
   needClose?: boolean;
   onClose?: () => void;
+  showContent?: boolean;
 };
 
 export const WordMeaning: React.FC<WordMeaningProps> = ({
@@ -14,8 +15,14 @@ export const WordMeaning: React.FC<WordMeaningProps> = ({
   meaning,
   needClose,
   onClose,
+  showContent = true,
 }) => (
-  <Card heading={heading} needClose={needClose} onClose={onClose}>
+  <Card
+    heading={heading}
+    needClose={needClose}
+    onClose={onClose}
+    showContent={showContent}
+  >
     <div className="mb-6">
       <p className="text-lg text-text">{meaning}</p>
     </div>

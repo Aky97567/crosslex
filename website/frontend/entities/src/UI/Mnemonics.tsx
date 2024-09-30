@@ -7,6 +7,7 @@ type MnemonicsProps = {
   heading: Heading;
   needClose?: boolean;
   onClose?: () => void;
+  showContent?: boolean;
 };
 
 export const Mnemonics: React.FC<MnemonicsProps> = ({
@@ -14,8 +15,14 @@ export const Mnemonics: React.FC<MnemonicsProps> = ({
   mnemonics,
   needClose,
   onClose,
+  showContent = true,
 }) => (
-  <Card heading={heading} needClose={needClose} onClose={onClose}>
+  <Card
+    heading={heading}
+    needClose={needClose}
+    onClose={onClose}
+    showContent={showContent}
+  >
     <div className="mb-6">
       {mnemonics && mnemonics.length > 0 ? (
         <>

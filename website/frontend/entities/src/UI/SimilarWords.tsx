@@ -57,6 +57,7 @@ type SimilarWordsProps = {
   similarWords: SimilarWord[];
   needClose?: boolean;
   onClose?: () => void;
+  showContent?: boolean;
 };
 
 export const SimilarWords: React.FC<SimilarWordsProps> = ({
@@ -64,6 +65,7 @@ export const SimilarWords: React.FC<SimilarWordsProps> = ({
   similarWords,
   needClose,
   onClose,
+  showContent = true,
 }) => {
   if (!similarWords || similarWords.length === 0) return null;
 
@@ -108,7 +110,12 @@ export const SimilarWords: React.FC<SimilarWordsProps> = ({
   }, [palette]);
 
   return (
-    <Card heading={heading} needClose={needClose} onClose={onClose}>
+    <Card
+      heading={heading}
+      needClose={needClose}
+      onClose={onClose}
+      showContent={showContent}
+    >
       <div className="mb-10 flex justify-center">
         <table>
           <tbody>

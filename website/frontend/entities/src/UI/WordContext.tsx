@@ -7,6 +7,7 @@ type WordContextProps = {
   paragraphWithUsage: string;
   needClose?: boolean;
   onClose?: () => void;
+  showContent?: boolean;
 };
 
 export const WordContext: React.FC<WordContextProps> = ({
@@ -14,9 +15,15 @@ export const WordContext: React.FC<WordContextProps> = ({
   paragraphWithUsage,
   needClose,
   onClose,
+  showContent = true,
 }) =>
   paragraphWithUsage && (
-    <Card heading={heading} needClose={needClose} onClose={onClose}>
+    <Card
+      heading={heading}
+      needClose={needClose}
+      onClose={onClose}
+      showContent={showContent}
+    >
       <div className="mb-6">
         <p className="text-lg text-text">{paragraphWithUsage}</p>
       </div>
