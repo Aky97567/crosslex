@@ -102,5 +102,4 @@ const FlipCardToTarget: React.FC<FlipCardProps> = ({ sections }) => {
   );
 };
 
-export default FlipCardToTarget;
 export { FlipCardToTarget };
