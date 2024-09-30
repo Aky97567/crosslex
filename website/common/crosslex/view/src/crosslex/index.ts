@@ -1,10 +1,9 @@
-export type { ContentLayout, Heading } from './common';
+export type { HasContentPageType } from './contentPageType';
 export type {
   ContentModule,
   ContentModules,
   EtymologyModule,
   HasContent,
-  LearnPageContent,
   MeaningBestGuessQuestion,
   MeaningGuessQuestionModule,
   Mnemonic,
@@ -15,4 +14,5 @@ export type {
   WordIntroModule,
   WordMeaningModule,
   WordShowcaseModule,
-} from './crosslex';
+} from './module';
+export type { LearnPageContent } from './page';

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { LearnPage } from './LearnPage';
+import { HasContent } from '@whitelotus/common-crosslex-view';
 import {
   SampleContentKey,
   sampleLearnPageContentList,
@@ -11,11 +12,16 @@ type LearnPageWrapperProps = {
   selectedWord: SampleContentKey;
 };
 
-const LearnPageWrapper = (props: LearnPageWrapperProps) => {
-  const { selectedWord } = props;
-  const content = { content: sampleLearnPageContentList[selectedWord] };
+const LearnPageWrapper: React.FC<LearnPageWrapperProps> = ({
+  selectedWord,
+}) => {
+  const content = sampleLearnPageContentList[selectedWord];
 
-  return <LearnPage {...content} />;
+  const learnPageProps: HasContent = {
+    content: content.content,
+  };
+
+  return <LearnPage {...learnPageProps} />;
 };
 
 export default {
@@ -24,22 +30,19 @@ export default {
   argTypes: {
     selectedWord: {
       control: {
-        name: 'Selected Word',
         type: 'select',
       },
-      defaultValue: 'erfahrung',
       options: Words,
       description: 'Select a word to display the corresponding content.',
     },
   },
-} as Meta;
+} as Meta<typeof LearnPageWrapper>;
 
-const Template: StoryFn<{ selectedWord: SampleContentKey }> = args => (
+const Template: StoryFn<typeof LearnPageWrapper> = args => (
   <LearnPageWrapper {...args} />
 );
 
-export const Primary: StoryObj<{ selectedWord: SampleContentKey }> =
-  Template.bind({});
+export const Primary: StoryObj<typeof LearnPageWrapper> = Template.bind({});
 Primary.args = {
   selectedWord: 'erfahrung',
 };

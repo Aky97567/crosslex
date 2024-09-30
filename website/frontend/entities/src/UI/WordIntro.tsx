@@ -23,7 +23,7 @@ export const WordIntro: React.FC<WordIntroProps> = ({
       <img
         src={representativeImageUrl}
         alt={word}
-        className="h-64 object-cover mb-4 rounded-lg max-w-[50%]"
+        className="object-cover mb-4 rounded-lg max-w-[50%]"
       />
     )}
   </Card>
