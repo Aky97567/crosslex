@@ -1,20 +1,18 @@
-import React, { useState, useRef, useEffect, ReactNode } from 'react';
-
-interface Section {
-  title: string;
-  content: ReactNode;
-}
+import React, { useState, useRef, useEffect } from 'react';
+import { ContentModule } from '@whitelotus/common-crosslex-view';
+import { renderContentModule } from './ContentModules';
 
 interface FlipCardProps {
-  sections: Section[];
+  content: ContentModule;
 }
 
-const FlipCardToTarget: React.FC<FlipCardProps> = ({ sections }) => {
+const FlipCardToTarget: React.FC<FlipCardProps> = ({ content }) => {
   const [activeSection, setActiveSection] = useState<number | null>(null);
   const [animatingCardIndex, setAnimatingCardIndex] = useState<number | null>(
     null,
   );
   const [clickedCardRect, setClickedCardRect] = useState<DOMRect | null>(null);
+  const [showContent, setShowContent] = useState(false);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const expandedCardRef = useRef<HTMLDivElement>(null);
 
@@ -25,17 +23,33 @@ const FlipCardToTarget: React.FC<FlipCardProps> = ({ sections }) => {
       const cardRect = cardElement.getBoundingClientRect();
       setClickedCardRect(cardRect);
       setAnimatingCardIndex(index);
+      setShowContent(false);
 
       setTimeout(() => {
         setActiveSection(index);
         setAnimatingCardIndex(null);
+        // Delay showing content until after animation
+        setTimeout(() => setShowContent(true), 500);
       }, 500);
     }
   };
 
   const handleCloseClick = () => {
     setActiveSection(null);
+    setShowContent(false);
   };
+
+  const sections = content.modules
+    .filter(m => m.moduleType !== 'wordIntro')
+    .map(module => ({
+      title: module.heading.text,
+      content: renderContentModule({
+        module,
+        needClose: true,
+        onClose: handleCloseClick,
+        showContent,
+      }),
+    }));
 
   useEffect(() => {
     if (activeSection !== null && expandedCardRef.current && clickedCardRect) {
@@ -89,13 +103,9 @@ const FlipCardToTarget: React.FC<FlipCardProps> = ({ sections }) => {
           ref={expandedCardRef}
           className="fixed z-30 bg-transparent rounded-lg shadow-xl overflow-auto p-10 flex items-center justify-center"
         >
-          <button
-            onClick={handleCloseClick}
-            className="absolute top-10 right-10 text-brand"
-          >
-            X
-          </button>
-          <p className="px-40 text-center">{sections[activeSection].content}</p>
+          <div className={`px-40 text-center}`}>
+            {sections[activeSection].content}
+          </div>
         </div>
       )}
     </div>

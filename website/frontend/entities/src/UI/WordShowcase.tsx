@@ -7,6 +7,7 @@ type WordShowcaseProps = {
   wordShowcaseUrl: string;
   needClose?: boolean;
   onClose?: () => void;
+  showContent?: boolean;
 };
 
 export const WordShowcase: React.FC<WordShowcaseProps> = ({
@@ -14,9 +15,15 @@ export const WordShowcase: React.FC<WordShowcaseProps> = ({
   wordShowcaseUrl,
   needClose,
   onClose,
+  showContent = true,
 }) =>
   wordShowcaseUrl && (
-    <Card heading={heading} needClose={needClose} onClose={onClose}>
+    <Card
+      heading={heading}
+      needClose={needClose}
+      onClose={onClose}
+      showContent={showContent}
+    >
       <div className="mb-6">
         <a href={wordShowcaseUrl} className="text-text underline">
           {/**
