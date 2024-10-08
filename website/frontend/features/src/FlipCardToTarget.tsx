@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ContentModule } from '@whitelotus/common-crosslex-view';
 import { renderContentModule } from './ContentModules';
+import { CtaText } from '@whitelotus/front-shared';
 
 interface FlipCardProps {
   content: ContentModule;
@@ -89,9 +90,7 @@ const FlipCardToTarget: React.FC<FlipCardProps> = ({ content }) => {
               }`}
               onClick={() => handleCardClick(index)}
             >
-              <p className="text-md font-semibold text-text-cta">
-                {section.title}
-              </p>
+              <CtaText className="font-semibold">{section.title}</CtaText>
             </div>
           </div>
         ))}
