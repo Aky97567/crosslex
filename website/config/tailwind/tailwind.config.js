@@ -53,7 +53,7 @@ const COLORS = {
 module.exports = {
   theme: {
     screens: {
-      // xs: '375px',
+      sm: '375px',
       md: '768px',
       lg: '992px',
       xl: '1280px',
