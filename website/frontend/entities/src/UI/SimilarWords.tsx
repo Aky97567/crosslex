@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { SimilarWord } from '@/common/crosslex/view/src';
-import { Card, Heading2 } from '@whitelotus/front-shared';
+import { Heading, SimilarWord } from '@whitelotus/common-crosslex-view';
+import { Card } from '@whitelotus/front-shared';
 
 const BASE_FACTOR = 1.3;
 const FACTOR_DIVISOR = 20;
@@ -53,10 +53,20 @@ function hexToRgba(hex: string, alpha: number): string {
 }
 
 type SimilarWordsProps = {
+  heading: Heading;
   similarWords: SimilarWord[];
+  needClose?: boolean;
+  onClose?: () => void;
+  showContent?: boolean;
 };
 
-export const SimilarWords: React.FC<SimilarWordsProps> = ({ similarWords }) => {
+export const SimilarWords: React.FC<SimilarWordsProps> = ({
+  heading,
+  similarWords,
+  needClose,
+  onClose,
+  showContent = true,
+}) => {
   if (!similarWords || similarWords.length === 0) return null;
 
   const [maxWidth, setMaxWidth] = useState<number | null>(null);
@@ -100,8 +110,12 @@ export const SimilarWords: React.FC<SimilarWordsProps> = ({ similarWords }) => {
   }, [palette]);
 
   return (
-    <Card>
-      <Heading2>Similar Words</Heading2>
+    <Card
+      heading={heading}
+      needClose={needClose}
+      onClose={onClose}
+      showContent={showContent}
+    >
       <div className="mb-10 flex justify-center">
         <table>
           <tbody>

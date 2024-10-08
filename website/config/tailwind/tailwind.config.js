@@ -68,12 +68,15 @@ module.exports = {
       text: {
         DEFAULT: 'var(--color-text)',
         cta: 'var(--color-cta-text)',
+        'alpha-50': 'rgba(var(--color-text), 0.5)',
       },
 
       bg: {
-        l1: 'var(--color-bg-l1)',
+        l1: 'rgb(var(--color-bg-l1))',
+        'l1-50': 'rgba(var(--color-bg-l1), 0.5)',
         l2: 'var(--color-bg-l2)',
       },
+      transparent: 'rgba(0,0,0,0)',
     },
     fontFamily: {
       quicksand: [
@@ -167,28 +170,70 @@ module.exports = {
         'radial-gradient(ellipse at bottom right, var(--tw-gradient-stops))',
     },
     extend: {
+      minHeight: {
+        100: '5rem',
+      },
+      rotate: {
+        'y-180': 'rotateY(180deg)',
+      },
       keyframes: {
+        bounce: {
+          '0%, 20%, 50%, 80%, 100%': { transform: 'translateY(0)' },
+          '40%': { transform: 'translateY(-15px)' },
+          '60%': { transform: 'translateY(-8px)' },
+        },
+        flip: {
+          '0%': { transform: 'rotateY(0deg)' },
+          '100%': { transform: 'rotateY(180deg)' },
+        },
+        flipAndExpand: {
+          '0%': {
+            transform: 'rotateY(0deg) scale(1)',
+            opacity: '1',
+          },
+          '100%': {
+            transform: 'rotateY(180deg) scale(1.5) translate(0, 0)', // Adjust the final scale and translation as needed
+            opacity: '0',
+          },
+        },
+        flipAndScaleUp: {
+          '0%': { transform: 'rotateY(0deg) scale(1)' },
+          '50%': { transform: 'rotateY(90deg) scale(1.5)' },
+          '100%': { transform: 'rotateY(180deg) scale(2)' },
+        },
+        flipAndScaleUp1: {
+          '0%': {
+            transform: 'rotateY(0deg) scale(1)',
+            transformOrigin: 'center',
+          },
+          '50%': {
+            transform: 'rotateY(90deg) scale(1.7)',
+            transformOrigin: 'center',
+          },
+          '100%': {
+            transform: 'rotateY(180deg) scale(2.4)',
+            transformOrigin: 'center',
+          },
+        },
+        scaleUp: {
+          '0%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.7)' },
+          '100%': { transform: 'scale(2.4)' },
+        },
         vibrate: {
           '0%, 100%': { transform: 'translateX(0)' },
           '25%': { transform: 'translateX(-2px)' },
           '50%': { transform: 'translateX(2px)' },
           '75%': { transform: 'translateX(-2px)' },
         },
-        bounce: {
-          '0%, 20%, 50%, 80%, 100%': { transform: 'translateY(0)' },
-          '40%': { transform: 'translateY(-15px)' },
-          '60%': { transform: 'translateY(-8px)' },
-        },
-        scaleUp: {
-          '0%': { transform: 'scale(1)' },
-          '50%': { transform: 'scale(1.1)' },
-          '100%': { transform: 'scale(1)' },
-        },
       },
       animation: {
-        vibrate: 'vibrate 0.4s ease-in-out',
         bounce: 'bounce 0.6s ease-in-out',
+        flip: 'flip 0.5s ease-in-out',
+        flipAndExpand: 'flipAndExpand 1s ease-in-out forwards',
+        flipAndScaleUp: 'flipAndScaleUp 0.5s ease-in-out forwards',
         scaleUp: 'scaleUp 0.4s ease-in-out',
+        vibrate: 'vibrate 0.4s ease-in-out',
       },
       backgroundImage: {
         'gradient-brand':
@@ -212,4 +257,19 @@ module.exports = {
       },
     },
   },
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        '.backface-hidden': {
+          'backface-visibility': 'hidden',
+        },
+        '.preserve-3d': {
+          'transform-style': 'preserve-3d',
+        },
+        '.rotate-into': {
+          transform: 'rotateY(180deg)',
+        },
+      });
+    },
+  ],
 };
