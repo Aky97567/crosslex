@@ -1,51 +1,37 @@
+import React from 'react';
 import {
-  Etymology,
-  MeaningGuessQuestion,
-  Mnemonics,
-  SimilarWords,
-  WordContext,
-  WordIntro,
-  WordMeaning,
-  WordShowcase,
-} from '@whitelotus/front-entities';
-import {
-  ContentLayout,
-  LearnPageContent,
-} from '@whitelotus/common-crosslex-view';
+  FlipCardToTarget,
+  renderContentModule,
+} from '@whitelotus/front-features';
+import { useIsMobile, useIsTablet } from '@whitelotus/front-shared';
+import { HasContent, ContentModules } from '@whitelotus/common-crosslex-view';
 
-const LearnPage = ({
-  content: {
-    word,
-    article,
-    translation,
-    partOfSpeech,
-    meaning,
-    meaningBestGuessQuestion,
-    paragraphWithUsage,
-    etymology,
-    similarWords,
-    representativeImageUrl,
-    mnemonics,
-    wordShowcaseUrl,
-  },
-}: ContentLayout<LearnPageContent>) => {
+type LearnPageProps = HasContent;
+
+const LearnPage: React.FC<LearnPageProps> = ({ content }) => {
+  const isMobile = useIsMobile();
+  const isTablet = useIsTablet();
+
+  if (!isTablet && !isMobile) {
+    return (
+      <div className="bg-bg-l1 p-20 max-w-4xl mx-auto space-y-10">
+        {content.modules.map((module, index) => (
+          <React.Fragment key={index}>
+            {renderContentModule({ module })}
+          </React.Fragment>
+        ))}
+      </div>
+    );
+  }
+
+  const introModule = content.modules.find(
+    (m): m is ContentModules => m.moduleType === 'wordIntro',
+  );
+
   return (
     <div className="bg-bg-l1 p-20 max-w-4xl mx-auto space-y-10">
-      <WordIntro
-        word={`${article} ${word}`}
-        translation={translation}
-        partOfSpeech={partOfSpeech}
-        representativeImageUrl={representativeImageUrl}
-      />
-      <WordMeaning meaning={meaning} />
-      <WordContext paragraphWithUsage={paragraphWithUsage} />
-      <MeaningGuessQuestion
-        meaningBestGuessQuestion={meaningBestGuessQuestion}
-      />
-      <Etymology etymology={etymology} />
-      <SimilarWords similarWords={similarWords} />
-      <Mnemonics mnemonics={mnemonics} />
-      <WordShowcase wordShowcaseUrl={wordShowcaseUrl} />
+      {introModule && renderContentModule({ module: introModule })}
+      <FlipCardToTarget content={content} />
     </div>
   );
 };

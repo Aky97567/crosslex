@@ -1,16 +1,31 @@
-import { Mnemonic } from '@/common/crosslex/view/src';
-import { Card, Heading2 } from '@whitelotus/front-shared';
+import React from 'react';
+import { Heading, Mnemonic } from '@whitelotus/common-crosslex-view';
+import { Card } from '@whitelotus/front-shared';
 
-type EtymologyProps = {
+type MnemonicsProps = {
   mnemonics: Mnemonic[];
+  heading: Heading;
+  needClose?: boolean;
+  onClose?: () => void;
+  showContent?: boolean;
 };
 
-export const Mnemonics: React.FC<EtymologyProps> = ({ mnemonics }) => (
-  <Card>
+export const Mnemonics: React.FC<MnemonicsProps> = ({
+  heading,
+  mnemonics,
+  needClose,
+  onClose,
+  showContent = true,
+}) => (
+  <Card
+    heading={heading}
+    needClose={needClose}
+    onClose={onClose}
+    showContent={showContent}
+  >
     <div className="mb-6">
       {mnemonics && mnemonics.length > 0 ? (
         <>
-          <Heading2>Memory Hooks</Heading2>
           <ul className="list-disc list-inside">
             {mnemonics.map((hook, index) => (
               <li key={index} className="text-lg text-text">
