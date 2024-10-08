@@ -1,4 +1,4 @@
-import { Card, Heading1 } from '@whitelotus/front-shared';
+import { BodyText, Card, Heading } from '@whitelotus/front-shared';
 
 type WordIntroProps = {
   word: string;
@@ -15,9 +15,9 @@ export const WordIntro: React.FC<WordIntroProps> = ({
 }) => (
   <Card className="flex flex-row justify-between">
     <div>
-      <Heading1>{word.trimStart()}</Heading1>
-      <p className="text-lg italic mb-2 text-text">{translation}</p>
-      <p className="text-lg mb-4 text-text">{partOfSpeech}</p>
+      <Heading heading={{ text: word.trimStart(), level: 'h1' }} />
+      <BodyText className="italic mb-5">{translation}</BodyText>
+      <BodyText className="mb-5">{partOfSpeech}</BodyText>
     </div>
     {representativeImageUrl && (
       <img

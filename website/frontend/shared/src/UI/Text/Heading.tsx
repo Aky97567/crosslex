@@ -6,7 +6,10 @@ interface HeadingProps {
   heading?: HeadingElement;
 }
 
-export const Heading: React.FC<HeadingProps> = ({ className, heading }) => {
+export const Heading: React.FC<HeadingProps> = ({
+  className = '',
+  heading,
+}) => {
   return heading
     ? React.createElement(
         `${heading.level}`,
