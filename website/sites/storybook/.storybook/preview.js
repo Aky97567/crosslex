@@ -1,6 +1,6 @@
 import 'tailwindcss/tailwind.css';
 import { useEffect } from 'react';
-import '../../crossplex/styles/globals.css';
+import '../../crosslex/styles/globals.css';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

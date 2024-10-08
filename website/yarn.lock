@@ -5567,9 +5567,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@whitelotus/crosslex@workspace:sites/crossplex":
+"@whitelotus/crosslex@workspace:sites/crosslex":
   version: 0.0.0-use.local
-  resolution: "@whitelotus/crosslex@workspace:sites/crossplex"
+  resolution: "@whitelotus/crosslex@workspace:sites/crosslex"
   dependencies:
     "@types/node": "npm:^20"
     "@types/react": "npm:^18.3.5"
