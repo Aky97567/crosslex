@@ -1,6 +1,6 @@
 import React from 'react';
 import { Heading } from '@whitelotus/common-crosslex-view';
-import { Card } from '@whitelotus/front-shared';
+import { BodyText, Card } from '@whitelotus/front-shared';
 
 type WordMeaningProps = {
   heading: Heading;
@@ -24,7 +24,7 @@ export const WordMeaning: React.FC<WordMeaningProps> = ({
     showContent={showContent}
   >
     <div className="mb-6">
-      <p className="text-lg text-text">{meaning}</p>
+      <BodyText>{meaning}</BodyText>
     </div>
   </Card>
 );

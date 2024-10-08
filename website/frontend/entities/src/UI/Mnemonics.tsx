@@ -1,6 +1,6 @@
 import React from 'react';
 import { Heading, Mnemonic } from '@whitelotus/common-crosslex-view';
-import { Card } from '@whitelotus/front-shared';
+import { BodyText, Card } from '@whitelotus/front-shared';
 
 type MnemonicsProps = {
   mnemonics: Mnemonic[];
@@ -28,14 +28,14 @@ export const Mnemonics: React.FC<MnemonicsProps> = ({
         <>
           <ul className="list-disc list-inside">
             {mnemonics.map((hook, index) => (
-              <li key={index} className="text-lg text-text">
-                {hook.content}
+              <li key={index}>
+                <BodyText>{hook.content}</BodyText>
               </li>
             ))}
           </ul>
         </>
       ) : (
-        <p className="text-lg text-text">No mnemonics available.</p>
+        <BodyText>No mnemonics available.</BodyText>
       )}
     </div>
   </Card>
