@@ -3,7 +3,7 @@ import {
   Heading,
   MeaningBestGuessQuestion,
 } from '@whitelotus/common-crosslex-view';
-import { Card } from '@whitelotus/front-shared';
+import { BodyText, Card, CtaText } from '@whitelotus/front-shared';
 
 type MeaningBestGuessOption = {
   text: string;
@@ -54,12 +54,12 @@ export const MeaningGuessQuestion: React.FC<MeaningGuessQuestionProps> = ({
       showContent={showContent}
     >
       <div className="mb-6">
-        <p className="text-lg text-text">{meaningBestGuessQuestion.question}</p>
+        <BodyText>{meaningBestGuessQuestion.question}</BodyText>
         {meaningBestGuessQuestion.options.map(
           (option: MeaningBestGuessOption, index) => (
             <div
               key={index}
-              className={`text-md text-text-cta cursor-pointer border-2 rounded-lg px-40 py-10 mb-10 transition-colors duration-300 border-color7 ${
+              className={`cursor-pointer border-2 rounded-lg px-40 py-10 mb-10 transition-colors duration-300 border-color7 ${
                 optionStates[index].isClicked
                   ? optionStates[index].isCorrect
                     ? 'border-color1 bg-color2 text-white animate-bounce'
@@ -68,7 +68,7 @@ export const MeaningGuessQuestion: React.FC<MeaningGuessQuestionProps> = ({
               }`}
               onClick={() => handleOptionClick(index)}
             >
-              {option.text}
+              <CtaText>{option.text}</CtaText>
             </div>
           ),
         )}

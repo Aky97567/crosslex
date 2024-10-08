@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from '@whitelotus/front-shared';
+import { BodyText, Card } from '@whitelotus/front-shared';
 import { Heading } from '@whitelotus/common-crosslex-view';
 
 type EtymologyProps = {
@@ -25,7 +25,7 @@ export const Etymology: React.FC<EtymologyProps> = ({
       showContent={showContent}
     >
       <div className="mb-6">
-        <p className="text-lg text-text">{etymology}</p>
+        <BodyText>{etymology}</BodyText>
       </div>
     </Card>
   );

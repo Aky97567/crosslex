@@ -6,7 +6,8 @@ export {
   useIsMobile,
   useIsMobileTouchDevice,
   useIsTablet,
+  BodyText,
+  CtaText,
   Card,
-  Heading1,
-  Heading2,
+  Heading,
 } from './UI';

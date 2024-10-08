@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 import { Heading as HeadingElement } from '@whitelotus/common-crosslex-view';
-import { Heading } from './Heading';
+import { Heading } from './Text';
 
 interface CardProps {
   children: ReactNode;

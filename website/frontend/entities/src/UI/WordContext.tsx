@@ -1,6 +1,6 @@
 import React from 'react';
 import { Heading } from '@whitelotus/common-crosslex-view';
-import { Card } from '@whitelotus/front-shared';
+import { BodyText, Card } from '@whitelotus/front-shared';
 
 type WordContextProps = {
   heading: Heading;
@@ -25,7 +25,7 @@ export const WordContext: React.FC<WordContextProps> = ({
       showContent={showContent}
     >
       <div className="mb-6">
-        <p className="text-lg text-text">{paragraphWithUsage}</p>
+        <BodyText>{paragraphWithUsage}</BodyText>
       </div>
     </Card>
   );
