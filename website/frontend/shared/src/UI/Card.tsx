@@ -21,7 +21,7 @@ const Card: FC<CardProps> = ({
 }) => {
   return (
     <div
-      className={`bg-bg-l2 border-solid border-2 border-brand shadow-lg rounded-lg p-30 ${className}`}
+      className={`bg-bg-l2 border-solid border-2 border-brand shadow-lg rounded-lg p-30`}
     >
       {needClose ? (
         <div className="flex justify-between items-center mb-4">
@@ -53,7 +53,7 @@ const Card: FC<CardProps> = ({
       )}
       {
         <div
-          className={`transition-opacity duration-300 ${showContent ? 'opacity-100' : 'opacity-0'}`}
+          className={`${className} transition-opacity duration-300 ${showContent ? 'opacity-100' : 'opacity-0'}`}
         >
           {children}
         </div>
