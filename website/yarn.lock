@@ -5547,9 +5547,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@whitelotus/back-runtime-crosslex@npm:*, @whitelotus/back-runtime-crosslex@workspace:backend/runtime/crossplex":
+"@whitelotus/back-runtime-crosslex@npm:*, @whitelotus/back-runtime-crosslex@workspace:backend/runtime/crosslex":
   version: 0.0.0-use.local
-  resolution: "@whitelotus/back-runtime-crosslex@workspace:backend/runtime/crossplex"
+  resolution: "@whitelotus/back-runtime-crosslex@workspace:backend/runtime/crosslex"
   dependencies:
     "@whitelotus/lib-ext-next": "npm:*"
   languageName: unknown
