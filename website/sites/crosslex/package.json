@@ -12,7 +12,7 @@
     "@whitelotus/back-runtime-crosslex": "*",
     "@whitelotus/front-pages": "*",
     "@whitelotus/front-shared": "*",
-    "next": "^14.2.25",
+    "next": "^15.2.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
