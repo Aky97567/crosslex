@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@whitelotus/back-runtime-crosslex": "*",
-    "@whitelotus/front-pages": "*",
+    "@whitelotus/front-pages-next": "*",
     "@whitelotus/front-shared": "*",
     "next": "^14.2.25",
     "react": "^18.3.1",

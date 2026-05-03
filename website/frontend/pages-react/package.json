@@ -1,0 +1,18 @@
+{
+  "name": "@whitelotus/front-pages-react",
+  "private": true,
+  "version": "0.0.1",
+  "main": "src/index",
+  "description": "Pure React page compositions for the Crosslex SPA",
+  "scripts": {
+    "check:precommit": "lint-staged",
+    "lint": "yarn lint:js",
+    "lint:js": "eslint src"
+  },
+  "dependencies": {
+    "@whitelotus/common-crosslex-view": "*",
+    "@whitelotus/front-widgets": "*",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  }
+}
