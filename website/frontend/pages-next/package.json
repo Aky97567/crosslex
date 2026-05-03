@@ -1,5 +1,5 @@
 {
-  "name": "@whitelotus/front-pages",
+  "name": "@whitelotus/front-pages-next",
   "private": true,
   "version": "0.0.1",
   "description": "Exports pages to be used in WhiteLotus processes and microsites",

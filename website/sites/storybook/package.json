@@ -10,7 +10,7 @@
     "@whitelotus/config-tailwindcss": "*",
     "@whitelotus/front-entities": "*",
     "@whitelotus/front-features": "*",
-    "@whitelotus/front-pages": "*",
+    "@whitelotus/front-pages-next": "*",
     "@whitelotus/front-shared": "*",
     "postcss-preset-env": "9.5.0",
     "react": "18.3.1",

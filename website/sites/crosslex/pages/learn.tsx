@@ -1,6 +1,6 @@
 import type { GetServerSidePropsContext } from 'next';
 import { CrosslexServerSideRequest } from '@whitelotus/back-runtime-crosslex';
-import { Crosslex } from '@whitelotus/front-pages';
+import { Crosslex } from '@whitelotus/front-pages-next';
 
 export const getServerSideProps = (nextContext: GetServerSidePropsContext) => {
   const handler = new CrosslexServerSideRequest();

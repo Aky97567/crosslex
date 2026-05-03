@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true,
+    "jsx": "react-jsx",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "noEmit": true,
+    "skipLibCheck": true,
+    "target": "ES5"
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "extends": "../../tsconfig.base.json"
+}
