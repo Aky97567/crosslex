@@ -1,39 +1,35 @@
 import { LearnPageContent } from '@whitelotus/common-crosslex-view';
 
-export const erfahrung: LearnPageContent = {
+export const zustaendigkeit: LearnPageContent = {
   content: {
     moduleType: 'content',
     modules: [
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Erfahrung',
+        word: 'Zuständigkeit',
         article: 'die',
-        translation: 'experience',
+        translation: 'responsibility, jurisdiction, competence',
         partOfSpeech: 'noun',
-        level: ['B1', 'B2'],
+        level: ['B1'],
         representativeImageUrl:
-          'https://onecms-res.cloudinary.com/image/upload/s--kCDWxyX7--/c_fill,g_auto,h_676,w_1200/f_auto,q_auto/stella-modern-family-bulldog.jpg?itok=L4ZO6Xno',
+          'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
       },
       {
         moduleType: 'wordMeaning',
         heading: { text: 'Meaning' },
         meaning:
-          'Knowledge or skill that one gets from doing, seeing, or feeling things.',
+          'The authority, responsibility, or official competence for a particular area, task, or matter.',
       },
       {
         moduleType: 'meaningGuessQuestion',
         heading: { text: 'Guess the Meaning' },
         meaningBestGuessQuestion: {
-          question:
-            "What is the best guess for the meaning of 'die Erfahrung'?",
+          question: "What is the best guess for the meaning of 'die Zuständigkeit'?",
           options: [
-            { text: 'A place you visit', isCorrect: false },
-            { text: 'An error or mistake', isCorrect: false },
-            {
-              text: 'Knowledge or skill gained from experience',
-              isCorrect: true,
-            },
+            { text: 'A geographic location', isCorrect: false },
+            { text: 'Official responsibility or jurisdiction for a matter', isCorrect: true },
+            { text: 'A type of professional qualification', isCorrect: false },
           ],
         },
       },
@@ -41,42 +37,42 @@ export const erfahrung: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Durch meine jahrelange Erfahrung habe ich gelernt, wie man effizient arbeitet. Erfahrung ist der beste Lehrer.',
+          'Die Zuständigkeit für diese Angelegenheit liegt beim Finanzamt. Das fällt nicht in meine Zuständigkeit. Welche Behörde hat hier die Zuständigkeit?',
       },
       {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:
-          "From Middle High German 'ervarunge', from Old High German 'irfaran', meaning to travel or to undergo.",
+          "From 'zuständig' (responsible, competent) + '-keit' (noun suffix). 'Zuständig' comes from 'zu' (to) + 'ständig' (standing/constant), meaning someone who stands in charge of something.",
       },
       {
         moduleType: 'similarWords',
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'Kenntnis',
+            word: 'Verantwortung',
             article: 'die',
-            translation: 'knowledge',
+            translation: 'responsibility',
             similarityScore: 4,
             level: ['B1'],
             cefrRelevant: true,
           },
           {
-            word: 'Erlebnis',
-            article: 'das',
-            translation: 'experience (event)',
-            similarityScore: 4,
-            level: ['B1'],
-            cefrRelevant: true,
-          },
-          {
-            word: 'Praxis',
+            word: 'Kompetenz',
             article: 'die',
-            translation: 'practice',
-            similarityScore: 3,
-            level: ['B1'],
+            translation: 'competence, authority',
+            similarityScore: 4,
+            level: ['B2'],
             register: 'borrowed',
             cefrRelevant: true,
+          },
+          {
+            word: 'Befugnis',
+            article: 'die',
+            translation: 'authority, power',
+            similarityScore: 3,
+            level: ['C1'],
+            cefrRelevant: false,
           },
         ],
       },
@@ -87,21 +83,14 @@ export const erfahrung: LearnPageContent = {
           {
             id: 1,
             content:
-              "Think of 'Erfahrung' as gaining 'experience' from traveling far and wide.",
+              "'Zuständig' = 'zu' (to) + 'ständig' (standing) – someone who is always standing by, ready to handle this topic.",
             imageUrl:
               'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
           {
             id: 2,
             content:
-              "Erfahrung sounds like 'err' and 'far' – when you go far, you might make errors and learn from them.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
-          },
-          {
-            id: 3,
-            content:
-              "Imagine an 'experienced' traveler collecting 'far' away 'rings' from different places.",
+              "Think of a guard who 'stands' (ständig) 'at' (zu) the gate – that is their Zuständigkeit, their domain.",
             imageUrl:
               'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },

@@ -1,39 +1,35 @@
 import { LearnPageContent } from '@whitelotus/common-crosslex-view';
 
-export const erfahrung: LearnPageContent = {
+export const nachweisen: LearnPageContent = {
   content: {
     moduleType: 'content',
     modules: [
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Erfahrung',
-        article: 'die',
-        translation: 'experience',
-        partOfSpeech: 'noun',
-        level: ['B1', 'B2'],
+        word: 'nachweisen',
+        article: null,
+        translation: 'to prove, demonstrate, show evidence',
+        partOfSpeech: 'verb',
+        level: ['B1'],
         representativeImageUrl:
-          'https://onecms-res.cloudinary.com/image/upload/s--kCDWxyX7--/c_fill,g_auto,h_676,w_1200/f_auto,q_auto/stella-modern-family-bulldog.jpg?itok=L4ZO6Xno',
+          'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
       },
       {
         moduleType: 'wordMeaning',
         heading: { text: 'Meaning' },
         meaning:
-          'Knowledge or skill that one gets from doing, seeing, or feeling things.',
+          'To provide evidence or documented proof that something is true or that a requirement has been met.',
       },
       {
         moduleType: 'meaningGuessQuestion',
         heading: { text: 'Guess the Meaning' },
         meaningBestGuessQuestion: {
-          question:
-            "What is the best guess for the meaning of 'die Erfahrung'?",
+          question: "What is the best guess for the meaning of 'nachweisen'?",
           options: [
-            { text: 'A place you visit', isCorrect: false },
-            { text: 'An error or mistake', isCorrect: false },
-            {
-              text: 'Knowledge or skill gained from experience',
-              isCorrect: true,
-            },
+            { text: 'To point to a destination on a map', isCorrect: false },
+            { text: 'To provide documented proof of something', isCorrect: true },
+            { text: 'To follow someone', isCorrect: false },
           ],
         },
       },
@@ -41,38 +37,38 @@ export const erfahrung: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Durch meine jahrelange Erfahrung habe ich gelernt, wie man effizient arbeitet. Erfahrung ist der beste Lehrer.',
+          'Sie müssen Ihre Sprachkenntnisse nachweisen. Er konnte seine Unschuld nicht nachweisen. Bitte weisen Sie Ihre Qualifikationen durch entsprechende Zeugnisse nach.',
       },
       {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:
-          "From Middle High German 'ervarunge', from Old High German 'irfaran', meaning to travel or to undergo.",
+          "From 'nach' (after, following) + 'weisen' (to show, point). To point to evidence that follows from a claim – showing proof that backs up what was said.",
       },
       {
         moduleType: 'similarWords',
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'Kenntnis',
-            article: 'die',
-            translation: 'knowledge',
+            word: 'beweisen',
+            article: null,
+            translation: 'to prove',
             similarityScore: 4,
             level: ['B1'],
             cefrRelevant: true,
           },
           {
-            word: 'Erlebnis',
-            article: 'das',
-            translation: 'experience (event)',
+            word: 'belegen',
+            article: null,
+            translation: 'to substantiate, document',
             similarityScore: 4,
-            level: ['B1'],
+            level: ['B2'],
             cefrRelevant: true,
           },
           {
-            word: 'Praxis',
-            article: 'die',
-            translation: 'practice',
+            word: 'dokumentieren',
+            article: null,
+            translation: 'to document',
             similarityScore: 3,
             level: ['B1'],
             register: 'borrowed',
@@ -87,21 +83,14 @@ export const erfahrung: LearnPageContent = {
           {
             id: 1,
             content:
-              "Think of 'Erfahrung' as gaining 'experience' from traveling far and wide.",
+              "'Nach' + 'weisen' – to show (weisen) what comes after (nach) a claim: your evidence.",
             imageUrl:
               'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
           {
             id: 2,
             content:
-              "Erfahrung sounds like 'err' and 'far' – when you go far, you might make errors and learn from them.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
-          },
-          {
-            id: 3,
-            content:
-              "Imagine an 'experienced' traveler collecting 'far' away 'rings' from different places.",
+              "Imagine a detective pointing out (weisen) what happened afterwards (nach) to prove the case.",
             imageUrl:
               'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
