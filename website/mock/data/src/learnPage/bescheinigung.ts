@@ -1,39 +1,35 @@
 import { LearnPageContent } from '@whitelotus/common-crosslex-view';
 
-export const erfahrung: LearnPageContent = {
+export const bescheinigung: LearnPageContent = {
   content: {
     moduleType: 'content',
     modules: [
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Erfahrung',
+        word: 'Bescheinigung',
         article: 'die',
-        translation: 'experience',
+        translation: 'certificate, confirmation',
         partOfSpeech: 'noun',
-        level: ['B1', 'B2'],
+        level: ['B1'],
         representativeImageUrl:
-          'https://onecms-res.cloudinary.com/image/upload/s--kCDWxyX7--/c_fill,g_auto,h_676,w_1200/f_auto,q_auto/stella-modern-family-bulldog.jpg?itok=L4ZO6Xno',
+          'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
       },
       {
         moduleType: 'wordMeaning',
         heading: { text: 'Meaning' },
         meaning:
-          'Knowledge or skill that one gets from doing, seeing, or feeling things.',
+          'An official document issued by an authority that confirms or certifies a particular fact, status, or qualification.',
       },
       {
         moduleType: 'meaningGuessQuestion',
         heading: { text: 'Guess the Meaning' },
         meaningBestGuessQuestion: {
-          question:
-            "What is the best guess for the meaning of 'die Erfahrung'?",
+          question: "What is the best guess for the meaning of 'die Bescheinigung'?",
           options: [
-            { text: 'A place you visit', isCorrect: false },
-            { text: 'An error or mistake', isCorrect: false },
-            {
-              text: 'Knowledge or skill gained from experience',
-              isCorrect: true,
-            },
+            { text: 'A type of fine or penalty', isCorrect: false },
+            { text: 'An official document confirming a fact', isCorrect: true },
+            { text: 'A medical treatment', isCorrect: false },
           ],
         },
       },
@@ -41,39 +37,39 @@ export const erfahrung: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Durch meine jahrelange Erfahrung habe ich gelernt, wie man effizient arbeitet. Erfahrung ist der beste Lehrer.',
+          'Ich brauche eine ärztliche Bescheinigung für meinen Arbeitgeber. Die Bescheinigung muss offiziell unterschrieben sein. Ohne diese Bescheinigung kann ich den Antrag nicht stellen.',
       },
       {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:
-          "From Middle High German 'ervarunge', from Old High German 'irfaran', meaning to travel or to undergo.",
+          "From 'bescheinigen' (to certify) + '-ung' (noun suffix). 'Bescheinigen' derives from 'Schein' (light, appearance, certificate) – to make something appear officially true.",
       },
       {
         moduleType: 'similarWords',
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'Kenntnis',
+            word: 'Bestätigung',
             article: 'die',
-            translation: 'knowledge',
+            translation: 'confirmation',
             similarityScore: 4,
             level: ['B1'],
             cefrRelevant: true,
           },
           {
-            word: 'Erlebnis',
+            word: 'Nachweis',
+            article: 'der',
+            translation: 'proof, evidence',
+            similarityScore: 4,
+            level: ['B1'],
+            cefrRelevant: true,
+          },
+          {
+            word: 'Zertifikat',
             article: 'das',
-            translation: 'experience (event)',
+            translation: 'certificate',
             similarityScore: 4,
-            level: ['B1'],
-            cefrRelevant: true,
-          },
-          {
-            word: 'Praxis',
-            article: 'die',
-            translation: 'practice',
-            similarityScore: 3,
             level: ['B1'],
             register: 'borrowed',
             cefrRelevant: true,
@@ -87,21 +83,14 @@ export const erfahrung: LearnPageContent = {
           {
             id: 1,
             content:
-              "Think of 'Erfahrung' as gaining 'experience' from traveling far and wide.",
+              "'Bescheinigung' contains 'Schein' (shine/paper) – it's the shining official paper that proves something.",
             imageUrl:
               'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
           {
             id: 2,
             content:
-              "Erfahrung sounds like 'err' and 'far' – when you go far, you might make errors and learn from them.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
-          },
-          {
-            id: 3,
-            content:
-              "Imagine an 'experienced' traveler collecting 'far' away 'rings' from different places.",
+              "Think: to 'be-shine' something means to make it officially visible and confirmed.",
             imageUrl:
               'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
