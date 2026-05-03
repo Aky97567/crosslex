@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.1",
   "main": "src/index",
-  "description": "Exports widgets modules to be used in pages and process for the Crosslex site",
+  "description": "Exports widget modules to be used in pages for the Crosslex site",
   "scripts": {
     "check:precommit": "lint-staged",
     "test": "jest",
@@ -14,5 +14,12 @@
     "lint": "yarn lint:js && yarn lint:css",
     "lint:js": "eslint src test",
     "lint:css": "stylelint \"src/**/*.styles.{ts,tsx}\""
+  },
+  "dependencies": {
+    "@whitelotus/common-crosslex-view": "*",
+    "@whitelotus/front-features": "*",
+    "@whitelotus/front-shared": "*",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   }
 }

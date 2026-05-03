@@ -1,1 +1,1 @@
-export {};
+export { LearnPage } from './Crosslex/LearnPage';
