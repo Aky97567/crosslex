@@ -12,13 +12,14 @@ All commands run from `website/`.
 
 ```bash
 # Dev servers
-yarn dev:crosslex        # Main Next.js app
+yarn dev:crosslex-next   # Main Next.js app
+yarn dev:crosslex-react  # Vite React SPA
 yarn dev:storybook       # Storybook (port 6006)
 
 # Builds
 yarn build:storybook     # Build static Storybook (deployed to GitHub Pages)
-yarn workspace @whitelotus/crosslex build   # Production build of main app
-yarn workspace @whitelotus/crosslex lint    # Lint main app
+yarn workspace @whitelotus/crosslex-next build   # Production build of main app
+yarn workspace @whitelotus/crosslex-next lint    # Lint main app
 
 # Testing (run inside a frontend package directory)
 yarn test                # Jest
@@ -39,7 +40,8 @@ The monorepo follows a layered frontend architecture (Feature-Sliced Design):
 
 ```
 website/
-├── sites/crosslex/       # Next.js app (pages router)
+├── sites/crosslex-next/  # Next.js app (pages router)
+├── sites/crosslex-react/ # Vite React SPA
 ├── sites/storybook/      # Storybook site
 ├── frontend/
 │   ├── entities/         # Domain entities (data + UI)
@@ -57,7 +59,7 @@ website/
 └── mock/data/            # Mock data for tests and Storybook
 ```
 
-**Import conventions**: All packages are imported via `@whitelotus/*` path aliases (defined in `tsconfig.base.json`). The main site (`sites/crosslex/next.config.mjs`) transpiles all monorepo packages via `transpilePackages`.
+**Import conventions**: All packages are imported via `@whitelotus/*` path aliases (defined in `tsconfig.base.json`). The main site (`sites/crosslex-next/next.config.mjs`) transpiles all monorepo packages via `transpilePackages`.
 
 **Layer rules**: `entities` → `features` → `pages`/`widgets`. Shared utilities live in `lib/` or `frontend/shared/`. Do not import upward through layers.
 

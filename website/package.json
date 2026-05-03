@@ -14,8 +14,8 @@
   ],
   "scripts": {
     "build:storybook": "cd sites/storybook && yarn run build",
-    "dev:crosslex": "cd sites/crosslex && yarn run dev",
-    "dev:crosslex-app": "cd sites/crosslex-app && yarn run dev",
+    "dev:crosslex-next": "cd sites/crosslex-next && yarn run dev",
+    "dev:crosslex-react": "cd sites/crosslex-react && yarn run dev",
     "dev:storybook": "cd sites/storybook && yarn run start"
   },
   "dependencies": {
