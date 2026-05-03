@@ -1,39 +1,35 @@
 import { LearnPageContent } from '@whitelotus/common-crosslex-view';
 
-export const erfahrung: LearnPageContent = {
+export const genehmigung: LearnPageContent = {
   content: {
     moduleType: 'content',
     modules: [
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Erfahrung',
+        word: 'Genehmigung',
         article: 'die',
-        translation: 'experience',
+        translation: 'permit, approval, authorization',
         partOfSpeech: 'noun',
-        level: ['B1', 'B2'],
+        level: ['B1'],
         representativeImageUrl:
-          'https://onecms-res.cloudinary.com/image/upload/s--kCDWxyX7--/c_fill,g_auto,h_676,w_1200/f_auto,q_auto/stella-modern-family-bulldog.jpg?itok=L4ZO6Xno',
+          'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
       },
       {
         moduleType: 'wordMeaning',
         heading: { text: 'Meaning' },
         meaning:
-          'Knowledge or skill that one gets from doing, seeing, or feeling things.',
+          'Official permission or authorization granted by an authority, allowing someone to do or have something.',
       },
       {
         moduleType: 'meaningGuessQuestion',
         heading: { text: 'Guess the Meaning' },
         meaningBestGuessQuestion: {
-          question:
-            "What is the best guess for the meaning of 'die Erfahrung'?",
+          question: "What is the best guess for the meaning of 'die Genehmigung'?",
           options: [
-            { text: 'A place you visit', isCorrect: false },
-            { text: 'An error or mistake', isCorrect: false },
-            {
-              text: 'Knowledge or skill gained from experience',
-              isCorrect: true,
-            },
+            { text: 'A type of fine', isCorrect: false },
+            { text: 'Official permission or authorization', isCorrect: true },
+            { text: 'A meeting agenda', isCorrect: false },
           ],
         },
       },
@@ -41,41 +37,40 @@ export const erfahrung: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Durch meine jahrelange Erfahrung habe ich gelernt, wie man effizient arbeitet. Erfahrung ist der beste Lehrer.',
+          'Für den Umbau des Hauses benötigen Sie eine Baugenehmigung. Die Genehmigung wurde nach zwei Wochen erteilt. Ohne Genehmigung dürfen Sie hier nicht parken.',
       },
       {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:
-          "From Middle High German 'ervarunge', from Old High German 'irfaran', meaning to travel or to undergo.",
+          "From 'genehmigen' (to approve, permit) + '-ung'. 'Genehmigen' comes from 'nehmen' (to take) with the prefix 'ge-', meaning to accept or agree to take something.",
       },
       {
         moduleType: 'similarWords',
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'Kenntnis',
+            word: 'Erlaubnis',
             article: 'die',
-            translation: 'knowledge',
+            translation: 'permission',
             similarityScore: 4,
             level: ['B1'],
             cefrRelevant: true,
           },
           {
-            word: 'Erlebnis',
-            article: 'das',
-            translation: 'experience (event)',
+            word: 'Bewilligung',
+            article: 'die',
+            translation: 'approval, grant',
             similarityScore: 4,
-            level: ['B1'],
+            level: ['B2'],
             cefrRelevant: true,
           },
           {
-            word: 'Praxis',
+            word: 'Zulassung',
             article: 'die',
-            translation: 'practice',
+            translation: 'admission, approval',
             similarityScore: 3,
-            level: ['B1'],
-            register: 'borrowed',
+            level: ['B2'],
             cefrRelevant: true,
           },
         ],
@@ -87,21 +82,14 @@ export const erfahrung: LearnPageContent = {
           {
             id: 1,
             content:
-              "Think of 'Erfahrung' as gaining 'experience' from traveling far and wide.",
+              "'Genehmigung' contains 'nehmen' (take) – the authority 'takes' your request and approves it.",
             imageUrl:
               'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
           {
             id: 2,
             content:
-              "Erfahrung sounds like 'err' and 'far' – when you go far, you might make errors and learn from them.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
-          },
-          {
-            id: 3,
-            content:
-              "Imagine an 'experienced' traveler collecting 'far' away 'rings' from different places.",
+              "Think: 'ge-nehm-igung' – something that has been 'taken' (nehmen) and accepted, granting you permission.",
             imageUrl:
               'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
