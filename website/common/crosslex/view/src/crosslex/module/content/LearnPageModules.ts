@@ -11,6 +11,9 @@ export type SimilarWord = {
   article: Article;
   translation: string;
   similarityScore: 1 | 2 | 3 | 4 | 5;
+  level?: ('A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2')[];
+  register?: 'formal' | 'colloquial' | 'technical' | 'archaic' | 'borrowed';
+  cefrRelevant?: boolean;
 };
 type MeaningBestGuessOption = {
   text: string;
