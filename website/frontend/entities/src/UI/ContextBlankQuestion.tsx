@@ -18,6 +18,7 @@ type Props = {
   needClose?: boolean;
   onClose?: () => void;
   showContent?: boolean;
+  onAnswer?: (correct: boolean) => void;
 };
 
 const ContextBlankQuestion: React.FC<Props> = ({
@@ -26,6 +27,7 @@ const ContextBlankQuestion: React.FC<Props> = ({
   needClose,
   onClose,
   showContent = true,
+  onAnswer,
 }) => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [optionStates, setOptionStates] = useState(
@@ -47,6 +49,7 @@ const ContextBlankQuestion: React.FC<Props> = ({
           : state,
       ),
     );
+    onAnswer?.(contextBlankQuestion.options[index].isCorrect);
   };
 
   const parts = contextBlankQuestion.sentence.split('___');

@@ -3,9 +3,26 @@ export type ChangelogEntry = {
   returningUser: { heading: string; body: string; changes: string[] };
 };
 
-export const CURRENT_BUILD_ID = 'alpha-2026-05-04';
+export const CURRENT_BUILD_ID = 'alpha-2026-05-04-session';
 
 export const CHANGELOG: Record<string, ChangelogEntry> = {
+  'alpha-2026-05-04-session': {
+    newUser: {
+      heading: "You're testing Crosslex Alpha",
+      body: "Crosslex is a German vocabulary trainer for B1+ learners — built for adults navigating real life in Germany. Choose a session length, pick your learning pace, and Crosslex will guide you through words and exercises. Your feedback shapes what we build next.",
+      cta: "Let's go →",
+    },
+    returningUser: {
+      heading: "You're back — something's new",
+      body: 'The session loop is here.',
+      changes: [
+        'New: guided sessions with a start screen and timer',
+        'New: three exercise types — meaning guess, fill the blank, define the word',
+        'New: aggressive vs conservative learning rate setting',
+        'Your progress is tracked locally and used to prioritise review',
+      ],
+    },
+  },
   'alpha-2026-05-04': {
     newUser: {
       heading: "You're testing Crosslex Alpha",

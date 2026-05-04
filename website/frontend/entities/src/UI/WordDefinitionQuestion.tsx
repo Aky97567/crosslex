@@ -21,6 +21,7 @@ type Props = {
   needClose?: boolean;
   onClose?: () => void;
   showContent?: boolean;
+  onAnswer?: (correct: boolean) => void;
 };
 
 const WordDefinitionQuestion: React.FC<Props> = ({
@@ -29,6 +30,7 @@ const WordDefinitionQuestion: React.FC<Props> = ({
   needClose,
   onClose,
   showContent = true,
+  onAnswer,
 }) => {
   const [optionStates, setOptionStates] = useState(
     wordDefinitionQuestion.options.map(() => ({
@@ -48,6 +50,7 @@ const WordDefinitionQuestion: React.FC<Props> = ({
           : state,
       ),
     );
+    onAnswer?.(wordDefinitionQuestion.options[index].isCorrect);
   };
 
   const { word, article } = wordDefinitionQuestion;
