@@ -1,6 +1,8 @@
 import React from 'react';
 
 export const PALETTES = [
+  'classic',
+  'overlord',
   'sober',
   'light',
   'dark',
