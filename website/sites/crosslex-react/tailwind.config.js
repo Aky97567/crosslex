@@ -2,7 +2,7 @@ const sharedConfig = require('@whitelotus/config-tailwindcss');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  ...sharedConfig,
+  presets: [sharedConfig],
   content: [
     './index.html',
     './src/**/*.{ts,tsx}',
