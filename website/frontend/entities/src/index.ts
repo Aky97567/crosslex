@@ -1,4 +1,5 @@
 export {
+  ContextBlankQuestion,
   Etymology,
   MeaningGuessQuestion,
   Mnemonics,
@@ -8,3 +9,4 @@ export {
   WordMeaning,
   WordShowcase,
 } from './UI';
+export type { ContextBlankQuestionData } from './UI';
