@@ -8,7 +8,7 @@ import {
 } from '@whitelotus/front-features';
 
 const ctaButton =
-  'bg-gradient-brand text-text-cta border-2 border-brand rounded-lg px-40 py-10 transition-colors duration-300 disabled:opacity-40 disabled:bg-none disabled:bg-brand-3';
+  'bg-brand border-2 border-brand rounded-md text-text-cta px-40 py-10 transition-colors duration-300 disabled:opacity-40';
 
 const App: React.FC = () => {
   const [index, setIndex] = useState(0);
