@@ -92,7 +92,7 @@ export type WordShowcaseModule = Module<
   'wordShowcase',
   {
     heading: Heading;
-    wordShowcaseUrl: string;
+    wordShowcaseUrl?: string;
   }
 >;
 
