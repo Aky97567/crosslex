@@ -23,7 +23,7 @@ export const getInitialPalette = (): Palette => {
       return stored as Palette;
     }
   } catch {}
-  return 'light';
+  return 'classic';
 };
 
 type PaletteSwitcherProps = {
