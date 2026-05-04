@@ -9,7 +9,7 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <LearnPageView content={content} />
+      <LearnPageView key={key} content={content} />
       <nav className="flex items-center justify-center gap-40 p-40">
         <button
           onClick={() => setIndex((i) => Math.max(0, i - 1))}
