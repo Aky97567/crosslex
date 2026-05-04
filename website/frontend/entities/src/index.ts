@@ -7,6 +7,7 @@ export {
   WordContext,
   WordIntro,
   WordMeaning,
+  WordDefinitionQuestion,
   WordShowcase,
 } from './UI';
-export type { ContextBlankQuestionData } from './UI';
+export type { ContextBlankQuestionData, WordDefinitionQuestionData } from './UI';
