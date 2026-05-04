@@ -7,4 +7,6 @@ export { SimilarWords } from './SimilarWords';
 export { WordContext } from './WordContext';
 export { WordIntro } from './WordIntro';
 export { WordMeaning } from './WordMeaning';
+export { WordDefinitionQuestion } from './WordDefinitionQuestion';
+export type { WordDefinitionQuestionData } from './WordDefinitionQuestion';
 export { WordShowcase } from './WordShowcase';
