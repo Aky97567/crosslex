@@ -1,3 +1,5 @@
+export { ContextBlankQuestion } from './ContextBlankQuestion';
+export type { ContextBlankQuestionData } from './ContextBlankQuestion';
 export { Etymology } from './Etymology';
 export { MeaningGuessQuestion } from './MeaningGuessQuestion';
 export { Mnemonics } from './Mnemonics';
