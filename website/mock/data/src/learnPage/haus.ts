@@ -87,7 +87,6 @@ export const haus: LearnPageContent = {
       {
         moduleType: 'wordShowcase',
         heading: { text: 'Word Showcase' },
-        wordShowcaseUrl: 'https://example.com/word-house-video.mp4',
       },
     ],
   },
