@@ -62,6 +62,26 @@
   --color-brand-3: #ccffff;
 }
 
+[data-palette='classic'] {
+  --color-brand: #000;
+  --color-brand-2: #333;
+  --color-brand-3: #555;
+  --color-text: #000;
+  --color-cta-text: #fff;
+  --color-bg-l1: 255, 255, 255;
+  --color-bg-l2: #fff;
+}
+
+[data-palette='overlord'] {
+  --color-brand: #fff;
+  --color-brand-2: #888;
+  --color-brand-3: #444;
+  --color-text: #fff;
+  --color-cta-text: #000;
+  --color-bg-l1: 0, 0, 0;
+  --color-bg-l2: #111;
+}
+
 .scrollbar-hidden::-webkit-scrollbar {
   display: none; /* Hide scrollbar for aesthetics */
 }

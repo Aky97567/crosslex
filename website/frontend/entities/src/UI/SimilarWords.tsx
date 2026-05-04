@@ -8,6 +8,8 @@ const BAR_WIDTH = 3; // Width in rem
 const BAR_HEIGHT = 1.5; // Height in rem
 
 const paletteColors: Record<string, string> = {
+  classic: '#222',
+  overlord: '#ccc',
   sober: '#007bff',
   dark: '#6574cd',
   light: '#f6ad55',
@@ -17,11 +19,14 @@ const paletteColors: Record<string, string> = {
   skyBlue: '#66b2ff',
 };
 
+const getPaletteColor = (palette: string): string =>
+  paletteColors[palette] ?? paletteColors['sober'];
+
 const getColorShadeFromSimilarityScore = (
   similarityScore: number,
   palette: string,
 ) => {
-  const baseColor = paletteColors[palette] || paletteColors.light;
+  const baseColor = getPaletteColor(palette);
 
   const adjustColorShade = (color: string, factor: number) => {
     const [r1, g1, b1] = [
@@ -148,10 +153,10 @@ export const SimilarWords: React.FC<SimilarWordsProps> = ({
                       style={{
                         width: `${BAR_WIDTH * 16 + 24}px`, // Calculate width
                         height: `${BAR_HEIGHT}rem`, // Height of the container
-                        border: `2px solid ${paletteColors[palette]}`, // Border color
+                        border: `2px solid ${getPaletteColor(palette)}`, // Border color
                         borderRadius: '7px',
                         padding: '0.1rem', // Padding around the bars
-                        boxShadow: `5px 5px 5px ${hexToRgba(paletteColors[palette], 0.5)}`,
+                        boxShadow: `5px 5px 5px ${hexToRgba(getPaletteColor(palette), 0.5)}`,
                       }}
                     >
                       {/* Strength Bars */}
