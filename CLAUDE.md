@@ -125,3 +125,5 @@ frontend/widgets/src/Crosslex/AlphaAnnouncement/
 4. Commit. No env vars, no Vite config changes needed.
 
 **localStorage key:** `crosslex:seen_build` — stores the last acknowledged build ID.
+
+**Before merging any feature branch:** update `changelog.ts` as described above so returning alpha users are notified of the change. Treat it as part of the feature work, not an afterthought.
