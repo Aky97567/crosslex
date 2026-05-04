@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Heading, SimilarWord } from '@whitelotus/common-crosslex-view';
-import { Card } from '@whitelotus/front-shared';
+import { Card, adjustColorShade, hexToRgba } from '@whitelotus/front-shared';
 
 const BASE_FACTOR = 1.3;
 const FACTOR_DIVISOR = 20;
@@ -8,8 +8,8 @@ const BAR_WIDTH = 3; // Width in rem
 const BAR_HEIGHT = 1.5; // Height in rem
 
 const paletteColors: Record<string, string> = {
-  classic: '#222222',
-  overlord: '#cccccc',
+  classic: '#222',
+  overlord: '#ccc',
   sober: '#007bff',
   dark: '#6574cd',
   light: '#f6ad55',
@@ -25,37 +25,11 @@ const getPaletteColor = (palette: string): string =>
 const getColorShadeFromSimilarityScore = (
   similarityScore: number,
   palette: string,
-) => {
-  const baseColor = getPaletteColor(palette);
-
-  const adjustColorShade = (color: string, factor: number) => {
-    const [r1, g1, b1] = [
-      parseInt(color.slice(1, 3), 16),
-      parseInt(color.slice(3, 5), 16),
-      parseInt(color.slice(5, 7), 16),
-    ];
-    const r = Math.round(r1 + factor * (0 - r1));
-    const g = Math.round(g1 + factor * (0 - g1));
-    const b = Math.round(b1 + factor * (0 - b1));
-    return `rgb(${r}, ${g}, ${b})`;
-  };
-
-  return adjustColorShade(
-    baseColor,
+) =>
+  adjustColorShade(
+    getPaletteColor(palette),
     Math.pow(similarityScore, BASE_FACTOR) / FACTOR_DIVISOR,
   );
-};
-
-function hexToRgba(hex: string, alpha: number): string {
-  hex = hex.replace(/^#/, '');
-
-  const bigint = parseInt(hex, 16);
-  const r = (bigint >> 16) & 255;
-  const g = (bigint >> 8) & 255;
-  const b = bigint & 255;
-
-  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-}
 
 type SimilarWordsProps = {
   heading: Heading;
@@ -151,15 +125,14 @@ export const SimilarWords: React.FC<SimilarWordsProps> = ({
                     <div
                       className="py-5 px-10 flex gap-5"
                       style={{
-                        width: `${BAR_WIDTH * 16 + 24}px`, // Calculate width
-                        height: `${BAR_HEIGHT}rem`, // Height of the container
-                        border: `2px solid ${getPaletteColor(palette)}`, // Border color
+                        width: `${BAR_WIDTH * 16 + 24}px`,
+                        height: `${BAR_HEIGHT}rem`,
+                        border: `2px solid ${getPaletteColor(palette)}`,
                         borderRadius: '7px',
-                        padding: '0.1rem', // Padding around the bars
+                        padding: '0.1rem',
                         boxShadow: `5px 5px 5px ${hexToRgba(getPaletteColor(palette), 0.5)}`,
                       }}
                     >
-                      {/* Strength Bars */}
                       {Array.from(
                         { length: similarWord.similarityScore * 2 },
                         (_, index) => index,
@@ -171,8 +144,8 @@ export const SimilarWords: React.FC<SimilarWordsProps> = ({
                               similarWord.similarityScore,
                               palette,
                             ),
-                            width: `${BAR_WIDTH / 10}rem`, // Width of each bar
-                            height: '95%', // Height of each bar
+                            width: `${BAR_WIDTH / 10}rem`,
+                            height: '95%',
                           }}
                         />
                       ))}
