@@ -8,8 +8,8 @@ const BAR_WIDTH = 3; // Width in rem
 const BAR_HEIGHT = 1.5; // Height in rem
 
 const paletteColors: Record<string, string> = {
-  classic: '#222',
-  overlord: '#ccc',
+  classic: '#222222',
+  overlord: '#cccccc',
   sober: '#007bff',
   dark: '#6574cd',
   light: '#f6ad55',
