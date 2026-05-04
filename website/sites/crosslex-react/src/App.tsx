@@ -6,6 +6,7 @@ import {
   getInitialPalette,
   Palette,
 } from '@whitelotus/front-features';
+import { Card } from '@whitelotus/front-shared';
 
 const ctaButton =
   'bg-brand border-2 border-brand rounded-md text-text-cta px-40 py-10 transition-colors duration-300 disabled:opacity-40';
@@ -92,17 +93,14 @@ const App: React.FC = () => {
           className="fixed inset-0 z-30 bg-dark flex flex-col items-center justify-center md:hidden"
           onClick={() => setIsPaletteOpen(false)}
         >
-          <div
-            className="bg-bg-l2 border-2 border-brand rounded-lg p-30 flex flex-col items-center gap-20 mx-20"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <PaletteSwitcher active={palette} onChange={handlePaletteChange} />
-            <button
-              onClick={() => setIsPaletteOpen(false)}
-              className={ctaButton}
+          <div className="mx-20" onClick={(e) => e.stopPropagation()}>
+            <Card
+              heading={{ level: 'h2', text: 'Theme' }}
+              needClose
+              onClose={() => setIsPaletteOpen(false)}
             >
-              ✕ Close
-            </button>
+              <PaletteSwitcher active={palette} onChange={handlePaletteChange} />
+            </Card>
           </div>
         </div>
       )}
