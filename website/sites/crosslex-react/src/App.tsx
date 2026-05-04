@@ -7,6 +7,9 @@ import {
   Palette,
 } from '@whitelotus/front-features';
 
+const ctaButton =
+  'bg-gradient-brand text-text-cta border-2 border-brand rounded-lg px-40 py-10 transition-colors duration-300 disabled:opacity-40 disabled:bg-none disabled:bg-brand-3';
+
 const App: React.FC = () => {
   const [index, setIndex] = useState(0);
   const [palette, setPalette] = useState<Palette>(getInitialPalette);
@@ -55,7 +58,7 @@ const App: React.FC = () => {
         <div className="flex flex-col items-center gap-10 p-15">
           <button
             onClick={() => setIsPaletteOpen(true)}
-            className="px-20 py-10 rounded-lg border-2 border-brand bg-bg-l2 text-text text-sm"
+            className={ctaButton}
           >
             Theme: {palette}
           </button>
@@ -63,7 +66,7 @@ const App: React.FC = () => {
             <button
               onClick={() => setIndex((i) => Math.max(0, i - 1))}
               disabled={index === 0}
-              className="text-text disabled:opacity-40"
+              className={ctaButton}
             >
               ← Prev
             </button>
@@ -75,7 +78,7 @@ const App: React.FC = () => {
                 setIndex((i) => Math.min(Words.length - 1, i + 1))
               }
               disabled={index === Words.length - 1}
-              className="text-text disabled:opacity-40"
+              className={ctaButton}
             >
               Next →
             </button>
@@ -86,17 +89,17 @@ const App: React.FC = () => {
       {/* Palette overlay (mobile only) */}
       {isPaletteOpen && (
         <div
-          className="fixed inset-0 z-30 bg-bg-l1/90 flex flex-col items-center justify-center gap-30 md:hidden"
+          className="fixed inset-0 z-30 bg-dark flex flex-col items-center justify-center md:hidden"
           onClick={() => setIsPaletteOpen(false)}
         >
           <div
-            className="flex flex-col items-center gap-20 p-30"
+            className="bg-bg-l2 border-2 border-brand rounded-lg p-30 flex flex-col items-center gap-20 mx-20"
             onClick={(e) => e.stopPropagation()}
           >
             <PaletteSwitcher active={palette} onChange={handlePaletteChange} />
             <button
               onClick={() => setIsPaletteOpen(false)}
-              className="px-20 py-10 rounded-lg border-2 border-brand bg-bg-l2 text-text text-sm"
+              className={ctaButton}
             >
               ✕ Close
             </button>
