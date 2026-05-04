@@ -79,7 +79,6 @@ export const apfel: LearnPageContent = {
       {
         moduleType: 'wordShowcase',
         heading: { text: 'Word Showcase' },
-        wordShowcaseUrl: 'https://example.com/word-apple-video.mp4',
       },
     ],
   },

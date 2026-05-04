@@ -4,7 +4,7 @@ import { Card } from '@whitelotus/front-shared';
 
 type WordShowcaseProps = {
   heading: Heading;
-  wordShowcaseUrl: string;
+  wordShowcaseUrl?: string;
   needClose?: boolean;
   onClose?: () => void;
   showContent?: boolean;
