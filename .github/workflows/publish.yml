@@ -27,13 +27,13 @@ jobs:
       - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
         uses: ./.github/workflows/setup-node
 
-      - name: Build with Next.js 🏗️
-        run: cd website && yarn build:storybook
+      - name: Build Storybook 🏗️
+        run: cd website && yarn build:storybook-next
 
       - name: Upload artifact 📡
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./website/sites/storybook/storybook-static
+          path: ./website/sites/storybook-next/storybook-static
 
   deploy:
     environment:
