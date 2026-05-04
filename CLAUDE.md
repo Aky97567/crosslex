@@ -127,3 +127,39 @@ frontend/widgets/src/Crosslex/AlphaAnnouncement/
 **localStorage key:** `crosslex:seen_build` — stores the last acknowledged build ID.
 
 **Before merging any feature branch:** update `changelog.ts` as described above so returning alpha users are notified of the change. Treat it as part of the feature work, not an afterthought.
+
+## Session Loop
+
+The session loop is the core learning experience. It replaces the old index-based Prev/Next navigation.
+
+**User flow:** Dashboard (start form) → Running (one card at a time) → Complete (summary) → back to Dashboard.
+
+**localStorage keys:**
+- `crosslex:words_seen` — `Record<wordKey, { count, accuracy, lastSeen }>` — per-word exercise stats
+- `crosslex:session_history` — `SessionRecord[]` — past session summaries (for future dashboard use)
+- `crosslex:learning_rate` — `'aggressive' | 'conservative'` — persisted user preference
+
+**Scheduling algorithm** (`frontend/features/src/Session/sessionAlgorithm.ts`):
+1. Show new word (`wordIntro` card) if: aggressive mode + fewer than 3 new words this session + last word has ≥3 exercises done + unseen words exist
+2. Otherwise: weighted random exercise — `weight = (1 - accuracy) + timeBonus` where timeBonus is 0 (< 1 hr), 0.3 (< 1 day), or 0.6 (older)
+3. Exercise type picked at random from available types: `meaningGuess` (if mock data has `meaningGuessQuestion` module), `contextBlank` (if `wordContext` module exists), `wordDefinition` (always)
+
+**Exercise data generation:**
+- `meaningGuess` — pulls `meaningBestGuessQuestion` directly from mock data (already has 4 options)
+- `contextBlank` — derives from `wordContext.paragraphWithUsage`: replaces the word with `___`, picks 3 random words as distractors
+- `wordDefinition` — uses word + article from `wordIntro`; correct option = translation; 3 distractor translations from random words
+
+**Files:**
+```
+frontend/features/src/Session/
+├── sessionStorage.ts   ← type definitions + localStorage read/write helpers
+├── sessionAlgorithm.ts ← pickNextCard, generateExerciseData (pure functions)
+└── index.ts            ← re-exports
+
+frontend/widgets/src/Crosslex/
+├── SessionDashboard/SessionDashboard.tsx  ← start form (duration + learning rate)
+├── SessionRunner/SessionRunner.tsx        ← session orchestrator (one card at a time)
+└── SessionComplete/SessionComplete.tsx    ← end-of-session summary card
+```
+
+**Cutting a new build with this feature live:** bump `CURRENT_BUILD_ID` in `AlphaAnnouncement/changelog.ts` and add a changelog entry listing the session loop as a new feature.

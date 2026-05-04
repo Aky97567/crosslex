@@ -16,6 +16,7 @@ type MeaningGuessQuestionProps = {
   needClose?: boolean;
   onClose?: () => void;
   showContent?: boolean;
+  onAnswer?: (correct: boolean) => void;
 };
 
 export const MeaningGuessQuestion: React.FC<MeaningGuessQuestionProps> = ({
@@ -24,6 +25,7 @@ export const MeaningGuessQuestion: React.FC<MeaningGuessQuestionProps> = ({
   needClose,
   onClose,
   showContent = true,
+  onAnswer,
 }) => {
   const [optionStates, setOptionStates] = useState<
     Array<{ isClicked: boolean; isCorrect: boolean }>
@@ -44,6 +46,7 @@ export const MeaningGuessQuestion: React.FC<MeaningGuessQuestionProps> = ({
         : state,
     );
     setOptionStates(newOptionStates);
+    onAnswer?.(meaningBestGuessQuestion.options[index].isCorrect);
   };
 
   return meaningBestGuessQuestion ? (
