@@ -1,3 +1,4 @@
+import { WordIntroModule } from '@whitelotus/common-crosslex-view';
 import { anspruch } from './anspruch';
 import { apfel } from './apfel';
 import { auto } from './auto';
@@ -40,6 +41,11 @@ export type SampleContentKey = keyof typeof sampleLearnPageContentList;
 
 export type SampleContentKeys = SampleContentKey[];
 
-export const Words = Object.keys(
-  sampleLearnPageContentList,
-) as SampleContentKeys;
+export const Words = (
+  Object.keys(sampleLearnPageContentList) as SampleContentKeys
+).filter((key) => {
+  const wordIntro = sampleLearnPageContentList[key].content.modules.find(
+    (m): m is WordIntroModule => m.moduleType === 'wordIntro',
+  );
+  return wordIntro ? !wordIntro.level.every((l) => l === 'A1') : true;
+});
