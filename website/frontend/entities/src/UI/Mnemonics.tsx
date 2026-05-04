@@ -29,7 +29,7 @@ export const Mnemonics: React.FC<MnemonicsProps> = ({
           <ul className="list-disc list-inside">
             {mnemonics.map((hook, index) => (
               <li key={index}>
-                <BodyText>{hook.content}</BodyText>
+                <BodyText as="span">{hook.content}</BodyText>
               </li>
             ))}
           </ul>
