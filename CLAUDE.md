@@ -74,3 +74,18 @@ website/
 ## CI
 
 GitHub Actions (`.github/workflows/publish.yml`) builds `crosslex-react` and deploys it to GitHub Pages on push to `main`. The `VITE_BASE` env var is set to `/crosslex/` in CI so asset paths resolve correctly under the GitHub Pages subpath.
+
+## FSD Component Rules
+
+Before creating any new component:
+
+1. **Search existing slices first** — check `shared`, `entities`, `features`, `widgets` for anything reusable
+2. **Place in the correct slice**:
+   - `shared` — pure UI primitives, no business logic (Button, Card, Text)
+   - `entities` — domain UI tied to a concept (WordIntro, MeaningGuessQuestion)
+   - `features` — interactive behaviour (FlipCardToTarget, PaletteSwitcher)
+   - `widgets` — standalone self-contained UI blocks
+   - `pages` — composition only, no logic
+3. **Never duplicate** — if a component exists in a lower slice, use it
+4. **Never import upward** — pages import features/entities/shared; features import entities/shared; entities import shared only
+5. **When in doubt, ask** which slice a new component belongs to before creating it
