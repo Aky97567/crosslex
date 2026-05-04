@@ -18,7 +18,8 @@ yarn dev:storybook-next  # Next.js Storybook (port 6006)
 yarn dev:storybook-react # React/Vite Storybook (port 6007)
 
 # Builds
-yarn build:storybook-next   # Build Next.js Storybook (deployed to GitHub Pages)
+yarn build:crosslex-react   # Build React SPA (deployed to GitHub Pages)
+yarn build:storybook-next   # Build Next.js Storybook
 yarn build:storybook-react  # Build React/Vite Storybook
 yarn workspace @whitelotus/crosslex-next build   # Production build of main app
 yarn workspace @whitelotus/crosslex-next lint    # Lint main app
@@ -72,4 +73,4 @@ website/
 
 ## CI
 
-GitHub Actions (`.github/workflows/publish.yml`) builds Storybook and deploys it to GitHub Pages on push to `main`. The Storybook is the primary living component documentation.
+GitHub Actions (`.github/workflows/publish.yml`) builds `crosslex-react` and deploys it to GitHub Pages on push to `main`. The `VITE_BASE` env var is set to `/crosslex/` in CI so asset paths resolve correctly under the GitHub Pages subpath.
