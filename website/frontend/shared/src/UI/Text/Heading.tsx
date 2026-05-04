@@ -12,7 +12,7 @@ export const Heading: React.FC<HeadingProps> = ({
 }) => {
   return heading
     ? React.createElement(
-        `${heading.level}`,
+        heading.level ?? 'h2',
         { className: `${className} text-lg text-brand font-semibold mb-5` },
         heading.text,
       )
