@@ -13,10 +13,12 @@
     "sites/*"
   ],
   "scripts": {
-    "build:storybook": "cd sites/storybook && yarn run build",
+    "build:storybook-next": "cd sites/storybook-next && yarn run build",
+    "build:storybook-react": "cd sites/storybook-react && yarn run build",
     "dev:crosslex-next": "cd sites/crosslex-next && yarn run dev",
     "dev:crosslex-react": "cd sites/crosslex-react && yarn run dev",
-    "dev:storybook": "cd sites/storybook && yarn run start"
+    "dev:storybook-next": "cd sites/storybook-next && yarn run start",
+    "dev:storybook-react": "cd sites/storybook-react && yarn run start"
   },
   "dependencies": {
     "jsonschema": "1.4.1",

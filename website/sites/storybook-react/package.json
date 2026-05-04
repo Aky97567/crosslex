@@ -1,0 +1,37 @@
+{
+  "name": "@whitelotus/storybook-react",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "storybook dev -p 6007",
+    "build": "storybook build"
+  },
+  "dependencies": {
+    "@whitelotus/config-tailwindcss": "*",
+    "@whitelotus/front-entities": "*",
+    "@whitelotus/front-features": "*",
+    "@whitelotus/front-shared": "*",
+    "@whitelotus/front-widgets": "*",
+    "@whitelotus/mock-test": "*",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "tailwindcss": "3.4.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-controls": "7.6.10",
+    "@storybook/addon-essentials": "7.6.10",
+    "@storybook/addon-interactions": "7.6.10",
+    "@storybook/addon-links": "7.6.10",
+    "@storybook/react-vite": "7.6.10",
+    "@storybook/testing-library": "0.2.2",
+    "@types/react": "18.3.5",
+    "@types/react-dom": "18.3.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "autoprefixer": "10.4.15",
+    "postcss": "^8.4.39",
+    "postcss-preset-env": "9.5.0",
+    "storybook": "7.6.10",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.0"
+  }
+}

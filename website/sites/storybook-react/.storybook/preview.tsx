@@ -1,6 +1,6 @@
 import 'tailwindcss/tailwind.css';
 import { useEffect } from 'react';
-import '../../crosslex/styles/globals.css';
+import '../../crosslex-next/styles/globals.css';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -48,7 +48,7 @@ export const globalTypes = {
 };
 
 export const decorators = [
-  (Story, context) => {
+  (Story: React.ComponentType, context: { globals: { palette?: string } }) => {
     useEffect(() => {
       document.documentElement.setAttribute(
         'data-palette',
