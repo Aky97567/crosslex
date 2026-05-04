@@ -38,8 +38,8 @@ The project is organized into several workspaces:
 
 ## Prerequisites
 
-- Node.js (version compatible with Next.js 14.2.7)
-- Yarn (version 4.4.0)
+- Node.js (version compatible with Next.js 14)
+- Yarn (version 4.5.1)
 
 ## Setup
 
@@ -51,25 +51,23 @@ The project is organized into several workspaces:
 
 ## Development
 
-To run the project in development mode, use one of the following commands:
+To run the project in development mode, run one of the following from `website/`:
 
 ```
-yarn workspace @whitelotus/crosslex dev
+yarn dev:crosslex-next   # Next.js app
+yarn dev:crosslex-react  # Vite React SPA
 ```
-
-or
-
-```
-yarn run crosslex:dev
-```
-
-The `workspace` command is used to run a command in a specific workspace. The alias `crosslex:dev` is defined in the top-level `package.json` file.
 
 ## Available Scripts
 
-- `yarn build:storybook`: Build the Storybook site
-- `yarn dev:crosslex`: Run the Crosslex site in development mode
-- `yarn dev:storybook`: Start the Storybook development server
+All commands run from `website/`.
+
+- `yarn dev:crosslex-next`: Run the Next.js app in development mode
+- `yarn dev:crosslex-react`: Run the Vite React SPA in development mode
+- `yarn dev:storybook-next`: Start the Next.js Storybook (port 6006)
+- `yarn dev:storybook-react`: Start the React/Vite Storybook (port 6007)
+- `yarn build:storybook-next`: Build the Next.js Storybook (deployed to GitHub Pages)
+- `yarn build:storybook-react`: Build the React/Vite Storybook
 
 ## Component Storybook
 
@@ -81,8 +79,8 @@ This Storybook provides a live demonstration of our components, making it easier
 
 ## Tech Stack
 
-- Next.js 14.2.7
-- React 18.3.1
+- Next.js 14 (main app)
+- Vite 5 + React 18 (SPA)
 - TypeScript
 - Tailwind CSS
 
