@@ -27,13 +27,15 @@ jobs:
       - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
         uses: ./.github/workflows/setup-node
 
-      - name: Build Storybook 🏗️
-        run: cd website && yarn build:storybook-next
+      - name: Build React app 🏗️
+        run: cd website && yarn build:crosslex-react
+        env:
+          VITE_BASE: /crosslex/
 
       - name: Upload artifact 📡
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./website/sites/storybook-next/storybook-static
+          path: ./website/sites/crosslex-react/dist
 
   deploy:
     environment:
