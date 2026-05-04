@@ -10,6 +10,7 @@ import {
 const App: React.FC = () => {
   const [index, setIndex] = useState(0);
   const [palette, setPalette] = useState<Palette>(getInitialPalette);
+  const [isPaletteOpen, setIsPaletteOpen] = useState(false);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-palette', palette);
@@ -18,10 +19,17 @@ const App: React.FC = () => {
   const key = Words[index];
   const { content } = sampleLearnPageContentList[key];
 
+  const handlePaletteChange = (p: Palette) => {
+    setPalette(p);
+    setIsPaletteOpen(false);
+  };
+
   return (
-    <div>
+    <div className="pb-130 md:pb-0">
       <LearnPageView key={key} content={content} />
-      <nav className="flex flex-col items-center gap-20 p-40">
+
+      {/* Desktop nav */}
+      <nav className="hidden md:flex flex-col items-center gap-20 p-40">
         <PaletteSwitcher active={palette} onChange={setPalette} />
         <div className="flex items-center gap-40">
           <button
@@ -41,6 +49,60 @@ const App: React.FC = () => {
           </button>
         </div>
       </nav>
+
+      {/* Mobile footer */}
+      <footer className="fixed bottom-0 left-0 right-0 z-20 bg-bg-l2 border-t-2 border-brand md:hidden">
+        <div className="flex flex-col items-center gap-10 p-15">
+          <button
+            onClick={() => setIsPaletteOpen(true)}
+            className="px-20 py-10 rounded-lg border-2 border-brand bg-bg-l2 text-text text-sm"
+          >
+            Theme: {palette}
+          </button>
+          <div className="flex items-center gap-40">
+            <button
+              onClick={() => setIndex((i) => Math.max(0, i - 1))}
+              disabled={index === 0}
+              className="text-text disabled:opacity-40"
+            >
+              ← Prev
+            </button>
+            <span className="text-text text-sm">
+              {key} ({index + 1} / {Words.length})
+            </span>
+            <button
+              onClick={() =>
+                setIndex((i) => Math.min(Words.length - 1, i + 1))
+              }
+              disabled={index === Words.length - 1}
+              className="text-text disabled:opacity-40"
+            >
+              Next →
+            </button>
+          </div>
+        </div>
+      </footer>
+
+      {/* Palette overlay (mobile only) */}
+      {isPaletteOpen && (
+        <div
+          className="fixed inset-0 z-30 bg-bg-l1/90 flex flex-col items-center justify-center gap-30 md:hidden"
+          onClick={() => setIsPaletteOpen(false)}
+        >
+          <div
+            className="flex flex-col items-center gap-20 p-30"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <PaletteSwitcher active={palette} onChange={handlePaletteChange} />
+            <button
+              onClick={() => setIsPaletteOpen(false)}
+              className="px-20 py-10 rounded-lg border-2 border-brand bg-bg-l2 text-text text-sm"
+            >
+              ✕ Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
