@@ -13,6 +13,7 @@
     "sites/*"
   ],
   "scripts": {
+    "build:crosslex-react": "cd sites/crosslex-react && yarn run build",
     "build:storybook-next": "cd sites/storybook-next && yarn run build",
     "build:storybook-react": "cd sites/storybook-react && yarn run build",
     "dev:crosslex-next": "cd sites/crosslex-next && yarn run dev",
