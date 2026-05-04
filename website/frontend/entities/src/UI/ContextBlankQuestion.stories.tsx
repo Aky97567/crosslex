@@ -39,7 +39,7 @@ type WrapperProps = {
 };
 
 const Wrapper: React.FC<WrapperProps> = ({ word }) => (
-  <div className="max-w-400 mx-auto p-40">
+  <div className="max-w-4xl mx-auto p-20">
     <ContextBlankQuestion
       heading={{ level: 'h2', text: 'Fill in the blank' }}
       contextBlankQuestion={EXERCISES[word]}
