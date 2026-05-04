@@ -20,7 +20,7 @@ const paletteColors: Record<string, string> = {
 };
 
 const getPaletteColor = (palette: string): string =>
-  getPaletteColor(palette) ?? paletteColors['sober'];
+  paletteColors[palette] ?? paletteColors['sober'];
 
 const getColorShadeFromSimilarityScore = (
   similarityScore: number,
