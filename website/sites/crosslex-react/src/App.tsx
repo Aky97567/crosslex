@@ -23,11 +23,6 @@ const App: React.FC = () => {
   const key = Words[index];
   const { content } = sampleLearnPageContentList[key];
 
-  const handlePaletteChange = (p: Palette) => {
-    setPalette(p);
-    setIsPaletteOpen(false);
-  };
-
   return (
     <div className="pb-130 md:pb-0">
       <LearnPageView key={key} content={content} />
@@ -99,7 +94,7 @@ const App: React.FC = () => {
               needClose
               onClose={() => setIsPaletteOpen(false)}
             >
-              <PaletteSwitcher active={palette} onChange={handlePaletteChange} />
+              <PaletteSwitcher active={palette} onChange={setPalette} />
             </Card>
           </div>
         </div>
