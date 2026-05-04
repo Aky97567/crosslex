@@ -6322,6 +6322,7 @@ __metadata:
     "@types/react-dom": "npm:18.3.0"
     "@vitejs/plugin-react": "npm:^4.3.0"
     "@whitelotus/config-tailwindcss": "npm:*"
+    "@whitelotus/front-features": "npm:*"
     "@whitelotus/front-pages-react": "npm:*"
     "@whitelotus/front-shared": "npm:*"
     "@whitelotus/mock-test": "npm:*"
