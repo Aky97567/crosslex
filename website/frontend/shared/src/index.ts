@@ -11,3 +11,5 @@ export {
   Card,
   Heading,
 } from './UI';
+
+export { expandHex, adjustColorShade, hexToRgba } from './utils';
