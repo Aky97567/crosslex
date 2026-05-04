@@ -6325,6 +6325,7 @@ __metadata:
     "@whitelotus/front-features": "npm:*"
     "@whitelotus/front-pages-react": "npm:*"
     "@whitelotus/front-shared": "npm:*"
+    "@whitelotus/front-widgets": "npm:*"
     "@whitelotus/mock-test": "npm:*"
     autoprefixer: "npm:10.4.15"
     postcss: "npm:^8.4.39"

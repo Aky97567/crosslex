@@ -7,6 +7,7 @@ import {
   Palette,
 } from '@whitelotus/front-features';
 import { Card } from '@whitelotus/front-shared';
+import { AlphaAnnouncement } from '@whitelotus/front-widgets';
 
 const ctaButton =
   'bg-brand border-2 border-brand rounded-md text-text-cta px-40 py-10 transition-colors duration-300 disabled:opacity-40';
@@ -25,6 +26,7 @@ const App: React.FC = () => {
 
   return (
     <div className="pb-130 md:pb-0">
+      <AlphaAnnouncement />
       <LearnPageView key={key} content={content} />
 
       {/* Desktop nav */}

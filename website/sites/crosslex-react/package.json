@@ -13,6 +13,7 @@
     "@whitelotus/front-features": "*",
     "@whitelotus/front-pages-react": "*",
     "@whitelotus/front-shared": "*",
+    "@whitelotus/front-widgets": "*",
     "@whitelotus/mock-test": "*",
     "react": "18.3.1",
     "react-dom": "18.3.1"
