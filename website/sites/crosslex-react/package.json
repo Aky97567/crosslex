@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@whitelotus/config-tailwindcss": "*",
+    "@whitelotus/front-features": "*",
     "@whitelotus/front-pages-react": "*",
     "@whitelotus/front-shared": "*",
     "@whitelotus/mock-test": "*",
