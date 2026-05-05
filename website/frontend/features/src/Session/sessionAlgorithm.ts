@@ -5,7 +5,7 @@ import {
 } from '@whitelotus/common-crosslex-view';
 import { ContextBlankQuestionData } from '@whitelotus/front-entities';
 import { WordDefinitionQuestionData } from '@whitelotus/front-entities';
-import { LearningRate, WordsSeenStore } from './sessionStorage';
+import { LearningRate, RATE_CONFIG, WordsSeenStore } from './sessionStorage';
 
 export type CardType = 'wordIntro' | 'meaningGuess' | 'contextBlank' | 'wordDefinition';
 
@@ -79,13 +79,14 @@ export const pickNextCard = (
   learningRate: LearningRate,
   wordData: WordDataMap,
 ): { wordKey: string; cardType: CardType } => {
+  const { maxNewWordsPerSession, minExercisesPerWord } = RATE_CONFIG[learningRate];
   const unseenKeys = allWordKeys.filter((k) => !wordStats[k]);
   const seenKeys = allWordKeys.filter((k) => !!wordStats[k]);
 
   const canShowNewWord =
-    learningRate === 'aggressive' &&
-    session.newWordsThisSession < 3 &&
-    (session.lastWordKey === null || session.exercisesForLastWord >= 3) &&
+    maxNewWordsPerSession > 0 &&
+    session.newWordsThisSession < maxNewWordsPerSession &&
+    (session.lastWordKey === null || session.exercisesForLastWord >= minExercisesPerWord) &&
     unseenKeys.length > 0;
 
   if (canShowNewWord) {
