@@ -30,7 +30,7 @@ const ctaButton =
 type Props = { onStart: (durationMinutes: number) => void };
 
 const SessionDashboard: React.FC<Props> = ({ onStart }) => {
-  const [duration, setDuration] = useState<number>(30);
+  const [duration, setDuration] = useState<number>(5);
   const [rate, setRate] = useState<LearningRate>(() => readLearningRate());
 
   const handleRateChange = (next: LearningRate) => {
@@ -63,7 +63,7 @@ const SessionDashboard: React.FC<Props> = ({ onStart }) => {
             className="bg-bg-l2 border-2 border-brand rounded-md px-20 py-10 text-text w-100 text-center"
           />
           <p className="text-text text-sm mt-10 opacity-70">
-            15–30 minutes recommended daily
+            Shorter, frequent sessions beat long ones
           </p>
         </div>
 
