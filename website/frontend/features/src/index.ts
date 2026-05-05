@@ -6,7 +6,16 @@ export { renderContentModule } from './ContentModules';
 export { PaletteSwitcher, PALETTES, getInitialPalette } from './PaletteSwitcher';
 export type { Palette } from './PaletteSwitcher';
 
-export type { LearningRate, RateConfig, WordStats, WordsSeenStore, SessionRecord, CardType, SessionSnapshot, ExerciseData } from './Session';
+export type {
+  LearningRate,
+  RateConfig,
+  WordStats,
+  WordsSeenStore,
+  ExerciseEvent,
+  CardType,
+  SessionSnapshot,
+  ExerciseData,
+} from './Session';
 export {
   RATE_CONFIG,
   readWordsSeen,
@@ -15,7 +24,8 @@ export {
   seedWordStats,
   readLearningRate,
   writeLearningRate,
-  appendSessionRecord,
+  appendExerciseEvent,
+  readExerciseLog,
   pickNextCard,
   generateExerciseData,
 } from './Session';

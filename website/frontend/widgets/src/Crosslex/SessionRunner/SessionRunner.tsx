@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { sampleLearnPageContentList, Words, SampleContentKey } from '@whitelotus/mock-test';
 import {
   MeaningGuessQuestion,
@@ -12,7 +12,7 @@ import {
   updateWordStats,
   seedWordStats,
   readLearningRate,
-  appendSessionRecord,
+  appendExerciseEvent,
   pickNextCard,
   generateExerciseData,
   WordsSeenStore,
@@ -27,9 +27,8 @@ type RunnerState = {
   wordKey: string;
   cardType: CardType;
   exerciseData: ExerciseData | null;
-  newWordsThisSession: number;
-  lastWordKey: string | null;
-  exercisesForLastWord: number;
+  lastIntroducedWordKey: string | null;
+  exercisesSinceLastIntro: number;
   cardsDone: number;
   correctCount: number;
   wordsNew: number;
@@ -37,6 +36,7 @@ type RunnerState = {
 };
 
 type Props = {
+  sessionId: number;
   durationMinutes: number;
   onComplete: (stats: {
     wordsNew: number;
@@ -47,7 +47,7 @@ type Props = {
 };
 
 const formatTime = (ms: number): string => {
-  const total = Math.max(0, Math.ceil(ms / 1000));
+  const total = Math.max(0, Math.floor(ms / 1000));
   const m = Math.floor(total / 60);
   const s = total % 60;
   return `${m}:${s.toString().padStart(2, '0')}`;
@@ -56,11 +56,12 @@ const formatTime = (ms: number): string => {
 const buildInitialCard = (
   wordStats: WordsSeenStore,
   learningRate: ReturnType<typeof readLearningRate>,
+  sessionDurationMs: number,
 ): { wordKey: string; cardType: CardType; exerciseData: ExerciseData | null } => {
   const { wordKey, cardType } = pickNextCard(
     Words,
     wordStats,
-    { newWordsThisSession: 0, lastWordKey: null, exercisesForLastWord: 0 },
+    { lastIntroducedWordKey: null, exercisesSinceLastIntro: 0, sessionDurationMs },
     learningRate,
     sampleLearnPageContentList,
   );
@@ -71,35 +72,36 @@ const buildInitialCard = (
   return { wordKey, cardType, exerciseData };
 };
 
-const SessionRunner: React.FC<Props> = ({ durationMinutes, onComplete }) => {
+const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete }) => {
   const durationMs = durationMinutes * 60 * 1000;
-  const startedAt = React.useRef(Date.now());
-  const learningRate = React.useRef(readLearningRate());
+  const startedAt = useRef(Date.now());
+  const learningRate = useRef(readLearningRate());
 
   const [wordStats, setWordStats] = useState<WordsSeenStore>(() => readWordsSeen());
-
-  const initialCard = React.useRef(buildInitialCard(wordStats, learningRate.current));
-
-  const [runner, setRunner] = useState<RunnerState>({
-    ...initialCard.current,
-    newWordsThisSession: initialCard.current.cardType === 'wordIntro' ? 1 : 0,
-    lastWordKey: null,
-    exercisesForLastWord: 0,
-    cardsDone: 0,
-    correctCount: 0,
-    wordsNew: initialCard.current.cardType === 'wordIntro' ? 1 : 0,
-    wordsReviewed: initialCard.current.cardType !== 'wordIntro' ? 1 : 0,
-  });
-
+  const [elapsed, setElapsed] = useState(0);
   const [answered, setAnswered] = useState<boolean | null>(null);
-  const [timeLeft, setTimeLeft] = useState(durationMs);
+
+  const initialCard = useRef(buildInitialCard(wordStats, learningRate.current, durationMs));
+
+  const [runner, setRunner] = useState<RunnerState>(() => {
+    const card = initialCard.current;
+    return {
+      ...card,
+      lastIntroducedWordKey: card.cardType === 'wordIntro' ? card.wordKey : null,
+      exercisesSinceLastIntro: card.cardType === 'wordIntro' ? 0 : 1,
+      cardsDone: 0,
+      correctCount: 0,
+      wordsNew: card.cardType === 'wordIntro' ? 1 : 0,
+      wordsReviewed: card.cardType !== 'wordIntro' ? 1 : 0,
+    };
+  });
 
   useEffect(() => {
     const id = setInterval(() => {
-      setTimeLeft(Math.max(0, durationMs - (Date.now() - startedAt.current)));
+      setElapsed(Date.now() - startedAt.current);
     }, 1000);
     return () => clearInterval(id);
-  }, [durationMs]);
+  }, []);
 
   const advance = useCallback(
     (correct: boolean | null) => {
@@ -113,9 +115,22 @@ const SessionRunner: React.FC<Props> = ({ durationMinutes, onComplete }) => {
 
         if (isExercise && correct !== null) {
           nextWordStats = updateWordStats(wordStats, prev.wordKey, correct);
+          appendExerciseEvent({
+            ts: Date.now(),
+            sessionId,
+            wordKey: prev.wordKey,
+            type: 'exercise',
+            exerciseType: prev.cardType as 'meaningGuess' | 'contextBlank' | 'wordDefinition',
+            correct,
+          });
         } else if (!isExercise) {
-          // Seed the introduced word so it enters the exercise pool immediately
           nextWordStats = seedWordStats(wordStats, prev.wordKey);
+          appendExerciseEvent({
+            ts: Date.now(),
+            sessionId,
+            wordKey: prev.wordKey,
+            type: 'intro',
+          });
         }
 
         if (nextWordStats !== wordStats) {
@@ -123,15 +138,8 @@ const SessionRunner: React.FC<Props> = ({ durationMinutes, onComplete }) => {
           setWordStats(nextWordStats);
         }
 
-        const elapsed = Date.now() - startedAt.current;
-        if (elapsed >= durationMs) {
-          appendSessionRecord({
-            date: Date.now(),
-            durationMinutes,
-            wordsNew: prev.wordsNew,
-            wordsReviewed: prev.wordsReviewed,
-            accuracy: newCardsDone > 0 ? newCorrectCount / newCardsDone : 0,
-          });
+        const nowElapsed = Date.now() - startedAt.current;
+        if (nowElapsed >= durationMs) {
           onComplete({
             wordsNew: prev.wordsNew,
             wordsReviewed: prev.wordsReviewed,
@@ -141,17 +149,18 @@ const SessionRunner: React.FC<Props> = ({ durationMinutes, onComplete }) => {
           return prev;
         }
 
-        const newExercisesForLastWord =
-          prev.wordKey === prev.lastWordKey && isExercise
-            ? prev.exercisesForLastWord + 1
-            : isExercise
-            ? 1
-            : prev.exercisesForLastWord;
+        const newExercisesSinceLastIntro = isExercise
+          ? prev.exercisesSinceLastIntro + 1
+          : 0;
+
+        const newLastIntroducedWordKey = !isExercise
+          ? prev.wordKey
+          : prev.lastIntroducedWordKey;
 
         const snapshot = {
-          newWordsThisSession: prev.newWordsThisSession,
-          lastWordKey: prev.wordKey,
-          exercisesForLastWord: newExercisesForLastWord,
+          lastIntroducedWordKey: newLastIntroducedWordKey,
+          exercisesSinceLastIntro: newExercisesSinceLastIntro,
+          sessionDurationMs: durationMs,
         };
 
         const { wordKey, cardType } = pickNextCard(
@@ -173,11 +182,8 @@ const SessionRunner: React.FC<Props> = ({ durationMinutes, onComplete }) => {
           wordKey,
           cardType,
           exerciseData,
-          newWordsThisSession: isNewWord
-            ? prev.newWordsThisSession + 1
-            : prev.newWordsThisSession,
-          lastWordKey: prev.wordKey,
-          exercisesForLastWord: newExercisesForLastWord,
+          lastIntroducedWordKey: isNewWord ? wordKey : newLastIntroducedWordKey,
+          exercisesSinceLastIntro: isNewWord ? 0 : newExercisesSinceLastIntro,
           cardsDone: newCardsDone,
           correctCount: newCorrectCount,
           wordsNew: isNewWord ? prev.wordsNew + 1 : prev.wordsNew,
@@ -186,16 +192,26 @@ const SessionRunner: React.FC<Props> = ({ durationMinutes, onComplete }) => {
       });
       setAnswered(null);
     },
-    [durationMinutes, durationMs, onComplete, wordStats],
+    [durationMs, onComplete, sessionId, wordStats],
   );
 
   const wordContent = sampleLearnPageContentList[runner.wordKey as SampleContentKey]?.content;
+  const progressPct = Math.min(100, (elapsed / durationMs) * 100);
 
   return (
     <div className="max-w-4xl mx-auto px-20 py-20">
-      <div className="flex justify-between items-center mb-20 text-text text-sm">
-        <span>Time left: {formatTime(timeLeft)}</span>
-        <span>Cards done: {runner.cardsDone}</span>
+      {/* Progress bar */}
+      <div className="flex items-center gap-15 mb-20">
+        <span className="text-text text-sm tabular-nums w-60">{formatTime(elapsed)}</span>
+        <div className="flex-1 h-6 bg-bg-l2 rounded-full overflow-hidden border border-brand">
+          <div
+            className="h-full bg-brand transition-all duration-1000"
+            style={{ width: `${progressPct}%` }}
+          />
+        </div>
+        <span className="text-text text-sm tabular-nums w-60 text-right">
+          {formatTime(durationMs)}
+        </span>
       </div>
 
       {runner.cardType === 'wordIntro' && wordContent && (
