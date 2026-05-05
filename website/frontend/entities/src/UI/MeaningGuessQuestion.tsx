@@ -16,6 +16,7 @@ type MeaningGuessQuestionProps = {
   needClose?: boolean;
   onClose?: () => void;
   showContent?: boolean;
+  onAnswer?: (correct: boolean) => void;
 };
 
 export const MeaningGuessQuestion: React.FC<MeaningGuessQuestionProps> = ({
@@ -24,6 +25,7 @@ export const MeaningGuessQuestion: React.FC<MeaningGuessQuestionProps> = ({
   needClose,
   onClose,
   showContent = true,
+  onAnswer,
 }) => {
   const [optionStates, setOptionStates] = useState<
     Array<{ isClicked: boolean; isCorrect: boolean }>
@@ -34,7 +36,10 @@ export const MeaningGuessQuestion: React.FC<MeaningGuessQuestionProps> = ({
     })),
   );
 
+  const isAnswered = optionStates.some((s) => s.isClicked);
+
   const handleOptionClick = (index: number) => {
+    if (isAnswered) return;
     const newOptionStates = optionStates.map((state, i) =>
       i === index
         ? {
@@ -44,6 +49,7 @@ export const MeaningGuessQuestion: React.FC<MeaningGuessQuestionProps> = ({
         : state,
     );
     setOptionStates(newOptionStates);
+    onAnswer?.(meaningBestGuessQuestion.options[index].isCorrect);
   };
 
   return meaningBestGuessQuestion ? (
@@ -59,12 +65,18 @@ export const MeaningGuessQuestion: React.FC<MeaningGuessQuestionProps> = ({
           (option: MeaningBestGuessOption, index) => (
             <div
               key={index}
-              className={`cursor-pointer border-2 rounded-lg px-40 py-10 mb-10 transition-colors duration-300 border-color7 ${
+              className={`border-2 rounded-lg px-40 py-10 mb-10 transition-colors duration-300 border-color7 ${
+                isAnswered ? 'cursor-default' : 'cursor-pointer'
+              } ${
                 optionStates[index].isClicked
                   ? optionStates[index].isCorrect
                     ? 'border-color1 bg-color2 text-white animate-bounce'
                     : 'border-color3 bg-color4 text-white animate-vibrate'
-                  : 'bg-gradient-brand hover:bg-none hover:bg-brand-2'
+                  : isAnswered
+                    ? option.isCorrect
+                      ? 'border-color1 bg-color2 text-white'
+                      : 'opacity-40'
+                    : 'bg-gradient-brand hover:bg-none hover:bg-brand-2'
               }`}
               onClick={() => handleOptionClick(index)}
             >
