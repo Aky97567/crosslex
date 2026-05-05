@@ -5,6 +5,7 @@ import {
   writeLearningRate,
   LearningRate,
 } from '@whitelotus/front-features';
+import { WordMetricsPanel } from './WordMetricsPanel';
 
 type RateOption = {
   value: LearningRate;
@@ -43,7 +44,8 @@ const SessionDashboard: React.FC<Props> = ({ onStart }) => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-20 py-40">
+    <div className="max-w-4xl mx-auto px-20 py-40 flex flex-col gap-20">
+      <WordMetricsPanel />
       <Card heading={{ level: 'h1', text: 'Start a session' }}>
         <div className="mb-30">
           <label
