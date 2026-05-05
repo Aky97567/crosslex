@@ -144,6 +144,36 @@ export const computeWordMetrics = (
   return result;
 };
 
+export const readSessionTimeout = (): number => {
+  try {
+    const raw = localStorage.getItem('crosslex:session_timeout');
+    const parsed = raw ? parseInt(raw, 10) : NaN;
+    return isNaN(parsed) || parsed < 1 ? 5 : parsed;
+  } catch {
+    return 5;
+  }
+};
+
+export const writeSessionTimeout = (minutes: number): void => {
+  try {
+    localStorage.setItem('crosslex:session_timeout', String(minutes));
+  } catch {}
+};
+
+export const readStorageUsage = (): { key: string; bytes: number }[] => {
+  const crosslexKeys = [
+    'crosslex:words_seen',
+    'crosslex:exercise_log',
+    'crosslex:learning_rate',
+    'crosslex:session_timeout',
+    'crosslex:seen_build',
+  ];
+  return crosslexKeys.map((key) => ({
+    key,
+    bytes: new Blob([localStorage.getItem(key) ?? '']).size,
+  }));
+};
+
 export const getMetricsSummary = (log: ExerciseEvent[]): MetricsSummary => {
   const metrics = computeWordMetrics(log);
   const summary: MetricsSummary = { seedPlanted: 0, familiar: 0, testReady: 0 };

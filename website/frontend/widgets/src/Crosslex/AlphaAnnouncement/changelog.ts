@@ -3,9 +3,26 @@ export type ChangelogEntry = {
   returningUser: { heading: string; body: string; changes: string[] };
 };
 
-export const CURRENT_BUILD_ID = 'alpha-2026-05-05-word-metrics';
+export const CURRENT_BUILD_ID = 'alpha-2026-05-05-settings';
 
 export const CHANGELOG: Record<string, ChangelogEntry> = {
+  'alpha-2026-05-05-settings': {
+    newUser: {
+      heading: "You're testing Crosslex Alpha",
+      body: "Crosslex is a German vocabulary trainer for B1+ learners — built for adults navigating real life in Germany. Choose a session length, pick your learning pace, and Crosslex will guide you through words and exercises. Your feedback shapes what we build next.",
+      cta: "Let's go →",
+    },
+    returningUser: {
+      heading: "You're back — something's new",
+      body: 'Settings and nav are here.',
+      changes: [
+        'New: gear icon in the top bar opens a settings panel',
+        'New: configure session timeout (default 5 minutes of inactivity)',
+        'New: storage usage breakdown in settings',
+        'Fix: advance button is now always visible in a sticky footer during sessions',
+      ],
+    },
+  },
   'alpha-2026-05-05-word-metrics': {
     newUser: {
       heading: "You're testing Crosslex Alpha",
