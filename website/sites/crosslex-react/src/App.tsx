@@ -44,7 +44,7 @@ const App: React.FC = () => {
     'bg-brand border-2 border-brand rounded-md text-text-cta px-40 py-10 transition-colors duration-300 disabled:opacity-40';
 
   return (
-    <div className="pb-130 md:pb-0">
+    <div className={`${phase === 'dashboard' ? 'pb-130' : ''} md:pb-0`}>
       <AlphaAnnouncement />
 
       {phase === 'dashboard' && (
@@ -79,14 +79,16 @@ const App: React.FC = () => {
         />
       )}
 
-      {/* Mobile footer — palette only */}
-      <footer className="fixed bottom-0 left-0 right-0 z-20 bg-bg-l2 border-t-2 border-brand md:hidden">
-        <div className="flex justify-center p-15">
-          <button onClick={() => setIsPaletteOpen(true)} className={ctaButton}>
-            Theme: {palette}
-          </button>
-        </div>
-      </footer>
+      {/* Mobile footer — palette only, dashboard only */}
+      {phase === 'dashboard' && (
+        <footer className="fixed bottom-0 left-0 right-0 z-20 bg-bg-l2 border-t-2 border-brand md:hidden">
+          <div className="flex justify-center p-15">
+            <button onClick={() => setIsPaletteOpen(true)} className={ctaButton}>
+              Theme: {palette}
+            </button>
+          </div>
+        </footer>
+      )}
 
       {/* Desktop palette switcher */}
       <div className="hidden md:flex justify-center p-20">
