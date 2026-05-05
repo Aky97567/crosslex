@@ -27,6 +27,8 @@ export {
   removeKnownWord,
   readKnownWordConfirmed,
   writeKnownWordConfirmed,
+  readFlipAnimation,
+  writeFlipAnimation,
   healWordsSeen,
 } from './sessionStorage';
 

@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ContentModule } from '@whitelotus/common-crosslex-view';
 import { renderContentModule } from './ContentModules';
+import { readFlipAnimation } from './Session';
 import { CtaText } from '@whitelotus/front-shared';
 
 interface FlipCardProps {
@@ -8,6 +9,7 @@ interface FlipCardProps {
 }
 
 const FlipCardToTarget: React.FC<FlipCardProps> = ({ content }) => {
+  const animated = readFlipAnimation();
   const [activeSection, setActiveSection] = useState<number | null>(null);
   const [animatingCardIndex, setAnimatingCardIndex] = useState<number | null>(
     null,
@@ -18,6 +20,12 @@ const FlipCardToTarget: React.FC<FlipCardProps> = ({ content }) => {
   const expandedCardRef = useRef<HTMLDivElement>(null);
 
   const handleCardClick = (index: number) => {
+    if (!animated) {
+      setActiveSection(index);
+      setShowContent(true);
+      return;
+    }
+
     const cardElement = cardRefs.current[index];
 
     if (cardElement) {
@@ -54,6 +62,7 @@ const FlipCardToTarget: React.FC<FlipCardProps> = ({ content }) => {
     }));
 
   useEffect(() => {
+    if (!animated || activeSection === null || !expandedCardRef.current || !clickedCardRect) return;
     if (activeSection !== null && expandedCardRef.current && clickedCardRect) {
       const expandedCard = expandedCardRef.current;
       expandedCard.style.position = 'fixed';
@@ -101,7 +110,9 @@ const FlipCardToTarget: React.FC<FlipCardProps> = ({ content }) => {
       {activeSection !== null && (
         <div
           ref={expandedCardRef}
-          className="fixed z-30 bg-transparent rounded-lg shadow-xl overflow-auto p-10 flex items-center justify-center"
+          className={`fixed z-30 rounded-lg shadow-xl overflow-auto p-10 flex items-center justify-center ${
+            animated ? 'bg-transparent' : 'inset-0 bg-bg-l1'
+          }`}
         >
           <div className={`px-40 text-center}`}>
             {sections[activeSection].content}

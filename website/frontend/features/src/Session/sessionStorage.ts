@@ -204,6 +204,20 @@ export const removeKnownWord = (wordKey: string): void => {
   } catch {}
 };
 
+export const readFlipAnimation = (): boolean => {
+  try {
+    return localStorage.getItem('crosslex:flip_animation') === 'true';
+  } catch {
+    return false;
+  }
+};
+
+export const writeFlipAnimation = (enabled: boolean): void => {
+  try {
+    localStorage.setItem('crosslex:flip_animation', String(enabled));
+  } catch {}
+};
+
 export const readKnownWordConfirmed = (): boolean => {
   try {
     return localStorage.getItem('crosslex:known_word_confirmed') === 'true';

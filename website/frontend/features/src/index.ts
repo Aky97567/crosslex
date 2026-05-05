@@ -38,6 +38,8 @@ export {
   removeKnownWord,
   readKnownWordConfirmed,
   writeKnownWordConfirmed,
+  readFlipAnimation,
+  writeFlipAnimation,
   healWordsSeen,
   pickNextCard,
   generateExerciseData,
