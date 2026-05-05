@@ -4,7 +4,6 @@ import {
   readLearningRate,
   writeLearningRate,
   LearningRate,
-  RATE_CONFIG,
 } from '@whitelotus/front-features';
 
 type RateOption = {
@@ -43,8 +42,6 @@ const SessionDashboard: React.FC<Props> = ({ onStart }) => {
     setDuration(isNaN(parsed) || parsed < 1 ? 1 : parsed);
   };
 
-  const config = RATE_CONFIG[rate];
-
   return (
     <div className="max-w-4xl mx-auto px-20 py-40">
       <Card heading={{ level: 'h1', text: 'Start a session' }}>
@@ -82,12 +79,6 @@ const SessionDashboard: React.FC<Props> = ({ onStart }) => {
               </button>
             ))}
           </div>
-          {rate !== 'review' && (
-            <p className="text-text text-sm mt-15 opacity-70">
-              Up to {config.maxNewWordsPerSession} new{' '}
-              {config.maxNewWordsPerSession === 1 ? 'word' : 'words'} introduced per session
-            </p>
-          )}
         </div>
 
         <button className={ctaButton} onClick={() => onStart(duration)}>

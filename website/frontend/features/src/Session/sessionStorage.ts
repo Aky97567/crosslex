@@ -1,15 +1,14 @@
 export type LearningRate = 'review' | 'easy' | 'balanced' | 'intensive';
 
 export type RateConfig = {
-  maxNewWordsPerSession: number;
-  minExercisesPerWord: number;
+  newWordProbability: number;
 };
 
 export const RATE_CONFIG: Record<LearningRate, RateConfig> = {
-  review:    { maxNewWordsPerSession: 0, minExercisesPerWord: 1 },
-  easy:      { maxNewWordsPerSession: 1, minExercisesPerWord: 1 },
-  balanced:  { maxNewWordsPerSession: 3, minExercisesPerWord: 1 },
-  intensive: { maxNewWordsPerSession: 5, minExercisesPerWord: 1 },
+  review:    { newWordProbability: 0 },
+  easy:      { newWordProbability: 0.1 },
+  balanced:  { newWordProbability: 0.25 },
+  intensive: { newWordProbability: 0.5 },
 };
 
 export type WordStats = {
@@ -20,17 +19,18 @@ export type WordStats = {
 
 export type WordsSeenStore = Record<string, WordStats>;
 
-export type SessionRecord = {
-  date: number;
-  durationMinutes: number;
-  wordsNew: number;
-  wordsReviewed: number;
-  accuracy: number;
+export type ExerciseEvent = {
+  ts: number;
+  sessionId: number;
+  wordKey: string;
+  type: 'intro' | 'exercise';
+  exerciseType?: 'meaningGuess' | 'contextBlank' | 'wordDefinition';
+  correct?: boolean;
 };
 
 const KEYS = {
   wordsSeen: 'crosslex:words_seen',
-  sessionHistory: 'crosslex:session_history',
+  exerciseLog: 'crosslex:exercise_log',
   learningRate: 'crosslex:learning_rate',
 } as const;
 
@@ -86,11 +86,20 @@ export const writeLearningRate = (rate: LearningRate): void => {
   } catch {}
 };
 
-export const appendSessionRecord = (record: SessionRecord): void => {
+export const appendExerciseEvent = (event: ExerciseEvent): void => {
   try {
-    const raw = localStorage.getItem(KEYS.sessionHistory);
-    const history: SessionRecord[] = raw ? (JSON.parse(raw) as SessionRecord[]) : [];
-    history.push(record);
-    localStorage.setItem(KEYS.sessionHistory, JSON.stringify(history));
+    const raw = localStorage.getItem(KEYS.exerciseLog);
+    const log: ExerciseEvent[] = raw ? (JSON.parse(raw) as ExerciseEvent[]) : [];
+    log.push(event);
+    localStorage.setItem(KEYS.exerciseLog, JSON.stringify(log));
   } catch {}
+};
+
+export const readExerciseLog = (): ExerciseEvent[] => {
+  try {
+    const raw = localStorage.getItem(KEYS.exerciseLog);
+    return raw ? (JSON.parse(raw) as ExerciseEvent[]) : [];
+  } catch {
+    return [];
+  }
 };

@@ -18,6 +18,7 @@ type SessionStats = {
 const App: React.FC = () => {
   const [phase, setPhase] = useState<AppPhase>('dashboard');
   const [durationMinutes, setDurationMinutes] = useState(30);
+  const [sessionId, setSessionId] = useState(0);
   const [sessionStats, setSessionStats] = useState<SessionStats | null>(null);
   const [palette, setPalette] = useState<Palette>(getInitialPalette);
   const [isPaletteOpen, setIsPaletteOpen] = useState(false);
@@ -28,6 +29,7 @@ const App: React.FC = () => {
 
   const handleStart = (minutes: number) => {
     setDurationMinutes(minutes);
+    setSessionId(Date.now());
     setPhase('running');
   };
 
@@ -49,7 +51,8 @@ const App: React.FC = () => {
 
       {phase === 'running' && (
         <SessionRunner
-          key={durationMinutes}
+          key={sessionId}
+          sessionId={sessionId}
           durationMinutes={durationMinutes}
           onComplete={handleComplete}
         />

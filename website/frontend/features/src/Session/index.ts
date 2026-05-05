@@ -1,4 +1,10 @@
-export type { LearningRate, RateConfig, WordStats, WordsSeenStore, SessionRecord } from './sessionStorage';
+export type {
+  LearningRate,
+  RateConfig,
+  WordStats,
+  WordsSeenStore,
+  ExerciseEvent,
+} from './sessionStorage';
 export {
   RATE_CONFIG,
   readWordsSeen,
@@ -7,7 +13,8 @@ export {
   seedWordStats,
   readLearningRate,
   writeLearningRate,
-  appendSessionRecord,
+  appendExerciseEvent,
+  readExerciseLog,
 } from './sessionStorage';
 
 export type { CardType, SessionSnapshot, ExerciseData } from './sessionAlgorithm';

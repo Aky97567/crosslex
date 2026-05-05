@@ -3,16 +3,15 @@ import {
   WordContextModule,
   MeaningGuessQuestionModule,
 } from '@whitelotus/common-crosslex-view';
-import { ContextBlankQuestionData } from '@whitelotus/front-entities';
-import { WordDefinitionQuestionData } from '@whitelotus/front-entities';
+import { ContextBlankQuestionData, WordDefinitionQuestionData } from '@whitelotus/front-entities';
 import { LearningRate, RATE_CONFIG, WordsSeenStore } from './sessionStorage';
 
 export type CardType = 'wordIntro' | 'meaningGuess' | 'contextBlank' | 'wordDefinition';
 
 export type SessionSnapshot = {
-  newWordsThisSession: number;
-  lastWordKey: string | null;
-  exercisesForLastWord: number;
+  lastIntroducedWordKey: string | null;
+  exercisesSinceLastIntro: number;
+  sessionDurationMs: number;
 };
 
 type WordData = {
@@ -79,37 +78,37 @@ export const pickNextCard = (
   learningRate: LearningRate,
   wordData: WordDataMap,
 ): { wordKey: string; cardType: CardType } => {
-  const { maxNewWordsPerSession, minExercisesPerWord } = RATE_CONFIG[learningRate];
+  const { newWordProbability } = RATE_CONFIG[learningRate];
   const unseenKeys = allWordKeys.filter((k) => !wordStats[k]);
   const seenKeys = allWordKeys.filter((k) => !!wordStats[k]);
 
-  const canShowNewWord =
-    maxNewWordsPerSession > 0 &&
-    session.newWordsThisSession < maxNewWordsPerSession &&
-    (session.lastWordKey === null || session.exercisesForLastWord >= minExercisesPerWord) &&
-    unseenKeys.length > 0;
+  // Cold start — pool is empty
+  if (seenKeys.length === 0) {
+    const key = unseenKeys.length > 0 ? pickRandom(unseenKeys) : pickRandom(allWordKeys);
+    return { wordKey: key, cardType: 'wordIntro' };
+  }
 
-  if (canShowNewWord) {
+  // Guarantee the [intro → quiz] unit
+  if (session.exercisesSinceLastIntro === 0 && session.lastIntroducedWordKey !== null) {
+    const types = availableExerciseTypes(session.lastIntroducedWordKey, wordData);
+    return { wordKey: session.lastIntroducedWordKey, cardType: pickRandom(types) };
+  }
+
+  // Coin flip: introduce a new word?
+  if (unseenKeys.length > 0 && Math.random() < newWordProbability) {
     return { wordKey: pickRandom(unseenKeys), cardType: 'wordIntro' };
   }
 
-  if (seenKeys.length === 0) {
-    const fallbackKey = pickRandom(allWordKeys);
-    return { wordKey: fallbackKey, cardType: 'wordIntro' };
-  }
-
+  // Weighted random exercise from pool
   const now = Date.now();
   const weights = seenKeys.map((k) => {
     const stats = wordStats[k];
-    const age = now - stats.lastSeen;
-    const timeBonus = age < 3_600_000 ? 0 : age < 86_400_000 ? 0.3 : 0.6;
-    return Math.max(0.01, (1 - stats.accuracy) + timeBonus);
+    const recency = (now - stats.lastSeen) / Math.max(session.sessionDurationMs, 1);
+    return Math.max(0.01, (1 - stats.accuracy) + recency);
   });
 
   const wordKey = pickWeightedRandom(seenKeys, weights);
-  const types = availableExerciseTypes(wordKey, wordData);
-  const cardType = pickRandom(types);
-
+  const cardType = pickRandom(availableExerciseTypes(wordKey, wordData));
   return { wordKey, cardType };
 };
 
@@ -139,42 +138,42 @@ export const generateExerciseData = (
     if (!mod || !intro) return null;
 
     const wordText = intro.word;
-    const regex = new RegExp(wordText, 'i');
-    const sentence = mod.paragraphWithUsage.replace(regex, '___');
+    const sentence = mod.paragraphWithUsage.replace(new RegExp(wordText, 'i'), '___');
     if (!sentence.includes('___')) return null;
 
-    const distractorKeys = allWordKeys
+    const distractors = allWordKeys
       .filter((k) => k !== wordKey)
       .sort(() => Math.random() - 0.5)
-      .slice(0, 3);
-
-    const distractors = distractorKeys
+      .slice(0, 3)
       .map((k) => getWordIntroModule(wordData[k])?.word)
       .filter((w): w is string => !!w)
       .map((text) => ({ text, isCorrect: false }));
 
-    const options = shuffle([{ text: wordText, isCorrect: true }, ...distractors]);
-    return { cardType: 'contextBlank', data: { sentence, options } };
+    return {
+      cardType: 'contextBlank',
+      data: { sentence, options: shuffle([{ text: wordText, isCorrect: true }, ...distractors]) },
+    };
   }
 
   if (cardType === 'wordDefinition') {
     const intro = getWordIntroModule(word);
     if (!intro) return null;
 
-    const distractorKeys = allWordKeys
+    const distractors = allWordKeys
       .filter((k) => k !== wordKey)
       .sort(() => Math.random() - 0.5)
-      .slice(0, 3);
-
-    const distractors = distractorKeys
+      .slice(0, 3)
       .map((k) => getWordIntroModule(wordData[k])?.translation)
       .filter((t): t is string => !!t)
       .map((text) => ({ text, isCorrect: false }));
 
-    const options = shuffle([{ text: intro.translation, isCorrect: true }, ...distractors]);
     return {
       cardType: 'wordDefinition',
-      data: { word: intro.word, article: intro.article ?? undefined, options },
+      data: {
+        word: intro.word,
+        article: intro.article ?? undefined,
+        options: shuffle([{ text: intro.translation, isCorrect: true }, ...distractors]),
+      },
     };
   }
 
