@@ -22,6 +22,11 @@ export {
   readSessionTimeout,
   writeSessionTimeout,
   readStorageUsage,
+  readKnownWords,
+  addKnownWord,
+  removeKnownWord,
+  readKnownWordConfirmed,
+  writeKnownWordConfirmed,
 } from './sessionStorage';
 
 export type { CardType, SessionSnapshot, ExerciseData } from './sessionAlgorithm';
