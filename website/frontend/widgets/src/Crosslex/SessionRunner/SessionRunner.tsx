@@ -207,28 +207,20 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
     ? sampleLearnPageContentList[reviewWordKey as SampleContentKey]?.content
     : null;
 
-  const exerciseNextButton = (
-    answered !== null &&
-    reviewContent === null && (
-      <div className="flex justify-center mt-20">
-        <button
-          className={nextButton}
-          onClick={() => {
-            if (answered === false) {
-              setReviewWordKey(runner.wordKey);
-            } else {
-              advance(answered);
-            }
-          }}
-        >
-          {answered === false ? 'Review word →' : 'Next →'}
-        </button>
-      </div>
-    )
-  );
+  type FooterAction = { label: string; onClick: () => void };
+  const footerAction: FooterAction | null = reviewContent
+    ? { label: 'Got it →', onClick: () => advance(false) }
+    : runner.cardType === 'wordIntro'
+    ? { label: 'Got it →', onClick: () => advance(null) }
+    : answered !== null
+    ? {
+        label: answered === false ? 'Review word →' : 'Next →',
+        onClick: () => (answered === false ? setReviewWordKey(runner.wordKey) : advance(answered)),
+      }
+    : null;
 
   return (
-    <div className="max-w-4xl mx-auto px-20 py-20">
+    <div className="max-w-4xl mx-auto px-20 py-20 pb-80">
       <div className="flex items-center gap-15 mb-20">
         <span className="text-text text-sm tabular-nums w-60">{formatTime(elapsed)}</span>
         <div className="flex-1 h-6 bg-bg-l2 rounded-full overflow-hidden border border-brand">
@@ -251,11 +243,6 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
               </React.Fragment>
             ))}
           </div>
-          <div className="flex justify-center mt-20 pb-40">
-            <button className={nextButton} onClick={() => advance(false)}>
-              Got it →
-            </button>
-          </div>
         </div>
       ) : (
         <>
@@ -268,53 +255,49 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
                   </React.Fragment>
                 ))}
               </div>
-              <div className="flex justify-center mt-20 pb-40">
-                <button className={nextButton} onClick={() => advance(null)}>
-                  Got it →
-                </button>
-              </div>
             </div>
           )}
 
           {runner.cardType === 'meaningGuess' &&
             runner.exerciseData?.cardType === 'meaningGuess' && (
-              <div>
-                <MeaningGuessQuestion
-                  key={runner.cardKey}
-                  heading={{ text: 'Guess the Meaning' }}
-                  meaningBestGuessQuestion={runner.exerciseData.data}
-                  onAnswer={(correct) => setAnswered(correct)}
-                />
-                {exerciseNextButton}
-              </div>
+              <MeaningGuessQuestion
+                key={runner.cardKey}
+                heading={{ text: 'Guess the Meaning' }}
+                meaningBestGuessQuestion={runner.exerciseData.data}
+                onAnswer={(correct) => setAnswered(correct)}
+              />
             )}
 
           {runner.cardType === 'contextBlank' &&
             runner.exerciseData?.cardType === 'contextBlank' && (
-              <div>
-                <ContextBlankQuestion
-                  key={runner.cardKey}
-                  heading={{ text: 'Fill in the Blank' }}
-                  contextBlankQuestion={runner.exerciseData.data}
-                  onAnswer={(correct) => setAnswered(correct)}
-                />
-                {exerciseNextButton}
-              </div>
+              <ContextBlankQuestion
+                key={runner.cardKey}
+                heading={{ text: 'Fill in the Blank' }}
+                contextBlankQuestion={runner.exerciseData.data}
+                onAnswer={(correct) => setAnswered(correct)}
+              />
             )}
 
           {runner.cardType === 'wordDefinition' &&
             runner.exerciseData?.cardType === 'wordDefinition' && (
-              <div>
-                <WordDefinitionQuestion
-                  key={runner.cardKey}
-                  heading={{ text: 'What does this mean?' }}
-                  wordDefinitionQuestion={runner.exerciseData.data}
-                  onAnswer={(correct) => setAnswered(correct)}
-                />
-                {exerciseNextButton}
-              </div>
+              <WordDefinitionQuestion
+                key={runner.cardKey}
+                heading={{ text: 'What does this mean?' }}
+                wordDefinitionQuestion={runner.exerciseData.data}
+                onAnswer={(correct) => setAnswered(correct)}
+              />
             )}
         </>
+      )}
+
+      {footerAction && (
+        <div className="fixed bottom-0 left-0 right-0 bg-bg-l1 border-t-2 border-brand py-15 px-20">
+          <div className="max-w-4xl mx-auto flex justify-center">
+            <button className={nextButton} onClick={footerAction.onClick}>
+              {footerAction.label}
+            </button>
+          </div>
+        </div>
       )}
     </div>
   );
