@@ -177,4 +177,26 @@ frontend/widgets/src/Crosslex/
 └── SessionComplete/SessionComplete.tsx    ← end-of-session summary
 ```
 
+**Exercise UX rules (as of alpha-2026-05-05-session-polish):**
+- After any option is selected, all options lock (no reattempts)
+- The correct option is highlighted green for all exercise types
+- Wrong answer → button reads "Review word →"; clicking shows the full word learn page; "Got it →" advances to the next card and records the answer as incorrect
+- `contextBlank` blanks **all** occurrences of the target word (`gi` regex flag), and the blank always fills with the correct word after answering
+
 **Cutting a new build with this feature live:** bump `CURRENT_BUILD_ID` in `AlphaAnnouncement/changelog.ts` and add a changelog entry.
+
+---
+
+## Roadmap TODOs
+
+Pending features, in rough priority order:
+
+1. **Word metrics dashboard** — use `crosslex:exercise_log` to surface per-word readiness:
+   - Seed planted: word has been introduced (intro event exists)
+   - Familiar: ≥ 2 correct exercise answers
+   - Test-ready: ≥ 4 correct answers with the last 2–3 also correct
+   - Show counts of words at each level on the session dashboard or a separate screen
+
+2. **FSD audit of `feat/session-loop`** — review all new files against layer rules before merging further work on top of this branch
+
+3. **Storybook stories for exercise entities** — `MeaningGuessQuestion`, `ContextBlankQuestion`, `WordDefinitionQuestion` all have new answered/locked state that should be covered

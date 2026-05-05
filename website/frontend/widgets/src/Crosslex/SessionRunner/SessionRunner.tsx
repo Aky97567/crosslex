@@ -81,6 +81,7 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
   const [wordStats, setWordStats] = useState<WordsSeenStore>(() => readWordsSeen());
   const [elapsed, setElapsed] = useState(0);
   const [answered, setAnswered] = useState<boolean | null>(null);
+  const [reviewWordKey, setReviewWordKey] = useState<string | null>(null);
 
   const initialCard = useRef(buildInitialCard(wordStats, learningRate.current, durationMs));
 
@@ -194,12 +195,37 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
         };
       });
       setAnswered(null);
+      setReviewWordKey(null);
     },
     [durationMs, onComplete, sessionId, wordStats],
   );
 
   const wordContent = sampleLearnPageContentList[runner.wordKey as SampleContentKey]?.content;
   const progressPct = Math.min(100, (elapsed / durationMs) * 100);
+
+  const reviewContent = reviewWordKey
+    ? sampleLearnPageContentList[reviewWordKey as SampleContentKey]?.content
+    : null;
+
+  const exerciseNextButton = (
+    answered !== null &&
+    reviewContent === null && (
+      <div className="flex justify-center mt-20">
+        <button
+          className={nextButton}
+          onClick={() => {
+            if (answered === false) {
+              setReviewWordKey(runner.wordKey);
+            } else {
+              advance(answered);
+            }
+          }}
+        >
+          {answered === false ? 'Review word →' : 'Next →'}
+        </button>
+      </div>
+    )
+  );
 
   return (
     <div className="max-w-4xl mx-auto px-20 py-20">
@@ -216,79 +242,80 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
         </span>
       </div>
 
-      {runner.cardType === 'wordIntro' && wordContent && (
-        <div key={runner.cardKey}>
+      {reviewContent ? (
+        <div key={`review-${reviewWordKey}`}>
           <div className="bg-bg-l1 space-y-10">
-            {wordContent.modules.map((module, index) => (
+            {reviewContent.modules.map((module, index) => (
               <React.Fragment key={index}>
                 {renderContentModule({ module })}
               </React.Fragment>
             ))}
           </div>
           <div className="flex justify-center mt-20 pb-40">
-            <button className={nextButton} onClick={() => advance(null)}>
+            <button className={nextButton} onClick={() => advance(false)}>
               Got it →
             </button>
           </div>
         </div>
+      ) : (
+        <>
+          {runner.cardType === 'wordIntro' && wordContent && (
+            <div key={runner.cardKey}>
+              <div className="bg-bg-l1 space-y-10">
+                {wordContent.modules.map((module, index) => (
+                  <React.Fragment key={index}>
+                    {renderContentModule({ module })}
+                  </React.Fragment>
+                ))}
+              </div>
+              <div className="flex justify-center mt-20 pb-40">
+                <button className={nextButton} onClick={() => advance(null)}>
+                  Got it →
+                </button>
+              </div>
+            </div>
+          )}
+
+          {runner.cardType === 'meaningGuess' &&
+            runner.exerciseData?.cardType === 'meaningGuess' && (
+              <div>
+                <MeaningGuessQuestion
+                  key={runner.cardKey}
+                  heading={{ text: 'Guess the Meaning' }}
+                  meaningBestGuessQuestion={runner.exerciseData.data}
+                  onAnswer={(correct) => setAnswered(correct)}
+                />
+                {exerciseNextButton}
+              </div>
+            )}
+
+          {runner.cardType === 'contextBlank' &&
+            runner.exerciseData?.cardType === 'contextBlank' && (
+              <div>
+                <ContextBlankQuestion
+                  key={runner.cardKey}
+                  heading={{ text: 'Fill in the Blank' }}
+                  contextBlankQuestion={runner.exerciseData.data}
+                  onAnswer={(correct) => setAnswered(correct)}
+                />
+                {exerciseNextButton}
+              </div>
+            )}
+
+          {runner.cardType === 'wordDefinition' &&
+            runner.exerciseData?.cardType === 'wordDefinition' && (
+              <div>
+                <WordDefinitionQuestion
+                  key={runner.cardKey}
+                  heading={{ text: 'What does this mean?' }}
+                  wordDefinitionQuestion={runner.exerciseData.data}
+                  onAnswer={(correct) => setAnswered(correct)}
+                />
+                {exerciseNextButton}
+              </div>
+            )}
+        </>
       )}
-
-      {runner.cardType === 'meaningGuess' &&
-        runner.exerciseData?.cardType === 'meaningGuess' && (
-          <div>
-            <MeaningGuessQuestion
-              key={runner.cardKey}
-              heading={{ text: 'Guess the Meaning' }}
-              meaningBestGuessQuestion={runner.exerciseData.data}
-              onAnswer={(correct) => setAnswered(correct)}
-            />
-            {answered !== null && (
-              <div className="flex justify-center mt-20">
-                <button className={nextButton} onClick={() => advance(answered)}>
-                  Next →
-                </button>
-              </div>
-            )}
-          </div>
-        )}
-
-      {runner.cardType === 'contextBlank' &&
-        runner.exerciseData?.cardType === 'contextBlank' && (
-          <div>
-            <ContextBlankQuestion
-              key={runner.cardKey}
-              heading={{ text: 'Fill in the Blank' }}
-              contextBlankQuestion={runner.exerciseData.data}
-              onAnswer={(correct) => setAnswered(correct)}
-            />
-            {answered !== null && (
-              <div className="flex justify-center mt-20">
-                <button className={nextButton} onClick={() => advance(answered)}>
-                  Next →
-                </button>
-              </div>
-            )}
-          </div>
-        )}
-
-      {runner.cardType === 'wordDefinition' &&
-        runner.exerciseData?.cardType === 'wordDefinition' && (
-          <div>
-            <WordDefinitionQuestion
-              key={runner.cardKey}
-              heading={{ text: 'What does this mean?' }}
-              wordDefinitionQuestion={runner.exerciseData.data}
-              onAnswer={(correct) => setAnswered(correct)}
-            />
-            {answered !== null && (
-              <div className="flex justify-center mt-20">
-                <button className={nextButton} onClick={() => advance(answered)}>
-                  Next →
-                </button>
-              </div>
-            )}
-          </div>
-        )}
     </div>
   );
 };

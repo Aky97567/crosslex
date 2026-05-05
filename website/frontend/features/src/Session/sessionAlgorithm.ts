@@ -141,7 +141,7 @@ export const generateExerciseData = (
     if (!mod || !intro) return null;
 
     const wordText = intro.word;
-    const sentence = mod.paragraphWithUsage.replace(new RegExp(wordText, 'i'), '___');
+    const sentence = mod.paragraphWithUsage.replace(new RegExp(wordText, 'gi'), '___');
     if (!sentence.includes('___')) return null;
 
     const distractors = allWordKeys
