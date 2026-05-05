@@ -12,8 +12,6 @@ export const uebertragen: LearnPageContent = {
         translation: 'to transfer, transmit, broadcast',
         partOfSpeech: 'verb',
         level: ['B1'],
-        representativeImageUrl:
-          'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
       },
       {
         moduleType: 'wordMeaning',
@@ -83,15 +81,11 @@ export const uebertragen: LearnPageContent = {
             id: 1,
             content:
               "'Über' means over and 'tragen' means carry – to übertragen is to carry something over to the other side.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
           {
             id: 2,
             content:
               "Picture a relay race: the runner carries (trägt) the baton over (über) to the next person.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
         ],
       },

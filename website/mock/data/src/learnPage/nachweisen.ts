@@ -12,8 +12,6 @@ export const nachweisen: LearnPageContent = {
         translation: 'to prove, demonstrate, show evidence',
         partOfSpeech: 'verb',
         level: ['B1'],
-        representativeImageUrl:
-          'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
       },
       {
         moduleType: 'wordMeaning',
@@ -84,15 +82,11 @@ export const nachweisen: LearnPageContent = {
             id: 1,
             content:
               "'Nach' + 'weisen' – to show (weisen) what comes after (nach) a claim: your evidence.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
           {
             id: 2,
             content:
               "Imagine a detective pointing out (weisen) what happened afterwards (nach) to prove the case.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
         ],
       },

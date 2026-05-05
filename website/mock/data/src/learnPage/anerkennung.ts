@@ -12,8 +12,6 @@ export const anerkennung: LearnPageContent = {
         translation: 'recognition, acknowledgement',
         partOfSpeech: 'noun',
         level: ['B1'],
-        representativeImageUrl:
-          'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
       },
       {
         moduleType: 'wordMeaning',
@@ -83,15 +81,11 @@ export const anerkennung: LearnPageContent = {
             id: 1,
             content:
               "'An-erkennung' — to 'recognize' (erkennen) something 'at' (an) the official level. Germany officially recognizes your qualification.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
           {
             id: 2,
             content:
               "Think of 'acknowledge' — Anerkennung is the formal acknowledgement that your foreign skills count here.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
         ],
       },

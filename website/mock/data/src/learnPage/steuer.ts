@@ -12,8 +12,6 @@ export const steuer: LearnPageContent = {
         translation: 'tax',
         partOfSpeech: 'noun',
         level: ['B1'],
-        representativeImageUrl:
-          'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
       },
       {
         moduleType: 'wordMeaning',
@@ -83,15 +81,11 @@ export const steuer: LearnPageContent = {
             id: 1,
             content:
               "'Steuer' rhymes with 'teuer' (expensive) — and indeed, taxes can feel very teuer.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
           {
             id: 2,
             content:
               "Think of 'steward' — the state acts as a steward of your Steuer, redistributing it for public services.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
         ],
       },

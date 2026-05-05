@@ -12,8 +12,6 @@ export const termin: LearnPageContent = {
         translation: 'appointment, date',
         partOfSpeech: 'noun',
         level: ['B1'],
-        representativeImageUrl:
-          'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
       },
       {
         moduleType: 'wordMeaning',
@@ -83,15 +81,11 @@ export const termin: LearnPageContent = {
             id: 1,
             content:
               "Think of 'terminal' — a fixed point where you must arrive. A Termin is your fixed arrival point in the calendar.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
           {
             id: 2,
             content:
               "'Termin' sounds like 'termination' — the moment where your free schedule terminates and the appointment begins.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
         ],
       },

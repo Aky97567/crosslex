@@ -12,8 +12,6 @@ export const widerspruch: LearnPageContent = {
         translation: 'objection, appeal, contradiction',
         partOfSpeech: 'noun',
         level: ['B1'],
-        representativeImageUrl:
-          'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
       },
       {
         moduleType: 'wordMeaning',
@@ -83,15 +81,11 @@ export const widerspruch: LearnPageContent = {
             id: 1,
             content:
               "'Wider' = against, 'Spruch' = saying/verdict. A Widerspruch is your saying-against — your official pushback.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
           {
             id: 2,
             content:
               "Think of 'witherspoon' — you stand your ground (wider) and speak (spruch) like a courtroom actor.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
         ],
       },

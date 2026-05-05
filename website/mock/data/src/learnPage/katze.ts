@@ -12,7 +12,6 @@ export const katze: LearnPageContent = {
         translation: 'cat',
         partOfSpeech: 'noun',
         level: ['A1'],
-        representativeImageUrl: 'https://picsum.photos/300/200',
       },
       {
         moduleType: 'wordMeaning',
@@ -72,7 +71,6 @@ export const katze: LearnPageContent = {
           {
             id: 1,
             content: "Imagine a cat ('Katze') sitting on a mat.",
-            imageUrl: 'https://picsum.photos/300/200',
           },
         ],
       },

@@ -12,8 +12,6 @@ export const anspruch: LearnPageContent = {
         translation: 'claim, entitlement, right',
         partOfSpeech: 'noun',
         level: ['B1'],
-        representativeImageUrl:
-          'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
       },
       {
         moduleType: 'wordMeaning',
@@ -83,15 +81,11 @@ export const anspruch: LearnPageContent = {
             id: 1,
             content:
               "'An' + 'Spruch' (from sprechen = to speak) – you speak up (an-sprechen) to assert your claim.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
           {
             id: 2,
             content:
               "Think of 'Anspruch' as your personal speech act: you announce your right by speaking it out loud.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
         ],
       },

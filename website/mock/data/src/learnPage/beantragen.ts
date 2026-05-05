@@ -12,8 +12,6 @@ export const beantragen: LearnPageContent = {
         translation: 'to apply for',
         partOfSpeech: 'verb',
         level: ['B1'],
-        representativeImageUrl:
-          'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
       },
       {
         moduleType: 'wordMeaning',
@@ -83,15 +81,11 @@ export const beantragen: LearnPageContent = {
             id: 1,
             content:
               "'Beantragen' contains 'tragen' (to carry) – you carry your application to the office.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
           {
             id: 2,
             content:
               "Think of 'bean' + 'tragen': you bring a bag of beans (your documents) to formally apply.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
         ],
       },

@@ -12,7 +12,6 @@ export const auto: LearnPageContent = {
         translation: 'car',
         partOfSpeech: 'noun',
         level: ['A1'],
-        representativeImageUrl: 'https://picsum.photos/300/200',
       },
       {
         moduleType: 'wordMeaning',
@@ -80,7 +79,6 @@ export const auto: LearnPageContent = {
           {
             id: 1,
             content: "Think of 'Auto' as 'automobile' in English.",
-            imageUrl: 'https://picsum.photos/300/200',
           },
         ],
       },
