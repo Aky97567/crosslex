@@ -38,6 +38,7 @@ export {
   removeKnownWord,
   readKnownWordConfirmed,
   writeKnownWordConfirmed,
+  healWordsSeen,
   pickNextCard,
   generateExerciseData,
   generateExerciseDataSafe,
