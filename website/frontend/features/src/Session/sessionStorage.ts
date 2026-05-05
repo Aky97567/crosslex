@@ -103,3 +103,52 @@ export const readExerciseLog = (): ExerciseEvent[] => {
     return [];
   }
 };
+
+export type WordReadiness = 'testReady' | 'familiar' | 'seedPlanted';
+
+export type MetricsSummary = {
+  seedPlanted: number;
+  familiar: number;
+  testReady: number;
+};
+
+export const computeWordMetrics = (
+  log: ExerciseEvent[],
+): Record<string, WordReadiness> => {
+  const introduced = new Set<string>();
+  const exercisesByWord: Record<string, ExerciseEvent[]> = {};
+
+  for (const event of log) {
+    if (event.type === 'intro') {
+      introduced.add(event.wordKey);
+    } else {
+      (exercisesByWord[event.wordKey] ??= []).push(event);
+    }
+  }
+
+  const result: Record<string, WordReadiness> = {};
+  for (const wordKey of introduced) {
+    const exercises = exercisesByWord[wordKey] ?? [];
+    const correctCount = exercises.filter((e) => e.correct).length;
+    const lastTwo = exercises.slice(-2);
+    const lastTwoCorrect = lastTwo.length === 2 && lastTwo.every((e) => e.correct);
+
+    if (correctCount >= 4 && lastTwoCorrect) {
+      result[wordKey] = 'testReady';
+    } else if (correctCount >= 2) {
+      result[wordKey] = 'familiar';
+    } else {
+      result[wordKey] = 'seedPlanted';
+    }
+  }
+  return result;
+};
+
+export const getMetricsSummary = (log: ExerciseEvent[]): MetricsSummary => {
+  const metrics = computeWordMetrics(log);
+  const summary: MetricsSummary = { seedPlanted: 0, familiar: 0, testReady: 0 };
+  for (const level of Object.values(metrics)) {
+    summary[level] += 1;
+  }
+  return summary;
+};
