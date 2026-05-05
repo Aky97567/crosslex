@@ -4,7 +4,7 @@ import {
   getInitialPalette,
   Palette,
 } from '@whitelotus/front-features';
-import { AlphaAnnouncement, SessionDashboard, SessionRunner, SessionComplete } from '@whitelotus/front-widgets';
+import { AlphaAnnouncement, SessionDashboard, SessionRunner, SessionComplete, AppNav, SettingsPanel, NotificationsDrawer } from '@whitelotus/front-widgets';
 
 type AppPhase = 'dashboard' | 'running' | 'complete';
 
@@ -22,6 +22,8 @@ const App: React.FC = () => {
   const [sessionStats, setSessionStats] = useState<SessionStats | null>(null);
   const [palette, setPalette] = useState<Palette>(getInitialPalette);
   const [isPaletteOpen, setIsPaletteOpen] = useState(false);
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-palette', palette);
@@ -46,7 +48,19 @@ const App: React.FC = () => {
       <AlphaAnnouncement />
 
       {phase === 'dashboard' && (
-        <SessionDashboard onStart={handleStart} />
+        <AppNav
+          onBellClick={() => setIsNotificationsOpen(true)}
+          onGearClick={() => setIsSettingsOpen(true)}
+        />
+      )}
+
+      <SettingsPanel isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />
+      <NotificationsDrawer isOpen={isNotificationsOpen} onClose={() => setIsNotificationsOpen(false)} />
+
+      {phase === 'dashboard' && (
+        <div className="pt-50">
+          <SessionDashboard onStart={handleStart} />
+        </div>
       )}
 
       {phase === 'running' && (
