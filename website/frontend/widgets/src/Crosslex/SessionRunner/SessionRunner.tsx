@@ -19,6 +19,7 @@ import {
   addKnownWord,
   readKnownWordConfirmed,
   writeKnownWordConfirmed,
+  readSessionTimeout,
   WordsSeenStore,
   CardType,
   ExerciseData,
@@ -89,6 +90,9 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
   const startedAt = useRef(Date.now());
   const learningRate = useRef(readLearningRate());
 
+  const sessionTimeoutMs = useRef(readSessionTimeout() * 60 * 1000);
+  const inactivityTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const [wordStats, setWordStats] = useState<WordsSeenStore>(() => readWordsSeen());
   const [elapsed, setElapsed] = useState(0);
   const [answered, setAnswered] = useState<boolean | null>(null);
@@ -97,8 +101,7 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
 
   const initialCard = useRef(buildInitialCard(wordStats, learningRate.current, durationMs));
 
-  const [runner, setRunner] = useState<RunnerState>(() => {
-    const card = initialCard.current;
+  const [runner, setRunner] = useState<RunnerState>(() => {    const card = initialCard.current;
     return {
       cardKey: 0,
       ...card,
@@ -111,6 +114,9 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
     };
   });
 
+  const runnerRef = useRef(runner);
+  useEffect(() => { runnerRef.current = runner; }, [runner]);
+
   useEffect(() => {
     const id = setInterval(() => {
       setElapsed(Date.now() - startedAt.current);
@@ -118,8 +124,32 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
     return () => clearInterval(id);
   }, []);
 
+  const resetInactivityTimer = useCallback(() => {
+    if (inactivityTimerRef.current) clearTimeout(inactivityTimerRef.current);
+    inactivityTimerRef.current = setTimeout(() => {
+      const r = runnerRef.current;
+      onComplete({
+        wordsNew: r.wordsNew,
+        wordsReviewed: r.wordsReviewed,
+        cardsDone: r.cardsDone,
+        correctCount: r.correctCount,
+      });
+    }, sessionTimeoutMs.current);
+  }, [onComplete]);
+
+  useEffect(() => {
+    resetInactivityTimer();
+    return () => { if (inactivityTimerRef.current) clearTimeout(inactivityTimerRef.current); };
+  }, [resetInactivityTimer]);
+
+  const handleAnswer = useCallback((correct: boolean) => {
+    setAnswered(correct);
+    resetInactivityTimer();
+  }, [resetInactivityTimer]);
+
   const advance = useCallback(
     (correct: boolean | null) => {
+      resetInactivityTimer();
       setRunner((prev) => {
         const isExercise = prev.cardType !== 'wordIntro';
         const newCardsDone = isExercise ? prev.cardsDone + 1 : prev.cardsDone;
@@ -210,7 +240,7 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
       setAnswered(null);
       setReviewWordKey(null);
     },
-    [durationMs, onComplete, sessionId, wordStats],
+    [durationMs, onComplete, resetInactivityTimer, sessionId, wordStats],
   );
 
   const wordContent = sampleLearnPageContentList[runner.wordKey as SampleContentKey]?.content;
@@ -277,7 +307,7 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
                 key={runner.cardKey}
                 heading={{ text: 'Guess the Meaning' }}
                 meaningBestGuessQuestion={runner.exerciseData.data}
-                onAnswer={(correct) => setAnswered(correct)}
+                onAnswer={handleAnswer}
               />
             )}
 
@@ -287,7 +317,7 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
                 key={runner.cardKey}
                 heading={{ text: 'Fill in the Blank' }}
                 contextBlankQuestion={runner.exerciseData.data}
-                onAnswer={(correct) => setAnswered(correct)}
+                onAnswer={handleAnswer}
               />
             )}
 
@@ -297,7 +327,7 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
                 key={runner.cardKey}
                 heading={{ text: 'What does this mean?' }}
                 wordDefinitionQuestion={runner.exerciseData.data}
-                onAnswer={(correct) => setAnswered(correct)}
+                onAnswer={handleAnswer}
               />
             )}
         </>
@@ -310,6 +340,7 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
               <button
                 className="border-2 border-brand rounded-md text-text px-15 py-10 transition-colors duration-300 hover:bg-brand-2 text-sm"
                 onClick={() => {
+                  resetInactivityTimer();
                   if (readKnownWordConfirmed()) {
                     addKnownWord(runner.wordKey);
                     advance(null);
