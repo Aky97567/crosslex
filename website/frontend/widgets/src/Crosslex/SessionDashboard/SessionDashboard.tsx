@@ -40,7 +40,8 @@ const SessionDashboard: React.FC<Props> = ({ onStart }) => {
 
   const handleDurationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const parsed = parseInt(e.target.value, 10);
-    setDuration(isNaN(parsed) || parsed < 1 ? 1 : parsed);
+    if (isNaN(parsed) || parsed < 1) { setDuration(1); return; }
+    setDuration(Math.min(parsed, 120));
   };
 
   return (
@@ -58,6 +59,7 @@ const SessionDashboard: React.FC<Props> = ({ onStart }) => {
             id="session-duration"
             type="number"
             min={1}
+            max={120}
             value={duration}
             onChange={handleDurationChange}
             className="bg-bg-l2 border-2 border-brand rounded-md px-20 py-10 text-text w-100 text-center"
