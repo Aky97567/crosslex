@@ -110,8 +110,8 @@ const FlipCardToTarget: React.FC<FlipCardProps> = ({ content }) => {
       {activeSection !== null && (
         <div
           ref={expandedCardRef}
-          className={`fixed z-30 rounded-lg shadow-xl overflow-auto p-10 flex items-center justify-center ${
-            animated ? 'bg-transparent' : 'inset-0 bg-bg-l1'
+          className={`fixed z-30 bg-transparent rounded-lg shadow-xl overflow-auto p-10 flex items-center justify-center ${
+            !animated ? 'inset-0' : ''
           }`}
         >
           <div className={`px-40 text-center}`}>
