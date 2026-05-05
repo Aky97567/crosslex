@@ -14,7 +14,7 @@ import {
   readLearningRate,
   appendExerciseEvent,
   pickNextCard,
-  generateExerciseData,
+  generateExerciseDataSafe,
   WordsSeenStore,
   CardType,
   ExerciseData,
@@ -24,6 +24,7 @@ const nextButton =
   'bg-brand border-2 border-brand rounded-md text-text-cta px-40 py-10 transition-colors duration-300';
 
 type RunnerState = {
+  cardKey: number;
   wordKey: string;
   cardType: CardType;
   exerciseData: ExerciseData | null;
@@ -67,7 +68,7 @@ const buildInitialCard = (
   );
   const exerciseData =
     cardType !== 'wordIntro'
-      ? generateExerciseData(wordKey, cardType, Words, sampleLearnPageContentList)
+      ? generateExerciseDataSafe(wordKey, cardType, Words, sampleLearnPageContentList)
       : null;
   return { wordKey, cardType, exerciseData };
 };
@@ -86,6 +87,7 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
   const [runner, setRunner] = useState<RunnerState>(() => {
     const card = initialCard.current;
     return {
+      cardKey: 0,
       ...card,
       lastIntroducedWordKey: card.cardType === 'wordIntro' ? card.wordKey : null,
       exercisesSinceLastIntro: card.cardType === 'wordIntro' ? 0 : 1,
@@ -173,12 +175,13 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
 
         const exerciseData =
           cardType !== 'wordIntro'
-            ? generateExerciseData(wordKey, cardType, Words, sampleLearnPageContentList)
+            ? generateExerciseDataSafe(wordKey, cardType, Words, sampleLearnPageContentList)
             : null;
 
         const isNewWord = cardType === 'wordIntro';
 
         return {
+          cardKey: prev.cardKey + 1,
           wordKey,
           cardType,
           exerciseData,
@@ -200,7 +203,6 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
 
   return (
     <div className="max-w-4xl mx-auto px-20 py-20">
-      {/* Progress bar */}
       <div className="flex items-center gap-15 mb-20">
         <span className="text-text text-sm tabular-nums w-60">{formatTime(elapsed)}</span>
         <div className="flex-1 h-6 bg-bg-l2 rounded-full overflow-hidden border border-brand">
@@ -215,7 +217,7 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
       </div>
 
       {runner.cardType === 'wordIntro' && wordContent && (
-        <div>
+        <div key={runner.cardKey}>
           <div className="bg-bg-l1 space-y-10">
             {wordContent.modules.map((module, index) => (
               <React.Fragment key={index}>
@@ -235,6 +237,7 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
         runner.exerciseData?.cardType === 'meaningGuess' && (
           <div>
             <MeaningGuessQuestion
+              key={runner.cardKey}
               heading={{ text: 'Guess the Meaning' }}
               meaningBestGuessQuestion={runner.exerciseData.data}
               onAnswer={(correct) => setAnswered(correct)}
@@ -253,6 +256,7 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
         runner.exerciseData?.cardType === 'contextBlank' && (
           <div>
             <ContextBlankQuestion
+              key={runner.cardKey}
               heading={{ text: 'Fill in the Blank' }}
               contextBlankQuestion={runner.exerciseData.data}
               onAnswer={(correct) => setAnswered(correct)}
@@ -271,6 +275,7 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
         runner.exerciseData?.cardType === 'wordDefinition' && (
           <div>
             <WordDefinitionQuestion
+              key={runner.cardKey}
               heading={{ text: 'What does this mean?' }}
               wordDefinitionQuestion={runner.exerciseData.data}
               onAnswer={(correct) => setAnswered(correct)}

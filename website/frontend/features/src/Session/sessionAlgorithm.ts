@@ -94,8 +94,11 @@ export const pickNextCard = (
     return { wordKey: session.lastIntroducedWordKey, cardType: pickRandom(types) };
   }
 
-  // Coin flip: introduce a new word?
-  if (unseenKeys.length > 0 && Math.random() < newWordProbability) {
+  // Dynamic coin flip: probability scales up when pool is small so early sessions
+  // don't hammer the same word repeatedly.
+  // P = baseP + (1 - baseP) / poolSize  →  converges to baseP as pool grows
+  const dynamicP = newWordProbability + (1 - newWordProbability) / seenKeys.length;
+  if (unseenKeys.length > 0 && Math.random() < dynamicP) {
     return { wordKey: pickRandom(unseenKeys), cardType: 'wordIntro' };
   }
 
@@ -178,4 +181,17 @@ export const generateExerciseData = (
   }
 
   return null;
+};
+
+// Falls back to wordDefinition (always has data) if the requested type returns null.
+export const generateExerciseDataSafe = (
+  wordKey: string,
+  cardType: Exclude<CardType, 'wordIntro'>,
+  allWordKeys: string[],
+  wordData: WordDataMap,
+): ExerciseData | null => {
+  const result = generateExerciseData(wordKey, cardType, allWordKeys, wordData);
+  if (result !== null) return result;
+  if (cardType === 'wordDefinition') return null;
+  return generateExerciseData(wordKey, 'wordDefinition', allWordKeys, wordData);
 };

@@ -28,4 +28,5 @@ export {
   readExerciseLog,
   pickNextCard,
   generateExerciseData,
+  generateExerciseDataSafe,
 } from './Session';
