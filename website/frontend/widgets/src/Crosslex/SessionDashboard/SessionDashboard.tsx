@@ -85,8 +85,7 @@ const SessionDashboard: React.FC<Props> = ({ onStart }) => {
           {rate !== 'review' && (
             <p className="text-text text-sm mt-15 opacity-70">
               Up to {config.maxNewWordsPerSession} new{' '}
-              {config.maxNewWordsPerSession === 1 ? 'word' : 'words'} per session,{' '}
-              {config.minExercisesPerWord} exercises before the next
+              {config.maxNewWordsPerSession === 1 ? 'word' : 'words'} introduced per session
             </p>
           )}
         </div>
