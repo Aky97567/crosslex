@@ -116,7 +116,7 @@ const AnimationsSection: React.FC = () => {
           type="checkbox"
           checked={enabled}
           onChange={handleChange}
-          className="accent-brand w-15 h-15"
+          className="accent-brand w-20 h-20"
         />
         <span className="text-text text-sm">Flip card animation on mobile</span>
       </label>
