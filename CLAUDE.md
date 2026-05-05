@@ -189,14 +189,36 @@ frontend/widgets/src/Crosslex/
 
 ## Roadmap TODOs
 
-Pending features, in rough priority order:
+Pending features, prioritised by effort vs impact. Items marked ✅ are done.
 
-1. **Word metrics dashboard** — use `crosslex:exercise_log` to surface per-word readiness:
-   - Seed planted: word has been introduced (intro event exists)
-   - Familiar: ≥ 2 correct exercise answers
-   - Test-ready: ≥ 4 correct answers with the last 2–3 also correct
-   - Show counts of words at each level on the session dashboard or a separate screen
+### Done
+- ✅ **Word metrics dashboard** — clickable readiness panel (seed planted / familiar / test-ready) on the session dashboard, sourced from `crosslex:exercise_log`
 
-2. **FSD audit of `feat/session-loop`** — review all new files against layer rules before merging further work on top of this branch
+### In-flight / Tech debt
+- **FSD audit** — review all session loop files introduced on `feat/session-loop` against layer rules now that the branch is merged into main
+- **Storybook stories for exercise entities** — `MeaningGuessQuestion`, `ContextBlankQuestion`, `WordDefinitionQuestion` all have new answered/locked state that should be covered
 
-3. **Storybook stories for exercise entities** — `MeaningGuessQuestion`, `ContextBlankQuestion`, `WordDefinitionQuestion` all have new answered/locked state that should be covered
+### Quick wins (trivial effort, immediate value)
+1. **Default session duration → 5 minutes** — change the `useState<number>(30)` default in `SessionDashboard.tsx` to `5`; aligns with the inactivity timeout default
+2. **Session duration recommendation copy** — replace "15–30 minutes recommended daily" with something science-backed and less prescriptive (e.g. spaced, shorter sessions are more effective than long ones)
+
+### Standalone UX improvements
+3. **Fixed advance button during a session** — the primary action button (correct/wrong/next) should be anchored in a sticky footer or header inside `SessionRunner` so users never need to scroll to progress
+
+### Foundation (unblocks several items below)
+4. **Header/footer nav + Settings panel** — add a persistent header or footer to the dashboard with:
+   - Bell icon → notifications drawer (see item 7)
+   - Gear icon → settings panel
+   - Settings panel initially houses: feature flags, session timeout config, storage visualisation, known-word management
+
+### Core learning features
+5. **"I know this" button + known word management** — let users mark a word as already known during a word intro card, skipping it from future sessions; settings panel should show the known-words list and allow removal of accidentally added words; needs a good name (not "IKT")
+
+### Plugs into Settings panel
+6. **Session timeout** — end the active session after N minutes of inactivity (default 5 min); configurable from the settings panel; timeout should record the session as complete up to that point
+7. **Storage visualisation** — show a breakdown of `localStorage` usage by key inside the settings panel (words seen, exercise log, etc.) so users understand what is stored
+
+### Analytics & consent
+8. **Analytics consent banner** — replace the new-user full-page overlay with a GDPR-compliant consent banner for analytics; move the alpha announcement into the notifications bell (item 4); the overlay should only appear for analytics opt-in going forward
+9. **Move alpha announcement → notifications bell** — returning users see new-build notices in the bell drawer rather than the bottom-right card; bell shows an unread badge when there is something new
+10. **Free analytics tool integration** — integrate a privacy-friendly, EU-compliant analytics tool (strong candidates: PostHog self-hosted, Umami); blocked by consent banner (item 8)
