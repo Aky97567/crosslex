@@ -4,7 +4,7 @@ type WordIntroProps = {
   word: string;
   translation: string;
   partOfSpeech: string;
-  representativeImageUrl: string;
+  representativeImageUrl?: string;
 };
 
 export const WordIntro: React.FC<WordIntroProps> = ({

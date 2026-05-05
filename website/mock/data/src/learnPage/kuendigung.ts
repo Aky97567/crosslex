@@ -12,8 +12,6 @@ export const kuendigung: LearnPageContent = {
         translation: 'termination notice, dismissal',
         partOfSpeech: 'noun',
         level: ['B1'],
-        representativeImageUrl:
-          'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
       },
       {
         moduleType: 'wordMeaning',
@@ -83,15 +81,11 @@ export const kuendigung: LearnPageContent = {
             id: 1,
             content:
               "'Kündigung' sounds like 'condition gone' — when you receive one, the conditions of your contract are gone.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
           {
             id: 2,
             content:
               "Think of 'kündig' as 'cue and dig' — it's the official cue to dig yourself out of a job or apartment.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
         ],
       },

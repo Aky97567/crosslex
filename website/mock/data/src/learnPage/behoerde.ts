@@ -12,8 +12,6 @@ export const behoerde: LearnPageContent = {
         translation: 'authority, government office',
         partOfSpeech: 'noun',
         level: ['B1'],
-        representativeImageUrl:
-          'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
       },
       {
         moduleType: 'wordMeaning',
@@ -84,15 +82,11 @@ export const behoerde: LearnPageContent = {
             id: 1,
             content:
               "Think 'Be-HEARD-e' — the Behörde is the body you must be heard by to get anything done officially in Germany.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
           {
             id: 2,
             content:
               "'Behörde' sounds like 'be-horrid' — the place that can feel horrid to visit but is unavoidable in German bureaucracy.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
         ],
       },

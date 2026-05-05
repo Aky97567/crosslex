@@ -12,8 +12,6 @@ export const frist: LearnPageContent = {
         translation: 'deadline, time limit',
         partOfSpeech: 'noun',
         level: ['B1'],
-        representativeImageUrl:
-          'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
       },
       {
         moduleType: 'wordMeaning',
@@ -83,15 +81,11 @@ export const frist: LearnPageContent = {
             id: 1,
             content:
               "'Frist' sounds like 'first' – you must finish it by the FIRST set date.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
           {
             id: 2,
             content:
               "Imagine a freezing frost that stops everything – when the 'Frist' passes, time is frozen and you can't submit.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
         ],
       },

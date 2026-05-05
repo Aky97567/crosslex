@@ -12,8 +12,6 @@ export const bescheinigung: LearnPageContent = {
         translation: 'certificate, confirmation',
         partOfSpeech: 'noun',
         level: ['B1'],
-        representativeImageUrl:
-          'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
       },
       {
         moduleType: 'wordMeaning',
@@ -84,15 +82,11 @@ export const bescheinigung: LearnPageContent = {
             id: 1,
             content:
               "'Bescheinigung' contains 'Schein' (shine/paper) – it's the shining official paper that proves something.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
           {
             id: 2,
             content:
               "Think: to 'be-shine' something means to make it officially visible and confirmed.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
         ],
       },

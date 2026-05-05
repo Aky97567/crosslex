@@ -12,8 +12,6 @@ export const anmeldung: LearnPageContent = {
         translation: 'registration',
         partOfSpeech: 'noun',
         level: ['B1'],
-        representativeImageUrl:
-          'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
       },
       {
         moduleType: 'wordMeaning',
@@ -83,15 +81,11 @@ export const anmeldung: LearnPageContent = {
             id: 1,
             content:
               "'An-meldung' — you're announcing (melden) yourself at (an) the office. You're saying: I am here, I live here now.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
           {
             id: 2,
             content:
               "Think of it as 'enrollment' — the first bureaucratic step that unlocks everything else in Germany: bank account, insurance, tax ID.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
         ],
       },

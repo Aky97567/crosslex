@@ -12,8 +12,6 @@ export const erfahrung: LearnPageContent = {
         translation: 'experience',
         partOfSpeech: 'noun',
         level: ['B1', 'B2'],
-        representativeImageUrl:
-          'https://onecms-res.cloudinary.com/image/upload/s--kCDWxyX7--/c_fill,g_auto,h_676,w_1200/f_auto,q_auto/stella-modern-family-bulldog.jpg?itok=L4ZO6Xno',
       },
       {
         moduleType: 'wordMeaning',
@@ -88,22 +86,16 @@ export const erfahrung: LearnPageContent = {
             id: 1,
             content:
               "Think of 'Erfahrung' as gaining 'experience' from traveling far and wide.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
           {
             id: 2,
             content:
               "Erfahrung sounds like 'err' and 'far' – when you go far, you might make errors and learn from them.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
           {
             id: 3,
             content:
               "Imagine an 'experienced' traveler collecting 'far' away 'rings' from different places.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
         ],
       },

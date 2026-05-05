@@ -12,7 +12,6 @@ export const apfel: LearnPageContent = {
         translation: 'apple',
         partOfSpeech: 'noun',
         level: ['A1'],
-        representativeImageUrl: 'https://picsum.photos/300/200',
       },
       {
         moduleType: 'wordMeaning',
@@ -72,7 +71,6 @@ export const apfel: LearnPageContent = {
           {
             id: 1,
             content: "Think of 'Apfel' as the English word 'apple'.",
-            imageUrl: 'https://picsum.photos/300/200',
           },
         ],
       },

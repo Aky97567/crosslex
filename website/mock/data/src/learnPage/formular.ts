@@ -12,8 +12,6 @@ export const formular: LearnPageContent = {
         translation: 'form',
         partOfSpeech: 'noun',
         level: ['B1'],
-        representativeImageUrl:
-          'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
       },
       {
         moduleType: 'wordMeaning',
@@ -83,15 +81,11 @@ export const formular: LearnPageContent = {
             id: 1,
             content:
               "'Formular' looks just like 'formula' – a form is a fixed formula of blank fields to fill in.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
           {
             id: 2,
             content:
               "Think of a 'formal' document – 'Formular' is the formal paper you fill out at any office.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
         ],
       },

@@ -12,8 +12,6 @@ export const aufenthalt: LearnPageContent = {
         translation: 'stay, residence',
         partOfSpeech: 'noun',
         level: ['B1'],
-        representativeImageUrl:
-          'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
       },
       {
         moduleType: 'wordMeaning',
@@ -83,15 +81,11 @@ export const aufenthalt: LearnPageContent = {
             id: 1,
             content:
               "'Auf-enthalt' — you 'halt' (stop) 'auf' (at/on) Germany. Your Aufenthalt is where you've stopped and stayed.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
           {
             id: 2,
             content:
               "Think of 'halt' as in halting your journey — Aufenthalt is the halt in your travels where you put down roots.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
         ],
       },

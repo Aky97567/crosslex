@@ -12,7 +12,6 @@ export const haus: LearnPageContent = {
         translation: 'house',
         partOfSpeech: 'noun',
         level: ['A1'],
-        representativeImageUrl: 'https://picsum.photos/300/200',
       },
       {
         moduleType: 'wordMeaning',
@@ -80,7 +79,6 @@ export const haus: LearnPageContent = {
           {
             id: 1,
             content: "Think of 'Haus' like 'house' in English.",
-            imageUrl: 'https://picsum.photos/300/200',
           },
         ],
       },

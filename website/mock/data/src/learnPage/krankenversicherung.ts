@@ -12,8 +12,6 @@ export const krankenversicherung: LearnPageContent = {
         translation: 'health insurance',
         partOfSpeech: 'noun',
         level: ['B1'],
-        representativeImageUrl:
-          'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
       },
       {
         moduleType: 'wordMeaning',
@@ -83,15 +81,11 @@ export const krankenversicherung: LearnPageContent = {
             id: 1,
             content:
               "'Kranken' = sick, 'Versicherung' = insurance. Break it in two: insurance for when you're kranken (sick).",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
           {
             id: 2,
             content:
               "The word is long but logical — German often builds compound nouns like Lego bricks. Sick + Insurance = Krankenversicherung.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
         ],
       },

@@ -12,8 +12,6 @@ export const mietvertrag: LearnPageContent = {
         translation: 'rental contract, lease agreement',
         partOfSpeech: 'noun',
         level: ['B1'],
-        representativeImageUrl:
-          'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
       },
       {
         moduleType: 'wordMeaning',
@@ -83,15 +81,11 @@ export const mietvertrag: LearnPageContent = {
             id: 1,
             content:
               "'Miet-vertrag' — 'Miet' sounds like 'meet' and 'Vertrag' like 'contract'. When landlord and tenant meet, they sign a Mietvertrag.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
           {
             id: 2,
             content:
               "The word is two parts: rent (Miete) + contract (Vertrag). If you know both halves, you know the whole.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
         ],
       },

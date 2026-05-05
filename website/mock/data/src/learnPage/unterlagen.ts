@@ -12,8 +12,6 @@ export const unterlagen: LearnPageContent = {
         translation: 'documents, papers',
         partOfSpeech: 'noun (plural)',
         level: ['B1'],
-        representativeImageUrl:
-          'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
       },
       {
         moduleType: 'wordMeaning',
@@ -83,15 +81,11 @@ export const unterlagen: LearnPageContent = {
             id: 1,
             content:
               "'Unterlagen' – the documents that 'lie under' everything, forming the paper foundation of your application.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
           {
             id: 2,
             content:
               "Think of 'unter' (under) + 'legen' (lay): all your papers laid out under the bureaucracy.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
         ],
       },

@@ -12,8 +12,6 @@ export const genehmigung: LearnPageContent = {
         translation: 'permit, approval, authorization',
         partOfSpeech: 'noun',
         level: ['B1'],
-        representativeImageUrl:
-          'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
       },
       {
         moduleType: 'wordMeaning',
@@ -83,15 +81,11 @@ export const genehmigung: LearnPageContent = {
             id: 1,
             content:
               "'Genehmigung' contains 'nehmen' (take) – the authority 'takes' your request and approves it.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
           {
             id: 2,
             content:
               "Think: 'ge-nehm-igung' – something that has been 'taken' (nehmen) and accepted, granting you permission.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
         ],
       },

@@ -12,7 +12,6 @@ export const tisch: LearnPageContent = {
         translation: 'table',
         partOfSpeech: 'noun',
         level: ['A1'],
-        representativeImageUrl: 'https://picsum.photos/300/200',
       },
       {
         moduleType: 'wordMeaning',
@@ -80,7 +79,6 @@ export const tisch: LearnPageContent = {
           {
             id: 1,
             content: "Think of 'Tisch' as a table with a 'dish' on it.",
-            imageUrl: 'https://picsum.photos/300/200',
           },
         ],
       },

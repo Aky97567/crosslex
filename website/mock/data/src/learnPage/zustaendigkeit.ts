@@ -12,8 +12,6 @@ export const zustaendigkeit: LearnPageContent = {
         translation: 'responsibility, jurisdiction, competence',
         partOfSpeech: 'noun',
         level: ['B1'],
-        representativeImageUrl:
-          'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
       },
       {
         moduleType: 'wordMeaning',
@@ -84,15 +82,11 @@ export const zustaendigkeit: LearnPageContent = {
             id: 1,
             content:
               "'Zuständig' = 'zu' (to) + 'ständig' (standing) – someone who is always standing by, ready to handle this topic.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
           {
             id: 2,
             content:
               "Think of a guard who 'stands' (ständig) 'at' (zu) the gate – that is their Zuständigkeit, their domain.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
         ],
       },

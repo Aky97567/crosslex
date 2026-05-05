@@ -12,8 +12,6 @@ export const beitrag: LearnPageContent = {
         translation: 'contribution, fee, subscription',
         partOfSpeech: 'noun',
         level: ['B1'],
-        representativeImageUrl:
-          'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
       },
       {
         moduleType: 'wordMeaning',
@@ -83,15 +81,11 @@ export const beitrag: LearnPageContent = {
             id: 1,
             content:
               "'Bei-trag' — you 'carry' (tragen) something 'alongside' (bei) the group. Your Beitrag is your share of the communal load.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
           {
             id: 2,
             content:
               "Think of 'be-trag-en' → 'contribute'. A Beitrag is what you contribute to keep the system running for everyone.",
-            imageUrl:
-              'https://images.dog.ceo/breeds/pembroke/n02113023_4881.jpg',
           },
         ],
       },
