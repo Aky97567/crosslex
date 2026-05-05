@@ -14,10 +14,10 @@ type RateOption = {
 };
 
 const RATE_OPTIONS: RateOption[] = [
-  { value: 'review',    label: 'Review',    subtitle: 'exercises only' },
-  { value: 'easy',      label: 'Easy',      subtitle: '1 new word, lots of review' },
-  { value: 'balanced',  label: 'Balanced',  subtitle: '3 new words, steady review' },
-  { value: 'intensive', label: 'Intensive', subtitle: '5 new words, minimal review' },
+  { value: 'review',    label: 'Review',    subtitle: 'exercises only, no new words' },
+  { value: 'easy',      label: 'Easy',      subtitle: 'mostly exercises, occasional new word' },
+  { value: 'balanced',  label: 'Balanced',  subtitle: '~1 in 4 cards is a new word' },
+  { value: 'intensive', label: 'Intensive', subtitle: '~1 in 2 cards is a new word' },
 ];
 
 const activeBtn =
