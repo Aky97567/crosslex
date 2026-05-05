@@ -6,7 +6,6 @@ import {
   WordDefinitionQuestion,
 } from '@whitelotus/front-entities';
 import {
-  renderContentModule,
   writeWordsSeen,
   updateWordStats,
   seedWordStats,
@@ -24,6 +23,7 @@ import {
   CardType,
   ExerciseData,
 } from '@whitelotus/front-features';
+import { LearnPage } from '../LearnPage';
 import { KnownWordDialog } from './KnownWordDialog';
 
 const nextButton =
@@ -278,27 +278,11 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
       </div>
 
       {reviewContent ? (
-        <div key={`review-${reviewWordKey}`}>
-          <div className="bg-bg-l1 space-y-10">
-            {reviewContent.modules.map((module, index) => (
-              <React.Fragment key={index}>
-                {renderContentModule({ module })}
-              </React.Fragment>
-            ))}
-          </div>
-        </div>
+        <LearnPage key={`review-${reviewWordKey}`} content={reviewContent} />
       ) : (
         <>
           {runner.cardType === 'wordIntro' && wordContent && (
-            <div key={runner.cardKey}>
-              <div className="bg-bg-l1 space-y-10">
-                {wordContent.modules.map((module, index) => (
-                  <React.Fragment key={index}>
-                    {renderContentModule({ module })}
-                  </React.Fragment>
-                ))}
-              </div>
-            </div>
+            <LearnPage key={runner.cardKey} content={wordContent} />
           )}
 
           {runner.cardType === 'meaningGuess' &&
