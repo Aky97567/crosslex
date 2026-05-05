@@ -3,3 +3,6 @@ export { AlphaAnnouncement } from './Crosslex/AlphaAnnouncement/AlphaAnnouncemen
 export { SessionDashboard } from './Crosslex/SessionDashboard/SessionDashboard';
 export { SessionRunner } from './Crosslex/SessionRunner/SessionRunner';
 export { SessionComplete } from './Crosslex/SessionComplete/SessionComplete';
+export { AppNav } from './Crosslex/AppNav/AppNav';
+export { SettingsPanel } from './Crosslex/SettingsPanel/SettingsPanel';
+export { NotificationsDrawer } from './Crosslex/NotificationsDrawer/NotificationsDrawer';

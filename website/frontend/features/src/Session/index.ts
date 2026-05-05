@@ -19,6 +19,9 @@ export {
   readExerciseLog,
   computeWordMetrics,
   getMetricsSummary,
+  readSessionTimeout,
+  writeSessionTimeout,
+  readStorageUsage,
 } from './sessionStorage';
 
 export type { CardType, SessionSnapshot, ExerciseData } from './sessionAlgorithm';
