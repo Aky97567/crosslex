@@ -21,6 +21,7 @@ type Props = {
   needClose?: boolean;
   onClose?: () => void;
   showContent?: boolean;
+  onAnswer?: (correct: boolean) => void;
 };
 
 const WordDefinitionQuestion: React.FC<Props> = ({
@@ -29,6 +30,7 @@ const WordDefinitionQuestion: React.FC<Props> = ({
   needClose,
   onClose,
   showContent = true,
+  onAnswer,
 }) => {
   const [optionStates, setOptionStates] = useState(
     wordDefinitionQuestion.options.map(() => ({
@@ -37,7 +39,10 @@ const WordDefinitionQuestion: React.FC<Props> = ({
     })),
   );
 
+  const isAnswered = optionStates.some((s) => s.isClicked);
+
   const handleOptionClick = (index: number) => {
+    if (isAnswered) return;
     setOptionStates((prev) =>
       prev.map((state, i) =>
         i === index
@@ -48,6 +53,7 @@ const WordDefinitionQuestion: React.FC<Props> = ({
           : state,
       ),
     );
+    onAnswer?.(wordDefinitionQuestion.options[index].isCorrect);
   };
 
   const { word, article } = wordDefinitionQuestion;
@@ -69,12 +75,18 @@ const WordDefinitionQuestion: React.FC<Props> = ({
         {wordDefinitionQuestion.options.map((option, index) => (
           <div
             key={index}
-            className={`cursor-pointer border-2 rounded-lg px-40 py-10 mb-10 transition-colors duration-300 border-color7 ${
+            className={`border-2 rounded-lg px-40 py-10 mb-10 transition-colors duration-300 border-color7 ${
+              isAnswered ? 'cursor-default' : 'cursor-pointer'
+            } ${
               optionStates[index].isClicked
                 ? optionStates[index].isCorrect
                   ? 'border-color1 bg-color2 text-white animate-bounce'
                   : 'border-color3 bg-color4 text-white animate-vibrate'
-                : 'bg-gradient-brand hover:bg-none hover:bg-brand-2'
+                : isAnswered
+                  ? option.isCorrect
+                    ? 'border-color1 bg-color2 text-white'
+                    : 'opacity-40'
+                  : 'bg-gradient-brand hover:bg-none hover:bg-brand-2'
             }`}
             onClick={() => handleOptionClick(index)}
           >
