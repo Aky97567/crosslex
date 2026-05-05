@@ -7,9 +7,9 @@ export type RateConfig = {
 
 export const RATE_CONFIG: Record<LearningRate, RateConfig> = {
   review:    { maxNewWordsPerSession: 0, minExercisesPerWord: 1 },
-  easy:      { maxNewWordsPerSession: 1, minExercisesPerWord: 5 },
-  balanced:  { maxNewWordsPerSession: 3, minExercisesPerWord: 3 },
-  intensive: { maxNewWordsPerSession: 5, minExercisesPerWord: 2 },
+  easy:      { maxNewWordsPerSession: 1, minExercisesPerWord: 1 },
+  balanced:  { maxNewWordsPerSession: 3, minExercisesPerWord: 1 },
+  intensive: { maxNewWordsPerSession: 5, minExercisesPerWord: 1 },
 };
 
 export type WordStats = {
