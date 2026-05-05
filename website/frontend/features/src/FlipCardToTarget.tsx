@@ -42,6 +42,7 @@ const FlipCardToTarget: React.FC<FlipCardProps> = ({ content }) => {
 
   const sections = content.modules
     .filter(m => m.moduleType !== 'wordIntro')
+    .filter(m => !(m.moduleType === 'wordShowcase' && !m.wordShowcaseUrl))
     .map(module => ({
       title: module.heading.text,
       content: renderContentModule({
