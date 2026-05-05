@@ -185,6 +185,30 @@ frontend/widgets/src/Crosslex/
 
 **Cutting a new build with this feature live:** bump `CURRENT_BUILD_ID` in `AlphaAnnouncement/changelog.ts` and add a changelog entry.
 
+## Adding New Words
+
+Word data lives in `mock/data/src/learnPage/`. Each word is its own file.
+
+**Steps:**
+1. Create `mock/data/src/learnPage/<wordkey>.ts` — use an all-lowercase ASCII key (e.g. `ueberweisung` for Überweisung, `kuendigung` for Kündigung)
+2. Import and add the word to `sampleLearnPageContent.ts` — both the import and the object entry
+3. Type-check: `npx tsc --project mock/data/tsconfig.json --noEmit`
+
+**Word file structure** (copy from any existing file):
+- `wordIntro` — word, article, translation, partOfSpeech, level `['B1']`; omit `representativeImageUrl` until a real URL exists
+- `wordMeaning` — one-paragraph definition
+- `meaningGuessQuestion` — 3 options, exactly 1 `isCorrect: true`
+- `wordContext` — paragraph using the word **at least 3 times**
+- `etymology` — origin explanation
+- `similarWords` — 2–3 related words with article, translation, similarityScore, level, cefrRelevant
+- `mnemonics` — 2 mnemonics; omit `imageUrl` until a real URL exists
+- `wordShowcase` — always include, leave empty (hides itself when no URL)
+
+**Gotchas encountered:**
+- `representativeImageUrl` and mnemonic `imageUrl` are **multi-line** in the file (`key:\n  'url',`). When bulk-stripping with `sed`, removing the key line leaves the URL value as an orphaned string — causes a TS error. Always run a second `sed` pass to remove the bare URL lines too, then verify with `grep`.
+- `sed` patterns containing `//` (as in `https://`) need escaping or an alternative approach — deleting by line number (`sed '15d'`) is safer for one-off fixes.
+- After any bulk file edit, always run the type-check before committing.
+
 ---
 
 ## Roadmap TODOs
