@@ -116,8 +116,11 @@ const AnimationsSection: React.FC = () => {
           type="checkbox"
           checked={enabled}
           onChange={handleChange}
-          className="accent-brand w-20 h-20"
+          className="sr-only"
         />
+        <div className={`relative w-[48px] h-[26px] rounded-full border-2 border-brand transition-colors duration-200 shrink-0 ${enabled ? 'bg-brand' : 'bg-bg-l2'}`}>
+          <div className={`absolute top-[3px] w-[18px] h-[18px] rounded-full transition-transform duration-200 ${enabled ? 'translate-x-[23px] bg-text-cta' : 'translate-x-[3px] bg-brand'}`} />
+        </div>
         <span className="text-text text-sm">Flip card animation on mobile</span>
       </label>
       <p className="text-text text-sm opacity-60 mt-10">
