@@ -160,12 +160,53 @@ export const writeSessionTimeout = (minutes: number): void => {
   } catch {}
 };
 
+export const readKnownWords = (): string[] => {
+  try {
+    const raw = localStorage.getItem('crosslex:known_words');
+    return raw ? (JSON.parse(raw) as string[]) : [];
+  } catch {
+    return [];
+  }
+};
+
+export const addKnownWord = (wordKey: string): void => {
+  try {
+    const current = readKnownWords();
+    if (!current.includes(wordKey)) {
+      localStorage.setItem('crosslex:known_words', JSON.stringify([...current, wordKey]));
+    }
+  } catch {}
+};
+
+export const removeKnownWord = (wordKey: string): void => {
+  try {
+    const current = readKnownWords();
+    localStorage.setItem('crosslex:known_words', JSON.stringify(current.filter((k) => k !== wordKey)));
+  } catch {}
+};
+
+export const readKnownWordConfirmed = (): boolean => {
+  try {
+    return localStorage.getItem('crosslex:known_word_confirmed') === 'true';
+  } catch {
+    return false;
+  }
+};
+
+export const writeKnownWordConfirmed = (): void => {
+  try {
+    localStorage.setItem('crosslex:known_word_confirmed', 'true');
+  } catch {}
+};
+
 export const readStorageUsage = (): { key: string; bytes: number }[] => {
   const crosslexKeys = [
     'crosslex:words_seen',
     'crosslex:exercise_log',
     'crosslex:learning_rate',
     'crosslex:session_timeout',
+    'crosslex:known_words',
+    'crosslex:known_word_confirmed',
     'crosslex:seen_build',
   ];
   return crosslexKeys.map((key) => ({

@@ -15,10 +15,15 @@ import {
   appendExerciseEvent,
   pickNextCard,
   generateExerciseDataSafe,
+  readKnownWords,
+  addKnownWord,
+  readKnownWordConfirmed,
+  writeKnownWordConfirmed,
   WordsSeenStore,
   CardType,
   ExerciseData,
 } from '@whitelotus/front-features';
+import { KnownWordDialog } from './KnownWordDialog';
 
 const nextButton =
   'bg-brand border-2 border-brand rounded-md text-text-cta px-40 py-10 transition-colors duration-300';
@@ -54,13 +59,19 @@ const formatTime = (ms: number): string => {
   return `${m}:${s.toString().padStart(2, '0')}`;
 };
 
+const getActiveWords = () => {
+  const known = new Set(readKnownWords());
+  return Words.filter((w) => !known.has(w));
+};
+
 const buildInitialCard = (
   wordStats: WordsSeenStore,
   learningRate: ReturnType<typeof readLearningRate>,
   sessionDurationMs: number,
 ): { wordKey: string; cardType: CardType; exerciseData: ExerciseData | null } => {
+  const activeWords = getActiveWords();
   const { wordKey, cardType } = pickNextCard(
-    Words,
+    activeWords,
     wordStats,
     { lastIntroducedWordKey: null, exercisesSinceLastIntro: 0, sessionDurationMs },
     learningRate,
@@ -68,7 +79,7 @@ const buildInitialCard = (
   );
   const exerciseData =
     cardType !== 'wordIntro'
-      ? generateExerciseDataSafe(wordKey, cardType, Words, sampleLearnPageContentList)
+      ? generateExerciseDataSafe(wordKey, cardType, activeWords, sampleLearnPageContentList)
       : null;
   return { wordKey, cardType, exerciseData };
 };
@@ -82,6 +93,7 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
   const [elapsed, setElapsed] = useState(0);
   const [answered, setAnswered] = useState<boolean | null>(null);
   const [reviewWordKey, setReviewWordKey] = useState<string | null>(null);
+  const [pendingKnownWordKey, setPendingKnownWordKey] = useState<string | null>(null);
 
   const initialCard = useRef(buildInitialCard(wordStats, learningRate.current, durationMs));
 
@@ -166,8 +178,9 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
           sessionDurationMs: durationMs,
         };
 
+        const activeWords = getActiveWords();
         const { wordKey, cardType } = pickNextCard(
-          Words,
+          activeWords,
           nextWordStats,
           snapshot,
           learningRate.current,
@@ -176,7 +189,7 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
 
         const exerciseData =
           cardType !== 'wordIntro'
-            ? generateExerciseDataSafe(wordKey, cardType, Words, sampleLearnPageContentList)
+            ? generateExerciseDataSafe(wordKey, cardType, activeWords, sampleLearnPageContentList)
             : null;
 
         const isNewWord = cardType === 'wordIntro';
@@ -290,14 +303,59 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
         </>
       )}
 
-      {footerAction && (
-        <div className="fixed bottom-0 left-0 right-0 bg-bg-l1 border-t-2 border-brand py-15 px-20">
-          <div className="max-w-4xl mx-auto flex justify-center">
-            <button className={nextButton} onClick={footerAction.onClick}>
-              {footerAction.label}
+      <div className="fixed bottom-0 left-0 right-0 bg-bg-l1 border-t-2 border-brand py-15 px-20">
+        <div className="max-w-4xl mx-auto grid grid-cols-3 items-center gap-10">
+          <div>
+            {runner.cardType === 'wordIntro' && !reviewContent && (
+              <button
+                className="border-2 border-brand rounded-md text-text px-15 py-10 transition-colors duration-300 hover:bg-brand-2 text-sm"
+                onClick={() => {
+                  if (readKnownWordConfirmed()) {
+                    addKnownWord(runner.wordKey);
+                    advance(null);
+                  } else {
+                    setPendingKnownWordKey(runner.wordKey);
+                  }
+                }}
+              >
+                Already know it
+              </button>
+            )}
+          </div>
+          <div className="flex justify-center">
+            <button
+              className={`${nextButton} ${!footerAction ? 'invisible' : ''}`}
+              onClick={footerAction?.onClick}
+            >
+              {footerAction?.label ?? 'Next →'}
+            </button>
+          </div>
+          <div className="flex justify-end">
+            <button
+              className="text-text text-sm opacity-40 hover:opacity-80 transition-opacity duration-200"
+              onClick={() => onComplete({
+                wordsNew: runner.wordsNew,
+                wordsReviewed: runner.wordsReviewed,
+                cardsDone: runner.cardsDone,
+                correctCount: runner.correctCount,
+              })}
+            >
+              End session
             </button>
           </div>
         </div>
+      </div>
+
+      {pendingKnownWordKey && (
+        <KnownWordDialog
+          onConfirm={(dontShowAgain) => {
+            addKnownWord(pendingKnownWordKey);
+            if (dontShowAgain) writeKnownWordConfirmed();
+            setPendingKnownWordKey(null);
+            advance(null);
+          }}
+          onCancel={() => setPendingKnownWordKey(null)}
+        />
       )}
     </div>
   );
