@@ -18,4 +18,4 @@ export {
 } from './sessionStorage';
 
 export type { CardType, SessionSnapshot, ExerciseData } from './sessionAlgorithm';
-export { pickNextCard, generateExerciseData } from './sessionAlgorithm';
+export { pickNextCard, generateExerciseData, generateExerciseDataSafe } from './sessionAlgorithm';
