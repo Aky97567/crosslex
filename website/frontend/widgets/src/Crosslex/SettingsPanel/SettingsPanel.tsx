@@ -5,6 +5,8 @@ import {
   readStorageUsage,
   readKnownWords,
   removeKnownWord,
+  readFlipAnimation,
+  writeFlipAnimation,
 } from '@whitelotus/front-features';
 import { sampleLearnPageContentList } from '@whitelotus/mock-test';
 import { WordIntroModule } from '@whitelotus/common-crosslex-view';
@@ -98,6 +100,33 @@ const getWordLabel = (wordKey: string): string => {
   return intro.article ? `${intro.article} ${intro.word}` : intro.word;
 };
 
+const AnimationsSection: React.FC = () => {
+  const [enabled, setEnabled] = useState(() => readFlipAnimation());
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    writeFlipAnimation(e.target.checked);
+    setEnabled(e.target.checked);
+  };
+
+  return (
+    <div>
+      <SectionHeading>Animations</SectionHeading>
+      <label className="flex items-center gap-15 cursor-pointer">
+        <input
+          type="checkbox"
+          checked={enabled}
+          onChange={handleChange}
+          className="accent-brand w-15 h-15"
+        />
+        <span className="text-text text-sm">Flip card animation on mobile</span>
+      </label>
+      <p className="text-text text-sm opacity-60 mt-10">
+        Off by default. Enable if you enjoy the card flip effect.
+      </p>
+    </div>
+  );
+};
+
 const KnownWordsSection: React.FC = () => {
   const [knownWords, setKnownWords] = useState<string[]>(() => readKnownWords());
 
@@ -159,6 +188,8 @@ const SettingsPanel: React.FC<Props> = ({ isOpen, onClose }) => (
       </div>
       <div className="overflow-y-auto flex-1 px-20 py-20">
         <SessionTimeoutSection />
+        <Divider />
+        <AnimationsSection />
         <Divider />
         <StorageSection />
         <Divider />
