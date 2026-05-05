@@ -127,7 +127,7 @@ export const computeWordMetrics = (
   }
 
   const result: Record<string, WordReadiness> = {};
-  for (const wordKey of introduced) {
+  for (const wordKey of Array.from(introduced)) {
     const exercises = exercisesByWord[wordKey] ?? [];
     const correctCount = exercises.filter((e) => e.correct).length;
     const lastTwo = exercises.slice(-2);
@@ -158,6 +158,25 @@ export const writeSessionTimeout = (minutes: number): void => {
   try {
     localStorage.setItem('crosslex:session_timeout', String(minutes));
   } catch {}
+};
+
+export const healWordsSeen = (): WordsSeenStore => {
+  const log = readExerciseLog();
+  const introduced = new Set(
+    log.filter((e) => e.type === 'intro').map((e) => e.wordKey),
+  );
+  const store = readWordsSeen();
+  const healed: WordsSeenStore = {};
+  let changed = false;
+  for (const [key, stats] of Object.entries(store)) {
+    if (introduced.has(key)) {
+      healed[key] = stats;
+    } else {
+      changed = true;
+    }
+  }
+  if (changed) writeWordsSeen(healed);
+  return changed ? healed : store;
 };
 
 export const readKnownWords = (): string[] => {

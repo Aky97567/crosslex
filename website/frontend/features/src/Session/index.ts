@@ -27,6 +27,7 @@ export {
   removeKnownWord,
   readKnownWordConfirmed,
   writeKnownWordConfirmed,
+  healWordsSeen,
 } from './sessionStorage';
 
 export type { CardType, SessionSnapshot, ExerciseData } from './sessionAlgorithm';

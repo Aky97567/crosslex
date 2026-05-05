@@ -7,7 +7,6 @@ import {
 } from '@whitelotus/front-entities';
 import {
   renderContentModule,
-  readWordsSeen,
   writeWordsSeen,
   updateWordStats,
   seedWordStats,
@@ -20,6 +19,7 @@ import {
   readKnownWordConfirmed,
   writeKnownWordConfirmed,
   readSessionTimeout,
+  healWordsSeen,
   WordsSeenStore,
   CardType,
   ExerciseData,
@@ -93,7 +93,7 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
   const sessionTimeoutMs = useRef(readSessionTimeout() * 60 * 1000);
   const inactivityTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const [wordStats, setWordStats] = useState<WordsSeenStore>(() => readWordsSeen());
+  const [wordStats, setWordStats] = useState<WordsSeenStore>(() => healWordsSeen());
   const [elapsed, setElapsed] = useState(0);
   const [answered, setAnswered] = useState<boolean | null>(null);
   const [reviewWordKey, setReviewWordKey] = useState<string | null>(null);
