@@ -1,8 +1,10 @@
-export type { LearningRate, WordStats, WordsSeenStore, SessionRecord } from './sessionStorage';
+export type { LearningRate, RateConfig, WordStats, WordsSeenStore, SessionRecord } from './sessionStorage';
 export {
+  RATE_CONFIG,
   readWordsSeen,
   writeWordsSeen,
   updateWordStats,
+  seedWordStats,
   readLearningRate,
   writeLearningRate,
   appendSessionRecord,

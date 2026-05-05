@@ -1,4 +1,16 @@
-export type LearningRate = 'aggressive' | 'conservative';
+export type LearningRate = 'review' | 'easy' | 'balanced' | 'intensive';
+
+export type RateConfig = {
+  maxNewWordsPerSession: number;
+  minExercisesPerWord: number;
+};
+
+export const RATE_CONFIG: Record<LearningRate, RateConfig> = {
+  review:    { maxNewWordsPerSession: 0, minExercisesPerWord: 1 },
+  easy:      { maxNewWordsPerSession: 1, minExercisesPerWord: 5 },
+  balanced:  { maxNewWordsPerSession: 3, minExercisesPerWord: 3 },
+  intensive: { maxNewWordsPerSession: 5, minExercisesPerWord: 2 },
+};
 
 export type WordStats = {
   count: number;
@@ -51,12 +63,20 @@ export const updateWordStats = (
   };
 };
 
+export const seedWordStats = (store: WordsSeenStore, wordKey: string): WordsSeenStore => {
+  if (store[wordKey]) return store;
+  return { ...store, [wordKey]: { count: 0, accuracy: 0, lastSeen: Date.now() } };
+};
+
 export const readLearningRate = (): LearningRate => {
   try {
     const raw = localStorage.getItem(KEYS.learningRate);
-    return raw === 'conservative' ? 'conservative' : 'aggressive';
+    if (raw === 'review') return 'review';
+    if (raw === 'easy') return 'easy';
+    if (raw === 'intensive') return 'intensive';
+    return 'balanced';
   } catch {
-    return 'aggressive';
+    return 'balanced';
   }
 };
 

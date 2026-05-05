@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { sampleLearnPageContentList, Words, SampleContentKey } from '@whitelotus/mock-test';
 import {
-  WordIntro,
   MeaningGuessQuestion,
   ContextBlankQuestion,
   WordDefinitionQuestion,
 } from '@whitelotus/front-entities';
 import {
+  renderContentModule,
   readWordsSeen,
   writeWordsSeen,
   updateWordStats,
+  seedWordStats,
   readLearningRate,
   appendSessionRecord,
   pickNextCard,
@@ -18,7 +19,6 @@ import {
   CardType,
   ExerciseData,
 } from '@whitelotus/front-features';
-import { WordIntroModule } from '@whitelotus/common-crosslex-view';
 
 const nextButton =
   'bg-brand border-2 border-brand rounded-md text-text-cta px-40 py-10 transition-colors duration-300';
@@ -38,15 +38,12 @@ type RunnerState = {
 
 type Props = {
   durationMinutes: number;
-  onComplete: (stats: { wordsNew: number; wordsReviewed: number; cardsDone: number; correctCount: number }) => void;
-};
-
-const getWordIntroModule = (wordKey: string): WordIntroModule | null => {
-  const entry = sampleLearnPageContentList[wordKey as SampleContentKey];
-  if (!entry) return null;
-  return (
-    (entry.content.modules.find((m) => m.moduleType === 'wordIntro') ?? null) as WordIntroModule | null
-  );
+  onComplete: (stats: {
+    wordsNew: number;
+    wordsReviewed: number;
+    cardsDone: number;
+    correctCount: number;
+  }) => void;
 };
 
 const formatTime = (ms: number): string => {
@@ -77,9 +74,9 @@ const buildInitialCard = (
 const SessionRunner: React.FC<Props> = ({ durationMinutes, onComplete }) => {
   const durationMs = durationMinutes * 60 * 1000;
   const startedAt = React.useRef(Date.now());
+  const learningRate = React.useRef(readLearningRate());
 
   const [wordStats, setWordStats] = useState<WordsSeenStore>(() => readWordsSeen());
-  const learningRate = React.useRef(readLearningRate());
 
   const initialCard = React.useRef(buildInitialCard(wordStats, learningRate.current));
 
@@ -99,8 +96,7 @@ const SessionRunner: React.FC<Props> = ({ durationMinutes, onComplete }) => {
 
   useEffect(() => {
     const id = setInterval(() => {
-      const elapsed = Date.now() - startedAt.current;
-      setTimeLeft(Math.max(0, durationMs - elapsed));
+      setTimeLeft(Math.max(0, durationMs - (Date.now() - startedAt.current)));
     }, 1000);
     return () => clearInterval(id);
   }, [durationMs]);
@@ -114,8 +110,15 @@ const SessionRunner: React.FC<Props> = ({ durationMinutes, onComplete }) => {
           isExercise && correct ? prev.correctCount + 1 : prev.correctCount;
 
         let nextWordStats = wordStats;
+
         if (isExercise && correct !== null) {
           nextWordStats = updateWordStats(wordStats, prev.wordKey, correct);
+        } else if (!isExercise) {
+          // Seed the introduced word so it enters the exercise pool immediately
+          nextWordStats = seedWordStats(wordStats, prev.wordKey);
+        }
+
+        if (nextWordStats !== wordStats) {
           writeWordsSeen(nextWordStats);
           setWordStats(nextWordStats);
         }
@@ -186,7 +189,7 @@ const SessionRunner: React.FC<Props> = ({ durationMinutes, onComplete }) => {
     [durationMinutes, durationMs, onComplete, wordStats],
   );
 
-  const introModule = getWordIntroModule(runner.wordKey);
+  const wordContent = sampleLearnPageContentList[runner.wordKey as SampleContentKey]?.content;
 
   return (
     <div className="max-w-4xl mx-auto px-20 py-20">
@@ -195,15 +198,16 @@ const SessionRunner: React.FC<Props> = ({ durationMinutes, onComplete }) => {
         <span>Cards done: {runner.cardsDone}</span>
       </div>
 
-      {runner.cardType === 'wordIntro' && introModule && (
+      {runner.cardType === 'wordIntro' && wordContent && (
         <div>
-          <WordIntro
-            word={introModule.word}
-            translation={introModule.translation}
-            partOfSpeech={introModule.partOfSpeech}
-            representativeImageUrl={introModule.representativeImageUrl}
-          />
-          <div className="flex justify-center mt-20">
+          <div className="bg-bg-l1 space-y-10">
+            {wordContent.modules.map((module, index) => (
+              <React.Fragment key={index}>
+                {renderContentModule({ module })}
+              </React.Fragment>
+            ))}
+          </div>
+          <div className="flex justify-center mt-20 pb-40">
             <button className={nextButton} onClick={() => advance(null)}>
               Got it →
             </button>
