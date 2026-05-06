@@ -69,7 +69,12 @@ website/
 
 **TypeScript**: Strict mode everywhere (`noImplicitAny`, `noUnusedLocals`, `noUnusedParameters`). Base config at `website/tsconfig.base.json`; each package extends it.
 
-**Styling**: Tailwind CSS with a shared config at `config/tailwind/`. Prettier is set to 80-char width, single quotes, trailing commas.
+**Styling**: Tailwind CSS with a shared config at `config/tailwind/tailwind.config.js`. Prettier is set to 80-char width, single quotes, trailing commas.
+
+**IMPORTANT — custom Tailwind scale**: This project overrides almost every default Tailwind scale. Before using any utility class, read `config/tailwind/tailwind.config.js` to check the actual values. Key overrides:
+- `fontSize`: `text-sm` = 1rem (16px), `text-md` = 1.555rem (~25px), `text-lg` = 2.111rem (~34px) — these are NOT standard Tailwind sizes
+- `spacing`: 5=2px, 10=4px, 15=6px, 20=8px, 30=12px, 40=16px, 50=24px, 60=32px — unitless numbers, not rems
+- `screens`: sm=375px, md=768px, lg=992px, xl=1280px
 
 ## CI
 

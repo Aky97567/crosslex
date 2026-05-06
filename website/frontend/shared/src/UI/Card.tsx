@@ -21,7 +21,7 @@ const Card: FC<CardProps> = ({
 }) => {
   return (
     <div
-      className={`bg-bg-l2 border-solid border-2 border-brand shadow-lg rounded-lg p-30`}
+      className={`bg-bg-l2 border-solid border-2 border-brand shadow-lg rounded-lg p-30 max-w-[95vw] md:max-w-none`}
     >
       {needClose ? (
         <div className="flex justify-between items-center mb-4">
