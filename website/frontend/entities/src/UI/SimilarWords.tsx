@@ -89,20 +89,19 @@ export const SimilarWords: React.FC<SimilarWordsProps> = ({
   }, [palette]);
 
   return (
-    <div className="max-w-[80vw] md:max-w-none">
-      <Card
-        heading={heading}
-        needClose={needClose}
-        onClose={onClose}
-        showContent={showContent}
-      >
+    <Card
+      heading={heading}
+      needClose={needClose}
+      onClose={onClose}
+      showContent={showContent}
+    >
         <div className="mb-10 flex justify-center">
           <table>
             <tbody>
               {similarWords
                 .sort((a, b) => b.similarityScore - a.similarityScore)
                 .map((similarWord, index) => (
-                  <tr key={index} className="text-sm md:text-lg mb-10">
+                  <tr key={index} className="text-md md:text-lg mb-10">
                     <td
                       className={`text-0 pr-10 ${index > 0 ? 'pt-30 md:pt-10' : ''}`}
                       style={{
@@ -177,7 +176,6 @@ export const SimilarWords: React.FC<SimilarWordsProps> = ({
             </tbody>
           </table>
         </div>
-      </Card>
-    </div>
+    </Card>
   );
 };
