@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Checkbox } from '@whitelotus/front-shared';
 
 type Props = {
   onConfirm: (dontShowAgain: boolean) => void;
@@ -17,15 +18,13 @@ const KnownWordDialog: React.FC<Props> = ({ onConfirm, onCancel }) => {
           This word will be removed from your future sessions. You can restore it any time from Settings.
         </p>
 
-        <label className="flex items-center gap-10 mb-20 cursor-pointer">
-          <input
-            type="checkbox"
+        <div className="mb-20 opacity-70">
+          <Checkbox
             checked={dontShowAgain}
             onChange={(e) => setDontShowAgain(e.target.checked)}
-            className="accent-brand w-15 h-15"
+            label="Don't show this again"
           />
-          <span className="text-text text-sm opacity-70">Don't show this again</span>
-        </label>
+        </div>
 
         <div className="flex gap-10 justify-end">
           <button
