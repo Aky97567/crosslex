@@ -17,6 +17,8 @@ const paletteColors: Record<string, string> = {
   coolBlue: '#0099cc',
   oceanBlue: '#006699',
   skyBlue: '#66b2ff',
+  pink: '#e91e8c',
+  iris: '#5c4fc3',
 };
 
 const getPaletteColor = (palette: string): string =>
