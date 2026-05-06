@@ -9,6 +9,7 @@ export {
   BodyText,
   CtaText,
   Card,
+  Checkbox,
   Heading,
 } from './UI';
 

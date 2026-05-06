@@ -10,6 +10,7 @@ import {
 } from '@whitelotus/front-features';
 import { sampleLearnPageContentList } from '@whitelotus/mock-test';
 import { WordIntroModule } from '@whitelotus/common-crosslex-view';
+import { Checkbox } from '@whitelotus/front-shared';
 
 type Props = {
   isOpen: boolean;
@@ -111,16 +112,11 @@ const AnimationsSection: React.FC = () => {
   return (
     <div>
       <SectionHeading>Animations</SectionHeading>
-      <label className="flex items-center gap-15 cursor-pointer">
-        <input
-          type="checkbox"
-          checked={enabled}
-          onChange={handleChange}
-          className="accent-brand cursor-pointer"
-          style={{ width: '20px', height: '20px' }}
-        />
-        <span className="text-text text-sm">Flip card animation on mobile</span>
-      </label>
+      <Checkbox
+        checked={enabled}
+        onChange={handleChange}
+        label="Flip card animation on mobile"
+      />
       <p className="text-text text-sm opacity-60 mt-10">
         Off by default. Enable if you enjoy the card flip effect.
       </p>
