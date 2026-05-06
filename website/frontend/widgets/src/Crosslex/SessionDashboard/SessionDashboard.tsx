@@ -4,6 +4,7 @@ import {
   readLearningRate,
   writeLearningRate,
   LearningRate,
+  readWordsSeen,
 } from '@whitelotus/front-features';
 import { WordMetricsPanel } from './WordMetricsPanel';
 
@@ -31,7 +32,12 @@ type Props = { onStart: (durationMinutes: number) => void };
 
 const SessionDashboard: React.FC<Props> = ({ onStart }) => {
   const [duration, setDuration] = useState<number>(5);
-  const [rate, setRate] = useState<LearningRate>(() => readLearningRate());
+  const wordsSeenCount = Object.keys(readWordsSeen()).length;
+  const canReview = wordsSeenCount >= 3;
+  const [rate, setRate] = useState<LearningRate>(() => {
+    const saved = readLearningRate();
+    return saved === 'review' && !canReview ? 'balanced' : saved;
+  });
 
   const handleRateChange = (next: LearningRate) => {
     setRate(next);
@@ -72,7 +78,7 @@ const SessionDashboard: React.FC<Props> = ({ onStart }) => {
         <div className="mb-10">
           <p className="text-text font-semibold mb-15">Learning rate</p>
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
-            {RATE_OPTIONS.map((opt) => (
+            {RATE_OPTIONS.filter((opt) => opt.value !== 'review' || canReview).map((opt) => (
               <button
                 key={opt.value}
                 className={rate === opt.value ? activeBtn : inactiveBtn}
