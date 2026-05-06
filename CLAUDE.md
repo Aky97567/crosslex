@@ -224,6 +224,9 @@ Pending features, prioritised by effort vs impact.
 - **FSD audit** — review all session loop files introduced on `feat/session-loop` against layer rules now that the branch is merged into main
 - **Storybook stories for exercise entities** — `MeaningGuessQuestion`, `ContextBlankQuestion`, `WordDefinitionQuestion` all have new answered/locked state that should be covered
 
+### Onboarding
+- **New user handholding overview** — an explanatory walkthrough for first-time users that introduces the session loop, the learning rate options, and how word cards work; should feel lightweight, not a forced tutorial
+
 ### Analytics & consent
 8. **Analytics consent banner** — add a GDPR-compliant consent banner for analytics; the overlay should only appear for analytics opt-in going forward
 9. **Free analytics tool integration** — integrate a privacy-friendly, EU-compliant analytics tool (strong candidates: PostHog self-hosted, Umami); blocked by consent banner (item 8)
