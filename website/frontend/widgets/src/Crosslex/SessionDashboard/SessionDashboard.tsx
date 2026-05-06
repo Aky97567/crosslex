@@ -36,7 +36,7 @@ const SessionDashboard: React.FC<Props> = ({ onStart }) => {
   const canReview = wordsSeenCount >= 3;
   const [rate, setRate] = useState<LearningRate>(() => {
     const saved = readLearningRate();
-    return saved === 'review' && !canReview ? 'balanced' : saved;
+    return (saved === 'review' || saved === 'easy') && !canReview ? 'balanced' : saved;
   });
 
   const handleRateChange = (next: LearningRate) => {
@@ -78,7 +78,10 @@ const SessionDashboard: React.FC<Props> = ({ onStart }) => {
         <div className="mb-10">
           <p className="text-text font-semibold mb-15">Learning rate</p>
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
-            {RATE_OPTIONS.filter((opt) => opt.value !== 'review' || canReview).map((opt) => (
+            {RATE_OPTIONS.filter((opt) => {
+              if (opt.value === 'review' || opt.value === 'easy') return canReview;
+              return true;
+            }).map((opt) => (
               <button
                 key={opt.value}
                 className={rate === opt.value ? activeBtn : inactiveBtn}
