@@ -40,17 +40,15 @@ const App: React.FC = () => {
     setPhase('complete');
   };
 
-  const ctaButton =
-    'bg-brand border-2 border-brand rounded-md text-text-cta px-40 py-10 transition-colors duration-300 disabled:opacity-40';
-
   return (
-    <div className={`${phase === 'dashboard' ? 'pb-130' : ''} md:pb-0`}>
+    <div>
       <AlphaAnnouncement />
 
       {phase === 'dashboard' && (
         <AppNav
           onBellClick={() => setIsNotificationsOpen(true)}
           onGearClick={() => setIsSettingsOpen(true)}
+          onPaletteClick={() => setIsPaletteOpen(true)}
         />
       )}
 
@@ -79,26 +77,10 @@ const App: React.FC = () => {
         />
       )}
 
-      {/* Mobile footer — palette only, dashboard only */}
-      {phase === 'dashboard' && (
-        <footer className="fixed bottom-0 left-0 right-0 z-20 bg-bg-l2 border-t-2 border-brand md:hidden">
-          <div className="flex justify-center p-15">
-            <button onClick={() => setIsPaletteOpen(true)} className={ctaButton}>
-              Theme: {palette}
-            </button>
-          </div>
-        </footer>
-      )}
-
-      {/* Desktop palette switcher */}
-      <div className="hidden md:flex justify-center p-20">
-        <PaletteSwitcher active={palette} onChange={setPalette} />
-      </div>
-
-      {/* Palette overlay (mobile only) */}
+      {/* Palette overlay */}
       {isPaletteOpen && (
         <div
-          className="fixed inset-0 z-30 bg-dark flex flex-col items-center justify-center md:hidden"
+          className="fixed inset-0 z-30 bg-dark flex flex-col items-center justify-center"
           onClick={() => setIsPaletteOpen(false)}
         >
           <div className="mx-20" onClick={(e) => e.stopPropagation()}>
