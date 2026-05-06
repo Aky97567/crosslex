@@ -1,4 +1,5 @@
 import React from 'react';
+import { Badge } from '@whitelotus/front-shared';
 import { CHANGELOG, CURRENT_BUILD_ID } from '../AlphaAnnouncement/changelog';
 
 type Props = {
@@ -53,11 +54,7 @@ const NotificationsDrawer: React.FC<Props> = ({ isOpen, onClose }) => {
                   <span className="text-text text-sm opacity-50">
                     {parseDateFromBuildId(buildId)}
                   </span>
-                  {isLatest && (
-                    <span className="text-xs bg-brand text-text-cta rounded-md px-8 py-5 font-semibold leading-none">
-                      Latest
-                    </span>
-                  )}
+                  {isLatest && <Badge variant="dark">Latest</Badge>}
                 </div>
                 <p className="text-text font-semibold mb-10">{body}</p>
                 {changes.length > 0 && (
