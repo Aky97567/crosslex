@@ -160,16 +160,13 @@ export const writeSessionTimeout = (minutes: number): void => {
   } catch {}
 };
 
-export const healWordsSeen = (): WordsSeenStore => {
-  const log = readExerciseLog();
-  const introduced = new Set(
-    log.filter((e) => e.type === 'intro').map((e) => e.wordKey),
-  );
+export const healWordsSeen = (activePool: string[]): WordsSeenStore => {
+  const pool = new Set(activePool);
   const store = readWordsSeen();
   const healed: WordsSeenStore = {};
   let changed = false;
   for (const [key, stats] of Object.entries(store)) {
-    if (introduced.has(key)) {
+    if (pool.has(key)) {
       healed[key] = stats;
     } else {
       changed = true;

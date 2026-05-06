@@ -93,7 +93,7 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
   const sessionTimeoutMs = useRef(readSessionTimeout() * 60 * 1000);
   const inactivityTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const [wordStats, setWordStats] = useState<WordsSeenStore>(() => healWordsSeen());
+  const [wordStats, setWordStats] = useState<WordsSeenStore>(() => healWordsSeen(Words));
   const [elapsed, setElapsed] = useState(0);
   const [answered, setAnswered] = useState<boolean | null>(null);
   const [reviewWordKey, setReviewWordKey] = useState<string | null>(null);
