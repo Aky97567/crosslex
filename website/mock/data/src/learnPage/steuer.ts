@@ -27,7 +27,7 @@ export const steuer: LearnPageContent = {
           options: [
             { text: 'A government grant for low-income residents', isCorrect: false },
             { text: 'A mandatory financial charge collected by the state', isCorrect: true },
-            { text: 'A steering wheel (also Steuer, neuter gender)', isCorrect: false },
+            { text: 'A fine or penalty issued by a court', isCorrect: false },
           ],
         },
       },
