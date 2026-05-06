@@ -62,7 +62,13 @@ const FlipCardToTarget: React.FC<FlipCardProps> = ({ content }) => {
     }));
 
   useEffect(() => {
-    if (!animated || activeSection === null || !expandedCardRef.current || !clickedCardRect) return;
+    if (
+      !animated ||
+      activeSection === null ||
+      !expandedCardRef.current ||
+      !clickedCardRect
+    )
+      return;
     if (activeSection !== null && expandedCardRef.current && clickedCardRect) {
       const expandedCard = expandedCardRef.current;
       expandedCard.style.position = 'fixed';
@@ -83,9 +89,9 @@ const FlipCardToTarget: React.FC<FlipCardProps> = ({ content }) => {
   }, [activeSection, clickedCardRect]);
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative">
       {/* Grid of small cards */}
-      <div className="grid grid-cols-2 gap-30 pt-50 px-20">
+      <div className="grid grid-cols-2 gap-30 pt-50">
         {sections.map((section, index) => (
           <div
             key={index}
