@@ -227,6 +227,11 @@ Pending features, prioritised by effort vs impact.
 ### Onboarding
 - **New user handholding overview** — an explanatory walkthrough for first-time users that introduces the session loop, the learning rate options, and how word cards work; should feel lightweight, not a forced tutorial
 
+### Engagement & retention
+- **Return motivation / streak** — nothing currently encourages users to come back the next day; needs a daily goal, streak counter, or "words ready for review" nudge
+- **Word content scale** — 36 words runs out in 2–3 sessions; users have no reason to return once the pool feels exhausted; need significantly more content
+- **In-app feedback channel** — users have no way to flag a broken question or wrong answer; only discoverable via DM
+
 ### Analytics & consent
 8. **Analytics consent banner** — add a GDPR-compliant consent banner for analytics; the overlay should only appear for analytics opt-in going forward
 9. **Free analytics tool integration** — integrate a privacy-friendly, EU-compliant analytics tool (strong candidates: PostHog self-hosted, Umami); blocked by consent banner (item 8)
