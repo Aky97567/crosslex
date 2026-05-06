@@ -21,6 +21,9 @@ const App: React.FC = () => {
   const [sessionId, setSessionId] = useState(0);
   const [sessionStats, setSessionStats] = useState<SessionStats | null>(null);
   const [palette, setPalette] = useState<Palette>(getInitialPalette);
+  const [announcementDone, setAnnouncementDone] = useState(() => {
+    try { return localStorage.getItem('crosslex:seen_build') !== null; } catch { return true; }
+  });
   const [isPaletteOpen, setIsPaletteOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
@@ -42,7 +45,7 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <AlphaAnnouncement />
+      <AlphaAnnouncement onAllDismissed={() => setAnnouncementDone(true)} />
 
       {phase === 'dashboard' && (
         <AppNav
@@ -57,7 +60,7 @@ const App: React.FC = () => {
 
       {phase === 'dashboard' && (
         <div className="pt-50">
-          <SessionDashboard onStart={handleStart} />
+          <SessionDashboard onStart={handleStart} coachMarksEnabled={announcementDone} />
         </div>
       )}
 

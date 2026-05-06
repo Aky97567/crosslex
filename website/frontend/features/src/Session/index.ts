@@ -34,3 +34,5 @@ export {
 
 export type { CardType, SessionSnapshot, ExerciseData } from './sessionAlgorithm';
 export { pickNextCard, generateExerciseData, generateExerciseDataSafe } from './sessionAlgorithm';
+
+export { hasSeenCoachMark, markCoachMarkSeen, useCoachMark } from './coachMarks';
