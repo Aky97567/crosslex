@@ -12,6 +12,7 @@ export {
   Card,
   Checkbox,
   Heading,
+  SelectableCard,
 } from './UI';
 
 export { expandHex, adjustColorShade, hexToRgba } from './utils';
