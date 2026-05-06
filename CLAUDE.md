@@ -223,11 +223,11 @@ Pending features, prioritised by effort vs impact. Items marked ✅ are done.
 - **Storybook stories for exercise entities** — `MeaningGuessQuestion`, `ContextBlankQuestion`, `WordDefinitionQuestion` all have new answered/locked state that should be covered
 
 ### Quick wins (trivial effort, immediate value)
-1. **Default session duration → 5 minutes** — change the `useState<number>(30)` default in `SessionDashboard.tsx` to `5`; aligns with the inactivity timeout default
+1. ✅ **Default session duration → 5 minutes** — already defaulting to 5 min
 2. **Session duration recommendation copy** — replace "15–30 minutes recommended daily" with something science-backed and less prescriptive (e.g. spaced, shorter sessions are more effective than long ones)
 
 ### Standalone UX improvements
-3. **Fixed advance button during a session** — the primary action button (correct/wrong/next) should be anchored in a sticky footer or header inside `SessionRunner` so users never need to scroll to progress
+3. ✅ **Fixed advance button during a session** — advance button is already in a sticky footer in `SessionRunner`
 
 ### Foundation (unblocks several items below)
 4. **Header/footer nav + Settings panel** — add a persistent header or footer to the dashboard with:
