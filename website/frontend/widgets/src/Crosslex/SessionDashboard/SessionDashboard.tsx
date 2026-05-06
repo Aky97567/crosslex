@@ -6,7 +6,7 @@ import {
   LearningRate,
   readWordsSeen,
 } from '@whitelotus/front-features';
-import { sampleLearnPageContentList } from '@whitelotus/mock-test';
+import { Words } from '@whitelotus/mock-test';
 import { WordMetricsPanel } from './WordMetricsPanel';
 
 const PRIZE_COPY_ENABLED = true;
@@ -35,14 +35,14 @@ type Props = { onStart: (durationMinutes: number) => void };
 
 const SessionDashboard: React.FC<Props> = ({ onStart }) => {
   const [duration, setDuration] = useState<number>(5);
-  const totalWords = Object.keys(sampleLearnPageContentList).length;
-  const wordsSeenCount = Object.keys(readWordsSeen()).length;
+  const wordsSeenMap = readWordsSeen();
+  const wordsSeenCount = Object.keys(wordsSeenMap).length;
   const canReview = wordsSeenCount >= 3;
   const [rate, setRate] = useState<LearningRate>(() => {
     const saved = readLearningRate();
     return (saved === 'review' || saved === 'easy') && !canReview ? 'balanced' : saved;
   });
-  const allWordsSeen = wordsSeenCount >= totalWords;
+  const allWordsSeen = Words.every((key) => key in wordsSeenMap);
   const showAllSeenNotice = allWordsSeen && (rate === 'balanced' || rate === 'intensive');
 
   const handleRateChange = (next: LearningRate) => {
@@ -103,7 +103,7 @@ const SessionDashboard: React.FC<Props> = ({ onStart }) => {
         {showAllSeenNotice && (
           <div className="mt-20 p-20 border-2 border-brand rounded-md bg-bg-l2">
             <p className="text-text text-sm">
-              You've seen all {totalWords} words — no new words will appear this session.
+              You've seen all {Words.length} words — no new words will appear this session.
             </p>
             {PRIZE_COPY_ENABLED && (
               <p className="text-text text-sm mt-10 opacity-70">
