@@ -11,7 +11,11 @@ const getSeenBuild = (): string | null => {
   }
 };
 
-const AlphaAnnouncement: React.FC = () => {
+type AlphaAnnouncementProps = {
+  onAllDismissed?: () => void;
+};
+
+const AlphaAnnouncement: React.FC<AlphaAnnouncementProps> = ({ onAllDismissed }) => {
   const [dismissed, setDismissed] = useState(false);
 
   if (dismissed) return null;
@@ -22,7 +26,7 @@ const AlphaAnnouncement: React.FC = () => {
   const entry = CHANGELOG[CURRENT_BUILD_ID];
   if (!entry) return null;
 
-  const onDismiss = () => setDismissed(true);
+  const onDismiss = () => { setDismissed(true); onAllDismissed?.(); };
 
   if (!seenBuild) {
     return (

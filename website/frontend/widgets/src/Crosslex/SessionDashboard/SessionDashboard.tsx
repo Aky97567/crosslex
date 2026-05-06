@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Card, SelectableCard } from '@whitelotus/front-shared';
+import { Card, CoachMark, SelectableCard } from '@whitelotus/front-shared';
 import {
   readLearningRate,
   writeLearningRate,
   LearningRate,
   readWordsSeen,
+  useCoachMark,
 } from '@whitelotus/front-features';
 import { Words } from '@whitelotus/mock-test';
 import { WordMetricsPanel } from './WordMetricsPanel';
@@ -27,10 +28,11 @@ const RATE_OPTIONS: RateOption[] = [
 const ctaButton =
   'bg-brand border-2 border-brand rounded-md text-text-cta px-40 py-10 transition-colors duration-300 w-full mt-20';
 
-type Props = { onStart: (durationMinutes: number) => void };
+type Props = { onStart: (durationMinutes: number) => void; coachMarksEnabled?: boolean };
 
-const SessionDashboard: React.FC<Props> = ({ onStart }) => {
+const SessionDashboard: React.FC<Props> = ({ onStart, coachMarksEnabled = true }) => {
   const [duration, setDuration] = useState<number>(5);
+  const { shown: showDashboardTip, dismiss: dismissDashboardTip } = useCoachMark('dashboard-intro');
   const wordsSeenMap = readWordsSeen();
   const wordsSeenCount = Object.keys(wordsSeenMap).length;
   const canReview = wordsSeenCount >= 3;
@@ -109,7 +111,19 @@ const SessionDashboard: React.FC<Props> = ({ onStart }) => {
           </div>
         )}
 
-        <button className={ctaButton} onClick={() => onStart(duration)}>
+        {showDashboardTip && coachMarksEnabled && (
+          <div className="mt-20">
+            <CoachMark
+              text="Read a word card, then answer questions. The app decides what comes next."
+              onDismiss={dismissDashboardTip}
+            />
+          </div>
+        )}
+
+        <button
+          className={ctaButton}
+          onClick={() => { dismissDashboardTip(); onStart(duration); }}
+        >
           Start →
         </button>
       </Card>

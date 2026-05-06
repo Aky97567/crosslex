@@ -44,4 +44,7 @@ export {
   pickNextCard,
   generateExerciseData,
   generateExerciseDataSafe,
+  hasSeenCoachMark,
+  markCoachMarkSeen,
+  useCoachMark,
 } from './Session';

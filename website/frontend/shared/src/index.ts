@@ -11,6 +11,7 @@ export {
   CtaText,
   Card,
   Checkbox,
+  CoachMark,
   Heading,
   SelectableCard,
 } from './UI';

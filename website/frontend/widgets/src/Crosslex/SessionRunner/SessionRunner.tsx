@@ -19,10 +19,12 @@ import {
   writeKnownWordConfirmed,
   readSessionTimeout,
   healWordsSeen,
+  useCoachMark,
   WordsSeenStore,
   CardType,
   ExerciseData,
 } from '@whitelotus/front-features';
+import { CoachMark } from '@whitelotus/front-shared';
 import { LearnPage } from '../LearnPage';
 import { KnownWordDialog } from './KnownWordDialog';
 
@@ -250,6 +252,12 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
     ? sampleLearnPageContentList[reviewWordKey as SampleContentKey]?.content
     : null;
 
+  const isWordIntroCard = runner.cardType === 'wordIntro' && !reviewContent;
+  const isExerciseCard = runner.cardType !== 'wordIntro' && !reviewContent;
+  const { shown: showWordIntroMark, dismiss: dismissWordIntroMark } = useCoachMark('first-word-intro');
+  const { shown: showExerciseMark, dismiss: dismissExerciseMark } = useCoachMark('first-exercise');
+  const { shown: showWrongMark, dismiss: dismissWrongMark } = useCoachMark('first-wrong-answer');
+
   type FooterAction = { label: string; onClick: () => void };
   const footerAction: FooterAction | null = reviewContent
     ? { label: 'Got it →', onClick: () => advance(false) }
@@ -263,7 +271,7 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
     : null;
 
   return (
-    <div className="max-w-4xl mx-auto px-20 py-20 pb-80">
+    <div className="max-w-4xl mx-auto px-20 py-20 pb-[120px]">
       <div className="flex items-center gap-15 mb-20">
         <span className="text-text text-sm tabular-nums w-60">{formatTime(elapsed)}</span>
         <div className="flex-1 h-6 bg-bg-l2 rounded-full overflow-hidden border border-brand">
@@ -318,6 +326,28 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
       )}
 
       <div className="fixed bottom-0 left-0 right-0 bg-bg-l1 border-t-2 border-brand py-15 px-20">
+        {(showWordIntroMark || showExerciseMark || showWrongMark) && (
+          <div className="max-w-4xl mx-auto mb-15 flex flex-col gap-10">
+            {showWordIntroMark && isWordIntroCard && (
+              <CoachMark
+                text="Take your time reading. Tap Got it → when you're ready."
+                onDismiss={dismissWordIntroMark}
+              />
+            )}
+            {showExerciseMark && isExerciseCard && (
+              <CoachMark
+                text="Tap your answer to lock it in."
+                onDismiss={dismissExerciseMark}
+              />
+            )}
+            {showWrongMark && answered === false && (
+              <CoachMark
+                text="Tap Review word → to go back and reinforce the word before moving on."
+                onDismiss={dismissWrongMark}
+              />
+            )}
+          </div>
+        )}
         <div className="max-w-4xl mx-auto grid grid-cols-3 items-center gap-10">
           <div>
             {runner.cardType === 'wordIntro' && !reviewContent && (
