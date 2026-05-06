@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card } from '@whitelotus/front-shared';
+import { Card, SelectableCard } from '@whitelotus/front-shared';
 import {
   readLearningRate,
   writeLearningRate,
@@ -24,10 +24,6 @@ const RATE_OPTIONS: RateOption[] = [
   { value: 'intensive', label: 'Intensive', subtitle: '~1 in 2 cards is a new word' },
 ];
 
-const activeBtn =
-  'border-2 rounded-md px-20 py-12 transition-colors duration-300 cursor-pointer bg-brand border-brand text-text-cta text-left w-full';
-const inactiveBtn =
-  'border-2 rounded-md px-20 py-12 transition-colors duration-300 cursor-pointer border-brand text-text hover:bg-brand-2 text-left w-full';
 const ctaButton =
   'bg-brand border-2 border-brand rounded-md text-text-cta px-40 py-10 transition-colors duration-300 w-full mt-20';
 
@@ -88,14 +84,14 @@ const SessionDashboard: React.FC<Props> = ({ onStart }) => {
               if (opt.value === 'review' || opt.value === 'easy') return canReview;
               return true;
             }).map((opt) => (
-              <button
+              <SelectableCard
                 key={opt.value}
-                className={rate === opt.value ? activeBtn : inactiveBtn}
+                active={rate === opt.value}
                 onClick={() => handleRateChange(opt.value)}
               >
                 <span className="font-semibold block">{opt.label}</span>
                 <span className="text-sm opacity-70">{opt.subtitle}</span>
-              </button>
+              </SelectableCard>
             ))}
           </div>
         </div>
