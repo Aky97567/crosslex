@@ -10,6 +10,8 @@ export const PALETTES = [
   'coolBlue',
   'oceanBlue',
   'skyBlue',
+  'pink',
+  'iris',
 ] as const;
 
 export type Palette = (typeof PALETTES)[number];

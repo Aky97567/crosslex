@@ -62,6 +62,18 @@
   --color-brand-3: #ccffff;
 }
 
+[data-palette='pink'] {
+  --color-brand: #e91e8c;
+  --color-brand-2: #f8a8cc;
+  --color-brand-3: #b5125e;
+}
+
+[data-palette='iris'] {
+  --color-brand: #5c4fc3;
+  --color-brand-2: #9b8ee8;
+  --color-brand-3: #3d30a0;
+}
+
 [data-palette='classic'] {
   --color-brand: #000;
   --color-brand-2: #333;
