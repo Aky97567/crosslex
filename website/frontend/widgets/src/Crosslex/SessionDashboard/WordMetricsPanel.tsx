@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card } from '@whitelotus/front-shared';
+import { Card, Badge } from '@whitelotus/front-shared';
 import {
   readExerciseLog,
   getMetricsSummary,
@@ -80,11 +80,8 @@ const WordMetricsPanel: React.FC = () => {
             {wordsAtLevel.map((key) => {
               const intro = getWordIntro(key);
               return (
-                <li
-                  key={key}
-                  className="bg-bg-l2 border border-brand rounded-md p-5 text-sm text-text"
-                >
-                  {intro ? intro.word : key}
+                <li key={key}>
+                  <Badge>{intro ? intro.word : key}</Badge>
                 </li>
               );
             })}

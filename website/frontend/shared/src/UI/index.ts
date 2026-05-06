@@ -5,6 +5,7 @@ export {
   useIsMobileTouchDevice,
   useIsTablet,
 } from './mediaQueries';
+export { Badge } from './Badge';
 export { Card } from './Card';
 export { Checkbox } from './Checkbox';
 export { BodyText, CtaText, Heading } from './Text';

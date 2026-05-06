@@ -6,6 +6,7 @@ export {
   useIsMobile,
   useIsMobileTouchDevice,
   useIsTablet,
+  Badge,
   BodyText,
   CtaText,
   Card,
