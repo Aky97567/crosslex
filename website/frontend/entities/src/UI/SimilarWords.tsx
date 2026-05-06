@@ -89,73 +89,95 @@ export const SimilarWords: React.FC<SimilarWordsProps> = ({
   }, [palette]);
 
   return (
-    <Card
-      heading={heading}
-      needClose={needClose}
-      onClose={onClose}
-      showContent={showContent}
-    >
-      <div className="mb-10 flex justify-center">
-        <table>
-          <tbody>
-            {similarWords
-              .sort((a, b) => b.similarityScore - a.similarityScore)
-              .map((similarWord, index) => (
-                <tr key={index} className="text-lg mb-10">
-                  <td
-                    className="text-0 pr-10"
-                    style={{
-                      verticalAlign: 'middle',
-                      width: maxWidth ? `${maxWidth + 16}px` : 'auto',
-                    }}
-                  >
-                    <span
-                      ref={el => (wordRefs.current[index] = el)}
+    <div className="max-w-[80vw] md:max-w-none">
+      <Card
+        heading={heading}
+        needClose={needClose}
+        onClose={onClose}
+        showContent={showContent}
+      >
+        <div className="mb-10 flex justify-center">
+          <table>
+            <tbody>
+              {similarWords
+                .sort((a, b) => b.similarityScore - a.similarityScore)
+                .map((similarWord, index) => (
+                  <tr key={index} className="text-sm md:text-lg mb-10">
+                    <td
+                      className={`text-0 pr-10 ${index > 0 ? 'pt-30 md:pt-10' : ''}`}
                       style={{
-                        color:
-                          strengthWiseColors[similarWord.similarityScore - 1],
-                        fontWeight:
-                          similarWord.similarityScore > 3 ? 'bold' : 'normal',
+                        verticalAlign: 'middle',
+                        width: maxWidth ? `${maxWidth + 16}px` : 'auto',
                       }}
                     >
-                      {`${similarWord.article} ${similarWord.word}`.trimStart()}
-                    </span>
-                  </td>
-                  <td>
-                    <div
-                      className="py-5 px-10 flex gap-5"
-                      style={{
-                        width: `${BAR_WIDTH * 16 + 24}px`,
-                        height: `${BAR_HEIGHT}rem`,
-                        border: `2px solid ${getPaletteColor(palette)}`,
-                        borderRadius: '7px',
-                        padding: '0.1rem',
-                        boxShadow: `5px 5px 5px ${hexToRgba(getPaletteColor(palette), 0.5)}`,
-                      }}
-                    >
-                      {Array.from(
-                        { length: similarWord.similarityScore * 2 },
-                        (_, index) => index,
-                      ).map((_, index) => (
-                        <div
-                          key={index}
-                          style={{
-                            backgroundColor: getColorShadeFromSimilarityScore(
-                              similarWord.similarityScore,
-                              palette,
-                            ),
-                            width: `${BAR_WIDTH / 10}rem`,
-                            height: '95%',
-                          }}
-                        />
-                      ))}
-                    </div>
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
-      </div>
-    </Card>
+                      <span
+                        ref={el => (wordRefs.current[index] = el)}
+                        style={{
+                          color:
+                            strengthWiseColors[similarWord.similarityScore - 1],
+                          fontWeight:
+                            similarWord.similarityScore > 3 ? 'bold' : 'normal',
+                        }}
+                      >
+                        {`${similarWord.article} ${similarWord.word}`.trimStart()}
+                      </span>
+                      <div className="flex gap-[3px] mt-[3px] md:hidden">
+                        {Array.from({ length: 5 }, (_, i) => (
+                          <div
+                            key={i}
+                            style={{
+                              width: '7px',
+                              height: '7px',
+                              borderRadius: '50%',
+                              backgroundColor:
+                                i < similarWord.similarityScore
+                                  ? getColorShadeFromSimilarityScore(
+                                      similarWord.similarityScore,
+                                      palette,
+                                    )
+                                  : 'transparent',
+                              border: `1px solid ${getColorShadeFromSimilarityScore(similarWord.similarityScore, palette)}`,
+                            }}
+                          />
+                        ))}
+                      </div>
+                    </td>
+                    <td className={`hidden md:table-cell ${index > 0 ? 'pt-10' : ''}`}>
+                      <div
+                        className="py-5 px-10 flex gap-5"
+                        style={{
+                          width: `${BAR_WIDTH * 16 + 24}px`,
+                          height: `${BAR_HEIGHT}rem`,
+                          border: `2px solid ${getPaletteColor(palette)}`,
+                          borderRadius: '7px',
+                          padding: '0.1rem',
+                          boxShadow: `5px 5px 5px ${hexToRgba(getPaletteColor(palette), 0.5)}`,
+                        }}
+                      >
+                        {Array.from(
+                          { length: similarWord.similarityScore * 2 },
+                          (_, index) => index,
+                        ).map((_, index) => (
+                          <div
+                            key={index}
+                            style={{
+                              backgroundColor: getColorShadeFromSimilarityScore(
+                                similarWord.similarityScore,
+                                palette,
+                              ),
+                              width: `${BAR_WIDTH / 10}rem`,
+                              height: '95%',
+                            }}
+                          />
+                        ))}
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
+      </Card>
+    </div>
   );
 };
