@@ -5,9 +5,10 @@ import {
   writeLearningRate,
   LearningRate,
   readWordsSeen,
+  readActiveLevel,
   useCoachMark,
 } from '@whitelotus/front-features';
-import { Words } from '@whitelotus/mock-test';
+import { A2Words, B1Words } from '@whitelotus/mock-test';
 import { WordMetricsPanel } from './WordMetricsPanel';
 
 const PRIZE_COPY_ENABLED = true;
@@ -30,6 +31,8 @@ const ctaButton =
 
 type Props = { onStart: (durationMinutes: number) => void; coachMarksEnabled?: boolean };
 
+const getWordPool = () => readActiveLevel() === 'a2' ? A2Words : B1Words;
+
 const SessionDashboard: React.FC<Props> = ({ onStart, coachMarksEnabled = true }) => {
   const [duration, setDuration] = useState<number>(5);
   const { shown: showDashboardTip, dismiss: dismissDashboardTip } = useCoachMark('dashboard-intro');
@@ -40,7 +43,8 @@ const SessionDashboard: React.FC<Props> = ({ onStart, coachMarksEnabled = true }
     const saved = readLearningRate();
     return (saved === 'review' || saved === 'easy') && !canReview ? 'balanced' : saved;
   });
-  const allWordsSeen = Words.every((key) => key in wordsSeenMap);
+  const wordPool = getWordPool();
+  const allWordsSeen = wordPool.every((key) => key in wordsSeenMap);
   const showAllSeenNotice = allWordsSeen && (rate === 'balanced' || rate === 'intensive');
 
   const handleRateChange = (next: LearningRate) => {
@@ -101,7 +105,7 @@ const SessionDashboard: React.FC<Props> = ({ onStart, coachMarksEnabled = true }
         {showAllSeenNotice && (
           <div className="mt-20 p-20 border-2 border-brand rounded-md bg-bg-l2">
             <p className="text-text text-sm">
-              You've seen all {Words.length} words — no new words will appear this session.
+              You've seen all {wordPool.length} words — no new words will appear this session.
             </p>
             {PRIZE_COPY_ENABLED && (
               <p className="text-text text-sm mt-10 opacity-70">

@@ -237,3 +237,26 @@ Pending features, prioritised by effort vs impact.
 ### Analytics & consent
 8. **Analytics consent banner** — add a GDPR-compliant consent banner for analytics; the overlay should only appear for analytics opt-in going forward
 9. **Free analytics tool integration** — integrate a privacy-friendly, EU-compliant analytics tool (strong candidates: PostHog self-hosted, Umami); blocked by consent banner (item 8)
+
+---
+
+## A2 Word Content Guidelines
+
+When adding A2-level words (level `['A2']` in `wordIntro`):
+
+- **Vocabulary domain**: daily life — shopping, transport, weather, family, time, body, home, food, common verbs
+- **Grammar in `wordContext`**: Präsens and Perfekt are preferred; simple `war`/`hatte` Präteritum is acceptable. **Avoid**: Konjunktiv II (`würde/könnte` as hypotheticals), Passiv constructions, Genitiv, complex nested subordinate clauses
+- **Sentence length**: max ~15 words per sentence; prefer simple main clauses
+- **`meaningGuessQuestion`**: wrong options should also be everyday A2-level vocabulary (not bureaucratic B1 terms)
+- **`similarWords`**: pick other A2 common words; keep `similarityScore` ≥ 3; `cefrRelevant: true`
+- **`etymology`**: brief, max 2 sentences; favour English/Latin cognates; no scholarly depth
+- Word file structure is otherwise identical to B1 words — copy from any existing file and change `level: ['A2']`
+
+---
+
+## Plans
+
+**Always write implementation plans to their own Markdown files** before starting non-trivial work. Use `~/.claude/plans/` (the auto-generated path from `/plan`) or a path of your choosing. Reference the plan file here once created.
+
+### Active plans
+- [Level Selection](~/.claude/plans/concurrent-sniffing-badger.md) — wiring the level picker: `migrateStorage()` boot call, level-aware word pools in `SessionRunner`/`SessionDashboard`, level switcher in `SettingsPanel`, and 10 new A2 words

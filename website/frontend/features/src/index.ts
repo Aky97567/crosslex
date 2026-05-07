@@ -17,9 +17,15 @@ export type {
   CardType,
   SessionSnapshot,
   ExerciseData,
+  ActiveLevel,
 } from './Session';
 export {
   RATE_CONFIG,
+  readActiveLevel,
+  writeActiveLevel,
+  readLevelSelected,
+  writeLevelSelected,
+  migrateStorage,
   readWordsSeen,
   writeWordsSeen,
   updateWordStats,

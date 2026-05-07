@@ -6,6 +6,7 @@ import { anspruch } from './anspruch';
 import { apfel } from './apfel';
 import { arbeitgeber } from './arbeitgeber';
 import { arbeitserlaubnis } from './arbeitserlaubnis';
+import { arzt } from './arzt';
 import { aufenthalt } from './aufenthalt';
 import { ausweis } from './ausweis';
 import { auto } from './auto';
@@ -14,12 +15,15 @@ import { behoerde } from './behoerde';
 import { beitrag } from './beitrag';
 import { bescheinigung } from './bescheinigung';
 import { erfahrung } from './erfahrung';
+import { familie } from './familie';
 import { formular } from './formular';
 import { frist } from './frist';
 import { gehalt } from './gehalt';
+import { geld } from './geld';
 import { genehmigung } from './genehmigung';
 import { haus } from './haus';
 import { katze } from './katze';
+import { kaufen } from './kaufen';
 import { kindergeld } from './kindergeld';
 import { konto } from './konto';
 import { krankenversicherung } from './krankenversicherung';
@@ -27,14 +31,20 @@ import { kuendigung } from './kuendigung';
 import { mietvertrag } from './mietvertrag';
 import { nachweisen } from './nachweisen';
 import { probezeit } from './probezeit';
+import { schreiben } from './schreiben';
+import { sprechen } from './sprechen';
 import { steuer } from './steuer';
+import { supermarkt } from './supermarkt';
 import { termin } from './termin';
 import { tisch } from './tisch';
 import { uebertragen } from './uebertragen';
 import { ueberweisung } from './ueberweisung';
 import { unterlagen } from './unterlagen';
 import { vollmacht } from './vollmacht';
+import { wetter } from './wetter';
 import { widerspruch } from './widerspruch';
+import { wohnung } from './wohnung';
+import { zug } from './zug';
 import { zustaendigkeit } from './zustaendigkeit';
 
 export const sampleLearnPageContentList = {
@@ -44,6 +54,17 @@ export const sampleLearnPageContentList = {
   tisch,
   auto,
   apfel,
+  //! A2
+  arzt,
+  familie,
+  geld,
+  kaufen,
+  schreiben,
+  sprechen,
+  supermarkt,
+  wetter,
+  wohnung,
+  zug,
   //! B1
   erfahrung,
   beantragen,
@@ -83,11 +104,19 @@ export type SampleContentKey = keyof typeof sampleLearnPageContentList;
 
 export type SampleContentKeys = SampleContentKey[];
 
-export const Words = (
-  Object.keys(sampleLearnPageContentList) as SampleContentKeys
-).filter((key) => {
+const getWordLevel = (key: SampleContentKey): string[] => {
   const wordIntro = sampleLearnPageContentList[key].content.modules.find(
     (m): m is WordIntroModule => m.moduleType === 'wordIntro',
   );
-  return wordIntro ? !wordIntro.level.every((l) => l === 'A1') : true;
-});
+  return wordIntro?.level ?? [];
+};
+
+export const A2Words = (Object.keys(sampleLearnPageContentList) as SampleContentKeys).filter(
+  (key) => getWordLevel(key).some((l) => l === 'A2'),
+);
+
+export const B1Words = (Object.keys(sampleLearnPageContentList) as SampleContentKeys).filter(
+  (key) => getWordLevel(key).some((l) => l === 'B1'),
+);
+
+export const Words = B1Words;
