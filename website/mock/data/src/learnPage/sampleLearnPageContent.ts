@@ -4,9 +4,14 @@ import { anerkennung } from './anerkennung';
 import { anmeldung } from './anmeldung';
 import { anspruch } from './anspruch';
 import { apfel } from './apfel';
+import { apotheke } from './apotheke';
 import { arbeitgeber } from './arbeitgeber';
+import { arbeiten } from './arbeiten';
 import { arbeitserlaubnis } from './arbeitserlaubnis';
 import { arzt } from './arzt';
+import { brief } from './brief';
+import { freund } from './freund';
+import { handy } from './handy';
 import { aufenthalt } from './aufenthalt';
 import { ausweis } from './ausweis';
 import { auto } from './auto';
@@ -30,12 +35,17 @@ import { krankenversicherung } from './krankenversicherung';
 import { kuendigung } from './kuendigung';
 import { mietvertrag } from './mietvertrag';
 import { nachweisen } from './nachweisen';
+import { krankenhaus } from './krankenhaus';
 import { probezeit } from './probezeit';
+import { reise } from './reise';
 import { schreiben } from './schreiben';
 import { sprechen } from './sprechen';
+import { stadt } from './stadt';
 import { steuer } from './steuer';
+import { strasse } from './strasse';
 import { supermarkt } from './supermarkt';
 import { termin } from './termin';
+import { ticket } from './ticket';
 import { tisch } from './tisch';
 import { uebertragen } from './uebertragen';
 import { ueberweisung } from './ueberweisung';
@@ -55,13 +65,23 @@ export const sampleLearnPageContentList = {
   auto,
   apfel,
   //! A2
+  apotheke,
+  arbeiten,
   arzt,
+  brief,
   familie,
+  freund,
   geld,
+  handy,
   kaufen,
+  krankenhaus,
+  reise,
   schreiben,
   sprechen,
+  stadt,
+  strasse,
   supermarkt,
+  ticket,
   wetter,
   wohnung,
   zug,
