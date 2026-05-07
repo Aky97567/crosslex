@@ -3,9 +3,26 @@ export type ChangelogEntry = {
   returningUser: { heading: string; body: string; changes: string[] };
 };
 
-export const CURRENT_BUILD_ID = 'alpha-2026-05-05-words';
+export const CURRENT_BUILD_ID = 'alpha-2026-05-07-level-selection';
 
 export const CHANGELOG: Record<string, ChangelogEntry> = {
+  'alpha-2026-05-07-level-selection': {
+    newUser: {
+      heading: "You're testing Crosslex Alpha",
+      body: "Crosslex is a German vocabulary trainer — built for adults navigating real life in Germany. Choose your level, pick a session length and learning pace, and Crosslex will guide you through words and exercises. Your feedback shapes what we build next.",
+      cta: "Let's go →",
+    },
+    returningUser: {
+      heading: "You're back — something's new",
+      body: 'A2 level and level switching.',
+      changes: [
+        'New: choose your German level (A2 or B1) when you first open the app',
+        'New: 10 A2 words added — everyday vocabulary for A2 learners',
+        'New: switch your level any time in Settings',
+        'Fix: word progress is now tracked separately per level',
+      ],
+    },
+  },
   'alpha-2026-05-05-words': {
     newUser: {
       heading: "You're testing Crosslex Alpha",
