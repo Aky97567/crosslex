@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, SelectableCard } from '@whitelotus/front-shared';
+import { Card, SelectableCard, ModalOverlay } from '@whitelotus/front-shared';
 import { writeActiveLevel, writeLevelSelected, ActiveLevel } from '@whitelotus/front-features';
 import { ChangelogEntry } from './changelog';
 
@@ -28,9 +28,8 @@ const NewUserOverlay: React.FC<Props> = ({ entry, buildId, onDismiss }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-40 bg-dark flex items-center justify-center">
-      <div className="mx-20 max-w-400 w-full" onClick={(e) => e.stopPropagation()}>
-        {step === 1 ? (
+    <ModalOverlay>
+      {step === 1 ? (
           <Card heading={{ level: 'h1', text: "What's your German level?" }}>
             <p className="text-text text-sm opacity-70 mb-20">
               We'll match your word pool to your level. You can change this later in Settings.
@@ -71,8 +70,7 @@ const NewUserOverlay: React.FC<Props> = ({ entry, buildId, onDismiss }) => {
             </div>
           </Card>
         )}
-      </div>
-    </div>
+    </ModalOverlay>
   );
 };
 
