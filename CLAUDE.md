@@ -225,13 +225,17 @@ Pending features, prioritised by effort vs impact.
 ### In-flight / Tech debt
 - **FSD audit** — review all session loop files introduced on `feat/session-loop` against layer rules now that the branch is merged into main
 - **Storybook stories for exercise entities** — `MeaningGuessQuestion`, `ContextBlankQuestion`, `WordDefinitionQuestion` all have new answered/locked state that should be covered
+- **Rename "test-ready" readiness tier** — the label is too close to Membean's terminology; pick a distinctive alternative before the label becomes user-visible (current tiers: `seedPlanted` → `familiar` → `testReady`)
 
 ### Onboarding
 - **New user handholding overview** — an explanatory walkthrough for first-time users that introduces the session loop, the learning rate options, and how word cards work; should feel lightweight, not a forced tutorial
 
+### Exercises
+- **Type-the-word exercise** — a hard production exercise where the user types the German word from memory (given the translation as a prompt); should only appear in the session pool once a word reaches a high familiarity threshold (close to the top readiness tier); fits after `wordDefinition` in difficulty progression
+
 ### Engagement & retention
 - **Return motivation / streak** — nothing currently encourages users to come back the next day; needs a daily goal, streak counter, or "words ready for review" nudge
-- **Word content scale** — 36 words runs out in 2–3 sessions; users have no reason to return once the pool feels exhausted; need significantly more content
+- **Word content scale** — 30 A2 + 32 B1 words; users will exhaust a level in several sessions; need significantly more content at both levels
 - **In-app feedback channel** — users have no way to flag a broken question or wrong answer; only discoverable via DM
 
 ### Analytics & consent
@@ -259,4 +263,5 @@ When adding A2-level words (level `['A2']` in `wordIntro`):
 **Always write implementation plans to their own Markdown files** before starting non-trivial work. Use `~/.claude/plans/` (the auto-generated path from `/plan`) or a path of your choosing. Reference the plan file here once created.
 
 ### Active plans
-- [Level Selection](~/.claude/plans/concurrent-sniffing-badger.md) — wiring the level picker: `migrateStorage()` boot call, level-aware word pools in `SessionRunner`/`SessionDashboard`, level switcher in `SettingsPanel`, and 10 new A2 words
+
+_(none)_
