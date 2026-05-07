@@ -7,6 +7,7 @@ export {
   useIsMobileTouchDevice,
   useIsTablet,
   Badge,
+  ModalOverlay,
   BodyText,
   CtaText,
   Card,

@@ -6,6 +6,7 @@ export {
   useIsTablet,
 } from './mediaQueries';
 export { Badge } from './Badge';
+export { ModalOverlay } from './ModalOverlay';
 export { Card } from './Card';
 export { Checkbox } from './Checkbox';
 export { CoachMark } from './CoachMark';

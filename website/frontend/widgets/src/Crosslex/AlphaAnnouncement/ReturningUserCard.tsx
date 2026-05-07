@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from '@whitelotus/front-shared';
+import { Card, ModalOverlay } from '@whitelotus/front-shared';
 import { ChangelogEntry } from './changelog';
 
 const STORAGE_KEY = 'crosslex:seen_build';
@@ -15,7 +15,7 @@ const ReturningUserCard: React.FC<Props> = ({ entry, buildId, onDismiss }) => {
   };
 
   return (
-    <div className="fixed bottom-130 right-20 z-30 max-w-400 w-full">
+    <ModalOverlay>
       <Card
         heading={{ level: 'h2', text: entry.returningUser.heading }}
         needClose
@@ -30,7 +30,7 @@ const ReturningUserCard: React.FC<Props> = ({ entry, buildId, onDismiss }) => {
           </ul>
         )}
       </Card>
-    </div>
+    </ModalOverlay>
   );
 };
 

@@ -11,6 +11,75 @@ export const RATE_CONFIG: Record<LearningRate, RateConfig> = {
   intensive: { newWordProbability: 0.5 },
 };
 
+// ─── Level ───────────────────────────────────────────────────────────────────
+
+export type ActiveLevel = 'a2' | 'b1';
+
+const LEVEL_KEY = 'crosslex:level';
+const LEVEL_SELECTED_KEY = 'crosslex:level_selected';
+
+export const readActiveLevel = (): ActiveLevel => {
+  try {
+    return localStorage.getItem(LEVEL_KEY) === 'a2' ? 'a2' : 'b1';
+  } catch {
+    return 'b1';
+  }
+};
+
+export const writeActiveLevel = (level: ActiveLevel): void => {
+  try {
+    localStorage.setItem(LEVEL_KEY, level);
+  } catch {}
+};
+
+export const readLevelSelected = (): boolean => {
+  try {
+    return localStorage.getItem(LEVEL_SELECTED_KEY) === 'true';
+  } catch {
+    return false;
+  }
+};
+
+export const writeLevelSelected = (): void => {
+  try {
+    localStorage.setItem(LEVEL_SELECTED_KEY, 'true');
+  } catch {}
+};
+
+// ─── Storage migration ────────────────────────────────────────────────────────
+
+export const migrateStorage = (): void => {
+  const migrations: [string, string][] = [
+    ['crosslex:words_seen',  'crosslex:words_seen:b1'],
+    ['crosslex:exercise_log', 'crosslex:exercise_log:b1'],
+    ['crosslex:known_words',  'crosslex:known_words:b1'],
+  ];
+
+  let hadLegacyData = false;
+  try {
+    for (const [legacy, namespaced] of migrations) {
+      const legacyData = localStorage.getItem(legacy);
+      if (legacyData && !localStorage.getItem(namespaced)) {
+        localStorage.setItem(namespaced, legacyData);
+        hadLegacyData = true;
+      }
+    }
+    // Set default level; skip wizard for users who already had B1 data
+    if (!localStorage.getItem(LEVEL_KEY)) {
+      localStorage.setItem(LEVEL_KEY, 'b1');
+      if (hadLegacyData) {
+        localStorage.setItem(LEVEL_SELECTED_KEY, 'true');
+      }
+    }
+  } catch {}
+};
+
+// ─── Level-namespaced key helper ──────────────────────────────────────────────
+
+const leveledKey = (base: string): string => `${base}:${readActiveLevel()}`;
+
+// ─── Words seen ───────────────────────────────────────────────────────────────
+
 export type WordStats = {
   count: number;
   accuracy: number;
@@ -19,24 +88,9 @@ export type WordStats = {
 
 export type WordsSeenStore = Record<string, WordStats>;
 
-export type ExerciseEvent = {
-  ts: number;
-  sessionId: number;
-  wordKey: string;
-  type: 'intro' | 'exercise';
-  exerciseType?: 'meaningGuess' | 'contextBlank' | 'wordDefinition';
-  correct?: boolean;
-};
-
-const KEYS = {
-  wordsSeen: 'crosslex:words_seen',
-  exerciseLog: 'crosslex:exercise_log',
-  learningRate: 'crosslex:learning_rate',
-} as const;
-
 export const readWordsSeen = (): WordsSeenStore => {
   try {
-    const raw = localStorage.getItem(KEYS.wordsSeen);
+    const raw = localStorage.getItem(leveledKey('crosslex:words_seen'));
     return raw ? (JSON.parse(raw) as WordsSeenStore) : {};
   } catch {
     return {};
@@ -45,7 +99,7 @@ export const readWordsSeen = (): WordsSeenStore => {
 
 export const writeWordsSeen = (store: WordsSeenStore): void => {
   try {
-    localStorage.setItem(KEYS.wordsSeen, JSON.stringify(store));
+    localStorage.setItem(leveledKey('crosslex:words_seen'), JSON.stringify(store));
   } catch {}
 };
 
@@ -68,9 +122,11 @@ export const seedWordStats = (store: WordsSeenStore, wordKey: string): WordsSeen
   return { ...store, [wordKey]: { count: 0, accuracy: 0, lastSeen: Date.now() } };
 };
 
+// ─── Learning rate ────────────────────────────────────────────────────────────
+
 export const readLearningRate = (): LearningRate => {
   try {
-    const raw = localStorage.getItem(KEYS.learningRate);
+    const raw = localStorage.getItem('crosslex:learning_rate');
     if (raw === 'review') return 'review';
     if (raw === 'easy') return 'easy';
     if (raw === 'intensive') return 'intensive';
@@ -82,27 +138,41 @@ export const readLearningRate = (): LearningRate => {
 
 export const writeLearningRate = (rate: LearningRate): void => {
   try {
-    localStorage.setItem(KEYS.learningRate, rate);
+    localStorage.setItem('crosslex:learning_rate', rate);
   } catch {}
+};
+
+// ─── Exercise log ─────────────────────────────────────────────────────────────
+
+export type ExerciseEvent = {
+  ts: number;
+  sessionId: number;
+  wordKey: string;
+  type: 'intro' | 'exercise';
+  exerciseType?: 'meaningGuess' | 'contextBlank' | 'wordDefinition';
+  correct?: boolean;
 };
 
 export const appendExerciseEvent = (event: ExerciseEvent): void => {
   try {
-    const raw = localStorage.getItem(KEYS.exerciseLog);
+    const key = leveledKey('crosslex:exercise_log');
+    const raw = localStorage.getItem(key);
     const log: ExerciseEvent[] = raw ? (JSON.parse(raw) as ExerciseEvent[]) : [];
     log.push(event);
-    localStorage.setItem(KEYS.exerciseLog, JSON.stringify(log));
+    localStorage.setItem(key, JSON.stringify(log));
   } catch {}
 };
 
 export const readExerciseLog = (): ExerciseEvent[] => {
   try {
-    const raw = localStorage.getItem(KEYS.exerciseLog);
+    const raw = localStorage.getItem(leveledKey('crosslex:exercise_log'));
     return raw ? (JSON.parse(raw) as ExerciseEvent[]) : [];
   } catch {
     return [];
   }
 };
+
+// ─── Word readiness ───────────────────────────────────────────────────────────
 
 export type WordReadiness = 'testReady' | 'familiar' | 'seedPlanted';
 
@@ -144,6 +214,17 @@ export const computeWordMetrics = (
   return result;
 };
 
+export const getMetricsSummary = (log: ExerciseEvent[]): MetricsSummary => {
+  const metrics = computeWordMetrics(log);
+  const summary: MetricsSummary = { seedPlanted: 0, familiar: 0, testReady: 0 };
+  for (const level of Object.values(metrics)) {
+    summary[level] += 1;
+  }
+  return summary;
+};
+
+// ─── Session timeout ──────────────────────────────────────────────────────────
+
 export const readSessionTimeout = (): number => {
   try {
     const raw = localStorage.getItem('crosslex:session_timeout');
@@ -159,6 +240,8 @@ export const writeSessionTimeout = (minutes: number): void => {
     localStorage.setItem('crosslex:session_timeout', String(minutes));
   } catch {}
 };
+
+// ─── Heal words seen ──────────────────────────────────────────────────────────
 
 export const healWordsSeen = (activePool: string[]): WordsSeenStore => {
   const pool = new Set(activePool);
@@ -176,9 +259,11 @@ export const healWordsSeen = (activePool: string[]): WordsSeenStore => {
   return changed ? healed : store;
 };
 
+// ─── Known words ──────────────────────────────────────────────────────────────
+
 export const readKnownWords = (): string[] => {
   try {
-    const raw = localStorage.getItem('crosslex:known_words');
+    const raw = localStorage.getItem(leveledKey('crosslex:known_words'));
     return raw ? (JSON.parse(raw) as string[]) : [];
   } catch {
     return [];
@@ -189,7 +274,7 @@ export const addKnownWord = (wordKey: string): void => {
   try {
     const current = readKnownWords();
     if (!current.includes(wordKey)) {
-      localStorage.setItem('crosslex:known_words', JSON.stringify([...current, wordKey]));
+      localStorage.setItem(leveledKey('crosslex:known_words'), JSON.stringify([...current, wordKey]));
     }
   } catch {}
 };
@@ -197,9 +282,11 @@ export const addKnownWord = (wordKey: string): void => {
 export const removeKnownWord = (wordKey: string): void => {
   try {
     const current = readKnownWords();
-    localStorage.setItem('crosslex:known_words', JSON.stringify(current.filter((k) => k !== wordKey)));
+    localStorage.setItem(leveledKey('crosslex:known_words'), JSON.stringify(current.filter((k) => k !== wordKey)));
   } catch {}
 };
+
+// ─── Flip animation ───────────────────────────────────────────────────────────
 
 export const readFlipAnimation = (): boolean => {
   try {
@@ -215,6 +302,8 @@ export const writeFlipAnimation = (enabled: boolean): void => {
   } catch {}
 };
 
+// ─── Known word confirmed ─────────────────────────────────────────────────────
+
 export const readKnownWordConfirmed = (): boolean => {
   try {
     return localStorage.getItem('crosslex:known_word_confirmed') === 'true';
@@ -229,27 +318,22 @@ export const writeKnownWordConfirmed = (): void => {
   } catch {}
 };
 
+// ─── Storage usage ────────────────────────────────────────────────────────────
+
 export const readStorageUsage = (): { key: string; bytes: number }[] => {
-  const crosslexKeys = [
-    'crosslex:words_seen',
-    'crosslex:exercise_log',
+  const level = readActiveLevel();
+  const keys = [
+    `crosslex:words_seen:${level}`,
+    `crosslex:exercise_log:${level}`,
+    `crosslex:known_words:${level}`,
     'crosslex:learning_rate',
     'crosslex:session_timeout',
-    'crosslex:known_words',
     'crosslex:known_word_confirmed',
     'crosslex:seen_build',
+    LEVEL_KEY,
   ];
-  return crosslexKeys.map((key) => ({
+  return keys.map((key) => ({
     key,
     bytes: new Blob([localStorage.getItem(key) ?? '']).size,
   }));
-};
-
-export const getMetricsSummary = (log: ExerciseEvent[]): MetricsSummary => {
-  const metrics = computeWordMetrics(log);
-  const summary: MetricsSummary = { seedPlanted: 0, familiar: 0, testReady: 0 };
-  for (const level of Object.values(metrics)) {
-    summary[level] += 1;
-  }
-  return summary;
 };
