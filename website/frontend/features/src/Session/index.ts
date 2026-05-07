@@ -6,9 +6,15 @@ export type {
   ExerciseEvent,
   WordReadiness,
   MetricsSummary,
+  ActiveLevel,
 } from './sessionStorage';
 export {
   RATE_CONFIG,
+  readActiveLevel,
+  writeActiveLevel,
+  readLevelSelected,
+  writeLevelSelected,
+  migrateStorage,
   readWordsSeen,
   writeWordsSeen,
   updateWordStats,

@@ -3,6 +3,7 @@ import {
   PaletteSwitcher,
   getInitialPalette,
   Palette,
+  migrateStorage,
 } from '@whitelotus/front-features';
 import { AlphaAnnouncement, SessionDashboard, SessionRunner, SessionComplete, AppNav, SettingsPanel, NotificationsDrawer } from '@whitelotus/front-widgets';
 
@@ -27,6 +28,8 @@ const App: React.FC = () => {
   const [isPaletteOpen, setIsPaletteOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+
+  useEffect(() => { migrateStorage(); }, []);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-palette', palette);

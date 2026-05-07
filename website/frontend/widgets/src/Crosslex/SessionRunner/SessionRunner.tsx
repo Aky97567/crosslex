@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { sampleLearnPageContentList, Words, SampleContentKey } from '@whitelotus/mock-test';
+import { sampleLearnPageContentList, A2Words, B1Words, SampleContentKey } from '@whitelotus/mock-test';
 import {
   MeaningGuessQuestion,
   ContextBlankQuestion,
@@ -19,6 +19,7 @@ import {
   writeKnownWordConfirmed,
   readSessionTimeout,
   healWordsSeen,
+  readActiveLevel,
   useCoachMark,
   WordsSeenStore,
   CardType,
@@ -62,9 +63,11 @@ const formatTime = (ms: number): string => {
   return `${m}:${s.toString().padStart(2, '0')}`;
 };
 
+const getWordPool = () => readActiveLevel() === 'a2' ? A2Words : B1Words;
+
 const getActiveWords = () => {
   const known = new Set(readKnownWords());
-  return Words.filter((w) => !known.has(w));
+  return getWordPool().filter((w) => !known.has(w));
 };
 
 const buildInitialCard = (
@@ -95,7 +98,7 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
   const sessionTimeoutMs = useRef(readSessionTimeout() * 60 * 1000);
   const inactivityTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const [wordStats, setWordStats] = useState<WordsSeenStore>(() => healWordsSeen(Words));
+  const [wordStats, setWordStats] = useState<WordsSeenStore>(() => healWordsSeen(getWordPool()));
   const [elapsed, setElapsed] = useState(0);
   const [answered, setAnswered] = useState<boolean | null>(null);
   const [reviewWordKey, setReviewWordKey] = useState<string | null>(null);
