@@ -3,10 +3,10 @@ import {
   WordContextModule,
   MeaningGuessQuestionModule,
 } from '@whitelotus/common-crosslex-view';
-import { ContextBlankQuestionData, WordDefinitionQuestionData } from '@whitelotus/front-entities';
+import { ContextBlankQuestionData, WordDefinitionQuestionData, TypeTheWordQuestionData } from '@whitelotus/front-entities';
 import { LearningRate, RATE_CONFIG, WordsSeenStore } from './sessionStorage';
 
-export type CardType = 'wordIntro' | 'meaningGuess' | 'contextBlank' | 'wordDefinition';
+export type CardType = 'wordIntro' | 'meaningGuess' | 'contextBlank' | 'wordDefinition' | 'typeTheWord';
 
 export type SessionSnapshot = {
   lastIntroducedWordKey: string | null;
@@ -64,10 +64,17 @@ const getMeaningGuessModule = (wordData: WordData): MeaningGuessQuestionModule |
   return m ? (m as MeaningGuessQuestionModule) : null;
 };
 
-const availableExerciseTypes = (wordKey: string, wordData: WordDataMap): CardType[] => {
+const availableExerciseTypes = (
+  wordKey: string,
+  wordData: WordDataMap,
+  wordStats: WordsSeenStore,
+): CardType[] => {
   const types: CardType[] = ['wordDefinition'];
   if (getMeaningGuessModule(wordData[wordKey])) types.push('meaningGuess');
   if (getWordContextModule(wordData[wordKey])) types.push('contextBlank');
+  const stats = wordStats[wordKey];
+  // accuracy = correctCount / count, so count * accuracy = correctCount
+  if (stats && Math.round(stats.count * stats.accuracy) >= 3) types.push('typeTheWord');
   return types;
 };
 
@@ -90,7 +97,7 @@ export const pickNextCard = (
 
   // Guarantee the [intro → quiz] unit
   if (session.exercisesSinceLastIntro === 0 && session.lastIntroducedWordKey !== null) {
-    const types = availableExerciseTypes(session.lastIntroducedWordKey, wordData);
+    const types = availableExerciseTypes(session.lastIntroducedWordKey, wordData, wordStats);
     return { wordKey: session.lastIntroducedWordKey, cardType: pickRandom(types) };
   }
 
@@ -111,14 +118,15 @@ export const pickNextCard = (
   });
 
   const wordKey = pickWeightedRandom(seenKeys, weights);
-  const cardType = pickRandom(availableExerciseTypes(wordKey, wordData));
+  const cardType = pickRandom(availableExerciseTypes(wordKey, wordData, wordStats));
   return { wordKey, cardType };
 };
 
 export type ExerciseData =
   | { cardType: 'meaningGuess'; data: MeaningGuessQuestionModule['meaningBestGuessQuestion'] }
   | { cardType: 'contextBlank'; data: ContextBlankQuestionData }
-  | { cardType: 'wordDefinition'; data: WordDefinitionQuestionData };
+  | { cardType: 'wordDefinition'; data: WordDefinitionQuestionData }
+  | { cardType: 'typeTheWord'; data: TypeTheWordQuestionData };
 
 export const generateExerciseData = (
   wordKey: string,
@@ -177,6 +185,15 @@ export const generateExerciseData = (
         article: intro.article ?? undefined,
         options: shuffle([{ text: intro.translation, isCorrect: true }, ...distractors]),
       },
+    };
+  }
+
+  if (cardType === 'typeTheWord') {
+    const intro = getWordIntroModule(word);
+    if (!intro) return null;
+    return {
+      cardType: 'typeTheWord',
+      data: { word: intro.word, article: intro.article ?? undefined, translation: intro.translation },
     };
   }
 
