@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Heading } from '@whitelotus/common-crosslex-view';
-import { BodyText, Card, CtaText } from '@whitelotus/front-shared';
+import { Card } from '@whitelotus/front-shared';
 
 export type TypeTheWordQuestionData = {
   word: string;
@@ -16,6 +16,8 @@ type Props = {
   showContent?: boolean;
   onAnswer?: (correct: boolean) => void;
 };
+
+type Phase = 'idle' | 'correct' | 'wrong' | 'revealed';
 
 const normalise = (s: string) => s.trim().toLowerCase();
 
@@ -43,9 +45,9 @@ const TypeTheWordQuestion: React.FC<Props> = ({
   showContent = true,
   onAnswer,
 }) => {
+  const { word, article, translation } = typeTheWordQuestion;
   const [inputValue, setInputValue] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-  const [correct, setCorrect] = useState<boolean | null>(null);
+  const [phase, setPhase] = useState<Phase>('idle');
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -53,18 +55,39 @@ const TypeTheWordQuestion: React.FC<Props> = ({
   }, []);
 
   const handleSubmit = () => {
-    if (submitted || inputValue.trim() === '') return;
-    const result = isCorrectAnswer(inputValue, typeTheWordQuestion.word);
-    setCorrect(result);
-    setSubmitted(true);
+    if (phase !== 'idle' || inputValue.length === 0) return;
+    const result = isCorrectAnswer(inputValue, word);
     onAnswer?.(result);
+    if (result) {
+      setPhase('correct');
+    } else {
+      setPhase('wrong');
+      setTimeout(() => setPhase('revealed'), 500);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (phase !== 'idle') return;
+    setInputValue(e.target.value.slice(0, word.length));
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') handleSubmit();
   };
 
-  const { word, article, translation } = typeTheWordQuestion;
+  const getBoxContent = (i: number): string => {
+    if (phase === 'revealed') return word[i];
+    return inputValue[i] ?? ' ';
+  };
+
+  const getBoxClass = (i: number): string => {
+    if (phase === 'correct') return 'border-color1 text-color1';
+    if (phase === 'wrong') return 'border-color3 text-color3';
+    if (phase === 'revealed') return 'border-color1 text-color1';
+    if (i < inputValue.length) return 'border-color7 text-text';
+    if (i === inputValue.length) return 'border-brand';
+    return 'border-color6 opacity-40';
+  };
 
   return (
     <Card
@@ -73,51 +96,60 @@ const TypeTheWordQuestion: React.FC<Props> = ({
       onClose={onClose}
       showContent={showContent}
     >
-      <div className="flex flex-col items-center mb-30 gap-10">
+      {/* Translation prompt */}
+      <div className="flex flex-col items-center mb-30 gap-5">
         {article && (
-          <BodyText as="span" className="text-color7 text-sm">
-            {article}
-          </BodyText>
+          <span className="text-color7 text-sm">{article}</span>
         )}
-        <BodyText as="span" className="text-brand font-bold text-lg md:text-xl">
-          {translation}
-        </BodyText>
+        <span className="text-brand font-bold text-md">{translation}</span>
       </div>
 
-      <div className="flex flex-col gap-15">
+      {/* Wrapper is relative so the hidden input can be absolutely positioned */}
+      <div className="relative">
+        {/* Letter boxes */}
+        <div
+          className={`flex flex-wrap justify-center gap-10 mb-30 cursor-text ${phase === 'wrong' ? 'animate-vibrate' : ''}`}
+          onClick={() => inputRef.current?.focus()}
+        >
+          {Array.from({ length: word.length }, (_, i) => (
+            <div
+              key={i}
+              className={`border-b-2 px-5 h-60 flex items-end justify-center pb-5 font-bold text-sm transition-colors duration-200 select-none ${getBoxClass(i)}`}
+            >
+              {getBoxContent(i)}
+            </div>
+          ))}
+        </div>
+
+        {/* Hidden input — keeps keyboard accessible on mobile without visible field */}
         <input
           ref={inputRef}
           type="text"
           value={inputValue}
-          onChange={(e) => { if (!submitted) setInputValue(e.target.value); }}
+          maxLength={word.length}
+          onChange={handleChange}
           onKeyDown={handleKeyDown}
-          disabled={submitted}
-          placeholder="Type the German word…"
-          className={`w-full border-2 rounded-lg px-40 py-10 text-text bg-transparent outline-none transition-colors duration-300
-            ${submitted
-              ? correct
-                ? 'border-color1 bg-color2 text-white'
-                : 'border-color3 bg-color4 text-white'
-              : 'border-color7 focus:border-brand'
-            }`}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="none"
+          spellCheck={false}
+          aria-label={`Type the German word for ${translation}`}
+          className="absolute opacity-0 pointer-events-none w-px h-px overflow-hidden top-0 left-0"
         />
+      </div>
 
-        {submitted && !correct && (
-          <div className="border-2 border-color1 bg-color2 rounded-lg px-40 py-10">
-            <CtaText className="text-white">{word}</CtaText>
-          </div>
-        )}
-
-        {!submitted && (
+      {/* Check button */}
+      {phase === 'idle' && (
+        <div className="flex justify-center">
           <button
             onClick={handleSubmit}
-            disabled={inputValue.trim() === ''}
-            className="border-2 border-brand rounded-md text-text px-40 py-10 transition-colors duration-300 hover:bg-brand-2 disabled:opacity-40 disabled:cursor-default"
+            disabled={inputValue.length === 0}
+            className="border-2 border-brand rounded-md text-text px-40 py-10 transition-colors duration-300 hover:bg-brand-2 disabled:opacity-40 disabled:cursor-default text-sm"
           >
-            <CtaText>Check</CtaText>
+            Check
           </button>
-        )}
-      </div>
+        </div>
+      )}
     </Card>
   );
 };
