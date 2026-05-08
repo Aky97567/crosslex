@@ -73,7 +73,8 @@ const availableExerciseTypes = (
   if (getMeaningGuessModule(wordData[wordKey])) types.push('meaningGuess');
   if (getWordContextModule(wordData[wordKey])) types.push('contextBlank');
   const stats = wordStats[wordKey];
-  if (stats && stats.count >= 3 && stats.accuracy >= 0.5) types.push('typeTheWord');
+  // accuracy = correctCount / count, so count * accuracy = correctCount
+  if (stats && Math.round(stats.count * stats.accuracy) >= 3) types.push('typeTheWord');
   return types;
 };
 
