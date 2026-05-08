@@ -149,7 +149,7 @@ export type ExerciseEvent = {
   sessionId: number;
   wordKey: string;
   type: 'intro' | 'exercise';
-  exerciseType?: 'meaningGuess' | 'contextBlank' | 'wordDefinition';
+  exerciseType?: 'meaningGuess' | 'contextBlank' | 'wordDefinition' | 'typeTheWord';
   correct?: boolean;
 };
 
