@@ -9,5 +9,6 @@ export {
   WordMeaning,
   WordDefinitionQuestion,
   WordShowcase,
+  TypeTheWordQuestion,
 } from './UI';
-export type { ContextBlankQuestionData, WordDefinitionQuestionData } from './UI';
+export type { ContextBlankQuestionData, WordDefinitionQuestionData, TypeTheWordQuestionData } from './UI';

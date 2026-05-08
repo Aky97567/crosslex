@@ -4,6 +4,7 @@ import {
   MeaningGuessQuestion,
   ContextBlankQuestion,
   WordDefinitionQuestion,
+  TypeTheWordQuestion,
 } from '@whitelotus/front-entities';
 import {
   writeWordsSeen,
@@ -170,7 +171,7 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
             sessionId,
             wordKey: prev.wordKey,
             type: 'exercise',
-            exerciseType: prev.cardType as 'meaningGuess' | 'contextBlank' | 'wordDefinition',
+            exerciseType: prev.cardType as 'meaningGuess' | 'contextBlank' | 'wordDefinition' | 'typeTheWord',
             correct,
           });
         } else if (!isExercise) {
@@ -322,6 +323,16 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
                 key={runner.cardKey}
                 heading={{ text: 'What does this mean?' }}
                 wordDefinitionQuestion={runner.exerciseData.data}
+                onAnswer={handleAnswer}
+              />
+            )}
+
+          {runner.cardType === 'typeTheWord' &&
+            runner.exerciseData?.cardType === 'typeTheWord' && (
+              <TypeTheWordQuestion
+                key={runner.cardKey}
+                heading={{ text: 'Type the word' }}
+                typeTheWordQuestion={runner.exerciseData.data}
                 onAnswer={handleAnswer}
               />
             )}

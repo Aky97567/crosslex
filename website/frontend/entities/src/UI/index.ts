@@ -10,3 +10,5 @@ export { WordMeaning } from './WordMeaning';
 export { WordDefinitionQuestion } from './WordDefinitionQuestion';
 export type { WordDefinitionQuestionData } from './WordDefinitionQuestion';
 export { WordShowcase } from './WordShowcase';
+export { TypeTheWordQuestion } from './TypeTheWordQuestion';
+export type { TypeTheWordQuestionData } from './TypeTheWordQuestion';
