@@ -25,7 +25,7 @@
     "autoprefixer": "10.4.15",
     "eslint": "9.9.1",
     "eslint-config-next": "^14.2.7",
-    "postcss": "^8.4.39",
+    "postcss": "^8.5.10",
     "prettier": "^3.0.0",
     "prettier-plugin-tailwindcss": "^0.5.1",
     "prisma": "^5.1.1",
