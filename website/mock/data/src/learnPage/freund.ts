@@ -11,7 +11,7 @@ export const freund: LearnPageContent = {
         article: 'der',
         translation: 'friend (male); boyfriend',
         partOfSpeech: 'noun',
-        theme: 'daily_life',
+        themes: ['daily_life'],
         level: ['A2'],
       },
       {

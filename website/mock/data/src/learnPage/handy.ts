@@ -11,7 +11,7 @@ export const handy: LearnPageContent = {
         article: 'das',
         translation: 'mobile phone, cell phone',
         partOfSpeech: 'noun',
-        theme: 'daily_life',
+        themes: ['daily_life'],
         level: ['A2'],
       },
       {

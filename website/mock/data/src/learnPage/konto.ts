@@ -11,7 +11,7 @@ export const konto: LearnPageContent = {
         article: 'das',
         translation: 'bank account',
         partOfSpeech: 'noun',
-        theme: 'finance',
+        themes: ['finance'],
         level: ['B1'],
       },
       {

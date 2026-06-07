@@ -11,7 +11,7 @@ export const krankenversicherung: LearnPageContent = {
         article: 'die',
         translation: 'health insurance',
         partOfSpeech: 'noun',
-        theme: 'health',
+        themes: ['health', 'work', 'finance'],
         level: ['B1'],
       },
       {

@@ -11,7 +11,7 @@ export const gehalt: LearnPageContent = {
         article: 'das',
         translation: 'salary',
         partOfSpeech: 'noun',
-        theme: 'work',
+        themes: ['work', 'finance'],
         level: ['B1'],
       },
       {

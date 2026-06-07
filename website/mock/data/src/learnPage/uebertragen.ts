@@ -11,7 +11,7 @@ export const uebertragen: LearnPageContent = {
         article: null,
         translation: 'to transfer, transmit, broadcast',
         partOfSpeech: 'verb',
-        theme: 'bureaucracy',
+        themes: ['bureaucracy'],
         level: ['B1'],
       },
       {

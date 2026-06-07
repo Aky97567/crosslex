@@ -11,7 +11,7 @@ export const arbeiten: LearnPageContent = {
         article: null,
         translation: 'to work',
         partOfSpeech: 'verb',
-        theme: 'daily_life',
+        themes: ['daily_life', 'work'],
         level: ['A2'],
       },
       {

@@ -11,7 +11,7 @@ export const apotheke: LearnPageContent = {
         article: 'die',
         translation: 'pharmacy, chemist',
         partOfSpeech: 'noun',
-        theme: 'health',
+        themes: ['health'],
         level: ['A2'],
       },
       {

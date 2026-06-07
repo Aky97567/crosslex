@@ -11,7 +11,7 @@ export const vollmacht: LearnPageContent = {
         article: 'die',
         translation: 'power of attorney, authorisation',
         partOfSpeech: 'noun',
-        theme: 'bureaucracy',
+        themes: ['bureaucracy'],
         level: ['B1'],
       },
       {

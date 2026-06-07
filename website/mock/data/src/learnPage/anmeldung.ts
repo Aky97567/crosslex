@@ -11,7 +11,7 @@ export const anmeldung: LearnPageContent = {
         article: 'die',
         translation: 'registration',
         partOfSpeech: 'noun',
-        theme: 'bureaucracy',
+        themes: ['bureaucracy'],
         level: ['B1'],
       },
       {

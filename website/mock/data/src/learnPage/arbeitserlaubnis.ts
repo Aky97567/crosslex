@@ -11,7 +11,7 @@ export const arbeitserlaubnis: LearnPageContent = {
         article: 'die',
         translation: 'work permit',
         partOfSpeech: 'noun',
-        theme: 'work',
+        themes: ['work', 'bureaucracy'],
         level: ['B1'],
       },
       {

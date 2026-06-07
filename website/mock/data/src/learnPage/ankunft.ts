@@ -11,7 +11,7 @@ export const ankunft: LearnPageContent = {
         article: 'die',
         translation: 'arrival',
         partOfSpeech: 'noun',
-        theme: 'transport',
+        themes: ['transport'],
         level: ['A2'],
       },
       {

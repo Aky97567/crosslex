@@ -11,7 +11,7 @@ export const bescheinigung: LearnPageContent = {
         article: 'die',
         translation: 'certificate, confirmation',
         partOfSpeech: 'noun',
-        theme: 'bureaucracy',
+        themes: ['bureaucracy', 'work'],
         level: ['B1'],
       },
       {

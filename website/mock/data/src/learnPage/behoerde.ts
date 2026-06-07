@@ -11,7 +11,7 @@ export const behoerde: LearnPageContent = {
         article: 'die',
         translation: 'authority, government office',
         partOfSpeech: 'noun',
-        theme: 'bureaucracy',
+        themes: ['bureaucracy'],
         level: ['B1'],
       },
       {

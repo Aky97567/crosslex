@@ -11,7 +11,7 @@ export const verspaetung: LearnPageContent = {
         article: 'die',
         translation: 'delay, lateness',
         partOfSpeech: 'noun',
-        theme: 'transport',
+        themes: ['transport'],
         level: ['A2'],
       },
       {
