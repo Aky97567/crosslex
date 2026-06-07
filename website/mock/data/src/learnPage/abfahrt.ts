@@ -11,6 +11,7 @@ export const abfahrt: LearnPageContent = {
         article: 'die',
         translation: 'departure',
         partOfSpeech: 'noun',
+        themes: ['transport'],
         level: ['A2'],
       },
       {

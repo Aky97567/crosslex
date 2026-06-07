@@ -11,6 +11,7 @@ export const frist: LearnPageContent = {
         article: 'die',
         translation: 'deadline, time limit',
         partOfSpeech: 'noun',
+        themes: ['bureaucracy'],
         level: ['B1'],
       },
       {

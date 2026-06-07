@@ -13,4 +13,5 @@ export type {
   WordIntroModule,
   WordMeaningModule,
   WordShowcaseModule,
+  WordTheme,
 } from './content';

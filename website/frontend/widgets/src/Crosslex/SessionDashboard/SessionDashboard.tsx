@@ -7,8 +7,10 @@ import {
   readWordsSeen,
   readActiveLevel,
   useCoachMark,
+  writeActiveTheme,
+  WordTheme,
 } from '@whitelotus/front-features';
-import { A2Words, B1Words } from '@whitelotus/mock-test';
+import { A2Words, B1Words, getThemesForPool } from '@whitelotus/mock-test';
 import { WordMetricsPanel } from './WordMetricsPanel';
 
 const PRIZE_COPY_ENABLED = true;
@@ -26,10 +28,19 @@ const RATE_OPTIONS: RateOption[] = [
   { value: 'intensive', label: 'Intensive', subtitle: '~1 in 2 cards is a new word' },
 ];
 
+const THEME_LABELS: Record<WordTheme, string> = {
+  transport:   'Transport',
+  health:      'Health',
+  daily_life:  'Daily Life',
+  work:        'Work',
+  bureaucracy: 'Bureaucracy',
+  finance:     'Finance',
+};
+
 const ctaButton =
   'bg-brand border-2 border-brand rounded-md text-text-cta px-40 py-10 transition-colors duration-300 w-full mt-20';
 
-type Props = { onStart: (durationMinutes: number) => void; coachMarksEnabled?: boolean };
+type Props = { onStart: (durationMinutes: number, theme: WordTheme | null) => void; coachMarksEnabled?: boolean };
 
 const getWordPool = () => readActiveLevel() === 'a2' ? A2Words : B1Words;
 
@@ -44,12 +55,19 @@ const SessionDashboard: React.FC<Props> = ({ onStart, coachMarksEnabled = true }
     return (saved === 'review' || saved === 'easy') && !canReview ? 'balanced' : saved;
   });
   const wordPool = getWordPool();
+  const availableThemes = getThemesForPool(wordPool, 5);
+  const [theme, setTheme] = useState<WordTheme | null>(null);
   const allWordsSeen = wordPool.every((key) => key in wordsSeenMap);
   const showAllSeenNotice = allWordsSeen && (rate === 'balanced' || rate === 'intensive');
 
   const handleRateChange = (next: LearningRate) => {
     setRate(next);
     writeLearningRate(next);
+  };
+
+  const handleThemeChange = (next: WordTheme | null) => {
+    setTheme(next);
+    writeActiveTheme(next);
   };
 
   const handleDurationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,26 +80,48 @@ const SessionDashboard: React.FC<Props> = ({ onStart, coachMarksEnabled = true }
     <div className="max-w-4xl mx-auto px-20 py-40 flex flex-col gap-20">
       <WordMetricsPanel />
       <Card heading={{ level: 'h1', text: 'Start a session' }}>
-        <div className="mb-30">
-          <label
-            className="text-text font-semibold block mb-10"
-            htmlFor="session-duration"
-          >
-            Duration (minutes)
-          </label>
-          <input
-            id="session-duration"
-            type="number"
-            min={1}
-            max={120}
-            value={duration}
-            onChange={handleDurationChange}
-            className="bg-bg-l2 border-2 border-brand rounded-md px-20 py-10 text-text w-100 text-center"
-          />
-          <p className="text-text text-sm mt-10 opacity-70">
-            Shorter, frequent sessions beat long ones
-          </p>
+        <div className="mb-30 flex flex-wrap gap-30 items-start">
+          <div>
+            <label
+              className="text-text font-semibold block mb-10"
+              htmlFor="session-duration"
+            >
+              Duration (minutes)
+            </label>
+            <input
+              id="session-duration"
+              type="number"
+              min={1}
+              max={120}
+              value={duration}
+              onChange={handleDurationChange}
+              className="bg-bg-l2 border-2 border-brand rounded-md px-20 py-10 text-text w-100 text-center"
+            />
+          </div>
+          <div className="self-stretch border-l-2 border-brand opacity-30" />
+          <div>
+            <label
+              className="text-text font-semibold block mb-10"
+              htmlFor="session-theme"
+            >
+              Theme
+            </label>
+            <select
+              id="session-theme"
+              value={theme ?? ''}
+              onChange={(e) => handleThemeChange((e.target.value as WordTheme) || null)}
+              className="bg-bg-l2 border-2 border-brand rounded-md px-20 py-10 text-text"
+            >
+              <option value="">All themes</option>
+              {availableThemes.map((t) => (
+                <option key={t} value={t}>{THEME_LABELS[t]}</option>
+              ))}
+            </select>
+          </div>
         </div>
+        <p className="text-text text-sm -mt-20 mb-30 opacity-70">
+          Shorter, frequent sessions beat long ones
+        </p>
 
         <div className="mb-10">
           <p className="text-text font-semibold mb-15">Learning rate</p>
@@ -126,7 +166,7 @@ const SessionDashboard: React.FC<Props> = ({ onStart, coachMarksEnabled = true }
 
         <button
           className={ctaButton}
-          onClick={() => { dismissDashboardTip(); onStart(duration); }}
+          onClick={() => { dismissDashboardTip(); onStart(duration, theme); }}
         >
           Start →
         </button>

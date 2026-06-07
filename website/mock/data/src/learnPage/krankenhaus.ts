@@ -11,6 +11,7 @@ export const krankenhaus: LearnPageContent = {
         article: 'das',
         translation: 'hospital',
         partOfSpeech: 'noun',
+        themes: ['health'],
         level: ['A2'],
       },
       {

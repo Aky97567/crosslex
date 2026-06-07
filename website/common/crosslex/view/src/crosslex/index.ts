@@ -14,5 +14,6 @@ export type {
   WordIntroModule,
   WordMeaningModule,
   WordShowcaseModule,
+  WordTheme,
 } from './module';
 export type { LearnPageContent } from './page';

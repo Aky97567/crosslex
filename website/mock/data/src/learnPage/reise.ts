@@ -11,6 +11,7 @@ export const reise: LearnPageContent = {
         article: 'die',
         translation: 'trip, journey, travel',
         partOfSpeech: 'noun',
+        themes: ['transport'],
         level: ['A2'],
       },
       {

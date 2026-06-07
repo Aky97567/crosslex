@@ -18,6 +18,7 @@ export type {
   SessionSnapshot,
   ExerciseData,
   ActiveLevel,
+  WordTheme,
 } from './Session';
 export {
   RATE_CONFIG,
@@ -47,6 +48,8 @@ export {
   readFlipAnimation,
   writeFlipAnimation,
   healWordsSeen,
+  readActiveTheme,
+  writeActiveTheme,
   pickNextCard,
   generateExerciseData,
   generateExerciseDataSafe,

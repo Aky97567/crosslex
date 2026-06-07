@@ -11,6 +11,7 @@ export const umsteigen: LearnPageContent = {
         article: null,
         translation: 'to change (trains/buses), to transfer',
         partOfSpeech: 'verb',
+        themes: ['transport'],
         level: ['A2'],
       },
       {

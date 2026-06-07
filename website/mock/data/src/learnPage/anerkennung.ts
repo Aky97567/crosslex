@@ -11,6 +11,7 @@ export const anerkennung: LearnPageContent = {
         article: 'die',
         translation: 'recognition, acknowledgement',
         partOfSpeech: 'noun',
+        themes: ['bureaucracy', 'work'],
         level: ['B1'],
       },
       {

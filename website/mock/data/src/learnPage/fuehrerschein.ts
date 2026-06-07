@@ -11,6 +11,7 @@ export const fuehrerschein: LearnPageContent = {
         article: 'der',
         translation: 'driving licence',
         partOfSpeech: 'noun',
+        themes: ['transport', 'bureaucracy'],
         level: ['A2'],
       },
       {

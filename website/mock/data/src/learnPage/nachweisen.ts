@@ -11,6 +11,7 @@ export const nachweisen: LearnPageContent = {
         article: null,
         translation: 'to prove, demonstrate, show evidence',
         partOfSpeech: 'verb',
+        themes: ['bureaucracy', 'work'],
         level: ['B1'],
       },
       {

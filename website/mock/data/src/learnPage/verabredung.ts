@@ -11,6 +11,7 @@ export const verabredung: LearnPageContent = {
         article: 'die',
         translation: 'arrangement, date, meetup',
         partOfSpeech: 'noun',
+        themes: ['daily_life'],
         level: ['A2'],
       },
       {
