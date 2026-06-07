@@ -120,7 +120,7 @@ export const SimilarWords: React.FC<SimilarWordsProps> = ({
                             similarWord.similarityScore > 3 ? 'bold' : 'normal',
                         }}
                       >
-                        {`${similarWord.article} ${similarWord.word}`.trimStart()}
+                        {[similarWord.article, similarWord.word].filter(Boolean).join(' ')}
                       </span>
                       <div className="flex gap-[3px] mt-[3px] md:hidden">
                         {Array.from({ length: 5 }, (_, i) => (
