@@ -11,7 +11,7 @@ export const katze: LearnPageContent = {
         article: 'die',
         translation: 'cat',
         partOfSpeech: 'noun',
-        theme: 'daily_life',
+        themes: ['daily_life'],
         level: ['A1'],
       },
       {

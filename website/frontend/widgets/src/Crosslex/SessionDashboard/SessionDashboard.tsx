@@ -55,7 +55,7 @@ const SessionDashboard: React.FC<Props> = ({ onStart, coachMarksEnabled = true }
     return (saved === 'review' || saved === 'easy') && !canReview ? 'balanced' : saved;
   });
   const wordPool = getWordPool();
-  const availableThemes = getThemesForPool(wordPool);
+  const availableThemes = getThemesForPool(wordPool, 5);
   const [theme, setTheme] = useState<WordTheme | null>(null);
   const allWordsSeen = wordPool.every((key) => key in wordsSeenMap);
   const showAllSeenNotice = allWordsSeen && (rate === 'balanced' || rate === 'intensive');

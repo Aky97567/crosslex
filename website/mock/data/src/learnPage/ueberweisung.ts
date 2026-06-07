@@ -11,7 +11,7 @@ export const ueberweisung: LearnPageContent = {
         article: 'die',
         translation: 'bank transfer; referral',
         partOfSpeech: 'noun',
-        theme: 'finance',
+        themes: ['finance'],
         level: ['B1'],
       },
       {

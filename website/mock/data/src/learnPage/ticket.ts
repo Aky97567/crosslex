@@ -11,7 +11,7 @@ export const ticket: LearnPageContent = {
         article: 'das',
         translation: 'ticket',
         partOfSpeech: 'noun',
-        theme: 'transport',
+        themes: ['transport'],
         level: ['A2'],
       },
       {

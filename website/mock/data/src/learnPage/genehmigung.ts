@@ -11,7 +11,7 @@ export const genehmigung: LearnPageContent = {
         article: 'die',
         translation: 'permit, approval, authorization',
         partOfSpeech: 'noun',
-        theme: 'bureaucracy',
+        themes: ['bureaucracy'],
         level: ['B1'],
       },
       {

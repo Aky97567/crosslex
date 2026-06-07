@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { sampleLearnPageContentList, A2Words, B1Words, SampleContentKey, getWordTheme } from '@whitelotus/mock-test';
+import { sampleLearnPageContentList, A2Words, B1Words, SampleContentKey, getWordThemes } from '@whitelotus/mock-test';
 import { WordTheme } from '@whitelotus/front-features';
 import {
   MeaningGuessQuestion,
@@ -70,7 +70,7 @@ const getLevelPool = () => readActiveLevel() === 'a2' ? A2Words : B1Words;
 
 const getWordPool = (theme?: WordTheme | null) => {
   const levelPool = getLevelPool();
-  return theme ? levelPool.filter((w) => getWordTheme(w) === theme) : levelPool;
+  return theme ? levelPool.filter((w) => getWordThemes(w).includes(theme)) : levelPool;
 };
 
 const getActiveWords = (theme?: WordTheme | null) => {

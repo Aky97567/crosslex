@@ -11,7 +11,7 @@ export const mietvertrag: LearnPageContent = {
         article: 'der',
         translation: 'rental contract, lease agreement',
         partOfSpeech: 'noun',
-        theme: 'bureaucracy',
+        themes: ['bureaucracy', 'finance'],
         level: ['B1'],
       },
       {

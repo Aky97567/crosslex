@@ -11,7 +11,7 @@ export const apfel: LearnPageContent = {
         article: 'der',
         translation: 'apple',
         partOfSpeech: 'noun',
-        theme: 'daily_life',
+        themes: ['daily_life'],
         level: ['A1'],
       },
       {

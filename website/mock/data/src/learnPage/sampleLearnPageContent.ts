@@ -163,18 +163,19 @@ export const Words = B1Words;
 
 export type { WordTheme };
 
-export const getWordTheme = (key: SampleContentKey): WordTheme | null => {
+export const getWordThemes = (key: SampleContentKey): WordTheme[] => {
   const wordIntro = sampleLearnPageContentList[key].content.modules.find(
     (m): m is WordIntroModule => m.moduleType === 'wordIntro',
   );
-  return wordIntro?.theme ?? null;
+  return wordIntro?.themes ?? [];
 };
 
-export const getThemesForPool = (pool: SampleContentKeys): WordTheme[] => {
-  const themes = new Set<WordTheme>();
+export const getThemesForPool = (pool: SampleContentKeys, minCount = 1): WordTheme[] => {
+  const counts = new Map<WordTheme, number>();
   for (const key of pool) {
-    const theme = getWordTheme(key);
-    if (theme) themes.add(theme);
+    for (const theme of getWordThemes(key)) counts.set(theme, (counts.get(theme) ?? 0) + 1);
   }
-  return Array.from(themes);
+  return Array.from(counts.entries())
+    .filter(([, n]) => n >= minCount)
+    .map(([t]) => t);
 };

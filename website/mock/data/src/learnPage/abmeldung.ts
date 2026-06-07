@@ -11,7 +11,7 @@ export const abmeldung: LearnPageContent = {
         article: 'die',
         translation: 'deregistration',
         partOfSpeech: 'noun',
-        theme: 'bureaucracy',
+        themes: ['bureaucracy'],
         level: ['B1'],
       },
       {

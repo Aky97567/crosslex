@@ -11,7 +11,7 @@ export const tisch: LearnPageContent = {
         article: 'der',
         translation: 'table',
         partOfSpeech: 'noun',
-        theme: 'daily_life',
+        themes: ['daily_life'],
         level: ['A1'],
       },
       {

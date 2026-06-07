@@ -11,7 +11,7 @@ export const supermarkt: LearnPageContent = {
         article: 'der',
         translation: 'supermarket',
         partOfSpeech: 'noun',
-        theme: 'daily_life',
+        themes: ['daily_life'],
         level: ['A2'],
       },
       {

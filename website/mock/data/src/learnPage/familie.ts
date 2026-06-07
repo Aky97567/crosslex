@@ -11,7 +11,7 @@ export const familie: LearnPageContent = {
         article: 'die',
         translation: 'family',
         partOfSpeech: 'noun',
-        theme: 'daily_life',
+        themes: ['daily_life'],
         level: ['A2'],
       },
       {
