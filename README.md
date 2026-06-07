@@ -18,7 +18,7 @@
 
 ## Project Overview
 
-Crosslex is an innovative language learning platform built with NextJS, focusing on vocabulary expansion and improvement of language skills. It utilizes a monorepo structure managed with Yarn workspaces.
+Crosslex is an innovative language learning platform built with Vite + React, focusing on vocabulary expansion and improvement of language skills. It utilizes a monorepo structure managed with Yarn workspaces.
 
 Our platform aims to provide an engaging and effective way for users to enhance their vocabulary. It offers personalized learning experiences, adaptive difficulty, and comprehensive progress tracking.
 
@@ -54,16 +54,16 @@ The project is organized into several workspaces:
 To run the project in development mode, run one of the following from `website/`:
 
 ```
-yarn dev:crosslex-next   # Next.js app
-yarn dev:crosslex-react  # Vite React SPA
+yarn dev:crosslex-react  # Main app (Vite React SPA)
+yarn dev:crosslex-next   # Next.js app (legacy)
 ```
 
 ## Available Scripts
 
 All commands run from `website/`.
 
-- `yarn dev:crosslex-next`: Run the Next.js app in development mode
-- `yarn dev:crosslex-react`: Run the Vite React SPA in development mode
+- `yarn dev:crosslex-react`: Run the main app (Vite React SPA) in development mode
+- `yarn dev:crosslex-next`: Run the Next.js app (legacy) in development mode
 - `yarn dev:storybook-next`: Start the Next.js Storybook (port 6006)
 - `yarn dev:storybook-react`: Start the React/Vite Storybook (port 6007)
 - `yarn build:storybook-next`: Build the Next.js Storybook (deployed to GitHub Pages)
@@ -79,8 +79,8 @@ This Storybook provides a live demonstration of our components, making it easier
 
 ## Tech Stack
 
-- Next.js 14 (main app)
-- Vite 5 + React 18 (SPA)
+- Vite 5 + React 18 (main app)
+- Next.js 14 (legacy)
 - TypeScript
 - Tailwind CSS
 

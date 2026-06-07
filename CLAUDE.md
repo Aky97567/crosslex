@@ -12,8 +12,8 @@ All commands run from `website/`.
 
 ```bash
 # Dev servers
-yarn dev:crosslex-next   # Main Next.js app
-yarn dev:crosslex-react  # Vite React SPA
+yarn dev:crosslex-react  # Main app (Vite React SPA)
+yarn dev:crosslex-next   # Next.js app (legacy)
 yarn dev:storybook-next  # Next.js Storybook (port 6006)
 yarn dev:storybook-react # React/Vite Storybook (port 6007)
 
@@ -21,8 +21,8 @@ yarn dev:storybook-react # React/Vite Storybook (port 6007)
 yarn build:crosslex-react   # Build React SPA (deployed to GitHub Pages)
 yarn build:storybook-next   # Build Next.js Storybook
 yarn build:storybook-react  # Build React/Vite Storybook
-yarn workspace @whitelotus/crosslex-next build   # Production build of main app
-yarn workspace @whitelotus/crosslex-next lint    # Lint main app
+yarn workspace @whitelotus/crosslex-next build   # Production build of Next.js app (legacy)
+yarn workspace @whitelotus/crosslex-next lint    # Lint Next.js app (legacy)
 
 # Testing (run inside a frontend package directory)
 yarn test                # Jest
@@ -43,8 +43,8 @@ The monorepo follows a layered frontend architecture (Feature-Sliced Design):
 
 ```
 website/
-├── sites/crosslex-next/    # Next.js app (pages router)
-├── sites/crosslex-react/   # Vite React SPA
+├── sites/crosslex-react/   # Main app (Vite React SPA, deployed to GitHub Pages)
+├── sites/crosslex-next/    # Next.js app (legacy, pages router)
 ├── sites/storybook-next/   # Next.js Storybook (port 6006, deployed to GitHub Pages)
 ├── sites/storybook-react/  # React/Vite Storybook (port 6007)
 ├── frontend/
