@@ -64,10 +64,10 @@ export const gehalt: LearnPageContent = {
             cefrRelevant: true,
           },
           {
-            word: 'Gehaltsabrechnung',
+            word: 'Vergütung',
             article: 'die',
-            translation: 'pay slip',
-            similarityScore: 5,
+            translation: 'remuneration, pay',
+            similarityScore: 4,
             level: ['B1'],
             cefrRelevant: true,
           },

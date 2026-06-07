@@ -56,10 +56,10 @@ export const formular: LearnPageContent = {
             cefrRelevant: false,
           },
           {
-            word: 'Antrag',
+            word: 'Bogen',
             article: 'der',
-            translation: 'application',
-            similarityScore: 3,
+            translation: 'sheet, form',
+            similarityScore: 4,
             level: ['B1'],
             cefrRelevant: true,
           },

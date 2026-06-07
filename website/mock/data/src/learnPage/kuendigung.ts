@@ -64,10 +64,10 @@ export const kuendigung: LearnPageContent = {
             cefrRelevant: true,
           },
           {
-            word: 'Frist',
+            word: 'Aufkündigung',
             article: 'die',
-            translation: 'deadline, notice period',
-            similarityScore: 3,
+            translation: 'cancellation, notice of termination',
+            similarityScore: 5,
             level: ['B1'],
             cefrRelevant: true,
           },

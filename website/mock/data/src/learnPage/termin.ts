@@ -64,10 +64,10 @@ export const termin: LearnPageContent = {
             cefrRelevant: true,
           },
           {
-            word: 'Frist',
+            word: 'Verabredung',
             article: 'die',
-            translation: 'deadline',
-            similarityScore: 3,
+            translation: 'arrangement to meet',
+            similarityScore: 4,
             level: ['B1'],
             cefrRelevant: true,
           },
