@@ -11,6 +11,7 @@ export const erfahrung: LearnPageContent = {
         article: 'die',
         translation: 'experience',
         partOfSpeech: 'noun',
+        theme: 'work',
         level: ['B1', 'B2'],
       },
       {

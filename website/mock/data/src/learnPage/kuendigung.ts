@@ -11,6 +11,7 @@ export const kuendigung: LearnPageContent = {
         article: 'die',
         translation: 'termination notice, dismissal',
         partOfSpeech: 'noun',
+        theme: 'work',
         level: ['B1'],
       },
       {

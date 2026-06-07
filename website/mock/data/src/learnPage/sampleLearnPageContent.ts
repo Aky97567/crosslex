@@ -1,4 +1,4 @@
-import { WordIntroModule } from '@whitelotus/common-crosslex-view';
+import { WordIntroModule, WordTheme } from '@whitelotus/common-crosslex-view';
 import { abfahrt } from './abfahrt';
 import { abmeldung } from './abmeldung';
 import { anerkennung } from './anerkennung';
@@ -160,3 +160,21 @@ export const B1Words = (Object.keys(sampleLearnPageContentList) as SampleContent
 );
 
 export const Words = B1Words;
+
+export type { WordTheme };
+
+export const getWordTheme = (key: SampleContentKey): WordTheme | null => {
+  const wordIntro = sampleLearnPageContentList[key].content.modules.find(
+    (m): m is WordIntroModule => m.moduleType === 'wordIntro',
+  );
+  return wordIntro?.theme ?? null;
+};
+
+export const getThemesForPool = (pool: SampleContentKeys): WordTheme[] => {
+  const themes = new Set<WordTheme>();
+  for (const key of pool) {
+    const theme = getWordTheme(key);
+    if (theme) themes.add(theme);
+  }
+  return Array.from(themes);
+};

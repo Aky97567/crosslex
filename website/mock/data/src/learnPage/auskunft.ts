@@ -11,6 +11,7 @@ export const auskunft: LearnPageContent = {
         article: 'die',
         translation: 'information, enquiry',
         partOfSpeech: 'noun',
+        theme: 'daily_life',
         level: ['A2'],
       },
       {

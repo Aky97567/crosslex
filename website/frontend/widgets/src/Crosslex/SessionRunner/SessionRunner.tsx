@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { sampleLearnPageContentList, A2Words, B1Words, SampleContentKey } from '@whitelotus/mock-test';
+import { sampleLearnPageContentList, A2Words, B1Words, SampleContentKey, getWordTheme } from '@whitelotus/mock-test';
+import { WordTheme } from '@whitelotus/front-features';
 import {
   MeaningGuessQuestion,
   ContextBlankQuestion,
@@ -49,6 +50,7 @@ type RunnerState = {
 type Props = {
   sessionId: number;
   durationMinutes: number;
+  theme?: WordTheme | null;
   onComplete: (stats: {
     wordsNew: number;
     wordsReviewed: number;
@@ -64,19 +66,25 @@ const formatTime = (ms: number): string => {
   return `${m}:${s.toString().padStart(2, '0')}`;
 };
 
-const getWordPool = () => readActiveLevel() === 'a2' ? A2Words : B1Words;
+const getLevelPool = () => readActiveLevel() === 'a2' ? A2Words : B1Words;
 
-const getActiveWords = () => {
+const getWordPool = (theme?: WordTheme | null) => {
+  const levelPool = getLevelPool();
+  return theme ? levelPool.filter((w) => getWordTheme(w) === theme) : levelPool;
+};
+
+const getActiveWords = (theme?: WordTheme | null) => {
   const known = new Set(readKnownWords());
-  return getWordPool().filter((w) => !known.has(w));
+  return getWordPool(theme).filter((w) => !known.has(w));
 };
 
 const buildInitialCard = (
   wordStats: WordsSeenStore,
   learningRate: ReturnType<typeof readLearningRate>,
   sessionDurationMs: number,
+  theme?: WordTheme | null,
 ): { wordKey: string; cardType: CardType; exerciseData: ExerciseData | null } => {
-  const activeWords = getActiveWords();
+  const activeWords = getActiveWords(theme);
   const { wordKey, cardType } = pickNextCard(
     activeWords,
     wordStats,
@@ -91,21 +99,22 @@ const buildInitialCard = (
   return { wordKey, cardType, exerciseData };
 };
 
-const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete }) => {
+const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, theme, onComplete }) => {
   const durationMs = durationMinutes * 60 * 1000;
   const startedAt = useRef(Date.now());
   const learningRate = useRef(readLearningRate());
+  const themeRef = useRef(theme);
 
   const sessionTimeoutMs = useRef(readSessionTimeout() * 60 * 1000);
   const inactivityTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const [wordStats, setWordStats] = useState<WordsSeenStore>(() => healWordsSeen(getWordPool()));
+  const [wordStats, setWordStats] = useState<WordsSeenStore>(() => healWordsSeen(getWordPool(theme)));
   const [elapsed, setElapsed] = useState(0);
   const [answered, setAnswered] = useState<boolean | null>(null);
   const [reviewWordKey, setReviewWordKey] = useState<string | null>(null);
   const [pendingKnownWordKey, setPendingKnownWordKey] = useState<string | null>(null);
 
-  const initialCard = useRef(buildInitialCard(wordStats, learningRate.current, durationMs));
+  const initialCard = useRef(buildInitialCard(wordStats, learningRate.current, durationMs, themeRef.current));
 
   const [runner, setRunner] = useState<RunnerState>(() => {    const card = initialCard.current;
     return {
@@ -214,7 +223,7 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, onComplete
           sessionDurationMs: durationMs,
         };
 
-        const activeWords = getActiveWords();
+        const activeWords = getActiveWords(themeRef.current);
         const { wordKey, cardType } = pickNextCard(
           activeWords,
           nextWordStats,

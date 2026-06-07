@@ -11,6 +11,7 @@ export const formular: LearnPageContent = {
         article: 'das',
         translation: 'form',
         partOfSpeech: 'noun',
+        theme: 'bureaucracy',
         level: ['B1'],
       },
       {

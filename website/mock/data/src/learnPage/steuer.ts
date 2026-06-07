@@ -11,6 +11,7 @@ export const steuer: LearnPageContent = {
         article: 'die',
         translation: 'tax',
         partOfSpeech: 'noun',
+        theme: 'finance',
         level: ['B1'],
       },
       {

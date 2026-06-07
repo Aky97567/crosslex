@@ -11,6 +11,7 @@ export const kindergeld: LearnPageContent = {
         article: 'das',
         translation: 'child benefit',
         partOfSpeech: 'noun',
+        theme: 'finance',
         level: ['B1'],
       },
       {

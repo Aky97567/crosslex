@@ -11,6 +11,7 @@ export const zug: LearnPageContent = {
         article: 'der',
         translation: 'train',
         partOfSpeech: 'noun',
+        theme: 'transport',
         level: ['A2'],
       },
       {

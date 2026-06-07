@@ -11,6 +11,7 @@ export const unterlagen: LearnPageContent = {
         article: 'die',
         translation: 'documents, papers',
         partOfSpeech: 'noun (plural)',
+        theme: 'bureaucracy',
         level: ['B1'],
       },
       {

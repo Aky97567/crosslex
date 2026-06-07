@@ -11,6 +11,7 @@ export const puenktlich: LearnPageContent = {
         article: null,
         translation: 'punctual, on time',
         partOfSpeech: 'adjective',
+        theme: 'daily_life',
         level: ['A2'],
       },
       {

@@ -11,6 +11,7 @@ export const brief: LearnPageContent = {
         article: 'der',
         translation: 'letter',
         partOfSpeech: 'noun',
+        theme: 'daily_life',
         level: ['A2'],
       },
       {
