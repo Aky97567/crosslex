@@ -48,14 +48,6 @@ export const mietvertrag: LearnPageContent = {
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'Arbeitsvertrag',
-            article: 'der',
-            translation: 'employment contract',
-            similarityScore: 4,
-            level: ['B1'],
-            cefrRelevant: true,
-          },
-          {
             word: 'Vertrag',
             article: 'der',
             translation: 'contract, agreement',
@@ -64,10 +56,18 @@ export const mietvertrag: LearnPageContent = {
             cefrRelevant: true,
           },
           {
-            word: 'Kaution',
+            word: 'Mietvereinbarung',
             article: 'die',
-            translation: 'deposit, security',
-            similarityScore: 2,
+            translation: 'rental agreement',
+            similarityScore: 5,
+            level: ['B1'],
+            cefrRelevant: true,
+          },
+          {
+            word: 'Pachtvertrag',
+            article: 'der',
+            translation: 'lease agreement',
+            similarityScore: 4,
             level: ['B1'],
             cefrRelevant: true,
           },

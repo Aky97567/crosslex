@@ -46,9 +46,9 @@ export const auto: LearnPageContent = {
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'Fahrzeug',
-            article: 'das',
-            translation: 'vehicle',
+            word: 'Kraftwagen',
+            article: 'der',
+            translation: 'motor car',
             similarityScore: 5,
             level: ['B1'],
             cefrRelevant: true,

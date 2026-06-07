@@ -207,7 +207,7 @@ Word data lives in `mock/data/src/learnPage/`. Each word is its own file.
 - `meaningGuessQuestion` — 3 options, exactly 1 `isCorrect: true`
 - `wordContext` — paragraph using the word **at least 3 times**
 - `etymology` — origin explanation
-- `similarWords` — 2–3 related words with article, translation, similarityScore, level, cefrRelevant
+- `similarWords` — 2–3 **synonyms** (not thematically related words) with article, translation, similarityScore, level, cefrRelevant
 - `mnemonics` — 2 mnemonics; omit `imageUrl` until a real URL exists
 - `wordShowcase` — always include, leave empty (hides itself when no URL)
 
@@ -252,7 +252,7 @@ When adding A2-level words (level `['A2']` in `wordIntro`):
 - **Grammar in `wordContext`**: Präsens and Perfekt are preferred; simple `war`/`hatte` Präteritum is acceptable. **Avoid**: Konjunktiv II (`würde/könnte` as hypotheticals), Passiv constructions, Genitiv, complex nested subordinate clauses
 - **Sentence length**: max ~15 words per sentence; prefer simple main clauses
 - **`meaningGuessQuestion`**: wrong options should also be everyday A2-level vocabulary (not bureaucratic B1 terms)
-- **`similarWords`**: pick other A2 common words; keep `similarityScore` ≥ 3; `cefrRelevant: true`
+- **`similarWords`**: synonyms only — words that mean roughly the same thing, not thematically related words; pick other A2 common words; keep `similarityScore` ≥ 3; `cefrRelevant: true`
 - **`etymology`**: brief, max 2 sentences; favour English/Latin cognates; no scholarly depth
 - Word file structure is otherwise identical to B1 words — copy from any existing file and change `level: ['A2']`
 
