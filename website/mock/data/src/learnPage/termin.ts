@@ -11,6 +11,7 @@ export const termin: LearnPageContent = {
         article: 'der',
         translation: 'appointment, date',
         partOfSpeech: 'noun',
+        themes: ['bureaucracy'],
         level: ['B1'],
       },
       {

@@ -7,6 +7,7 @@ export type {
   WordReadiness,
   MetricsSummary,
   ActiveLevel,
+  WordTheme,
 } from './sessionStorage';
 export {
   RATE_CONFIG,
@@ -36,6 +37,8 @@ export {
   readFlipAnimation,
   writeFlipAnimation,
   healWordsSeen,
+  readActiveTheme,
+  writeActiveTheme,
 } from './sessionStorage';
 
 export type { CardType, SessionSnapshot, ExerciseData } from './sessionAlgorithm';

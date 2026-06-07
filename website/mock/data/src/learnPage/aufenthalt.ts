@@ -11,6 +11,7 @@ export const aufenthalt: LearnPageContent = {
         article: 'der',
         translation: 'stay, residence',
         partOfSpeech: 'noun',
+        themes: ['bureaucracy'],
         level: ['B1'],
       },
       {

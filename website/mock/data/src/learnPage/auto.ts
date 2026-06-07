@@ -11,6 +11,7 @@ export const auto: LearnPageContent = {
         article: 'das',
         translation: 'car',
         partOfSpeech: 'noun',
+        themes: ['transport'],
         level: ['A1'],
       },
       {

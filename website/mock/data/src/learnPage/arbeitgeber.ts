@@ -11,6 +11,7 @@ export const arbeitgeber: LearnPageContent = {
         article: 'der',
         translation: 'employer',
         partOfSpeech: 'noun',
+        themes: ['work'],
         level: ['B1'],
       },
       {

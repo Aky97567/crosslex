@@ -11,6 +11,7 @@ export const wetter: LearnPageContent = {
         article: 'das',
         translation: 'weather',
         partOfSpeech: 'noun',
+        themes: ['daily_life'],
         level: ['A2'],
       },
       {

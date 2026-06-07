@@ -11,6 +11,7 @@ export const stadt: LearnPageContent = {
         article: 'die',
         translation: 'city, town',
         partOfSpeech: 'noun',
+        themes: ['daily_life'],
         level: ['A2'],
       },
       {

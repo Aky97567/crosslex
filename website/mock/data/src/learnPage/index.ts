@@ -1,2 +1,2 @@
-export { Words, A2Words, B1Words, sampleLearnPageContentList } from './sampleLearnPageContent';
-export type { SampleContentKey } from './sampleLearnPageContent';
+export { Words, A2Words, B1Words, sampleLearnPageContentList, getWordThemes, getThemesForPool } from './sampleLearnPageContent';
+export type { SampleContentKey, WordTheme } from './sampleLearnPageContent';

@@ -11,6 +11,7 @@ export const wohnung: LearnPageContent = {
         article: 'die',
         translation: 'apartment, flat',
         partOfSpeech: 'noun',
+        themes: ['daily_life'],
         level: ['A2'],
       },
       {

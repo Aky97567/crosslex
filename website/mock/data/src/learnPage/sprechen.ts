@@ -11,6 +11,7 @@ export const sprechen: LearnPageContent = {
         article: null,
         translation: 'to speak',
         partOfSpeech: 'verb',
+        themes: ['daily_life'],
         level: ['A2'],
       },
       {

@@ -11,6 +11,7 @@ export const probezeit: LearnPageContent = {
         article: 'die',
         translation: 'probationary period, trial period',
         partOfSpeech: 'noun',
+        themes: ['work', 'bureaucracy'],
         level: ['B1'],
       },
       {

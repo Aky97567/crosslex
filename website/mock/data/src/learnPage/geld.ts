@@ -11,6 +11,7 @@ export const geld: LearnPageContent = {
         article: 'das',
         translation: 'money',
         partOfSpeech: 'noun',
+        themes: ['daily_life', 'finance'],
         level: ['A2'],
       },
       {

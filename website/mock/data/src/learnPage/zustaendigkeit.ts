@@ -11,6 +11,7 @@ export const zustaendigkeit: LearnPageContent = {
         article: 'die',
         translation: 'responsibility, jurisdiction, competence',
         partOfSpeech: 'noun',
+        themes: ['bureaucracy'],
         level: ['B1'],
       },
       {

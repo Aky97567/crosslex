@@ -11,6 +11,7 @@ export const beantragen: LearnPageContent = {
         article: null,
         translation: 'to apply for',
         partOfSpeech: 'verb',
+        themes: ['bureaucracy'],
         level: ['B1'],
       },
       {

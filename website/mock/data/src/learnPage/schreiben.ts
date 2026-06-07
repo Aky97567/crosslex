@@ -11,6 +11,7 @@ export const schreiben: LearnPageContent = {
         article: null,
         translation: 'to write',
         partOfSpeech: 'verb',
+        themes: ['daily_life'],
         level: ['A2'],
       },
       {
