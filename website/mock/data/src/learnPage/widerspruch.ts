@@ -11,6 +11,7 @@ export const widerspruch: LearnPageContent = {
         article: 'der',
         translation: 'objection, appeal, contradiction',
         partOfSpeech: 'noun',
+        theme: 'bureaucracy',
         level: ['B1'],
       },
       {

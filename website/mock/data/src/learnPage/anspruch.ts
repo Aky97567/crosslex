@@ -11,6 +11,7 @@ export const anspruch: LearnPageContent = {
         article: 'der',
         translation: 'claim, entitlement, right',
         partOfSpeech: 'noun',
+        theme: 'bureaucracy',
         level: ['B1'],
       },
       {

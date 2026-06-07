@@ -11,6 +11,7 @@ export const beitrag: LearnPageContent = {
         article: 'der',
         translation: 'contribution, fee, subscription',
         partOfSpeech: 'noun',
+        theme: 'finance',
         level: ['B1'],
       },
       {

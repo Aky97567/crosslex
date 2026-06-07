@@ -11,6 +11,7 @@ export const ausweis: LearnPageContent = {
         article: 'der',
         translation: 'identity document, ID card',
         partOfSpeech: 'noun',
+        theme: 'bureaucracy',
         level: ['B1'],
       },
       {

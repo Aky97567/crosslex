@@ -11,6 +11,7 @@ export const haus: LearnPageContent = {
         article: 'das',
         translation: 'house',
         partOfSpeech: 'noun',
+        theme: 'daily_life',
         level: ['A1'],
       },
       {

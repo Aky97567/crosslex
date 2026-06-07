@@ -11,6 +11,7 @@ export const stau: LearnPageContent = {
         article: 'der',
         translation: 'traffic jam',
         partOfSpeech: 'noun',
+        theme: 'transport',
         level: ['A2'],
       },
       {

@@ -27,6 +27,8 @@ export type MeaningBestGuessQuestion = {
 
 export type Article = 'der' | 'die' | 'das' | null;
 
+export type WordTheme = 'transport' | 'health' | 'daily_life' | 'work' | 'bureaucracy' | 'finance';
+
 export type WordIntroModule = Module<
   'wordIntro',
   {
@@ -35,6 +37,7 @@ export type WordIntroModule = Module<
     level: ('A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2')[];
     partOfSpeech: string;
     representativeImageUrl?: string;
+    theme?: WordTheme;
     translation: string;
     word: string;
   }

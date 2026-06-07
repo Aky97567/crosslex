@@ -11,6 +11,7 @@ export const arzt: LearnPageContent = {
         article: 'der',
         translation: 'doctor (male)',
         partOfSpeech: 'noun',
+        theme: 'health',
         level: ['A2'],
       },
       {

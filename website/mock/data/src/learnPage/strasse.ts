@@ -11,6 +11,7 @@ export const strasse: LearnPageContent = {
         article: 'die',
         translation: 'street, road',
         partOfSpeech: 'noun',
+        theme: 'daily_life',
         level: ['A2'],
       },
       {

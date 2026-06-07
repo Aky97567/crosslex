@@ -1,5 +1,29 @@
 export type LearningRate = 'review' | 'easy' | 'balanced' | 'intensive';
 
+export type WordTheme = 'transport' | 'health' | 'daily_life' | 'work' | 'bureaucracy' | 'finance';
+
+const THEME_KEY = 'crosslex:theme';
+
+export const readActiveTheme = (): WordTheme | null => {
+  try {
+    const raw = localStorage.getItem(THEME_KEY);
+    const valid: WordTheme[] = ['transport', 'health', 'daily_life', 'work', 'bureaucracy', 'finance'];
+    return valid.includes(raw as WordTheme) ? (raw as WordTheme) : null;
+  } catch {
+    return null;
+  }
+};
+
+export const writeActiveTheme = (theme: WordTheme | null): void => {
+  try {
+    if (theme === null) {
+      localStorage.removeItem(THEME_KEY);
+    } else {
+      localStorage.setItem(THEME_KEY, theme);
+    }
+  } catch {}
+};
+
 export type RateConfig = {
   newWordProbability: number;
 };

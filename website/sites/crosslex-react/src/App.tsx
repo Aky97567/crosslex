@@ -4,6 +4,7 @@ import {
   getInitialPalette,
   Palette,
   migrateStorage,
+  WordTheme,
 } from '@whitelotus/front-features';
 import { AlphaAnnouncement, SessionDashboard, SessionRunner, SessionComplete, AppNav, SettingsPanel, NotificationsDrawer } from '@whitelotus/front-widgets';
 
@@ -19,6 +20,7 @@ type SessionStats = {
 const App: React.FC = () => {
   const [phase, setPhase] = useState<AppPhase>('dashboard');
   const [durationMinutes, setDurationMinutes] = useState(30);
+  const [activeTheme, setActiveTheme] = useState<WordTheme | null>(null);
   const [sessionId, setSessionId] = useState(0);
   const [sessionStats, setSessionStats] = useState<SessionStats | null>(null);
   const [palette, setPalette] = useState<Palette>(getInitialPalette);
@@ -35,8 +37,9 @@ const App: React.FC = () => {
     document.documentElement.setAttribute('data-palette', palette);
   }, [palette]);
 
-  const handleStart = (minutes: number) => {
+  const handleStart = (minutes: number, theme: WordTheme | null) => {
     setDurationMinutes(minutes);
+    setActiveTheme(theme);
     setSessionId(Date.now());
     setPhase('running');
   };
@@ -72,6 +75,7 @@ const App: React.FC = () => {
           key={sessionId}
           sessionId={sessionId}
           durationMinutes={durationMinutes}
+          theme={activeTheme}
           onComplete={handleComplete}
         />
       )}
