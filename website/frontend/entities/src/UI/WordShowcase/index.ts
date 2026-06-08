@@ -1,0 +1,1 @@
+export { WordShowcase } from './WordShowcase';

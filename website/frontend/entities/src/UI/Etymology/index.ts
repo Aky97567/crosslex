@@ -1,0 +1,1 @@
+export { Etymology } from './Etymology';

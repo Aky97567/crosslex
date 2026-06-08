@@ -1,0 +1,1 @@
+export { SimilarWords } from './SimilarWords';

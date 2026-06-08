@@ -1,0 +1,1 @@
+export { WordMeaning } from './WordMeaning';
