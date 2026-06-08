@@ -342,6 +342,22 @@ export const writeKnownWordConfirmed = (): void => {
   } catch {}
 };
 
+// ─── Hardcore mode ───────────────────────────────────────────────────────────
+
+export const readHardcoreMode = (): boolean => {
+  try {
+    return localStorage.getItem('crosslex:hardcore_mode') === 'true';
+  } catch {
+    return false;
+  }
+};
+
+export const writeHardcoreMode = (enabled: boolean): void => {
+  try {
+    localStorage.setItem('crosslex:hardcore_mode', String(enabled));
+  } catch {}
+};
+
 // ─── Storage usage ────────────────────────────────────────────────────────────
 
 export const readStorageUsage = (): { key: string; bytes: number }[] => {

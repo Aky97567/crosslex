@@ -10,6 +10,8 @@ import {
   readActiveLevel,
   writeActiveLevel,
   ActiveLevel,
+  readHardcoreMode,
+  writeHardcoreMode,
 } from '@whitelotus/front-features';
 import { sampleLearnPageContentList } from '@whitelotus/mock-test';
 import { WordIntroModule } from '@whitelotus/common-crosslex-view';
@@ -102,6 +104,29 @@ const getWordLabel = (wordKey: string): string => {
   const intro = data.content.modules.find((m): m is WordIntroModule => m.moduleType === 'wordIntro');
   if (!intro) return wordKey;
   return intro.article ? `${intro.article} ${intro.word}` : intro.word;
+};
+
+const HardcoreModeSection: React.FC = () => {
+  const [enabled, setEnabled] = useState(() => readHardcoreMode());
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    writeHardcoreMode(e.target.checked);
+    setEnabled(e.target.checked);
+  };
+
+  return (
+    <div>
+      <SectionHeading>Exercises</SectionHeading>
+      <Checkbox
+        checked={enabled}
+        onChange={handleChange}
+        label="Hardcore word completion"
+      />
+      <p className="text-text text-sm opacity-60 mt-10">
+        Disables the Peek hint in type-the-word exercises. No letter reveals allowed.
+      </p>
+    </div>
+  );
 };
 
 const AnimationsSection: React.FC = () => {
@@ -247,6 +272,8 @@ const SettingsPanel: React.FC<Props> = ({ isOpen, onClose }) => (
         <SessionTimeoutSection />
         <Divider />
         <AnimationsSection />
+        <Divider />
+        <HardcoreModeSection />
         <Divider />
         <StorageSection />
         <Divider />
