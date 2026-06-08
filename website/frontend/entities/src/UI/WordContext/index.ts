@@ -1,0 +1,1 @@
+export { WordContext } from './WordContext';
