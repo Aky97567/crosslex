@@ -230,9 +230,6 @@ Pending features, prioritised by effort vs impact.
 ### Onboarding
 - **New user handholding overview** — an explanatory walkthrough for first-time users that introduces the session loop, the learning rate options, and how word cards work; should feel lightweight, not a forced tutorial
 
-### Exercises
-- **Type-the-word exercise** — a hard production exercise where the user types the German word from memory (given the translation as a prompt); should only appear in the session pool once a word reaches a high familiarity threshold (close to the top readiness tier); fits after `wordDefinition` in difficulty progression
-
 ### Engagement & retention
 - **Return motivation / streak** — nothing currently encourages users to come back the next day; needs a daily goal, streak counter, or "words ready for review" nudge
 - **Word content scale** — 30 A2 + 32 B1 words; users will exhaust a level in several sessions; need significantly more content at both levels
