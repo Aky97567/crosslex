@@ -40,11 +40,11 @@ const THEME_LABELS: Record<WordTheme, string> = {
 const ctaButton =
   'bg-brand border-2 border-brand rounded-md text-text-cta px-40 py-10 transition-colors duration-300 w-full mt-20';
 
-type Props = { onStart: (durationMinutes: number, theme: WordTheme | null) => void; coachMarksEnabled?: boolean };
+type Props = { onStart: (durationMinutes: number, theme: WordTheme | null) => void; onWordClick?: (wordKey: string) => void; coachMarksEnabled?: boolean };
 
 const getWordPool = () => readActiveLevel() === 'a2' ? A2Words : B1Words;
 
-const SessionDashboard: React.FC<Props> = ({ onStart, coachMarksEnabled = true }) => {
+const SessionDashboard: React.FC<Props> = ({ onStart, onWordClick, coachMarksEnabled = true }) => {
   const [duration, setDuration] = useState<number>(5);
   const { shown: showDashboardTip, dismiss: dismissDashboardTip } = useCoachMark('dashboard-intro');
   const wordsSeenMap = readWordsSeen();
@@ -78,7 +78,7 @@ const SessionDashboard: React.FC<Props> = ({ onStart, coachMarksEnabled = true }
 
   return (
     <div className="max-w-4xl mx-auto px-20 py-40 flex flex-col gap-20">
-      <WordMetricsPanel />
+      <WordMetricsPanel onWordClick={onWordClick} />
       <Card heading={{ level: 'h1', text: 'Start a session' }}>
         <div className="mb-30 flex flex-wrap gap-30 items-start">
           <div>

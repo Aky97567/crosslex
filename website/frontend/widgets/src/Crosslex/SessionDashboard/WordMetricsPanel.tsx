@@ -55,7 +55,9 @@ const LEVEL_LABELS: Record<WordReadiness, string> = {
   testReady: 'Test-ready',
 };
 
-const WordMetricsPanel: React.FC = () => {
+type Props = { onWordClick?: (wordKey: string) => void };
+
+const WordMetricsPanel: React.FC<Props> = ({ onWordClick }) => {
   const [selected, setSelected] = useState<WordReadiness | null>(null);
 
   const log = readExerciseLog();
@@ -113,7 +115,13 @@ const WordMetricsPanel: React.FC = () => {
               const intro = getWordIntro(key);
               return (
                 <li key={key}>
-                  <Badge>{intro ? intro.word : key}</Badge>
+                  {onWordClick ? (
+                    <button onClick={() => onWordClick(key)} className="cursor-pointer">
+                      <Badge>{intro ? intro.word : key}</Badge>
+                    </button>
+                  ) : (
+                    <Badge>{intro ? intro.word : key}</Badge>
+                  )}
                 </li>
               );
             })}
