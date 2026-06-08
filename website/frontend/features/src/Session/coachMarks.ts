@@ -16,7 +16,7 @@ const markCoachMarkSeen = (key: string): void => {
   try {
     const seen = readSeenMarks();
     seen.add(key);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify([...seen]));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(seen)));
   } catch {}
 };
 
