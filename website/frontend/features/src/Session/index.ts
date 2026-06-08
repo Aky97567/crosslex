@@ -8,6 +8,7 @@ export type {
   MetricsSummary,
   ActiveLevel,
   WordTheme,
+  StreakData,
 } from './sessionStorage';
 export {
   RATE_CONFIG,
@@ -41,6 +42,9 @@ export {
   writeActiveTheme,
   readHardcoreMode,
   writeHardcoreMode,
+  readStreak,
+  recordSessionForStreak,
+  hasSessionToday,
 } from './sessionStorage';
 
 export type { CardType, SessionSnapshot, ExerciseData } from './sessionAlgorithm';

@@ -5,18 +5,21 @@ import {
   Palette,
   migrateStorage,
   WordTheme,
+  recordSessionForStreak,
 } from '@whitelotus/front-features';
 import { AlphaAnnouncement, SessionDashboard, SessionRunner, SessionComplete, AppNav, SettingsPanel, NotificationsDrawer, LearnPage } from '@whitelotus/front-widgets';
 import { sampleLearnPageContentList, SampleContentKey } from '@whitelotus/mock-test';
 
 type AppPhase = 'dashboard' | 'running' | 'complete' | 'word-preview';
 
-type SessionStats = {
+type RunnerStats = {
   wordsNew: number;
   wordsReviewed: number;
   cardsDone: number;
   correctCount: number;
 };
+
+type SessionStats = RunnerStats & { streakCount: number };
 
 const App: React.FC = () => {
   const [phase, setPhase] = useState<AppPhase>('dashboard');
@@ -46,8 +49,9 @@ const App: React.FC = () => {
     setPhase('running');
   };
 
-  const handleComplete = (stats: SessionStats) => {
-    setSessionStats(stats);
+  const handleComplete = (stats: RunnerStats) => {
+    const streak = recordSessionForStreak();
+    setSessionStats({ ...stats, streakCount: streak.count });
     setPhase('complete');
   };
 

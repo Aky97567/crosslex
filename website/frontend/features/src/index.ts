@@ -19,6 +19,7 @@ export type {
   ExerciseData,
   ActiveLevel,
   WordTheme,
+  StreakData,
 } from './Session';
 export {
   RATE_CONFIG,
@@ -52,6 +53,9 @@ export {
   writeActiveTheme,
   readHardcoreMode,
   writeHardcoreMode,
+  readStreak,
+  recordSessionForStreak,
+  hasSessionToday,
   pickNextCard,
   generateExerciseData,
   generateExerciseDataSafe,

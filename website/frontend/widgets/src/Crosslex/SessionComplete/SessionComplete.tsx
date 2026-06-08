@@ -9,6 +9,7 @@ type Props = {
   wordsReviewed: number;
   cardsDone: number;
   correctCount: number;
+  streakCount?: number;
   onDone: () => void;
 };
 
@@ -17,6 +18,7 @@ const SessionComplete: React.FC<Props> = ({
   wordsReviewed,
   cardsDone,
   correctCount,
+  streakCount,
   onDone,
 }) => {
   const accuracy =
@@ -30,6 +32,9 @@ const SessionComplete: React.FC<Props> = ({
           <p>Words reviewed: <span className="font-bold">{wordsReviewed}</span></p>
           <p>Cards completed: <span className="font-bold">{cardsDone}</span></p>
           <p>Accuracy: <span className="font-bold">{accuracy}%</span></p>
+          {streakCount && streakCount > 0 && (
+            <p>Streak: <span className="font-bold">{streakCount} {streakCount === 1 ? 'day' : 'days'}</span></p>
+          )}
         </div>
         <div className="flex justify-center">
           <button className={ctaButton} onClick={onDone}>
