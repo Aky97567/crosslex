@@ -163,7 +163,7 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, theme, onC
   }, [resetInactivityTimer]);
 
   const advance = useCallback(
-    (correct: boolean | null) => {
+    (correct: boolean | null, retryCard?: { wordKey: string; cardType: Exclude<CardType, 'wordIntro'> }) => {
       resetInactivityTimer();
       setRunner((prev) => {
         const isExercise = prev.cardType !== 'wordIntro';
@@ -217,20 +217,28 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, theme, onC
           ? prev.wordKey
           : prev.lastIntroducedWordKey;
 
-        const snapshot = {
-          lastIntroducedWordKey: newLastIntroducedWordKey,
-          exercisesSinceLastIntro: newExercisesSinceLastIntro,
-          sessionDurationMs: durationMs,
-        };
-
         const activeWords = getActiveWords(themeRef.current);
-        const { wordKey, cardType } = pickNextCard(
-          activeWords,
-          nextWordStats,
-          snapshot,
-          learningRate.current,
-          sampleLearnPageContentList,
-        );
+
+        let wordKey: string;
+        let cardType: CardType;
+
+        if (retryCard) {
+          wordKey = retryCard.wordKey;
+          cardType = retryCard.cardType;
+        } else {
+          const snapshot = {
+            lastIntroducedWordKey: newLastIntroducedWordKey,
+            exercisesSinceLastIntro: newExercisesSinceLastIntro,
+            sessionDurationMs: durationMs,
+          };
+          ({ wordKey, cardType } = pickNextCard(
+            activeWords,
+            nextWordStats,
+            snapshot,
+            learningRate.current,
+            sampleLearnPageContentList,
+          ));
+        }
 
         const exerciseData =
           cardType !== 'wordIntro'
@@ -273,7 +281,7 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, theme, onC
 
   type FooterAction = { label: string; onClick: () => void };
   const footerAction: FooterAction | null = reviewContent
-    ? { label: 'Got it →', onClick: () => advance(false) }
+    ? { label: 'Got it →', onClick: () => advance(false, { wordKey: runner.wordKey, cardType: runner.cardType as Exclude<CardType, 'wordIntro'> }) }
     : runner.cardType === 'wordIntro'
     ? { label: 'Got it →', onClick: () => advance(null) }
     : answered !== null
