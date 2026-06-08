@@ -50,6 +50,8 @@ export {
   healWordsSeen,
   readActiveTheme,
   writeActiveTheme,
+  readHardcoreMode,
+  writeHardcoreMode,
   pickNextCard,
   generateExerciseData,
   generateExerciseDataSafe,

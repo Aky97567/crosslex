@@ -39,6 +39,8 @@ export {
   healWordsSeen,
   readActiveTheme,
   writeActiveTheme,
+  readHardcoreMode,
+  writeHardcoreMode,
 } from './sessionStorage';
 
 export type { CardType, SessionSnapshot, ExerciseData } from './sessionAlgorithm';

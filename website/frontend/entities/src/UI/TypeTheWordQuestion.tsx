@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Heading } from '@whitelotus/common-crosslex-view';
 import { Card } from '@whitelotus/front-shared';
+import { readHardcoreMode } from '@whitelotus/front-features';
 
 export type TypeTheWordQuestionData = {
   word: string;
@@ -48,15 +49,44 @@ const TypeTheWordQuestion: React.FC<Props> = ({
   const { word, article, translation } = typeTheWordQuestion;
   const [inputValue, setInputValue] = useState('');
   const [phase, setPhase] = useState<Phase>('idle');
+  const [revealedIndices, setRevealedIndices] = useState<number[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Positions the user must type (everything not peeked)
+  const peekedSet = new Set(revealedIndices);
+  const nonPeekedPositions = Array.from({ length: word.length }, (_, i) => i)
+    .filter(i => !peekedSet.has(i));
+
+  const maxHints = Math.max(3, Math.floor(word.length * 0.3));
+  const hardcoreMode = readHardcoreMode();
+  // Only allow peeking future (untyped) positions
+  const peekableCount = nonPeekedPositions.slice(inputValue.length).length;
+  const canHint = !hardcoreMode && phase === 'idle' && revealedIndices.length < maxHints && peekableCount > 0;
 
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
 
+  const handlePeek = () => {
+    if (!canHint) return;
+    const future = nonPeekedPositions.slice(inputValue.length);
+    const pick = future[Math.floor(Math.random() * future.length)];
+    setRevealedIndices(prev => [...prev, pick]);
+    inputRef.current?.focus();
+  };
+
+  // Reconstruct the full word from peeked letters + typed letters for answer checking
+  const buildFullInput = (typed: string): string =>
+    Array.from({ length: word.length }, (_, i) => {
+      if (peekedSet.has(i)) return word[i];
+      const typedIndex = nonPeekedPositions.indexOf(i);
+      return typedIndex < typed.length ? typed[typedIndex] : '';
+    }).join('');
+
   const handleSubmit = () => {
     if (phase !== 'idle' || inputValue.length === 0) return;
-    const result = isCorrectAnswer(inputValue, word);
+    const fullInput = buildFullInput(inputValue);
+    const result = isCorrectAnswer(fullInput, word);
     onAnswer?.(result);
     if (result) {
       setPhase('correct');
@@ -68,24 +98,30 @@ const TypeTheWordQuestion: React.FC<Props> = ({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (phase !== 'idle') return;
-    setInputValue(e.target.value.slice(0, word.length));
+    setInputValue(e.target.value.slice(0, nonPeekedPositions.length));
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') handleSubmit();
   };
 
+  const cursorBoxIndex = nonPeekedPositions[inputValue.length] ?? -1;
+
   const getBoxContent = (i: number): string => {
     if (phase === 'revealed') return word[i];
-    return inputValue[i] ?? ' ';
+    if (peekedSet.has(i)) return word[i];
+    const typedIndex = nonPeekedPositions.indexOf(i);
+    return typedIndex < inputValue.length ? inputValue[typedIndex] : ' ';
   };
 
   const getBoxClass = (i: number): string => {
     if (phase === 'correct') return 'border-color1 text-color1';
     if (phase === 'wrong') return 'border-color3 text-color3';
     if (phase === 'revealed') return 'border-color1 text-color1';
-    if (i < inputValue.length) return 'border-color7 text-text';
-    if (i === inputValue.length) return 'border-brand';
+    if (peekedSet.has(i)) return 'border-color6 text-text opacity-50';
+    const typedIndex = nonPeekedPositions.indexOf(i);
+    if (typedIndex < inputValue.length) return 'border-color7 text-text';
+    if (i === cursorBoxIndex) return 'border-brand';
     return 'border-color6 opacity-40';
   };
 
@@ -114,7 +150,7 @@ const TypeTheWordQuestion: React.FC<Props> = ({
           {Array.from({ length: word.length }, (_, i) => (
             <div
               key={i}
-              className={`border-b-2 px-5 h-60 flex items-end justify-center pb-5 font-bold text-sm transition-colors duration-200 select-none ${getBoxClass(i)}`}
+              className={`border-b-2 px-5 h-60 min-w-[20px] flex items-end justify-center pb-5 font-bold text-sm transition-colors duration-200 select-none ${getBoxClass(i)}`}
             >
               {getBoxContent(i)}
             </div>
@@ -126,7 +162,7 @@ const TypeTheWordQuestion: React.FC<Props> = ({
           ref={inputRef}
           type="text"
           value={inputValue}
-          maxLength={word.length}
+          maxLength={nonPeekedPositions.length}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
           autoComplete="off"
@@ -138,9 +174,11 @@ const TypeTheWordQuestion: React.FC<Props> = ({
         />
       </div>
 
-      {/* Check button */}
+      <p className="text-center text-sm opacity-50 mb-20">({word.length} letters)</p>
+
+      {/* Check + Peek buttons */}
       {phase === 'idle' && (
-        <div className="flex justify-center">
+        <div className="flex justify-center gap-15">
           <button
             onClick={handleSubmit}
             disabled={inputValue.length === 0}
@@ -148,6 +186,14 @@ const TypeTheWordQuestion: React.FC<Props> = ({
           >
             Check
           </button>
+          {canHint && (
+            <button
+              onClick={handlePeek}
+              className="border-2 border-brand rounded-md text-text px-20 py-10 transition-colors duration-300 hover:bg-brand-2 text-sm opacity-60 hover:opacity-100"
+            >
+              Peek ({maxHints - revealedIndices.length})
+            </button>
+          )}
         </div>
       )}
     </Card>
