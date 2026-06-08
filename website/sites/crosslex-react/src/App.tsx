@@ -6,9 +6,10 @@ import {
   migrateStorage,
   WordTheme,
 } from '@whitelotus/front-features';
-import { AlphaAnnouncement, SessionDashboard, SessionRunner, SessionComplete, AppNav, SettingsPanel, NotificationsDrawer } from '@whitelotus/front-widgets';
+import { AlphaAnnouncement, SessionDashboard, SessionRunner, SessionComplete, AppNav, SettingsPanel, NotificationsDrawer, LearnPage } from '@whitelotus/front-widgets';
+import { sampleLearnPageContentList, SampleContentKey } from '@whitelotus/mock-test';
 
-type AppPhase = 'dashboard' | 'running' | 'complete';
+type AppPhase = 'dashboard' | 'running' | 'complete' | 'word-preview';
 
 type SessionStats = {
   wordsNew: number;
@@ -23,6 +24,7 @@ const App: React.FC = () => {
   const [activeTheme, setActiveTheme] = useState<WordTheme | null>(null);
   const [sessionId, setSessionId] = useState(0);
   const [sessionStats, setSessionStats] = useState<SessionStats | null>(null);
+  const [previewWordKey, setPreviewWordKey] = useState<string | null>(null);
   const [palette, setPalette] = useState<Palette>(getInitialPalette);
   const [announcementDone, setAnnouncementDone] = useState(() => {
     try { return localStorage.getItem('crosslex:seen_build') !== null; } catch { return true; }
@@ -66,9 +68,28 @@ const App: React.FC = () => {
 
       {phase === 'dashboard' && (
         <div className="pt-50">
-          <SessionDashboard onStart={handleStart} coachMarksEnabled={announcementDone} />
+          <SessionDashboard
+            onStart={handleStart}
+            onWordClick={(key) => { setPreviewWordKey(key); setPhase('word-preview'); }}
+            coachMarksEnabled={announcementDone}
+          />
         </div>
       )}
+
+      {phase === 'word-preview' && previewWordKey && (() => {
+        const content = sampleLearnPageContentList[previewWordKey as SampleContentKey]?.content;
+        return content ? (
+          <div className="max-w-4xl mx-auto px-20 py-20">
+            <button
+              onClick={() => setPhase('dashboard')}
+              className="mb-20 text-text text-sm opacity-70 hover:opacity-100 transition-opacity"
+            >
+              ← Back to dashboard
+            </button>
+            <LearnPage content={content} />
+          </div>
+        ) : null;
+      })()}
 
       {phase === 'running' && (
         <SessionRunner
