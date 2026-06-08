@@ -9,6 +9,8 @@ import {
   useCoachMark,
   writeActiveTheme,
   WordTheme,
+  readStreak,
+  hasSessionToday,
 } from '@whitelotus/front-features';
 import { A2Words, B1Words, getThemesForPool } from '@whitelotus/mock-test';
 import { WordMetricsPanel } from './WordMetricsPanel';
@@ -76,8 +78,23 @@ const SessionDashboard: React.FC<Props> = ({ onStart, onWordClick, coachMarksEna
     setDuration(Math.min(parsed, 120));
   };
 
+  const streak = readStreak();
+  const practicedToday = hasSessionToday();
+
   return (
     <div className="max-w-4xl mx-auto px-20 py-40 flex flex-col gap-20">
+      {streak && streak.count > 0 && (
+        <div className="flex items-center justify-between px-20 py-15 border-2 border-brand rounded-md bg-bg-l2">
+          <span className="text-text font-semibold">
+            {streak.count}-day streak
+          </span>
+          {practicedToday ? (
+            <span className="text-sm text-text opacity-60">done for today</span>
+          ) : (
+            <span className="text-sm text-text opacity-60">practice today to keep it going</span>
+          )}
+        </div>
+      )}
       <WordMetricsPanel onWordClick={onWordClick} />
       <Card heading={{ level: 'h1', text: 'Start a session' }}>
         <div className="mb-30 flex flex-wrap gap-30 items-start">
