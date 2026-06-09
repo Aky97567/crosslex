@@ -227,8 +227,12 @@ module.exports = {
           '75%': { transform: 'translateX(-2px)' },
         },
         'flame-pulse': {
-          '0%, 100%': { transform: 'scale(1)', opacity: '1' },
-          '50%': { transform: 'scale(1.12)', opacity: '0.92' },
+          '0%, 100%': { transform: 'scale(1) skewX(0deg)',     opacity: '1'    },
+          '15%':       { transform: 'scale(1.04) skewX(-1deg)', opacity: '0.95' },
+          '30%':       { transform: 'scale(0.97) skewX(2deg)',  opacity: '0.98' },
+          '50%':       { transform: 'scale(1.06) skewX(-2deg)', opacity: '0.92' },
+          '65%':       { transform: 'scale(0.98) skewX(1deg)',  opacity: '0.97' },
+          '80%':       { transform: 'scale(1.03) skewX(-1deg)', opacity: '0.93' },
         },
         'count-in': {
           '0%': { transform: 'scale(0.6)', opacity: '0' },
@@ -248,7 +252,7 @@ module.exports = {
         flipAndScaleUp: 'flipAndScaleUp 0.5s ease-in-out forwards',
         scaleUp: 'scaleUp 0.4s ease-in-out',
         vibrate: 'vibrate 0.4s ease-in-out',
-        'flame-pulse': 'flame-pulse 1.8s ease-in-out infinite',
+        'flame-pulse': 'flame-pulse 1.1s ease-in-out infinite',
         'count-in': 'count-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
         'badge-reveal': 'badge-reveal 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
       },
