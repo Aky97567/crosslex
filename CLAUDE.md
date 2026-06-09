@@ -2,12 +2,6 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Instruction compliance
-
-**NCCP (No Code Changes Please)** — when the user includes NCCP in a message, respond with explanation only. No edits, no fixes, no staged changes.
-
-**When the user asks why you ignored an instruction** — do not apologise or say "I'll remember that." Give a technical explanation: name the failure mode (e.g. task completion bias, instruction bleeding, recency weighting), explain why it occurred in this specific case, and give actionable tips for how the user can phrase future instructions to get better compliance.
-
 ## Project
 
 Crosslex is a vocabulary training platform. The code lives under `website/` as a Yarn 4 workspace monorepo.
