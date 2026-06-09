@@ -1,4 +1,5 @@
 export { BadgeIcon } from './BadgeIcon';
+export { KnownWordDialog } from './KnownWordDialog';
 export { SessionProgressBar } from './SessionProgressBar';
 export { StreakBadgeTrophyCase } from './StreakBadgeTrophyCase';
 export { WordReadinessStat } from './WordReadinessStat';

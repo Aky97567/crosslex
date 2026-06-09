@@ -17,7 +17,6 @@ const KnownWordDialog: React.FC<Props> = ({ onConfirm, onCancel }) => {
         <p className="text-text text-sm opacity-70 mb-20">
           This word will be removed from your future sessions. You can restore it any time from Settings.
         </p>
-
         <div className="mb-20 opacity-70">
           <Checkbox
             checked={dontShowAgain}
@@ -25,7 +24,6 @@ const KnownWordDialog: React.FC<Props> = ({ onConfirm, onCancel }) => {
             label="Don't show this again"
           />
         </div>
-
         <div className="flex gap-10 justify-end">
           <button
             onClick={onCancel}

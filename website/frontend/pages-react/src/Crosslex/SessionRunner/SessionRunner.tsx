@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { sampleLearnPageContentList, SampleContentKey } from '@whitelotus/mock-test';
 import { WordTheme } from '@whitelotus/front-features';
-import { SessionProgressBar } from '@whitelotus/front-entities';
+import { SessionProgressBar, KnownWordDialog } from '@whitelotus/front-entities';
 import {
   useSessionTimer,
   useInactivityTimer,
@@ -15,7 +15,6 @@ import {
 } from '@whitelotus/front-features';
 import { SessionCardRenderer } from './SessionCardRenderer/SessionCardRenderer';
 import { SessionFooter } from './SessionFooter/SessionFooter';
-import { KnownWordDialog } from './KnownWordDialog';
 
 type Props = {
   sessionId: number;

@@ -1,0 +1,1 @@
+export { KnownWordDialog } from './KnownWordDialog';
