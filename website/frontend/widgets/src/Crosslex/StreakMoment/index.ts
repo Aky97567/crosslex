@@ -1,1 +1,1 @@
-export { StreakMoment, BadgeIcon } from './StreakMoment';
+export { StreakMoment } from './StreakMoment';

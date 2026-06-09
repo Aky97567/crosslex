@@ -1,3 +1,6 @@
+export { BadgeIcon } from './BadgeIcon';
+export { StreakBadgeTrophyCase } from './StreakBadgeTrophyCase';
+export { WordReadinessStat } from './WordReadinessStat';
 export { ContextBlankQuestion } from './ContextBlankQuestion';
 export type { ContextBlankQuestionData } from './ContextBlankQuestion';
 export { Etymology } from './Etymology';

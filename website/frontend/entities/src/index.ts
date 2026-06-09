@@ -1,4 +1,7 @@
 export {
+  BadgeIcon,
+  StreakBadgeTrophyCase,
+  WordReadinessStat,
   ContextBlankQuestion,
   Etymology,
   MeaningGuessQuestion,

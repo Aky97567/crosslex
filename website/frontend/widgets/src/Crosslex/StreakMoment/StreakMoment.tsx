@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import Lottie from 'lottie-react';
 import { Badge as BadgeType } from '@whitelotus/front-features';
+import { BadgeIcon } from '@whitelotus/front-entities';
 
 const FLAME_FILES = [
   '1df4b596-1182-11ee-9fc3-6f8d7094dc00.json',
@@ -39,17 +40,6 @@ const FlameAnimation: React.FC<FlameProps> = ({ file, className }) => {
     />
   );
 };
-
-const BadgeIcon: React.FC<{ earned: boolean; name: string; days: number }> = ({ earned, name, days }) => (
-  <div className={`flex flex-col items-center gap-5 ${earned ? 'opacity-100' : 'opacity-30'}`}>
-    <div className={`w-60 h-60 rounded-full border-2 flex items-center justify-center text-sm font-bold ${
-      earned ? 'border-brand bg-brand text-text-cta' : 'border-brand bg-transparent text-text'
-    }`}>
-      {days >= 1000 ? '1k' : days >= 100 ? days : days + 'd'}
-    </div>
-    <span className="text-text text-sm">{name}</span>
-  </div>
-);
 
 type Screen = 'streak' | 'badge';
 
@@ -128,4 +118,4 @@ const StreakMoment: React.FC<Props> = ({ streakCount, newBadge, onContinue, flam
   );
 };
 
-export { StreakMoment, BadgeIcon, FLAME_FILES };
+export { StreakMoment, FLAME_FILES };
