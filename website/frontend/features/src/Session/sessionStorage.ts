@@ -362,6 +362,7 @@ export const writeHardcoreMode = (enabled: boolean): void => {
 
 export type StreakData = {
   count: number;
+  bestCount: number;
   lastSessionDate: string; // YYYY-MM-DD local date
 };
 
@@ -374,29 +375,36 @@ const yesterdayDate = (): string =>
 export const readStreak = (): StreakData | null => {
   try {
     const raw = localStorage.getItem(STREAK_KEY);
-    return raw ? (JSON.parse(raw) as StreakData) : null;
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as StreakData;
+    return { ...parsed, bestCount: parsed.bestCount ?? 0 }; // bestCount may be missing in old data
   } catch {
     return null;
   }
 };
 
-export const recordSessionForStreak = (): StreakData => {
+export type RecordStreakResult = { data: StreakData; isNewDay: boolean };
+
+export const recordSessionForStreak = (): RecordStreakResult => {
   const today = todayDate();
   const prev = readStreak();
-  let next: StreakData;
-  if (!prev) {
-    next = { count: 1, lastSessionDate: today };
-  } else if (prev.lastSessionDate === today) {
-    return prev; // already practiced today, no change
-  } else if (prev.lastSessionDate === yesterdayDate()) {
-    next = { count: prev.count + 1, lastSessionDate: today };
-  } else {
-    next = { count: 1, lastSessionDate: today }; // streak broken, reset
+  if (prev?.lastSessionDate === today) {
+    return { data: prev, isNewDay: false }; // already practiced today, no change
   }
+  let count: number;
+  if (!prev) {
+    count = 1;
+  } else if (prev.lastSessionDate === yesterdayDate()) {
+    count = prev.count + 1;
+  } else {
+    count = 1; // streak broken, reset
+  }
+  const bestCount = Math.max(prev?.bestCount ?? 0, count);
+  const next: StreakData = { count, bestCount, lastSessionDate: today };
   try {
     localStorage.setItem(STREAK_KEY, JSON.stringify(next));
   } catch {}
-  return next;
+  return { data: next, isNewDay: true };
 };
 
 export const hasSessionToday = (): boolean =>
