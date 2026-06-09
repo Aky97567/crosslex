@@ -59,6 +59,10 @@ const SessionDashboard: React.FC<Props> = ({ onStart, onWordClick, coachMarksEna
   const [theme, setTheme] = useState<WordTheme | null>(null);
   const allWordsSeen = wordPool.every((key) => key in wordsSeenMap);
   const showAllSeenNotice = allWordsSeen && (rate === 'balanced' || rate === 'intensive');
+  const filteredRateOptions = RATE_OPTIONS.filter((opt) => {
+    if (opt.value === 'review' || opt.value === 'easy') return canReview;
+    return true;
+  });
 
   const handleRateChange = (next: LearningRate) => {
     setRate(next);
@@ -118,18 +122,51 @@ const SessionDashboard: React.FC<Props> = ({ onStart, onWordClick, coachMarksEna
               ))}
             </select>
           </div>
+          {/* Tablet: rate inline with duration + theme */}
+          <div className="hidden md:block lg:hidden self-stretch border-l-2 border-brand opacity-30" />
+          <div className="hidden md:block lg:hidden">
+            <label className="text-text font-semibold block mb-10" htmlFor="session-rate-inline">
+              Learning rate
+            </label>
+            <select
+              id="session-rate-inline"
+              value={rate}
+              onChange={(e) => handleRateChange(e.target.value as LearningRate)}
+              className="bg-bg-l2 border-2 border-brand rounded-md px-20 py-10 text-text"
+            >
+              {filteredRateOptions.map((opt) => (
+                <option key={opt.value} value={opt.value}>
+                  {opt.label} — {opt.subtitle}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
         <p className="text-text text-sm -mt-20 mb-30 opacity-70">
           Shorter, frequent sessions beat long ones
         </p>
 
-        <div className="mb-10">
+        {/* Mobile: rate dropdown standalone */}
+        <div className="md:hidden mb-10">
           <p className="text-text font-semibold mb-15">Learning rate</p>
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
-            {RATE_OPTIONS.filter((opt) => {
-              if (opt.value === 'review' || opt.value === 'easy') return canReview;
-              return true;
-            }).map((opt) => (
+          <select
+            className="bg-bg-l2 border-2 border-brand rounded-md px-20 py-10 text-text w-full"
+            value={rate}
+            onChange={(e) => handleRateChange(e.target.value as LearningRate)}
+          >
+            {filteredRateOptions.map((opt) => (
+              <option key={opt.value} value={opt.value}>
+                {opt.label} — {opt.subtitle}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Desktop: rate card grid */}
+        <div className="hidden lg:block mb-10">
+          <p className="text-text font-semibold mb-15">Learning rate</p>
+          <div className="grid grid-cols-2 gap-10">
+            {filteredRateOptions.map((opt) => (
               <SelectableCard
                 key={opt.value}
                 active={rate === opt.value}
