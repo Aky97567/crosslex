@@ -7,9 +7,8 @@ import {
   WordReadiness,
   readStreak,
   hasSessionToday,
-  getEarnedBadges,
 } from '@whitelotus/front-features';
-import { StreakBadgeTrophyCase, WordReadinessStat } from '@whitelotus/front-entities';
+import { WordReadinessStat } from '@whitelotus/front-entities';
 import { sampleLearnPageContentList } from '@whitelotus/mock-test';
 import { WordIntroModule } from '@whitelotus/common-crosslex-view';
 
@@ -40,7 +39,6 @@ const WordMetricsPanel: React.FC<Props> = ({ onWordClick }) => {
 
   const streak = readStreak();
   const practicedToday = hasSessionToday();
-  const earnedBadges = streak ? getEarnedBadges(streak.bestCount) : [];
 
   const toggle = (level: WordReadiness) =>
     setSelected(prev => (prev === level ? null : level));
@@ -98,8 +96,6 @@ const WordMetricsPanel: React.FC<Props> = ({ onWordClick }) => {
           </ul>
         </div>
       )}
-
-      <StreakBadgeTrophyCase earnedBadges={earnedBadges} />
 
       <p className="text-text text-sm opacity-60 text-center mt-20">
         {total} word{total !== 1 ? 's' : ''} introduced

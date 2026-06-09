@@ -10,7 +10,7 @@ import {
   getNewlyEarnedBadge,
   Badge,
 } from '@whitelotus/front-features';
-import { AlphaAnnouncement, SessionDashboard, SessionComplete, AppNav, SettingsPanel, NotificationsDrawer, WordDetail, StreakMoment } from '@whitelotus/front-widgets';
+import { AlphaAnnouncement, SessionDashboard, SessionComplete, AppNav, SettingsPanel, NotificationsDrawer, BadgesDrawer, WordDetail, StreakMoment } from '@whitelotus/front-widgets';
 import { SessionRunner } from '@whitelotus/front-pages-react';
 import { sampleLearnPageContentList, SampleContentKey } from '@whitelotus/mock-test';
 
@@ -41,6 +41,7 @@ const App: React.FC = () => {
   const [isPaletteOpen, setIsPaletteOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+  const [isBadgesOpen, setIsBadgesOpen] = useState(false);
 
   useEffect(() => { migrateStorage(); }, []);
 
@@ -77,14 +78,16 @@ const App: React.FC = () => {
           onBellClick={() => setIsNotificationsOpen(true)}
           onGearClick={() => setIsSettingsOpen(true)}
           onPaletteClick={() => setIsPaletteOpen(true)}
+          onBadgesClick={() => setIsBadgesOpen(true)}
         />
       )}
 
       <SettingsPanel isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />
       <NotificationsDrawer isOpen={isNotificationsOpen} onClose={() => setIsNotificationsOpen(false)} />
+      <BadgesDrawer isOpen={isBadgesOpen} onClose={() => setIsBadgesOpen(false)} />
 
       {phase === 'dashboard' && (
-        <div className="pt-50">
+        <div className="pt-60">
           <SessionDashboard
             onStart={handleStart}
             onWordClick={(key) => { setPreviewWordKey(key); setPhase('word-preview'); }}
