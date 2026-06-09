@@ -5,9 +5,9 @@ import {
 } from '@whitelotus/front-features';
 import { HasContent, ContentModules } from '@whitelotus/common-crosslex-view';
 
-type LearnPageProps = HasContent;
+type WordDetailProps = HasContent;
 
-const LearnPage: React.FC<LearnPageProps> = ({ content }) => {
+const WordDetail: React.FC<WordDetailProps> = ({ content }) => {
   const introModule = content.modules.find(
     (m): m is ContentModules => m.moduleType === 'wordIntro',
   );
@@ -32,4 +32,4 @@ const LearnPage: React.FC<LearnPageProps> = ({ content }) => {
   );
 };
 
-export { LearnPage };
+export { WordDetail };

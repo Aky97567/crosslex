@@ -6,14 +6,14 @@ import {
   TypeTheWordQuestion,
 } from '@whitelotus/front-entities';
 import { RunnerState } from '@whitelotus/front-features';
-import { LearnPage } from '@whitelotus/front-widgets';
+import { WordDetail } from '@whitelotus/front-widgets';
 
-type LearnPageContent = React.ComponentProps<typeof LearnPage>['content'];
+type WordDetailContent = React.ComponentProps<typeof WordDetail>['content'];
 
 type Props = {
   runner: RunnerState;
-  wordContent: LearnPageContent | undefined;
-  reviewContent: LearnPageContent | null;
+  wordContent: WordDetailContent | undefined;
+  reviewContent: WordDetailContent | null;
   reviewWordKey: string | null;
   onAnswer: (correct: boolean) => void;
 };
@@ -26,13 +26,13 @@ const SessionCardRenderer: React.FC<Props> = ({
   onAnswer,
 }) => {
   if (reviewContent) {
-    return <LearnPage key={`review-${reviewWordKey}`} content={reviewContent} />;
+    return <WordDetail key={`review-${reviewWordKey}`} content={reviewContent} />;
   }
 
   return (
     <>
       {runner.cardType === 'wordIntro' && wordContent && (
-        <LearnPage key={runner.cardKey} content={wordContent} />
+        <WordDetail key={runner.cardKey} content={wordContent} />
       )}
       {runner.cardType === 'meaningGuess' && runner.exerciseData?.cardType === 'meaningGuess' && (
         <MeaningGuessQuestion
@@ -71,4 +71,4 @@ const SessionCardRenderer: React.FC<Props> = ({
 };
 
 export { SessionCardRenderer };
-export type { LearnPageContent };
+export type { WordDetailContent };
