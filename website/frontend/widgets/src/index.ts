@@ -6,3 +6,4 @@ export { AppNav } from './Crosslex/AppNav/AppNav';
 export { StreakMoment } from './Crosslex/StreakMoment';
 export { SettingsPanel } from './Crosslex/SettingsPanel/SettingsPanel';
 export { NotificationsDrawer } from './Crosslex/NotificationsDrawer/NotificationsDrawer';
+export { BadgesDrawer } from './Crosslex/BadgesDrawer/BadgesDrawer';
