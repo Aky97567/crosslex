@@ -9,5 +9,5 @@ export default {
 
 export const Default: StoryObj<typeof WordMetricsPanel> = {
   args: {},
-  storyName: 'Default (reads from localStorage)',
+  name: 'Default (reads from localStorage)',
 };
