@@ -1,4 +1,4 @@
-export { LearnPage } from './Crosslex/LearnPage';
+export { WordDetail } from './Crosslex/WordDetail';
 export { AlphaAnnouncement } from './Crosslex/AlphaAnnouncement/AlphaAnnouncement';
 export { SessionDashboard } from './Crosslex/SessionDashboard/SessionDashboard';
 export { SessionComplete } from './Crosslex/SessionComplete/SessionComplete';

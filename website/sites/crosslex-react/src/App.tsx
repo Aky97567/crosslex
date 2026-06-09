@@ -10,7 +10,7 @@ import {
   getNewlyEarnedBadge,
   Badge,
 } from '@whitelotus/front-features';
-import { AlphaAnnouncement, SessionDashboard, SessionComplete, AppNav, SettingsPanel, NotificationsDrawer, LearnPage, StreakMoment } from '@whitelotus/front-widgets';
+import { AlphaAnnouncement, SessionDashboard, SessionComplete, AppNav, SettingsPanel, NotificationsDrawer, WordDetail, StreakMoment } from '@whitelotus/front-widgets';
 import { SessionRunner } from '@whitelotus/front-pages-react';
 import { sampleLearnPageContentList, SampleContentKey } from '@whitelotus/mock-test';
 
@@ -103,7 +103,7 @@ const App: React.FC = () => {
             >
               ← Back to dashboard
             </button>
-            <LearnPage content={content} />
+            <WordDetail content={content} />
           </div>
         ) : null;
       })()}

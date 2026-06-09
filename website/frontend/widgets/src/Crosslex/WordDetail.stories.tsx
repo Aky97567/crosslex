@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { LearnPage } from './LearnPage';
+import { WordDetail } from './WordDetail';
 import { HasContent } from '@whitelotus/common-crosslex-view';
 import {
   SampleContentKey,
@@ -8,11 +8,11 @@ import {
   Words,
 } from '@whitelotus/mock-test';
 
-type LearnPageWrapperProps = {
+type WordDetailWrapperProps = {
   selectedWord: SampleContentKey;
 };
 
-const LearnPageWrapper: React.FC<LearnPageWrapperProps> = ({
+const WordDetailWrapper: React.FC<WordDetailWrapperProps> = ({
   selectedWord,
 }) => {
   const content = sampleLearnPageContentList[selectedWord];
@@ -21,12 +21,12 @@ const LearnPageWrapper: React.FC<LearnPageWrapperProps> = ({
     content: content.content,
   };
 
-  return <LearnPage {...learnPageProps} />;
+  return <WordDetail {...learnPageProps} />;
 };
 
 export default {
-  title: 'Pages/LearnPage',
-  component: LearnPageWrapper,
+  title: 'Pages/WordDetail',
+  component: WordDetailWrapper,
   argTypes: {
     selectedWord: {
       control: {
@@ -36,13 +36,13 @@ export default {
       description: 'Select a word to display the corresponding content.',
     },
   },
-} as Meta<typeof LearnPageWrapper>;
+} as Meta<typeof WordDetailWrapper>;
 
-const Template: StoryFn<typeof LearnPageWrapper> = args => (
-  <LearnPageWrapper {...args} />
+const Template: StoryFn<typeof WordDetailWrapper> = args => (
+  <WordDetailWrapper {...args} />
 );
 
-export const Primary: StoryObj<typeof LearnPageWrapper> = Template.bind({});
+export const Primary: StoryObj<typeof WordDetailWrapper> = Template.bind({});
 Primary.args = {
   selectedWord: 'erfahrung',
 };
