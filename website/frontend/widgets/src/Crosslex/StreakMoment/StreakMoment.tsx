@@ -13,7 +13,7 @@ const FLAME_FILES = [
 
 export type FlameVariant = typeof FLAME_FILES[number];
 
-const flameUrl = (file: string) => `/lottie/flame/${file}`;
+const flameUrl = (file: string) => `${import.meta.env.BASE_URL}lottie/flame/${file}`;
 
 const useLottieData = (file: string) => {
   const [data, setData] = useState<object | null>(null);
@@ -50,8 +50,6 @@ type Props = {
   flameVariant?: FlameVariant;
 };
 
-const AUTO_ADVANCE_MS = 3000;
-
 const StreakMoment: React.FC<Props> = ({ streakCount, newBadge, onContinue, flameVariant }) => {
   const [screen, setScreen] = useState<Screen>('streak');
 
@@ -62,16 +60,6 @@ const StreakMoment: React.FC<Props> = ({ streakCount, newBadge, onContinue, flam
     [],
   );
 
-  useEffect(() => {
-    if (screen === 'streak' && !newBadge) {
-      const t = setTimeout(onContinue, AUTO_ADVANCE_MS);
-      return () => clearTimeout(t);
-    }
-    if (screen === 'streak' && newBadge) {
-      const t = setTimeout(() => setScreen('badge'), AUTO_ADVANCE_MS);
-      return () => clearTimeout(t);
-    }
-  }, [screen, newBadge, onContinue]);
 
   const handleContinue = () => {
     if (screen === 'streak' && newBadge) {
