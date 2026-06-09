@@ -19,6 +19,9 @@ export type {
   ExerciseData,
   ActiveLevel,
   WordTheme,
+  StreakData,
+  RecordStreakResult,
+  Badge,
 } from './Session';
 export {
   RATE_CONFIG,
@@ -52,6 +55,12 @@ export {
   writeActiveTheme,
   readHardcoreMode,
   writeHardcoreMode,
+  readStreak,
+  recordSessionForStreak,
+  hasSessionToday,
+  BADGES,
+  getEarnedBadges,
+  getNewlyEarnedBadge,
   pickNextCard,
   generateExerciseData,
   generateExerciseDataSafe,

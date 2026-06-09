@@ -5,9 +5,14 @@ import {
   getMetricsSummary,
   computeWordMetrics,
   WordReadiness,
+  readStreak,
+  hasSessionToday,
+  BADGES,
+  getEarnedBadges,
 } from '@whitelotus/front-features';
 import { sampleLearnPageContentList } from '@whitelotus/mock-test';
 import { WordIntroModule } from '@whitelotus/common-crosslex-view';
+import { BadgeIcon } from '../StreakMoment/StreakMoment';
 
 const getWordIntro = (wordKey: string): WordIntroModule | null => {
   const data =
@@ -59,6 +64,7 @@ type Props = { onWordClick?: (wordKey: string) => void };
 
 const WordMetricsPanel: React.FC<Props> = ({ onWordClick }) => {
   const [selected, setSelected] = useState<WordReadiness | null>(null);
+  const [badgesExpanded, setBadgesExpanded] = useState(false);
 
   const log = readExerciseLog();
   const total = new Set(log.filter(e => e.type === 'intro').map(e => e.wordKey))
@@ -68,6 +74,10 @@ const WordMetricsPanel: React.FC<Props> = ({ onWordClick }) => {
 
   const { seedPlanted, familiar, testReady } = getMetricsSummary(log);
   const metrics = computeWordMetrics(log);
+
+  const streak = readStreak();
+  const practicedToday = hasSessionToday();
+  const earnedBadges = streak ? getEarnedBadges(streak.bestCount) : [];
 
   const toggle = (level: WordReadiness) =>
     setSelected(prev => (prev === level ? null : level));
@@ -129,8 +139,39 @@ const WordMetricsPanel: React.FC<Props> = ({ onWordClick }) => {
         </div>
       )}
 
+      {/* Badges section */}
+      <div className="mt-20 border-t-2 border-brand pt-15">
+        <button
+          onClick={() => setBadgesExpanded(p => !p)}
+          className="flex items-center justify-between w-full text-left"
+        >
+          <span className="text-text text-sm font-semibold opacity-70">
+            Badges {earnedBadges.length > 0 && `(${earnedBadges.length} earned)`}
+          </span>
+          <span className="text-text text-sm opacity-50">{badgesExpanded ? '▴' : '▾'}</span>
+        </button>
+        {badgesExpanded && (
+          <div className="mt-15 flex flex-wrap gap-20 justify-center">
+            {BADGES.map(badge => (
+              <BadgeIcon
+                key={badge.days}
+                earned={earnedBadges.some(b => b.days === badge.days)}
+                name={badge.name}
+                days={badge.days}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Footer: words count + streak */}
       <p className="text-text text-sm opacity-60 text-center mt-20">
-        {total} word{total !== 1 ? 's' : ''} introduced total
+        {total} word{total !== 1 ? 's' : ''} introduced
+        {streak && streak.count > 0 && (
+          <span className="ml-10 opacity-100">
+            · {streak.count}-day streak{practicedToday ? ' ✓' : ''}
+          </span>
+        )}
       </p>
     </Card>
   );
