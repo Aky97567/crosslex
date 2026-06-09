@@ -8,6 +8,8 @@ export type {
   MetricsSummary,
   ActiveLevel,
   WordTheme,
+  StreakData,
+  RecordStreakResult,
 } from './sessionStorage';
 export {
   RATE_CONFIG,
@@ -41,9 +43,15 @@ export {
   writeActiveTheme,
   readHardcoreMode,
   writeHardcoreMode,
+  readStreak,
+  recordSessionForStreak,
+  hasSessionToday,
 } from './sessionStorage';
 
 export type { CardType, SessionSnapshot, ExerciseData } from './sessionAlgorithm';
 export { pickNextCard, generateExerciseData, generateExerciseDataSafe } from './sessionAlgorithm';
 
 export { hasSeenCoachMark, markCoachMarkSeen, useCoachMark } from './coachMarks';
+
+export type { Badge } from './badges';
+export { BADGES, getEarnedBadges, getNewlyEarnedBadge } from './badges';

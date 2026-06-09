@@ -358,6 +358,58 @@ export const writeHardcoreMode = (enabled: boolean): void => {
   } catch {}
 };
 
+// ─── Streak ──────────────────────────────────────────────────────────────────
+
+export type StreakData = {
+  count: number;
+  bestCount: number;
+  lastSessionDate: string; // YYYY-MM-DD local date
+};
+
+const STREAK_KEY = 'crosslex:streak';
+
+const todayDate = (): string => new Date().toLocaleDateString('sv');
+const yesterdayDate = (): string =>
+  new Date(Date.now() - 86_400_000).toLocaleDateString('sv');
+
+export const readStreak = (): StreakData | null => {
+  try {
+    const raw = localStorage.getItem(STREAK_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as StreakData;
+    return { ...parsed, bestCount: parsed.bestCount ?? 0 }; // bestCount may be missing in old data
+  } catch {
+    return null;
+  }
+};
+
+export type RecordStreakResult = { data: StreakData; isNewDay: boolean };
+
+export const recordSessionForStreak = (): RecordStreakResult => {
+  const today = todayDate();
+  const prev = readStreak();
+  if (prev?.lastSessionDate === today) {
+    return { data: prev, isNewDay: false }; // already practiced today, no change
+  }
+  let count: number;
+  if (!prev) {
+    count = 1;
+  } else if (prev.lastSessionDate === yesterdayDate()) {
+    count = prev.count + 1;
+  } else {
+    count = 1; // streak broken, reset
+  }
+  const bestCount = Math.max(prev?.bestCount ?? 0, count);
+  const next: StreakData = { count, bestCount, lastSessionDate: today };
+  try {
+    localStorage.setItem(STREAK_KEY, JSON.stringify(next));
+  } catch {}
+  return { data: next, isNewDay: true };
+};
+
+export const hasSessionToday = (): boolean =>
+  readStreak()?.lastSessionDate === todayDate();
+
 // ─── Storage usage ────────────────────────────────────────────────────────────
 
 export const readStorageUsage = (): { key: string; bytes: number }[] => {

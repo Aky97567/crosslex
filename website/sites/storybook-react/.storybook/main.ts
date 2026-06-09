@@ -3,6 +3,7 @@ import { dirname, join, resolve } from 'path';
 
 const config: StorybookConfig = {
   stories: ['../../../frontend/*/src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
+  staticDirs: [resolve(__dirname, '../../crosslex-react/public')],
 
   addons: [
     getAbsolutePath('@storybook/addon-links'),

@@ -84,4 +84,4 @@ export const HardcoreMode: StoryObj<typeof HardcoreWrapper> = HardcoreTemplate.b
 HardcoreMode.args = {
   word: 'wohnung',
 };
-HardcoreMode.storyName = 'Hardcore mode (no hints)';
+HardcoreMode.name = 'Hardcore mode (no hints)';

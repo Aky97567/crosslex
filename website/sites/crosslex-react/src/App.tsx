@@ -5,18 +5,24 @@ import {
   Palette,
   migrateStorage,
   WordTheme,
+  readStreak,
+  recordSessionForStreak,
+  getNewlyEarnedBadge,
+  Badge,
 } from '@whitelotus/front-features';
-import { AlphaAnnouncement, SessionDashboard, SessionRunner, SessionComplete, AppNav, SettingsPanel, NotificationsDrawer, LearnPage } from '@whitelotus/front-widgets';
+import { AlphaAnnouncement, SessionDashboard, SessionRunner, SessionComplete, AppNav, SettingsPanel, NotificationsDrawer, LearnPage, StreakMoment } from '@whitelotus/front-widgets';
 import { sampleLearnPageContentList, SampleContentKey } from '@whitelotus/mock-test';
 
-type AppPhase = 'dashboard' | 'running' | 'complete' | 'word-preview';
+type AppPhase = 'dashboard' | 'running' | 'streak' | 'complete' | 'word-preview';
 
-type SessionStats = {
+type RunnerStats = {
   wordsNew: number;
   wordsReviewed: number;
   cardsDone: number;
   correctCount: number;
 };
+
+type SessionStats = RunnerStats & { streakCount: number };
 
 const App: React.FC = () => {
   const [phase, setPhase] = useState<AppPhase>('dashboard');
@@ -24,6 +30,8 @@ const App: React.FC = () => {
   const [activeTheme, setActiveTheme] = useState<WordTheme | null>(null);
   const [sessionId, setSessionId] = useState(0);
   const [sessionStats, setSessionStats] = useState<SessionStats | null>(null);
+  const [streakCount, setStreakCount] = useState(0);
+  const [newBadge, setNewBadge] = useState<Badge | undefined>(undefined);
   const [previewWordKey, setPreviewWordKey] = useState<string | null>(null);
   const [palette, setPalette] = useState<Palette>(getInitialPalette);
   const [announcementDone, setAnnouncementDone] = useState(() => {
@@ -46,9 +54,17 @@ const App: React.FC = () => {
     setPhase('running');
   };
 
-  const handleComplete = (stats: SessionStats) => {
-    setSessionStats(stats);
-    setPhase('complete');
+  const handleComplete = (stats: RunnerStats) => {
+    const prevBest = readStreak()?.bestCount ?? 0;
+    const { data: streak, isNewDay } = recordSessionForStreak();
+    setSessionStats({ ...stats, streakCount: streak.count });
+    if (isNewDay) {
+      setStreakCount(streak.count);
+      setNewBadge(getNewlyEarnedBadge(prevBest, streak.count));
+      setPhase('streak');
+    } else {
+      setPhase('complete');
+    }
   };
 
   return (
@@ -98,6 +114,14 @@ const App: React.FC = () => {
           durationMinutes={durationMinutes}
           theme={activeTheme}
           onComplete={handleComplete}
+        />
+      )}
+
+      {phase === 'streak' && (
+        <StreakMoment
+          streakCount={streakCount}
+          newBadge={newBadge}
+          onContinue={() => setPhase('complete')}
         />
       )}
 
