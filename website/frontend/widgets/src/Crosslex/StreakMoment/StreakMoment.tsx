@@ -1,66 +1,44 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import Lottie from 'lottie-react';
 import { Badge as BadgeType } from '@whitelotus/front-features';
 
-const FlameSvg: React.FC<{ className?: string }> = ({ className }) => (
-  <svg
-    className={className}
-    viewBox="0 0 64 80"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <defs>
-      <filter id="flicker" x="-25%" y="-25%" width="150%" height="150%">
-        <feTurbulence
-          type="fractalNoise"
-          baseFrequency="0.04 0.07"
-          numOctaves="3"
-          result="noise"
-        >
-          <animate
-            attributeName="seed"
-            values="1;3;7;2;9;4;6;1"
-            dur="0.6s"
-            repeatCount="indefinite"
-          />
-        </feTurbulence>
-        <feDisplacementMap
-          in="SourceGraphic"
-          in2="noise"
-          scale="5"
-          xChannelSelector="R"
-          yChannelSelector="G"
-        />
-      </filter>
-      <linearGradient id="flame-gradient" x1="32" y1="4" x2="32" y2="68" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#FFB300" />
-        <stop offset="0.5" stopColor="#FF6B00" />
-        <stop offset="1" stopColor="#E53935" />
-      </linearGradient>
-      <linearGradient id="inner-gradient" x1="32" y1="44" x2="32" y2="60" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#FFF9C4" />
-        <stop offset="1" stopColor="#FFD54F" />
-      </linearGradient>
-    </defs>
-    {/* Outer flame — displaced by turbulence filter */}
-    <path
-      d="M32 4C32 4 44 20 44 32C44 35 42 37 40 38C40 30 34 24 32 20C30 26 28 30 28 36C24 34 22 30 22 26C18 30 16 36 16 42C16 55 23 68 32 68C41 68 48 55 48 42C48 32 40 16 32 4Z"
-      fill="url(#flame-gradient)"
-      filter="url(#flicker)"
+const FLAME_FILES = [
+  '1df4b596-1182-11ee-9fc3-6f8d7094dc00.json',
+  '2b610cec-116a-11ee-917e-5b9b6a234276.json',
+  '2e866326-1170-11ee-b759-c34e30831483.json',
+  'bbb0b112-bf19-411d-abf2-6380c736127d.json',
+  'ecde336c-1152-11ee-94f8-13b2f86f8f07.json',
+] as const;
+
+export type FlameVariant = typeof FLAME_FILES[number];
+
+const flameUrl = (file: string) => `/lottie/flame/${file}`;
+
+const useLottieData = (file: string) => {
+  const [data, setData] = useState<object | null>(null);
+  useEffect(() => {
+    fetch(flameUrl(file))
+      .then(r => r.json())
+      .then(setData)
+      .catch(() => setData(null));
+  }, [file]);
+  return data;
+};
+
+type FlameProps = { file: string; className?: string };
+
+const FlameAnimation: React.FC<FlameProps> = ({ file, className }) => {
+  const data = useLottieData(file);
+  if (!data) return null;
+  return (
+    <Lottie
+      animationData={data}
+      loop
+      autoplay
+      className={className}
     />
-    {/* Inner glow — faster independent flicker */}
-    <path
-      d="M32 44C32 44 36 48 36 53C36 57 34 60 32 60C30 60 28 57 28 53C28 48 32 44 32 44Z"
-      fill="url(#inner-gradient)"
-    >
-      <animate
-        attributeName="opacity"
-        values="1;0.7;1;0.85;1;0.6;1"
-        dur="0.4s"
-        repeatCount="indefinite"
-      />
-    </path>
-  </svg>
-);
+  );
+};
 
 const BadgeIcon: React.FC<{ earned: boolean; name: string; days: number }> = ({ earned, name, days }) => (
   <div className={`flex flex-col items-center gap-5 ${earned ? 'opacity-100' : 'opacity-30'}`}>
@@ -79,12 +57,20 @@ type Props = {
   streakCount: number;
   newBadge?: BadgeType;
   onContinue: () => void;
+  flameVariant?: FlameVariant;
 };
 
 const AUTO_ADVANCE_MS = 3000;
 
-const StreakMoment: React.FC<Props> = ({ streakCount, newBadge, onContinue }) => {
+const StreakMoment: React.FC<Props> = ({ streakCount, newBadge, onContinue, flameVariant }) => {
   const [screen, setScreen] = useState<Screen>('streak');
+
+  const randomFile = useMemo(
+    () => flameVariant ?? FLAME_FILES[Math.floor(Math.random() * FLAME_FILES.length)],
+    // intentionally empty deps — pick once on mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
 
   useEffect(() => {
     if (screen === 'streak' && !newBadge) {
@@ -126,11 +112,9 @@ const StreakMoment: React.FC<Props> = ({ streakCount, newBadge, onContinue }) =>
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-40 py-60 text-center">
-      <div className="animate-flame-pulse mb-30">
-        <FlameSvg className="w-[80px] h-[100px]" />
-      </div>
+      <FlameAnimation file={randomFile} className="w-[160px] h-[160px] mb-10" />
       <p className="animate-count-in text-text font-bold text-lg mb-10">{streakCount}</p>
-      <p className="text-text text-md mb-10">{streakCount === 1 ? 'day streak' : 'day streak'}</p>
+      <p className="text-text text-md mb-10">day streak</p>
       <p className="text-text opacity-60 text-sm mb-50">
         {streakCount === 1 ? 'You started a streak.' : 'Keep showing up tomorrow.'}
       </p>
@@ -144,4 +128,4 @@ const StreakMoment: React.FC<Props> = ({ streakCount, newBadge, onContinue }) =>
   );
 };
 
-export { StreakMoment, BadgeIcon };
+export { StreakMoment, BadgeIcon, FLAME_FILES };
