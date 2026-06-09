@@ -1,4 +1,5 @@
 export { BadgeIcon } from './BadgeIcon';
+export { SessionProgressBar } from './SessionProgressBar';
 export { StreakBadgeTrophyCase } from './StreakBadgeTrophyCase';
 export { WordReadinessStat } from './WordReadinessStat';
 export { ContextBlankQuestion } from './ContextBlankQuestion';

@@ -7,6 +7,8 @@ export { PaletteSwitcher, PALETTES, getInitialPalette } from './PaletteSwitcher'
 export type { Palette } from './PaletteSwitcher';
 
 export type {
+  RunnerStats,
+  RunnerState,
   LearningRate,
   RateConfig,
   WordStats,
@@ -67,4 +69,7 @@ export {
   hasSeenCoachMark,
   markCoachMarkSeen,
   useCoachMark,
+  useSessionTimer,
+  useInactivityTimer,
+  useSessionState,
 } from './Session';

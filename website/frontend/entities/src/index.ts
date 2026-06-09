@@ -1,5 +1,6 @@
 export {
   BadgeIcon,
+  SessionProgressBar,
   StreakBadgeTrophyCase,
   WordReadinessStat,
   ContextBlankQuestion,
