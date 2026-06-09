@@ -9,6 +9,7 @@ export type {
   ActiveLevel,
   WordTheme,
   StreakData,
+  RecordStreakResult,
 } from './sessionStorage';
 export {
   RATE_CONFIG,
@@ -51,3 +52,6 @@ export type { CardType, SessionSnapshot, ExerciseData } from './sessionAlgorithm
 export { pickNextCard, generateExerciseData, generateExerciseDataSafe } from './sessionAlgorithm';
 
 export { hasSeenCoachMark, markCoachMarkSeen, useCoachMark } from './coachMarks';
+
+export type { Badge } from './badges';
+export { BADGES, getEarnedBadges, getNewlyEarnedBadge } from './badges';
