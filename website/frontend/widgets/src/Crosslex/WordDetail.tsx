@@ -13,15 +13,15 @@ const WordDetail: React.FC<WordDetailProps> = ({ content }) => {
   );
 
   return (
-    <div className="bg-bg-l1 p-20 max-w-4xl mx-auto space-y-10">
+    <div className="bg-bg-l1 p-20 max-w-4xl mx-auto">
       {/* Mobile/tablet: word intro + flip card grid */}
-      <div className="md:hidden">
+      <div className="md:hidden flex flex-col gap-20">
         {introModule && renderContentModule({ module: introModule })}
         <FlipCardToTarget content={content} />
       </div>
 
       {/* Desktop: flat module list */}
-      <div className="hidden md:block">
+      <div className="hidden md:flex md:flex-col md:gap-20">
         {content.modules.map((module, index) => (
           <React.Fragment key={index}>
             {renderContentModule({ module })}
