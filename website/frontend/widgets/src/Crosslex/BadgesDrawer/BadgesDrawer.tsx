@@ -1,5 +1,5 @@
 import React from 'react';
-import { BADGES, readStreak, getEarnedBadges } from '@whitelotus/front-features';
+import { BADGES, getEarnedBadges, useCrosslexStorage } from '@whitelotus/front-features';
 import { BadgeIcon } from '@whitelotus/front-entities';
 
 type Props = {
@@ -8,7 +8,7 @@ type Props = {
 };
 
 const BadgesDrawer: React.FC<Props> = ({ isOpen, onClose }) => {
-  const streak = readStreak();
+  const { streak } = useCrosslexStorage();
   const earnedBadges = streak ? getEarnedBadges(streak.bestCount) : [];
   const earnedDays = new Set(earnedBadges.map(b => b.days));
 
