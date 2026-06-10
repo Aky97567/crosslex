@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ContentModule } from '@whitelotus/common-crosslex-view';
 import { renderContentModule } from './ContentModules';
-import { readFlipAnimation } from './Session';
+import { useCrosslexStorage } from './storage';
 import { CtaText } from '@whitelotus/front-shared';
 
 interface FlipCardProps {
@@ -9,7 +9,7 @@ interface FlipCardProps {
 }
 
 const FlipCardToTarget: React.FC<FlipCardProps> = ({ content }) => {
-  const animated = readFlipAnimation();
+  const { flipAnimation: animated } = useCrosslexStorage();
   const [activeSection, setActiveSection] = useState<number | null>(null);
   const [animatingCardIndex, setAnimatingCardIndex] = useState<number | null>(
     null,
