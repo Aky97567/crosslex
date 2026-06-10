@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
 import { Card, CoachMark, SelectableCard } from '@whitelotus/front-shared';
 import {
-  readLearningRate,
-  writeLearningRate,
   LearningRate,
-  readWordsSeen,
-  readActiveLevel,
   useCoachMark,
-  writeActiveTheme,
   WordTheme,
+  useCrosslexStorage,
 } from '@whitelotus/front-features';
 import { A2Words, B1Words, getThemesForPool } from '@whitelotus/mock-test';
 import { WordMetricsPanel } from './WordMetricsPanel';
@@ -42,19 +38,22 @@ const ctaButton =
 
 type Props = { onStart: (durationMinutes: number, theme: WordTheme | null) => void; onWordClick?: (wordKey: string) => void; coachMarksEnabled?: boolean };
 
-const getWordPool = () => readActiveLevel() === 'a2' ? A2Words : B1Words;
-
 const SessionDashboard: React.FC<Props> = ({ onStart, onWordClick, coachMarksEnabled = true }) => {
+  const {
+    wordsSeen: wordsSeenMap,
+    activeLevel,
+    learningRate: savedRate,
+    writeLearningRate,
+    writeActiveTheme,
+  } = useCrosslexStorage();
   const [duration, setDuration] = useState<number>(5);
   const { shown: showDashboardTip, dismiss: dismissDashboardTip } = useCoachMark('dashboard-intro');
-  const wordsSeenMap = readWordsSeen();
   const wordsSeenCount = Object.keys(wordsSeenMap).length;
   const canReview = wordsSeenCount >= 3;
-  const [rate, setRate] = useState<LearningRate>(() => {
-    const saved = readLearningRate();
-    return (saved === 'review' || saved === 'easy') && !canReview ? 'balanced' : saved;
-  });
-  const wordPool = getWordPool();
+  const [rate, setRate] = useState<LearningRate>(() =>
+    (savedRate === 'review' || savedRate === 'easy') && !canReview ? 'balanced' : savedRate
+  );
+  const wordPool = activeLevel === 'a2' ? A2Words : B1Words;
   const availableThemes = getThemesForPool(wordPool, 5);
   const [theme, setTheme] = useState<WordTheme | null>(null);
   const allWordsSeen = wordPool.every((key) => key in wordsSeenMap);
