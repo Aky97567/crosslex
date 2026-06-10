@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Heading } from '@whitelotus/common-crosslex-view';
 import { Card } from '@whitelotus/front-shared';
-import { readHardcoreMode } from '@whitelotus/front-features';
 
 export type TypeTheWordQuestionData = {
   word: string;
@@ -12,6 +11,7 @@ export type TypeTheWordQuestionData = {
 type Props = {
   heading: Heading;
   typeTheWordQuestion: TypeTheWordQuestionData;
+  hardcoreMode?: boolean;
   needClose?: boolean;
   onClose?: () => void;
   showContent?: boolean;
@@ -41,6 +41,7 @@ const isCorrectAnswer = (input: string, target: string): boolean => {
 const TypeTheWordQuestion: React.FC<Props> = ({
   heading,
   typeTheWordQuestion,
+  hardcoreMode = false,
   needClose,
   onClose,
   showContent = true,
@@ -58,7 +59,6 @@ const TypeTheWordQuestion: React.FC<Props> = ({
     .filter(i => !peekedSet.has(i));
 
   const maxHints = Math.max(3, Math.floor(word.length * 0.3));
-  const hardcoreMode = readHardcoreMode();
   // Only allow peeking future (untyped) positions
   const peekableCount = nonPeekedPositions.slice(inputValue.length).length;
   const canHint = !hardcoreMode && phase === 'idle' && revealedIndices.length < maxHints && peekableCount > 0;

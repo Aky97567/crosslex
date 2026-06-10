@@ -6,10 +6,7 @@ import {
   useSessionTimer,
   useInactivityTimer,
   useSessionState,
-  readSessionTimeout,
-  addKnownWord,
-  readKnownWordConfirmed,
-  writeKnownWordConfirmed,
+  useCrosslexStorage,
   useCoachMark,
   RunnerStats,
 } from '@whitelotus/front-features';
@@ -24,8 +21,16 @@ type Props = {
 };
 
 const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, theme, onComplete }) => {
+  const {
+    sessionTimeout,
+    hardcoreMode,
+    knownWordConfirmed,
+    addKnownWord,
+    writeKnownWordConfirmed,
+  } = useCrosslexStorage();
+
   const durationMs = durationMinutes * 60 * 1000;
-  const sessionTimeoutMs = useRef(readSessionTimeout() * 60 * 1000);
+  const sessionTimeoutMs = useRef(sessionTimeout * 60 * 1000);
 
   const { elapsed, startedAt } = useSessionTimer(durationMs);
 
@@ -73,6 +78,7 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, theme, onC
         reviewContent={reviewContent}
         reviewWordKey={reviewWordKey}
         onAnswer={onAnswer}
+        hardcoreMode={hardcoreMode}
       />
 
       <SessionFooter
@@ -87,7 +93,7 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, theme, onC
         onEndSession={() => onComplete({ wordsNew: runner.wordsNew, wordsReviewed: runner.wordsReviewed, cardsDone: runner.cardsDone, correctCount: runner.correctCount })}
         onAlreadyKnow={() => {
           resetInactivityTimer();
-          if (readKnownWordConfirmed()) {
+          if (knownWordConfirmed) {
             addKnownWord(runner.wordKey);
             onAdvance(null);
           } else {

@@ -16,6 +16,7 @@ type Props = {
   reviewContent: WordDetailContent | null;
   reviewWordKey: string | null;
   onAnswer: (correct: boolean) => void;
+  hardcoreMode?: boolean;
 };
 
 const SessionCardRenderer: React.FC<Props> = ({
@@ -24,6 +25,7 @@ const SessionCardRenderer: React.FC<Props> = ({
   reviewContent,
   reviewWordKey,
   onAnswer,
+  hardcoreMode = false,
 }) => {
   if (reviewContent) {
     return <WordDetail key={`review-${reviewWordKey}`} content={reviewContent} />;
@@ -63,6 +65,7 @@ const SessionCardRenderer: React.FC<Props> = ({
           key={runner.cardKey}
           heading={{ text: 'Type the word' }}
           typeTheWordQuestion={runner.exerciseData.data}
+          hardcoreMode={hardcoreMode}
           onAnswer={onAnswer}
         />
       )}
