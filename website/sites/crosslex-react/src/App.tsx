@@ -5,10 +5,11 @@ import {
   Palette,
   migrateStorage,
   WordTheme,
-  readStreak,
-  recordSessionForStreak,
   getNewlyEarnedBadge,
   Badge,
+  CrosslexStorageProvider,
+  LocalStorageAdapter,
+  useCrosslexStorage,
 } from '@whitelotus/front-features';
 import { AlphaAnnouncement, SessionDashboard, SessionComplete, AppNav, SettingsPanel, NotificationsDrawer, BadgesDrawer, WordDetail, StreakMoment } from '@whitelotus/front-widgets';
 import { SessionRunner } from '@whitelotus/front-pages-react';
@@ -25,7 +26,10 @@ type RunnerStats = {
 
 type SessionStats = RunnerStats & { streakCount: number };
 
-const App: React.FC = () => {
+const adapter = new LocalStorageAdapter();
+
+const AppInner: React.FC = () => {
+  const { streak, recordSessionForStreak } = useCrosslexStorage();
   const [phase, setPhase] = useState<AppPhase>('dashboard');
   const [durationMinutes, setDurationMinutes] = useState(30);
   const [activeTheme, setActiveTheme] = useState<WordTheme | null>(null);
@@ -57,12 +61,12 @@ const App: React.FC = () => {
   };
 
   const handleComplete = (stats: RunnerStats) => {
-    const prevBest = readStreak()?.bestCount ?? 0;
-    const { data: streak, isNewDay } = recordSessionForStreak();
-    setSessionStats({ ...stats, streakCount: streak.count });
+    const prevBest = streak?.bestCount ?? 0;
+    const { data: newStreak, isNewDay } = recordSessionForStreak();
+    setSessionStats({ ...stats, streakCount: newStreak.count });
     if (isNewDay) {
-      setStreakCount(streak.count);
-      setNewBadge(getNewlyEarnedBadge(prevBest, streak.count));
+      setStreakCount(newStreak.count);
+      setNewBadge(getNewlyEarnedBadge(prevBest, newStreak.count));
       setPhase('streak');
     } else {
       setPhase('complete');
@@ -150,5 +154,11 @@ const App: React.FC = () => {
     </div>
   );
 };
+
+const App: React.FC = () => (
+  <CrosslexStorageProvider adapter={adapter}>
+    <AppInner />
+  </CrosslexStorageProvider>
+);
 
 export default App;
