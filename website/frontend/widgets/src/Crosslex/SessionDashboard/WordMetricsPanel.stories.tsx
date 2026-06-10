@@ -1,6 +1,10 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { ExerciseEvent } from '@whitelotus/front-features';
+import {
+  ExerciseEvent,
+  CrosslexStorageProvider,
+  createMemoryAdapter,
+} from '@whitelotus/front-features';
 import { WordMetricsPanel } from './WordMetricsPanel';
 
 // ─── Word pools ───────────────────────────────────────────────────────────────
@@ -26,12 +30,12 @@ const intro = (wordKey: string): ExerciseEvent =>
 const ex = (wordKey: string, correct: boolean): ExerciseEvent =>
   ({ ts: Date.now(), sessionId: 1, wordKey, type: 'exercise', exerciseType: 'meaningGuess', correct });
 
-const seedEvents     = (key: string): ExerciseEvent[] => [intro(key), ex(key, false)];
-const familiarEvents = (key: string): ExerciseEvent[] => [intro(key), ex(key, true), ex(key, true)];
+const seedEvents      = (key: string): ExerciseEvent[] => [intro(key), ex(key, false)];
+const familiarEvents  = (key: string): ExerciseEvent[] => [intro(key), ex(key, true), ex(key, true)];
 const testReadyEvents = (key: string): ExerciseEvent[] =>
   [intro(key), ex(key, true), ex(key, true), ex(key, true), ex(key, true)];
 
-// ─── Storage setup ────────────────────────────────────────────────────────────
+// ─── State → MemoryAdapter ────────────────────────────────────────────────────
 
 type State = {
   seedCount: number;
@@ -42,44 +46,37 @@ type State = {
   practicedToday: boolean;
 };
 
-const applyState = (s: State) => {
-  const log: ExerciseEvent[] = [
+const buildAdapter = (s: State) => {
+  const exerciseLog: ExerciseEvent[] = [
     ...SEED_POOL.slice(0, s.seedCount).flatMap(seedEvents),
     ...FAMILIAR_POOL.slice(0, s.familiarCount).flatMap(familiarEvents),
     ...TEST_READY_POOL.slice(0, s.testReadyCount).flatMap(testReadyEvents),
   ];
   const today = new Date().toLocaleDateString('sv');
   const yesterday = new Date(Date.now() - 86_400_000).toLocaleDateString('sv');
-
-  localStorage.setItem('crosslex:level', 'b1');
-  localStorage.setItem('crosslex:exercise_log:b1', JSON.stringify(log));
-
-  if (s.streakDays > 0 || s.bestStreakDays > 0) {
-    localStorage.setItem('crosslex:streak', JSON.stringify({
-      count: s.streakDays,
-      bestCount: s.bestStreakDays,
-      lastSessionDate: s.practicedToday ? today : yesterday,
-    }));
-  } else {
-    localStorage.removeItem('crosslex:streak');
-  }
+  const streak = (s.streakDays > 0 || s.bestStreakDays > 0)
+    ? { count: s.streakDays, bestCount: s.bestStreakDays, lastSessionDate: s.practicedToday ? today : yesterday }
+    : null;
+  return createMemoryAdapter({ exerciseLog, streak, activeLevel: 'b1' });
 };
 
-// ─── Wrapper (used only by the Playground story) ──────────────────────────────
+// ─── Wrapper (Playground only) ────────────────────────────────────────────────
 
-const Playground: React.FC<State> = (props) => {
-  applyState(props);
-  return <WordMetricsPanel />;
-};
+const Playground: React.FC<State> = (props) => (
+  <CrosslexStorageProvider adapter={buildAdapter(props)}>
+    <WordMetricsPanel />
+  </CrosslexStorageProvider>
+);
 
 // ─── Fixed snapshot helper ────────────────────────────────────────────────────
 
 const snapshot = (s: State): StoryObj<typeof Playground> => ({
   parameters: { controls: { disable: true } },
-  render: () => {
-    applyState(s);
-    return <WordMetricsPanel />;
-  },
+  render: () => (
+    <CrosslexStorageProvider adapter={buildAdapter(s)}>
+      <WordMetricsPanel />
+    </CrosslexStorageProvider>
+  ),
 });
 
 // ─── Meta ─────────────────────────────────────────────────────────────────────
@@ -143,4 +140,3 @@ export const CenturyBadge = snapshot({
   streakDays: 100, bestStreakDays: 100, practicedToday: true,
 });
 CenturyBadge.name = '100-day streak — Century badge';
-
