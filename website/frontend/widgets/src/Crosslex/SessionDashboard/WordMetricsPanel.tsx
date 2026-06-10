@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
 import { Card, Badge } from '@whitelotus/front-shared';
 import {
-  readExerciseLog,
-  getMetricsSummary,
-  computeWordMetrics,
   WordReadiness,
-  readStreak,
-  hasSessionToday,
+  useCrosslexStorage,
 } from '@whitelotus/front-features';
 import { WordReadinessStat } from '@whitelotus/front-entities';
 import { sampleLearnPageContentList } from '@whitelotus/mock-test';
@@ -28,17 +24,14 @@ type Props = { onWordClick?: (wordKey: string) => void };
 
 const WordMetricsPanel: React.FC<Props> = ({ onWordClick }) => {
   const [selected, setSelected] = useState<WordReadiness | null>(null);
+  const { exerciseLog, metricsSummary, wordMetrics, streak, practicedToday } = useCrosslexStorage();
 
-  const log = readExerciseLog();
-  const total = new Set(log.filter(e => e.type === 'intro').map(e => e.wordKey)).size;
+  const total = new Set(exerciseLog.filter(e => e.type === 'intro').map(e => e.wordKey)).size;
 
   if (total === 0) return null;
 
-  const { seedPlanted, familiar, testReady } = getMetricsSummary(log);
-  const metrics = computeWordMetrics(log);
-
-  const streak = readStreak();
-  const practicedToday = hasSessionToday();
+  const { seedPlanted, familiar, testReady } = metricsSummary;
+  const metrics = wordMetrics;
 
   const toggle = (level: WordReadiness) =>
     setSelected(prev => (prev === level ? null : level));
