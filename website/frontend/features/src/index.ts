@@ -73,3 +73,6 @@ export {
   useInactivityTimer,
   useSessionState,
 } from './Session';
+
+export type { StoragePort, StorageSnapshot, CrosslexStorageContextValue } from './storage';
+export { LocalStorageAdapter, MemoryStorageAdapter, createMemoryAdapter, CrosslexStorageProvider, useCrosslexStorage } from './storage';
