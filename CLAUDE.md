@@ -223,9 +223,9 @@ Word data lives in `mock/data/src/learnPage/`. Each word is its own file.
 Pending features, prioritised by effort vs impact.
 
 ### In-flight / Tech debt
-- **FSD audit** — review all session loop files introduced on `feat/session-loop` against layer rules now that the branch is merged into main
 - **Storybook stories for exercise entities** — `MeaningGuessQuestion`, `ContextBlankQuestion`, `WordDefinitionQuestion` all have new answered/locked state that should be covered
-- **Rename "test-ready" readiness tier** — the label is too close to Membean's terminology; pick a distinctive alternative before the label becomes user-visible (current tiers: `seedPlanted` → `familiar` → `testReady`)
+- **No test coverage** — Jest is configured but no tests exist; highest priority targets are `sessionAlgorithm.ts` (pickNextCard, generateExerciseData) and `sessionStorage.ts` (streak logic, readiness computation) — these are complex enough to break silently under refactoring
+- **`mock/data` is the production word database** — the package name and `sampleLearnPageContentList` export name are misleading; rename to reflect that this is real content, not test fixtures
 
 ### Onboarding
 - **New user handholding overview** — an explanatory walkthrough for first-time users that introduces the session loop, the learning rate options, and how word cards work; should feel lightweight, not a forced tutorial

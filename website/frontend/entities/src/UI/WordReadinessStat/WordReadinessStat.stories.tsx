@@ -27,9 +27,9 @@ export const SeedPlanted: Story = {
   args: { count: 6, label: 'Seed planted', sublabel: 'introduced', active: false },
 };
 
-export const TestReady: Story = {
-  name: 'Test-ready',
-  args: { count: 2, label: 'Test-ready', sublabel: '≥4 correct', active: false },
+export const Wired: Story = {
+  name: 'Wired',
+  args: { count: 2, label: 'Wired', sublabel: '≥4 correct', active: false },
 };
 
 export const AllThree: Story = {
@@ -38,7 +38,7 @@ export const AllThree: Story = {
     <div className="grid grid-cols-3 gap-10">
       <WordReadinessStat count={6} label="Seed planted" sublabel="introduced" active={false} onClick={() => {}} />
       <WordReadinessStat count={4} label="Familiar"     sublabel="≥2 correct" active={true}  onClick={() => {}} />
-      <WordReadinessStat count={2} label="Test-ready"   sublabel="≥4 correct" active={false} onClick={() => {}} />
+      <WordReadinessStat count={2} label="Wired"   sublabel="≥4 correct" active={false} onClick={() => {}} />
     </div>
   ),
 };
