@@ -17,7 +17,7 @@ const getWordIntro = (wordKey: string): WordIntroModule | null => {
 const LEVEL_LABELS: Record<WordReadiness, string> = {
   seedPlanted: 'Seed planted',
   familiar: 'Familiar',
-  testReady: 'Test-ready',
+  wired: 'Wired',
 };
 
 type Props = { onWordClick?: (wordKey: string) => void };
@@ -30,7 +30,7 @@ const WordMetricsPanel: React.FC<Props> = ({ onWordClick }) => {
 
   if (total === 0) return null;
 
-  const { seedPlanted, familiar, testReady } = metricsSummary;
+  const { seedPlanted, familiar, wired } = metricsSummary;
   const metrics = wordMetrics;
 
   const toggle = (level: WordReadiness) =>
@@ -58,11 +58,11 @@ const WordMetricsPanel: React.FC<Props> = ({ onWordClick }) => {
           onClick={() => toggle('familiar')}
         />
         <WordReadinessStat
-          count={testReady}
-          label="Test-ready"
+          count={wired}
+          label="Wired"
           sublabel="≥4 correct"
-          active={selected === 'testReady'}
-          onClick={() => toggle('testReady')}
+          active={selected === 'wired'}
+          onClick={() => toggle('wired')}
         />
       </div>
 

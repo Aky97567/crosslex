@@ -198,12 +198,12 @@ export const readExerciseLog = (): ExerciseEvent[] => {
 
 // ─── Word readiness ───────────────────────────────────────────────────────────
 
-export type WordReadiness = 'testReady' | 'familiar' | 'seedPlanted';
+export type WordReadiness = 'wired' | 'familiar' | 'seedPlanted';
 
 export type MetricsSummary = {
   seedPlanted: number;
   familiar: number;
-  testReady: number;
+  wired: number;
 };
 
 export const computeWordMetrics = (
@@ -228,7 +228,7 @@ export const computeWordMetrics = (
     const lastTwoCorrect = lastTwo.length === 2 && lastTwo.every((e) => e.correct);
 
     if (correctCount >= 4 && lastTwoCorrect) {
-      result[wordKey] = 'testReady';
+      result[wordKey] = 'wired';
     } else if (correctCount >= 2) {
       result[wordKey] = 'familiar';
     } else {
@@ -240,7 +240,7 @@ export const computeWordMetrics = (
 
 export const getMetricsSummary = (log: ExerciseEvent[]): MetricsSummary => {
   const metrics = computeWordMetrics(log);
-  const summary: MetricsSummary = { seedPlanted: 0, familiar: 0, testReady: 0 };
+  const summary: MetricsSummary = { seedPlanted: 0, familiar: 0, wired: 0 };
   for (const level of Object.values(metrics)) {
     summary[level] += 1;
   }
