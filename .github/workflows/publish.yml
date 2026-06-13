@@ -30,7 +30,7 @@ jobs:
       - name: Build React app 🏗️
         run: cd website && yarn build:crosslex-react
         env:
-          VITE_BASE: /crosslex/
+          VITE_BASE: /
 
       - name: Upload artifact 📡
         uses: actions/upload-pages-artifact@v3
