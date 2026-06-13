@@ -4,6 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "test": "jest",
+    "test:ci": "jest --ci --coverage",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"

@@ -6,6 +6,8 @@
   "description": "Pure React page compositions for the Crosslex SPA",
   "scripts": {
     "check:precommit": "lint-staged",
+    "test": "jest",
+    "test:ci": "jest --ci --coverage",
     "lint": "yarn lint:js",
     "lint:js": "eslint src"
   },

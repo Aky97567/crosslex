@@ -3,5 +3,9 @@
   "private": true,
   "version": "0.0.1",
   "description": "Common Crosslex view layer",
-  "main": "src/index"
+  "main": "src/index",
+  "scripts": {
+    "test": "jest",
+    "test:ci": "jest --ci --coverage"
+  }
 }

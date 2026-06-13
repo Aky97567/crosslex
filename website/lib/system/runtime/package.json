@@ -4,6 +4,10 @@
   "version": "0.0.1",
   "description": "Exports shared functionality for use by packages in the runtime tier",
   "main": "src/index",
+  "scripts": {
+    "test": "jest",
+    "test:ci": "jest --ci --coverage"
+  },
   "dependencies": {
     "@whitelotus/lib-core-logging": "*",
     "@whitelotus/lib-sys-app": "*"
