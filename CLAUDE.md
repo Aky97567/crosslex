@@ -231,13 +231,12 @@ Pending features, prioritised by effort vs impact.
 - **New user handholding overview** — an explanatory walkthrough for first-time users that introduces the session loop, the learning rate options, and how word cards work; should feel lightweight, not a forced tutorial
 
 ### Engagement & retention
-- **Return motivation / streak** — nothing currently encourages users to come back the next day; needs a daily goal, streak counter, or "words ready for review" nudge
+- **Return motivation / streak** — streak counter exists in WordMetricsPanel; missing piece is a push notification or nudge when the user hasn't practiced today
 - **Word content scale** — 30 A2 + 32 B1 words; users will exhaust a level in several sessions; need significantly more content at both levels
 - **In-app feedback channel** — users have no way to flag a broken question or wrong answer; only discoverable via DM
 
-### Analytics & consent
-8. **Analytics consent banner** — add a GDPR-compliant consent banner for analytics; the overlay should only appear for analytics opt-in going forward
-9. **Free analytics tool integration** — integrate a privacy-friendly, EU-compliant analytics tool (strong candidates: PostHog self-hosted, Umami); blocked by consent banner (item 8)
+### Analytics
+- **Plausible analytics** — live at crosslex.app via cookieless script; no consent banner needed
 
 ---
 
