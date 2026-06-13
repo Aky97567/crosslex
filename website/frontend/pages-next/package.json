@@ -4,6 +4,10 @@
   "version": "0.0.1",
   "description": "Exports pages to be used in WhiteLotus processes and microsites",
   "main": "src/index",
+  "scripts": {
+    "test": "jest",
+    "test:ci": "jest --ci --coverage"
+  },
   "dependencies": {
     "@whitelotus/config-tailwindcss": "*",
     "@whitelotus/front-shared": "*",

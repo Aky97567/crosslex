@@ -4,6 +4,10 @@
   "version": "0.0.1",
   "description": "Data type management",
   "main": "src/index",
+  "scripts": {
+    "test": "jest",
+    "test:ci": "jest --ci --coverage"
+  },
   "dependencies": {
     "jsonschema": "1.4.1"
   }

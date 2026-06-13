@@ -4,6 +4,10 @@
   "version": "0.0.1",
   "description": "Crosslex runtime intialization layer",
   "main": "src/index",
+  "scripts": {
+    "test": "jest",
+    "test:ci": "jest --ci --coverage"
+  },
   "dependencies": {
     "@whitelotus/lib-ext-next": "*"
   }

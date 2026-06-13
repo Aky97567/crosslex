@@ -4,6 +4,10 @@
   "version": "0.0.1",
   "main": "src/index",
   "description": "Exports structured mock data to be used for testing and storybook",
+  "scripts": {
+    "test": "jest",
+    "test:ci": "jest --ci --coverage"
+  },
   "dependencies": {
     "@whitelotus/common-crosslex-view": "*"
   }
