@@ -32,6 +32,12 @@ jobs:
         env:
           VITE_BASE: /
 
+      - name: Build Storybook 🏗️
+        run: cd website && yarn build:storybook-react
+
+      - name: Merge Storybook into dist 📂
+        run: cp -r website/sites/storybook-react/storybook-static website/sites/crosslex-react/dist/storybook
+
       - name: Upload artifact 📡
         uses: actions/upload-pages-artifact@v3
         with:
