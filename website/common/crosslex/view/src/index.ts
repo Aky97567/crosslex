@@ -1,5 +1,6 @@
 export type { ContentLayout, Heading } from './common';
 export type {
+  Article,
   ContentModule,
   ContentModules,
   EtymologyModule,

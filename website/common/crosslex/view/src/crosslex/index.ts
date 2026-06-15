@@ -1,5 +1,6 @@
 export type { HasContentPageType } from './contentPageType';
 export type {
+  Article,
   ContentModule,
   ContentModules,
   EtymologyModule,

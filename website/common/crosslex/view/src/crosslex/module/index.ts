@@ -1,4 +1,5 @@
 export type {
+  Article,
   ContentModule,
   ContentModules,
   EtymologyModule,
