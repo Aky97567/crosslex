@@ -25,7 +25,12 @@ export const WordContext: React.FC<WordContextProps> = ({
       showContent={showContent}
     >
       <div className="mb-6">
-        <BodyText>{paragraphWithUsage}</BodyText>
+        {paragraphWithUsage
+          .split('. ')
+          .map((s, i, arr) => (i < arr.length - 1 ? s + '.' : s))
+          .map((sentence, i) => (
+            <BodyText key={i}>{sentence}</BodyText>
+          ))}
       </div>
     </Card>
   );
