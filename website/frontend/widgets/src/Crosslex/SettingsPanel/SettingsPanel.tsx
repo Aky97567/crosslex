@@ -26,7 +26,7 @@ const SettingsPanel: React.FC<Props> = ({ isOpen, onClose }) => (
       }`}
       style={{ maxWidth: '380px' }}
     >
-      <div className="flex items-center justify-between px-20 h-50 border-b-2 border-brand bg-bg-l2 shrink-0">
+      <div className="flex items-center justify-between px-20 h-60 border-b-2 border-brand bg-bg-l2 shrink-0">
         <span className="text-text font-semibold">Settings</span>
         <button
           onClick={onClose}
