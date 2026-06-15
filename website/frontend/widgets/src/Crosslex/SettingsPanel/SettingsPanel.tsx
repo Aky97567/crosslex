@@ -30,7 +30,7 @@ const SettingsPanel: React.FC<Props> = ({ isOpen, onClose }) => (
         <span className="text-text font-semibold">Settings</span>
         <button
           onClick={onClose}
-          className="text-text hover:text-brand transition-colors duration-200 text-sm leading-none"
+          className="text-text hover:text-brand transition-colors duration-200 text-md leading-none"
           aria-label="Close settings"
         >
           ✕
