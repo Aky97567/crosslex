@@ -56,7 +56,6 @@ const ContextBlankQuestion: React.FC<Props> = ({
   };
 
   const correctOption = contextBlankQuestion.options.find((o) => o.isCorrect);
-  const parts = contextBlankQuestion.sentence.split('___');
   const filledWord = isAnswered
     ? (correctOption?.text ?? null)
     : selectedIndex !== null
@@ -69,6 +68,9 @@ const ContextBlankQuestion: React.FC<Props> = ({
         ? 'border-color3 text-color3'
         : 'border-brand text-brand'
   }`;
+  const sentences = contextBlankQuestion.sentence
+    .split('. ')
+    .map((s, i, arr) => (i < arr.length - 1 ? s + '.' : s));
 
   return (
     <Card
@@ -77,16 +79,21 @@ const ContextBlankQuestion: React.FC<Props> = ({
       onClose={onClose}
       showContent={showContent}
     >
-      <BodyText>
-        {parts.map((part, i) => (
-          <React.Fragment key={i}>
-            {part}
-            {i < parts.length - 1 && (
-              <span className={blankClassName}>{filledWord ?? '      '}</span>
-            )}
-          </React.Fragment>
-        ))}
-      </BodyText>
+      {sentences.map((sent, si) => {
+        const parts = sent.split('___');
+        return (
+          <BodyText key={si}>
+            {parts.map((part, i) => (
+              <React.Fragment key={i}>
+                {part}
+                {i < parts.length - 1 && (
+                  <span className={blankClassName}>{filledWord ?? '      '}</span>
+                )}
+              </React.Fragment>
+            ))}
+          </BodyText>
+        );
+      })}
       <div className="mt-20">
         {contextBlankQuestion.options.map((option, index) => (
           <div
