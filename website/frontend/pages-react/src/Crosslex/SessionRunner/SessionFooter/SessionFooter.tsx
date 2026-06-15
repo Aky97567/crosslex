@@ -21,7 +21,7 @@ type Props = {
 };
 
 const nextButton =
-  'bg-brand border-2 border-brand rounded-md text-text-cta px-40 py-10 transition-colors duration-300';
+  'bg-brand border-2 border-brand rounded-md text-text-cta text-sm px-40 py-10 transition-colors duration-300';
 
 const SessionFooter: React.FC<Props> = ({
   cardType,
