@@ -26,15 +26,17 @@ const SettingsPanel: React.FC<Props> = ({ isOpen, onClose }) => (
       }`}
       style={{ maxWidth: '380px' }}
     >
-      <div className="flex items-center justify-between px-20 h-60 border-b-2 border-brand bg-bg-l2 shrink-0">
-        <span className="text-text font-semibold">Settings</span>
-        <button
-          onClick={onClose}
-          className="text-text hover:text-brand transition-colors duration-200 text-md leading-none"
-          aria-label="Close settings"
-        >
-          ✕
-        </button>
+      <div className="border-b-2 border-brand bg-bg-l2 shrink-0">
+        <div className="flex items-center justify-between px-20 h-60">
+          <span className="text-text font-semibold">Settings</span>
+          <button
+            onClick={onClose}
+            className="text-text hover:text-brand transition-colors duration-200 text-md leading-none"
+            aria-label="Close settings"
+          >
+            ✕
+          </button>
+        </div>
       </div>
       <div className="overflow-y-auto flex-1 px-20 py-20">
         <LevelSection />
