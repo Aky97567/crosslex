@@ -1,7 +1,9 @@
 import { BodyText, Card, Heading } from '@whitelotus/front-shared';
+import { Article } from '@whitelotus/common-crosslex-view';
 
 type WordIntroProps = {
   word: string;
+  article: Article;
   translation: string;
   partOfSpeech: string;
   representativeImageUrl?: string;
@@ -9,13 +11,14 @@ type WordIntroProps = {
 
 export const WordIntro: React.FC<WordIntroProps> = ({
   word,
+  article,
   translation,
   partOfSpeech,
   representativeImageUrl,
 }) => (
   <Card className="flex flex-row justify-between">
     <div>
-      <Heading heading={{ text: word.trimStart(), level: 'h1' }} />
+      <Heading heading={{ text: article ? `${article} ${word.trimStart()}` : word.trimStart(), level: 'h1' }} />
       <BodyText className="italic mb-5">{translation}</BodyText>
       <BodyText className="mb-5">{partOfSpeech}</BodyText>
     </div>
