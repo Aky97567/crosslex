@@ -1,5 +1,25 @@
 import { WordIntroModule, WordTheme } from '@whitelotus/common-crosslex-view';
 import { abfahrt } from './abfahrt';
+import { baeckerei } from './baeckerei';
+import { bahnhof } from './bahnhof';
+import { bestellen } from './bestellen';
+import { bezahlen } from './bezahlen';
+import { fahrplan } from './fahrplan';
+import { fieber } from './fieber';
+import { fruehstueck } from './fruehstueck';
+import { gemuese } from './gemuese';
+import { haltestelle } from './haltestelle';
+import { kasse } from './kasse';
+import { kind } from './kind';
+import { kueche } from './kueche';
+import { miete } from './miete';
+import { obst } from './obst';
+import { rezept } from './rezept';
+import { schlafzimmer } from './schlafzimmer';
+import { schluessel } from './schluessel';
+import { schmerz } from './schmerz';
+import { tablette } from './tablette';
+import { urlaub } from './urlaub';
 import { abfindung } from './abfindung';
 import { abrechnung } from './abrechnung';
 import { arbeitnehmer } from './arbeitnehmer';
@@ -135,6 +155,27 @@ export const sampleLearnPageContentList = {
   wetter,
   wohnung,
   zug,
+  //! A2 — batch 2
+  bahnhof,
+  haltestelle,
+  fahrplan,
+  kasse,
+  baeckerei,
+  kueche,
+  schluessel,
+  miete,
+  fruehstueck,
+  schmerz,
+  fieber,
+  tablette,
+  rezept,
+  bezahlen,
+  bestellen,
+  urlaub,
+  gemuese,
+  obst,
+  kind,
+  schlafzimmer,
   //! B1
   erfahrung,
   beantragen,
