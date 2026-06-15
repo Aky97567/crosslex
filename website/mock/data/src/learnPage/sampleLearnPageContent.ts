@@ -2,6 +2,16 @@ import { WordIntroModule, WordTheme } from '@whitelotus/common-crosslex-view';
 import { abfahrt } from './abfahrt';
 import { abfindung } from './abfindung';
 import { abrechnung } from './abrechnung';
+import { arbeitnehmer } from './arbeitnehmer';
+import { arbeitslosengeld } from './arbeitslosengeld';
+import { buergschaft } from './buergschaft';
+import { haftpflichtversicherung } from './haftpflichtversicherung';
+import { kontoauszug } from './kontoauszug';
+import { kuendigungsfrist } from './kuendigungsfrist';
+import { nebenkostenabrechnung } from './nebenkostenabrechnung';
+import { ratenzahlung } from './ratenzahlung';
+import { rentenversicherung } from './rentenversicherung';
+import { sozialversicherung } from './sozialversicherung';
 import { befristung } from './befristung';
 import { einzugsermaechtigung } from './einzugsermaechtigung';
 import { elterngeld } from './elterngeld';
@@ -158,6 +168,17 @@ export const sampleLearnPageContentList = {
   vollmacht,
   kindergeld,
   ausweis,
+  //! B1 — batch 4
+  kuendigungsfrist,
+  kontoauszug,
+  arbeitslosengeld,
+  buergschaft,
+  nebenkostenabrechnung,
+  haftpflichtversicherung,
+  rentenversicherung,
+  sozialversicherung,
+  ratenzahlung,
+  arbeitnehmer,
   //! B1 — batch 3
   krankmeldung,
   steuererklaerung,
