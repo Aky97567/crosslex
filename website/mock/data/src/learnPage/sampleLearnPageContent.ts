@@ -1,5 +1,15 @@
 import { WordIntroModule, WordTheme } from '@whitelotus/common-crosslex-view';
 import { abfahrt } from './abfahrt';
+import { abrechnung } from './abrechnung';
+import { ausbildung } from './ausbildung';
+import { bewerbung } from './bewerbung';
+import { erstattung } from './erstattung';
+import { mahnung } from './mahnung';
+import { quittung } from './quittung';
+import { rente } from './rente';
+import { ummeldung } from './ummeldung';
+import { unterschrift } from './unterschrift';
+import { zeugnis } from './zeugnis';
 import { abmeldung } from './abmeldung';
 import { anerkennung } from './anerkennung';
 import { ankunft } from './ankunft';
@@ -138,6 +148,17 @@ export const sampleLearnPageContentList = {
   vollmacht,
   kindergeld,
   ausweis,
+  //! B1 — batch 2
+  mahnung,
+  bewerbung,
+  zeugnis,
+  ausbildung,
+  erstattung,
+  abrechnung,
+  unterschrift,
+  rente,
+  quittung,
+  ummeldung,
 };
 
 export type SampleContentKey = keyof typeof sampleLearnPageContentList;
