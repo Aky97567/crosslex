@@ -1,6 +1,16 @@
 import { WordIntroModule, WordTheme } from '@whitelotus/common-crosslex-view';
 import { abfahrt } from './abfahrt';
+import { abfindung } from './abfindung';
 import { abrechnung } from './abrechnung';
+import { befristung } from './befristung';
+import { einzugsermaechtigung } from './einzugsermaechtigung';
+import { elterngeld } from './elterngeld';
+import { gewerkschaft } from './gewerkschaft';
+import { krankmeldung } from './krankmeldung';
+import { pflegeversicherung } from './pflegeversicherung';
+import { steuererklaerung } from './steuererklaerung';
+import { tarifvertrag } from './tarifvertrag';
+import { urlaubsanspruch } from './urlaubsanspruch';
 import { ausbildung } from './ausbildung';
 import { bewerbung } from './bewerbung';
 import { erstattung } from './erstattung';
@@ -148,6 +158,17 @@ export const sampleLearnPageContentList = {
   vollmacht,
   kindergeld,
   ausweis,
+  //! B1 — batch 3
+  krankmeldung,
+  steuererklaerung,
+  abfindung,
+  gewerkschaft,
+  urlaubsanspruch,
+  einzugsermaechtigung,
+  befristung,
+  elterngeld,
+  pflegeversicherung,
+  tarifvertrag,
   //! B1 — batch 2
   mahnung,
   bewerbung,
