@@ -7,7 +7,7 @@ export const nebenkostenabrechnung: LearnPageContent = {
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Nebenkostenabrechnung',
+        word: 'Neben­kosten­abrechnung',
         article: 'die',
         translation: 'utility cost statement, ancillary cost settlement',
         partOfSpeech: 'noun',
