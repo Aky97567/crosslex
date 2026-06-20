@@ -1,7 +1,23 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj, Decorator } from '@storybook/react';
 import { sampleLearnPageContentList, A2Words } from '@whitelotus/mock-test';
-import { generateExerciseDataSafe } from '@whitelotus/front-features';
+import {
+  generateExerciseDataSafe,
+  CrosslexStorageProvider,
+  createMemoryAdapter,
+} from '@whitelotus/front-features';
 import { SessionCardRenderer } from './SessionCardRenderer';
+
+const emptyAdapter = createMemoryAdapter({
+  exerciseLog: [],
+  streak: null,
+  activeLevel: 'b1',
+});
+
+const withStorage: Decorator = Story => (
+  <CrosslexStorageProvider adapter={emptyAdapter}>
+    <Story />
+  </CrosslexStorageProvider>
+);
 
 const kuendigung = sampleLearnPageContentList['kuendigung'].content;
 const konto = sampleLearnPageContentList['konto'].content;
@@ -9,6 +25,7 @@ const konto = sampleLearnPageContentList['konto'].content;
 export default {
   title: 'Widgets/SessionRunner/SessionCardRenderer',
   component: SessionCardRenderer,
+  decorators: [withStorage],
   parameters: { layout: 'padded' },
   args: {
     reviewContent: null,
