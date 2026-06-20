@@ -7,6 +7,16 @@ import {
   sampleLearnPageContentList,
   Words,
 } from '@whitelotus/mock-test';
+import {
+  CrosslexStorageProvider,
+  createMemoryAdapter,
+} from '@whitelotus/front-features';
+
+const emptyAdapter = createMemoryAdapter({
+  exerciseLog: [],
+  streak: null,
+  activeLevel: 'b1',
+});
 
 type WordDetailWrapperProps = {
   selectedWord: SampleContentKey;
@@ -21,11 +31,15 @@ const WordDetailWrapper: React.FC<WordDetailWrapperProps> = ({
     content: content.content,
   };
 
-  return <WordDetail {...learnPageProps} />;
+  return (
+    <CrosslexStorageProvider adapter={emptyAdapter}>
+      <WordDetail {...learnPageProps} />
+    </CrosslexStorageProvider>
+  );
 };
 
 export default {
-  title: 'Pages/WordDetail',
+  title: 'Widgets/WordDetail',
   component: WordDetailWrapper,
   argTypes: {
     selectedWord: {
@@ -46,3 +60,9 @@ export const Primary: StoryObj<typeof WordDetailWrapper> = Template.bind({});
 Primary.args = {
   selectedWord: 'erfahrung',
 };
+
+export const LongWord: StoryObj<typeof WordDetailWrapper> = Template.bind({});
+LongWord.args = {
+  selectedWord: 'haftpflichtversicherung',
+};
+LongWord.storyName = 'Haftpflichtversicherung (longest word)';
