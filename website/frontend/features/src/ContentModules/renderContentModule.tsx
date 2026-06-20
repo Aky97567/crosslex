@@ -12,12 +12,39 @@ import {
 import { ContentModules } from '@whitelotus/common-crosslex-view';
 import { ModuleWrapper } from './renderContentModule.styles';
 
-interface RenderContentModuleProps {
-  module: ContentModules;
+interface CloseProps {
   needClose?: boolean;
   onClose?: () => void;
   showContent?: boolean;
 }
+
+interface RenderContentModuleProps extends CloseProps {
+  module: ContentModules;
+}
+
+const resolveModule = (
+  module: ContentModules,
+  closeProps: CloseProps,
+): React.ReactElement => {
+  switch (module.moduleType) {
+    case 'wordIntro':
+      return <WordIntro {...module} />;
+    case 'wordMeaning':
+      return <WordMeaning {...module} {...closeProps} />;
+    case 'wordContext':
+      return <WordContext {...module} {...closeProps} />;
+    case 'meaningGuessQuestion':
+      return <MeaningGuessQuestion {...module} {...closeProps} />;
+    case 'etymology':
+      return <Etymology {...module} {...closeProps} />;
+    case 'similarWords':
+      return <SimilarWords {...module} {...closeProps} />;
+    case 'mnemonics':
+      return <Mnemonics {...module} {...closeProps} />;
+    case 'wordShowcase':
+      return <WordShowcase {...module} {...closeProps} />;
+  }
+};
 
 export const renderContentModule = ({
   module,
@@ -25,29 +52,6 @@ export const renderContentModule = ({
   onClose,
   showContent = true,
 }: RenderContentModuleProps): React.ReactElement => {
-  const getCloseProps = () => {
-    if (needClose) {
-      return { needClose, onClose, showContent };
-    }
-    return {};
-  };
-
-  switch (module.moduleType) {
-    case 'wordIntro':
-      return <ModuleWrapper><WordIntro {...module} /></ModuleWrapper>;
-    case 'wordMeaning':
-      return <ModuleWrapper><WordMeaning {...module} {...getCloseProps()} /></ModuleWrapper>;
-    case 'wordContext':
-      return <ModuleWrapper><WordContext {...module} {...getCloseProps()} /></ModuleWrapper>;
-    case 'meaningGuessQuestion':
-      return <ModuleWrapper><MeaningGuessQuestion {...module} {...getCloseProps()} /></ModuleWrapper>;
-    case 'etymology':
-      return <ModuleWrapper><Etymology {...module} {...getCloseProps()} /></ModuleWrapper>;
-    case 'similarWords':
-      return <ModuleWrapper><SimilarWords {...module} {...getCloseProps()} /></ModuleWrapper>;
-    case 'mnemonics':
-      return <ModuleWrapper><Mnemonics {...module} {...getCloseProps()} /></ModuleWrapper>;
-    case 'wordShowcase':
-      return <ModuleWrapper><WordShowcase {...module} {...getCloseProps()} /></ModuleWrapper>;
-  }
+  const closeProps = needClose ? { needClose, onClose, showContent } : {};
+  return <ModuleWrapper>{resolveModule(module, closeProps)}</ModuleWrapper>;
 };
