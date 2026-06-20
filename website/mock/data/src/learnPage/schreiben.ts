@@ -37,6 +37,7 @@ export const schreiben: LearnPageContent = {
         heading: { text: 'Context' },
         paragraphWithUsage:
           'Ich muss eine E-Mail schreiben. Kannst du mir bitte schreiben? Er hat einen Brief geschrieben.',
+        alternateForms: ['geschrieben'],
       },
       {
         moduleType: 'etymology',

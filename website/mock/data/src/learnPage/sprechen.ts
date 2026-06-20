@@ -37,6 +37,7 @@ export const sprechen: LearnPageContent = {
         heading: { text: 'Context' },
         paragraphWithUsage:
           'Ich lerne Deutsch sprechen. Kannst du bitte langsam sprechen? Sie spricht sehr gut Englisch.',
+        alternateForms: ['spricht'],
       },
       {
         moduleType: 'etymology',

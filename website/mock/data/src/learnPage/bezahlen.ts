@@ -37,6 +37,7 @@ export const bezahlen: LearnPageContent = {
         heading: { text: 'Context' },
         paragraphWithUsage:
           'Ich bezahle im Supermarkt mit Karte. Kann ich hier bar bezahlen? Ich habe die Miete schon bezahlt.',
+        alternateForms: ['bezahle', 'bezahlt'],
       },
       {
         moduleType: 'etymology',

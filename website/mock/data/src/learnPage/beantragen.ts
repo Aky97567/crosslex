@@ -37,6 +37,7 @@ export const beantragen: LearnPageContent = {
         heading: { text: 'Context' },
         paragraphWithUsage:
           'Ich muss einen neuen Reisepass beantragen. Er hat das Visum rechtzeitig beantragt. Um die Förderung zu erhalten, müssen Sie sie zuerst beantragen.',
+        alternateForms: ['beantragt'],
       },
       {
         moduleType: 'etymology',
