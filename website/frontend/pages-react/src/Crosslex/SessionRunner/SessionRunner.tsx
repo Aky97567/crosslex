@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { sampleLearnPageContentList, SampleContentKey } from '@whitelotus/mock-test';
 import { WordTheme } from '@whitelotus/front-features';
 import { SessionProgressBar, KnownWordDialog } from '@whitelotus/front-entities';
@@ -54,7 +54,32 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, theme, onC
   });
 
   const onAnswer = (correct: boolean) => { resetInactivityTimer(); handleAnswer(correct); };
-  const onAdvance: typeof advance = (correct, retryCard) => { resetInactivityTimer(); advance(correct, retryCard); };
+
+  const flipCardOpenRef = useRef(false);
+  const pendingAdvanceRef = useRef<{ correct: boolean | null; retryCard?: Parameters<typeof advance>[1] } | null>(null);
+  const [flipCardCloseSignal, setFlipCardCloseSignal] = useState(0);
+
+  const handleFlipCardOpenChange = (isOpen: boolean) => {
+    flipCardOpenRef.current = isOpen;
+  };
+
+  const handleFlipCardClosed = () => {
+    const pending = pendingAdvanceRef.current;
+    if (!pending) return;
+    pendingAdvanceRef.current = null;
+    resetInactivityTimer();
+    advance(pending.correct, pending.retryCard);
+  };
+
+  const onAdvance: typeof advance = (correct, retryCard) => {
+    if (flipCardOpenRef.current) {
+      pendingAdvanceRef.current = { correct, retryCard };
+      setFlipCardCloseSignal(s => s + 1);
+      return;
+    }
+    resetInactivityTimer();
+    advance(correct, retryCard);
+  };
 
   const wordContent = sampleLearnPageContentList[runner.wordKey as SampleContentKey]?.content;
   const reviewContent = reviewWordKey
@@ -79,6 +104,9 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, theme, onC
         reviewWordKey={reviewWordKey}
         onAnswer={onAnswer}
         hardcoreMode={hardcoreMode}
+        closeFlipCardSignal={flipCardCloseSignal}
+        onFlipCardClosed={handleFlipCardClosed}
+        onFlipCardOpenChange={handleFlipCardOpenChange}
       />
 
       <SessionFooter

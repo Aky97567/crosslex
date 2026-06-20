@@ -17,6 +17,9 @@ type Props = {
   reviewWordKey: string | null;
   onAnswer: (correct: boolean) => void;
   hardcoreMode?: boolean;
+  closeFlipCardSignal?: number;
+  onFlipCardClosed?: () => void;
+  onFlipCardOpenChange?: (isOpen: boolean) => void;
 };
 
 const SessionCardRenderer: React.FC<Props> = ({
@@ -26,15 +29,32 @@ const SessionCardRenderer: React.FC<Props> = ({
   reviewWordKey,
   onAnswer,
   hardcoreMode = false,
+  closeFlipCardSignal,
+  onFlipCardClosed,
+  onFlipCardOpenChange,
 }) => {
   if (reviewContent) {
-    return <WordDetail key={`review-${reviewWordKey}`} content={reviewContent} />;
+    return (
+      <WordDetail
+        key={`review-${reviewWordKey}`}
+        content={reviewContent}
+        closeFlipCardSignal={closeFlipCardSignal}
+        onFlipCardClosed={onFlipCardClosed}
+        onFlipCardOpenChange={onFlipCardOpenChange}
+      />
+    );
   }
 
   return (
     <>
       {runner.cardType === 'wordIntro' && wordContent && (
-        <WordDetail key={runner.cardKey} content={wordContent} />
+        <WordDetail
+          key={runner.cardKey}
+          content={wordContent}
+          closeFlipCardSignal={closeFlipCardSignal}
+          onFlipCardClosed={onFlipCardClosed}
+          onFlipCardOpenChange={onFlipCardOpenChange}
+        />
       )}
       {runner.cardType === 'meaningGuess' && runner.exerciseData?.cardType === 'meaningGuess' && (
         <MeaningGuessQuestion
