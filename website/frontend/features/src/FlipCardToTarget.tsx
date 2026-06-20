@@ -6,9 +6,17 @@ import { CtaText } from '@whitelotus/front-shared';
 
 interface FlipCardProps {
   content: ContentModule;
+  closeSignal?: number;
+  onClosed?: () => void;
+  onOpenChange?: (isOpen: boolean) => void;
 }
 
-const FlipCardToTarget: React.FC<FlipCardProps> = ({ content }) => {
+const FlipCardToTarget: React.FC<FlipCardProps> = ({
+  content,
+  closeSignal,
+  onClosed,
+  onOpenChange,
+}) => {
   const { flipAnimation: animated } = useCrosslexStorage();
   const [activeSection, setActiveSection] = useState<number | null>(null);
   const [animatingCardIndex, setAnimatingCardIndex] = useState<number | null>(
@@ -60,6 +68,18 @@ const FlipCardToTarget: React.FC<FlipCardProps> = ({ content }) => {
         showContent,
       }),
     }));
+
+  useEffect(() => {
+    onOpenChange?.(activeSection !== null);
+  }, [activeSection, onOpenChange]);
+
+  useEffect(() => {
+    if (!closeSignal) return;
+    setActiveSection(null);
+    setShowContent(false);
+    const id = setTimeout(() => onClosed?.(), 50);
+    return () => clearTimeout(id);
+  }, [closeSignal, onClosed]);
 
   useEffect(() => {
     if (
