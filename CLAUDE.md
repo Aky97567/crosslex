@@ -168,8 +168,9 @@ No cap on new words per session. Session length and user pace determine the tota
 
 **Exercise types** (picked at random from what the word supports):
 - `meaningGuess` — pulls `meaningBestGuessQuestion` from mock data
-- `contextBlank` — derives from `wordContext.paragraphWithUsage`; replaces word with `___`; 3 random distractors
+- `contextBlank` — derives from `wordContext.paragraphWithUsage`; replaces base form AND any `alternateForms` with `___`; correct answer is always the base form; 3 random distractors
 - `wordDefinition` — word + article shown; correct = translation; 3 random distractor translations
+- `typeTheWord` — user types the German word from memory; unlocked for a word only after ≥ 3 correct answers on it (`Math.round(count * accuracy) >= 3`); respects `crosslex:hardcore_mode` localStorage flag (hides hints when set)
 
 **Files:**
 ```
@@ -205,11 +206,23 @@ Word data lives in `mock/data/src/learnPage/`. Each word is its own file.
 - `wordIntro` — word, article, translation, partOfSpeech, level `['B1']`; omit `representativeImageUrl` until a real URL exists
 - `wordMeaning` — one-paragraph definition
 - `meaningGuessQuestion` — 3 options, exactly 1 `isCorrect: true`
-- `wordContext` — paragraph using the word **at least 3 times**
+- `wordContext` — paragraph using the word **at least 3 times**; include `alternateForms` for any inflected forms that appear in the paragraph (see below)
 - `etymology` — origin explanation
 - `similarWords` — 2–3 **synonyms** (not thematically related words) with article, translation, similarityScore, level, cefrRelevant
 - `mnemonics` — 2 mnemonics; omit `imageUrl` until a real URL exists
 - `wordShowcase` — always include, leave empty (hides itself when no URL)
+
+**`alternateForms` — what to include per part of speech:**
+
+The `contextBlank` exercise blanks the base form plus any strings listed in `alternateForms`. Without this, conjugated/inflected forms remain visible and leak the answer. The correct answer shown to the user is always the base form (dictionary lemma).
+
+| Part of speech | What to include in `alternateForms` |
+|---|---|
+| Verb | Partizip II (past participle), e.g. `beantragt`, `bezahlt`, `geschrieben`. Also include Präsens 3rd-person singular if it appears and is visually distinct (e.g. `spricht` for `sprechen`, `arbeitet` for `arbeiten`). Also include 1st-person singular if it appears and is shorter than the infinitive (e.g. `bestelle`, `bezahle`). |
+| Noun | Nominative plural if the paragraph uses it (e.g. `Wohnungen` for `Wohnung`). Most noun paragraphs repeat the nominative singular — omit if not needed. |
+| Adjective | Attributive declension forms if the paragraph uses them (e.g. `schnelles` for `schnell`). Rare at A2/B1. |
+
+Note: separable verbs (e.g. `nachweisen` → "weisen … nach") can't be handled via `alternateForms` because the prefix separates. Write the paragraph to avoid separated-prefix forms for separable verbs, or accept that one sentence in three is unblanked.
 
 **Gotchas encountered:**
 - `representativeImageUrl` and mnemonic `imageUrl` are **multi-line** in the file (`key:\n  'url',`). When bulk-stripping with `sed`, removing the key line leaves the URL value as an orphaned string — causes a TS error. Always run a second `sed` pass to remove the bare URL lines too, then verify with `grep`.

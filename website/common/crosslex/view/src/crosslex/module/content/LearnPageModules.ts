@@ -56,6 +56,7 @@ export type WordContextModule = Module<
   {
     heading: Heading;
     paragraphWithUsage: string;
+    alternateForms?: string[];
   }
 >;
 

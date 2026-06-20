@@ -37,6 +37,7 @@ export const bestellen: LearnPageContent = {
         heading: { text: 'Context' },
         paragraphWithUsage:
           'Ich bestelle ein Glas Wasser. Hast du schon bestellt? Im Restaurant bestelle ich immer das Tagesgericht.',
+        alternateForms: ['bestelle', 'bestellt'],
       },
       {
         moduleType: 'etymology',
