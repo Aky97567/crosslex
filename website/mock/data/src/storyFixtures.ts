@@ -25,9 +25,13 @@ const makeContextBlankFixture = (
   )!;
   const allForms = [intro.word, ...(ctx.alternateForms ?? [])];
   const pattern = allForms.map((f) => f.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
-  const sentence = ctx.paragraphWithUsage.replace(new RegExp(pattern, 'gi'), '___');
+  const fills: string[] = [];
+  const sentence = ctx.paragraphWithUsage.replace(
+    new RegExp(pattern, 'gi'),
+    (match) => { fills.push(match); return '___'; },
+  );
   const distractors = distractorKeys.map((k) => ({ text: getIntro(k).word, isCorrect: false as const }));
-  return { sentence, options: [{ text: intro.word, isCorrect: true as const }, ...distractors] };
+  return { sentence, fills, options: [{ text: intro.word, isCorrect: true as const }, ...distractors] };
 };
 
 export const contextBlankStoryFixtures = {

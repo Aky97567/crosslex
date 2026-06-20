@@ -151,7 +151,11 @@ export const generateExerciseData = (
     const wordText = intro.word;
     const allForms = [wordText, ...(mod.alternateForms ?? [])];
     const pattern = allForms.map((f) => f.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
-    const sentence = mod.paragraphWithUsage.replace(new RegExp(pattern, 'gi'), '___');
+    const fills: string[] = [];
+    const sentence = mod.paragraphWithUsage.replace(
+      new RegExp(pattern, 'gi'),
+      (match) => { fills.push(match); return '___'; },
+    );
     if (!sentence.includes('___')) return null;
 
     const distractors = allWordKeys
@@ -164,7 +168,7 @@ export const generateExerciseData = (
 
     return {
       cardType: 'contextBlank',
-      data: { sentence, options: shuffle([{ text: wordText, isCorrect: true }, ...distractors]) },
+      data: { sentence, fills, options: shuffle([{ text: wordText, isCorrect: true }, ...distractors]) },
     };
   }
 
