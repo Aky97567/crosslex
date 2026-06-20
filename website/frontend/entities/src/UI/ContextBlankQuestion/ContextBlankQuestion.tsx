@@ -9,6 +9,7 @@ type Option = {
 
 export type ContextBlankQuestionData = {
   sentence: string;
+  fills: string[];
   options: Option[];
 };
 
@@ -55,12 +56,9 @@ const ContextBlankQuestion: React.FC<Props> = ({
     onAnswer?.(contextBlankQuestion.options[index].isCorrect);
   };
 
-  const correctOption = contextBlankQuestion.options.find((o) => o.isCorrect);
-  const filledWord = isAnswered
-    ? (correctOption?.text ?? null)
-    : selectedIndex !== null
-      ? contextBlankQuestion.options[selectedIndex].text
-      : null;
+  const { sentence, fills, options } = contextBlankQuestion;
+  const selectedOptionText = selectedIndex !== null ? options[selectedIndex].text : null;
+
   const blankClassName = `inline-block border-b-2 min-w-60 mx-5 text-center font-bold ${
     isAnswered
       ? 'border-color1 text-color1'
@@ -68,9 +66,17 @@ const ContextBlankQuestion: React.FC<Props> = ({
         ? 'border-color3 text-color3'
         : 'border-brand text-brand'
   }`;
-  const sentences = contextBlankQuestion.sentence
+
+  const sentences = sentence
     .split('. ')
     .map((s, i, arr) => (i < arr.length - 1 ? s + '.' : s));
+
+  const blankOffsets: number[] = [];
+  let count = 0;
+  for (const sent of sentences) {
+    blankOffsets.push(count);
+    count += (sent.match(/___/g) ?? []).length;
+  }
 
   return (
     <Card
@@ -81,13 +87,18 @@ const ContextBlankQuestion: React.FC<Props> = ({
     >
       {sentences.map((sent, si) => {
         const parts = sent.split('___');
+        const offset = blankOffsets[si];
         return (
           <BodyText key={si}>
             {parts.map((part, i) => (
               <React.Fragment key={i}>
                 {part}
                 {i < parts.length - 1 && (
-                  <span className={blankClassName}>{filledWord ?? '      '}</span>
+                  <span className={blankClassName}>
+                    {isAnswered
+                      ? (fills[offset + i] ?? '')
+                      : (selectedOptionText ?? '      ')}
+                  </span>
                 )}
               </React.Fragment>
             ))}
@@ -95,7 +106,7 @@ const ContextBlankQuestion: React.FC<Props> = ({
         );
       })}
       <div className="mt-20">
-        {contextBlankQuestion.options.map((option, index) => (
+        {options.map((option, index) => (
           <div
             key={index}
             className={`border-2 rounded-lg px-40 py-10 mb-10 transition-colors duration-300 border-color7 ${
