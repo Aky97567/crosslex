@@ -24,6 +24,7 @@ export type CrosslexStorageContextValue = StorageSnapshot & {
   removeKnownWord(key: string): void;
   writeKnownWordConfirmed(): void;
   recordSessionForStreak(): RecordStreakResult;
+  refresh(): void;
 };
 
 const CrosslexStorageContext = createContext<CrosslexStorageContextValue | null>(null);
@@ -89,6 +90,8 @@ const CrosslexStorageProvider: React.FC<Props> = ({ adapter, children }) => {
       patch({ streak: result.data });
       return result;
     },
+
+    refresh: () => setSnapshot(adapter.read()),
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }), [snapshot, practicedToday, metricsSummary, wordMetrics]);
 

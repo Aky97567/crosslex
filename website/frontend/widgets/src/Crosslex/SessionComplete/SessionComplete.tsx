@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Card } from '@whitelotus/front-shared';
+import { useCrosslexStorage } from '@whitelotus/front-features';
 
 const ctaButton =
   'bg-brand border-2 border-brand rounded-md text-text-cta px-40 py-10 transition-colors duration-300 mt-20';
@@ -21,6 +22,9 @@ const SessionComplete: React.FC<Props> = ({
   streakCount,
   onDone,
 }) => {
+  const { refresh } = useCrosslexStorage();
+  useEffect(() => { refresh(); }, []);
+
   const accuracy =
     cardsDone > 0 ? Math.round((correctCount / cardsDone) * 100) : 0;
 
