@@ -326,6 +326,20 @@ export const writeFlipAnimation = (enabled: boolean): void => {
   } catch {}
 };
 
+export const readMobileFullView = (): boolean => {
+  try {
+    return localStorage.getItem('crosslex:mobile_full_view') === 'true';
+  } catch {
+    return false;
+  }
+};
+
+export const writeMobileFullView = (enabled: boolean): void => {
+  try {
+    localStorage.setItem('crosslex:mobile_full_view', String(enabled));
+  } catch {}
+};
+
 // ─── Known word confirmed ─────────────────────────────────────────────────────
 
 export const readKnownWordConfirmed = (): boolean => {

@@ -19,6 +19,7 @@ export interface StorageSnapshot {
   sessionTimeout: number;
   flipAnimation: boolean;
   hardcoreMode: boolean;
+  mobileFullView: boolean;
   knownWordConfirmed: boolean;
 }
 
@@ -31,6 +32,7 @@ export interface StoragePort {
   writeSessionTimeout(minutes: number): void;
   writeFlipAnimation(enabled: boolean): void;
   writeHardcoreMode(enabled: boolean): void;
+  writeMobileFullView(enabled: boolean): void;
 
   appendExerciseEvent(event: ExerciseEvent): void;
   writeWordsSeen(store: WordsSeenStore): void;
