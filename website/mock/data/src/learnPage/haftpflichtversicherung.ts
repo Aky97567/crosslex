@@ -7,7 +7,7 @@ export const haftpflichtversicherung: LearnPageContent = {
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Haftpflichtversicherung',
+        word: 'Haft­pflicht­versicherung',
         article: 'die',
         translation: 'personal liability insurance',
         partOfSpeech: 'noun',

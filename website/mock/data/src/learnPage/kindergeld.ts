@@ -7,7 +7,7 @@ export const kindergeld: LearnPageContent = {
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Kindergeld',
+        word: 'Kinder­geld',
         article: 'das',
         translation: 'child benefit',
         partOfSpeech: 'noun',

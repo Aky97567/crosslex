@@ -7,7 +7,7 @@ export const steuererklaerung: LearnPageContent = {
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Steuererklärung',
+        word: 'Steuer­erklärung',
         article: 'die',
         translation: 'tax return',
         partOfSpeech: 'noun',

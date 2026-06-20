@@ -7,7 +7,7 @@ export const fuehrerschein: LearnPageContent = {
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Führerschein',
+        word: 'Führer­schein',
         article: 'der',
         translation: 'driving licence',
         partOfSpeech: 'noun',
