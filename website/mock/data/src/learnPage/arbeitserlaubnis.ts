@@ -7,7 +7,7 @@ export const arbeitserlaubnis: LearnPageContent = {
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Arbeitserlaubnis',
+        word: 'Arbeits­erlaubnis',
         article: 'die',
         translation: 'work permit',
         partOfSpeech: 'noun',

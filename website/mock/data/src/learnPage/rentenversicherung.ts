@@ -7,7 +7,7 @@ export const rentenversicherung: LearnPageContent = {
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Rentenversicherung',
+        word: 'Renten­versicherung',
         article: 'die',
         translation: 'statutory pension insurance',
         partOfSpeech: 'noun',

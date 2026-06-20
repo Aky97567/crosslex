@@ -7,7 +7,7 @@ export const krankenversicherung: LearnPageContent = {
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Krankenversicherung',
+        word: 'Kranken­versicherung',
         article: 'die',
         translation: 'health insurance',
         partOfSpeech: 'noun',

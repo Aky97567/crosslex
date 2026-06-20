@@ -7,7 +7,7 @@ export const oeffnungszeiten: LearnPageContent = {
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Öffnungszeiten',
+        word: 'Öffnungs­zeiten',
         article: 'die',
         translation: 'opening hours',
         partOfSpeech: 'noun',

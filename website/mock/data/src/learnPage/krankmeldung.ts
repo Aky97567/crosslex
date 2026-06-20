@@ -7,7 +7,7 @@ export const krankmeldung: LearnPageContent = {
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Krankmeldung',
+        word: 'Krank­meldung',
         article: 'die',
         translation: 'sick note, notification of illness',
         partOfSpeech: 'noun',

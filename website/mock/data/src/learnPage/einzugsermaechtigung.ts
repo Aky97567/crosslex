@@ -7,7 +7,7 @@ export const einzugsermaechtigung: LearnPageContent = {
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Einzugsermächtigung',
+        word: 'Einzugs­ermächtigung',
         article: 'die',
         translation: 'direct debit authorisation',
         partOfSpeech: 'noun',
