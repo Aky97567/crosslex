@@ -10,6 +10,7 @@ import {
   WordShowcase,
 } from '@whitelotus/front-entities';
 import { ContentModules } from '@whitelotus/common-crosslex-view';
+import { ModuleWrapper } from './renderContentModule.styles';
 
 interface RenderContentModuleProps {
   module: ContentModules;
@@ -33,20 +34,20 @@ export const renderContentModule = ({
 
   switch (module.moduleType) {
     case 'wordIntro':
-      return <WordIntro {...module} />;
+      return <ModuleWrapper><WordIntro {...module} /></ModuleWrapper>;
     case 'wordMeaning':
-      return <WordMeaning {...module} {...getCloseProps()} />;
+      return <ModuleWrapper><WordMeaning {...module} {...getCloseProps()} /></ModuleWrapper>;
     case 'wordContext':
-      return <WordContext {...module} {...getCloseProps()} />;
+      return <ModuleWrapper><WordContext {...module} {...getCloseProps()} /></ModuleWrapper>;
     case 'meaningGuessQuestion':
-      return <MeaningGuessQuestion {...module} {...getCloseProps()} />;
+      return <ModuleWrapper><MeaningGuessQuestion {...module} {...getCloseProps()} /></ModuleWrapper>;
     case 'etymology':
-      return <Etymology {...module} {...getCloseProps()} />;
+      return <ModuleWrapper><Etymology {...module} {...getCloseProps()} /></ModuleWrapper>;
     case 'similarWords':
-      return <SimilarWords {...module} {...getCloseProps()} />;
+      return <ModuleWrapper><SimilarWords {...module} {...getCloseProps()} /></ModuleWrapper>;
     case 'mnemonics':
-      return <Mnemonics {...module} {...getCloseProps()} />;
+      return <ModuleWrapper><Mnemonics {...module} {...getCloseProps()} /></ModuleWrapper>;
     case 'wordShowcase':
-      return <WordShowcase {...module} {...getCloseProps()} />;
+      return <ModuleWrapper><WordShowcase {...module} {...getCloseProps()} /></ModuleWrapper>;
   }
 };
