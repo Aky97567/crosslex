@@ -38,7 +38,7 @@ const SettingsPanel: React.FC<Props> = ({ isOpen, onClose }) => (
           </button>
         </div>
       </div>
-      <div className="overflow-y-auto flex-1 px-20 py-20">
+      <div className="overflow-y-auto overscroll-contain flex-1 px-20 py-20">
         <LevelSection />
         <Divider />
         <SessionTimeoutSection />
