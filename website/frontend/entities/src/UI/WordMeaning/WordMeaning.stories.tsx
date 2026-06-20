@@ -1,5 +1,14 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { WordMeaningModule } from '@whitelotus/common-crosslex-view';
+import { sampleLearnPageContentList } from '@whitelotus/mock-test';
 import { WordMeaning } from './WordMeaning';
+
+const getMeaning = (key: keyof typeof sampleLearnPageContentList) =>
+  (
+    sampleLearnPageContentList[key].content.modules.find(
+      (m) => m.moduleType === 'wordMeaning',
+    ) as WordMeaningModule
+  ).meaning;
 
 export default {
   title: 'Entities/WordMeaning',
@@ -12,13 +21,12 @@ export default {
 
 export const Default: StoryObj<typeof WordMeaning> = {
   args: {
-    meaning:
-      'The official registration of your address with the local authorities (Einwohnermeldeamt). In Germany, all residents must register within two weeks of moving to a new address.',
+    meaning: getMeaning('anmeldung'),
   },
 };
 
 export const Short: StoryObj<typeof WordMeaning> = {
   args: {
-    meaning: 'A road vehicle with four wheels powered by an engine.',
+    meaning: getMeaning('auto'),
   },
 };

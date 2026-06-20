@@ -1,5 +1,14 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { WordContextModule } from '@whitelotus/common-crosslex-view';
+import { sampleLearnPageContentList } from '@whitelotus/mock-test';
 import { WordContext } from './WordContext';
+
+const getParagraph = (key: keyof typeof sampleLearnPageContentList) =>
+  (
+    sampleLearnPageContentList[key].content.modules.find(
+      (m) => m.moduleType === 'wordContext',
+    ) as WordContextModule
+  ).paragraphWithUsage;
 
 export default {
   title: 'Entities/WordContext',
@@ -12,14 +21,12 @@ export default {
 
 export const Default: StoryObj<typeof WordContext> = {
   args: {
-    paragraphWithUsage:
-      'Ich muss eine E-Mail schreiben. Kannst du mir bitte schreiben? Er hat einen Brief geschrieben.',
+    paragraphWithUsage: getParagraph('schreiben'),
   },
 };
 
 export const LongerParagraph: StoryObj<typeof WordContext> = {
   args: {
-    paragraphWithUsage:
-      'Die Anerkennung meines ausländischen Abschlusses dauerte sechs Monate. Ohne Anerkennung darf ich meinen Beruf in Deutschland nicht ausüben. Die Anerkennung wird von der zuständigen Stelle geprüft.',
+    paragraphWithUsage: getParagraph('anerkennung'),
   },
 };

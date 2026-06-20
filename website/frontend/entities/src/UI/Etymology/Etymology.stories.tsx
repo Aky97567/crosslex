@@ -1,5 +1,14 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { EtymologyModule } from '@whitelotus/common-crosslex-view';
+import { sampleLearnPageContentList } from '@whitelotus/mock-test';
 import { Etymology } from './Etymology';
+
+const getEtymology = (key: keyof typeof sampleLearnPageContentList) =>
+  (
+    sampleLearnPageContentList[key].content.modules.find(
+      (m) => m.moduleType === 'etymology',
+    ) as EtymologyModule
+  ).etymology;
 
 export default {
   title: 'Entities/Etymology',
@@ -12,14 +21,12 @@ export default {
 
 export const Default: StoryObj<typeof Etymology> = {
   args: {
-    etymology:
-      "From Old High German 'arabeiten' (to labour, to toil). Related to the English word 'effort' through a shared sense of strenuous activity.",
+    etymology: getEtymology('arbeiten'),
   },
 };
 
 export const LatinRoot: StoryObj<typeof Etymology> = {
   args: {
-    etymology:
-      "From Latin 'familia' (household, servants). The same root gives us 'family' in English and 'familia' in Spanish.",
+    etymology: getEtymology('familie'),
   },
 };
