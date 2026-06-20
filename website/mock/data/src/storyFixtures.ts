@@ -23,7 +23,7 @@ const makeContextBlankFixture = (
     sampleLearnPageContentList[wordKey].content.modules,
     'wordContext',
   )!;
-  const allForms = [intro.word, ...(ctx.alternateForms ?? [])];
+  const allForms = [intro.word, ...(ctx.alternateForms ?? []), ...(ctx.trennbarTokens ?? [])];
   const pattern = allForms.map((f) => f.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
   const fills: string[] = [];
   const sentence = ctx.paragraphWithUsage.replace(
@@ -31,13 +31,19 @@ const makeContextBlankFixture = (
     (match) => { fills.push(match); return '___'; },
   );
   const distractors = distractorKeys.map((k) => ({ text: getIntro(k).word, isCorrect: false as const }));
-  return { sentence, fills, options: [{ text: intro.word, isCorrect: true as const }, ...distractors] };
+  return {
+    sentence,
+    fills,
+    options: [{ text: intro.word, isCorrect: true as const }, ...distractors],
+    contextSentenceIndices: ctx.trennbarTokens ? [1] : undefined,
+  };
 };
 
 export const contextBlankStoryFixtures = {
   beantragen: makeContextBlankFixture('beantragen', ['kaufen', 'schreiben', 'bezahlen']),
   kaufen: makeContextBlankFixture('kaufen', ['beantragen', 'bezahlen', 'schreiben']),
   schreiben: makeContextBlankFixture('schreiben', ['kaufen', 'beantragen', 'sprechen']),
+  nachweisen: makeContextBlankFixture('nachweisen', ['umsteigen', 'arbeiten', 'kaufen']),
 };
 
 // --- WordDefinitionQuestion fixtures ---

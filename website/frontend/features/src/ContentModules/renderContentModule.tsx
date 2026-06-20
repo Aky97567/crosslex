@@ -20,19 +20,25 @@ interface CloseProps {
 
 interface RenderContentModuleProps extends CloseProps {
   module: ContentModules;
+  wordText?: string;
 }
 
 const resolveModule = (
   module: ContentModules,
   closeProps: CloseProps,
+  wordText?: string,
 ): React.ReactElement => {
   switch (module.moduleType) {
     case 'wordIntro':
       return <WordIntro {...module} />;
     case 'wordMeaning':
       return <WordMeaning {...module} {...closeProps} />;
-    case 'wordContext':
-      return <WordContext {...module} {...closeProps} />;
+    case 'wordContext': {
+      const highlightTokens = wordText
+        ? [wordText, ...(module.alternateForms ?? []), ...(module.trennbarTokens ?? [])]
+        : undefined;
+      return <WordContext {...module} {...closeProps} highlightTokens={highlightTokens} />;
+    }
     case 'meaningGuessQuestion':
       return <MeaningGuessQuestion {...module} {...closeProps} />;
     case 'etymology':
@@ -51,7 +57,8 @@ export const renderContentModule = ({
   needClose,
   onClose,
   showContent = true,
+  wordText,
 }: RenderContentModuleProps): React.ReactElement => {
   const closeProps = needClose ? { needClose, onClose, showContent } : {};
-  return <ModuleWrapper>{resolveModule(module, closeProps)}</ModuleWrapper>;
+  return <ModuleWrapper>{resolveModule(module, closeProps, wordText)}</ModuleWrapper>;
 };

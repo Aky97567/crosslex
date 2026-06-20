@@ -1,14 +1,24 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { WordContextModule } from '@whitelotus/common-crosslex-view';
+import { WordContextModule, WordIntroModule } from '@whitelotus/common-crosslex-view';
 import { sampleLearnPageContentList } from '@whitelotus/mock-test';
 import { WordContext } from './WordContext';
 
-const getParagraph = (key: keyof typeof sampleLearnPageContentList) =>
-  (
-    sampleLearnPageContentList[key].content.modules.find(
-      (m) => m.moduleType === 'wordContext',
-    ) as WordContextModule
-  ).paragraphWithUsage;
+const getModules = (key: keyof typeof sampleLearnPageContentList) => {
+  const modules = sampleLearnPageContentList[key].content.modules;
+  const ctx = modules.find((m) => m.moduleType === 'wordContext') as WordContextModule;
+  const intro = modules.find((m) => m.moduleType === 'wordIntro') as WordIntroModule;
+  return { ctx, intro };
+};
+
+const buildHighlightTokens = (intro: WordIntroModule, ctx: WordContextModule) => [
+  intro.word,
+  ...(ctx.alternateForms ?? []),
+  ...(ctx.trennbarTokens ?? []),
+];
+
+const { ctx: schreibenCtx } = getModules('schreiben');
+const { ctx: anerkenungCtx } = getModules('anerkennung');
+const { ctx: nachweisenCtx, intro: nachweisenIntro } = getModules('nachweisen');
 
 export default {
   title: 'Entities/WordContext',
@@ -21,12 +31,19 @@ export default {
 
 export const Default: StoryObj<typeof WordContext> = {
   args: {
-    paragraphWithUsage: getParagraph('schreiben'),
+    paragraphWithUsage: schreibenCtx.paragraphWithUsage,
   },
 };
 
 export const LongerParagraph: StoryObj<typeof WordContext> = {
   args: {
-    paragraphWithUsage: getParagraph('anerkennung'),
+    paragraphWithUsage: anerkenungCtx.paragraphWithUsage,
+  },
+};
+
+export const Trennbar: StoryObj<typeof WordContext> = {
+  args: {
+    paragraphWithUsage: nachweisenCtx.paragraphWithUsage,
+    highlightTokens: buildHighlightTokens(nachweisenIntro, nachweisenCtx),
   },
 };

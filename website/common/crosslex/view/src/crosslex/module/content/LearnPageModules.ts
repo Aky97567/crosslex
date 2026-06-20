@@ -39,6 +39,7 @@ export type WordIntroModule = Module<
     representativeImageUrl?: string;
     themes?: WordTheme[];
     translation: string;
+    trennbar?: true;
     word: string;
   }
 >;
@@ -57,6 +58,7 @@ export type WordContextModule = Module<
     heading: Heading;
     paragraphWithUsage: string;
     alternateForms?: string[];
+    trennbarTokens?: [string, string];
   }
 >;
 

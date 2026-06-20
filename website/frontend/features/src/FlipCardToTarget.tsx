@@ -9,6 +9,7 @@ interface FlipCardProps {
   closeSignal?: number;
   onClosed?: () => void;
   onOpenChange?: (isOpen: boolean) => void;
+  wordText?: string;
 }
 
 const FlipCardToTarget: React.FC<FlipCardProps> = ({
@@ -16,6 +17,7 @@ const FlipCardToTarget: React.FC<FlipCardProps> = ({
   closeSignal,
   onClosed,
   onOpenChange,
+  wordText,
 }) => {
   const { flipAnimation: animated } = useCrosslexStorage();
   const [activeSection, setActiveSection] = useState<number | null>(null);
@@ -66,6 +68,7 @@ const FlipCardToTarget: React.FC<FlipCardProps> = ({
         needClose: true,
         onClose: handleCloseClick,
         showContent,
+        wordText,
       }),
     }));
 
