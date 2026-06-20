@@ -3,17 +3,19 @@ import { Heading as HeadingElement } from '@whitelotus/common-crosslex-view';
 
 interface HeadingProps {
   className?: string;
+  style?: React.CSSProperties;
   heading?: HeadingElement;
 }
 
 export const Heading: React.FC<HeadingProps> = ({
   className = '',
+  style,
   heading,
 }) => {
   return heading
     ? React.createElement(
         heading.level ?? 'h2',
-        { className: `${className} text-lg text-brand font-semibold mb-5` },
+        { className: `${className} text-lg text-brand font-semibold mb-5`, style },
         heading.text,
       )
     : null;

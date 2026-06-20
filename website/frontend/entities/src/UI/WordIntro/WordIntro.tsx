@@ -18,7 +18,11 @@ export const WordIntro: React.FC<WordIntroProps> = ({
 }) => (
   <Card className="flex flex-row justify-between">
     <div>
-      <Heading heading={{ text: article ? `${article} ${word.trimStart()}` : word.trimStart(), level: 'h1' }} />
+      <Heading
+        className="break-words"
+        style={{ hyphens: 'auto' }}
+        heading={{ text: article ? `${article} ${word.trimStart()}` : word.trimStart(), level: 'h1' }}
+      />
       <BodyText className="italic mb-5">{translation}</BodyText>
       <BodyText className="mb-5">{partOfSpeech}</BodyText>
     </div>
