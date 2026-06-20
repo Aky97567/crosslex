@@ -12,6 +12,7 @@ const DEFAULT_SNAPSHOT: StorageSnapshot = {
   sessionTimeout:     5,
   flipAnimation:      false,
   hardcoreMode:       false,
+  mobileFullView:     false,
   knownWordConfirmed: false,
 };
 
@@ -32,6 +33,7 @@ export class MemoryStorageAdapter implements StoragePort {
   writeSessionTimeout(minutes: number): void           { this.snapshot = { ...this.snapshot, sessionTimeout: minutes }; }
   writeFlipAnimation(enabled: boolean): void           { this.snapshot = { ...this.snapshot, flipAnimation: enabled }; }
   writeHardcoreMode(enabled: boolean): void            { this.snapshot = { ...this.snapshot, hardcoreMode: enabled }; }
+  writeMobileFullView(enabled: boolean): void          { this.snapshot = { ...this.snapshot, mobileFullView: enabled }; }
   writeWordsSeen(store: WordsSeenStore): void          { this.snapshot = { ...this.snapshot, wordsSeen: store }; }
   writeKnownWordConfirmed(): void                      { this.snapshot = { ...this.snapshot, knownWordConfirmed: true }; }
 

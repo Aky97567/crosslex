@@ -9,6 +9,7 @@ import {
   readSessionTimeout,
   readFlipAnimation,
   readHardcoreMode,
+  readMobileFullView,
   readKnownWordConfirmed,
   writeActiveLevel,
   writeLearningRate,
@@ -16,6 +17,7 @@ import {
   writeSessionTimeout,
   writeFlipAnimation,
   writeHardcoreMode,
+  writeMobileFullView,
   appendExerciseEvent,
   writeWordsSeen,
   addKnownWord,
@@ -38,6 +40,7 @@ export class LocalStorageAdapter implements StoragePort {
       sessionTimeout:    readSessionTimeout(),
       flipAnimation:     readFlipAnimation(),
       hardcoreMode:      readHardcoreMode(),
+      mobileFullView:    readMobileFullView(),
       knownWordConfirmed: readKnownWordConfirmed(),
     };
   }
@@ -48,6 +51,7 @@ export class LocalStorageAdapter implements StoragePort {
   writeSessionTimeout  = writeSessionTimeout;
   writeFlipAnimation   = writeFlipAnimation;
   writeHardcoreMode    = writeHardcoreMode;
+  writeMobileFullView  = writeMobileFullView;
   appendExerciseEvent  = appendExerciseEvent;
   writeWordsSeen       = writeWordsSeen;
   addKnownWord         = addKnownWord;

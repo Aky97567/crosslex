@@ -2,7 +2,7 @@ import React from 'react';
 import { Divider } from './SettingsPrimitives';
 import { LevelSection } from './LevelSection';
 import { SessionTimeoutSection } from './SessionTimeoutSection';
-import { AnimationsSection } from './AnimationsSection';
+import { MobileDisplaySection } from './MobileDisplaySection';
 import { HardcoreModeSection } from './HardcoreModeSection';
 import { StorageSection } from './StorageSection';
 import { KnownWordsSection } from './KnownWordsSection';
@@ -43,8 +43,10 @@ const SettingsPanel: React.FC<Props> = ({ isOpen, onClose }) => (
         <Divider />
         <SessionTimeoutSection />
         <Divider />
-        <AnimationsSection />
-        <Divider />
+        <div className="md:hidden">
+          <MobileDisplaySection />
+          <Divider />
+        </div>
         <HardcoreModeSection />
         <Divider />
         <StorageSection />

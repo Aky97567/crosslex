@@ -18,6 +18,7 @@ export type CrosslexStorageContextValue = StorageSnapshot & {
   writeSessionTimeout(minutes: number): void;
   writeFlipAnimation(enabled: boolean): void;
   writeHardcoreMode(enabled: boolean): void;
+  writeMobileFullView(enabled: boolean): void;
   appendExerciseEvent(event: ExerciseEvent): void;
   writeWordsSeen(store: WordsSeenStore): void;
   addKnownWord(key: string): void;
@@ -61,6 +62,7 @@ const CrosslexStorageProvider: React.FC<Props> = ({ adapter, children }) => {
     writeSessionTimeout: (m) => { adapter.writeSessionTimeout(m); patch({ sessionTimeout: m }); },
     writeFlipAnimation: (v) => { adapter.writeFlipAnimation(v); patch({ flipAnimation: v }); },
     writeHardcoreMode: (v) => { adapter.writeHardcoreMode(v); patch({ hardcoreMode: v }); },
+    writeMobileFullView: (v) => { adapter.writeMobileFullView(v); patch({ mobileFullView: v }); },
     writeKnownWordConfirmed: () => { adapter.writeKnownWordConfirmed(); patch({ knownWordConfirmed: true }); },
 
     appendExerciseEvent: (event) => {
