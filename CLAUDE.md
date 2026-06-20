@@ -145,6 +145,7 @@ The session loop is the core learning experience. It replaces the old index-base
 - `crosslex:words_seen` — `Record<wordKey, { count, accuracy, lastSeen }>` — algorithm cache, updated after every exercise
 - `crosslex:exercise_log` — append-only `ExerciseEvent[]` — source of truth for all metrics (never mutated, only appended)
 - `crosslex:learning_rate` — `'review' | 'easy' | 'balanced' | 'intensive'` — persisted user preference
+- `crosslex:hardcore_mode` — `'true'` when set — hides translation hint in TypeTheWord exercise; absent means hints shown
 
 **Scheduling algorithm** (`frontend/features/src/Session/sessionAlgorithm.ts`):
 
@@ -236,9 +237,12 @@ Note: separable verbs (e.g. `nachweisen` → "weisen … nach") can't be handled
 Pending features, prioritised by effort vs impact.
 
 ### In-flight / Tech debt
-- **Storybook stories for exercise entities** — `MeaningGuessQuestion`, `ContextBlankQuestion`, `WordDefinitionQuestion` all have new answered/locked state that should be covered
+- **Exercise story state coverage** — `MeaningGuessQuestion`, `ContextBlankQuestion`, `WordDefinitionQuestion` stories only show the unanswered initial state; need stories for: correct answer selected (green highlight), wrong answer selected (red + review prompt), post-answer locked state (all options non-interactive)
 - **No test coverage** — Jest is configured but no tests exist; highest priority targets are `sessionAlgorithm.ts` (pickNextCard, generateExerciseData) and `sessionStorage.ts` (streak logic, readiness computation) — these are complex enough to break silently under refactoring
-- **`mock/data` is the production word database** — the package name and `sampleLearnPageContentList` export name are misleading; rename to reflect that this is real content, not test fixtures
+- **`@whitelotus/mock-test` package rename** — name implies test fixtures but this is the production word database; rename to `@whitelotus/word-content`; requires updating `package.json`, all `tsconfig` path aliases, and all import sites
+- **FSD layer violation** — `StreakBadgeTrophyCase` and `BadgeIcon` (both in `entities`) import `BADGES`/`getEarnedBadges` from `@whitelotus/front-features`; fix by moving the `BADGES` constant and `Badge` type down to `front-shared` or a dedicated entities-layer export
+- **Missing widget Storybook stories** — 13 widget components have no stories: `AlphaAnnouncement` (+ `NewUserOverlay`, `ReturningUserCard`), `AppNav`, `BadgesDrawer`, `NotificationsDrawer`, `SessionComplete`, `SessionDashboard`, and the `SettingsPanel` subsections (`HardcoreModeSection`, `MobileDisplaySection`, `SessionTimeoutSection`, `StorageSection`)
+- **`nachweisen` separable verb content** — third context sentence ("Bitte weisen Sie … nach") uses the separated prefix form which can't be blanked, leaking the answer; rewrite to use the infinitive, e.g. "Um etwas nachzuweisen, brauchen Sie offizielle Dokumente."
 
 ### Onboarding
 - **New user handholding overview** — an explanatory walkthrough for first-time users that introduces the session loop, the learning rate options, and how word cards work; should feel lightweight, not a forced tutorial
