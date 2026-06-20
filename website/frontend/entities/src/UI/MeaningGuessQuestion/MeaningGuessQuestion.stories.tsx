@@ -1,37 +1,45 @@
-import { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react';
+import { MeaningGuessQuestionModule } from '@whitelotus/common-crosslex-view';
+import { sampleLearnPageContentList } from '@whitelotus/mock-test';
 import { MeaningGuessQuestion } from './MeaningGuessQuestion';
 
+const WORD_KEYS = ['abmeldung', 'beantragen'] as const;
+
+const getMeaningGuess = (key: (typeof WORD_KEYS)[number]) =>
+  (
+    sampleLearnPageContentList[key].content.modules.find(
+      (m) => m.moduleType === 'meaningGuessQuestion',
+    ) as MeaningGuessQuestionModule
+  ).meaningBestGuessQuestion;
+
+type WrapperProps = { word: (typeof WORD_KEYS)[number] };
+
+const Wrapper: React.FC<WrapperProps> = ({ word }) => (
+  <div className="max-w-4xl mx-auto p-20">
+    <MeaningGuessQuestion
+      key={word}
+      heading={{ level: 'h2', text: 'Guess the Meaning' }}
+      meaningBestGuessQuestion={getMeaningGuess(word)}
+    />
+  </div>
+);
+
 export default {
-  title: 'Entities/MeaningGuessQuestion',
-  component: MeaningGuessQuestion,
-  args: {
-    heading: { level: 'h2', text: 'Guess the Meaning' },
-    showContent: true,
-  },
-} as Meta<typeof MeaningGuessQuestion>;
-
-export const Default: StoryObj<typeof MeaningGuessQuestion> = {
-  args: {
-    meaningBestGuessQuestion: {
-      question: "What is the best guess for the meaning of 'die Abmeldung'?",
-      options: [
-        { text: 'Registering a new address at the local office', isCorrect: false },
-        { text: 'Formally deregistering your address when leaving', isCorrect: true },
-        { text: 'Cancelling a gym or streaming subscription', isCorrect: false },
-      ],
+  title: 'Entities/exercises/MeaningGuessQuestion',
+  component: Wrapper,
+  argTypes: {
+    word: {
+      control: { type: 'select' },
+      options: WORD_KEYS,
     },
   },
-};
+} as Meta<typeof Wrapper>;
 
-export const Verb: StoryObj<typeof MeaningGuessQuestion> = {
-  args: {
-    meaningBestGuessQuestion: {
-      question: "What is the best guess for the meaning of 'beantragen'?",
-      options: [
-        { text: 'To refuse a request', isCorrect: false },
-        { text: 'To submit a formal application for something', isCorrect: true },
-        { text: 'To pay a fee', isCorrect: false },
-      ],
-    },
-  },
-};
+const Template: StoryFn<typeof Wrapper> = (args) => <Wrapper {...args} />;
+
+export const Default: StoryObj<typeof Wrapper> = Template.bind({});
+Default.args = { word: 'abmeldung' };
+
+export const Verb: StoryObj<typeof Wrapper> = Template.bind({});
+Verb.args = { word: 'beantragen' };

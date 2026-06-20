@@ -1,81 +1,12 @@
 import React from 'react';
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import {
-  WordDefinitionQuestion,
-  WordDefinitionQuestionData,
-} from './WordDefinitionQuestion';
+import { wordDefinitionStoryFixtures } from '@whitelotus/mock-test';
+import { WordDefinitionQuestion } from './WordDefinitionQuestion';
 
-const EXERCISES: Record<string, WordDefinitionQuestionData> = {
-  erfahrung: {
-    word: 'Erfahrung',
-    article: 'die',
-    options: [
-      {
-        text: 'Knowledge or skill gained from doing, seeing, or feeling things.',
-        isCorrect: true,
-      },
-      {
-        text: 'An official document that proves something is true.',
-        isCorrect: false,
-      },
-      {
-        text: 'A period of time within which something must be done.',
-        isCorrect: false,
-      },
-      {
-        text: 'The authority or responsibility to deal with something.',
-        isCorrect: false,
-      },
-    ],
-  },
-  frist: {
-    word: 'Frist',
-    article: 'die',
-    options: [
-      {
-        text: 'A period of time within which something must be done.',
-        isCorrect: true,
-      },
-      {
-        text: 'Knowledge or skill gained from doing, seeing, or feeling things.',
-        isCorrect: false,
-      },
-      {
-        text: 'Official permission granted by an authority.',
-        isCorrect: false,
-      },
-      {
-        text: 'Papers or files required for an official process.',
-        isCorrect: false,
-      },
-    ],
-  },
-  beantragen: {
-    word: 'beantragen',
-    article: null,
-    options: [
-      {
-        text: 'To formally apply for something from an authority.',
-        isCorrect: true,
-      },
-      {
-        text: 'To prove or demonstrate something with evidence.',
-        isCorrect: false,
-      },
-      {
-        text: 'To transfer data or responsibility to another party.',
-        isCorrect: false,
-      },
-      {
-        text: 'A period of time within which something must be done.',
-        isCorrect: false,
-      },
-    ],
-  },
-};
+const EXERCISES = wordDefinitionStoryFixtures;
 
 type WrapperProps = {
-  word: string;
+  word: keyof typeof EXERCISES;
 };
 
 const Wrapper: React.FC<WrapperProps> = ({ word }) => (
@@ -88,7 +19,7 @@ const Wrapper: React.FC<WrapperProps> = ({ word }) => (
 );
 
 export default {
-  title: 'Entities/WordDefinitionQuestion',
+  title: 'Entities/exercises/WordDefinitionQuestion',
   component: Wrapper,
   argTypes: {
     word: {
@@ -102,6 +33,10 @@ export default {
 const Template: StoryFn<typeof Wrapper> = (args) => <Wrapper {...args} />;
 
 export const Default: StoryObj<typeof Wrapper> = Template.bind({});
-Default.args = {
-  word: 'erfahrung',
-};
+Default.args = { word: 'erfahrung' };
+
+export const ShortDeadline: StoryObj<typeof Wrapper> = Template.bind({});
+ShortDeadline.args = { word: 'frist' };
+
+export const Verb: StoryObj<typeof Wrapper> = Template.bind({});
+Verb.args = { word: 'beantragen' };

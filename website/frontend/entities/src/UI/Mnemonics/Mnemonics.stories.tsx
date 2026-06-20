@@ -1,5 +1,14 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { MnemonicsModule } from '@whitelotus/common-crosslex-view';
+import { sampleLearnPageContentList } from '@whitelotus/mock-test';
 import { Mnemonics } from './Mnemonics';
+
+const getMnemonics = (key: keyof typeof sampleLearnPageContentList) =>
+  (
+    sampleLearnPageContentList[key].content.modules.find(
+      (m) => m.moduleType === 'mnemonics',
+    ) as MnemonicsModule
+  ).mnemonics;
 
 export default {
   title: 'Entities/Mnemonics',
@@ -12,18 +21,13 @@ export default {
 
 export const Default: StoryObj<typeof Mnemonics> = {
   args: {
-    mnemonics: [
-      { id: 1, content: "Think of 'Arbeit' (work). Think: you need to do the Arbeit-en (the work-ing)." },
-      { id: 2, content: "Sounds like 'are-bite-en' — you bite into your work and get things done." },
-    ],
+    mnemonics: getMnemonics('arbeiten'),
   },
 };
 
 export const Single: StoryObj<typeof Mnemonics> = {
   args: {
-    mnemonics: [
-      { id: 1, content: "'Pünktlich' contains 'Punkt' (dot). To be pünktlich is to arrive exactly on the dot." },
-    ],
+    mnemonics: getMnemonics('puenktlich').slice(0, 1),
   },
 };
 

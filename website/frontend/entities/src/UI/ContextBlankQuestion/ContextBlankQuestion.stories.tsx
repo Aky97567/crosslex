@@ -1,41 +1,12 @@
 import React from 'react';
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
-import {
-  ContextBlankQuestion,
-  ContextBlankQuestionData,
-} from './ContextBlankQuestion';
+import { contextBlankStoryFixtures } from '@whitelotus/mock-test';
+import { ContextBlankQuestion } from './ContextBlankQuestion';
 
-const EXERCISES: Record<string, ContextBlankQuestionData> = {
-  erfahrung: {
-    sentence:
-      'Durch meine jahrelange ___ habe ich gelernt, wie man effizient arbeitet.',
-    options: [
-      { text: 'Erfahrung', isCorrect: true },
-      { text: 'Unterlagen', isCorrect: false },
-      { text: 'Frist', isCorrect: false },
-    ],
-  },
-  beantragen: {
-    sentence: 'Er muss den Führerschein bei der Behörde ___.',
-    options: [
-      { text: 'nachweisen', isCorrect: false },
-      { text: 'beantragen', isCorrect: true },
-      { text: 'uebertragen', isCorrect: false },
-    ],
-  },
-  frist: {
-    sentence:
-      'Die ___ für die Abgabe der Steuererklärung läuft Ende des Monats ab.',
-    options: [
-      { text: 'Genehmigung', isCorrect: false },
-      { text: 'Bescheinigung', isCorrect: false },
-      { text: 'Frist', isCorrect: true },
-    ],
-  },
-};
+const EXERCISES = contextBlankStoryFixtures;
 
 type WrapperProps = {
-  word: string;
+  word: keyof typeof EXERCISES;
 };
 
 const Wrapper: React.FC<WrapperProps> = ({ word }) => (
@@ -48,7 +19,7 @@ const Wrapper: React.FC<WrapperProps> = ({ word }) => (
 );
 
 export default {
-  title: 'Entities/ContextBlankQuestion',
+  title: 'Entities/exercises/ContextBlankQuestion',
   component: Wrapper,
   argTypes: {
     word: {
@@ -62,6 +33,10 @@ export default {
 const Template: StoryFn<typeof Wrapper> = (args) => <Wrapper {...args} />;
 
 export const Default: StoryObj<typeof Wrapper> = Template.bind({});
-Default.args = {
-  word: 'erfahrung',
-};
+Default.args = { word: 'beantragen' };
+
+export const Perfekt: StoryObj<typeof Wrapper> = Template.bind({});
+Perfekt.args = { word: 'kaufen' };
+
+export const StrongVerb: StoryObj<typeof Wrapper> = Template.bind({});
+StrongVerb.args = { word: 'schreiben' };
