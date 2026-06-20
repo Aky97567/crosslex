@@ -1,5 +1,6 @@
-import { BodyText, Card, Heading } from '@whitelotus/front-shared';
+import { BodyText, Heading } from '@whitelotus/front-shared';
 import { Article } from '@whitelotus/common-crosslex-view';
+import { WordIntroCard } from './WordIntro.styles';
 
 type WordIntroProps = {
   word: string;
@@ -16,7 +17,7 @@ export const WordIntro: React.FC<WordIntroProps> = ({
   partOfSpeech,
   representativeImageUrl,
 }) => (
-  <Card className="flex flex-row justify-between">
+  <WordIntroCard hasImage={!!representativeImageUrl}>
     <div>
       <Heading
         className="break-words"
@@ -33,5 +34,5 @@ export const WordIntro: React.FC<WordIntroProps> = ({
         className="object-cover mb-4 rounded-lg max-w-[50%]"
       />
     )}
-  </Card>
+  </WordIntroCard>
 );
