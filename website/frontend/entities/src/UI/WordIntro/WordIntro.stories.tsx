@@ -11,6 +11,7 @@ const getIntro = (key: keyof typeof sampleLearnPageContentList) =>
 const wohnung = getIntro('wohnung');
 const arbeiten = getIntro('arbeiten');
 const puenktlich = getIntro('puenktlich');
+const nachweisen = getIntro('nachweisen');
 
 export default {
   title: 'Entities/WordIntro',
@@ -41,5 +42,15 @@ export const Adjective: StoryObj<typeof WordIntro> = {
     article: puenktlich.article,
     translation: puenktlich.translation,
     partOfSpeech: puenktlich.partOfSpeech,
+  },
+};
+
+export const Trennbar: StoryObj<typeof WordIntro> = {
+  args: {
+    word: nachweisen.word,
+    article: nachweisen.article,
+    translation: nachweisen.translation,
+    partOfSpeech: nachweisen.partOfSpeech,
+    trennbar: true,
   },
 };

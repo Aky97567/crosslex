@@ -7,6 +7,7 @@ type WordIntroProps = {
   article: Article;
   translation: string;
   partOfSpeech: string;
+  trennbar?: boolean;
   representativeImageUrl?: string;
 };
 
@@ -15,6 +16,7 @@ export const WordIntro: React.FC<WordIntroProps> = ({
   article,
   translation,
   partOfSpeech,
+  trennbar,
   representativeImageUrl,
 }) => (
   <WordIntroCard hasImage={!!representativeImageUrl}>
@@ -25,7 +27,10 @@ export const WordIntro: React.FC<WordIntroProps> = ({
         heading={{ text: article ? `${article} ${word.trimStart()}` : word.trimStart(), level: 'h1' }}
       />
       <BodyText className="italic mb-5">{translation}</BodyText>
-      <BodyText className="mb-5">{partOfSpeech}</BodyText>
+      <BodyText className="mb-5">
+        {partOfSpeech}
+        {trennbar && <span className="ml-10 text-brand font-semibold">· trennbar</span>}
+      </BodyText>
     </div>
     {representativeImageUrl && (
       <img

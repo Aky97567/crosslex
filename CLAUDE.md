@@ -207,7 +207,7 @@ Word data lives in `mock/data/src/learnPage/`. Each word is its own file.
 - `wordIntro` — word, article, translation, partOfSpeech, level `['B1']`; omit `representativeImageUrl` until a real URL exists
 - `wordMeaning` — one-paragraph definition
 - `meaningGuessQuestion` — 3 options, exactly 1 `isCorrect: true`
-- `wordContext` — paragraph using the word **at least 3 times**; include `alternateForms` for any inflected forms that appear in the paragraph (see below)
+- `wordContext` — paragraph using the word **at least 3 times**; include `alternateForms` for any inflected forms that appear in the paragraph (see below); for trennbar verbs, see trennbar rules below
 - `etymology` — origin explanation
 - `similarWords` — 2–3 **synonyms** (not thematically related words) with article, translation, similarityScore, level, cefrRelevant
 - `mnemonics` — 2 mnemonics; omit `imageUrl` until a real URL exists
@@ -220,10 +220,25 @@ The `contextBlank` exercise blanks the base form plus any strings listed in `alt
 | Part of speech | What to include in `alternateForms` |
 |---|---|
 | Verb | Partizip II (past participle), e.g. `beantragt`, `bezahlt`, `geschrieben`. Also include Präsens 3rd-person singular if it appears and is visually distinct (e.g. `spricht` for `sprechen`, `arbeitet` for `arbeiten`). Also include 1st-person singular if it appears and is shorter than the infinitive (e.g. `bestelle`, `bezahle`). |
+| Verb (trennbar) | Partizip II only (e.g. `nachgewiesen`, `umgestiegen`). The separated prefix form is **not** in `alternateForms` — it goes in `trennbarTokens` instead for display highlighting. |
 | Noun | Nominative plural if the paragraph uses it (e.g. `Wohnungen` for `Wohnung`). Most noun paragraphs repeat the nominative singular — omit if not needed. |
 | Adjective | Attributive declension forms if the paragraph uses them (e.g. `schnelles` for `schnell`). Rare at A2/B1. |
 
-Note: separable verbs (e.g. `nachweisen` → "weisen … nach") can't be handled via `alternateForms` because the prefix separates. Write the paragraph to avoid separated-prefix forms for separable verbs, or accept that one sentence in three is unblanked.
+**Trennbar verbs — mandatory paragraph structure and extra fields:**
+
+Add `trennbar: true` to `wordIntro`. The `wordContext` paragraph **must follow this exact sentence order**:
+
+1. **Infinitive** — "Sie müssen … nachweisen." ← blankable in contextBlank (base form)
+2. **Separated prefix form** — "Bitte weisen Sie … nach." ← shown as context, NOT blanked; parts highlighted in the learn card
+3. **Partizip II** — "Er hat … nachgewiesen." ← blankable in contextBlank (via `alternateForms`)
+
+In `wordContext`, set:
+```ts
+alternateForms: ['partizipII'],           // e.g. ['nachgewiesen']
+trennbarTokens: ['stemForm', 'prefix'],   // e.g. ['weisen', 'nach'] — tokens highlighted in sentence 2
+```
+
+The exercise blanks sentences 1 and 3; sentence 2 is rendered as plain text but with `stemForm` and `prefix` highlighted in the learn card alongside all other form highlights.
 
 **Gotchas encountered:**
 - `representativeImageUrl` and mnemonic `imageUrl` are **multi-line** in the file (`key:\n  'url',`). When bulk-stripping with `sed`, removing the key line leaves the URL value as an orphaned string — causes a TS error. Always run a second `sed` pass to remove the bare URL lines too, then verify with `grep`.
@@ -242,7 +257,7 @@ Pending features, prioritised by effort vs impact.
 - **`@whitelotus/mock-test` package rename** — name implies test fixtures but this is the production word database; rename to `@whitelotus/word-content`; requires updating `package.json`, all `tsconfig` path aliases, and all import sites
 - **FSD layer violation** — `StreakBadgeTrophyCase` and `BadgeIcon` (both in `entities`) import `BADGES`/`getEarnedBadges` from `@whitelotus/front-features`; fix by moving the `BADGES` constant and `Badge` type down to `front-shared` or a dedicated entities-layer export
 - **Missing widget Storybook stories** — 13 widget components have no stories: `AlphaAnnouncement` (+ `NewUserOverlay`, `ReturningUserCard`), `AppNav`, `BadgesDrawer`, `NotificationsDrawer`, `SessionComplete`, `SessionDashboard`, and the `SettingsPanel` subsections (`HardcoreModeSection`, `MobileDisplaySection`, `SessionTimeoutSection`, `StorageSection`)
-- **`nachweisen` separable verb content** — third context sentence ("Bitte weisen Sie … nach") uses the separated prefix form which can't be blanked, leaking the answer; rewrite to use the infinitive, e.g. "Um etwas nachzuweisen, brauchen Sie offizielle Dokumente."
+
 
 ### Onboarding
 - **New user handholding overview** — an explanatory walkthrough for first-time users that introduces the session loop, the learning rate options, and how word cards work; should feel lightweight, not a forced tutorial

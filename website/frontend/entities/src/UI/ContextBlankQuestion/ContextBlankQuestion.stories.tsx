@@ -40,3 +40,6 @@ Perfekt.args = { word: 'kaufen' };
 
 export const StrongVerb: StoryObj<typeof Wrapper> = Template.bind({});
 StrongVerb.args = { word: 'schreiben' };
+
+export const Trennbar: StoryObj<typeof Wrapper> = Template.bind({});
+Trennbar.args = { word: 'nachweisen' };

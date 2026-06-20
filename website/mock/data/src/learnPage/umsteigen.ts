@@ -11,6 +11,7 @@ export const umsteigen: LearnPageContent = {
         article: null,
         translation: 'to change (trains/buses), to transfer',
         partOfSpeech: 'verb',
+        trennbar: true,
         themes: ['transport'],
         level: ['A2'],
       },
@@ -36,7 +37,9 @@ export const umsteigen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich muss in Frankfurt umsteigen. Wo muss ich umsteigen? Sie müssen in Hannover umsteigen.',
+          'Ich muss in Frankfurt umsteigen. In Hannover steige ich in den ICE um. Sie ist gestern in Hamburg umgestiegen.',
+        alternateForms: ['umgestiegen'],
+        trennbarTokens: ['steige', 'um'] as [string, string],
       },
       {
         moduleType: 'etymology',

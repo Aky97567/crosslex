@@ -11,6 +11,7 @@ export type ContextBlankQuestionData = {
   sentence: string;
   fills: string[];
   options: Option[];
+  contextSentenceIndices?: number[];
 };
 
 type Props = {
@@ -56,7 +57,7 @@ const ContextBlankQuestion: React.FC<Props> = ({
     onAnswer?.(contextBlankQuestion.options[index].isCorrect);
   };
 
-  const { sentence, fills, options } = contextBlankQuestion;
+  const { sentence, fills, options, contextSentenceIndices } = contextBlankQuestion;
   const selectedOptionText = selectedIndex !== null ? options[selectedIndex].text : null;
 
   const blankClassName = `inline-block border-b-2 min-w-60 mx-5 text-center font-bold ${
@@ -86,18 +87,26 @@ const ContextBlankQuestion: React.FC<Props> = ({
       showContent={showContent}
     >
       {sentences.map((sent, si) => {
+        const hasBlank = sent.includes('___');
+        if (!isAnswered && !hasBlank) return null;
+        const isContextSentence = contextSentenceIndices?.includes(si) ?? false;
         const parts = sent.split('___');
         const offset = blankOffsets[si];
+        const contextBlankClass = `inline-block border-b-2 min-w-60 mx-5 text-center font-bold ${
+          isAnswered ? 'border-color1 text-color1' : 'border-brand text-brand'
+        }`;
         return (
           <BodyText key={si}>
             {parts.map((part, i) => (
               <React.Fragment key={i}>
                 {part}
                 {i < parts.length - 1 && (
-                  <span className={blankClassName}>
+                  <span className={isContextSentence ? contextBlankClass : blankClassName}>
                     {isAnswered
                       ? (fills[offset + i] ?? '')
-                      : (selectedOptionText ?? '      ')}
+                      : isContextSentence
+                        ? '___'
+                        : (selectedOptionText ?? '      ')}
                   </span>
                 )}
               </React.Fragment>

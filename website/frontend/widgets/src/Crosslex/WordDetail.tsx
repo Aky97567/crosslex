@@ -4,7 +4,7 @@ import {
   renderContentModule,
   useCrosslexStorage,
 } from '@whitelotus/front-features';
-import { HasContent, ContentModules } from '@whitelotus/common-crosslex-view';
+import { HasContent, WordIntroModule } from '@whitelotus/common-crosslex-view';
 
 type WordDetailProps = HasContent & {
   closeFlipCardSignal?: number;
@@ -21,8 +21,9 @@ const WordDetail: React.FC<WordDetailProps> = ({
   const { mobileFullView } = useCrosslexStorage();
 
   const introModule = content.modules.find(
-    (m): m is ContentModules => m.moduleType === 'wordIntro',
+    (m): m is WordIntroModule => m.moduleType === 'wordIntro',
   );
+  const wordText = introModule?.word;
 
   return (
     <div className="bg-bg-l1 p-20 max-w-4xl mx-auto">
@@ -34,6 +35,7 @@ const WordDetail: React.FC<WordDetailProps> = ({
           closeSignal={closeFlipCardSignal}
           onClosed={onFlipCardClosed}
           onOpenChange={onFlipCardOpenChange}
+          wordText={wordText}
         />
       </div>
 
@@ -41,7 +43,7 @@ const WordDetail: React.FC<WordDetailProps> = ({
       <div className={`${mobileFullView ? 'flex' : 'hidden md:flex'} flex-col gap-20`}>
         {content.modules.map((module, index) => (
           <React.Fragment key={index}>
-            {renderContentModule({ module })}
+            {renderContentModule({ module, wordText })}
           </React.Fragment>
         ))}
       </div>

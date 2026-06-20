@@ -11,6 +11,7 @@ export const nachweisen: LearnPageContent = {
         article: null,
         translation: 'to prove, demonstrate, show evidence',
         partOfSpeech: 'verb',
+        trennbar: true,
         themes: ['bureaucracy', 'work'],
         level: ['B1'],
       },
@@ -36,7 +37,9 @@ export const nachweisen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Sie müssen Ihre Sprachkenntnisse nachweisen. Er konnte seine Unschuld nicht nachweisen. Bitte weisen Sie Ihre Qualifikationen durch entsprechende Zeugnisse nach.',
+          'Sie müssen Ihre Sprachkenntnisse nachweisen. Bitte weisen Sie Ihre Qualifikationen durch Zeugnisse nach. Er hat seine Unschuld erfolgreich nachgewiesen.',
+        alternateForms: ['nachgewiesen'],
+        trennbarTokens: ['weisen', 'nach'] as [string, string],
       },
       {
         moduleType: 'etymology',

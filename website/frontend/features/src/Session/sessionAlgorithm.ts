@@ -149,7 +149,7 @@ export const generateExerciseData = (
     if (!mod || !intro) return null;
 
     const wordText = intro.word;
-    const allForms = [wordText, ...(mod.alternateForms ?? [])];
+    const allForms = [wordText, ...(mod.alternateForms ?? []), ...(mod.trennbarTokens ?? [])];
     const pattern = allForms.map((f) => f.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
     const fills: string[] = [];
     const sentence = mod.paragraphWithUsage.replace(
@@ -168,7 +168,12 @@ export const generateExerciseData = (
 
     return {
       cardType: 'contextBlank',
-      data: { sentence, fills, options: shuffle([{ text: wordText, isCorrect: true }, ...distractors]) },
+      data: {
+        sentence,
+        fills,
+        options: shuffle([{ text: wordText, isCorrect: true }, ...distractors]),
+        contextSentenceIndices: mod.trennbarTokens ? [1] : undefined,
+      },
     };
   }
 
