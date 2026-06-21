@@ -4,7 +4,7 @@ import { renderContentModule } from './ContentModules';
 import { useCrosslexStorage } from './storage';
 import { CtaText } from '@whitelotus/front-shared';
 
-interface FlipCardProps {
+interface Props {
   content: ContentModule;
   closeSignal?: number;
   onClosed?: () => void;
@@ -12,7 +12,7 @@ interface FlipCardProps {
   wordText?: string;
 }
 
-const FlipCardToTarget: React.FC<FlipCardProps> = ({
+const ExpandableSectionCard: React.FC<Props> = ({
   content,
   closeSignal,
   onClosed,
@@ -152,4 +152,4 @@ const FlipCardToTarget: React.FC<FlipCardProps> = ({
   );
 };
 
-export { FlipCardToTarget };
+export { ExpandableSectionCard };

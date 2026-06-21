@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  FlipCardToTarget,
+  ExpandableSectionCard,
   renderContentModule,
   useCrosslexStorage,
 } from '@whitelotus/front-features';
@@ -30,7 +30,7 @@ const WordDetail: React.FC<WordDetailProps> = ({
       {/* Mobile/tablet: word intro + flip card grid — hidden when mobileFullView is on */}
       <div className={`${mobileFullView ? 'hidden' : 'md:hidden'} flex flex-col gap-20`}>
         {introModule && renderContentModule({ module: introModule })}
-        <FlipCardToTarget
+        <ExpandableSectionCard
           content={content}
           closeSignal={closeFlipCardSignal}
           onClosed={onFlipCardClosed}

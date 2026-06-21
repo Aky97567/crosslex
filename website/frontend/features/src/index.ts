@@ -1,5 +1,5 @@
 export { TabbedCarousel } from './Carousel';
-export { FlipCardToTarget } from './FlipCardToTarget';
+export { ExpandableSectionCard } from './ExpandableSectionCard';
 
 export { renderContentModule } from './ContentModules';
 
