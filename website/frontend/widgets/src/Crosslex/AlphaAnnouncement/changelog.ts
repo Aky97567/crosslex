@@ -3,9 +3,24 @@ export type ChangelogEntry = {
   returningUser: { heading: string; body: string; changes: string[] };
 };
 
-export const CURRENT_BUILD_ID = 'alpha-2026-05-07-type-the-word';
+export const CURRENT_BUILD_ID = 'alpha-2026-06-21-blank-screen-fix';
 
 export const CHANGELOG: Record<string, ChangelogEntry> = {
+  'alpha-2026-06-21-blank-screen-fix': {
+    newUser: {
+      heading: "You're testing Crosslex Alpha",
+      body: "Crosslex is a German vocabulary trainer — built for adults navigating real life in Germany. Choose your level, pick a session length and learning pace, and Crosslex will guide you through words and exercises. Your feedback shapes what we build next.",
+      cta: "Let's go →",
+    },
+    returningUser: {
+      heading: "You're back — something's new",
+      body: 'Session reliability fix.',
+      changes: [
+        'Fix: blank screen during fill-in-the-blank exercises on compound nouns (e.g. Krankenversicherung)',
+        'Fix: exercises now always render even if the scheduled type falls back to an alternative',
+      ],
+    },
+  },
   'alpha-2026-05-07-type-the-word': {
     newUser: {
       heading: "You're testing Crosslex Alpha",

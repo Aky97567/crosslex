@@ -149,6 +149,7 @@ export const generateExerciseData = (
     if (!mod || !intro) return null;
 
     const wordText = intro.word;
+    const displayText = intro.displayName ?? intro.word;
     const allForms = [wordText, ...(mod.alternateForms ?? []), ...(mod.trennbarTokens ?? [])];
     const pattern = allForms.map((f) => f.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
     const fills: string[] = [];
@@ -162,7 +163,7 @@ export const generateExerciseData = (
       .filter((k) => k !== wordKey)
       .sort(() => Math.random() - 0.5)
       .slice(0, 3)
-      .map((k) => getWordIntroModule(wordData[k])?.word)
+      .map((k) => { const m = getWordIntroModule(wordData[k]); return m ? (m.displayName ?? m.word) : null; })
       .filter((w): w is string => !!w)
       .map((text) => ({ text, isCorrect: false }));
 
@@ -171,7 +172,7 @@ export const generateExerciseData = (
       data: {
         sentence,
         fills,
-        options: shuffle([{ text: wordText, isCorrect: true }, ...distractors]),
+        options: shuffle([{ text: displayText, isCorrect: true }, ...distractors]),
         contextSentenceIndices: mod.trennbarTokens ? [1] : undefined,
       },
     };
@@ -192,7 +193,7 @@ export const generateExerciseData = (
     return {
       cardType: 'wordDefinition',
       data: {
-        word: intro.word,
+        word: intro.displayName ?? intro.word,
         article: intro.article ?? undefined,
         options: shuffle([{ text: intro.translation, isCorrect: true }, ...distractors]),
       },

@@ -7,7 +7,8 @@ export const mietvertrag: LearnPageContent = {
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Miet­vertrag',
+        word: 'Mietvertrag',
+        displayName: 'Miet­vertrag',
         article: 'der',
         translation: 'rental contract, lease agreement',
         partOfSpeech: 'noun',

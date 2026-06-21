@@ -7,7 +7,8 @@ export const haltestelle: LearnPageContent = {
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Halte­stelle',
+        word: 'Haltestelle',
+        displayName: 'Halte­stelle',
         article: 'die',
         translation: 'stop, bus stop, tram stop',
         partOfSpeech: 'noun',

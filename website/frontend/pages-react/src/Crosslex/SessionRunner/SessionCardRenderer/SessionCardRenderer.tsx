@@ -56,7 +56,7 @@ const SessionCardRenderer: React.FC<Props> = ({
           onFlipCardOpenChange={onFlipCardOpenChange}
         />
       )}
-      {runner.cardType === 'meaningGuess' && runner.exerciseData?.cardType === 'meaningGuess' && (
+      {runner.exerciseData?.cardType === 'meaningGuess' && (
         <MeaningGuessQuestion
           key={runner.cardKey}
           heading={{ text: 'Guess the Meaning' }}
@@ -64,7 +64,7 @@ const SessionCardRenderer: React.FC<Props> = ({
           onAnswer={onAnswer}
         />
       )}
-      {runner.cardType === 'contextBlank' && runner.exerciseData?.cardType === 'contextBlank' && (
+      {runner.exerciseData?.cardType === 'contextBlank' && (
         <ContextBlankQuestion
           key={runner.cardKey}
           heading={{ text: 'Fill in the Blank' }}
@@ -72,7 +72,7 @@ const SessionCardRenderer: React.FC<Props> = ({
           onAnswer={onAnswer}
         />
       )}
-      {runner.cardType === 'wordDefinition' && runner.exerciseData?.cardType === 'wordDefinition' && (
+      {runner.exerciseData?.cardType === 'wordDefinition' && (
         <WordDefinitionQuestion
           key={runner.cardKey}
           heading={{ text: 'What does this mean?' }}
@@ -80,7 +80,7 @@ const SessionCardRenderer: React.FC<Props> = ({
           onAnswer={onAnswer}
         />
       )}
-      {runner.cardType === 'typeTheWord' && runner.exerciseData?.cardType === 'typeTheWord' && (
+      {runner.exerciseData?.cardType === 'typeTheWord' && (
         <TypeTheWordQuestion
           key={runner.cardKey}
           heading={{ text: 'Type the word' }}

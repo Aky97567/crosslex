@@ -7,7 +7,8 @@ export const unterschrift: LearnPageContent = {
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Unter­schrift',
+        word: 'Unterschrift',
+        displayName: 'Unter­schrift',
         article: 'die',
         translation: 'signature',
         partOfSpeech: 'noun',

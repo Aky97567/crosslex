@@ -9,7 +9,8 @@ const getWordLabel = (wordKey: string): string => {
   if (!data) return wordKey;
   const intro = data.content.modules.find((m): m is WordIntroModule => m.moduleType === 'wordIntro');
   if (!intro) return wordKey;
-  return intro.article ? `${intro.article} ${intro.word}` : intro.word;
+  const label = intro.displayName ?? intro.word;
+  return intro.article ? `${intro.article} ${label}` : label;
 };
 
 export const KnownWordsSection: React.FC = () => {
