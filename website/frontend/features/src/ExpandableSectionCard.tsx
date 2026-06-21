@@ -28,6 +28,8 @@ const ExpandableSectionCard: React.FC<Props> = ({
   const [showContent, setShowContent] = useState(false);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const expandedCardRef = useRef<HTMLDivElement>(null);
+  const onClosedRef = useRef(onClosed);
+  onClosedRef.current = onClosed;
 
   const handleCardClick = (index: number) => {
     if (!animated) {
@@ -80,9 +82,9 @@ const ExpandableSectionCard: React.FC<Props> = ({
     if (!closeSignal) return;
     setActiveSection(null);
     setShowContent(false);
-    const id = setTimeout(() => onClosed?.(), 50);
+    const id = setTimeout(() => onClosedRef.current?.(), 50);
     return () => clearTimeout(id);
-  }, [closeSignal, onClosed]);
+  }, [closeSignal]);
 
   useEffect(() => {
     if (
