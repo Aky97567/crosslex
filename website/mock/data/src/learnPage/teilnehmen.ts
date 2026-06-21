@@ -1,35 +1,35 @@
 import { LearnPageContent } from '@whitelotus/common-crosslex-view';
 
-export const umsteigen: LearnPageContent = {
+export const teilnehmen: LearnPageContent = {
   content: {
     moduleType: 'content',
     modules: [
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'umsteigen',
+        word: 'teilnehmen',
         article: null,
-        translation: 'to change (trains/buses), to transfer',
+        translation: 'to participate, take part',
         partOfSpeech: 'verb',
         trennbar: true,
-        themes: ['transport', 'trennbar'],
-        level: ['A2'],
+        themes: ['work', 'daily_life', 'trennbar'],
+        level: ['B1'],
       },
       {
         moduleType: 'wordMeaning',
         heading: { text: 'Meaning' },
         meaning:
-          'To get off one train, bus, or metro and board a different one to continue your journey; to change vehicles mid-trip.',
+          'To take part in an event, course, meeting, or competition. Always followed by "an + dative": "an einem Kurs teilnehmen" (to take part in a course).',
       },
       {
         moduleType: 'meaningGuessQuestion',
         heading: { text: 'Guess the Meaning' },
         meaningBestGuessQuestion: {
-          question: "What is the best guess for the meaning of 'umsteigen'?",
+          question: "What is the best guess for the meaning of 'teilnehmen'?",
           options: [
-            { text: 'to buy a ticket', isCorrect: false },
-            { text: 'to change to a different train or bus', isCorrect: true },
-            { text: 'to get off at the final stop', isCorrect: false },
+            { text: 'to organise an event', isCorrect: false },
+            { text: 'to participate, take part', isCorrect: true },
+            { text: 'to miss a meeting', isCorrect: false },
           ],
         },
       },
@@ -37,33 +37,33 @@ export const umsteigen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich muss in Frankfurt umsteigen. In Hannover steige ich in den ICE um. Sie ist gestern in Hamburg umgestiegen.',
-        alternateForms: ['umgestiegen'],
-        trennbarTokens: ['steige', 'um'] as [string, string],
+          'Alle Mitarbeiter müssen an der Schulung teilnehmen. Ich nehme nächste Woche an dem Kurs teil. Sie hat an dem Integrationskurs teilgenommen.',
+        alternateForms: ['teilgenommen'],
+        trennbarTokens: ['nehme', 'teil'] as [string, string],
       },
       {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:
-          "A separable verb: 'um-' (around, over) + 'steigen' (to climb, to board). To climb over from one vehicle to another.",
+          "From 'teil-' (part, share) + 'nehmen' (to take). To take a part — claiming your share of involvement in an activity.",
       },
       {
         moduleType: 'similarWords',
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'wechseln',
+            word: 'mitmachen',
             article: null,
-            translation: 'to switch, to change',
+            translation: 'to join in, participate',
             similarityScore: 5,
             level: ['A2'],
             cefrRelevant: true,
           },
           {
-            word: 'überwechseln',
+            word: 'besuchen',
             article: null,
-            translation: 'to switch over, to transfer',
-            similarityScore: 4,
+            translation: 'to attend, visit',
+            similarityScore: 3,
             level: ['A2'],
             cefrRelevant: true,
           },
@@ -76,12 +76,12 @@ export const umsteigen: LearnPageContent = {
           {
             id: 1,
             content:
-              "'Um' = over/around, 'steigen' = to climb. Umsteigen = climbing over to a new train. Picture stepping across the platform.",
+              "'Teil' = part, 'nehmen' = to take. Take your part — join in. Teilnehmen.",
           },
           {
             id: 2,
             content:
-              "The announcement 'Bitte umsteigen!' means 'please change here' — the last stop before you switch trains.",
+              "'Ich nehme an dem Kurs teil.' The 'teil' goes to the end. You take (nehmen) your part (teil) of the course.",
           },
         ],
       },

@@ -1,35 +1,35 @@
 import { LearnPageContent } from '@whitelotus/common-crosslex-view';
 
-export const umsteigen: LearnPageContent = {
+export const anziehen: LearnPageContent = {
   content: {
     moduleType: 'content',
     modules: [
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'umsteigen',
+        word: 'anziehen',
         article: null,
-        translation: 'to change (trains/buses), to transfer',
+        translation: 'to put on (clothing); to get dressed',
         partOfSpeech: 'verb',
         trennbar: true,
-        themes: ['transport', 'trennbar'],
-        level: ['A2'],
+        themes: ['daily_life', 'trennbar'],
+        level: ['B1'],
       },
       {
         moduleType: 'wordMeaning',
         heading: { text: 'Meaning' },
         meaning:
-          'To get off one train, bus, or metro and board a different one to continue your journey; to change vehicles mid-trip.',
+          'To put on a piece of clothing. Used reflexively — "sich anziehen" — to get dressed (dress oneself). The opposite is ausziehen (to take off clothing).',
       },
       {
         moduleType: 'meaningGuessQuestion',
         heading: { text: 'Guess the Meaning' },
         meaningBestGuessQuestion: {
-          question: "What is the best guess for the meaning of 'umsteigen'?",
+          question: "What is the best guess for the meaning of 'anziehen'?",
           options: [
-            { text: 'to buy a ticket', isCorrect: false },
-            { text: 'to change to a different train or bus', isCorrect: true },
-            { text: 'to get off at the final stop', isCorrect: false },
+            { text: 'to take off clothing', isCorrect: false },
+            { text: 'to put on clothing, get dressed', isCorrect: true },
+            { text: 'to wash clothes', isCorrect: false },
           ],
         },
       },
@@ -37,33 +37,33 @@ export const umsteigen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich muss in Frankfurt umsteigen. In Hannover steige ich in den ICE um. Sie ist gestern in Hamburg umgestiegen.',
-        alternateForms: ['umgestiegen'],
-        trennbarTokens: ['steige', 'um'] as [string, string],
+          'Du musst dich warm anziehen, es ist kalt draußen. Ich ziehe jetzt meinen Mantel an. Sie hat sich schnell angezogen und ist gegangen.',
+        alternateForms: ['angezogen'],
+        trennbarTokens: ['ziehe', 'an'] as [string, string],
       },
       {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:
-          "A separable verb: 'um-' (around, over) + 'steigen' (to climb, to board). To climb over from one vehicle to another.",
+          "From 'an-' (on, onto) + 'ziehen' (to pull, draw). To pull clothing on — the opposite of ausziehen (to pull off).",
       },
       {
         moduleType: 'similarWords',
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'wechseln',
+            word: 'ausziehen',
             article: null,
-            translation: 'to switch, to change',
+            translation: 'to take off (clothing)',
             similarityScore: 5,
             level: ['A2'],
             cefrRelevant: true,
           },
           {
-            word: 'überwechseln',
+            word: 'tragen',
             article: null,
-            translation: 'to switch over, to transfer',
-            similarityScore: 4,
+            translation: 'to wear, carry',
+            similarityScore: 3,
             level: ['A2'],
             cefrRelevant: true,
           },
@@ -76,12 +76,12 @@ export const umsteigen: LearnPageContent = {
           {
             id: 1,
             content:
-              "'Um' = over/around, 'steigen' = to climb. Umsteigen = climbing over to a new train. Picture stepping across the platform.",
+              "'An' = on, 'ziehen' = to pull. Pull clothing on — anziehen.",
           },
           {
             id: 2,
             content:
-              "The announcement 'Bitte umsteigen!' means 'please change here' — the last stop before you switch trains.",
+              "'Zieh dich an!' — Get dressed! The 'an' goes to the end. Remember the pair: anziehen (on) vs. ausziehen (off).",
           },
         ],
       },

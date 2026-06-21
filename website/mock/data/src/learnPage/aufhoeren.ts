@@ -1,35 +1,35 @@
 import { LearnPageContent } from '@whitelotus/common-crosslex-view';
 
-export const umsteigen: LearnPageContent = {
+export const aufhoeren: LearnPageContent = {
   content: {
     moduleType: 'content',
     modules: [
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'umsteigen',
+        word: 'aufhören',
         article: null,
-        translation: 'to change (trains/buses), to transfer',
+        translation: 'to stop, quit',
         partOfSpeech: 'verb',
         trennbar: true,
-        themes: ['transport', 'trennbar'],
+        themes: ['daily_life', 'work', 'trennbar'],
         level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',
         heading: { text: 'Meaning' },
         meaning:
-          'To get off one train, bus, or metro and board a different one to continue your journey; to change vehicles mid-trip.',
+          'To stop doing something; to cease an activity. Often used with mit + dative: "mit dem Rauchen aufhören" (to quit smoking).',
       },
       {
         moduleType: 'meaningGuessQuestion',
         heading: { text: 'Guess the Meaning' },
         meaningBestGuessQuestion: {
-          question: "What is the best guess for the meaning of 'umsteigen'?",
+          question: "What is the best guess for the meaning of 'aufhören'?",
           options: [
-            { text: 'to buy a ticket', isCorrect: false },
-            { text: 'to change to a different train or bus', isCorrect: true },
-            { text: 'to get off at the final stop', isCorrect: false },
+            { text: 'to listen carefully', isCorrect: false },
+            { text: 'to stop, quit', isCorrect: true },
+            { text: 'to wake up', isCorrect: false },
           ],
         },
       },
@@ -37,32 +37,32 @@ export const umsteigen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich muss in Frankfurt umsteigen. In Hannover steige ich in den ICE um. Sie ist gestern in Hamburg umgestiegen.',
-        alternateForms: ['umgestiegen'],
-        trennbarTokens: ['steige', 'um'] as [string, string],
+          'Er will mit dem Rauchen aufhören. Ich höre jetzt mit der Arbeit auf. Sie hat gestern aufgehört zu weinen.',
+        alternateForms: ['aufgehört'],
+        trennbarTokens: ['höre', 'auf'] as [string, string],
       },
       {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:
-          "A separable verb: 'um-' (around, over) + 'steigen' (to climb, to board). To climb over from one vehicle to another.",
+          "From 'auf-' (up) + 'hören' (to hear, listen). To listen up — originally to pay attention, then to pause and stop.",
       },
       {
         moduleType: 'similarWords',
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'wechseln',
+            word: 'stoppen',
             article: null,
-            translation: 'to switch, to change',
-            similarityScore: 5,
+            translation: 'to stop',
+            similarityScore: 4,
             level: ['A2'],
             cefrRelevant: true,
           },
           {
-            word: 'überwechseln',
+            word: 'beenden',
             article: null,
-            translation: 'to switch over, to transfer',
+            translation: 'to end, finish',
             similarityScore: 4,
             level: ['A2'],
             cefrRelevant: true,
@@ -76,12 +76,12 @@ export const umsteigen: LearnPageContent = {
           {
             id: 1,
             content:
-              "'Um' = over/around, 'steigen' = to climb. Umsteigen = climbing over to a new train. Picture stepping across the platform.",
+              "'Auf' = up, 'hören' = to hear. Hear up — pay attention and stop. Aufhören.",
           },
           {
             id: 2,
             content:
-              "The announcement 'Bitte umsteigen!' means 'please change here' — the last stop before you switch trains.",
+              "Think of a parent saying 'Hör auf!' (Stop it!) — the prefix 'auf' sits at the end as a sharp command.",
           },
         ],
       },

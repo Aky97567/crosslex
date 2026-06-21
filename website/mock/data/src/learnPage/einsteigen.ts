@@ -1,15 +1,15 @@
 import { LearnPageContent } from '@whitelotus/common-crosslex-view';
 
-export const umsteigen: LearnPageContent = {
+export const einsteigen: LearnPageContent = {
   content: {
     moduleType: 'content',
     modules: [
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'umsteigen',
+        word: 'einsteigen',
         article: null,
-        translation: 'to change (trains/buses), to transfer',
+        translation: 'to get on, board (transport)',
         partOfSpeech: 'verb',
         trennbar: true,
         themes: ['transport', 'trennbar'],
@@ -19,17 +19,17 @@ export const umsteigen: LearnPageContent = {
         moduleType: 'wordMeaning',
         heading: { text: 'Meaning' },
         meaning:
-          'To get off one train, bus, or metro and board a different one to continue your journey; to change vehicles mid-trip.',
+          'To board or get into a vehicle — train, bus, tram, or car. The counterpart of aussteigen (to get off). Heard in the announcement "Bitte einsteigen!"',
       },
       {
         moduleType: 'meaningGuessQuestion',
         heading: { text: 'Guess the Meaning' },
         meaningBestGuessQuestion: {
-          question: "What is the best guess for the meaning of 'umsteigen'?",
+          question: "What is the best guess for the meaning of 'einsteigen'?",
           options: [
-            { text: 'to buy a ticket', isCorrect: false },
-            { text: 'to change to a different train or bus', isCorrect: true },
-            { text: 'to get off at the final stop', isCorrect: false },
+            { text: 'to get off a bus', isCorrect: false },
+            { text: 'to board, get on a vehicle', isCorrect: true },
+            { text: 'to change trains', isCorrect: false },
           ],
         },
       },
@@ -37,32 +37,32 @@ export const umsteigen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich muss in Frankfurt umsteigen. In Hannover steige ich in den ICE um. Sie ist gestern in Hamburg umgestiegen.',
-        alternateForms: ['umgestiegen'],
-        trennbarTokens: ['steige', 'um'] as [string, string],
+          'Du musst schnell in den Zug einsteigen. Ich steige jetzt in die U-Bahn ein. Wir sind am Gleis drei eingestiegen.',
+        alternateForms: ['eingestiegen'],
+        trennbarTokens: ['steige', 'ein'] as [string, string],
       },
       {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:
-          "A separable verb: 'um-' (around, over) + 'steigen' (to climb, to board). To climb over from one vehicle to another.",
+          "From 'ein-' (in, into) + 'steigen' (to climb). To climb in — stepping up and into the vehicle.",
       },
       {
         moduleType: 'similarWords',
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'wechseln',
+            word: 'aussteigen',
             article: null,
-            translation: 'to switch, to change',
+            translation: 'to get off, exit',
             similarityScore: 5,
             level: ['A2'],
             cefrRelevant: true,
           },
           {
-            word: 'überwechseln',
+            word: 'umsteigen',
             article: null,
-            translation: 'to switch over, to transfer',
+            translation: 'to change (trains/buses)',
             similarityScore: 4,
             level: ['A2'],
             cefrRelevant: true,
@@ -76,12 +76,12 @@ export const umsteigen: LearnPageContent = {
           {
             id: 1,
             content:
-              "'Um' = over/around, 'steigen' = to climb. Umsteigen = climbing over to a new train. Picture stepping across the platform.",
+              "'Ein' = in/into, 'steigen' = to climb. Climb into the vehicle — einsteigen.",
           },
           {
             id: 2,
             content:
-              "The announcement 'Bitte umsteigen!' means 'please change here' — the last stop before you switch trains.",
+              "'Bitte einsteigen!' — Please board! You'll hear this at every German train platform. The 'ein' moves to the end: 'Ich steige … ein.'",
           },
         ],
       },

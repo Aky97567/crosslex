@@ -1,35 +1,35 @@
 import { LearnPageContent } from '@whitelotus/common-crosslex-view';
 
-export const umsteigen: LearnPageContent = {
+export const aufmachen: LearnPageContent = {
   content: {
     moduleType: 'content',
     modules: [
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'umsteigen',
+        word: 'aufmachen',
         article: null,
-        translation: 'to change (trains/buses), to transfer',
+        translation: 'to open',
         partOfSpeech: 'verb',
         trennbar: true,
-        themes: ['transport', 'trennbar'],
+        themes: ['daily_life', 'trennbar'],
         level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',
         heading: { text: 'Meaning' },
         meaning:
-          'To get off one train, bus, or metro and board a different one to continue your journey; to change vehicles mid-trip.',
+          'To open something — a door, window, bottle, package, or shop. Also used for a business opening its doors.',
       },
       {
         moduleType: 'meaningGuessQuestion',
         heading: { text: 'Guess the Meaning' },
         meaningBestGuessQuestion: {
-          question: "What is the best guess for the meaning of 'umsteigen'?",
+          question: "What is the best guess for the meaning of 'aufmachen'?",
           options: [
-            { text: 'to buy a ticket', isCorrect: false },
-            { text: 'to change to a different train or bus', isCorrect: true },
-            { text: 'to get off at the final stop', isCorrect: false },
+            { text: 'to close', isCorrect: false },
+            { text: 'to open', isCorrect: true },
+            { text: 'to carry', isCorrect: false },
           ],
         },
       },
@@ -37,32 +37,32 @@ export const umsteigen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich muss in Frankfurt umsteigen. In Hannover steige ich in den ICE um. Sie ist gestern in Hamburg umgestiegen.',
-        alternateForms: ['umgestiegen'],
-        trennbarTokens: ['steige', 'um'] as [string, string],
+          'Kannst du bitte das Fenster aufmachen? Ich mache die Tür für dich auf. Er hat das Paket noch nicht aufgemacht.',
+        alternateForms: ['aufgemacht'],
+        trennbarTokens: ['mache', 'auf'] as [string, string],
       },
       {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:
-          "A separable verb: 'um-' (around, over) + 'steigen' (to climb, to board). To climb over from one vehicle to another.",
+          "From 'auf-' (up, open) + 'machen' (to make, do). To make something open — the 'auf' signals the direction of movement.",
       },
       {
         moduleType: 'similarWords',
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'wechseln',
+            word: 'öffnen',
             article: null,
-            translation: 'to switch, to change',
+            translation: 'to open',
             similarityScore: 5,
             level: ['A2'],
             cefrRelevant: true,
           },
           {
-            word: 'überwechseln',
+            word: 'zumachen',
             article: null,
-            translation: 'to switch over, to transfer',
+            translation: 'to close, shut',
             similarityScore: 4,
             level: ['A2'],
             cefrRelevant: true,
@@ -76,12 +76,12 @@ export const umsteigen: LearnPageContent = {
           {
             id: 1,
             content:
-              "'Um' = over/around, 'steigen' = to climb. Umsteigen = climbing over to a new train. Picture stepping across the platform.",
+              "'Auf' means up or open, 'machen' means to make. Make it open = aufmachen.",
           },
           {
             id: 2,
             content:
-              "The announcement 'Bitte umsteigen!' means 'please change here' — the last stop before you switch trains.",
+              "In shops you see 'Wir machen um 9 auf' — we open at 9. The prefix 'auf' flies to the end.",
           },
         ],
       },

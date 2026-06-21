@@ -1,35 +1,35 @@
 import { LearnPageContent } from '@whitelotus/common-crosslex-view';
 
-export const umsteigen: LearnPageContent = {
+export const anmelden: LearnPageContent = {
   content: {
     moduleType: 'content',
     modules: [
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'umsteigen',
+        word: 'anmelden',
         article: null,
-        translation: 'to change (trains/buses), to transfer',
+        translation: 'to register, enrol, sign up',
         partOfSpeech: 'verb',
         trennbar: true,
-        themes: ['transport', 'trennbar'],
-        level: ['A2'],
+        themes: ['bureaucracy', 'work', 'trennbar'],
+        level: ['B1'],
       },
       {
         moduleType: 'wordMeaning',
         heading: { text: 'Meaning' },
         meaning:
-          'To get off one train, bus, or metro and board a different one to continue your journey; to change vehicles mid-trip.',
+          'To officially register — at a residents\' registration office (Einwohnermeldeamt), for a course, or for a service. Used reflexively: "sich anmelden" (to register oneself). Also used to make an appointment.',
       },
       {
         moduleType: 'meaningGuessQuestion',
         heading: { text: 'Guess the Meaning' },
         meaningBestGuessQuestion: {
-          question: "What is the best guess for the meaning of 'umsteigen'?",
+          question: "What is the best guess for the meaning of 'anmelden'?",
           options: [
-            { text: 'to buy a ticket', isCorrect: false },
-            { text: 'to change to a different train or bus', isCorrect: true },
-            { text: 'to get off at the final stop', isCorrect: false },
+            { text: 'to cancel a registration', isCorrect: false },
+            { text: 'to register, sign up', isCorrect: true },
+            { text: 'to report a problem', isCorrect: false },
           ],
         },
       },
@@ -37,34 +37,34 @@ export const umsteigen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich muss in Frankfurt umsteigen. In Hannover steige ich in den ICE um. Sie ist gestern in Hamburg umgestiegen.',
-        alternateForms: ['umgestiegen'],
-        trennbarTokens: ['steige', 'um'] as [string, string],
+          'Sie müssen sich innerhalb von zwei Wochen anmelden. Ich melde mich heute beim Amt an. Er hat sich für den Deutschkurs angemeldet.',
+        alternateForms: ['angemeldet'],
+        trennbarTokens: ['melde', 'an'] as [string, string],
       },
       {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:
-          "A separable verb: 'um-' (around, over) + 'steigen' (to climb, to board). To climb over from one vehicle to another.",
+          "From 'an-' (at, to) + 'melden' (to report, notify). To report to — announcing yourself to an authority or system.",
       },
       {
         moduleType: 'similarWords',
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'wechseln',
+            word: 'registrieren',
             article: null,
-            translation: 'to switch, to change',
+            translation: 'to register',
             similarityScore: 5,
-            level: ['A2'],
+            level: ['B1'],
             cefrRelevant: true,
           },
           {
-            word: 'überwechseln',
+            word: 'einschreiben',
             article: null,
-            translation: 'to switch over, to transfer',
+            translation: 'to enrol',
             similarityScore: 4,
-            level: ['A2'],
+            level: ['B1'],
             cefrRelevant: true,
           },
         ],
@@ -76,12 +76,12 @@ export const umsteigen: LearnPageContent = {
           {
             id: 1,
             content:
-              "'Um' = over/around, 'steigen' = to climb. Umsteigen = climbing over to a new train. Picture stepping across the platform.",
+              "'An' = at/to, 'melden' = to report. Report yourself to the system — anmelden.",
           },
           {
             id: 2,
             content:
-              "The announcement 'Bitte umsteigen!' means 'please change here' — the last stop before you switch trains.",
+              "'Ich melde mich an' — I sign up. The 'an' goes to the end. Think of ticking your name onto a list.",
           },
         ],
       },

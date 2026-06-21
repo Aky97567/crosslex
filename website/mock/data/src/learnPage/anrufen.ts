@@ -1,35 +1,35 @@
 import { LearnPageContent } from '@whitelotus/common-crosslex-view';
 
-export const umsteigen: LearnPageContent = {
+export const anrufen: LearnPageContent = {
   content: {
     moduleType: 'content',
     modules: [
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'umsteigen',
+        word: 'anrufen',
         article: null,
-        translation: 'to change (trains/buses), to transfer',
+        translation: 'to call (by phone)',
         partOfSpeech: 'verb',
         trennbar: true,
-        themes: ['transport', 'trennbar'],
+        themes: ['daily_life', 'work', 'trennbar'],
         level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',
         heading: { text: 'Meaning' },
         meaning:
-          'To get off one train, bus, or metro and board a different one to continue your journey; to change vehicles mid-trip.',
+          'To contact someone by telephone; to make a phone call to a person or organisation.',
       },
       {
         moduleType: 'meaningGuessQuestion',
         heading: { text: 'Guess the Meaning' },
         meaningBestGuessQuestion: {
-          question: "What is the best guess for the meaning of 'umsteigen'?",
+          question: "What is the best guess for the meaning of 'anrufen'?",
           options: [
-            { text: 'to buy a ticket', isCorrect: false },
-            { text: 'to change to a different train or bus', isCorrect: true },
-            { text: 'to get off at the final stop', isCorrect: false },
+            { text: 'to send a message', isCorrect: false },
+            { text: 'to phone someone', isCorrect: true },
+            { text: 'to visit someone at home', isCorrect: false },
           ],
         },
       },
@@ -37,32 +37,32 @@ export const umsteigen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich muss in Frankfurt umsteigen. In Hannover steige ich in den ICE um. Sie ist gestern in Hamburg umgestiegen.',
-        alternateForms: ['umgestiegen'],
-        trennbarTokens: ['steige', 'um'] as [string, string],
+          'Du solltest die Arztpraxis anrufen und einen Termin machen. Ich rufe dich morgen früh an. Sie hat ihren Chef nicht angerufen.',
+        alternateForms: ['angerufen'],
+        trennbarTokens: ['rufe', 'an'] as [string, string],
       },
       {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:
-          "A separable verb: 'um-' (around, over) + 'steigen' (to climb, to board). To climb over from one vehicle to another.",
+          "From 'an-' (to, at) + 'rufen' (to call, shout). To call out to someone — originally face to face, now by telephone.",
       },
       {
         moduleType: 'similarWords',
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'wechseln',
+            word: 'telefonieren',
             article: null,
-            translation: 'to switch, to change',
+            translation: 'to talk on the phone',
             similarityScore: 5,
             level: ['A2'],
             cefrRelevant: true,
           },
           {
-            word: 'überwechseln',
+            word: 'zurückrufen',
             article: null,
-            translation: 'to switch over, to transfer',
+            translation: 'to call back',
             similarityScore: 4,
             level: ['A2'],
             cefrRelevant: true,
@@ -76,12 +76,12 @@ export const umsteigen: LearnPageContent = {
           {
             id: 1,
             content:
-              "'Um' = over/around, 'steigen' = to climb. Umsteigen = climbing over to a new train. Picture stepping across the platform.",
+              "'An' = to/at, 'rufen' = to call. You call at someone — anrufen.",
           },
           {
             id: 2,
             content:
-              "The announcement 'Bitte umsteigen!' means 'please change here' — the last stop before you switch trains.",
+              "Notice the split: 'Ich rufe … an.' The 'an' jumps to the end, like the phone ringing at the other end.",
           },
         ],
       },

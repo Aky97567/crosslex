@@ -1,15 +1,15 @@
 import { LearnPageContent } from '@whitelotus/common-crosslex-view';
 
-export const umsteigen: LearnPageContent = {
+export const aussteigen: LearnPageContent = {
   content: {
     moduleType: 'content',
     modules: [
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'umsteigen',
+        word: 'aussteigen',
         article: null,
-        translation: 'to change (trains/buses), to transfer',
+        translation: 'to get off, exit (transport)',
         partOfSpeech: 'verb',
         trennbar: true,
         themes: ['transport', 'trennbar'],
@@ -19,17 +19,17 @@ export const umsteigen: LearnPageContent = {
         moduleType: 'wordMeaning',
         heading: { text: 'Meaning' },
         meaning:
-          'To get off one train, bus, or metro and board a different one to continue your journey; to change vehicles mid-trip.',
+          'To exit a vehicle — train, bus, tram, or car. The counterpart of einsteigen (to board). Heard constantly in German public transport announcements.',
       },
       {
         moduleType: 'meaningGuessQuestion',
         heading: { text: 'Guess the Meaning' },
         meaningBestGuessQuestion: {
-          question: "What is the best guess for the meaning of 'umsteigen'?",
+          question: "What is the best guess for the meaning of 'aussteigen'?",
           options: [
+            { text: 'to board a train', isCorrect: false },
+            { text: 'to get off a vehicle', isCorrect: true },
             { text: 'to buy a ticket', isCorrect: false },
-            { text: 'to change to a different train or bus', isCorrect: true },
-            { text: 'to get off at the final stop', isCorrect: false },
           ],
         },
       },
@@ -37,32 +37,32 @@ export const umsteigen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich muss in Frankfurt umsteigen. In Hannover steige ich in den ICE um. Sie ist gestern in Hamburg umgestiegen.',
-        alternateForms: ['umgestiegen'],
-        trennbarTokens: ['steige', 'um'] as [string, string],
+          'Hier müssen wir aussteigen. Ich steige an der nächsten Haltestelle aus. Sie ist am Hauptbahnhof ausgestiegen.',
+        alternateForms: ['ausgestiegen'],
+        trennbarTokens: ['steige', 'aus'] as [string, string],
       },
       {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:
-          "A separable verb: 'um-' (around, over) + 'steigen' (to climb, to board). To climb over from one vehicle to another.",
+          "From 'aus-' (out) + 'steigen' (to climb). To climb out — stepping down and out of the vehicle.",
       },
       {
         moduleType: 'similarWords',
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'wechseln',
+            word: 'einsteigen',
             article: null,
-            translation: 'to switch, to change',
+            translation: 'to get on, board',
             similarityScore: 5,
             level: ['A2'],
             cefrRelevant: true,
           },
           {
-            word: 'überwechseln',
+            word: 'umsteigen',
             article: null,
-            translation: 'to switch over, to transfer',
+            translation: 'to change (trains/buses)',
             similarityScore: 4,
             level: ['A2'],
             cefrRelevant: true,
@@ -76,12 +76,12 @@ export const umsteigen: LearnPageContent = {
           {
             id: 1,
             content:
-              "'Um' = over/around, 'steigen' = to climb. Umsteigen = climbing over to a new train. Picture stepping across the platform.",
+              "'Aus' = out, 'steigen' = to climb. Climb out of the train — aussteigen.",
           },
           {
             id: 2,
             content:
-              "The announcement 'Bitte umsteigen!' means 'please change here' — the last stop before you switch trains.",
+              "Three travel verbs share 'steigen': ein- (in), aus- (out), um- (over to another). Learn all three together.",
           },
         ],
       },

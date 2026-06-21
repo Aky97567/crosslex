@@ -1,35 +1,35 @@
 import { LearnPageContent } from '@whitelotus/common-crosslex-view';
 
-export const umsteigen: LearnPageContent = {
+export const abholen: LearnPageContent = {
   content: {
     moduleType: 'content',
     modules: [
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'umsteigen',
+        word: 'abholen',
         article: null,
-        translation: 'to change (trains/buses), to transfer',
+        translation: 'to pick up (a person or thing)',
         partOfSpeech: 'verb',
         trennbar: true,
-        themes: ['transport', 'trennbar'],
+        themes: ['daily_life', 'transport', 'trennbar'],
         level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',
         heading: { text: 'Meaning' },
         meaning:
-          'To get off one train, bus, or metro and board a different one to continue your journey; to change vehicles mid-trip.',
+          'To go somewhere to collect a person or an object and bring them back. Used for picking up people from a station, collecting a parcel, or fetching a document.',
       },
       {
         moduleType: 'meaningGuessQuestion',
         heading: { text: 'Guess the Meaning' },
         meaningBestGuessQuestion: {
-          question: "What is the best guess for the meaning of 'umsteigen'?",
+          question: "What is the best guess for the meaning of 'abholen'?",
           options: [
-            { text: 'to buy a ticket', isCorrect: false },
-            { text: 'to change to a different train or bus', isCorrect: true },
-            { text: 'to get off at the final stop', isCorrect: false },
+            { text: 'to deliver something', isCorrect: false },
+            { text: 'to pick up a person or object', isCorrect: true },
+            { text: 'to lose something', isCorrect: false },
           ],
         },
       },
@@ -37,33 +37,33 @@ export const umsteigen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich muss in Frankfurt umsteigen. In Hannover steige ich in den ICE um. Sie ist gestern in Hamburg umgestiegen.',
-        alternateForms: ['umgestiegen'],
-        trennbarTokens: ['steige', 'um'] as [string, string],
+          'Kannst du mich vom Bahnhof abholen? Ich hole dich um 18 Uhr ab. Er hat das Paket von der Post abgeholt.',
+        alternateForms: ['abgeholt'],
+        trennbarTokens: ['hole', 'ab'] as [string, string],
       },
       {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:
-          "A separable verb: 'um-' (around, over) + 'steigen' (to climb, to board). To climb over from one vehicle to another.",
+          "From 'ab-' (away, off) + 'holen' (to fetch, get). To fetch from away — go there and bring it back.",
       },
       {
         moduleType: 'similarWords',
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'wechseln',
+            word: 'holen',
             article: null,
-            translation: 'to switch, to change',
-            similarityScore: 5,
+            translation: 'to fetch, get',
+            similarityScore: 4,
             level: ['A2'],
             cefrRelevant: true,
           },
           {
-            word: 'überwechseln',
+            word: 'mitnehmen',
             article: null,
-            translation: 'to switch over, to transfer',
-            similarityScore: 4,
+            translation: 'to take along',
+            similarityScore: 3,
             level: ['A2'],
             cefrRelevant: true,
           },
@@ -76,12 +76,12 @@ export const umsteigen: LearnPageContent = {
           {
             id: 1,
             content:
-              "'Um' = over/around, 'steigen' = to climb. Umsteigen = climbing over to a new train. Picture stepping across the platform.",
+              "'Ab' = away, 'holen' = to fetch. Fetch from away — go there and pick it up. Abholen.",
           },
           {
             id: 2,
             content:
-              "The announcement 'Bitte umsteigen!' means 'please change here' — the last stop before you switch trains.",
+              "'Kann ich dich abholen?' — Can I pick you up? The 'ab' separates and moves to the end: 'Ich hole dich ab.'",
           },
         ],
       },
