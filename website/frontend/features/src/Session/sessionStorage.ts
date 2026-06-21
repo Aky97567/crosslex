@@ -1,6 +1,7 @@
-export type LearningRate = 'review' | 'easy' | 'balanced' | 'intensive';
+import type { WordTheme } from '@whitelotus/common-crosslex-view';
+export type { WordTheme } from '@whitelotus/common-crosslex-view';
 
-export type WordTheme = 'transport' | 'health' | 'daily_life' | 'work' | 'bureaucracy' | 'finance' | 'trennbar';
+export type LearningRate = 'review' | 'easy' | 'balanced' | 'intensive';
 
 const THEME_KEY = 'crosslex:theme';
 
