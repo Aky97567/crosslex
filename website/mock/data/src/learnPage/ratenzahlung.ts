@@ -7,7 +7,8 @@ export const ratenzahlung: LearnPageContent = {
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Raten­zahlung',
+        word: 'Ratenzahlung',
+        displayName: 'Raten­zahlung',
         article: 'die',
         translation: 'instalment payment, payment by instalments',
         partOfSpeech: 'noun',

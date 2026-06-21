@@ -7,7 +7,8 @@ export const sozialversicherung: LearnPageContent = {
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Sozial­versicherung',
+        word: 'Sozialversicherung',
+        displayName: 'Sozial­versicherung',
         article: 'die',
         translation: 'social insurance, social security',
         partOfSpeech: 'noun',

@@ -7,7 +7,8 @@ export const arbeitslosengeld: LearnPageContent = {
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Arbeits­losen­geld',
+        word: 'Arbeitslosengeld',
+        displayName: 'Arbeits­losen­geld',
         article: 'das',
         translation: 'unemployment benefit',
         partOfSpeech: 'noun',

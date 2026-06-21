@@ -7,7 +7,8 @@ export const ueberweisung: LearnPageContent = {
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Über­weisung',
+        word: 'Überweisung',
+        displayName: 'Über­weisung',
         article: 'die',
         translation: 'bank transfer; referral',
         partOfSpeech: 'noun',

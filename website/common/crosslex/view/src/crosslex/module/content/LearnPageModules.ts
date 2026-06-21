@@ -41,6 +41,7 @@ export type WordIntroModule = Module<
     translation: string;
     trennbar?: true;
     word: string;
+    displayName?: string;
   }
 >;
 

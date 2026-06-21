@@ -7,7 +7,8 @@ export const kontoauszug: LearnPageContent = {
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Konto­auszug',
+        word: 'Kontoauszug',
+        displayName: 'Konto­auszug',
         article: 'der',
         translation: 'bank statement',
         partOfSpeech: 'noun',

@@ -7,7 +7,8 @@ export const krankenhaus: LearnPageContent = {
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Kranken­haus',
+        word: 'Krankenhaus',
+        displayName: 'Kranken­haus',
         article: 'das',
         translation: 'hospital',
         partOfSpeech: 'noun',

@@ -7,7 +7,8 @@ export const schlafzimmer: LearnPageContent = {
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Schlaf­zimmer',
+        word: 'Schlafzimmer',
+        displayName: 'Schlaf­zimmer',
         article: 'das',
         translation: 'bedroom',
         partOfSpeech: 'noun',

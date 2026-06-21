@@ -7,7 +7,8 @@ export const urlaubsanspruch: LearnPageContent = {
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Urlaubs­anspruch',
+        word: 'Urlaubsanspruch',
+        displayName: 'Urlaubs­anspruch',
         article: 'der',
         translation: 'holiday entitlement, entitlement to annual leave',
         partOfSpeech: 'noun',

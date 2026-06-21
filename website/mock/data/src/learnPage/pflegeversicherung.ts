@@ -7,7 +7,8 @@ export const pflegeversicherung: LearnPageContent = {
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Pflege­versicherung',
+        word: 'Pflegeversicherung',
+        displayName: 'Pflege­versicherung',
         article: 'die',
         translation: 'long-term care insurance',
         partOfSpeech: 'noun',

@@ -4,6 +4,7 @@ import { WordIntroCard } from './WordIntro.styles';
 
 type WordIntroProps = {
   word: string;
+  displayName?: string;
   article: Article;
   translation: string;
   partOfSpeech: string;
@@ -13,18 +14,21 @@ type WordIntroProps = {
 
 export const WordIntro: React.FC<WordIntroProps> = ({
   word,
+  displayName,
   article,
   translation,
   partOfSpeech,
   trennbar,
   representativeImageUrl,
-}) => (
+}) => {
+  const label = displayName ?? word;
+  return (
   <WordIntroCard hasImage={!!representativeImageUrl}>
     <div>
       <Heading
         className="break-words"
         style={{ hyphens: 'auto' }}
-        heading={{ text: article ? `${article} ${word.trimStart()}` : word.trimStart(), level: 'h1' }}
+        heading={{ text: article ? `${article} ${label.trimStart()}` : label.trimStart(), level: 'h1' }}
       />
       <BodyText className="italic mb-5">{translation}</BodyText>
       <BodyText className="mb-5">
@@ -35,9 +39,10 @@ export const WordIntro: React.FC<WordIntroProps> = ({
     {representativeImageUrl && (
       <img
         src={representativeImageUrl}
-        alt={word}
+        alt={label}
         className="object-cover mb-4 rounded-lg max-w-[50%]"
       />
     )}
   </WordIntroCard>
-);
+  );
+};

@@ -7,7 +7,8 @@ export const kuendigungsfrist: LearnPageContent = {
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Kündigungs­frist',
+        word: 'Kündigungsfrist',
+        displayName: 'Kündigungs­frist',
         article: 'die',
         translation: 'notice period',
         partOfSpeech: 'noun',

@@ -7,7 +7,8 @@ export const tarifvertrag: LearnPageContent = {
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Tarif­vertrag',
+        word: 'Tarifvertrag',
+        displayName: 'Tarif­vertrag',
         article: 'der',
         translation: 'collective wage agreement, collective bargaining agreement',
         partOfSpeech: 'noun',

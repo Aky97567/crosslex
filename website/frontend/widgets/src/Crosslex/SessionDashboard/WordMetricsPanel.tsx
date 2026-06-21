@@ -78,10 +78,10 @@ const WordMetricsPanel: React.FC<Props> = ({ onWordClick }) => {
                 <li key={key}>
                   {onWordClick ? (
                     <button onClick={() => onWordClick(key)} className="cursor-pointer">
-                      <Badge>{intro ? intro.word : key}</Badge>
+                      <Badge>{intro ? (intro.displayName ?? intro.word) : key}</Badge>
                     </button>
                   ) : (
-                    <Badge>{intro ? intro.word : key}</Badge>
+                    <Badge>{intro ? (intro.displayName ?? intro.word) : key}</Badge>
                   )}
                 </li>
               );

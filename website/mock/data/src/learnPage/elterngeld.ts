@@ -7,7 +7,8 @@ export const elterngeld: LearnPageContent = {
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Eltern­geld',
+        word: 'Elterngeld',
+        displayName: 'Eltern­geld',
         article: 'das',
         translation: 'parental benefit, parental allowance',
         partOfSpeech: 'noun',

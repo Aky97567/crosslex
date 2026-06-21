@@ -7,7 +7,8 @@ export const arbeitgeber: LearnPageContent = {
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'Arbeit­geber',
+        word: 'Arbeitgeber',
+        displayName: 'Arbeit­geber',
         article: 'der',
         translation: 'employer',
         partOfSpeech: 'noun',
