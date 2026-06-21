@@ -266,7 +266,6 @@ Pending features, prioritised by effort vs impact.
 - **Exercise story state coverage** — `MeaningGuessQuestion`, `ContextBlankQuestion`, `WordDefinitionQuestion` stories only show the unanswered initial state; need stories for: correct answer selected (green highlight), wrong answer selected (red + review prompt), post-answer locked state (all options non-interactive)
 - **No test coverage** — Jest is configured but no tests exist; highest priority targets are `sessionAlgorithm.ts` (pickNextCard, generateExerciseData) and `sessionStorage.ts` (streak logic, readiness computation) — these are complex enough to break silently under refactoring
 - **`@whitelotus/mock-test` package rename** — name implies test fixtures but this is the production word database; rename to `@whitelotus/word-content`; requires updating `package.json`, all `tsconfig` path aliases, and all import sites
-- **FSD layer violation** — `StreakBadgeTrophyCase` and `BadgeIcon` (both in `entities`) import `BADGES`/`getEarnedBadges` from `@whitelotus/front-features`; fix by moving the `BADGES` constant and `Badge` type down to `front-shared` or a dedicated entities-layer export
 - **Missing widget Storybook stories** — 13 widget components have no stories: `AlphaAnnouncement` (+ `NewUserOverlay`, `ReturningUserCard`), `AppNav`, `BadgesDrawer`, `NotificationsDrawer`, `SessionComplete`, `SessionDashboard`, and the `SettingsPanel` subsections (`HardcoreModeSection`, `MobileDisplaySection`, `SessionTimeoutSection`, `StorageSection`)
 
 

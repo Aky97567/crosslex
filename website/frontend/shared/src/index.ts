@@ -18,3 +18,6 @@ export {
 } from './UI';
 
 export { expandHex, adjustColorShade, hexToRgba } from './utils';
+
+export type { StreakBadge } from './badges';
+export { BADGES, getEarnedBadges, getNewlyEarnedBadge } from './badges';

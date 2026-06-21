@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { BADGES, getEarnedBadges } from '@whitelotus/front-features';
+import { BADGES, getEarnedBadges } from '@whitelotus/front-shared';
 import { StreakBadgeTrophyCase } from './StreakBadgeTrophyCase';
 
 export default {
