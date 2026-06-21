@@ -1,35 +1,35 @@
 import { LearnPageContent } from '@whitelotus/common-crosslex-view';
 
-export const umsteigen: LearnPageContent = {
+export const mitnehmen: LearnPageContent = {
   content: {
     moduleType: 'content',
     modules: [
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'umsteigen',
+        word: 'mitnehmen',
         article: null,
-        translation: 'to change (trains/buses), to transfer',
+        translation: 'to take along, bring with',
         partOfSpeech: 'verb',
         trennbar: true,
-        themes: ['transport', 'trennbar'],
-        level: ['A2'],
+        themes: ['daily_life', 'transport', 'trennbar'],
+        level: ['B1'],
       },
       {
         moduleType: 'wordMeaning',
         heading: { text: 'Meaning' },
         meaning:
-          'To get off one train, bus, or metro and board a different one to continue your journey; to change vehicles mid-trip.',
+          'To take a person or thing along when going somewhere. Also used at food counters for takeaway orders: "zum Mitnehmen" (to go / takeaway).',
       },
       {
         moduleType: 'meaningGuessQuestion',
         heading: { text: 'Guess the Meaning' },
         meaningBestGuessQuestion: {
-          question: "What is the best guess for the meaning of 'umsteigen'?",
+          question: "What is the best guess for the meaning of 'mitnehmen'?",
           options: [
-            { text: 'to buy a ticket', isCorrect: false },
-            { text: 'to change to a different train or bus', isCorrect: true },
-            { text: 'to get off at the final stop', isCorrect: false },
+            { text: 'to leave something behind', isCorrect: false },
+            { text: 'to take along, bring with', isCorrect: true },
+            { text: 'to borrow something', isCorrect: false },
           ],
         },
       },
@@ -37,32 +37,32 @@ export const umsteigen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich muss in Frankfurt umsteigen. In Hannover steige ich in den ICE um. Sie ist gestern in Hamburg umgestiegen.',
-        alternateForms: ['umgestiegen'],
-        trennbarTokens: ['steige', 'um'] as [string, string],
+          'Vergiss nicht, deinen Ausweis mitnehmen. Ich nehme meinen Regenschirm mit. Er hat die Unterlagen aus dem Büro mitgenommen.',
+        alternateForms: ['mitgenommen'],
+        trennbarTokens: ['nehme', 'mit'] as [string, string],
       },
       {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:
-          "A separable verb: 'um-' (around, over) + 'steigen' (to climb, to board). To climb over from one vehicle to another.",
+          "From 'mit-' (with, along) + 'nehmen' (to take). To take with — bringing something or someone along on your way.",
       },
       {
         moduleType: 'similarWords',
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'wechseln',
+            word: 'bringen',
             article: null,
-            translation: 'to switch, to change',
-            similarityScore: 5,
+            translation: 'to bring',
+            similarityScore: 4,
             level: ['A2'],
             cefrRelevant: true,
           },
           {
-            word: 'überwechseln',
+            word: 'nehmen',
             article: null,
-            translation: 'to switch over, to transfer',
+            translation: 'to take',
             similarityScore: 4,
             level: ['A2'],
             cefrRelevant: true,
@@ -76,12 +76,12 @@ export const umsteigen: LearnPageContent = {
           {
             id: 1,
             content:
-              "'Um' = over/around, 'steigen' = to climb. Umsteigen = climbing over to a new train. Picture stepping across the platform.",
+              "'Mit' = with, 'nehmen' = to take. Take with you — mitnehmen.",
           },
           {
             id: 2,
             content:
-              "The announcement 'Bitte umsteigen!' means 'please change here' — the last stop before you switch trains.",
+              "'Zum Mitnehmen, bitte' — for takeaway, please. A phrase you'll use every time you grab a coffee to go.",
           },
         ],
       },

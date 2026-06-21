@@ -1,35 +1,35 @@
 import { LearnPageContent } from '@whitelotus/common-crosslex-view';
 
-export const umsteigen: LearnPageContent = {
+export const abgeben: LearnPageContent = {
   content: {
     moduleType: 'content',
     modules: [
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'umsteigen',
+        word: 'abgeben',
         article: null,
-        translation: 'to change (trains/buses), to transfer',
+        translation: 'to hand in, submit, drop off',
         partOfSpeech: 'verb',
         trennbar: true,
-        themes: ['transport', 'trennbar'],
-        level: ['A2'],
+        themes: ['bureaucracy', 'work', 'trennbar'],
+        level: ['B1'],
       },
       {
         moduleType: 'wordMeaning',
         heading: { text: 'Meaning' },
         meaning:
-          'To get off one train, bus, or metro and board a different one to continue your journey; to change vehicles mid-trip.',
+          'To hand something over to someone — submitting a document at an office, dropping off a parcel, or handing in homework. Also used for leaving luggage at a storage counter.',
       },
       {
         moduleType: 'meaningGuessQuestion',
         heading: { text: 'Guess the Meaning' },
         meaningBestGuessQuestion: {
-          question: "What is the best guess for the meaning of 'umsteigen'?",
+          question: "What is the best guess for the meaning of 'abgeben'?",
           options: [
-            { text: 'to buy a ticket', isCorrect: false },
-            { text: 'to change to a different train or bus', isCorrect: true },
-            { text: 'to get off at the final stop', isCorrect: false },
+            { text: 'to pick up a package', isCorrect: false },
+            { text: 'to hand in or drop off', isCorrect: true },
+            { text: 'to apply for something', isCorrect: false },
           ],
         },
       },
@@ -37,34 +37,34 @@ export const umsteigen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich muss in Frankfurt umsteigen. In Hannover steige ich in den ICE um. Sie ist gestern in Hamburg umgestiegen.',
-        alternateForms: ['umgestiegen'],
-        trennbarTokens: ['steige', 'um'] as [string, string],
+          'Sie müssen die Unterlagen persönlich abgeben. Ich gebe den Antrag morgen beim Amt ab. Er hat seine Kündigung schriftlich abgegeben.',
+        alternateForms: ['abgegeben'],
+        trennbarTokens: ['gebe', 'ab'] as [string, string],
       },
       {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:
-          "A separable verb: 'um-' (around, over) + 'steigen' (to climb, to board). To climb over from one vehicle to another.",
+          "From 'ab-' (away, off) + 'geben' (to give). To give away or over — transferring something from your hands to someone else's.",
       },
       {
         moduleType: 'similarWords',
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'wechseln',
+            word: 'einreichen',
             article: null,
-            translation: 'to switch, to change',
-            similarityScore: 5,
-            level: ['A2'],
+            translation: 'to submit, file',
+            similarityScore: 4,
+            level: ['B1'],
             cefrRelevant: true,
           },
           {
-            word: 'überwechseln',
+            word: 'übergeben',
             article: null,
-            translation: 'to switch over, to transfer',
+            translation: 'to hand over',
             similarityScore: 4,
-            level: ['A2'],
+            level: ['B1'],
             cefrRelevant: true,
           },
         ],
@@ -76,12 +76,12 @@ export const umsteigen: LearnPageContent = {
           {
             id: 1,
             content:
-              "'Um' = over/around, 'steigen' = to climb. Umsteigen = climbing over to a new train. Picture stepping across the platform.",
+              "'Ab' = away/off, 'geben' = to give. Give it away — hand it over. Abgeben.",
           },
           {
             id: 2,
             content:
-              "The announcement 'Bitte umsteigen!' means 'please change here' — the last stop before you switch trains.",
+              "'Ich gebe es ab' — the 'ab' moves to the end. Picture physically passing the document across a desk.",
           },
         ],
       },

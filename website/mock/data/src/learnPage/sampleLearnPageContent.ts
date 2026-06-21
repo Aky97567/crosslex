@@ -1,4 +1,24 @@
 import { WordIntroModule, WordTheme } from '@whitelotus/common-crosslex-view';
+import { abgeben } from './abgeben';
+import { abmelden } from './abmelden';
+import { abholen } from './abholen';
+import { anfangen } from './anfangen';
+import { anmelden } from './anmelden';
+import { anrufen } from './anrufen';
+import { anziehen } from './anziehen';
+import { aufhoeren } from './aufhoeren';
+import { aufmachen } from './aufmachen';
+import { aufraeumen } from './aufraeumen';
+import { aufwachen } from './aufwachen';
+import { ausfuellen } from './ausfuellen';
+import { aussteigen } from './aussteigen';
+import { ausstellen } from './ausstellen';
+import { einladen } from './einladen';
+import { einsteigen } from './einsteigen';
+import { mitnehmen } from './mitnehmen';
+import { teilnehmen } from './teilnehmen';
+import { vorbereiten } from './vorbereiten';
+import { vorstellen } from './vorstellen';
 import { abfahrt } from './abfahrt';
 import { baeckerei } from './baeckerei';
 import { bahnhof } from './bahnhof';
@@ -125,6 +145,16 @@ export const sampleLearnPageContentList = {
   auto,
   apfel,
   //! A2
+  abholen,
+  anfangen,
+  anrufen,
+  aufhoeren,
+  aufmachen,
+  aufraeumen,
+  aufwachen,
+  aussteigen,
+  einladen,
+  einsteigen,
   abfahrt,
   ankunft,
   apotheke,
@@ -177,6 +207,16 @@ export const sampleLearnPageContentList = {
   kind,
   schlafzimmer,
   //! B1
+  abgeben,
+  abmelden,
+  anmelden,
+  anziehen,
+  ausfuellen,
+  ausstellen,
+  mitnehmen,
+  teilnehmen,
+  vorbereiten,
+  vorstellen,
   erfahrung,
   beantragen,
   unterlagen,

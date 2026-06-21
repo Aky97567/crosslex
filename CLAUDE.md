@@ -204,7 +204,7 @@ Word data lives in `mock/data/src/learnPage/`. Each word is its own file.
 3. Type-check: `npx tsc --project mock/data/tsconfig.json --noEmit`
 
 **Word file structure** (copy from any existing file):
-- `wordIntro` — word, article, translation, partOfSpeech, level `['B1']`; omit `representativeImageUrl` until a real URL exists
+- `wordIntro` — word, article, translation, partOfSpeech, level `['B1']`; omit `representativeImageUrl` until a real URL exists; add soft hyphens to compound nouns (see below)
 - `wordMeaning` — one-paragraph definition
 - `meaningGuessQuestion` — 3 options, exactly 1 `isCorrect: true`
 - `wordContext` — paragraph using the word **at least 3 times**; include `alternateForms` for any inflected forms that appear in the paragraph (see below); for trennbar verbs, see trennbar rules below
@@ -212,6 +212,17 @@ Word data lives in `mock/data/src/learnPage/`. Each word is its own file.
 - `similarWords` — 2–3 **synonyms** (not thematically related words) with article, translation, similarityScore, level, cefrRelevant
 - `mnemonics` — 2 mnemonics; omit `imageUrl` until a real URL exists
 - `wordShowcase` — always include, leave empty (hides itself when no URL)
+
+**Soft hyphens in compound nouns:**
+
+German compound nouns don't break naturally on mobile because browsers need either `hyphens: auto` + a `lang="de"` attribute or explicit break hints. We use soft hyphens (`­`, written as `­` in source) placed at each morphological boundary in the `word` field.
+
+Rule: insert a soft hyphen at every word boundary in the compound. Examples:
+- `'Kranken­versicherung'` (Kranken + versicherung)
+- `'Neben­kosten­abrechnung'` (Neben + kosten + abrechnung)
+- `'Arbeits­losen­geld'` (Arbeits + losen + geld)
+
+Only needed when the word is long enough to overflow on a phone screen (roughly 12+ characters). Short compounds like `'Konto'` or `'Frist'` don't need it. Verbs and adjectives rarely need this — it mainly affects long nouns.
 
 **`alternateForms` — what to include per part of speech:**
 
@@ -269,6 +280,37 @@ Pending features, prioritised by effort vs impact.
 
 ### Analytics
 - **Plausible analytics** — live at crosslex.app via cookieless script; no consent banner needed
+
+---
+
+## Themes
+
+Every word has a `themes` field in `wordIntro` that categorises it for filtering and navigation. The type is defined at:
+
+`website/common/crosslex/view/src/crosslex/module/content/LearnPageModules.ts` (line 30)
+
+```ts
+export type WordTheme = 'transport' | 'health' | 'daily_life' | 'work' | 'bureaucracy' | 'finance';
+```
+
+### Theme taxonomy
+
+| Theme | Meaning | Example words |
+|---|---|---|
+| `daily_life` | Everyday objects, routines, family, food, home, weather | `Apfel`, `Frühstück`, `Familie`, `Wetter`, `Katze` |
+| `bureaucracy` | Government offices, paperwork, registration, permits | `Anmeldung`, `Formular`, `Behörde`, `Ausweis` |
+| `finance` | Money, banking, payments, insurance | `Konto`, `Gehalt`, `Überweisung`, `Steuer` |
+| `work` | Employment, contracts, workplace, rights | `Arbeitgeber`, `Kündigung`, `Probezeit`, `Gewerkschaft` |
+| `health` | Medical care, illness, prescriptions, insurance | `Arzt`, `Krankenversicherung`, `Rezept`, `Fieber` |
+| `transport` | Getting around — trains, buses, travel, tickets | `Fahrplan`, `Ticket`, `Verspätung`, `Zug` |
+| `trennbar` | Separable verbs (prefix detaches in conjugation) | `umsteigen`, `anrufen`, `ausfüllen` |
+
+### Rules for picking themes
+
+- A word gets **1–3 themes**; most words need only 1–2.
+- Pick based on the **primary context** in which a German resident would encounter the word, not abstract category membership. (`Krankenversicherung` takes `health`, `work`, and `finance` because a resident deals with it in all three contexts.)
+- `daily_life` is the catch-all for common vocabulary with no bureaucratic, medical, or work slant.
+- If a word genuinely fits none of the 6 themes, **add a new `WordTheme` literal** to `LearnPageModules.ts` line 30, add a row to the table above, and document it here before merging.
 
 ---
 
