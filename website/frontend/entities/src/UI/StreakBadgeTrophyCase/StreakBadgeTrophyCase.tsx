@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { BADGES, Badge } from '@whitelotus/front-features';
+import { BADGES, StreakBadge } from '@whitelotus/front-shared';
 import { BadgeIcon } from '../BadgeIcon';
 
 type Props = {
-  earnedBadges: Badge[];
+  earnedBadges: StreakBadge[];
 };
 
 const StreakBadgeTrophyCase: React.FC<Props> = ({ earnedBadges }) => {

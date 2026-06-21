@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { BADGES } from '@whitelotus/front-features';
+import { BADGES } from '@whitelotus/front-shared';
 import { BadgeIcon } from './BadgeIcon';
 
 export default {
