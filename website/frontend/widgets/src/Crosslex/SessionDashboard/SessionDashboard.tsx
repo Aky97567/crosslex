@@ -31,6 +31,7 @@ const THEME_LABELS: Record<WordTheme, string> = {
   work:        'Work',
   bureaucracy: 'Bureaucracy',
   finance:     'Finance',
+  trennbar:    'Trennbar (separable verbs)',
 };
 
 const ctaButton =

@@ -1,13 +1,13 @@
 export type LearningRate = 'review' | 'easy' | 'balanced' | 'intensive';
 
-export type WordTheme = 'transport' | 'health' | 'daily_life' | 'work' | 'bureaucracy' | 'finance';
+export type WordTheme = 'transport' | 'health' | 'daily_life' | 'work' | 'bureaucracy' | 'finance' | 'trennbar';
 
 const THEME_KEY = 'crosslex:theme';
 
 export const readActiveTheme = (): WordTheme | null => {
   try {
     const raw = localStorage.getItem(THEME_KEY);
-    const valid: WordTheme[] = ['transport', 'health', 'daily_life', 'work', 'bureaucracy', 'finance'];
+    const valid: WordTheme[] = ['transport', 'health', 'daily_life', 'work', 'bureaucracy', 'finance', 'trennbar'];
     return valid.includes(raw as WordTheme) ? (raw as WordTheme) : null;
   } catch {
     return null;
