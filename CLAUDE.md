@@ -204,7 +204,7 @@ Word data lives in `mock/data/src/learnPage/`. Each word is its own file.
 3. Type-check: `npx tsc --project mock/data/tsconfig.json --noEmit`
 
 **Word file structure** (copy from any existing file):
-- `wordIntro` — word, article, translation, partOfSpeech, level `['B1']`; omit `representativeImageUrl` until a real URL exists; add soft hyphens to compound nouns (see below)
+- `wordIntro` — word, article, translation, partOfSpeech, level `['B1']`; omit `representativeImageUrl` until a real URL exists; for compound nouns add a `displayName` with soft hyphens (see below)
 - `wordMeaning` — one-paragraph definition
 - `meaningGuessQuestion` — 3 options, exactly 1 `isCorrect: true`
 - `wordContext` — paragraph using the word **at least 3 times**; include `alternateForms` for any inflected forms that appear in the paragraph (see below); for trennbar verbs, see trennbar rules below
@@ -213,16 +213,36 @@ Word data lives in `mock/data/src/learnPage/`. Each word is its own file.
 - `mnemonics` — 2 mnemonics; omit `imageUrl` until a real URL exists
 - `wordShowcase` — always include, leave empty (hides itself when no URL)
 
-**Soft hyphens in compound nouns:**
+**`word` vs `displayName` in `wordIntro`:**
 
-German compound nouns don't break naturally on mobile because browsers need either `hyphens: auto` + a `lang="de"` attribute or explicit break hints. We use soft hyphens (`­`, written as `­` in source) placed at each morphological boundary in the `word` field.
+`wordIntro` has two related fields:
+
+| Field | Value | Used for |
+|---|---|---|
+| `word` | Plain form, **no soft hyphens** — e.g. `'Krankenversicherung'` | Exercise logic: `contextBlank` regex matching, `typeTheWord` character validation, distractor generation |
+| `displayName` | Optional. Same word **with soft hyphens** — e.g. `'Kranken­versicherung'` | Display only: word intro heading, fill-in-the-blank options, word definition question, badges |
+
+**Rule:** always set `word` to the plain form. Add `displayName` whenever the word is long enough to overflow on a phone screen (roughly 12+ characters). Short words like `'Konto'` or `'Frist'` need no `displayName`.
+
+```ts
+// Compound noun — needs both fields
+word: 'Krankenversicherung',
+displayName: 'Kranken­versicherung',
+
+// Short word — word only
+word: 'Konto',
+```
+
+**Soft hyphens in `displayName`:**
+
+German compound nouns don't break naturally on mobile. We use soft hyphens (`­`, written as `­` in source) in `displayName` placed at each morphological boundary.
 
 Rule: insert a soft hyphen at every word boundary in the compound. Examples:
 - `'Kranken­versicherung'` (Kranken + versicherung)
 - `'Neben­kosten­abrechnung'` (Neben + kosten + abrechnung)
 - `'Arbeits­losen­geld'` (Arbeits + losen + geld)
 
-Only needed when the word is long enough to overflow on a phone screen (roughly 12+ characters). Short compounds like `'Konto'` or `'Frist'` don't need it. Verbs and adjectives rarely need this — it mainly affects long nouns.
+Verbs and adjectives rarely need this — it mainly affects long nouns.
 
 **`alternateForms` — what to include per part of speech:**
 
