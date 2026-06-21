@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { Heading } from '@whitelotus/common-crosslex-view';
-
-type Article = 'der' | 'die' | 'das' | null;
+import { Article, Heading } from '@whitelotus/common-crosslex-view';
 import { BodyText, Card, CtaText } from '@whitelotus/front-shared';
 
 type Option = {

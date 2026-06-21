@@ -310,9 +310,9 @@ export type WordTheme = 'transport' | 'health' | 'daily_life' | 'work' | 'bureau
 - A word gets **1–3 themes**; most words need only 1–2.
 - Pick based on the **primary context** in which a German resident would encounter the word, not abstract category membership. (`Krankenversicherung` takes `health`, `work`, and `finance` because a resident deals with it in all three contexts.)
 - `daily_life` is the catch-all for common vocabulary with no bureaucratic, medical, or work slant.
-- If a word genuinely fits none of the 6 themes, **add a new `WordTheme` literal** to all three of these files, then add a row to the table above and document it here:
-  1. `website/common/crosslex/view/src/crosslex/module/content/LearnPageModules.ts` line 30 — canonical type used by the word data layer
-  2. `website/frontend/features/src/Session/sessionStorage.ts` — duplicate type + `valid` array used by the storage layer and `SessionDashboard`; missing it means the new theme is silently stripped from localStorage on read
+- If a word genuinely fits none of the 6 themes, **add a new `WordTheme` literal** and update all three of these places, then add a row to the table above and document it here:
+  1. `website/common/crosslex/view/src/crosslex/module/content/LearnPageModules.ts` line 30 — **single source of truth** for the type; `sessionStorage.ts` and the word data layer both import from here
+  2. `website/frontend/features/src/Session/sessionStorage.ts` — the `valid: WordTheme[]` **runtime array** inside `readActiveTheme()`; the type is imported automatically, but this array must be updated manually or the new theme is silently stripped from localStorage on read
   3. `website/frontend/widgets/src/Crosslex/SessionDashboard/SessionDashboard.tsx` — `THEME_LABELS` `Record<WordTheme, string>`; missing it renders a blank option in the theme picker (the `Record` type will catch this as a compile error in the widgets package)
 
 ---
