@@ -85,6 +85,10 @@ website/
 
 **Styling**: Tailwind CSS with a shared config at `config/tailwind/tailwind.config.js`. Prettier is set to 80-char width, single quotes, trailing commas.
 
+**Package naming & layout**: workspace directories follow `<layer>/<product>` (e.g. `backend/runtime/crosslex`, `backend/api/crosslex`, `common/crosslex/view`). Product-specific packages always carry the product qualifier — backends are named for the product/domain they serve, never for a consuming client or repo. Package names follow `@whitelotus/<layer>-<rest>` (`back-*`, `front-*`, `common-*`, `lib-*`, `config-*`) — match the existing aliases in `tsconfig.base.json`.
+
+**Creating a new package**: (1) add its path to `workspaces` in `website/package.json` — prefer a glob (`backend/api/*`) so future siblings need no edit; (2) add its `@whitelotus/*` alias to `tsconfig.base.json` paths; (3) declare `jest`/`ts-jest`/`@types/jest` in its own `devDependencies` — root-level jest is not resolvable from workspaces under Yarn 4's node-modules linker.
+
 **IMPORTANT — `front-shared` has two index files**: When adding a new export to `frontend/shared/src/UI/`, update BOTH `frontend/shared/src/UI/index.ts` AND `frontend/shared/src/index.ts` (the root index has an explicit named list). Missing the root index causes build failures in consuming packages.
 
 **IMPORTANT — custom Tailwind scale**: This project overrides almost every default Tailwind scale. Before using any utility class, read `config/tailwind/tailwind.config.js` to check the actual values. Key overrides:
