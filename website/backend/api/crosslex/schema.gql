@@ -1,0 +1,12 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Health {
+  status: String!
+  timestamp: String!
+}
+
+type Query {
+  health: Health!
+}
