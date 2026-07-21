@@ -1,0 +1,32 @@
+{
+  "name": "@whitelotus/back-api-crosslex",
+  "description": "Crosslex NestJS API",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "nest start --watch",
+    "build": "nest build",
+    "start": "node dist/main.js",
+    "test": "jest",
+    "test:ci": "jest --ci --coverage"
+  },
+  "dependencies": {
+    "@apollo/server": "^5.0.0",
+    "@as-integrations/express5": "^1.1.2",
+    "@nestjs/apollo": "^13.1.0",
+    "@nestjs/common": "^11.1.0",
+    "@nestjs/core": "^11.1.0",
+    "@nestjs/graphql": "^13.1.0",
+    "@nestjs/platform-express": "^11.1.0",
+    "graphql": "^17.0.2",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^11",
+    "@nestjs/testing": "^11.1.0",
+    "@types/jest": "^30",
+    "jest": "^30.4.2",
+    "ts-jest": "^29.4.11"
+  }
+}
