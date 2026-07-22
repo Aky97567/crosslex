@@ -5,7 +5,11 @@
   "private": true,
   "scripts": {
     "db": "docker compose up -d",
+    "down": "docker compose down",
+    "wipe": "docker volume rm crosslex_crosslex-pg-data",
     "dev": "nest start --watch",
+    "migrate": "prisma migrate dev",
+    "migrate:deploy": "prisma migrate deploy",
     "build": "nest build",
     "start": "node dist/main.js",
     "test": "jest",
