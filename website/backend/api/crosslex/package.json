@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "db": "docker compose up -d",
     "dev": "nest start --watch",
     "build": "nest build",
     "start": "node dist/main.js",
@@ -18,7 +19,8 @@
     "@nestjs/core": "^11.1.0",
     "@nestjs/graphql": "^13.1.0",
     "@nestjs/platform-express": "^11.1.0",
-    "graphql": "^17.0.2",
+    "@prisma/client": "^7.9.0",
+    "graphql": "^16.11.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.2"
   },
@@ -27,6 +29,7 @@
     "@nestjs/testing": "^11.1.0",
     "@types/jest": "^30",
     "jest": "^30.4.2",
+    "prisma": "^7.9.0",
     "ts-jest": "^29.4.11"
   }
 }

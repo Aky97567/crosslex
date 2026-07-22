@@ -17,6 +17,7 @@
     "build:crosslex-react": "cd sites/crosslex-react && yarn run build",
     "build:storybook-next": "cd sites/storybook-next && yarn run build",
     "build:storybook-react": "cd sites/storybook-react && yarn run build",
+    "dev:api-db": "cd backend/api/crosslex && yarn run db",
     "dev:crosslex-next": "cd sites/crosslex-next && yarn run dev",
     "dev:crosslex-react": "cd sites/crosslex-react && yarn run dev",
     "dev:storybook-next": "cd sites/storybook-next && yarn run start",
