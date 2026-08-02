@@ -11,3 +11,6 @@
 
 #!.yarn/cache
 .pnp.*
+
+# Local environment variables — see .env.example for the required shape
+.env
