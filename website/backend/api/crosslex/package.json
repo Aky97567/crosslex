@@ -35,6 +35,7 @@
     "@nestjs/cli": "^11",
     "@nestjs/testing": "^11.1.0",
     "@types/jest": "^30",
+    "@types/node": "^22",
     "@types/pg": "^8",
     "jest": "^30.4.2",
     "prisma": "^7.9.0",
