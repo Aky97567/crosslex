@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:18
+    container_name: crosslex-pg
+    environment:
+      POSTGRES_USER: crosslex
+      POSTGRES_PASSWORD: crosslex
+      POSTGRES_DB: crosslex
+    ports:
+      - '5432:5432'
+    volumes:
+      - crosslex-pg-data:/var/lib/postgresql
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U crosslex -d crosslex']
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  crosslex-pg-data:
