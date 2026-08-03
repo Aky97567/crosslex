@@ -33,6 +33,15 @@ const REQUIRED_ENV_VARS = ['DATABASE_URL', 'JWT_KEY_SOURCE'] as const;
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'schema.gql'),
       sortSchema: true,
+      // @nestjs/apollo's default context only forwards `req` — without
+      // this, `res` is silently absent from the GraphQL context, and
+      // every @Res({ passthrough: true }) resolver (login/signup/
+      // refresh/logout, all setting or clearing the refresh cookie)
+      // fails at runtime with "res.cookie is not a function".
+      context: ({ req, res }: { req: unknown; res: unknown }) => ({
+        req,
+        res,
+      }),
     }),
     AuthModule,
     HealthModule,

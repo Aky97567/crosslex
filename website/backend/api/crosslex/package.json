@@ -10,10 +10,12 @@
     "dev": "nest start --watch",
     "migrate": "prisma migrate dev",
     "migrate:deploy": "prisma migrate deploy",
+    "migrate:test-db": "DATABASE_URL=\"postgresql://crosslex:crosslex@localhost:5432/crosslex?schema=test\" prisma migrate deploy",
     "build": "nest build",
     "start": "node dist/main.js",
-    "test": "jest",
-    "test:ci": "jest --ci --coverage"
+    "test": "jest --selectProjects unit",
+    "test:e2e": "yarn migrate:test-db && jest --selectProjects e2e",
+    "test:ci": "yarn migrate:test-db && jest --ci --coverage"
   },
   "dependencies": {
     "@apollo/server": "^5.0.0",
@@ -50,8 +52,11 @@
     "@types/passport": "^0",
     "@types/passport-jwt": "^4.0.1",
     "@types/pg": "^8",
+    "@types/supertest": "^7.2.1",
+    "dotenv": "^17.4.2",
     "jest": "^30.4.2",
     "prisma": "^7.9.0",
+    "supertest": "^7.2.2",
     "ts-jest": "^29.4.11"
   }
 }
