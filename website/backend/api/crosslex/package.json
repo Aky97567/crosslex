@@ -4,7 +4,12 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "db": "docker compose up -d",
+    "down": "docker compose down",
+    "wipe": "docker volume rm crosslex_crosslex-pg-data",
     "dev": "nest start --watch",
+    "migrate": "prisma migrate dev",
+    "migrate:deploy": "prisma migrate deploy",
     "build": "nest build",
     "start": "node dist/main.js",
     "test": "jest",
@@ -15,10 +20,14 @@
     "@as-integrations/express5": "^1.1.2",
     "@nestjs/apollo": "^13.1.0",
     "@nestjs/common": "^11.1.0",
+    "@nestjs/config": "^4.0.4",
     "@nestjs/core": "^11.1.0",
     "@nestjs/graphql": "^13.1.0",
     "@nestjs/platform-express": "^11.1.0",
-    "graphql": "^17.0.2",
+    "@prisma/adapter-pg": "^7.9.0",
+    "@prisma/client": "^7.9.0",
+    "graphql": "^16.11.0",
+    "pg": "^8.22.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.2"
   },
@@ -26,7 +35,10 @@
     "@nestjs/cli": "^11",
     "@nestjs/testing": "^11.1.0",
     "@types/jest": "^30",
+    "@types/node": "^22",
+    "@types/pg": "^8",
     "jest": "^30.4.2",
+    "prisma": "^7.9.0",
     "ts-jest": "^29.4.11"
   }
 }
