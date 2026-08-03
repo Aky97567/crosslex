@@ -14,7 +14,7 @@
     "build": "nest build",
     "start": "node dist/main.js",
     "test": "jest --selectProjects unit",
-    "test:e2e": "yarn migrate:test-db && jest --selectProjects e2e",
+    "test:e2e": "yarn migrate:test-db && jest --selectProjects e2e --runInBand",
     "test:ci": "yarn migrate:test-db && jest --ci --coverage"
   },
   "dependencies": {
@@ -44,6 +44,7 @@
   },
   "devDependencies": {
     "@nestjs/cli": "^11",
+    "@nestjs/schematics": "^11.1.0",
     "@nestjs/testing": "^11.1.0",
     "@types/cookie-parser": "^1.4.10",
     "@types/express": "^5.0.6",
