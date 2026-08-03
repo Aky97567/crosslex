@@ -2,11 +2,32 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type AuthPayload {
+  accessToken: String!
+}
+
 type Health {
   status: String!
   timestamp: String!
 }
 
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+type Mutation {
+  login(input: LoginInput!): AuthPayload!
+  logout: Boolean!
+  refresh: AuthPayload!
+  signup(input: SignupInput!): AuthPayload!
+}
+
 type Query {
   health: Health!
+}
+
+input SignupInput {
+  email: String!
+  password: String!
 }
