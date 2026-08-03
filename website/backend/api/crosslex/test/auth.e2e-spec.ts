@@ -4,8 +4,8 @@ import cookieParser from 'cookie-parser';
 import * as argon2 from 'argon2';
 import request from 'supertest';
 
-import { AppModule } from '../app.module';
-import { PrismaService } from '../prisma/prisma.service';
+import { AppModule } from '../src/app.module';
+import { PrismaService } from '../src/prisma/prisma.service';
 
 // Boots the real app (real GraphQL layer, real JwtService/argon2/cookie
 // logic) against the dedicated `test` Postgres schema — see
