@@ -19,7 +19,53 @@ model User {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
-  refreshTokens RefreshToken[]
+  refreshTokens  RefreshToken[]
+  wordProgress   WordProgress[]
+  exerciseEvents ExerciseEvent[]
+}
+
+// Deliberately bare: no meaning/theme/exercise content lives here. mock/data
+// stays the sole authority on what a word actually means — this table only
+// exists so WordProgress/ExerciseEvent have something real to foreign-key
+// against. wordKey is NOT unique and is NOT the primary key: German has
+// real homographs (e.g. "die Mutter" = mother, "die Mutter" = nut) that can
+// share identical spelling, article, AND part of speech — no natural
+// composite key reliably separates every case, since only the meaning
+// differs. The surrogate id is the one thing guaranteed unique; wordKey is
+// just an indexed lookup column, deliberately allowed to repeat.
+model Word {
+  id        String   @id @default(uuid())
+  wordKey   String
+  createdAt DateTime @default(now())
+
+  wordProgress   WordProgress[]
+  exerciseEvents ExerciseEvent[]
+  exercises      Exercise[]
+
+  @@index([wordKey])
+}
+
+// One row per exercise instance that exists for a word — content, not
+// per-user state (mirrors the Word/WordProgress split). `content` is
+// deliberately untyped at the DB level: the four exercise kinds
+// (meaningGuess/contextBlank/wordDefinition/typeTheWord, per
+// docs/session-loop.md) have genuinely different shapes, and this is
+// product-iteration-speed content, not transactional data — a new exercise
+// type or a reshaped existing one shouldn't require a migration. The
+// tradeoff: Postgres can't validate `content`'s shape, so that check has to
+// happen at the application boundary (e.g. a Zod discriminated union keyed
+// on exerciseType) before anything gets written.
+model Exercise {
+  id           String   @id @default(uuid())
+  wordId       String
+  word         Word     @relation(fields: [wordId], references: [id])
+  exerciseType String
+  content      Json
+  createdAt    DateTime @default(now())
+
+  exerciseEvents ExerciseEvent[]
+
+  @@index([wordId])
 }
 
 model RefreshToken {
@@ -34,4 +80,54 @@ model RefreshToken {
 
   @@index([userId])
   @@index([familyId])
+}
+
+// Mirrors crosslex:words_seen from docs/session-loop.md — the scheduling
+// algorithm's per-word cache (count, accuracy, lastSeen), synced server-side
+// for cross-device continuity. The unique constraint is what makes syncing
+// idempotent: recording progress for (user, word) always finds the same
+// row rather than creating duplicates. No separate index on userId alone
+// is needed — a composite unique index already serves leftmost-prefix
+// lookups ("all of this user's progress"), which is the only query the
+// algorithm actually makes; nothing queries "who else has seen this word."
+model WordProgress {
+  id           String   @id @default(uuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id])
+  wordId       String
+  word         Word     @relation(fields: [wordId], references: [id])
+  seenCount    Int      @default(0)
+  correctCount Int      @default(0)
+  lastSeenAt   DateTime @updatedAt
+
+  @@unique([userId, wordId])
+}
+
+// Mirrors crosslex:exercise_log — append-only by convention (AGENTS.md's
+// invariant carries over server-side): no update/delete mutation should
+// ever be exposed for this table. Indexed on (userId, wordId), not
+// (userId, occurredAt) — the real query need is "this user's history for
+// this word" (e.g. to recompute WordProgress from raw events), not a
+// time-ordered activity feed, which nothing in the product currently needs.
+//
+// wordId and exerciseType are intentionally denormalized, not leftover
+// duplication now that exerciseId exists: exerciseType is a snapshot of
+// what the exercise *was* at attempt time, so this append-only log stays
+// historically accurate even if an Exercise's content is later edited or
+// reclassified — that's the standard event-log reason to snapshot rather
+// than rely purely on a live join. wordId is kept mainly so the
+// (userId, wordId) index doesn't require joining through Exercise first.
+model ExerciseEvent {
+  id           String   @id @default(uuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id])
+  wordId       String
+  word         Word     @relation(fields: [wordId], references: [id])
+  exerciseId   String
+  exercise     Exercise @relation(fields: [exerciseId], references: [id])
+  exerciseType String
+  correct      Boolean
+  occurredAt   DateTime @default(now())
+
+  @@index([userId, wordId])
 }
