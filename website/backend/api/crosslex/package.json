@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "db": "docker compose up -d",
+    "db": "docker compose up -d postgres",
+    "docker:up": "docker compose up --build",
     "down": "docker compose down",
     "wipe": "docker volume rm crosslex_crosslex-pg-data",
     "dev": "nest start --watch",

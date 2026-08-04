@@ -5,6 +5,7 @@ import request from 'supertest';
 
 import { AppModule } from '../src/app.module';
 import { PrismaService } from '../src/prisma/prisma.service';
+import { getCorsOptions } from '../src/cors.config';
 import { resetDatabase } from './reset-database';
 
 // Same boot pattern as auth.e2e-spec.ts — real app, real GraphQL layer,
@@ -22,6 +23,7 @@ describe('Progress (e2e)', () => {
 
     app = moduleRef.createNestApplication();
     app.use(cookieParser());
+    app.enableCors(getCorsOptions());
     app.useGlobalPipes(
       new ValidationPipe({
         transform: true,

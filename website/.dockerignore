@@ -1,0 +1,18 @@
+# Reinstalled fresh inside the container — argon2/Prisma both involve
+# native binaries, so a host-installed node_modules (built for macOS)
+# would silently break if it ever ended up in an image built for Linux.
+**/node_modules
+
+**/dist
+**/.next
+**/build
+**/coverage
+
+.git
+.yarn/cache
+.yarn/install-state.gz
+
+**/*.pem
+.env
+.env.*
+!.env.example

@@ -16,5 +16,40 @@ services:
       timeout: 3s
       retries: 5
 
+  # Runs the actual NestJS API in a container, for testing via
+  # Postman/curl without needing `yarn dev` on the host — and the basis
+  # for later local-infra work, once other backend pieces exist to run
+  # alongside it. `yarn db` (just postgres) is unaffected; this is opt-in
+  # via `yarn docker:up` or `docker compose up`.
+  api:
+    build:
+      context: ../../..
+      dockerfile: backend/api/crosslex/Dockerfile
+    container_name: crosslex-api
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - '4000:4000'
+    environment:
+      PORT: '4000'
+      # postgres, not localhost — inside the compose network, the DB is
+      # reachable by service name, not the host loopback address the
+      # locally-run (non-Docker) app uses.
+      DATABASE_URL: 'postgresql://crosslex:crosslex@postgres:5432/crosslex?schema=public'
+      JWT_KEY_SOURCE: file
+      JWT_PRIVATE_KEY_PATH: /keys/private.pem
+      JWT_PUBLIC_KEY_PATH: /keys/public.pem
+      JWT_ACCESS_TOKEN_TTL: 15m
+      REFRESH_TOKEN_TTL_DAYS: '30'
+      COOKIE_DOMAIN: crosslex.local
+      CORS_ALLOWED_ORIGINS: http://app.crosslex.local:5173
+    volumes:
+      # Keys stay out of the image (see .dockerignore) — mounted in at
+      # runtime instead, read-only. Plain PEM text files, so no
+      # macOS-vs-Linux native-binary concern here, unlike node_modules.
+      - ./private.pem:/keys/private.pem:ro
+      - ./public.pem:/keys/public.pem:ro
+
 volumes:
   crosslex-pg-data:
