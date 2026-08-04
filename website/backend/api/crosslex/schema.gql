@@ -6,6 +6,11 @@ type AuthPayload {
   accessToken: String!
 }
 
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type Health {
   status: String!
   timestamp: String!
@@ -19,15 +24,31 @@ input LoginInput {
 type Mutation {
   login(input: LoginInput!): AuthPayload!
   logout: Boolean!
+  recordExerciseResult(input: RecordExerciseResultInput!): WordProgress!
   refresh: AuthPayload!
   signup(input: SignupInput!): AuthPayload!
 }
 
 type Query {
   health: Health!
+  myProgress: [WordProgress!]!
+}
+
+input RecordExerciseResultInput {
+  correct: Boolean!
+  exerciseId: String!
 }
 
 input SignupInput {
   email: String!
   password: String!
+}
+
+type WordProgress {
+  correctCount: Int!
+  id: String!
+  lastSeenAt: DateTime!
+  seenCount: Int!
+  wordId: String!
+  wordKey: String!
 }

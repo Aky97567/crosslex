@@ -6,6 +6,7 @@ import request from 'supertest';
 
 import { AppModule } from '../src/app.module';
 import { PrismaService } from '../src/prisma/prisma.service';
+import { resetDatabase } from './reset-database';
 
 // Boots the real app (real GraphQL layer, real JwtService/argon2/cookie
 // logic) against the dedicated `test` Postgres schema — see
@@ -42,9 +43,7 @@ describe('Auth (e2e)', () => {
   });
 
   beforeEach(async () => {
-    // FK order: RefreshToken references User.
-    await prisma.refreshToken.deleteMany();
-    await prisma.user.deleteMany();
+    await resetDatabase(prisma);
   });
 
   function gql(query: string, variables?: Record<string, unknown>) {

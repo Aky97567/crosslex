@@ -5594,7 +5594,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/schematics@npm:^11.0.1":
+"@nestjs/schematics@npm:^11.0.1, @nestjs/schematics@npm:^11.1.0":
   version: 11.1.0
   resolution: "@nestjs/schematics@npm:11.1.0"
   dependencies:
@@ -10694,6 +10694,7 @@ __metadata:
     "@nestjs/jwt": "npm:^11.0.2"
     "@nestjs/passport": "npm:^11.0.5"
     "@nestjs/platform-express": "npm:^11.1.0"
+    "@nestjs/schematics": "npm:^11.1.0"
     "@nestjs/testing": "npm:^11.1.0"
     "@prisma/adapter-pg": "npm:^7.9.0"
     "@prisma/client": "npm:^7.9.0"
