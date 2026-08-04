@@ -3,10 +3,12 @@ import { ValidationPipe } from '@nestjs/common';
 import cookieParser from 'cookie-parser';
 
 import { AppModule } from './app.module';
+import { getCorsOptions } from './cors.config';
 
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppModule);
   app.use(cookieParser());
+  app.enableCors(getCorsOptions());
   app.useGlobalPipes(
     new ValidationPipe({
       // Runs class-transformer (so @Transform decorators actually fire)

@@ -6,6 +6,7 @@ import request from 'supertest';
 
 import { AppModule } from '../src/app.module';
 import { PrismaService } from '../src/prisma/prisma.service';
+import { getCorsOptions } from '../src/cors.config';
 import { resetDatabase } from './reset-database';
 
 // Boots the real app (real GraphQL layer, real JwtService/argon2/cookie
@@ -25,6 +26,7 @@ describe('Auth (e2e)', () => {
     // Mirrors main.ts exactly — these tests would be meaningless if they
     // exercised different middleware/pipes than what actually runs.
     app.use(cookieParser());
+    app.enableCors(getCorsOptions());
     app.useGlobalPipes(
       new ValidationPipe({
         transform: true,
