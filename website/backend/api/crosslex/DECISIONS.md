@@ -316,3 +316,128 @@ Invisible with a single e2e file; surfaced immediately the moment a second
 one (`progress.e2e-spec.ts`) was added. A shared reset helper additionally
 prevents per-file cleanup lists from silently drifting out of sync as new
 tables get added — the bug that caused this in the first place.
+
+---
+
+## Local infra
+
+### Docker build installs the whole Yarn workspace, not just this package
+**Decision:** The Dockerfile's build context is `website/` (the workspace
+root), and `COPY . .` brings in every workspace's source before `yarn
+install --immutable` runs — not a pruned, package-only install.
+**Why:** Yarn needs every workspace's `package.json` present to resolve
+the lockfile correctly; there's no clean way to give it just this
+package's dependency subset without a real pruning tool (Yarn `focus`,
+Turborepo). This image is for local dev/test infra, not a size-optimized
+deploy artifact, so paying the larger install/build time is an acceptable,
+explicit tradeoff — revisit if/when this becomes a real deploy image.
+
+### node_modules is installed inside the container, never bind-mounted from the host
+**Decision:** No volume-mounting a host-installed `node_modules` into the
+container for a faster dev loop.
+**Why:** `argon2` is a native addon and Prisma's tooling involves
+platform-specific binaries — a `node_modules` built on macOS won't run
+inside a Linux container. Installing fresh inside the container (which is
+already what the multi-stage build does) sidesteps this entirely; the
+would-be convenience of bind-mounting isn't worth the silent runtime
+breakage it risks.
+
+### JWT keys are mounted at runtime, never baked into the image
+**Decision:** `private.pem`/`public.pem` are excluded via `.dockerignore`
+and instead bind-mounted read-only into the running container via
+docker-compose.
+**Why:** Image layers can be shared, pushed, or inspected — baking a
+private key into one, even for a "local-only" image, establishes a bad
+habit that's easy to carry forward into a real deploy image later. Costs
+nothing to avoid from the start.
+
+### `node:22-slim` needs an explicit OpenSSL install
+**Decision:** `apt-get install -y openssl` added to both Dockerfile
+stages that invoke the Prisma CLI (build's `generate`, runtime's `migrate
+deploy`).
+**Why:** Found empirically, not anticipated — Prisma's CLI warned it
+"failed to detect the libssl/openssl version" and was silently defaulting
+to a guess. `node:22-slim` doesn't ship OpenSSL. Prisma's own warning
+named the fix directly; better to install it than run on a fallback guess
+that might not match the real environment.
+
+### The container migrates then starts, in one command
+**Decision:** `CMD` runs `prisma migrate deploy && node dist/main.js`,
+not just the server start.
+**Why:** Keeps `docker compose up` a genuine one-command path to a
+working server against a fresh Postgres volume — no separate manual
+migrate step to remember first.
+
+### `yarn db` was repointed to `docker compose up -d postgres` explicitly
+**Decision:** Updated from a bare `docker compose up -d` (which starts
+every service in the file) the moment a second service (`api`) was added.
+**Why:** Adding a new service to `docker-compose.yml` silently changes
+what an argument-less `docker compose up` starts — `yarn db`'s existing,
+relied-on behavior (just Postgres, for the normal `yarn dev` local loop)
+would have quietly changed underneath it otherwise. Pinning the service
+name keeps that script's meaning stable regardless of what else gets
+added to the compose file later.
+
+---
+
+## CORS (Phase 6, local-only)
+
+### Env-driven allowlist, not a hardcoded per-`NODE_ENV` branch
+**Decision:** `CORS_ALLOWED_ORIGINS` (comma-separated) is read directly
+into `enableCors({ origin: [...] })` — no `if (NODE_ENV === 'production')`
+branching in source.
+**Why:** Branching on `NODE_ENV` in code conflates "which build am I
+running" with "what's my config," and hardcodes domain strings into the
+deployed artifact — changing an allowed origin would need a code change
+and redeploy instead of a config change. Same pattern already used for
+`DATABASE_URL`/`COOKIE_DOMAIN`/`JWT_KEY_SOURCE`, applied here too.
+
+### Only a local origin is configured; stage/prod deliberately left blank
+**Decision:** `CORS_ALLOWED_ORIGINS=http://app.crosslex.local:5173`
+locally. No stage/prod values exist anywhere yet.
+**Why:** Real stage/prod origins depend on real deployment, which is
+Phase 5 — explicitly out of scope for the current interview-prep
+timeline. Writing placeholder values now would just be guessing.
+
+### `credentials: true` is required, not optional
+**Decision:** `enableCors({ origin: [...], credentials: true })`.
+**Why:** Without it, the browser won't include the httpOnly refresh
+cookie on cross-origin requests, or accept the `Set-Cookie` response at
+all — the whole point of enabling CORS here (letting
+`app.crosslex.local` talk to `api.crosslex.local` with the refresh flow
+intact) silently fails without this flag, even though everything else
+about the request would look fine.
+
+### `getCorsOptions()` is shared by `main.ts` and every e2e spec, not duplicated
+**Decision:** One function in `src/cors.config.ts`, imported everywhere
+CORS needs to be configured.
+**Why:** The exact same lesson as `test/reset-database.ts`, applied
+again: the e2e specs' own setup comments claim to "mirror main.ts
+exactly," and that claim only stays true if there's nowhere for the
+setup logic to drift. Three independent copies of the same CORS options
+is exactly the kind of duplication that already caused a real bug once
+this session (the stale `beforeEach` cleanup lists) — worth not
+repeating the mistake a second time.
+
+---
+
+## Documentation
+
+### `DECISIONS.md` lives in this package, not at the repo root
+**Decision:** Kept here (`backend/api/crosslex/DECISIONS.md`), not moved
+to the repo root alongside `AGENTS.md`/`ROADMAP.md`.
+**Why:** Every entry in this file is about this package specifically —
+nobody working on the frontend or any other package in this monorepo
+needs it. Repo-root `docs/` is reserved for cross-cutting *feature* docs
+that span multiple files (session loop, word content), a different
+category from a single package's internal architecture reasoning.
+This file is functionally an ADR (Architecture Decision Record) log — a
+well-established pattern, and the standard argument for keeping ADRs
+in-repo rather than in a wiki (Confluence, Notion) is proximity: a
+decision doc versioned next to the code it describes, reviewed through
+the same PR the code change goes through, is far less likely to silently
+go stale than one living in a separate, unreviewed tool. That argument
+applies to *engineering* decisions specifically — genuine product
+decisions (roadmap tradeoffs, anything a non-engineer needs to read or
+weigh in on) are a different category and belong in a tool built for
+that audience, not here.
