@@ -3,9 +3,11 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
+
 import { AuthModule } from './auth/auth.module';
 import { HealthModule } from './health/health.module';
 import { ProgressModule } from './progress/progress.module';
+import { WordsModule } from './words/words.module';
 
 const REQUIRED_ENV_VARS = ['DATABASE_URL', 'JWT_KEY_SOURCE'] as const;
 
@@ -47,6 +49,7 @@ const REQUIRED_ENV_VARS = ['DATABASE_URL', 'JWT_KEY_SOURCE'] as const;
     AuthModule,
     HealthModule,
     ProgressModule,
+    WordsModule,
   ],
 })
 export class AppModule {}
