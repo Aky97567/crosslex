@@ -20,6 +20,12 @@ export class AuthService implements OnModuleInit {
     private readonly tokenService: TokenService,
   ) {}
 
+  // Used in login() when no user is found, so argon2.verify() still runs
+  // its full, real computation instead of the "unknown email" path
+  // returning early — skipping it would make that path measurably faster
+  // than "known email, wrong password", leaking account existence via
+  // timing even with an identical error message. Computed once at boot,
+  // not per failed attempt, since argon2 is deliberately slow.
   private dummyHash: string;
 
   async onModuleInit() {

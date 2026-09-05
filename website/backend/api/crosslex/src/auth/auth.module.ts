@@ -3,6 +3,7 @@ import { ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import type { StringValue } from 'ms';
+
 import { PrismaModule } from '../prisma/prisma.module';
 import { getJwtPrivateKey, getJwtPublicKey } from './jwt-key.provider';
 import { AuthResolver } from './auth.resolver';
@@ -38,6 +39,6 @@ const DEFAULT_JWT_ACCESS_TOKEN_TTL: StringValue = '15m';
     JwtStrategy,
     JwtAuthGuard,
   ],
-  exports: [JwtModule, JwtAuthGuard],
+  exports: [JwtAuthGuard],
 })
 export class AuthModule {}
