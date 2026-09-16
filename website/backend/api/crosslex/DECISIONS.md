@@ -235,6 +235,7 @@ structurally cannot answer "what was my accuracy 3 weeks ago," only
 `ExerciseEvent`'s raw log can. That's a known, accepted gap, not an
 oversight — no dashboard feature is scoped yet, and solving its performance
 before it exists is premature.
+**Tracked in:** `ROADMAP.md` → Deferred.
 
 ---
 
@@ -259,6 +260,7 @@ work.
 `Word` table exists purely for referential integrity (see above). Scope
 creep risk was real: this came up while designing a schema for progress
 *tracking*, which doesn't require content modeling at all.
+**Tracked in:** `ROADMAP.md` → Deferred.
 
 ### Frontend auth integration deferred
 **Decision:** No login/signup UI built yet.
@@ -266,6 +268,7 @@ creep risk was real: this came up while designing a schema for progress
 demonstrable and tested via GraphQL/supertest without a UI. Real product
 work, but on a different track than what this build is currently
 optimizing for.
+**Tracked in:** `ROADMAP.md` → Deferred.
 
 ### AWS deploy (Phase 5) deferred; Phase 4/6/7 rescoped around it
 **Decision:** Phase 5 (VPC/RDS/RDS Proxy/Secrets Manager/Lambda) is
@@ -280,6 +283,8 @@ nothing in the target interview is AWS-specific. The Secrets Manager
 *code path* was still implemented on request, ahead of when it's needed —
 that doesn't change the scoping decision, it was just cheap to do while the
 relevant file was already open.
+**Tracked in:** `ROADMAP.md` → Deferred (AWS deploy, cross-subdomain
+cookies) and → Open decisions (Content-module D2).
 
 ---
 
