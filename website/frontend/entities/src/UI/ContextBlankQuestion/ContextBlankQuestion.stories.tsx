@@ -33,7 +33,7 @@ export default {
 const Template: StoryFn<typeof Wrapper> = (args) => <Wrapper {...args} />;
 
 export const Default: StoryObj<typeof Wrapper> = Template.bind({});
-Default.args = { word: 'beantragen' };
+Default.args = { word: 'steuer' };
 
 export const Perfekt: StoryObj<typeof Wrapper> = Template.bind({});
 Perfekt.args = { word: 'kaufen' };
