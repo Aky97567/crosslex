@@ -40,6 +40,7 @@ const makeContextBlankFixture = (
 };
 
 export const contextBlankStoryFixtures = {
+  steuer: makeContextBlankFixture('steuer', ['formular', 'gehalt', 'konto']),
   beantragen: makeContextBlankFixture('beantragen', ['kaufen', 'schreiben', 'bezahlen']),
   kaufen: makeContextBlankFixture('kaufen', ['beantragen', 'bezahlen', 'schreiben']),
   schreiben: makeContextBlankFixture('schreiben', ['kaufen', 'beantragen', 'sprechen']),
