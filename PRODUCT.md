@@ -152,13 +152,3 @@ crosslex:learning_rate     — 'aggressive' | 'conservative'
 3. **Alpha experience** — ~30 words, full session loop, no login required
 4. **Freemium gate** — login/signup to save progress, unlock more words
 5. **Paid tier** — more words, more languages (future)
-
----
-
-## What's Next (as of May 2026)
-
-1. Generate 19 more B1 words to reach 30 total
-2. Build exercise types 2 and 3 (context blank + word→definition)
-3. Build timed session loop with localStorage state
-4. Build dashboard (Tier 1 features only)
-5. Wire landing page (Next.js) to SPA with alpha CTA
