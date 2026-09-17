@@ -35,8 +35,11 @@ export const fruehstueck: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich esse jeden Morgen {{Frühstück}}. Das {{Frühstück}} besteht aus Brot, Käse und Kaffee. Ohne {{Frühstück}} bin ich nicht fit.',
+        paragraphWithUsage: [
+          'Ich esse jeden Morgen {{Frühstück}}.',
+          'Das {{Frühstück}} besteht aus Brot, Käse und Kaffee.',
+          'Ohne {{Frühstück}} bin ich nicht fit.',
+        ],
       },
       {
         moduleType: 'etymology',

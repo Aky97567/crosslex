@@ -35,8 +35,11 @@ export const anmeldung: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Die {{Anmeldung}} beim Bürgeramt ist nach dem Umzug Pflicht. Ohne {{Anmeldung}} kann man keine Bankverbindung eröffnen. Ich habe meine {{Anmeldung}} innerhalb einer Woche erledigt.',
+        paragraphWithUsage: [
+          'Die {{Anmeldung}} beim Bürgeramt ist nach dem Umzug Pflicht.',
+          'Ohne {{Anmeldung}} kann man keine Bankverbindung eröffnen.',
+          'Ich habe meine {{Anmeldung}} innerhalb einer Woche erledigt.',
+        ],
       },
       {
         moduleType: 'etymology',

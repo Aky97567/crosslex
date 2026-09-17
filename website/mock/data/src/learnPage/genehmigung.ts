@@ -35,8 +35,11 @@ export const genehmigung: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Für den Umbau des Hauses braucht man eine {{Genehmigung}} vom Amt. Die {{Genehmigung}} wurde nach zwei Wochen erteilt. Ohne {{Genehmigung}} dürfen Sie hier nicht parken.',
+        paragraphWithUsage: [
+          'Für den Umbau des Hauses braucht man eine {{Genehmigung}} vom Amt.',
+          'Die {{Genehmigung}} wurde nach zwei Wochen erteilt.',
+          'Ohne {{Genehmigung}} dürfen Sie hier nicht parken.',
+        ],
       },
       {
         moduleType: 'etymology',

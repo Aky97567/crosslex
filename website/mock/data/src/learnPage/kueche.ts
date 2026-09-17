@@ -35,8 +35,11 @@ export const kueche: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich koche das Abendessen in der {{Küche}}. Die {{Küche}} ist klein aber praktisch. In der {{Küche}} habe ich alles, was ich brauche.',
+        paragraphWithUsage: [
+          'Ich koche das Abendessen in der {{Küche}}.',
+          'Die {{Küche}} ist klein aber praktisch.',
+          'In der {{Küche}} habe ich alles, was ich brauche.',
+        ],
       },
       {
         moduleType: 'etymology',

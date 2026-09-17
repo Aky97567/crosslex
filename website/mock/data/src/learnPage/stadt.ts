@@ -35,8 +35,11 @@ export const stadt: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich lebe in einer großen {{Stadt}}. Die {{Stadt}} hat viele Parks und Geschäfte. Wir fahren morgen in die {{Stadt}}.',
+        paragraphWithUsage: [
+          'Ich lebe in einer großen {{Stadt}}.',
+          'Die {{Stadt}} hat viele Parks und Geschäfte.',
+          'Wir fahren morgen in die {{Stadt}}.',
+        ],
       },
       {
         moduleType: 'etymology',

@@ -35,8 +35,11 @@ export const kuendigung: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich habe eine {{Kündigung}} von meinem Vermieter erhalten. Die {{Kündigung}} muss schriftlich eingereicht werden. Nach der {{Kündigung}} habe ich drei Monate Zeit, eine neue Wohnung zu finden.',
+        paragraphWithUsage: [
+          'Ich habe eine {{Kündigung}} von meinem Vermieter erhalten.',
+          'Die {{Kündigung}} muss schriftlich eingereicht werden.',
+          'Nach der {{Kündigung}} habe ich drei Monate Zeit, eine neue Wohnung zu finden.',
+        ],
       },
       {
         moduleType: 'etymology',

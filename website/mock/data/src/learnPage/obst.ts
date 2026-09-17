@@ -35,8 +35,11 @@ export const obst: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich esse gerne {{Obst}} zum Frühstück. Das {{Obst}} im Supermarkt ist sehr frisch. Äpfel und Bananen sind mein liebstes {{Obst}}.',
+        paragraphWithUsage: [
+          'Ich esse gerne {{Obst}} zum Frühstück.',
+          'Das {{Obst}} im Supermarkt ist sehr frisch.',
+          'Äpfel und Bananen sind mein liebstes {{Obst}}.',
+        ],
       },
       {
         moduleType: 'etymology',

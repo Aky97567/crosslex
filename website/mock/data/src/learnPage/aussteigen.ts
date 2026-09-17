@@ -36,8 +36,11 @@ export const aussteigen: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Hier müssen wir {{aussteigen}}. Ich {{steige}} an der nächsten Haltestelle {{aus}}. Sie ist am Hauptbahnhof {{ausgestiegen}}.',
+        paragraphWithUsage: [
+          'Hier müssen wir {{aussteigen}}.',
+          'Ich {{steige}} an der nächsten Haltestelle {{aus}}.',
+          'Sie ist am Hauptbahnhof {{ausgestiegen}}.',
+        ],
       },
       {
         moduleType: 'etymology',

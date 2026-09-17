@@ -36,8 +36,11 @@ export const abholen: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Kannst du mich vom Bahnhof {{abholen}}? Ich {{hole}} dich um 18 Uhr {{ab}}. Er hat das Paket von der Post {{abgeholt}}.',
+        paragraphWithUsage: [
+          'Kannst du mich vom Bahnhof {{abholen}}?',
+          'Ich {{hole}} dich um 18 Uhr {{ab}}.',
+          'Er hat das Paket von der Post {{abgeholt}}.',
+        ],
       },
       {
         moduleType: 'etymology',

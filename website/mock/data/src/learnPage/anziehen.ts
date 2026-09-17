@@ -36,8 +36,11 @@ export const anziehen: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Du musst dich warm {{anziehen}}, es ist kalt draußen. Ich {{ziehe}} jetzt meinen Mantel {{an}}. Sie hat sich schnell {{angezogen}} und ist gegangen.',
+        paragraphWithUsage: [
+          'Du musst dich warm {{anziehen}}, es ist kalt draußen.',
+          'Ich {{ziehe}} jetzt meinen Mantel {{an}}.',
+          'Sie hat sich schnell {{angezogen}} und ist gegangen.',
+        ],
       },
       {
         moduleType: 'etymology',

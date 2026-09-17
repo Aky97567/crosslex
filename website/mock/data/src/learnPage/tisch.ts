@@ -34,8 +34,10 @@ export const tisch: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Der {{Tisch}} im Esszimmer ist aus Holz. Er stellt das Essen auf den {{Tisch}}.',
+        paragraphWithUsage: [
+          'Der {{Tisch}} im Esszimmer ist aus Holz.',
+          'Er stellt das Essen auf den {{Tisch}}.',
+        ],
       },
       {
         moduleType: 'etymology',

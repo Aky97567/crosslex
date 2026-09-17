@@ -35,8 +35,11 @@ export const bewerbung: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich habe eine {{Bewerbung}} für die Stelle als Buchhalter abgeschickt. Die {{Bewerbung}} muss ein Anschreiben und einen Lebenslauf enthalten. Nach meiner {{Bewerbung}} habe ich eine Woche auf eine Antwort gewartet.',
+        paragraphWithUsage: [
+          'Ich habe eine {{Bewerbung}} für die Stelle als Buchhalter abgeschickt.',
+          'Die {{Bewerbung}} muss ein Anschreiben und einen Lebenslauf enthalten.',
+          'Nach meiner {{Bewerbung}} habe ich eine Woche auf eine Antwort gewartet.',
+        ],
       },
       {
         moduleType: 'etymology',

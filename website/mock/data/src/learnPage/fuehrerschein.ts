@@ -36,8 +36,11 @@ export const fuehrerschein: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich habe meinen {{Führerschein}} dabei. Hast du einen {{Führerschein}}? Der {{Führerschein}} ist ein wichtiges Dokument.',
+        paragraphWithUsage: [
+          'Ich habe meinen {{Führerschein}} dabei.',
+          'Hast du einen {{Führerschein}}?',
+          'Der {{Führerschein}} ist ein wichtiges Dokument.',
+        ],
       },
       {
         moduleType: 'etymology',

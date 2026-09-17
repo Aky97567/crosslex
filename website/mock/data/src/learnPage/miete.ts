@@ -35,8 +35,11 @@ export const miete: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich bezahle jeden Monat die {{Miete}}. Die {{Miete}} beträgt 800 Euro. Die {{Miete}} ist in dieser Stadt sehr hoch.',
+        paragraphWithUsage: [
+          'Ich bezahle jeden Monat die {{Miete}}.',
+          'Die {{Miete}} beträgt 800 Euro.',
+          'Die {{Miete}} ist in dieser Stadt sehr hoch.',
+        ],
       },
       {
         moduleType: 'etymology',

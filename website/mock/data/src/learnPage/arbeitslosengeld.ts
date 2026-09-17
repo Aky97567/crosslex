@@ -36,8 +36,11 @@ export const arbeitslosengeld: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Nach der Kündigung hat er sofort {{Arbeitslosengeld}} beantragt. Das {{Arbeitslosengeld}} beträgt etwa 60 Prozent des letzten Nettogehalts. Man bezieht das {{Arbeitslosengeld}} für maximal zwölf Monate.',
+        paragraphWithUsage: [
+          'Nach der Kündigung hat er sofort {{Arbeitslosengeld}} beantragt.',
+          'Das {{Arbeitslosengeld}} beträgt etwa 60 Prozent des letzten Nettogehalts.',
+          'Man bezieht das {{Arbeitslosengeld}} für maximal zwölf Monate.',
+        ],
       },
       {
         moduleType: 'etymology',

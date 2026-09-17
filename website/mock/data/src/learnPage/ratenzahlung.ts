@@ -36,8 +36,11 @@ export const ratenzahlung: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich habe das neue Sofa auf {{Ratenzahlung}} gekauft. Die {{Ratenzahlung}} läuft über 24 Monate zu je 50 Euro. Bei einer {{Ratenzahlung}} muss man immer auf die Zinsen achten.',
+        paragraphWithUsage: [
+          'Ich habe das neue Sofa auf {{Ratenzahlung}} gekauft.',
+          'Die {{Ratenzahlung}} läuft über 24 Monate zu je 50 Euro.',
+          'Bei einer {{Ratenzahlung}} muss man immer auf die Zinsen achten.',
+        ],
       },
       {
         moduleType: 'etymology',

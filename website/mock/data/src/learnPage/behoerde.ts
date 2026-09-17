@@ -35,8 +35,11 @@ export const behoerde: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Die {{Behörde}} bearbeitet Anträge innerhalb von vier Wochen. Ich musste persönlich zur {{Behörde}} gehen, um die Dokumente einzureichen. Die zuständige {{Behörde}} hat meinen Antrag genehmigt.',
+        paragraphWithUsage: [
+          'Die {{Behörde}} bearbeitet Anträge innerhalb von vier Wochen.',
+          'Ich musste persönlich zur {{Behörde}} gehen, um die Dokumente einzureichen.',
+          'Die zuständige {{Behörde}} hat meinen Antrag genehmigt.',
+        ],
       },
       {
         moduleType: 'etymology',

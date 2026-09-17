@@ -35,8 +35,11 @@ export const ticket: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich habe kein {{Ticket}}. Wo kann ich ein {{Ticket}} kaufen? Das {{Ticket}} kostet fünf Euro.',
+        paragraphWithUsage: [
+          'Ich habe kein {{Ticket}}.',
+          'Wo kann ich ein {{Ticket}} kaufen?',
+          'Das {{Ticket}} kostet fünf Euro.',
+        ],
       },
       {
         moduleType: 'etymology',

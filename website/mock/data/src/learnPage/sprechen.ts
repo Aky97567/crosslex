@@ -35,8 +35,11 @@ export const sprechen: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich lerne Deutsch {{sprechen}}. Kannst du bitte langsam {{sprechen}}? Sie {{spricht}} sehr gut Englisch.',
+        paragraphWithUsage: [
+          'Ich lerne Deutsch {{sprechen}}.',
+          'Kannst du bitte langsam {{sprechen}}?',
+          'Sie {{spricht}} sehr gut Englisch.',
+        ],
       },
       {
         moduleType: 'etymology',

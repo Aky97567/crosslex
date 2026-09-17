@@ -35,8 +35,11 @@ export const ausbildung: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Er hat eine {{Ausbildung}} zum Elektriker erfolgreich abgeschlossen. Die {{Ausbildung}} dauert in Deutschland meistens zwei bis drei Jahre. Nach der {{Ausbildung}} hat er sofort eine Stelle in dem Betrieb bekommen.',
+        paragraphWithUsage: [
+          'Er hat eine {{Ausbildung}} zum Elektriker erfolgreich abgeschlossen.',
+          'Die {{Ausbildung}} dauert in Deutschland meistens zwei bis drei Jahre.',
+          'Nach der {{Ausbildung}} hat er sofort eine Stelle in dem Betrieb bekommen.',
+        ],
       },
       {
         moduleType: 'etymology',

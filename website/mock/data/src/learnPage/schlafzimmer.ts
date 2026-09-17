@@ -36,8 +36,11 @@ export const schlafzimmer: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Mein {{Schlafzimmer}} ist klein aber gemütlich. Im {{Schlafzimmer}} habe ich ein großes Bett. Das {{Schlafzimmer}} liegt ruhig zum Garten.',
+        paragraphWithUsage: [
+          'Mein {{Schlafzimmer}} ist klein aber gemütlich.',
+          'Im {{Schlafzimmer}} habe ich ein großes Bett.',
+          'Das {{Schlafzimmer}} liegt ruhig zum Garten.',
+        ],
       },
       {
         moduleType: 'etymology',

@@ -35,8 +35,11 @@ export const verspaetung: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Der Zug hat {{Verspätung}}. Die {{Verspätung}} beträgt 20 Minuten. Ich habe eine {{Verspätung}} — tut mir leid!',
+        paragraphWithUsage: [
+          'Der Zug hat {{Verspätung}}.',
+          'Die {{Verspätung}} beträgt 20 Minuten.',
+          'Ich habe eine {{Verspätung}} — tut mir leid!',
+        ],
       },
       {
         moduleType: 'etymology',

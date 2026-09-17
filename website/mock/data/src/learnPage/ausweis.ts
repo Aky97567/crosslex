@@ -35,8 +35,11 @@ export const ausweis: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Darf ich bitte Ihren {{Ausweis}} sehen? Ohne {{Ausweis}} kann ich kein Konto eröffnen. Ich habe meinen {{Ausweis}} zu Hause vergessen.',
+        paragraphWithUsage: [
+          'Darf ich bitte Ihren {{Ausweis}} sehen?',
+          'Ohne {{Ausweis}} kann ich kein Konto eröffnen.',
+          'Ich habe meinen {{Ausweis}} zu Hause vergessen.',
+        ],
       },
       {
         moduleType: 'etymology',

@@ -35,8 +35,11 @@ export const bahnhof: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich fahre zum {{Bahnhof}}. Am {{Bahnhof}} kaufe ich eine Fahrkarte. Der {{Bahnhof}} ist sehr groß und modern.',
+        paragraphWithUsage: [
+          'Ich fahre zum {{Bahnhof}}.',
+          'Am {{Bahnhof}} kaufe ich eine Fahrkarte.',
+          'Der {{Bahnhof}} ist sehr groß und modern.',
+        ],
       },
       {
         moduleType: 'etymology',

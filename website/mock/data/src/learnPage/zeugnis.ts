@@ -35,8 +35,11 @@ export const zeugnis: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Mein Arbeitgeber hat mir ein gutes {{Zeugnis}} ausgestellt. Das {{Zeugnis}} beschreibt meine Leistungen und meinen Charakter sehr positiv. Ohne ein starkes {{Zeugnis}} ist es schwer, eine neue Stelle zu finden.',
+        paragraphWithUsage: [
+          'Mein Arbeitgeber hat mir ein gutes {{Zeugnis}} ausgestellt.',
+          'Das {{Zeugnis}} beschreibt meine Leistungen und meinen Charakter sehr positiv.',
+          'Ohne ein starkes {{Zeugnis}} ist es schwer, eine neue Stelle zu finden.',
+        ],
       },
       {
         moduleType: 'etymology',

@@ -35,8 +35,11 @@ export const mahnung: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich habe eine {{Mahnung}} von meiner Krankenkasse bekommen. Die {{Mahnung}} fordert mich auf, den Beitrag innerhalb von zwei Wochen zu bezahlen. Nach der dritten {{Mahnung}} kann es zu rechtlichen Schritten kommen.',
+        paragraphWithUsage: [
+          'Ich habe eine {{Mahnung}} von meiner Krankenkasse bekommen.',
+          'Die {{Mahnung}} fordert mich auf, den Beitrag innerhalb von zwei Wochen zu bezahlen.',
+          'Nach der dritten {{Mahnung}} kann es zu rechtlichen Schritten kommen.',
+        ],
       },
       {
         moduleType: 'etymology',
