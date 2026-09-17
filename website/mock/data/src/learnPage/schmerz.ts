@@ -36,7 +36,7 @@ export const schmerz: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich habe Schmerzen im Rücken. Der Schmerz ist sehr stark. Gegen den Schmerz nehme ich eine Tablette.',
+          'Ich habe {{Schmerzen}} im Rücken. Der {{Schmerz}} ist sehr stark. Gegen den {{Schmerz}} nehme ich eine Tablette.',
       },
       {
         moduleType: 'etymology',

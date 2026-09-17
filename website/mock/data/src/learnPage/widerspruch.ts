@@ -36,7 +36,7 @@ export const widerspruch: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich habe gegen den Bescheid Widerspruch eingelegt. Der Widerspruch muss innerhalb eines Monats eingereicht werden. Nach dem Widerspruch prüft die Behörde den Fall erneut.',
+          'Ich habe gegen den Bescheid {{Widerspruch}} eingelegt. Der {{Widerspruch}} muss innerhalb eines Monats eingereicht werden. Nach dem {{Widerspruch}} prüft die Behörde den Fall erneut.',
       },
       {
         moduleType: 'etymology',

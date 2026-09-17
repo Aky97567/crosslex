@@ -35,7 +35,7 @@ export const auto: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Das Auto fährt schnell. Sie haben ein neues Auto gekauft.',
+          'Das {{Auto}} fährt schnell. Sie haben ein neues {{Auto}} gekauft.',
       },
       {
         moduleType: 'etymology',

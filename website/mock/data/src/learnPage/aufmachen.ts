@@ -37,9 +37,7 @@ export const aufmachen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Kannst du bitte das Fenster aufmachen? Ich mache die Tür für dich auf. Er hat das Paket noch nicht aufgemacht.',
-        alternateForms: ['aufgemacht'],
-        trennbarTokens: ['mache', 'auf'] as [string, string],
+          'Kannst du bitte das Fenster {{aufmachen}}? Ich {{mache}} die Tür für dich {{auf}}. Er hat das Paket noch nicht {{aufgemacht}}.',
       },
       {
         moduleType: 'etymology',

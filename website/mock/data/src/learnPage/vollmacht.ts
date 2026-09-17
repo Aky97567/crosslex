@@ -36,7 +36,7 @@ export const vollmacht: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich habe meiner Freundin eine Vollmacht gegeben, damit sie das Paket für mich abholen kann. Die Vollmacht muss schriftlich erteilt werden. Für manche Behördengänge ist eine notarielle Vollmacht erforderlich.',
+          'Ich habe meiner Freundin eine {{Vollmacht}} gegeben, damit sie das Paket für mich abholen kann. Die {{Vollmacht}} muss schriftlich erteilt werden. Für manche Behördengänge ist eine notarielle {{Vollmacht}} erforderlich.',
       },
       {
         moduleType: 'etymology',

@@ -36,7 +36,7 @@ export const verabredung: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich habe eine Verabredung um 18 Uhr. Hast du eine Verabredung heute? Die Verabredung war sehr schön.',
+          'Ich habe eine {{Verabredung}} um 18 Uhr. Hast du eine {{Verabredung}} heute? Die {{Verabredung}} war sehr schön.',
       },
       {
         moduleType: 'etymology',

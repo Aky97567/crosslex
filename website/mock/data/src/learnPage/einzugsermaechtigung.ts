@@ -37,7 +37,7 @@ export const einzugsermaechtigung: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich habe dem Vermieter eine Einzugsermächtigung für die monatliche Miete gegeben. Die Einzugsermächtigung kann ich jederzeit schriftlich widerrufen. Mit einer Einzugsermächtigung muss ich die Überweisung nicht mehr manuell ausführen.',
+          'Ich habe dem Vermieter eine {{Einzugsermächtigung}} für die monatliche Miete gegeben. Die {{Einzugsermächtigung}} kann ich jederzeit schriftlich widerrufen. Mit einer {{Einzugsermächtigung}} muss ich die Überweisung nicht mehr manuell ausführen.',
       },
       {
         moduleType: 'etymology',

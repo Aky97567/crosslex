@@ -37,9 +37,7 @@ export const abgeben: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Sie müssen die Unterlagen persönlich abgeben. Ich gebe den Antrag morgen beim Amt ab. Er hat seine Kündigung schriftlich abgegeben.',
-        alternateForms: ['abgegeben'],
-        trennbarTokens: ['gebe', 'ab'] as [string, string],
+          'Sie müssen die Unterlagen persönlich {{abgeben}}. Ich {{gebe}} den Antrag morgen beim Amt {{ab}}. Er hat seine Kündigung schriftlich {{abgegeben}}.',
       },
       {
         moduleType: 'etymology',

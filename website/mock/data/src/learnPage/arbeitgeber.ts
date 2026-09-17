@@ -37,7 +37,7 @@ export const arbeitgeber: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Mein Arbeitgeber hat den Vertrag noch nicht unterschrieben. Der Arbeitgeber ist verpflichtet, die Sozialversicherungsbeiträge abzuführen. Ich muss meinem Arbeitgeber die Krankmeldung vorlegen.',
+          'Mein {{Arbeitgeber}} hat den Vertrag noch nicht unterschrieben. Der {{Arbeitgeber}} ist verpflichtet, die Sozialversicherungsbeiträge abzuführen. Ich muss meinem {{Arbeitgeber}} die Krankmeldung vorlegen.',
       },
       {
         moduleType: 'etymology',

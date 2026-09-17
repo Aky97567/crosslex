@@ -36,7 +36,7 @@ export const zustaendigkeit: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Die Zuständigkeit für diese Angelegenheit liegt beim Finanzamt. Das fällt nicht in meine Zuständigkeit. Welche Behörde hat hier die Zuständigkeit?',
+          'Die {{Zuständigkeit}} für diese Angelegenheit liegt beim Finanzamt. Das fällt nicht in meine {{Zuständigkeit}}. Welche Behörde hat hier die {{Zuständigkeit}}?',
       },
       {
         moduleType: 'etymology',

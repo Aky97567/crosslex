@@ -36,7 +36,7 @@ export const familie: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Meine Familie wohnt in München. Ich besuche meine Familie jeden Monat. Die Familie ist sehr wichtig für mich.',
+          'Meine {{Familie}} wohnt in München. Ich besuche meine {{Familie}} jeden Monat. Die {{Familie}} ist sehr wichtig für mich.',
       },
       {
         moduleType: 'etymology',

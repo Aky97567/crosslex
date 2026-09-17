@@ -36,7 +36,7 @@ export const frist: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Die Frist endet am 30. April. Sie haben die Frist versäumt und müssen jetzt eine Strafe zahlen. Bitte halten Sie die Frist ein.',
+          'Die {{Frist}} endet am 30. April. Sie haben die {{Frist}} versäumt und müssen jetzt eine Strafe zahlen. Bitte halten Sie die {{Frist}} ein.',
       },
       {
         moduleType: 'etymology',

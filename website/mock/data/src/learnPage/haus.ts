@@ -35,7 +35,7 @@ export const haus: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Das Haus ist groß und hat einen Garten. Sie wohnt in einem roten Haus.',
+          'Das {{Haus}} ist groß und hat einen Garten. Sie wohnt in einem roten {{Haus}}.',
       },
       {
         moduleType: 'etymology',

@@ -36,7 +36,7 @@ export const brief: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich habe einen Brief bekommen. Der Brief ist von meiner Bank. Ich muss den Brief beantworten.',
+          'Ich habe einen {{Brief}} bekommen. Der {{Brief}} ist von meiner Bank. Ich muss den {{Brief}} beantworten.',
       },
       {
         moduleType: 'etymology',

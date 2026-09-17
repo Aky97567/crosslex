@@ -37,7 +37,7 @@ export const tarifvertrag: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'In meiner Branche gilt ein Tarifvertrag für alle Beschäftigten. Der Tarifvertrag legt das Mindestgehalt und die Arbeitszeiten fest. Die Gewerkschaft hat den neuen Tarifvertrag nach langen Verhandlungen durchgesetzt.',
+          'In meiner Branche gilt ein {{Tarifvertrag}} für alle Beschäftigten. Der {{Tarifvertrag}} legt das Mindestgehalt und die Arbeitszeiten fest. Die Gewerkschaft hat den neuen {{Tarifvertrag}} nach langen Verhandlungen durchgesetzt.',
       },
       {
         moduleType: 'etymology',

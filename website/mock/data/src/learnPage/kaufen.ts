@@ -36,8 +36,7 @@ export const kaufen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich möchte heute neue Schuhe kaufen. Wo kann man hier gute Schuhe kaufen? Ich habe gestern Brot und Milch gekauft.',
-        alternateForms: ['gekauft'],
+          'Ich möchte heute neue Schuhe {{kaufen}}. Wo kann man hier gute Schuhe {{kaufen}}? Ich habe gestern Brot und Milch {{gekauft}}.',
       },
       {
         moduleType: 'etymology',

@@ -36,7 +36,7 @@ export const unterlagen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Bitte bringen Sie alle notwendigen Unterlagen mit. Die Unterlagen müssen vollständig und korrekt sein. Ohne die richtigen Unterlagen kann der Antrag nicht bearbeitet werden.',
+          'Bitte bringen Sie alle notwendigen {{Unterlagen}} mit. Die {{Unterlagen}} müssen vollständig und korrekt sein. Ohne die richtigen {{Unterlagen}} kann der Antrag nicht bearbeitet werden.',
       },
       {
         moduleType: 'etymology',

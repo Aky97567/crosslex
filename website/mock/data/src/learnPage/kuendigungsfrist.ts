@@ -37,7 +37,7 @@ export const kuendigungsfrist: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Mein Arbeitsvertrag hat eine Kündigungsfrist von drei Monaten. Ich muss die Kündigungsfrist einhalten, bevor ich die Stelle verlasse. Nach fünf Jahren Beschäftigung verlängert sich die Kündigungsfrist auf zwei Monate.',
+          'Mein Arbeitsvertrag hat eine {{Kündigungsfrist}} von drei Monaten. Ich muss die {{Kündigungsfrist}} einhalten, bevor ich die Stelle verlasse. Nach fünf Jahren Beschäftigung verlängert sich die {{Kündigungsfrist}} auf zwei Monate.',
       },
       {
         moduleType: 'etymology',

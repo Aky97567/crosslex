@@ -36,7 +36,7 @@ export const wohnung: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich suche eine neue Wohnung. Die Wohnung hat zwei Zimmer. Meine Wohnung ist nicht weit vom Bahnhof.',
+          'Ich suche eine neue {{Wohnung}}. Die {{Wohnung}} hat zwei Zimmer. Meine {{Wohnung}} ist nicht weit vom Bahnhof.',
       },
       {
         moduleType: 'etymology',

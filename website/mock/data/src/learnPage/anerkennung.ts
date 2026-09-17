@@ -36,7 +36,7 @@ export const anerkennung: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Die Anerkennung meines ausländischen Abschlusses dauerte sechs Monate. Ohne Anerkennung darf ich meinen Beruf in Deutschland nicht ausüben. Die Anerkennung wird von der zuständigen Stelle geprüft.',
+          'Die {{Anerkennung}} meines ausländischen Abschlusses dauerte sechs Monate. Ohne {{Anerkennung}} darf ich meinen Beruf in Deutschland nicht ausüben. Die {{Anerkennung}} wird von der zuständigen Stelle geprüft.',
       },
       {
         moduleType: 'etymology',

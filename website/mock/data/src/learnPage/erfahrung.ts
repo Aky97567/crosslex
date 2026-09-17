@@ -40,7 +40,7 @@ export const erfahrung: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Durch meine jahrelange Erfahrung habe ich gelernt, wie man effizient arbeitet. Erfahrung ist der beste Lehrer.',
+          'Durch meine jahrelange {{Erfahrung}} habe ich gelernt, wie man effizient arbeitet. {{Erfahrung}} ist der beste Lehrer.',
       },
       {
         moduleType: 'etymology',

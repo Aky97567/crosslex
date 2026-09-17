@@ -36,7 +36,7 @@ export const abmeldung: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Vor meinem Umzug ins Ausland muss ich die Abmeldung beim Bürgeramt machen. Die Abmeldung ist kostenlos und dauert nur wenige Minuten. Ohne Abmeldung laufen die Beiträge für den Rundfunk weiter.',
+          'Vor meinem Umzug ins Ausland muss ich die {{Abmeldung}} beim Bürgeramt machen. Die {{Abmeldung}} ist kostenlos und dauert nur wenige Minuten. Ohne {{Abmeldung}} laufen die Beiträge für den Rundfunk weiter.',
       },
       {
         moduleType: 'etymology',

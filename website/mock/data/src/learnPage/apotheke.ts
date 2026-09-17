@@ -36,7 +36,7 @@ export const apotheke: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich gehe in die Apotheke. Die Apotheke ist bis 20 Uhr geöffnet. In der Apotheke bekomme ich meine Medikamente.',
+          'Ich gehe in die {{Apotheke}}. Die {{Apotheke}} ist bis 20 Uhr geöffnet. In der {{Apotheke}} bekomme ich meine Medikamente.',
       },
       {
         moduleType: 'etymology',

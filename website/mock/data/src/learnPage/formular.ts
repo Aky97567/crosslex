@@ -36,7 +36,7 @@ export const formular: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Bitte füllen Sie das Formular vollständig aus. Das Formular ist auf der Website der Behörde verfügbar. Nach dem Ausfüllen müssen Sie das Formular unterschreiben.',
+          'Bitte füllen Sie das {{Formular}} vollständig aus. Das {{Formular}} ist auf der Website der Behörde verfügbar. Nach dem Ausfüllen müssen Sie das {{Formular}} unterschreiben.',
       },
       {
         moduleType: 'etymology',

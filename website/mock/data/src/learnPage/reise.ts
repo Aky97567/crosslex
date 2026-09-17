@@ -36,7 +36,7 @@ export const reise: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Die Reise nach München hat drei Stunden gedauert. Ich mache gerne eine Reise im Sommer. Wie war die Reise?',
+          'Die {{Reise}} nach München hat drei Stunden gedauert. Ich mache gerne eine {{Reise}} im Sommer. Wie war die {{Reise}}?',
       },
       {
         moduleType: 'etymology',

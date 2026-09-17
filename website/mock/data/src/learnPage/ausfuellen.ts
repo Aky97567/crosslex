@@ -37,9 +37,7 @@ export const ausfuellen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Sie müssen dieses Formular vollständig ausfüllen. Ich fülle den Antrag jetzt aus. Er hat das Anmeldeformular korrekt ausgefüllt.',
-        alternateForms: ['ausgefüllt'],
-        trennbarTokens: ['fülle', 'aus'] as [string, string],
+          'Sie müssen dieses Formular vollständig {{ausfüllen}}. Ich {{fülle}} den Antrag jetzt {{aus}}. Er hat das Anmeldeformular korrekt {{ausgefüllt}}.',
       },
       {
         moduleType: 'etymology',

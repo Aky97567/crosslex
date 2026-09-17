@@ -37,9 +37,7 @@ export const anrufen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Du solltest die Arztpraxis anrufen und einen Termin machen. Ich rufe dich morgen früh an. Sie hat ihren Chef nicht angerufen.',
-        alternateForms: ['angerufen'],
-        trennbarTokens: ['rufe', 'an'] as [string, string],
+          'Du solltest die Arztpraxis {{anrufen}} und einen Termin machen. Ich {{rufe}} dich morgen früh {{an}}. Sie hat ihren Chef nicht {{angerufen}}.',
       },
       {
         moduleType: 'etymology',

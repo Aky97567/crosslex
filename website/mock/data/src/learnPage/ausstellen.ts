@@ -37,9 +37,7 @@ export const ausstellen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Die Behörde muss Ihnen eine Bescheinigung ausstellen. Das Amt stellt den Ausweis innerhalb von zwei Wochen aus. Die Gemeinde hat die Genehmigung ohne Probleme ausgestellt.',
-        alternateForms: ['ausgestellt'],
-        trennbarTokens: ['stellt', 'aus'] as [string, string],
+          'Die Behörde muss Ihnen eine Bescheinigung {{ausstellen}}. Das Amt {{stellt}} den Ausweis innerhalb von zwei Wochen {{aus}}. Die Gemeinde hat die Genehmigung ohne Probleme {{ausgestellt}}.',
       },
       {
         moduleType: 'etymology',

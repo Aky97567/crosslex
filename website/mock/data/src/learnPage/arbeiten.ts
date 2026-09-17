@@ -36,8 +36,7 @@ export const arbeiten: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich arbeite von 9 bis 17 Uhr. Wo arbeiten Sie? Meine Schwester arbeitet in einem Krankenhaus.',
-        alternateForms: ['arbeite', 'arbeitet'],
+          'Ich {{arbeite}} von 9 bis 17 Uhr. Wo {{arbeiten}} Sie? Meine Schwester {{arbeitet}} in einem Krankenhaus.',
       },
       {
         moduleType: 'etymology',

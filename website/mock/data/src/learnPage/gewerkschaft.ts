@@ -36,7 +36,7 @@ export const gewerkschaft: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Mein Kollege ist Mitglied in einer Gewerkschaft. Die Gewerkschaft hat für uns einen besseren Tarifvertrag ausgehandelt. Eine starke Gewerkschaft schützt die Rechte aller Arbeitnehmer.',
+          'Mein Kollege ist Mitglied in einer {{Gewerkschaft}}. Die {{Gewerkschaft}} hat für uns einen besseren Tarifvertrag ausgehandelt. Eine starke {{Gewerkschaft}} schützt die Rechte aller Arbeitnehmer.',
       },
       {
         moduleType: 'etymology',

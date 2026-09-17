@@ -36,7 +36,7 @@ export const termin: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich habe einen Termin beim Ausländeramt nächste Woche. Der Termin dauert etwa eine Stunde. Ohne Termin kann man dort nicht vorsprechen.',
+          'Ich habe einen {{Termin}} beim Ausländeramt nächste Woche. Der {{Termin}} dauert etwa eine Stunde. Ohne {{Termin}} kann man dort nicht vorsprechen.',
       },
       {
         moduleType: 'etymology',
