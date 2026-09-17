@@ -15,7 +15,7 @@ Word data lives in `mock/data/src/learnPage/`. Each word is its own file.
 - `wordIntro` — word, article, translation, partOfSpeech, level `['B1']`; omit `representativeImageUrl` until a real URL exists; for compound nouns add a `displayName` with soft hyphens (see below)
 - `wordMeaning` — one-paragraph definition
 - `meaningGuessQuestion` — 3 options, exactly 1 `isCorrect: true`
-- `wordContext` — paragraph using the word **at least 3 times**; include `alternateForms` for any inflected forms that appear in the paragraph (see below); for trennbar verbs, see trennbar rules below
+- `wordContext` — paragraph using the word **at least 3 times**; wrap every occurrence (any inflected form) in `{{...}}` directly in the sentence (see below); for trennbar verbs, see trennbar rules below
 - `etymology` — origin explanation
 - `similarWords` — 2–3 **synonyms** (not thematically related words) with article, translation, similarityScore, level, cefrRelevant
 - `mnemonics` — 2 mnemonics; omit `imageUrl` until a real URL exists
@@ -67,21 +67,20 @@ choice.
 This data feeds more than one place, so "does the sentence read naturally"
 isn't the only bar it has to clear:
 - The `contextBlank` exercise (`sessionAlgorithm.ts`, `generateExerciseData`)
-  blanks the base word plus any declared `alternateForms`/`trennbarTokens`.
-  A sentence where **no** declared form actually matches ends up with a
-  blank count of zero — and a zero-blank sentence is hidden from the
-  learner entirely until the question is answered
+  blanks every `{{...}}`-marked span. A sentence with **no** marker in it
+  ends up with a blank count of zero — and a zero-blank sentence is hidden
+  from the learner entirely until the question is answered
   (`ContextBlankQuestion.tsx`). An inflected form the paragraph uses but
-  `alternateForms` doesn't list isn't just missed — it silently removes
-  that whole sentence as a teaching opportunity, with nothing in the UI
-  signalling the gap. Always double-check every form the paragraph
-  actually uses is listed (see `alternateForms` below).
+  didn't get marked isn't just missed — it silently removes that whole
+  sentence as a teaching opportunity, with nothing in the UI signalling the
+  gap. Always double-check every occurrence of the word (any form) in the
+  paragraph is wrapped in `{{...}}` (see below).
 - The word-intro learn-page card (`WordContext.tsx`) displays the **full**
-  paragraph, unconditionally, with the word and its forms highlighted —
-  real, always-visible content on first encounter with the word, not just
+  paragraph, unconditionally, with marked spans highlighted — real,
+  always-visible content on first encounter with the word, not just
   exercise fodder.
 - `storyFixtures.ts`'s `makeContextBlankFixture` mirrors the exercise's own
-  matching logic for Storybook fixtures.
+  parsing for Storybook fixtures.
 
 **`word` vs `displayName` in `wordIntro`:**
 
@@ -114,32 +113,27 @@ Rule: insert a soft hyphen at every word boundary in the compound. Examples:
 
 Verbs and adjectives rarely need this — it mainly affects long nouns.
 
-**`alternateForms` — what to include per part of speech:**
+**Marking occurrences with `{{...}}`:**
 
-The `contextBlank` exercise blanks the base form plus any strings listed in `alternateForms`. Without this, conjugated/inflected forms remain visible and leak the answer if they share a sentence with a form that *is* declared, or — if a sentence's only occurrence is the undeclared form — silently drop that entire sentence from the exercise instead (see "design principle and consumers" above). Either way, an incomplete list is a real content bug, not just a cosmetic one. The correct answer shown to the user is always the base form (dictionary lemma).
+Every occurrence of the word in `paragraphWithUsage` — the base form or any inflected form — is wrapped inline: `{{Steuer}}`, `{{arbeitet}}`, `{{gegessen}}`. `parseAnnotatedParagraph` (from `@whitelotus/common-crosslex-view`) reads these markers directly; there's no separate list to declare or keep in sync with the prose, and no matching-by-inference — a form that isn't wrapped simply isn't recognized, so it's immediately obvious in the source which occurrences are "real" and which aren't, unlike the old `alternateForms` array that could silently drift out of sync with what the sentence actually used. The correct answer shown to the user is always the base form (dictionary lemma) from `wordIntro.word`, regardless of which marked form got blanked.
 
-| Part of speech | What to include in `alternateForms` |
+Mark every occurrence you write, per part of speech:
+
+| Part of speech | What to mark |
 |---|---|
-| Verb | Partizip II (past participle), e.g. `beantragt`, `bezahlt`, `geschrieben`. Also include Präsens 3rd-person singular if it appears and is visually distinct (e.g. `spricht` for `sprechen`, `arbeitet` for `arbeiten`). Also include 1st-person singular if it appears and is shorter than the infinitive (e.g. `bestelle`, `bezahle`). |
-| Verb (trennbar) | Partizip II only (e.g. `nachgewiesen`, `umgestiegen`). The separated prefix form is **not** in `alternateForms` — it goes in `trennbarTokens` instead for display highlighting. |
-| Noun | Nominative plural if the paragraph uses it (e.g. `Wohnungen` for `Wohnung`). Most noun paragraphs repeat the nominative singular — omit if not needed. |
-| Adjective | Attributive declension forms if the paragraph uses them (e.g. `schnelles` for `schnell`). Rare at A2/B1. |
+| Verb | The infinitive, Partizip II (e.g. `beantragt`, `bezahlt`, `geschrieben`), and any other conjugated form that appears (e.g. `spricht`, `arbeitet`, `bestelle`) |
+| Noun | The base form, plus the nominative plural if the paragraph uses it (e.g. `Wohnungen` for `Wohnung`) |
+| Adjective | The base form, plus any declension form the paragraph uses (e.g. `schnelles` for `schnell`) |
 
-**Trennbar verbs — mandatory paragraph structure and extra fields:**
+**Trennbar verbs — mandatory paragraph structure:**
 
 Add `trennbar: true` to `wordIntro`. The `wordContext` paragraph **must follow this exact sentence order**:
 
-1. **Infinitive** — "Sie müssen … nachweisen." ← blankable in contextBlank (base form)
-2. **Separated prefix form** — "Bitte weisen Sie … nach." ← shown as context, NOT blanked; parts highlighted in the learn card
-3. **Partizip II** — "Er hat … nachgewiesen." ← blankable in contextBlank (via `alternateForms`)
+1. **Infinitive** — "Sie müssen … {{nachweisen}}." ← blankable in contextBlank
+2. **Separated prefix form** — "Bitte {{weisen}} Sie … {{nach}}." ← the stem and prefix are marked individually; the exercise still blanks them, styled as context rather than the quiz answer (see below), and the learn card highlights them the same as any other marked span
+3. **Partizip II** — "Er hat … {{nachgewiesen}}." ← blankable in contextBlank
 
-In `wordContext`, set:
-```ts
-alternateForms: ['partizipII'],           // e.g. ['nachgewiesen']
-trennbarTokens: ['stemForm', 'prefix'],   // e.g. ['weisen', 'nach'] — tokens highlighted in sentence 2
-```
-
-The exercise blanks sentences 1 and 3; sentence 2 is rendered as plain text but with `stemForm` and `prefix` highlighted in the learn card alongside all other form highlights.
+Which sentence gets the "context" styling isn't declared per word — it's derived automatically from `wordIntro.trennbar` (always sentence index 1, per the mandatory order above), so there's nothing extra to set in `wordContext` itself.
 
 **Gotchas encountered:**
 - `representativeImageUrl` and mnemonic `imageUrl` are **multi-line** in the file (`key:\n  'url',`). When bulk-stripping with `sed`, removing the key line leaves the URL value as an orphaned string — causes a TS error. Always run a second `sed` pass to remove the bare URL lines too, then verify with `grep`.
