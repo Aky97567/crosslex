@@ -36,7 +36,7 @@ export const geld: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Hast du genug Geld dabei? Ich habe kein Geld mehr. Das Geld liegt auf dem Tisch.',
+          'Hast du genug {{Geld}} dabei? Ich habe kein {{Geld}} mehr. Das {{Geld}} liegt auf dem Tisch.',
       },
       {
         moduleType: 'etymology',

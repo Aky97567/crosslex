@@ -35,7 +35,7 @@ export const apfel: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Der Apfel ist süß und saftig. Ich esse jeden Tag einen Apfel.',
+          'Der {{Apfel}} ist süß und saftig. Ich esse jeden Tag einen {{Apfel}}.',
       },
       {
         moduleType: 'etymology',

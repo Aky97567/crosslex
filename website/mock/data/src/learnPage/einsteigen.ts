@@ -37,9 +37,7 @@ export const einsteigen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Du musst schnell in den Zug einsteigen. Ich steige jetzt in die U-Bahn ein. Wir sind am Gleis drei eingestiegen.',
-        alternateForms: ['eingestiegen'],
-        trennbarTokens: ['steige', 'ein'] as [string, string],
+          'Du musst schnell in den Zug {{einsteigen}}. Ich {{steige}} jetzt in die U-Bahn {{ein}}. Wir sind am Gleis drei {{eingestiegen}}.',
       },
       {
         moduleType: 'etymology',

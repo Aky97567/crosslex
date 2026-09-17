@@ -37,9 +37,7 @@ export const anfangen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Wann soll die Arbeit anfangen? Ich fange morgen mit dem Kurs an. Das Projekt hat letzte Woche angefangen.',
-        alternateForms: ['angefangen'],
-        trennbarTokens: ['fange', 'an'] as [string, string],
+          'Wann soll die Arbeit {{anfangen}}? Ich {{fange}} morgen mit dem Kurs {{an}}. Das Projekt hat letzte Woche {{angefangen}}.',
       },
       {
         moduleType: 'etymology',

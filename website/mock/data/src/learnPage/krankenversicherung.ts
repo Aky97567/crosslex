@@ -37,7 +37,7 @@ export const krankenversicherung: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'In Deutschland ist die Krankenversicherung für alle Pflicht. Meine Krankenversicherung übernimmt die Kosten für den Arztbesuch. Ich habe mich bei der AOK als Krankenversicherung angemeldet.',
+          'In Deutschland ist die {{Krankenversicherung}} für alle Pflicht. Meine {{Krankenversicherung}} übernimmt die Kosten für den Arztbesuch. Ich habe mich bei der AOK als {{Krankenversicherung}} angemeldet.',
       },
       {
         moduleType: 'etymology',

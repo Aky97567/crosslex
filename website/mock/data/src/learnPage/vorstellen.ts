@@ -37,9 +37,7 @@ export const vorstellen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Darf ich mich kurz vorstellen? Ich stelle mich jetzt den neuen Kollegen vor. Sie hat sich beim Vorstellungsgespräch gut vorgestellt.',
-        alternateForms: ['vorgestellt'],
-        trennbarTokens: ['stelle', 'vor'] as [string, string],
+          'Darf ich mich kurz {{vorstellen}}? Ich {{stelle}} mich jetzt den neuen Kollegen {{vor}}. Sie hat sich beim Vorstellungsgespräch gut {{vorgestellt}}.',
       },
       {
         moduleType: 'etymology',

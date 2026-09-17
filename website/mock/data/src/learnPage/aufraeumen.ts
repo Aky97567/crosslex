@@ -37,9 +37,7 @@ export const aufraeumen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich muss heute mein Zimmer aufräumen. Ich räume jetzt das Wohnzimmer auf. Sie hat die Küche nach dem Kochen aufgeräumt.',
-        alternateForms: ['aufgeräumt'],
-        trennbarTokens: ['räume', 'auf'] as [string, string],
+          'Ich muss heute mein Zimmer {{aufräumen}}. Ich {{räume}} jetzt das Wohnzimmer {{auf}}. Sie hat die Küche nach dem Kochen {{aufgeräumt}}.',
       },
       {
         moduleType: 'etymology',

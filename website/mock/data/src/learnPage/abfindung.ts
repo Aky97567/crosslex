@@ -36,7 +36,7 @@ export const abfindung: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Er hat nach der Kündigung eine Abfindung von seinem Arbeitgeber erhalten. Die Abfindung entspricht drei Monatsgehältern. Ohne eine faire Abfindung wollte er vor das Arbeitsgericht gehen.',
+          'Er hat nach der Kündigung eine {{Abfindung}} von seinem Arbeitgeber erhalten. Die {{Abfindung}} entspricht drei Monatsgehältern. Ohne eine faire {{Abfindung}} wollte er vor das Arbeitsgericht gehen.',
       },
       {
         moduleType: 'etymology',

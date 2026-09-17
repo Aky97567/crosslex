@@ -36,7 +36,7 @@ export const auskunft: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich brauche eine Auskunft. Gehen Sie zur Auskunft am Bahnhof. Die Auskunft hat mir geholfen.',
+          'Ich brauche eine {{Auskunft}}. Gehen Sie zur {{Auskunft}} am Bahnhof. Die {{Auskunft}} hat mir geholfen.',
       },
       {
         moduleType: 'etymology',

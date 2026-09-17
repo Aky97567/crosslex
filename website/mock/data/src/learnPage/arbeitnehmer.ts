@@ -37,7 +37,7 @@ export const arbeitnehmer: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Als Arbeitnehmer habe ich Anspruch auf bezahlten Urlaub. Der Arbeitnehmer und der Arbeitgeber haben den Vertrag gemeinsam unterschrieben. Jeder Arbeitnehmer in Deutschland zahlt Beiträge zur Sozialversicherung.',
+          'Als {{Arbeitnehmer}} habe ich Anspruch auf bezahlten Urlaub. Der {{Arbeitnehmer}} und der Arbeitgeber haben den Vertrag gemeinsam unterschrieben. Jeder {{Arbeitnehmer}} in Deutschland zahlt Beiträge zur Sozialversicherung.',
       },
       {
         moduleType: 'etymology',

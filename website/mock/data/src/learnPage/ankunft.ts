@@ -36,7 +36,7 @@ export const ankunft: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Die Ankunft ist um 16 Uhr. Wir warten auf die Ankunft des Zuges. Nach der Ankunft hole ich mein Gepäck.',
+          'Die {{Ankunft}} ist um 16 Uhr. Wir warten auf die {{Ankunft}} des Zuges. Nach der {{Ankunft}} hole ich mein Gepäck.',
       },
       {
         moduleType: 'etymology',

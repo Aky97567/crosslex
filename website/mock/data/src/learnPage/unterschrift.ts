@@ -37,7 +37,7 @@ export const unterschrift: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Der Vertrag braucht Ihre Unterschrift auf jeder Seite. Ich habe meine Unterschrift unter den Mietvertrag gesetzt. Ohne eine gültige Unterschrift ist das Dokument rechtlich nicht bindend.',
+          'Der Vertrag braucht Ihre {{Unterschrift}} auf jeder Seite. Ich habe meine {{Unterschrift}} unter den Mietvertrag gesetzt. Ohne eine gültige {{Unterschrift}} ist das Dokument rechtlich nicht bindend.',
       },
       {
         moduleType: 'etymology',

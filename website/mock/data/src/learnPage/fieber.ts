@@ -36,7 +36,7 @@ export const fieber: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich habe Fieber. Das Fieber ist heute Nacht gestiegen. Mit Fieber gehe ich zum Arzt.',
+          'Ich habe {{Fieber}}. Das {{Fieber}} ist heute Nacht gestiegen. Mit {{Fieber}} gehe ich zum Arzt.',
       },
       {
         moduleType: 'etymology',

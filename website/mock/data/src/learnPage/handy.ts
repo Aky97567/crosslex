@@ -36,7 +36,7 @@ export const handy: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich habe mein Handy vergessen. Kannst du mich auf dem Handy anrufen? Das Handy ist nicht aufgeladen.',
+          'Ich habe mein {{Handy}} vergessen. Kannst du mich auf dem {{Handy}} anrufen? Das {{Handy}} ist nicht aufgeladen.',
       },
       {
         moduleType: 'etymology',

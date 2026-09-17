@@ -37,9 +37,7 @@ export const teilnehmen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Alle Mitarbeiter müssen an der Schulung teilnehmen. Ich nehme nächste Woche an dem Kurs teil. Sie hat an dem Integrationskurs teilgenommen.',
-        alternateForms: ['teilgenommen'],
-        trennbarTokens: ['nehme', 'teil'] as [string, string],
+          'Alle Mitarbeiter müssen an der Schulung {{teilnehmen}}. Ich {{nehme}} nächste Woche an dem Kurs {{teil}}. Sie hat an dem Integrationskurs {{teilgenommen}}.',
       },
       {
         moduleType: 'etymology',

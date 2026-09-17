@@ -36,7 +36,7 @@ export const rezept: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich brauche ein Rezept vom Arzt. Das Rezept ist für meine Medikamente. Mit dem Rezept gehe ich in die Apotheke.',
+          'Ich brauche ein {{Rezept}} vom Arzt. Das {{Rezept}} ist für meine Medikamente. Mit dem {{Rezept}} gehe ich in die Apotheke.',
       },
       {
         moduleType: 'etymology',

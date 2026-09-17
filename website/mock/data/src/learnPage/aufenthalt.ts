@@ -36,7 +36,7 @@ export const aufenthalt: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Mein Aufenthalt in Deutschland ist auf zwei Jahre befristet. Ich muss den Aufenthalt rechtzeitig verlängern lassen. Der Aufenthalt wurde wegen meiner Arbeitstätigkeit genehmigt.',
+          'Mein {{Aufenthalt}} in Deutschland ist auf zwei Jahre befristet. Ich muss den {{Aufenthalt}} rechtzeitig verlängern lassen. Der {{Aufenthalt}} wurde wegen meiner Arbeitstätigkeit genehmigt.',
       },
       {
         moduleType: 'etymology',

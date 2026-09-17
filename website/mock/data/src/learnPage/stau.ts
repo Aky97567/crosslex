@@ -36,7 +36,7 @@ export const stau: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Es gibt einen Stau auf der Autobahn. Ich komme später — ich stecke im Stau. Der Stau dauert zwei Stunden.',
+          'Es gibt einen {{Stau}} auf der Autobahn. Ich komme später — ich stecke im {{Stau}}. Der {{Stau}} dauert zwei Stunden.',
       },
       {
         moduleType: 'etymology',

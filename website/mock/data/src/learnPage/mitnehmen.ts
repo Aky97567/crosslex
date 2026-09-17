@@ -37,9 +37,7 @@ export const mitnehmen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Vergiss nicht, deinen Ausweis mitnehmen. Ich nehme meinen Regenschirm mit. Er hat die Unterlagen aus dem Büro mitgenommen.',
-        alternateForms: ['mitgenommen'],
-        trennbarTokens: ['nehme', 'mit'] as [string, string],
+          'Vergiss nicht, deinen Ausweis {{mitnehmen}}. Ich {{nehme}} meinen Regenschirm {{mit}}. Er hat die Unterlagen aus dem Büro {{mitgenommen}}.',
       },
       {
         moduleType: 'etymology',

@@ -37,7 +37,7 @@ export const pflegeversicherung: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Die Pflegeversicherung ist in Deutschland eine gesetzliche Pflichtversicherung. Ich zahle jeden Monat einen Beitrag zur Pflegeversicherung. Im Alter kann die Pflegeversicherung einen Teil der Pflegekosten übernehmen.',
+          'Die {{Pflegeversicherung}} ist in Deutschland eine gesetzliche Pflichtversicherung. Ich zahle jeden Monat einen Beitrag zur {{Pflegeversicherung}}. Im Alter kann die {{Pflegeversicherung}} einen Teil der Pflegekosten übernehmen.',
       },
       {
         moduleType: 'etymology',

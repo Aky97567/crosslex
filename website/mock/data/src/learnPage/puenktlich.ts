@@ -36,7 +36,7 @@ export const puenktlich: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Der Zug ist pünktlich. Bitte komm pünktlich! Ich bin immer pünktlich.',
+          'Der Zug ist {{pünktlich}}. Bitte komm {{pünktlich}}! Ich bin immer {{pünktlich}}.',
       },
       {
         moduleType: 'etymology',

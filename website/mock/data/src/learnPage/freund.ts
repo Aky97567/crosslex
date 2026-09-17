@@ -36,7 +36,7 @@ export const freund: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Mein Freund wohnt in Berlin. Ich treffe meinen Freund heute Abend. Er ist ein guter Freund von mir.',
+          'Mein {{Freund}} wohnt in Berlin. Ich treffe meinen {{Freund}} heute Abend. Er ist ein guter {{Freund}} von mir.',
       },
       {
         moduleType: 'etymology',

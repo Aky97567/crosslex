@@ -37,7 +37,7 @@ export const mietvertrag: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich habe den Mietvertrag sorgfältig gelesen, bevor ich unterschrieben habe. Der Mietvertrag läuft unbefristet. Im Mietvertrag steht, dass Haustiere nicht erlaubt sind.',
+          'Ich habe den {{Mietvertrag}} sorgfältig gelesen, bevor ich unterschrieben habe. Der {{Mietvertrag}} läuft unbefristet. Im {{Mietvertrag}} steht, dass Haustiere nicht erlaubt sind.',
       },
       {
         moduleType: 'etymology',

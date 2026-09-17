@@ -37,7 +37,7 @@ export const krankmeldung: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich habe heute Morgen eine Krankmeldung bei meinem Chef eingereicht. Die Krankmeldung gilt ab dem ersten Krankheitstag. Nach drei Tagen muss ich auch eine ärztliche Bescheinigung zur Krankmeldung vorlegen.',
+          'Ich habe heute Morgen eine {{Krankmeldung}} bei meinem Chef eingereicht. Die {{Krankmeldung}} gilt ab dem ersten Krankheitstag. Nach drei Tagen muss ich auch eine ärztliche Bescheinigung zur {{Krankmeldung}} vorlegen.',
       },
       {
         moduleType: 'etymology',

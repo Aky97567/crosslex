@@ -37,9 +37,7 @@ export const anmelden: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Sie müssen sich innerhalb von zwei Wochen anmelden. Ich melde mich heute beim Amt an. Er hat sich für den Deutschkurs angemeldet.',
-        alternateForms: ['angemeldet'],
-        trennbarTokens: ['melde', 'an'] as [string, string],
+          'Sie müssen sich innerhalb von zwei Wochen {{anmelden}}. Ich {{melde}} mich heute beim Amt {{an}}. Er hat sich für den Deutschkurs {{angemeldet}}.',
       },
       {
         moduleType: 'etymology',

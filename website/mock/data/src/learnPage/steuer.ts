@@ -36,7 +36,7 @@ export const steuer: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Die Steuer wird automatisch vom Gehalt abgezogen. Die Höhe der Steuer hängt vom Einkommen ab. Wer zu viel Steuer gezahlt hat, bekommt eine Rückerstattung.',
+          'Die {{Steuer}} wird automatisch vom Gehalt abgezogen. Die Höhe der {{Steuer}} hängt vom Einkommen ab. Wer zu viel {{Steuer}} gezahlt hat, bekommt eine Rückerstattung.',
       },
       {
         moduleType: 'etymology',

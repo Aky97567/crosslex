@@ -37,7 +37,7 @@ export const oeffnungszeiten: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Was sind die Öffnungszeiten? Die Öffnungszeiten sind von 9 bis 18 Uhr. Ich schaue die Öffnungszeiten auf der Webseite nach.',
+          'Was sind die {{Öffnungszeiten}}? Die {{Öffnungszeiten}} sind von 9 bis 18 Uhr. Ich schaue die {{Öffnungszeiten}} auf der Webseite nach.',
       },
       {
         moduleType: 'etymology',

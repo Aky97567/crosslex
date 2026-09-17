@@ -36,7 +36,7 @@ export const fahrplan: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich schaue in den Fahrplan. Der Fahrplan hängt an der Haltestelle. Im Fahrplan steht, wann der nächste Zug kommt.',
+          'Ich schaue in den {{Fahrplan}}. Der {{Fahrplan}} hängt an der Haltestelle. Im {{Fahrplan}} steht, wann der nächste Zug kommt.',
       },
       {
         moduleType: 'etymology',

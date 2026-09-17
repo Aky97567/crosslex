@@ -36,7 +36,7 @@ export const baeckerei: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich kaufe Brot in der Bäckerei. Die Bäckerei öffnet um sechs Uhr morgens. In der Bäckerei gibt es viele frische Brötchen.',
+          'Ich kaufe Brot in der {{Bäckerei}}. Die {{Bäckerei}} öffnet um sechs Uhr morgens. In der {{Bäckerei}} gibt es viele frische Brötchen.',
       },
       {
         moduleType: 'etymology',

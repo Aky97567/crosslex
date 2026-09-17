@@ -37,7 +37,7 @@ export const arbeitserlaubnis: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ohne Arbeitserlaubnis darf ich in Deutschland nicht arbeiten. Meine Arbeitserlaubnis ist an meinen aktuellen Arbeitgeber gebunden. Die Verlängerung der Arbeitserlaubnis muss rechtzeitig beantragt werden.',
+          'Ohne {{Arbeitserlaubnis}} darf ich in Deutschland nicht arbeiten. Meine {{Arbeitserlaubnis}} ist an meinen aktuellen Arbeitgeber gebunden. Die Verlängerung der {{Arbeitserlaubnis}} muss rechtzeitig beantragt werden.',
       },
       {
         moduleType: 'etymology',

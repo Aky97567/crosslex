@@ -36,7 +36,7 @@ export const uebertragen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Das Spiel wird live im Fernsehen übertragen. Bitte übertragen Sie die Daten auf das neue Gerät. Die Verantwortung wurde auf seinen Kollegen übertragen.',
+          'Das Spiel wird live im Fernsehen {{übertragen}}. Bitte {{übertragen}} Sie die Daten auf das neue Gerät. Die Verantwortung wurde auf seinen Kollegen {{übertragen}}.',
       },
       {
         moduleType: 'etymology',

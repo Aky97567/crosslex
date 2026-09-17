@@ -37,9 +37,7 @@ export const nachweisen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Sie müssen Ihre Sprachkenntnisse nachweisen. Bitte weisen Sie Ihre Qualifikationen durch Zeugnisse nach. Er hat seine Unschuld erfolgreich nachgewiesen.',
-        alternateForms: ['nachgewiesen'],
-        trennbarTokens: ['weisen', 'nach'] as [string, string],
+          'Sie müssen Ihre Sprachkenntnisse {{nachweisen}}. Bitte {{weisen}} Sie Ihre Qualifikationen durch Zeugnisse {{nach}}. Er hat seine Unschuld erfolgreich {{nachgewiesen}}.',
       },
       {
         moduleType: 'etymology',

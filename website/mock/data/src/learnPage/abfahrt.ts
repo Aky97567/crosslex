@@ -36,7 +36,7 @@ export const abfahrt: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Die Abfahrt ist um 14:30 Uhr. Ich habe die Abfahrt verpasst. Wann ist die nächste Abfahrt?',
+          'Die {{Abfahrt}} ist um 14:30 Uhr. Ich habe die {{Abfahrt}} verpasst. Wann ist die nächste {{Abfahrt}}?',
       },
       {
         moduleType: 'etymology',

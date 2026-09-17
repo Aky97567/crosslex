@@ -37,9 +37,7 @@ export const aufwachen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich muss jeden Morgen um sieben Uhr aufwachen. Ich wache heute ohne Wecker auf. Sie ist mitten in der Nacht aufgewacht.',
-        alternateForms: ['aufgewacht'],
-        trennbarTokens: ['wache', 'auf'] as [string, string],
+          'Ich muss jeden Morgen um sieben Uhr {{aufwachen}}. Ich {{wache}} heute ohne Wecker {{auf}}. Sie ist mitten in der Nacht {{aufgewacht}}.',
       },
       {
         moduleType: 'etymology',

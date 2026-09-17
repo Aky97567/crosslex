@@ -36,7 +36,7 @@ export const quittung: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich habe die Quittung für die Reparatur sorgfältig aufgehoben. Ohne eine Quittung bekomme ich keine Erstattung von meiner Versicherung. Der Techniker hat mir nach der Arbeit sofort eine Quittung ausgestellt.',
+          'Ich habe die {{Quittung}} für die Reparatur sorgfältig aufgehoben. Ohne eine {{Quittung}} bekomme ich keine Erstattung von meiner Versicherung. Der Techniker hat mir nach der Arbeit sofort eine {{Quittung}} ausgestellt.',
       },
       {
         moduleType: 'etymology',

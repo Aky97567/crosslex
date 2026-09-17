@@ -37,7 +37,7 @@ export const haltestelle: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Die Haltestelle ist direkt vor meiner Wohnung. Ich warte an der Haltestelle auf den Bus. An der Haltestelle gibt es einen Fahrplan.',
+          'Die {{Haltestelle}} ist direkt vor meiner Wohnung. Ich warte an der {{Haltestelle}} auf den Bus. An der {{Haltestelle}} gibt es einen Fahrplan.',
       },
       {
         moduleType: 'etymology',

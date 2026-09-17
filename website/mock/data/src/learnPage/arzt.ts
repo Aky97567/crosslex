@@ -36,7 +36,7 @@ export const arzt: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich muss zum Arzt gehen. Der Arzt hat mir ein Rezept gegeben. Bitte ruf den Arzt an.',
+          'Ich muss zum {{Arzt}} gehen. Der {{Arzt}} hat mir ein Rezept gegeben. Bitte ruf den {{Arzt}} an.',
       },
       {
         moduleType: 'etymology',

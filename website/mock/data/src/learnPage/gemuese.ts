@@ -36,7 +36,7 @@ export const gemuese: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich kaufe frisches Gemüse auf dem Markt. Das Gemüse ist sehr gesund. Ich esse jeden Tag Gemüse.',
+          'Ich kaufe frisches {{Gemüse}} auf dem Markt. Das {{Gemüse}} ist sehr gesund. Ich esse jeden Tag {{Gemüse}}.',
       },
       {
         moduleType: 'etymology',

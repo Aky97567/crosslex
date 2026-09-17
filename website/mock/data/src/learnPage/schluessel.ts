@@ -36,7 +36,7 @@ export const schluessel: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich habe meinen Schlüssel verloren. Der Schlüssel liegt auf dem Tisch. Ich brauche einen neuen Schlüssel für die Wohnung.',
+          'Ich habe meinen {{Schlüssel}} verloren. Der {{Schlüssel}} liegt auf dem Tisch. Ich brauche einen neuen {{Schlüssel}} für die Wohnung.',
       },
       {
         moduleType: 'etymology',

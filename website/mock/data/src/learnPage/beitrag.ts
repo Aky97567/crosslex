@@ -36,7 +36,7 @@ export const beitrag: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Der monatliche Beitrag zur Krankenversicherung wird vom Gehalt abgezogen. Mein Beitrag zur Rentenversicherung ist gesetzlich vorgeschrieben. Den genauen Beitrag kann ich auf meiner Gehaltsabrechnung sehen.',
+          'Der monatliche {{Beitrag}} zur Krankenversicherung wird vom Gehalt abgezogen. Mein {{Beitrag}} zur Rentenversicherung ist gesetzlich vorgeschrieben. Den genauen {{Beitrag}} kann ich auf meiner Gehaltsabrechnung sehen.',
       },
       {
         moduleType: 'etymology',

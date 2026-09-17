@@ -37,7 +37,7 @@ export const krankenhaus: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Er ist im Krankenhaus. Das Krankenhaus ist nicht weit von hier. Sie hat drei Tage im Krankenhaus verbracht.',
+          'Er ist im {{Krankenhaus}}. Das {{Krankenhaus}} ist nicht weit von hier. Sie hat drei Tage im {{Krankenhaus}} verbracht.',
       },
       {
         moduleType: 'etymology',

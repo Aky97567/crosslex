@@ -37,9 +37,7 @@ export const vorbereiten: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich muss mich auf das Vorstellungsgespräch vorbereiten. Ich bereite die Unterlagen für das Meeting vor. Sie hat sich gut auf die Prüfung vorbereitet.',
-        alternateForms: ['vorbereitet'],
-        trennbarTokens: ['bereite', 'vor'] as [string, string],
+          'Ich muss mich auf das Vorstellungsgespräch {{vorbereiten}}. Ich {{bereite}} die Unterlagen für das Meeting {{vor}}. Sie hat sich gut auf die Prüfung {{vorbereitet}}.',
       },
       {
         moduleType: 'etymology',

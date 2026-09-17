@@ -36,7 +36,7 @@ export const kasse: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Ich stehe an der Kasse im Supermarkt. An der Kasse bezahle ich mit Karte. Die Kasse ist leider sehr voll.',
+          'Ich stehe an der {{Kasse}} im Supermarkt. An der {{Kasse}} bezahle ich mit Karte. Die {{Kasse}} ist leider sehr voll.',
       },
       {
         moduleType: 'etymology',

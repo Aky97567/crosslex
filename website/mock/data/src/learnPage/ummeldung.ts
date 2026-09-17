@@ -36,7 +36,7 @@ export const ummeldung: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Nach meinem Umzug habe ich sofort eine Ummeldung beim Einwohnermeldeamt gemacht. Die Ummeldung muss innerhalb von zwei Wochen nach dem Einzug erfolgen. Für die Ummeldung brauche ich meinen Ausweis und eine Bestätigung vom Vermieter.',
+          'Nach meinem Umzug habe ich sofort eine {{Ummeldung}} beim Einwohnermeldeamt gemacht. Die {{Ummeldung}} muss innerhalb von zwei Wochen nach dem Einzug erfolgen. Für die {{Ummeldung}} brauche ich meinen Ausweis und eine Bestätigung vom Vermieter.',
       },
       {
         moduleType: 'etymology',

@@ -37,9 +37,7 @@ export const aufhoeren: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage:
-          'Er will mit dem Rauchen aufhören. Ich höre jetzt mit der Arbeit auf. Sie hat gestern aufgehört zu weinen.',
-        alternateForms: ['aufgehört'],
-        trennbarTokens: ['höre', 'auf'] as [string, string],
+          'Er will mit dem Rauchen {{aufhören}}. Ich {{höre}} jetzt mit der Arbeit {{auf}}. Sie hat gestern {{aufgehört}} zu weinen.',
       },
       {
         moduleType: 'etymology',
