@@ -15,13 +15,23 @@ Word data lives in `mock/data/src/learnPage/`. Each word is its own file.
 - `wordIntro` — word, article, translation, partOfSpeech, level `['B1']`; omit `representativeImageUrl` until a real URL exists; for compound nouns add a `displayName` with soft hyphens (see below)
 - `wordMeaning` — one-paragraph definition
 - `meaningGuessQuestion` — 3 options, exactly 1 `isCorrect: true`
-- `wordContext` — paragraph using the word **at least 3 times**; wrap every occurrence (any inflected form) in `{{...}}` directly in the sentence (see below); for trennbar verbs, see trennbar rules below
+- `wordContext` — `paragraphWithUsage` is an **array of sentence strings** (one element per sentence, not one long string) using the word **at least 3 times**; wrap every occurrence (any inflected form) in `{{...}}` within each sentence (see below); for trennbar verbs, see trennbar rules below
 - `etymology` — origin explanation
 - `similarWords` — 2–3 **synonyms** (not thematically related words) with article, translation, similarityScore, level, cefrRelevant
 - `mnemonics` — 2 mnemonics; omit `imageUrl` until a real URL exists
 - `wordShowcase` — always include, leave empty (hides itself when no URL)
 
 **`wordContext` paragraph — design principle and consumers:**
+
+`paragraphWithUsage: string[]` — each sentence is its own array element,
+written out explicitly rather than inferred by splitting a single string
+on punctuation. That inference used to break on sentences ending in `?`
+or `!`, and on non-terminal periods like German ordinal dates
+(`"30. April"`) — an explicit array has no punctuation to misread, so
+there's nothing left to get wrong there. No minimum length is enforced by
+the type (a handful of older words still have 2 sentences); the "3
+sentences" rule below is a content guideline to follow for new/edited
+words, not a structural guarantee.
 
 Each sentence in `paragraphWithUsage` is an independent chance for a
 learner with their own limited, individually-varying vocabulary to
