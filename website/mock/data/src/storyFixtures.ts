@@ -1,6 +1,7 @@
 import {
   WordIntroModule,
   WordContextModule,
+  parseAnnotatedParagraph,
 } from '@whitelotus/common-crosslex-view';
 import { sampleLearnPageContentList } from './learnPage/sampleLearnPageContent';
 
@@ -23,19 +24,20 @@ const makeContextBlankFixture = (
     sampleLearnPageContentList[wordKey].content.modules,
     'wordContext',
   )!;
-  const allForms = [intro.word, ...(ctx.alternateForms ?? []), ...(ctx.trennbarTokens ?? [])];
-  const pattern = allForms.map((f) => f.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
   const fills: string[] = [];
-  const sentence = ctx.paragraphWithUsage.replace(
-    new RegExp(pattern, 'gi'),
-    (match) => { fills.push(match); return '___'; },
-  );
+  const sentence = parseAnnotatedParagraph(ctx.paragraphWithUsage)
+    .map((seg) => {
+      if (!seg.marked) return seg.text;
+      fills.push(seg.text);
+      return '___';
+    })
+    .join('');
   const distractors = distractorKeys.map((k) => ({ text: getIntro(k).word, isCorrect: false as const }));
   return {
     sentence,
     fills,
     options: [{ text: intro.word, isCorrect: true as const }, ...distractors],
-    contextSentenceIndices: ctx.trennbarTokens ? [1] : undefined,
+    contextSentenceIndices: intro.trennbar ? [1] : undefined,
   };
 };
 

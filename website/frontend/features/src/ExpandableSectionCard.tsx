@@ -9,7 +9,6 @@ interface Props {
   closeSignal?: number;
   onClosed?: () => void;
   onOpenChange?: (isOpen: boolean) => void;
-  wordText?: string;
 }
 
 const ExpandableSectionCard: React.FC<Props> = ({
@@ -17,7 +16,6 @@ const ExpandableSectionCard: React.FC<Props> = ({
   closeSignal,
   onClosed,
   onOpenChange,
-  wordText,
 }) => {
   const { flipAnimation: animated } = useCrosslexStorage();
   const [activeSection, setActiveSection] = useState<number | null>(null);
@@ -70,7 +68,6 @@ const ExpandableSectionCard: React.FC<Props> = ({
         needClose: true,
         onClose: handleCloseClick,
         showContent,
-        wordText,
       }),
     }));
 

@@ -17,4 +17,6 @@ export type {
   WordShowcaseModule,
   WordTheme,
 } from './module';
+export type { ParagraphSegment } from './module';
+export { parseAnnotatedParagraph } from './module';
 export type { LearnPageContent } from './page';

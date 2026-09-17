@@ -1,39 +1,32 @@
 import React from 'react';
-import { Heading } from '@whitelotus/common-crosslex-view';
+import { Heading, parseAnnotatedParagraph } from '@whitelotus/common-crosslex-view';
 import { BodyText, Card } from '@whitelotus/front-shared';
 
 type WordContextProps = {
   heading: Heading;
   paragraphWithUsage: string;
-  highlightTokens?: string[];
   needClose?: boolean;
   onClose?: () => void;
   showContent?: boolean;
 };
 
-const applyHighlights = (text: string, tokens: string[]): React.ReactNode => {
-  const escaped = tokens.map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
-  const regex = new RegExp(`\\b(${escaped.join('|')})\\b`, 'gi');
-  const parts: React.ReactNode[] = [];
-  let last = 0;
-  let match: RegExpExecArray | null;
-  while ((match = regex.exec(text)) !== null) {
-    if (match.index > last) parts.push(text.slice(last, match.index));
-    parts.push(
-      <span key={match.index} className="text-brand font-semibold">
-        {match[0]}
-      </span>,
-    );
-    last = match.index + match[0].length;
-  }
-  if (last < text.length) parts.push(text.slice(last));
-  return parts;
-};
+// Occurrences are marked inline in paragraphWithUsage as {{...}} — see
+// parseAnnotatedParagraph. Splitting into sentences first is safe because
+// a marker never spans a sentence boundary (it always wraps a single word).
+const renderSentence = (sentence: string): React.ReactNode =>
+  parseAnnotatedParagraph(sentence).map((seg, i) =>
+    seg.marked ? (
+      <span key={i} className="text-brand font-semibold">
+        {seg.text}
+      </span>
+    ) : (
+      <React.Fragment key={i}>{seg.text}</React.Fragment>
+    ),
+  );
 
 export const WordContext: React.FC<WordContextProps> = ({
   heading,
   paragraphWithUsage,
-  highlightTokens,
   needClose,
   onClose,
   showContent = true,
@@ -50,11 +43,7 @@ export const WordContext: React.FC<WordContextProps> = ({
           .split('. ')
           .map((s, i, arr) => (i < arr.length - 1 ? s + '.' : s))
           .map((sentence, i) => (
-            <BodyText key={i}>
-              {highlightTokens?.length
-                ? applyHighlights(sentence, highlightTokens)
-                : sentence}
-            </BodyText>
+            <BodyText key={i}>{renderSentence(sentence)}</BodyText>
           ))}
       </div>
     </Card>
