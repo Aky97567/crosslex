@@ -40,8 +40,10 @@ export const WordContext: React.FC<WordContextProps> = ({
     >
       <div className="mb-6">
         {paragraphWithUsage
-          .split('. ')
-          .map((s, i, arr) => (i < arr.length - 1 ? s + '.' : s))
+          // Lookbehind keeps each sentence's own terminator (. ? !) instead
+          // of consuming it — a literal ". " split merges a sentence ending
+          // in "?" or "!" into the next one.
+          .split(/(?<=[.?!]) /)
           .map((sentence, i) => (
             <BodyText key={i}>{renderSentence(sentence)}</BodyText>
           ))}
