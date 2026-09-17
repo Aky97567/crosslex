@@ -35,8 +35,11 @@ export const konto: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich habe ein {{Konto}} bei der Sparkasse eröffnet. Ohne {{Konto}} kann ich kein Gehalt empfangen. Das Geld wurde direkt auf mein {{Konto}} überwiesen.',
+        paragraphWithUsage: [
+          'Ich habe ein {{Konto}} bei der Sparkasse eröffnet.',
+          'Ohne {{Konto}} kann ich kein Gehalt empfangen.',
+          'Das Geld wurde direkt auf mein {{Konto}} überwiesen.',
+        ],
       },
       {
         moduleType: 'etymology',

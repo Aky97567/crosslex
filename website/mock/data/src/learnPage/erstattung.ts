@@ -35,8 +35,11 @@ export const erstattung: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich habe eine {{Erstattung}} von meiner Krankenkasse für die Arztrechnung beantragt. Die Krankenkasse hat mir die {{Erstattung}} nach zwei Wochen auf mein Konto überwiesen. Ohne den Kassenbon ist eine {{Erstattung}} leider nicht möglich.',
+        paragraphWithUsage: [
+          'Ich habe eine {{Erstattung}} von meiner Krankenkasse für die Arztrechnung beantragt.',
+          'Die Krankenkasse hat mir die {{Erstattung}} nach zwei Wochen auf mein Konto überwiesen.',
+          'Ohne den Kassenbon ist eine {{Erstattung}} leider nicht möglich.',
+        ],
       },
       {
         moduleType: 'etymology',

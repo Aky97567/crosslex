@@ -36,8 +36,11 @@ export const nebenkostenabrechnung: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich habe die {{Nebenkostenabrechnung}} von meinem Vermieter bekommen. Die {{Nebenkostenabrechnung}} zeigt, dass ich 150 Euro nachzahlen muss. Ich habe die {{Nebenkostenabrechnung}} sorgfältig auf Fehler geprüft.',
+        paragraphWithUsage: [
+          'Ich habe die {{Nebenkostenabrechnung}} von meinem Vermieter bekommen.',
+          'Die {{Nebenkostenabrechnung}} zeigt, dass ich 150 Euro nachzahlen muss.',
+          'Ich habe die {{Nebenkostenabrechnung}} sorgfältig auf Fehler geprüft.',
+        ],
       },
       {
         moduleType: 'etymology',

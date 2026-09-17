@@ -34,8 +34,10 @@ export const katze: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Die {{Katze}} schläft auf dem Sofa. Sie hat eine schwarze {{Katze}}.',
+        paragraphWithUsage: [
+          'Die {{Katze}} schläft auf dem Sofa.',
+          'Sie hat eine schwarze {{Katze}}.',
+        ],
       },
       {
         moduleType: 'etymology',

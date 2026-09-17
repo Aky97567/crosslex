@@ -36,8 +36,11 @@ export const kontoauszug: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich brauche einen aktuellen {{Kontoauszug}} für meinen Mietvertrag. Der {{Kontoauszug}} zeigt alle Buchungen der letzten drei Monate. Den {{Kontoauszug}} habe ich direkt online heruntergeladen.',
+        paragraphWithUsage: [
+          'Ich brauche einen aktuellen {{Kontoauszug}} für meinen Mietvertrag.',
+          'Der {{Kontoauszug}} zeigt alle Buchungen der letzten drei Monate.',
+          'Den {{Kontoauszug}} habe ich direkt online heruntergeladen.',
+        ],
       },
       {
         moduleType: 'etymology',

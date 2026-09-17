@@ -36,8 +36,11 @@ export const umsteigen: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich muss in Frankfurt {{umsteigen}}. In Hannover {{steige}} ich in den ICE {{um}}. Sie ist gestern in Hamburg {{umgestiegen}}.',
+        paragraphWithUsage: [
+          'Ich muss in Frankfurt {{umsteigen}}.',
+          'In Hannover {{steige}} ich in den ICE {{um}}.',
+          'Sie ist gestern in Hamburg {{umgestiegen}}.',
+        ],
       },
       {
         moduleType: 'etymology',

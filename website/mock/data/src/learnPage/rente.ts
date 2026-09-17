@@ -35,8 +35,11 @@ export const rente: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Mein Vater bezieht seit drei Jahren eine {{Rente}}. Die {{Rente}} reicht kaum, um alle Lebenshaltungskosten zu decken. Er hat seinen Antrag auf {{Rente}} rechtzeitig beim zuständigen Amt eingereicht.',
+        paragraphWithUsage: [
+          'Mein Vater bezieht seit drei Jahren eine {{Rente}}.',
+          'Die {{Rente}} reicht kaum, um alle Lebenshaltungskosten zu decken.',
+          'Er hat seinen Antrag auf {{Rente}} rechtzeitig beim zuständigen Amt eingereicht.',
+        ],
       },
       {
         moduleType: 'etymology',

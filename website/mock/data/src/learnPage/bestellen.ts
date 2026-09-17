@@ -35,8 +35,11 @@ export const bestellen: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich {{bestelle}} ein Glas Wasser. Hast du schon {{bestellt}}? Im Restaurant {{bestelle}} ich immer das Tagesgericht.',
+        paragraphWithUsage: [
+          'Ich {{bestelle}} ein Glas Wasser.',
+          'Hast du schon {{bestellt}}?',
+          'Im Restaurant {{bestelle}} ich immer das Tagesgericht.',
+        ],
       },
       {
         moduleType: 'etymology',

@@ -36,8 +36,11 @@ export const elterngeld: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Wir haben nach der Geburt unseres Kindes {{Elterngeld}} beantragt. Das {{Elterngeld}} hat uns geholfen, die Kosten während der Elternzeit zu decken. Den Antrag auf {{Elterngeld}} haben wir drei Monate nach der Geburt gestellt.',
+        paragraphWithUsage: [
+          'Wir haben nach der Geburt unseres Kindes {{Elterngeld}} beantragt.',
+          'Das {{Elterngeld}} hat uns geholfen, die Kosten während der Elternzeit zu decken.',
+          'Den Antrag auf {{Elterngeld}} haben wir drei Monate nach der Geburt gestellt.',
+        ],
       },
       {
         moduleType: 'etymology',

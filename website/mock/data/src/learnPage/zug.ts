@@ -35,8 +35,11 @@ export const zug: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Der {{Zug}} fährt um 10 Uhr ab. Ich nehme den {{Zug}} nach Hamburg. Der {{Zug}} hat Verspätung.',
+        paragraphWithUsage: [
+          'Der {{Zug}} fährt um 10 Uhr ab.',
+          'Ich nehme den {{Zug}} nach Hamburg.',
+          'Der {{Zug}} hat Verspätung.',
+        ],
       },
       {
         moduleType: 'etymology',

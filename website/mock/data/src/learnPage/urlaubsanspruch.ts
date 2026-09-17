@@ -36,8 +36,11 @@ export const urlaubsanspruch: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Mein {{Urlaubsanspruch}} beträgt 28 Tage pro Jahr. Ich habe meinen {{Urlaubsanspruch}} bis Oktober noch nicht vollständig genutzt. Der Arbeitgeber muss den gesetzlichen {{Urlaubsanspruch}} gewähren.',
+        paragraphWithUsage: [
+          'Mein {{Urlaubsanspruch}} beträgt 28 Tage pro Jahr.',
+          'Ich habe meinen {{Urlaubsanspruch}} bis Oktober noch nicht vollständig genutzt.',
+          'Der Arbeitgeber muss den gesetzlichen {{Urlaubsanspruch}} gewähren.',
+        ],
       },
       {
         moduleType: 'etymology',

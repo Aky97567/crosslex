@@ -35,8 +35,11 @@ export const tablette: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich nehme eine {{Tablette}} gegen die Kopfschmerzen. Die {{Tablette}} wirkt sehr schnell. Der Arzt hat mir diese {{Tablette}} empfohlen.',
+        paragraphWithUsage: [
+          'Ich nehme eine {{Tablette}} gegen die Kopfschmerzen.',
+          'Die {{Tablette}} wirkt sehr schnell.',
+          'Der Arzt hat mir diese {{Tablette}} empfohlen.',
+        ],
       },
       {
         moduleType: 'etymology',

@@ -36,8 +36,11 @@ export const ueberweisung: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich habe eine {{Überweisung}} von 500 Euro an meinen Vermieter gemacht. Der Arzt hat mir eine {{Überweisung}} zum Facharzt ausgestellt. Die {{Überweisung}} dauert in der Regel ein bis zwei Werktage.',
+        paragraphWithUsage: [
+          'Ich habe eine {{Überweisung}} von 500 Euro an meinen Vermieter gemacht.',
+          'Der Arzt hat mir eine {{Überweisung}} zum Facharzt ausgestellt.',
+          'Die {{Überweisung}} dauert in der Regel ein bis zwei Werktage.',
+        ],
       },
       {
         moduleType: 'etymology',

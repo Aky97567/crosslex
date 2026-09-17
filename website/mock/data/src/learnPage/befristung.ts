@@ -35,8 +35,11 @@ export const befristung: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Mein Arbeitsvertrag hat eine {{Befristung}} von einem Jahr. Nach der {{Befristung}} kann der Vertrag verlängert oder beendet werden. Eine {{Befristung}} ohne sachlichen Grund ist gesetzlich nur zweimal zulässig.',
+        paragraphWithUsage: [
+          'Mein Arbeitsvertrag hat eine {{Befristung}} von einem Jahr.',
+          'Nach der {{Befristung}} kann der Vertrag verlängert oder beendet werden.',
+          'Eine {{Befristung}} ohne sachlichen Grund ist gesetzlich nur zweimal zulässig.',
+        ],
       },
       {
         moduleType: 'etymology',

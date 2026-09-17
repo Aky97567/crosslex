@@ -35,8 +35,11 @@ export const bescheinigung: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich brauche eine ärztliche {{Bescheinigung}} für meinen Arbeitgeber. Die {{Bescheinigung}} muss offiziell unterschrieben sein. Ohne diese {{Bescheinigung}} kann ich den Antrag nicht stellen.',
+        paragraphWithUsage: [
+          'Ich brauche eine ärztliche {{Bescheinigung}} für meinen Arbeitgeber.',
+          'Die {{Bescheinigung}} muss offiziell unterschrieben sein.',
+          'Ohne diese {{Bescheinigung}} kann ich den Antrag nicht stellen.',
+        ],
       },
       {
         moduleType: 'etymology',

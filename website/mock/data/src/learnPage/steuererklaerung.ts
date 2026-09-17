@@ -36,8 +36,11 @@ export const steuererklaerung: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich muss jedes Jahr eine {{Steuererklärung}} beim Finanzamt einreichen. Die {{Steuererklärung}} hat mir letztes Jahr 400 Euro Rückerstattung gebracht. Für die {{Steuererklärung}} brauche ich alle Belege aus dem vergangenen Jahr.',
+        paragraphWithUsage: [
+          'Ich muss jedes Jahr eine {{Steuererklärung}} beim Finanzamt einreichen.',
+          'Die {{Steuererklärung}} hat mir letztes Jahr 400 Euro Rückerstattung gebracht.',
+          'Für die {{Steuererklärung}} brauche ich alle Belege aus dem vergangenen Jahr.',
+        ],
       },
       {
         moduleType: 'etymology',

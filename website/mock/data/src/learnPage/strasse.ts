@@ -35,8 +35,11 @@ export const strasse: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich wohne in dieser {{Straße}}. Die {{Straße}} ist sehr laut. Geh die {{Straße}} entlang und dann links.',
+        paragraphWithUsage: [
+          'Ich wohne in dieser {{Straße}}.',
+          'Die {{Straße}} ist sehr laut.',
+          'Geh die {{Straße}} entlang und dann links.',
+        ],
       },
       {
         moduleType: 'etymology',

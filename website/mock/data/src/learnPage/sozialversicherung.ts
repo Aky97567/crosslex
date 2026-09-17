@@ -36,8 +36,11 @@ export const sozialversicherung: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Die {{Sozialversicherung}} schützt alle Arbeitnehmer in Deutschland. Mein Arbeitgeber zieht die Beiträge zur {{Sozialversicherung}} direkt von meinem Gehalt ab. Die {{Sozialversicherung}} deckt Krankheit, Arbeitslosigkeit und Alter ab.',
+        paragraphWithUsage: [
+          'Die {{Sozialversicherung}} schützt alle Arbeitnehmer in Deutschland.',
+          'Mein Arbeitgeber zieht die Beiträge zur {{Sozialversicherung}} direkt von meinem Gehalt ab.',
+          'Die {{Sozialversicherung}} deckt Krankheit, Arbeitslosigkeit und Alter ab.',
+        ],
       },
       {
         moduleType: 'etymology',

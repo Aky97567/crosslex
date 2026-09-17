@@ -35,8 +35,11 @@ export const supermarkt: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich gehe in den {{Supermarkt}}. Der {{Supermarkt}} ist um 8 Uhr geöffnet. Im {{Supermarkt}} gibt es alles, was man braucht.',
+        paragraphWithUsage: [
+          'Ich gehe in den {{Supermarkt}}.',
+          'Der {{Supermarkt}} ist um 8 Uhr geöffnet.',
+          'Im {{Supermarkt}} gibt es alles, was man braucht.',
+        ],
       },
       {
         moduleType: 'etymology',

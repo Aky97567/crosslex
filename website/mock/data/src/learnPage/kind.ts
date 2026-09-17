@@ -35,8 +35,11 @@ export const kind: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Das {{Kind}} spielt im Garten. Mein {{Kind}} geht schon in die Schule. Als {{Kind}} habe ich viel Fußball gespielt.',
+        paragraphWithUsage: [
+          'Das {{Kind}} spielt im Garten.',
+          'Mein {{Kind}} geht schon in die Schule.',
+          'Als {{Kind}} habe ich viel Fußball gespielt.',
+        ],
       },
       {
         moduleType: 'etymology',

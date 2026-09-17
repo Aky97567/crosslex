@@ -36,8 +36,11 @@ export const kindergeld: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Wir haben {{Kindergeld}} für unser Kind beantragt. Das {{Kindergeld}} wird monatlich auf unser Konto überwiesen. Für das {{Kindergeld}} muss man einen Antrag bei der Familienkasse stellen.',
+        paragraphWithUsage: [
+          'Wir haben {{Kindergeld}} für unser Kind beantragt.',
+          'Das {{Kindergeld}} wird monatlich auf unser Konto überwiesen.',
+          'Für das {{Kindergeld}} muss man einen Antrag bei der Familienkasse stellen.',
+        ],
       },
       {
         moduleType: 'etymology',

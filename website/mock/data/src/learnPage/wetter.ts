@@ -35,8 +35,11 @@ export const wetter: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Heute ist das {{Wetter}} sehr schön. Ich schaue jeden Morgen, wie das {{Wetter}} ist. Das {{Wetter}} in Berlin ist oft bewölkt.',
+        paragraphWithUsage: [
+          'Heute ist das {{Wetter}} sehr schön.',
+          'Ich schaue jeden Morgen, wie das {{Wetter}} ist.',
+          'Das {{Wetter}} in Berlin ist oft bewölkt.',
+        ],
       },
       {
         moduleType: 'etymology',

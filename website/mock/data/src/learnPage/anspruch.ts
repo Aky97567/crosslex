@@ -35,8 +35,11 @@ export const anspruch: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Sie haben {{Anspruch}} auf Kindergeld. Er macht seinen {{Anspruch}} auf die Erbschaft geltend. Jeder Bürger hat {{Anspruch}} auf eine kostenlose Beratung.',
+        paragraphWithUsage: [
+          'Sie haben {{Anspruch}} auf Kindergeld.',
+          'Er macht seinen {{Anspruch}} auf die Erbschaft geltend.',
+          'Jeder Bürger hat {{Anspruch}} auf eine kostenlose Beratung.',
+        ],
       },
       {
         moduleType: 'etymology',

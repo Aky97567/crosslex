@@ -35,8 +35,11 @@ export const buergschaft: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Mein Vater hat eine {{Bürgschaft}} für meine neue Wohnung unterschrieben. Die {{Bürgschaft}} bedeutet, dass er zahlt, wenn ich die Miete nicht bezahlen kann. Ohne eine {{Bürgschaft}} hat der Vermieter den Mietvertrag abgelehnt.',
+        paragraphWithUsage: [
+          'Mein Vater hat eine {{Bürgschaft}} für meine neue Wohnung unterschrieben.',
+          'Die {{Bürgschaft}} bedeutet, dass er zahlt, wenn ich die Miete nicht bezahlen kann.',
+          'Ohne eine {{Bürgschaft}} hat der Vermieter den Mietvertrag abgelehnt.',
+        ],
       },
       {
         moduleType: 'etymology',

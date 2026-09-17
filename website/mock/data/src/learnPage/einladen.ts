@@ -36,8 +36,11 @@ export const einladen: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich möchte meine Freunde zum Geburtstag {{einladen}}. Ich {{lade}} dich heute Abend zum Essen {{ein}}. Sie hat ihre Kollegen zur Feier {{eingeladen}}.',
+        paragraphWithUsage: [
+          'Ich möchte meine Freunde zum Geburtstag {{einladen}}.',
+          'Ich {{lade}} dich heute Abend zum Essen {{ein}}.',
+          'Sie hat ihre Kollegen zur Feier {{eingeladen}}.',
+        ],
       },
       {
         moduleType: 'etymology',

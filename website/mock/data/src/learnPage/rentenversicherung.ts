@@ -36,8 +36,11 @@ export const rentenversicherung: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Mein Arbeitgeber und ich zahlen gemeinsam in die {{Rentenversicherung}} ein. Die {{Rentenversicherung}} sichert mir im Alter eine monatliche Rente. Alle Beschäftigten in Deutschland sind Mitglied in der {{Rentenversicherung}}.',
+        paragraphWithUsage: [
+          'Mein Arbeitgeber und ich zahlen gemeinsam in die {{Rentenversicherung}} ein.',
+          'Die {{Rentenversicherung}} sichert mir im Alter eine monatliche Rente.',
+          'Alle Beschäftigten in Deutschland sind Mitglied in der {{Rentenversicherung}}.',
+        ],
       },
       {
         moduleType: 'etymology',

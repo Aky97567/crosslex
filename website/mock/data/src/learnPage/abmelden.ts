@@ -36,8 +36,11 @@ export const abmelden: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Wenn Sie die Stadt verlassen, müssen Sie sich {{abmelden}}. Ich {{melde}} mich jetzt beim alten Amt {{ab}}. Sie hat ihr Auto beim Straßenverkehrsamt {{abgemeldet}}.',
+        paragraphWithUsage: [
+          'Wenn Sie die Stadt verlassen, müssen Sie sich {{abmelden}}.',
+          'Ich {{melde}} mich jetzt beim alten Amt {{ab}}.',
+          'Sie hat ihr Auto beim Straßenverkehrsamt {{abgemeldet}}.',
+        ],
       },
       {
         moduleType: 'etymology',

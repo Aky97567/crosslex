@@ -35,8 +35,11 @@ export const gehalt: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Mein {{Gehalt}} wird am Ende des Monats überwiesen. Das {{Gehalt}} ist im Arbeitsvertrag festgelegt. Nach der Probezeit wurde mein {{Gehalt}} erhöht.',
+        paragraphWithUsage: [
+          'Mein {{Gehalt}} wird am Ende des Monats überwiesen.',
+          'Das {{Gehalt}} ist im Arbeitsvertrag festgelegt.',
+          'Nach der Probezeit wurde mein {{Gehalt}} erhöht.',
+        ],
       },
       {
         moduleType: 'etymology',

@@ -35,8 +35,11 @@ export const urlaub: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich mache zwei Wochen {{Urlaub}}. Im {{Urlaub}} fahre ich nach Italien. Den {{Urlaub}} habe ich schon geplant.',
+        paragraphWithUsage: [
+          'Ich mache zwei Wochen {{Urlaub}}.',
+          'Im {{Urlaub}} fahre ich nach Italien.',
+          'Den {{Urlaub}} habe ich schon geplant.',
+        ],
       },
       {
         moduleType: 'etymology',

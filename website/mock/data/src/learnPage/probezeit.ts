@@ -35,8 +35,11 @@ export const probezeit: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Meine {{Probezeit}} dauert sechs Monate. Während der {{Probezeit}} gilt eine Kündigungsfrist von zwei Wochen. Nach der {{Probezeit}} habe ich mehr Sicherheit im Job.',
+        paragraphWithUsage: [
+          'Meine {{Probezeit}} dauert sechs Monate.',
+          'Während der {{Probezeit}} gilt eine Kündigungsfrist von zwei Wochen.',
+          'Nach der {{Probezeit}} habe ich mehr Sicherheit im Job.',
+        ],
       },
       {
         moduleType: 'etymology',

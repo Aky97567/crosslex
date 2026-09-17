@@ -36,8 +36,11 @@ export const haftpflichtversicherung: LearnPageContent = {
       {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
-        paragraphWithUsage:
-          'Ich habe eine {{Haftpflichtversicherung}} abgeschlossen, die Schäden abdeckt, die ich anderen verursache. Die {{Haftpflichtversicherung}} hat den Schaden an der Wohnung meines Nachbarn vollständig bezahlt. Ohne eine {{Haftpflichtversicherung}} kann ein kleiner Unfall sehr teuer werden.',
+        paragraphWithUsage: [
+          'Ich habe eine {{Haftpflichtversicherung}} abgeschlossen, die Schäden abdeckt, die ich anderen verursache.',
+          'Die {{Haftpflichtversicherung}} hat den Schaden an der Wohnung meines Nachbarn vollständig bezahlt.',
+          'Ohne eine {{Haftpflichtversicherung}} kann ein kleiner Unfall sehr teuer werden.',
+        ],
       },
       {
         moduleType: 'etymology',
