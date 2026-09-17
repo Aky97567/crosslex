@@ -57,13 +57,18 @@ export type WordContextModule = Module<
   'wordContext',
   {
     heading: Heading;
-    // Occurrences of the word (any form) are wrapped in {{...}} — see
+    // One string per sentence — explicit, not inferred by splitting on
+    // punctuation (which breaks on "?"/"!" and on non-terminal periods
+    // like German ordinal dates, e.g. "30. April"). Occurrences of the
+    // word (any form) are wrapped in {{...}} within each sentence — see
     // parseAnnotatedParagraph. No separate alternateForms/trennbarTokens
     // list to keep in sync — the markers are the declaration. Which
     // sentence renders as "context, not the quiz blank" is derived from
     // wordIntro.trennbar (sentence index 1, per the mandatory trennbar
-    // paragraph order below), not declared here.
-    paragraphWithUsage: string;
+    // paragraph order below), not declared here. No minimum length
+    // enforced by the type — "at least 3 sentences" is a content
+    // guideline (see docs/word-content.md), not a structural guarantee.
+    paragraphWithUsage: string[];
   }
 >;
 

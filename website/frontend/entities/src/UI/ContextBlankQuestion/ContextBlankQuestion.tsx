@@ -8,7 +8,7 @@ type Option = {
 };
 
 export type ContextBlankQuestionData = {
-  sentence: string;
+  sentences: string[];
   fills: string[];
   options: Option[];
   contextSentenceIndices?: number[];
@@ -57,7 +57,7 @@ const ContextBlankQuestion: React.FC<Props> = ({
     onAnswer?.(contextBlankQuestion.options[index].isCorrect);
   };
 
-  const { sentence, fills, options, contextSentenceIndices } = contextBlankQuestion;
+  const { sentences, fills, options, contextSentenceIndices } = contextBlankQuestion;
   const selectedOptionText = selectedIndex !== null ? options[selectedIndex].text : null;
 
   const blankClassName = `inline-block border-b-2 min-w-60 mx-5 text-center font-bold ${
@@ -67,11 +67,6 @@ const ContextBlankQuestion: React.FC<Props> = ({
         ? 'border-color3 text-color3'
         : 'border-brand text-brand'
   }`;
-
-  // Lookbehind keeps each sentence's own terminator (. ? !) instead of
-  // consuming it — splitting on a literal ". " alone merges a sentence
-  // ending in "?" or "!" into the next one.
-  const sentences = sentence.split(/(?<=[.?!]) /);
 
   const blankOffsets: number[] = [];
   let count = 0;
