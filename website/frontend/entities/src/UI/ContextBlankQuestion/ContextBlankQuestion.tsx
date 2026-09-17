@@ -68,9 +68,10 @@ const ContextBlankQuestion: React.FC<Props> = ({
         : 'border-brand text-brand'
   }`;
 
-  const sentences = sentence
-    .split('. ')
-    .map((s, i, arr) => (i < arr.length - 1 ? s + '.' : s));
+  // Lookbehind keeps each sentence's own terminator (. ? !) instead of
+  // consuming it — splitting on a literal ". " alone merges a sentence
+  // ending in "?" or "!" into the next one.
+  const sentences = sentence.split(/(?<=[.?!]) /);
 
   const blankOffsets: number[] = [];
   let count = 0;
