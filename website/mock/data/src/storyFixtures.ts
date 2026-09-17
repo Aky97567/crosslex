@@ -25,16 +25,18 @@ const makeContextBlankFixture = (
     'wordContext',
   )!;
   const fills: string[] = [];
-  const sentence = parseAnnotatedParagraph(ctx.paragraphWithUsage)
-    .map((seg) => {
-      if (!seg.marked) return seg.text;
-      fills.push(seg.text);
-      return '___';
-    })
-    .join('');
+  const sentences = ctx.paragraphWithUsage.map((rawSentence) =>
+    parseAnnotatedParagraph(rawSentence)
+      .map((seg) => {
+        if (!seg.marked) return seg.text;
+        fills.push(seg.text);
+        return '___';
+      })
+      .join(''),
+  );
   const distractors = distractorKeys.map((k) => ({ text: getIntro(k).word, isCorrect: false as const }));
   return {
-    sentence,
+    sentences,
     fills,
     options: [{ text: intro.word, isCorrect: true as const }, ...distractors],
     contextSentenceIndices: intro.trennbar ? [1] : undefined,

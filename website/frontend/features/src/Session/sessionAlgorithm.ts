@@ -151,13 +151,15 @@ export const generateExerciseData = (
 
     const displayText = intro.displayName ?? intro.word;
     const fills: string[] = [];
-    const sentence = parseAnnotatedParagraph(mod.paragraphWithUsage)
-      .map((seg) => {
-        if (!seg.marked) return seg.text;
-        fills.push(seg.text);
-        return '___';
-      })
-      .join('');
+    const sentences = mod.paragraphWithUsage.map((rawSentence) =>
+      parseAnnotatedParagraph(rawSentence)
+        .map((seg) => {
+          if (!seg.marked) return seg.text;
+          fills.push(seg.text);
+          return '___';
+        })
+        .join(''),
+    );
     if (fills.length === 0) return null;
 
     const distractors = allWordKeys
@@ -171,7 +173,7 @@ export const generateExerciseData = (
     return {
       cardType: 'contextBlank',
       data: {
-        sentence,
+        sentences,
         fills,
         options: shuffle([{ text: displayText, isCorrect: true }, ...distractors]),
         contextSentenceIndices: intro.trennbar ? [1] : undefined,

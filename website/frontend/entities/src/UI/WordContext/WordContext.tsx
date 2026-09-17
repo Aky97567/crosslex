@@ -4,7 +4,7 @@ import { BodyText, Card } from '@whitelotus/front-shared';
 
 type WordContextProps = {
   heading: Heading;
-  paragraphWithUsage: string;
+  paragraphWithUsage: string[];
   needClose?: boolean;
   onClose?: () => void;
   showContent?: boolean;
@@ -31,7 +31,7 @@ export const WordContext: React.FC<WordContextProps> = ({
   onClose,
   showContent = true,
 }) =>
-  paragraphWithUsage && (
+  paragraphWithUsage.length > 0 && (
     <Card
       heading={heading}
       needClose={needClose}
@@ -39,14 +39,9 @@ export const WordContext: React.FC<WordContextProps> = ({
       showContent={showContent}
     >
       <div className="mb-6">
-        {paragraphWithUsage
-          // Lookbehind keeps each sentence's own terminator (. ? !) instead
-          // of consuming it — a literal ". " split merges a sentence ending
-          // in "?" or "!" into the next one.
-          .split(/(?<=[.?!]) /)
-          .map((sentence, i) => (
-            <BodyText key={i}>{renderSentence(sentence)}</BodyText>
-          ))}
+        {paragraphWithUsage.map((sentence, i) => (
+          <BodyText key={i}>{renderSentence(sentence)}</BodyText>
+        ))}
       </div>
     </Card>
   );
