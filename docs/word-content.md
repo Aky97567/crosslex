@@ -21,6 +21,68 @@ Word data lives in `mock/data/src/learnPage/`. Each word is its own file.
 - `mnemonics` — 2 mnemonics; omit `imageUrl` until a real URL exists
 - `wordShowcase` — always include, leave empty (hides itself when no URL)
 
+**`wordContext` paragraph — design principle and consumers:**
+
+Each sentence in `paragraphWithUsage` is an independent chance for a
+learner with their own limited, individually-varying vocabulary to
+recognize the target word from context — that's why the paragraph repeats
+the word across 3+ *separate* sentences rather than once: a given sentence
+might simply not land for a particular learner, so each one has to carry
+that chance on its own. Write each sentence so it can be understood — and
+the target word picked out — using vocabulary a learner at this word's
+level is likely to already know.
+
+Don't substitute a word's derivational relatives — words it's derived
+from, or words derived from it — for the word itself. That cuts both
+ways: a compound built from the target word (e.g. `Steuer` →
+`Steuererklärung`, `Genehmigung` → `Baugenehmigung`) is a different
+concept from the base word, not an inflected form of it; and for a noun
+formed from a verb (`Kündigung` ← `kündigen`, `Anmeldung` ← `anmelden`,
+`Genehmigung` ← `genehmigen`), leaning on the verb's conjugations instead
+of the noun's own usage teaches the wrong word's grammar. Ordinary,
+unrelated vocabulary elsewhere in the sentence is fine and expected — this
+rule is specifically about a word's own derivational family, not about
+avoiding every other word that happens to share letters or a root with it.
+
+Use the word strictly as the part of speech `wordIntro.partOfSpeech`
+labels it, not as a same-spelling word in a different word class. German
+nominalizes infinitives directly (`das Leben` from `leben`, `das Rauchen`
+from `rauchen`) — identical spelling, different grammatical function — so
+a noun entry's paragraph can accidentally use the word as a plain verb
+instead of the noun it's meant to teach, and because `contextBlank`'s
+matching is case-insensitive, that misuse would still get blanked as if it
+were correct. Some German words are true homographs across parts of
+speech or even genders with unrelated meanings (`die Steuer`, tax, vs
+`das Steuer`, steering wheel — noted in `steuer.ts`'s own etymology
+entry) — double-check the sentence uses the word as the specific concept
+`wordIntro` declares, not a same-spelling relative.
+
+Match sentence complexity to the word's `level`. A B1-appropriate
+subordinate clause or construction can make an A2 sentence unreadable for
+the learner it's meant for — see the A2-specific grammar and length rules
+below for the concrete ceiling; this is the same underlying principle as
+the vocabulary point above, just applied to grammar rather than word
+choice.
+
+This data feeds more than one place, so "does the sentence read naturally"
+isn't the only bar it has to clear:
+- The `contextBlank` exercise (`sessionAlgorithm.ts`, `generateExerciseData`)
+  blanks the base word plus any declared `alternateForms`/`trennbarTokens`.
+  A sentence where **no** declared form actually matches ends up with a
+  blank count of zero — and a zero-blank sentence is hidden from the
+  learner entirely until the question is answered
+  (`ContextBlankQuestion.tsx`). An inflected form the paragraph uses but
+  `alternateForms` doesn't list isn't just missed — it silently removes
+  that whole sentence as a teaching opportunity, with nothing in the UI
+  signalling the gap. Always double-check every form the paragraph
+  actually uses is listed (see `alternateForms` below).
+- The word-intro learn-page card (`WordContext.tsx`) displays the **full**
+  paragraph, unconditionally, with the word and its forms highlighted —
+  real, always-visible content on first encounter with the word, not just
+  exercise fodder.
+- `storyFixtures.ts`'s `makeContextBlankFixture` mirrors the exercise's own
+  matching logic for Storybook fixtures.
+
 **`word` vs `displayName` in `wordIntro`:**
 
 `wordIntro` has two related fields:
@@ -54,7 +116,7 @@ Verbs and adjectives rarely need this — it mainly affects long nouns.
 
 **`alternateForms` — what to include per part of speech:**
 
-The `contextBlank` exercise blanks the base form plus any strings listed in `alternateForms`. Without this, conjugated/inflected forms remain visible and leak the answer. The correct answer shown to the user is always the base form (dictionary lemma).
+The `contextBlank` exercise blanks the base form plus any strings listed in `alternateForms`. Without this, conjugated/inflected forms remain visible and leak the answer if they share a sentence with a form that *is* declared, or — if a sentence's only occurrence is the undeclared form — silently drop that entire sentence from the exercise instead (see "design principle and consumers" above). Either way, an incomplete list is a real content bug, not just a cosmetic one. The correct answer shown to the user is always the base form (dictionary lemma).
 
 | Part of speech | What to include in `alternateForms` |
 |---|---|
