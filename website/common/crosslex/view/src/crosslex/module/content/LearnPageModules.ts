@@ -57,9 +57,13 @@ export type WordContextModule = Module<
   'wordContext',
   {
     heading: Heading;
+    // Occurrences of the word (any form) are wrapped in {{...}} — see
+    // parseAnnotatedParagraph. No separate alternateForms/trennbarTokens
+    // list to keep in sync — the markers are the declaration. Which
+    // sentence renders as "context, not the quiz blank" is derived from
+    // wordIntro.trennbar (sentence index 1, per the mandatory trennbar
+    // paragraph order below), not declared here.
     paragraphWithUsage: string;
-    alternateForms?: string[];
-    trennbarTokens?: [string, string];
   }
 >;
 

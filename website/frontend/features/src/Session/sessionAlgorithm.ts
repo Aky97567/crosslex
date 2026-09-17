@@ -2,6 +2,7 @@ import {
   WordIntroModule,
   WordContextModule,
   MeaningGuessQuestionModule,
+  parseAnnotatedParagraph,
 } from '@whitelotus/common-crosslex-view';
 import { ContextBlankQuestionData, WordDefinitionQuestionData, TypeTheWordQuestionData } from '@whitelotus/front-entities';
 import { LearningRate, RATE_CONFIG, WordsSeenStore } from './sessionStorage';
@@ -148,16 +149,16 @@ export const generateExerciseData = (
     const intro = getWordIntroModule(word);
     if (!mod || !intro) return null;
 
-    const wordText = intro.word;
     const displayText = intro.displayName ?? intro.word;
-    const allForms = [wordText, ...(mod.alternateForms ?? []), ...(mod.trennbarTokens ?? [])];
-    const pattern = allForms.map((f) => f.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
     const fills: string[] = [];
-    const sentence = mod.paragraphWithUsage.replace(
-      new RegExp(pattern, 'gi'),
-      (match) => { fills.push(match); return '___'; },
-    );
-    if (!sentence.includes('___')) return null;
+    const sentence = parseAnnotatedParagraph(mod.paragraphWithUsage)
+      .map((seg) => {
+        if (!seg.marked) return seg.text;
+        fills.push(seg.text);
+        return '___';
+      })
+      .join('');
+    if (fills.length === 0) return null;
 
     const distractors = allWordKeys
       .filter((k) => k !== wordKey)
@@ -173,7 +174,7 @@ export const generateExerciseData = (
         sentence,
         fills,
         options: shuffle([{ text: displayText, isCorrect: true }, ...distractors]),
-        contextSentenceIndices: mod.trennbarTokens ? [1] : undefined,
+        contextSentenceIndices: intro.trennbar ? [1] : undefined,
       },
     };
   }

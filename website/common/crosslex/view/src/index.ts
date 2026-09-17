@@ -18,3 +18,5 @@ export type {
   WordShowcaseModule,
   WordTheme,
 } from './crosslex';
+export type { ParagraphSegment } from './crosslex';
+export { parseAnnotatedParagraph } from './crosslex';
