@@ -1,34 +1,34 @@
 import { LearnPageContent } from '@whitelotus/common-crosslex-view';
 
-export const arbeiten: LearnPageContent = {
+export const putzen: LearnPageContent = {
   content: {
     moduleType: 'content',
     modules: [
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'arbeiten',
+        word: 'putzen',
         article: null,
-        translation: 'to work',
+        translation: 'to clean',
         partOfSpeech: 'verb',
-        themes: ['daily_life', 'work', 'timetable'],
+        themes: ['daily_life', 'timetable'],
         level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',
         heading: { text: 'Meaning' },
         meaning:
-          'To do a job or task, especially in exchange for money; to be employed or to put effort into something.',
+          'To clean something by wiping, scrubbing, or polishing it.',
       },
       {
         moduleType: 'meaningGuessQuestion',
         heading: { text: 'Guess the Meaning' },
         meaningBestGuessQuestion: {
-          question: "What is the best guess for the meaning of 'arbeiten'?",
+          question: "What is the best guess for the meaning of 'putzen'?",
           options: [
-            { text: 'to rest', isCorrect: false },
-            { text: 'to work', isCorrect: true },
-            { text: 'to study', isCorrect: false },
+            { text: 'to clean', isCorrect: true },
+            { text: 'to break', isCorrect: false },
+            { text: 'to cook', isCorrect: false },
           ],
         },
       },
@@ -36,43 +36,36 @@ export const arbeiten: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Ich {{arbeite}} von 9 bis 17 Uhr.',
-          'Wo {{arbeiten}} Sie?',
-          'Meine Schwester {{arbeitet}} in einem Krankenhaus.',
+          'Ich {{putze}} am Samstag die Wohnung.',
+          'Er {{putzt}} jeden Morgen seine Zähne.',
+          'Wir haben die Fenster {{geputzt}}.',
         ],
       },
       {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:
-          "From Old High German 'arabeiten' (to labour, to toil). Related to the English word 'effort' through a shared sense of strenuous activity.",
+          "From Middle High German 'butzen', originally meaning to polish or trim — unrelated to English, but a good example of German's many specific household-task verbs.",
       },
       {
         moduleType: 'similarWords',
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'schaffen',
+            word: 'reinigen',
             article: null,
-            translation: 'to work, to manage (colloquial)',
-            similarityScore: 5,
-            level: ['A2'],
-            cefrRelevant: true,
-          },
-          {
-            word: 'jobben',
-            article: null,
-            translation: 'to work a job (informal)',
+            translation: 'to clean (more formal)',
             similarityScore: 4,
             level: ['A2'],
             cefrRelevant: true,
           },
           {
-            word: 'tätig sein',
+            word: 'säubern',
             article: null,
-            translation: 'to be employed, to be active',
+            translation: 'to clean, cleanse',
             similarityScore: 3,
-            level: ['A2'],
+            level: ['B1'],
+            register: 'formal',
             cefrRelevant: true,
           },
         ],
@@ -84,12 +77,12 @@ export const arbeiten: LearnPageContent = {
           {
             id: 1,
             content:
-              "'Arbeiten' contains 'Arbeit' (work). Think: you need to do the Arbeit-en (the work-ing).",
+              "'Putzen' — put your effort into 'putzen' (cleaning) to make things shine.",
           },
           {
             id: 2,
             content:
-              "Sounds like 'are-bite-en' — you bite into your work and get things done.",
+              "Imagine polishing shoes until they 'putz' and shine — a sound-alike hook for 'putzen'.",
           },
         ],
       },
