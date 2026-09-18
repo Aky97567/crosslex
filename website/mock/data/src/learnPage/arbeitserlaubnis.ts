@@ -53,14 +53,6 @@ export const arbeitserlaubnis: LearnPageContent = {
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'Erlaubnis',
-            article: 'die',
-            translation: 'permission, authorisation',
-            similarityScore: 5,
-            level: ['B1'],
-            cefrRelevant: true,
-          },
-          {
             word: 'Arbeitsgenehmigung',
             article: 'die',
             translation: 'work permit (alternative term)',

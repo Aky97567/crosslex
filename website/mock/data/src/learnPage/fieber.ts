@@ -59,14 +59,6 @@ export const fieber: LearnPageContent = {
             level: ['A2'],
             cefrRelevant: true,
           },
-          {
-            word: 'Fieberhitze',
-            article: 'die',
-            translation: 'fever heat',
-            similarityScore: 4,
-            level: ['A2'],
-            cefrRelevant: true,
-          },
         ],
       },
       {

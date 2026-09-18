@@ -50,24 +50,10 @@ export const schluessel: LearnPageContent = {
       {
         moduleType: 'similarWords',
         heading: { text: 'Similar Words' },
-        similarWords: [
-          {
-            word: 'Hausschlüssel',
-            article: 'der',
-            translation: 'house key',
-            similarityScore: 5,
-            level: ['A2'],
-            cefrRelevant: true,
-          },
-          {
-            word: 'Wohnungsschlüssel',
-            article: 'der',
-            translation: 'apartment key',
-            similarityScore: 5,
-            level: ['A2'],
-            cefrRelevant: true,
-          },
-        ],
+        // No genuine synonym found — Hausschlüssel/Wohnungsschlüssel were
+        // specific-instance compounds, not synonyms of Schlüssel itself.
+        // Flagged for a human content pass rather than filled with a weak fit.
+        similarWords: [],
       },
       {
         moduleType: 'mnemonics',

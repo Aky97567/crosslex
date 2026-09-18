@@ -59,14 +59,6 @@ export const wetter: LearnPageContent = {
             level: ['A2'],
             cefrRelevant: true,
           },
-          {
-            word: 'Wetterlage',
-            article: 'die',
-            translation: 'weather situation',
-            similarityScore: 3,
-            level: ['A2'],
-            cefrRelevant: true,
-          },
         ],
       },
       {

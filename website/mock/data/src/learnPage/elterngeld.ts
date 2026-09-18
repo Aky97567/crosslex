@@ -68,14 +68,6 @@ export const elterngeld: LearnPageContent = {
             level: ['B1'],
             cefrRelevant: true,
           },
-          {
-            word: 'Elterngeld Plus',
-            article: 'das',
-            translation: 'extended parental benefit option',
-            similarityScore: 5,
-            level: ['B1'],
-            cefrRelevant: true,
-          },
         ],
       },
       {

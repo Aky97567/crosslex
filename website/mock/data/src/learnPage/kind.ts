@@ -52,14 +52,6 @@ export const kind: LearnPageContent = {
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'Kleinkind',
-            article: 'das',
-            translation: 'toddler, small child',
-            similarityScore: 4,
-            level: ['A2'],
-            cefrRelevant: true,
-          },
-          {
             word: 'Jugendlicher',
             article: 'der',
             translation: 'teenager, young person',

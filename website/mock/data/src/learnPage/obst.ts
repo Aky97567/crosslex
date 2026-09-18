@@ -59,14 +59,6 @@ export const obst: LearnPageContent = {
             level: ['A2'],
             cefrRelevant: true,
           },
-          {
-            word: 'Obstsorte',
-            article: 'die',
-            translation: 'type of fruit',
-            similarityScore: 3,
-            level: ['A2'],
-            cefrRelevant: true,
-          },
         ],
       },
       {
