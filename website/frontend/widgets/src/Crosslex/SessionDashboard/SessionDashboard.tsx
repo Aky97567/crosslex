@@ -4,6 +4,7 @@ import {
   LearningRate,
   useCoachMark,
   WordTheme,
+  SessionFilter,
   useCrosslexStorage,
 } from '@whitelotus/front-features';
 import { A2Words, B1Words, getThemesForPool } from '@whitelotus/mock-test';
@@ -37,15 +38,16 @@ const THEME_LABELS: Record<WordTheme, string> = {
 const ctaButton =
   'bg-brand border-2 border-brand rounded-md text-text-cta px-40 py-10 transition-colors duration-300 w-full mt-20';
 
-type Props = { onStart: (durationMinutes: number, theme: WordTheme | null) => void; onWordClick?: (wordKey: string) => void; coachMarksEnabled?: boolean };
+type Props = { onStart: (durationMinutes: number, filter: SessionFilter) => void; onWordClick?: (wordKey: string) => void; coachMarksEnabled?: boolean };
 
 const SessionDashboard: React.FC<Props> = ({ onStart, onWordClick, coachMarksEnabled = true }) => {
   const {
     wordsSeen: wordsSeenMap,
     activeLevel,
     learningRate: savedRate,
+    sessionFilter: savedFilter,
     writeLearningRate,
-    writeActiveTheme,
+    writeSessionFilter,
   } = useCrosslexStorage();
   const [duration, setDuration] = useState<number>(5);
   const { shown: showDashboardTip, dismiss: dismissDashboardTip } = useCoachMark('dashboard-intro');
@@ -56,7 +58,7 @@ const SessionDashboard: React.FC<Props> = ({ onStart, onWordClick, coachMarksEna
   );
   const wordPool = activeLevel === 'a2' ? A2Words : B1Words;
   const availableThemes = getThemesForPool(wordPool, 5);
-  const [theme, setTheme] = useState<WordTheme | null>(null);
+  const [filter, setFilter] = useState<SessionFilter>(savedFilter);
   const allWordsSeen = wordPool.every((key) => key in wordsSeenMap);
   const showAllSeenNotice = allWordsSeen && (rate === 'balanced' || rate === 'intensive');
   const filteredRateOptions = RATE_OPTIONS.filter((opt) => {
@@ -69,9 +71,9 @@ const SessionDashboard: React.FC<Props> = ({ onStart, onWordClick, coachMarksEna
     writeLearningRate(next);
   };
 
-  const handleThemeChange = (next: WordTheme | null) => {
-    setTheme(next);
-    writeActiveTheme(next);
+  const handleFilterChange = (next: SessionFilter) => {
+    setFilter(next);
+    writeSessionFilter(next);
   };
 
   const handleDurationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -106,23 +108,28 @@ const SessionDashboard: React.FC<Props> = ({ onStart, onWordClick, coachMarksEna
           <div>
             <label
               className="text-text font-semibold block mb-10"
-              htmlFor="session-theme"
+              htmlFor="session-filter"
             >
-              Theme
+              Filter
             </label>
             <select
-              id="session-theme"
-              value={theme ?? ''}
-              onChange={(e) => handleThemeChange((e.target.value as WordTheme) || null)}
+              id="session-filter"
+              value={filter ?? ''}
+              onChange={(e) => handleFilterChange((e.target.value as SessionFilter) || null)}
               className="bg-bg-l2 border-2 border-brand rounded-md px-20 py-10 text-text"
             >
-              <option value="">All themes</option>
-              {availableThemes.map((t) => (
-                <option key={t} value={t}>{THEME_LABELS[t]}</option>
-              ))}
+              <option value="">All words</option>
+              <optgroup label="Theme">
+                {availableThemes.map((t) => (
+                  <option key={t} value={t}>{THEME_LABELS[t]}</option>
+                ))}
+              </optgroup>
+              <optgroup label="Parts of Speech">
+                <option value="verbs_only">Verbs only</option>
+              </optgroup>
             </select>
           </div>
-          {/* Tablet: rate inline with duration + theme */}
+          {/* Tablet: rate inline with duration + filter */}
           <div className="hidden md:block lg:hidden self-stretch border-l-2 border-brand opacity-30" />
           <div className="hidden md:block lg:hidden">
             <label className="text-text font-semibold block mb-10" htmlFor="session-rate-inline">
@@ -203,7 +210,7 @@ const SessionDashboard: React.FC<Props> = ({ onStart, onWordClick, coachMarksEna
 
         <button
           className={ctaButton}
-          onClick={() => { dismissDashboardTip(); onStart(duration, theme); }}
+          onClick={() => { dismissDashboardTip(); onStart(duration, filter); }}
         >
           Start →
         </button>

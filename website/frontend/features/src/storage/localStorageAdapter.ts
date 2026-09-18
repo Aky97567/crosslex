@@ -4,7 +4,7 @@ import {
   readStreak,
   readActiveLevel,
   readLearningRate,
-  readActiveTheme,
+  readSessionFilter,
   readKnownWords,
   readSessionTimeout,
   readFlipAnimation,
@@ -13,7 +13,7 @@ import {
   readKnownWordConfirmed,
   writeActiveLevel,
   writeLearningRate,
-  writeActiveTheme,
+  writeSessionFilter,
   writeSessionTimeout,
   writeFlipAnimation,
   writeHardcoreMode,
@@ -35,7 +35,7 @@ export class LocalStorageAdapter implements StoragePort {
       streak:            readStreak(),
       activeLevel:       readActiveLevel(),
       learningRate:      readLearningRate(),
-      activeTheme:       readActiveTheme(),
+      sessionFilter:     readSessionFilter(),
       knownWords:        readKnownWords(),
       sessionTimeout:    readSessionTimeout(),
       flipAnimation:     readFlipAnimation(),
@@ -47,7 +47,7 @@ export class LocalStorageAdapter implements StoragePort {
 
   writeActiveLevel     = writeActiveLevel;
   writeLearningRate    = writeLearningRate;
-  writeActiveTheme     = writeActiveTheme;
+  writeSessionFilter   = writeSessionFilter;
   writeSessionTimeout  = writeSessionTimeout;
   writeFlipAnimation   = writeFlipAnimation;
   writeHardcoreMode    = writeHardcoreMode;

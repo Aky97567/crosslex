@@ -3,9 +3,23 @@ export type ChangelogEntry = {
   returningUser: { heading: string; body: string; changes: string[] };
 };
 
-export const CURRENT_BUILD_ID = 'alpha-2026-06-21-blank-screen-fix';
+export const CURRENT_BUILD_ID = 'alpha-2026-09-18-verbs-only';
 
 export const CHANGELOG: Record<string, ChangelogEntry> = {
+  'alpha-2026-09-18-verbs-only': {
+    newUser: {
+      heading: "You're testing Crosslex Alpha",
+      body: "Crosslex is a German vocabulary trainer — built for adults navigating real life in Germany. Choose your level, pick a session length and learning pace, and Crosslex will guide you through words and exercises. Your feedback shapes what we build next.",
+      cta: "Let's go →",
+    },
+    returningUser: {
+      heading: "You're back — something's new",
+      body: 'Filter sessions to verbs only.',
+      changes: [
+        'New: "Verbs only" option in the session Filter dropdown — drill just the verbs at your level',
+      ],
+    },
+  },
   'alpha-2026-06-21-blank-screen-fix': {
     newUser: {
       heading: "You're testing Crosslex Alpha",
