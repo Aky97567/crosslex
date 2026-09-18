@@ -1,35 +1,35 @@
 import { LearnPageContent } from '@whitelotus/common-crosslex-view';
 
-export const mitnehmen: LearnPageContent = {
+export const mitkommen: LearnPageContent = {
   content: {
     moduleType: 'content',
     modules: [
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'mitnehmen',
+        word: 'mitkommen',
         article: null,
-        translation: 'to take along, bring with',
+        translation: 'to come along, join',
         partOfSpeech: 'verb',
         trennbar: true,
-        themes: ['daily_life', 'transport', 'trennbar', 'irregular'],
-        level: ['B1'],
+        themes: ['daily_life', 'trennbar'],
+        level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',
         heading: { text: 'Meaning' },
         meaning:
-          'To take a person or thing along when going somewhere. Also used at food counters for takeaway orders: "zum Mitnehmen" (to go / takeaway).',
+          'To accompany someone; to go together with someone else.',
       },
       {
         moduleType: 'meaningGuessQuestion',
         heading: { text: 'Guess the Meaning' },
         meaningBestGuessQuestion: {
-          question: "What is the best guess for the meaning of 'mitnehmen'?",
+          question: "What is the best guess for the meaning of 'mitkommen'?",
           options: [
-            { text: 'to leave something behind', isCorrect: false },
-            { text: 'to take along, bring with', isCorrect: true },
-            { text: 'to borrow something', isCorrect: false },
+            { text: 'to come along, join', isCorrect: true },
+            { text: 'to stay behind', isCorrect: false },
+            { text: 'to leave alone', isCorrect: false },
           ],
         },
       },
@@ -37,33 +37,25 @@ export const mitnehmen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Vergiss nicht, deinen Ausweis {{mitnehmen}}.',
-          'Ich {{nehme}} meinen Regenschirm {{mit}}.',
-          'Er hat die Unterlagen aus dem Büro {{mitgenommen}}.',
+          'Willst du heute Abend {{mitkommen}}?',
+          'Ich {{komme}} gern {{mit}}.',
+          'Er ist leider nicht {{mitgekommen}}.',
         ],
       },
       {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:
-          "From 'mit-' (with, along) + 'nehmen' (to take). To take with — bringing something or someone along on your way.",
+          "From 'mit' (with) + 'kommen' (to come) — literally 'to come with'.",
       },
       {
         moduleType: 'similarWords',
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'bringen',
+            word: 'mitgehen',
             article: null,
-            translation: 'to bring',
-            similarityScore: 4,
-            level: ['A2'],
-            cefrRelevant: true,
-          },
-          {
-            word: 'nehmen',
-            article: null,
-            translation: 'to take',
+            translation: 'to go along, accompany',
             similarityScore: 4,
             level: ['A2'],
             cefrRelevant: true,
@@ -77,12 +69,12 @@ export const mitnehmen: LearnPageContent = {
           {
             id: 1,
             content:
-              "'Mit' = with, 'nehmen' = to take. Take with you — mitnehmen.",
+              "'Mit' + 'kommen' — coming (kommen) 'with' (mit) someone.",
           },
           {
             id: 2,
             content:
-              "'Zum Mitnehmen, bitte' — for takeaway, please. A phrase you'll use every time you grab a coffee to go.",
+              "Think of a friend saying 'I'm coming with!' — that's exactly 'mitkommen'.",
           },
         ],
       },

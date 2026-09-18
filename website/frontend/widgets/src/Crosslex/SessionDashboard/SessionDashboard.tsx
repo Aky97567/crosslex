@@ -33,6 +33,9 @@ const THEME_LABELS: Record<WordTheme, string> = {
   bureaucracy: 'Bureaucracy',
   finance:     'Finance',
   trennbar:    'Trennbar (separable verbs)',
+  timetable:   'Timetable (daily routine)',
+  reflexiv:    'Reflexiv (reflexive verbs)',
+  irregular:   'Irregular verbs',
 };
 
 const ctaButton =

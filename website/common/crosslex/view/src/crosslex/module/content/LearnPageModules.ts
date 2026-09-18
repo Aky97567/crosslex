@@ -27,7 +27,7 @@ export type MeaningBestGuessQuestion = {
 
 export type Article = 'der' | 'die' | 'das' | null;
 
-export type WordTheme = 'transport' | 'health' | 'daily_life' | 'work' | 'bureaucracy' | 'finance' | 'trennbar';
+export type WordTheme = 'transport' | 'health' | 'daily_life' | 'work' | 'bureaucracy' | 'finance' | 'trennbar' | 'timetable' | 'reflexiv' | 'irregular';
 
 export type WordIntroModule = Module<
   'wordIntro',

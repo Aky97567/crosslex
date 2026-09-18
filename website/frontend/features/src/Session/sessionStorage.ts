@@ -11,7 +11,7 @@ export type LearningRate = 'review' | 'easy' | 'balanced' | 'intensive';
 export type SessionFilter = WordTheme | 'verbs_only' | null;
 
 const SESSION_FILTER_KEY = 'crosslex:session_filter';
-const VALID_THEMES: WordTheme[] = ['transport', 'health', 'daily_life', 'work', 'bureaucracy', 'finance', 'trennbar'];
+const VALID_THEMES: WordTheme[] = ['transport', 'health', 'daily_life', 'work', 'bureaucracy', 'finance', 'trennbar', 'timetable', 'reflexiv', 'irregular'];
 
 export const readSessionFilter = (): SessionFilter => {
   try {

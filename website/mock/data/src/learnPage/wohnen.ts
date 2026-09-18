@@ -1,34 +1,34 @@
 import { LearnPageContent } from '@whitelotus/common-crosslex-view';
 
-export const arbeiten: LearnPageContent = {
+export const wohnen: LearnPageContent = {
   content: {
     moduleType: 'content',
     modules: [
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'arbeiten',
+        word: 'wohnen',
         article: null,
-        translation: 'to work',
+        translation: 'to live, reside',
         partOfSpeech: 'verb',
-        themes: ['daily_life', 'work', 'timetable'],
+        themes: ['daily_life'],
         level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',
         heading: { text: 'Meaning' },
         meaning:
-          'To do a job or task, especially in exchange for money; to be employed or to put effort into something.',
+          'To have one’s home in a particular place; to reside somewhere.',
       },
       {
         moduleType: 'meaningGuessQuestion',
         heading: { text: 'Guess the Meaning' },
         meaningBestGuessQuestion: {
-          question: "What is the best guess for the meaning of 'arbeiten'?",
+          question: "What is the best guess for the meaning of 'wohnen'?",
           options: [
-            { text: 'to rest', isCorrect: false },
-            { text: 'to work', isCorrect: true },
-            { text: 'to study', isCorrect: false },
+            { text: 'to live, reside', isCorrect: true },
+            { text: 'to work', isCorrect: false },
+            { text: 'to travel', isCorrect: false },
           ],
         },
       },
@@ -36,43 +36,36 @@ export const arbeiten: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Ich {{arbeite}} von 9 bis 17 Uhr.',
-          'Wo {{arbeiten}} Sie?',
-          'Meine Schwester {{arbeitet}} in einem Krankenhaus.',
+          'Ich {{wohne}} seit zwei Jahren in Berlin.',
+          'Wo {{wohnst}} du jetzt?',
+          'Meine Eltern haben in einem kleinen Dorf {{gewohnt}}.',
         ],
       },
       {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:
-          "From Old High German 'arabeiten' (to labour, to toil). Related to the English word 'effort' through a shared sense of strenuous activity.",
+          "From Old High German 'wonen', meaning to dwell or be accustomed to a place — related to the English word 'wont', as in 'as is his wont'.",
       },
       {
         moduleType: 'similarWords',
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'schaffen',
+            word: 'leben',
             article: null,
-            translation: 'to work, to manage (colloquial)',
-            similarityScore: 5,
-            level: ['A2'],
-            cefrRelevant: true,
-          },
-          {
-            word: 'jobben',
-            article: null,
-            translation: 'to work a job (informal)',
+            translation: 'to live, reside (also: to be alive)',
             similarityScore: 4,
             level: ['A2'],
             cefrRelevant: true,
           },
           {
-            word: 'tätig sein',
+            word: 'hausen',
             article: null,
-            translation: 'to be employed, to be active',
+            translation: 'to dwell, live (informal)',
             similarityScore: 3,
-            level: ['A2'],
+            level: ['B1'],
+            register: 'colloquial',
             cefrRelevant: true,
           },
         ],
@@ -84,12 +77,12 @@ export const arbeiten: LearnPageContent = {
           {
             id: 1,
             content:
-              "'Arbeiten' contains 'Arbeit' (work). Think: you need to do the Arbeit-en (the work-ing).",
+              "'Wohnen' sounds like 'own' — where you live is often where you own (or rent) a place.",
           },
           {
             id: 2,
             content:
-              "Sounds like 'are-bite-en' — you bite into your work and get things done.",
+              "Think of a home you've 'won' — 'wohnen' is where you've won a place to stay.",
           },
         ],
       },
