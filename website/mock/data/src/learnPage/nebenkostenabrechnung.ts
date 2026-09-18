@@ -68,14 +68,6 @@ export const nebenkostenabrechnung: LearnPageContent = {
             level: ['B1'],
             cefrRelevant: true,
           },
-          {
-            word: 'Nebenkosten',
-            article: 'die',
-            translation: 'ancillary costs, utilities',
-            similarityScore: 4,
-            level: ['B1'],
-            cefrRelevant: true,
-          },
         ],
       },
       {

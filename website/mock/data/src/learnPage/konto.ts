@@ -52,22 +52,6 @@ export const konto: LearnPageContent = {
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'Girokonto',
-            article: 'das',
-            translation: 'current account',
-            similarityScore: 5,
-            level: ['B1'],
-            cefrRelevant: true,
-          },
-          {
-            word: 'Sparkonto',
-            article: 'das',
-            translation: 'savings account',
-            similarityScore: 5,
-            level: ['B1'],
-            cefrRelevant: true,
-          },
-          {
             word: 'Bankkonto',
             article: 'das',
             translation: 'bank account',

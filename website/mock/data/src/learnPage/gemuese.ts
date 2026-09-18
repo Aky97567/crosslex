@@ -59,14 +59,6 @@ export const gemuese: LearnPageContent = {
             level: ['A2'],
             cefrRelevant: true,
           },
-          {
-            word: 'Gartengemüse',
-            article: 'das',
-            translation: 'garden vegetables',
-            similarityScore: 4,
-            level: ['A2'],
-            cefrRelevant: true,
-          },
         ],
       },
       {

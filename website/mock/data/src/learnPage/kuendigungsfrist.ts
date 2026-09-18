@@ -61,14 +61,6 @@ export const kuendigungsfrist: LearnPageContent = {
             cefrRelevant: true,
           },
           {
-            word: 'Frist',
-            article: 'die',
-            translation: 'deadline, time limit',
-            similarityScore: 3,
-            level: ['B1'],
-            cefrRelevant: true,
-          },
-          {
             word: 'Sperrfrist',
             article: 'die',
             translation: 'blocking period, waiting period',

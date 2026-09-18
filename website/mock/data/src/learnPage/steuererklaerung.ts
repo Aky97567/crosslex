@@ -53,22 +53,6 @@ export const steuererklaerung: LearnPageContent = {
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'Einkommensteuererklärung',
-            article: 'die',
-            translation: 'income tax return',
-            similarityScore: 5,
-            level: ['B1'],
-            cefrRelevant: true,
-          },
-          {
-            word: 'Jahressteuererklärung',
-            article: 'die',
-            translation: 'annual tax return',
-            similarityScore: 5,
-            level: ['B1'],
-            cefrRelevant: true,
-          },
-          {
             word: 'Steuerbescheid',
             article: 'der',
             translation: 'tax assessment notice',

@@ -145,6 +145,14 @@ Add `trennbar: true` to `wordIntro`. The `wordContext` paragraph **must follow t
 
 Which sentence gets the "context" styling isn't declared per word — it's derived automatically from `wordIntro.trennbar` (always sentence index 1, per the mandatory order above), so there's nothing extra to set in `wordContext` itself.
 
+**`similarWords` — design principle:**
+
+A synonym has to denote the *same concept* as the target word, not a narrower, broader, or otherwise different-but-related one. The most common way this goes wrong: a compound built from the target word gets listed as if it were interchangeable with it — `Rente` (pension, the general concept) is not synonymous with `Altersrente` (old-age pension, one specific type of it), the same way `Bahnhof` (train station) is not synonymous with `Hauptbahnhof` (specifically the *main* station). A compound naming a specific instance, sub-type, or variant of the target word is a hyponym, not a synonym — it belongs in a structured "related terms" module if one ever exists, not here.
+
+This isn't only a compound-word problem, and it isn't mechanically detectable by checking whether the two words share spelling — a genuinely different concept that happens to sound nothing alike (a specific document that's produced *from* the target process, a narrower category the target word is a member of, a related-but-distinct legal or bureaucratic program) is the same underlying mistake. The test is always semantic, not lexical: could you swap this word into a sentence using the target word and have it still mean the same thing? If not, it's not a synonym, regardless of whether it shares a root.
+
+Ordinary near-synonyms are fine even when they share a root with the target — `bezahlen`/`zahlen`, `Erstattung`/`Rückerstattung` — the rule is about the *relationship* (same concept vs. a different, more specific or adjacent one), not about avoiding shared spelling on principle. Not every word has 2–3 genuine synonyms available; where it doesn't, fewer entries (or none) is more honest than filling the slot with a related-but-not-equivalent word.
+
 **Gotchas encountered:**
 - `representativeImageUrl` and mnemonic `imageUrl` are **multi-line** in the file (`key:\n  'url',`). When bulk-stripping with `sed`, removing the key line leaves the URL value as an orphaned string — causes a TS error. Always run a second `sed` pass to remove the bare URL lines too, then verify with `grep`.
 - `sed` patterns containing `//` (as in `https://`) need escaping or an alternative approach — deleting by line number (`sed '15d'`) is safer for one-off fixes.

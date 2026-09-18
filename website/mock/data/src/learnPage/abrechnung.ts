@@ -52,14 +52,6 @@ export const abrechnung: LearnPageContent = {
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'Rechnung',
-            article: 'die',
-            translation: 'invoice, bill',
-            similarityScore: 4,
-            level: ['B1'],
-            cefrRelevant: true,
-          },
-          {
             word: 'Kostenaufstellung',
             article: 'die',
             translation: 'cost breakdown, itemised list',

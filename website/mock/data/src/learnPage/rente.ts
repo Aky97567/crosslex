@@ -52,14 +52,6 @@ export const rente: LearnPageContent = {
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'Altersrente',
-            article: 'die',
-            translation: 'old-age pension',
-            similarityScore: 5,
-            level: ['B1'],
-            cefrRelevant: true,
-          },
-          {
             word: 'Pension',
             article: 'die',
             translation: 'pension (civil servants)',

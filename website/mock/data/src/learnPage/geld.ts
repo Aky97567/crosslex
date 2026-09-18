@@ -52,25 +52,9 @@ export const geld: LearnPageContent = {
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'Bargeld',
-            article: 'das',
-            translation: 'cash',
-            similarityScore: 5,
-            level: ['A2'],
-            cefrRelevant: true,
-          },
-          {
             word: 'Kohle',
             article: 'die',
             translation: 'dough, money (informal)',
-            similarityScore: 4,
-            level: ['A2'],
-            cefrRelevant: true,
-          },
-          {
-            word: 'Kleingeld',
-            article: 'das',
-            translation: 'coins, small change',
             similarityScore: 4,
             level: ['A2'],
             cefrRelevant: true,

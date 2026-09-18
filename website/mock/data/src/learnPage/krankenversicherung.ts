@@ -60,14 +60,6 @@ export const krankenversicherung: LearnPageContent = {
             level: ['B1'],
             cefrRelevant: true,
           },
-          {
-            word: 'Versicherung',
-            article: 'die',
-            translation: 'insurance',
-            similarityScore: 4,
-            level: ['B1'],
-            cefrRelevant: true,
-          },
         ],
       },
       {

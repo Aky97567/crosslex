@@ -53,22 +53,6 @@ export const tarifvertrag: LearnPageContent = {
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'Lohntarifvertrag',
-            article: 'der',
-            translation: 'wage agreement',
-            similarityScore: 4,
-            level: ['B1'],
-            cefrRelevant: true,
-          },
-          {
-            word: 'Manteltarifvertrag',
-            article: 'der',
-            translation: 'general working conditions agreement',
-            similarityScore: 4,
-            level: ['B2'],
-            cefrRelevant: true,
-          },
-          {
             word: 'Kollektivvertrag',
             article: 'der',
             translation: 'collective agreement (Austrian term)',

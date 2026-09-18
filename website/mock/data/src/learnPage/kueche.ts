@@ -52,14 +52,6 @@ export const kueche: LearnPageContent = {
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'Küchenraum',
-            article: 'der',
-            translation: 'kitchen room',
-            similarityScore: 5,
-            level: ['A2'],
-            cefrRelevant: true,
-          },
-          {
             word: 'Kochbereich',
             article: 'der',
             translation: 'cooking area',

@@ -61,6 +61,7 @@ const ExpandableSectionCard: React.FC<Props> = ({
   const sections = content.modules
     .filter(m => m.moduleType !== 'wordIntro')
     .filter(m => !(m.moduleType === 'wordShowcase' && !m.wordShowcaseUrl))
+    .filter(m => !(m.moduleType === 'similarWords' && m.similarWords.length === 0))
     .map(module => ({
       title: module.heading.text,
       content: renderContentModule({
