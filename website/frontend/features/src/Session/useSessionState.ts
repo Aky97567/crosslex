@@ -1,5 +1,5 @@
 import { MutableRefObject, useCallback, useRef, useState } from 'react';
-import { sampleLearnPageContentList, A2Words, B1Words, getWordThemes } from '@whitelotus/mock-test';
+import { sampleLearnPageContentList, A2Words, B1Words, getWordThemes, getWordPartOfSpeech } from '@whitelotus/mock-test';
 import {
   writeWordsSeen,
   updateWordStats,
@@ -43,20 +43,23 @@ type Params = {
   sessionId: number;
   durationMs: number;
   theme?: WordTheme | null;
+  verbsOnly?: boolean;
   onComplete: (stats: RunnerStats) => void;
   startedAt: MutableRefObject<number>;
 };
 
 const getLevelPool = () => (readActiveLevel() === 'a2' ? A2Words : B1Words);
 
-const getWordPool = (theme?: WordTheme | null) => {
-  const pool = getLevelPool();
-  return theme ? pool.filter((w) => getWordThemes(w).includes(theme)) : pool;
+const getWordPool = (theme?: WordTheme | null, verbsOnly?: boolean) => {
+  let pool = getLevelPool();
+  if (theme) pool = pool.filter((w) => getWordThemes(w).includes(theme));
+  if (verbsOnly) pool = pool.filter((w) => getWordPartOfSpeech(w) === 'verb');
+  return pool;
 };
 
-const getActiveWords = (theme?: WordTheme | null) => {
+const getActiveWords = (theme?: WordTheme | null, verbsOnly?: boolean) => {
   const known = new Set(readKnownWords());
-  return getWordPool(theme).filter((w) => !known.has(w));
+  return getWordPool(theme, verbsOnly).filter((w) => !known.has(w));
 };
 
 const buildInitialCard = (
@@ -64,8 +67,9 @@ const buildInitialCard = (
   learningRate: ReturnType<typeof readLearningRate>,
   sessionDurationMs: number,
   theme?: WordTheme | null,
+  verbsOnly?: boolean,
 ): { wordKey: string; cardType: CardType; exerciseData: ExerciseData | null } => {
-  const activeWords = getActiveWords(theme);
+  const activeWords = getActiveWords(theme, verbsOnly);
   const { wordKey, cardType } = pickNextCard(
     activeWords,
     wordStats,
@@ -80,19 +84,20 @@ const buildInitialCard = (
   return { wordKey, cardType, exerciseData };
 };
 
-export const useSessionState = ({ sessionId, durationMs, theme, onComplete, startedAt }: Params) => {
+export const useSessionState = ({ sessionId, durationMs, theme, verbsOnly, onComplete, startedAt }: Params) => {
   const learningRate = useRef(readLearningRate());
   const themeRef = useRef(theme);
+  const verbsOnlyRef = useRef(verbsOnly);
 
   const [wordStats, setWordStats] = useState<WordsSeenStore>(() =>
-    healWordsSeen(getWordPool(theme)),
+    healWordsSeen(getWordPool(theme, verbsOnly)),
   );
   const [answered, setAnswered] = useState<boolean | null>(null);
   const [reviewWordKey, setReviewWordKey] = useState<string | null>(null);
   const [pendingKnownWordKey, setPendingKnownWordKey] = useState<string | null>(null);
 
   const initialCard = useRef(
-    buildInitialCard(wordStats, learningRate.current, durationMs, themeRef.current),
+    buildInitialCard(wordStats, learningRate.current, durationMs, themeRef.current, verbsOnlyRef.current),
   );
 
   const [runner, setRunner] = useState<RunnerState>(() => {
@@ -162,7 +167,7 @@ export const useSessionState = ({ sessionId, durationMs, theme, onComplete, star
 
         const newExercisesSinceLastIntro = isExercise ? prev.exercisesSinceLastIntro + 1 : 0;
         const newLastIntroducedWordKey = !isExercise ? prev.wordKey : prev.lastIntroducedWordKey;
-        const activeWords = getActiveWords(themeRef.current);
+        const activeWords = getActiveWords(themeRef.current, verbsOnlyRef.current);
 
         let wordKey: string;
         let cardType: CardType;

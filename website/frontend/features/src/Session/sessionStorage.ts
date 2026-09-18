@@ -25,6 +25,22 @@ export const writeActiveTheme = (theme: WordTheme | null): void => {
   } catch {}
 };
 
+const VERBS_ONLY_KEY = 'crosslex:verbs_only';
+
+export const readVerbsOnly = (): boolean => {
+  try {
+    return localStorage.getItem(VERBS_ONLY_KEY) === 'true';
+  } catch {
+    return false;
+  }
+};
+
+export const writeVerbsOnly = (enabled: boolean): void => {
+  try {
+    localStorage.setItem(VERBS_ONLY_KEY, String(enabled));
+  } catch {}
+};
+
 export type RateConfig = {
   newWordProbability: number;
 };

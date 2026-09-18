@@ -15,6 +15,7 @@ export type CrosslexStorageContextValue = StorageSnapshot & {
   writeActiveLevel(level: ActiveLevel): void;
   writeLearningRate(rate: LearningRate): void;
   writeActiveTheme(theme: WordTheme | null): void;
+  writeVerbsOnly(enabled: boolean): void;
   writeSessionTimeout(minutes: number): void;
   writeFlipAnimation(enabled: boolean): void;
   writeHardcoreMode(enabled: boolean): void;
@@ -59,6 +60,7 @@ const CrosslexStorageProvider: React.FC<Props> = ({ adapter, children }) => {
     writeActiveLevel: (level) => { adapter.writeActiveLevel(level); patch({ activeLevel: level }); },
     writeLearningRate: (rate) => { adapter.writeLearningRate(rate); patch({ learningRate: rate }); },
     writeActiveTheme: (theme) => { adapter.writeActiveTheme(theme); patch({ activeTheme: theme }); },
+    writeVerbsOnly: (v) => { adapter.writeVerbsOnly(v); patch({ verbsOnly: v }); },
     writeSessionTimeout: (m) => { adapter.writeSessionTimeout(m); patch({ sessionTimeout: m }); },
     writeFlipAnimation: (v) => { adapter.writeFlipAnimation(v); patch({ flipAnimation: v }); },
     writeHardcoreMode: (v) => { adapter.writeHardcoreMode(v); patch({ hardcoreMode: v }); },

@@ -8,6 +8,7 @@ const DEFAULT_SNAPSHOT: StorageSnapshot = {
   activeLevel:        'b1',
   learningRate:       'balanced',
   activeTheme:        null,
+  verbsOnly:          false,
   knownWords:         [],
   sessionTimeout:     5,
   flipAnimation:      false,
@@ -30,6 +31,7 @@ export class MemoryStorageAdapter implements StoragePort {
   writeActiveLevel(level: ActiveLevel): void          { this.snapshot = { ...this.snapshot, activeLevel: level }; }
   writeLearningRate(rate: LearningRate): void          { this.snapshot = { ...this.snapshot, learningRate: rate }; }
   writeActiveTheme(theme: WordTheme | null): void      { this.snapshot = { ...this.snapshot, activeTheme: theme }; }
+  writeVerbsOnly(enabled: boolean): void               { this.snapshot = { ...this.snapshot, verbsOnly: enabled }; }
   writeSessionTimeout(minutes: number): void           { this.snapshot = { ...this.snapshot, sessionTimeout: minutes }; }
   writeFlipAnimation(enabled: boolean): void           { this.snapshot = { ...this.snapshot, flipAnimation: enabled }; }
   writeHardcoreMode(enabled: boolean): void            { this.snapshot = { ...this.snapshot, hardcoreMode: enabled }; }

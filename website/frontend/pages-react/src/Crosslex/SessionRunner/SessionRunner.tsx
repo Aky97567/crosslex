@@ -17,10 +17,11 @@ type Props = {
   sessionId: number;
   durationMinutes: number;
   theme?: WordTheme | null;
+  verbsOnly?: boolean;
   onComplete: (stats: RunnerStats) => void;
 };
 
-const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, theme, onComplete }) => {
+const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, theme, verbsOnly, onComplete }) => {
   const {
     sessionTimeout,
     hardcoreMode,
@@ -43,7 +44,7 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, theme, onC
     setPendingKnownWordKey,
     handleAnswer,
     advance,
-  } = useSessionState({ sessionId, durationMs, theme, onComplete, startedAt });
+  } = useSessionState({ sessionId, durationMs, theme, verbsOnly, onComplete, startedAt });
 
   const runnerRef = useRef(runner);
   runnerRef.current = runner;
