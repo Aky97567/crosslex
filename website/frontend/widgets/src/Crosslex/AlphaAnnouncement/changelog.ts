@@ -3,9 +3,25 @@ export type ChangelogEntry = {
   returningUser: { heading: string; body: string; changes: string[] };
 };
 
-export const CURRENT_BUILD_ID = 'alpha-2026-09-18-verbs-only';
+export const CURRENT_BUILD_ID = 'alpha-2026-09-18-a2-verb-expansion';
 
 export const CHANGELOG: Record<string, ChangelogEntry> = {
+  'alpha-2026-09-18-a2-verb-expansion': {
+    newUser: {
+      heading: "You're testing Crosslex Alpha",
+      body: "Crosslex is a German vocabulary trainer — built for adults navigating real life in Germany. Choose your level, pick a session length and learning pace, and Crosslex will guide you through words and exercises. Your feedback shapes what we build next.",
+      cta: "Let's go →",
+    },
+    returningUser: {
+      heading: "You're back — something's new",
+      body: '50 new A2 verbs, plus new ways to filter sessions.',
+      changes: [
+        'New: 50 A2 verbs added — everyday verbs, separable (trennbar) verbs, irregular verbs, and reflexive verbs',
+        'New: "Timetable" theme for verbs used to describe a daily routine (Tagesablauf) — what you do on a typical day, yesterday, or last weekend',
+        'New: "Reflexiv" and "Irregular verbs" filter categories in the session Filter dropdown',
+      ],
+    },
+  },
   'alpha-2026-09-18-verbs-only': {
     newUser: {
       heading: "You're testing Crosslex Alpha",

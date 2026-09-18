@@ -12,7 +12,7 @@ export const teilnehmen: LearnPageContent = {
         translation: 'to participate, take part',
         partOfSpeech: 'verb',
         trennbar: true,
-        themes: ['work', 'daily_life', 'trennbar'],
+        themes: ['work', 'daily_life', 'trennbar', 'irregular'],
         level: ['B1'],
       },
       {

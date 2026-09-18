@@ -165,8 +165,10 @@ Every word has a `themes` field in `wordIntro` that categorises it for filtering
 `website/common/crosslex/view/src/crosslex/module/content/LearnPageModules.ts` (line 30)
 
 ```ts
-export type WordTheme = 'transport' | 'health' | 'daily_life' | 'work' | 'bureaucracy' | 'finance';
+export type WordTheme = 'transport' | 'health' | 'daily_life' | 'work' | 'bureaucracy' | 'finance' | 'trennbar' | 'timetable' | 'reflexiv' | 'irregular';
 ```
+
+Two kinds of value live in this one list. `daily_life`, `bureaucracy`, `finance`, `work`, `health`, and `transport` are **topical** — they classify what the word is *about*. `trennbar`, `timetable`, `reflexiv`, and `irregular` are **grammatical/usage-pattern** tags — they classify a structural or pedagogical property of the word, independent of topic and independent of CEFR level (a grammar tag applies at whatever level the word itself is — it's not restricted to A2 or B1). Of these, only `trennbar` is currently load-bearing (`wordIntro.trennbar: true` drives the mandatory 3-sentence context structure below); `timetable`, `reflexiv`, and `irregular` are pure filter tags with no structural behavior behind them, same as the topical tags.
 
 ### Theme taxonomy
 
@@ -179,15 +181,18 @@ export type WordTheme = 'transport' | 'health' | 'daily_life' | 'work' | 'bureau
 | `health` | Medical care, illness, prescriptions, insurance | `Arzt`, `Krankenversicherung`, `Rezept`, `Fieber` |
 | `transport` | Getting around — trains, buses, travel, tickets | `Fahrplan`, `Ticket`, `Verspätung`, `Zug` |
 | `trennbar` | Separable verbs (prefix detaches in conjugation) | `umsteigen`, `anrufen`, `ausfüllen` |
+| `timetable` | Verbs/vocabulary used to narrate a routine or sequenced day — the classic A1/A2 "Tagesablauf" exercise (describing an ideal day, yesterday, or last weekend) | `aufstehen`, `duschen`, `essen`, `schlafen` |
+| `reflexiv` | Reflexive verbs (`sich` + verb) — grammar category spanning both A2 and B1, not level-restricted | `sich freuen`, `sich waschen`, `sich erinnern` |
+| `irregular` | Verbs with a stem-vowel change in the `du`/`er` present-tense form (e→i, e→ie, a→ä) — the specific A2/B1 conjugation pattern where the present tense doesn't just add an ending to the infinitive stem | `essen` (isst), `nehmen` (nimmt), `fahren` (fährt), `sprechen` (spricht) |
 
 ### Rules for picking themes
 
-- A word gets **1–3 themes**; most words need only 1–2.
-- Pick based on the **primary context** in which a German resident would encounter the word, not abstract category membership. (`Krankenversicherung` takes `health`, `work`, and `finance` because a resident deals with it in all three contexts.)
-- `daily_life` is the catch-all for common vocabulary with no bureaucratic, medical, or work slant.
-- If a word genuinely fits none of the 6 themes, **add a new `WordTheme` literal** and update all three of these places, then add a row to the table above and document it here:
+- Match **every** existing theme that genuinely fits — this list is not capped at 1–3 and is expected to keep growing as new words surface gaps in it.
+- Pick based on the **primary context/usage** in which a German resident would encounter the word, not abstract category membership or a stretch ("could occur near this topic"). (`Krankenversicherung` takes `health`, `work`, and `finance` because a resident deals with it in all three contexts as its primary use, not incidentally.) Check existing tagged words for precedent before adding a theme to a new one — e.g. `bezahlen` has no `finance` tag despite literally meaning "to pay," and `einsteigen`/`aussteigen`/`umsteigen` get `transport` only, no `daily_life` padding; the bar the dataset actually uses is narrower than it first looks.
+- `daily_life` is the catch-all for common vocabulary with no bureaucratic, medical, work, or other specific-topic slant.
+- If a word genuinely fits none of the existing themes, **don't add the literal unilaterally** — propose it (with candidate example words and whether it should be structural like `trennbar` or a pure filter tag) and get an explicit go-ahead first, since adding a `WordTheme` literal is a product decision, not just a content one. Once approved, update all three of these places, then add a row to the table above and document it here:
   1. `website/common/crosslex/view/src/crosslex/module/content/LearnPageModules.ts` line 30 — **single source of truth** for the type; `sessionStorage.ts` and the word data layer both import from here
-  2. `website/frontend/features/src/Session/sessionStorage.ts` — the `valid: WordTheme[]` **runtime array** inside `readActiveTheme()`; the type is imported automatically, but this array must be updated manually or the new theme is silently stripped from localStorage on read
+  2. `website/frontend/features/src/Session/sessionStorage.ts` — the `VALID_THEMES: WordTheme[]` **runtime array** used by `readSessionFilter()`; the type is imported automatically, but this array must be updated manually or the new theme is silently stripped from localStorage on read
   3. `website/frontend/widgets/src/Crosslex/SessionDashboard/SessionDashboard.tsx` — `THEME_LABELS` `Record<WordTheme, string>`; missing it renders a blank option in the theme picker (the `Record` type will catch this as a compile error in the widgets package)
 
 ## A2 Word Content Guidelines

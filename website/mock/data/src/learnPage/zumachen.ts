@@ -1,35 +1,35 @@
 import { LearnPageContent } from '@whitelotus/common-crosslex-view';
 
-export const mitnehmen: LearnPageContent = {
+export const zumachen: LearnPageContent = {
   content: {
     moduleType: 'content',
     modules: [
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'mitnehmen',
+        word: 'zumachen',
         article: null,
-        translation: 'to take along, bring with',
+        translation: 'to close, shut',
         partOfSpeech: 'verb',
         trennbar: true,
-        themes: ['daily_life', 'transport', 'trennbar', 'irregular'],
-        level: ['B1'],
+        themes: ['daily_life', 'trennbar'],
+        level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',
         heading: { text: 'Meaning' },
         meaning:
-          'To take a person or thing along when going somewhere. Also used at food counters for takeaway orders: "zum Mitnehmen" (to go / takeaway).',
+          'To shut something, such as a door, window, or shop.',
       },
       {
         moduleType: 'meaningGuessQuestion',
         heading: { text: 'Guess the Meaning' },
         meaningBestGuessQuestion: {
-          question: "What is the best guess for the meaning of 'mitnehmen'?",
+          question: "What is the best guess for the meaning of 'zumachen'?",
           options: [
-            { text: 'to leave something behind', isCorrect: false },
-            { text: 'to take along, bring with', isCorrect: true },
-            { text: 'to borrow something', isCorrect: false },
+            { text: 'to close, shut', isCorrect: true },
+            { text: 'to open', isCorrect: false },
+            { text: 'to clean', isCorrect: false },
           ],
         },
       },
@@ -37,33 +37,25 @@ export const mitnehmen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Vergiss nicht, deinen Ausweis {{mitnehmen}}.',
-          'Ich {{nehme}} meinen Regenschirm {{mit}}.',
-          'Er hat die Unterlagen aus dem Büro {{mitgenommen}}.',
+          'Du musst das Fenster {{zumachen}}.',
+          'Ich {{mache}} die Tür {{zu}}.',
+          'Er hat den Laden schon {{zugemacht}}.',
         ],
       },
       {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:
-          "From 'mit-' (with, along) + 'nehmen' (to take). To take with — bringing something or someone along on your way.",
+          "From 'zu' (shut, closed) + 'machen' (to make, do) — literally 'to make shut'.",
       },
       {
         moduleType: 'similarWords',
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'bringen',
+            word: 'schließen',
             article: null,
-            translation: 'to bring',
-            similarityScore: 4,
-            level: ['A2'],
-            cefrRelevant: true,
-          },
-          {
-            word: 'nehmen',
-            article: null,
-            translation: 'to take',
+            translation: 'to close (more formal, general)',
             similarityScore: 4,
             level: ['A2'],
             cefrRelevant: true,
@@ -77,12 +69,12 @@ export const mitnehmen: LearnPageContent = {
           {
             id: 1,
             content:
-              "'Mit' = with, 'nehmen' = to take. Take with you — mitnehmen.",
+              "'Zu' + 'machen' — making (machen) something 'shut' (zu): closing it.",
           },
           {
             id: 2,
             content:
-              "'Zum Mitnehmen, bitte' — for takeaway, please. A phrase you'll use every time you grab a coffee to go.",
+              "Think of a door swinging 'to' and clicking shut — 'zumachen'.",
           },
         ],
       },

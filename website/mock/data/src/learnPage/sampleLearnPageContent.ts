@@ -136,6 +136,57 @@ import { widerspruch } from './widerspruch';
 import { wohnung } from './wohnung';
 import { zug } from './zug';
 import { zustaendigkeit } from './zustaendigkeit';
+// A2 verb expansion
+import { wohnen } from './wohnen';
+import { lernen } from './lernen';
+import { spielen } from './spielen';
+import { kochen } from './kochen';
+import { putzen } from './putzen';
+import { suchen } from './suchen';
+import { brauchen } from './brauchen';
+import { hoeren } from './hoeren';
+import { machen } from './machen';
+import { sagen } from './sagen';
+import { fragen } from './fragen';
+import { antworten } from './antworten';
+import { zeigen } from './zeigen';
+import { warten } from './warten';
+import { besuchen } from './besuchen';
+import { reisen } from './reisen';
+import { tanzen } from './tanzen';
+import { lachen } from './lachen';
+import { weinen } from './weinen';
+import { duschen } from './duschen';
+import { aufstehen } from './aufstehen';
+import { einkaufen } from './einkaufen';
+import { fernsehen } from './fernsehen';
+import { ankommen } from './ankommen';
+import { mitkommen } from './mitkommen';
+import { ausmachen } from './ausmachen';
+import { anmachen } from './anmachen';
+import { zumachen } from './zumachen';
+import { weggehen } from './weggehen';
+import { mitbringen } from './mitbringen';
+import { essen } from './essen';
+import { lesen } from './lesen';
+import { sehen } from './sehen';
+import { geben } from './geben';
+import { nehmen } from './nehmen';
+import { helfen } from './helfen';
+import { fahren } from './fahren';
+import { schlafen } from './schlafen';
+import { laufen } from './laufen';
+import { tragen } from './tragen';
+import { freuen } from './freuen';
+import { waschen } from './waschen';
+import { beeilen } from './beeilen';
+import { erinnern } from './erinnern';
+import { fuehlen } from './fuehlen';
+import { treffen } from './treffen';
+import { setzen } from './setzen';
+import { entspannen } from './entspannen';
+import { interessieren } from './interessieren';
+import { ausruhen } from './ausruhen';
 
 export const sampleLearnPageContentList = {
   //! A1
@@ -282,6 +333,57 @@ export const sampleLearnPageContentList = {
   rente,
   quittung,
   ummeldung,
+  //! A2 — verb expansion
+  wohnen,
+  lernen,
+  spielen,
+  kochen,
+  putzen,
+  suchen,
+  brauchen,
+  hoeren,
+  machen,
+  sagen,
+  fragen,
+  antworten,
+  zeigen,
+  warten,
+  besuchen,
+  reisen,
+  tanzen,
+  lachen,
+  weinen,
+  duschen,
+  aufstehen,
+  einkaufen,
+  fernsehen,
+  ankommen,
+  mitkommen,
+  ausmachen,
+  anmachen,
+  zumachen,
+  weggehen,
+  mitbringen,
+  essen,
+  lesen,
+  sehen,
+  geben,
+  nehmen,
+  helfen,
+  fahren,
+  schlafen,
+  laufen,
+  tragen,
+  freuen,
+  waschen,
+  beeilen,
+  erinnern,
+  fuehlen,
+  treffen,
+  setzen,
+  entspannen,
+  interessieren,
+  ausruhen,
 };
 
 export type SampleContentKey = keyof typeof sampleLearnPageContentList;
