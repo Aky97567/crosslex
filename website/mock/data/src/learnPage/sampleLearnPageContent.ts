@@ -314,6 +314,13 @@ export const getWordThemes = (key: SampleContentKey): WordTheme[] => {
   return wordIntro?.themes ?? [];
 };
 
+export const getWordPartOfSpeech = (key: SampleContentKey): string | undefined => {
+  const wordIntro = sampleLearnPageContentList[key].content.modules.find(
+    (m): m is WordIntroModule => m.moduleType === 'wordIntro',
+  );
+  return wordIntro?.partOfSpeech;
+};
+
 export const getThemesForPool = (pool: SampleContentKeys, minCount = 1): WordTheme[] => {
   const counts = new Map<WordTheme, number>();
   for (const key of pool) {

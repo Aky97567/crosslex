@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { sampleLearnPageContentList, SampleContentKey } from '@whitelotus/mock-test';
-import { WordTheme } from '@whitelotus/front-features';
+import { SessionFilter } from '@whitelotus/front-features';
 import { SessionProgressBar, KnownWordDialog } from '@whitelotus/front-entities';
 import {
   useSessionTimer,
@@ -16,11 +16,11 @@ import { SessionFooter } from './SessionFooter/SessionFooter';
 type Props = {
   sessionId: number;
   durationMinutes: number;
-  theme?: WordTheme | null;
+  sessionFilter?: SessionFilter;
   onComplete: (stats: RunnerStats) => void;
 };
 
-const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, theme, onComplete }) => {
+const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, sessionFilter, onComplete }) => {
   const {
     sessionTimeout,
     hardcoreMode,
@@ -43,7 +43,7 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, theme, onC
     setPendingKnownWordKey,
     handleAnswer,
     advance,
-  } = useSessionState({ sessionId, durationMs, theme, onComplete, startedAt });
+  } = useSessionState({ sessionId, durationMs, sessionFilter, onComplete, startedAt });
 
   const runnerRef = useRef(runner);
   runnerRef.current = runner;
