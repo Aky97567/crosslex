@@ -52,14 +52,6 @@ export const probezeit: LearnPageContent = {
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'Probe',
-            article: 'die',
-            translation: 'trial, test, rehearsal',
-            similarityScore: 5,
-            level: ['B1'],
-            cefrRelevant: true,
-          },
-          {
             word: 'Erprobungszeit',
             article: 'die',
             translation: 'trial period',

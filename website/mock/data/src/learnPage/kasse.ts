@@ -52,14 +52,6 @@ export const kasse: LearnPageContent = {
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'Kassenzone',
-            article: 'die',
-            translation: 'checkout area',
-            similarityScore: 4,
-            level: ['A2'],
-            cefrRelevant: true,
-          },
-          {
             word: 'Zahlstelle',
             article: 'die',
             translation: 'payment point',

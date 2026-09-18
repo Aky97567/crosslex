@@ -48,32 +48,11 @@ export const tisch: LearnPageContent = {
       {
         moduleType: 'similarWords',
         heading: { text: 'Similar Words' },
-        similarWords: [
-          {
-            word: 'Schreibtisch',
-            article: 'der',
-            translation: 'desk',
-            similarityScore: 5,
-            level: ['A2'],
-            cefrRelevant: true,
-          },
-          {
-            word: 'Esstisch',
-            article: 'der',
-            translation: 'dining table',
-            similarityScore: 4,
-            level: ['A2'],
-            cefrRelevant: false,
-          },
-          {
-            word: 'Beistelltisch',
-            article: 'der',
-            translation: 'side table',
-            similarityScore: 3,
-            level: ['B2'],
-            cefrRelevant: false,
-          },
-        ],
+        // No genuine synonym found — Schreibtisch/Esstisch/Beistelltisch are
+        // functionally distinct kinds of table (desk, dining table, side
+        // table), not synonyms of Tisch itself. Flagged for a human content
+        // pass rather than filled with a weak fit.
+        similarWords: [],
       },
       {
         moduleType: 'mnemonics',

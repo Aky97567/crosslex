@@ -52,25 +52,9 @@ export const ausweis: LearnPageContent = {
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'Personalausweis',
-            article: 'der',
-            translation: 'national ID card',
-            similarityScore: 5,
-            level: ['B1'],
-            cefrRelevant: true,
-          },
-          {
             word: 'Identitätskarte',
             article: 'die',
             translation: 'identity card',
-            similarityScore: 4,
-            level: ['B1'],
-            cefrRelevant: true,
-          },
-          {
-            word: 'Lichtbildausweis',
-            article: 'der',
-            translation: 'photo ID',
             similarityScore: 4,
             level: ['B1'],
             cefrRelevant: true,

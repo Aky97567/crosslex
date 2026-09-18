@@ -53,14 +53,6 @@ export const mietvertrag: LearnPageContent = {
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'Vertrag',
-            article: 'der',
-            translation: 'contract, agreement',
-            similarityScore: 5,
-            level: ['B1'],
-            cefrRelevant: true,
-          },
-          {
             word: 'Mietvereinbarung',
             article: 'die',
             translation: 'rental agreement',

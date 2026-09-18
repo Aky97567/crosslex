@@ -53,14 +53,6 @@ export const haltestelle: LearnPageContent = {
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'Bushaltestelle',
-            article: 'die',
-            translation: 'bus stop',
-            similarityScore: 5,
-            level: ['A2'],
-            cefrRelevant: true,
-          },
-          {
             word: 'Station',
             article: 'die',
             translation: 'station, stop',

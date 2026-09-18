@@ -52,14 +52,6 @@ export const bahnhof: LearnPageContent = {
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'Hauptbahnhof',
-            article: 'der',
-            translation: 'main train station',
-            similarityScore: 5,
-            level: ['A2'],
-            cefrRelevant: true,
-          },
-          {
             word: 'Bahnstation',
             article: 'die',
             translation: 'train station, rail stop',

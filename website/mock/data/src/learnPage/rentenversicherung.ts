@@ -61,14 +61,6 @@ export const rentenversicherung: LearnPageContent = {
             cefrRelevant: true,
           },
           {
-            word: 'Rentenversicherungsbeitrag',
-            article: 'der',
-            translation: 'pension insurance contribution',
-            similarityScore: 4,
-            level: ['B1'],
-            cefrRelevant: true,
-          },
-          {
             word: 'Betriebsrente',
             article: 'die',
             translation: 'company pension',
