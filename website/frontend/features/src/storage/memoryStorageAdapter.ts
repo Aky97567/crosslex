@@ -1,4 +1,4 @@
-import type { ExerciseEvent, WordsSeenStore, RecordStreakResult, ActiveLevel, LearningRate, WordTheme } from '../Session/sessionStorage';
+import type { ExerciseEvent, WordsSeenStore, RecordStreakResult, ActiveLevel, LearningRate, SessionFilter } from '../Session/sessionStorage';
 import type { StoragePort, StorageSnapshot } from './storagePort';
 
 const DEFAULT_SNAPSHOT: StorageSnapshot = {
@@ -7,8 +7,7 @@ const DEFAULT_SNAPSHOT: StorageSnapshot = {
   streak:             null,
   activeLevel:        'b1',
   learningRate:       'balanced',
-  activeTheme:        null,
-  verbsOnly:          false,
+  sessionFilter:      null,
   knownWords:         [],
   sessionTimeout:     5,
   flipAnimation:      false,
@@ -30,8 +29,7 @@ export class MemoryStorageAdapter implements StoragePort {
 
   writeActiveLevel(level: ActiveLevel): void          { this.snapshot = { ...this.snapshot, activeLevel: level }; }
   writeLearningRate(rate: LearningRate): void          { this.snapshot = { ...this.snapshot, learningRate: rate }; }
-  writeActiveTheme(theme: WordTheme | null): void      { this.snapshot = { ...this.snapshot, activeTheme: theme }; }
-  writeVerbsOnly(enabled: boolean): void               { this.snapshot = { ...this.snapshot, verbsOnly: enabled }; }
+  writeSessionFilter(filter: SessionFilter): void      { this.snapshot = { ...this.snapshot, sessionFilter: filter }; }
   writeSessionTimeout(minutes: number): void           { this.snapshot = { ...this.snapshot, sessionTimeout: minutes }; }
   writeFlipAnimation(enabled: boolean): void           { this.snapshot = { ...this.snapshot, flipAnimation: enabled }; }
   writeHardcoreMode(enabled: boolean): void            { this.snapshot = { ...this.snapshot, hardcoreMode: enabled }; }

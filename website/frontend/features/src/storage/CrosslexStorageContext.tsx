@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useMemo, useState } from 'react';
 import { computeWordMetrics, getMetricsSummary } from '../Session/sessionStorage';
-import type { ExerciseEvent, WordsSeenStore, RecordStreakResult, ActiveLevel, LearningRate, WordTheme, MetricsSummary, WordReadiness } from '../Session/sessionStorage';
+import type { ExerciseEvent, WordsSeenStore, RecordStreakResult, ActiveLevel, LearningRate, SessionFilter, MetricsSummary, WordReadiness } from '../Session/sessionStorage';
 import type { StoragePort, StorageSnapshot } from './storagePort';
 
 // ─── Context value ────────────────────────────────────────────────────────────
@@ -14,8 +14,7 @@ export type CrosslexStorageContextValue = StorageSnapshot & {
   // Writes — update adapter + React state atomically
   writeActiveLevel(level: ActiveLevel): void;
   writeLearningRate(rate: LearningRate): void;
-  writeActiveTheme(theme: WordTheme | null): void;
-  writeVerbsOnly(enabled: boolean): void;
+  writeSessionFilter(filter: SessionFilter): void;
   writeSessionTimeout(minutes: number): void;
   writeFlipAnimation(enabled: boolean): void;
   writeHardcoreMode(enabled: boolean): void;
@@ -59,8 +58,7 @@ const CrosslexStorageProvider: React.FC<Props> = ({ adapter, children }) => {
 
     writeActiveLevel: (level) => { adapter.writeActiveLevel(level); patch({ activeLevel: level }); },
     writeLearningRate: (rate) => { adapter.writeLearningRate(rate); patch({ learningRate: rate }); },
-    writeActiveTheme: (theme) => { adapter.writeActiveTheme(theme); patch({ activeTheme: theme }); },
-    writeVerbsOnly: (v) => { adapter.writeVerbsOnly(v); patch({ verbsOnly: v }); },
+    writeSessionFilter: (filter) => { adapter.writeSessionFilter(filter); patch({ sessionFilter: filter }); },
     writeSessionTimeout: (m) => { adapter.writeSessionTimeout(m); patch({ sessionTimeout: m }); },
     writeFlipAnimation: (v) => { adapter.writeFlipAnimation(v); patch({ flipAnimation: v }); },
     writeHardcoreMode: (v) => { adapter.writeHardcoreMode(v); patch({ hardcoreMode: v }); },

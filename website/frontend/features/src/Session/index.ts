@@ -8,6 +8,7 @@ export type {
   MetricsSummary,
   ActiveLevel,
   WordTheme,
+  SessionFilter,
   StreakData,
   RecordStreakResult,
 } from './sessionStorage';
@@ -39,8 +40,8 @@ export {
   readFlipAnimation,
   writeFlipAnimation,
   healWordsSeen,
-  readActiveTheme,
-  writeActiveTheme,
+  readSessionFilter,
+  writeSessionFilter,
   readHardcoreMode,
   writeHardcoreMode,
   readStreak,

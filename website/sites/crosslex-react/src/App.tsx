@@ -4,7 +4,7 @@ import {
   getInitialPalette,
   Palette,
   migrateStorage,
-  WordTheme,
+  SessionFilter,
   getNewlyEarnedBadge,
   Badge,
   CrosslexStorageProvider,
@@ -32,8 +32,7 @@ const AppInner: React.FC = () => {
   const { streak, recordSessionForStreak } = useCrosslexStorage();
   const [phase, setPhase] = useState<AppPhase>('dashboard');
   const [durationMinutes, setDurationMinutes] = useState(30);
-  const [activeTheme, setActiveTheme] = useState<WordTheme | null>(null);
-  const [verbsOnly, setVerbsOnly] = useState(false);
+  const [sessionFilter, setSessionFilter] = useState<SessionFilter>(null);
   const [sessionId, setSessionId] = useState(0);
   const [sessionStats, setSessionStats] = useState<SessionStats | null>(null);
   const [streakCount, setStreakCount] = useState(0);
@@ -54,10 +53,9 @@ const AppInner: React.FC = () => {
     document.documentElement.setAttribute('data-palette', palette);
   }, [palette]);
 
-  const handleStart = (minutes: number, theme: WordTheme | null, verbsOnly: boolean) => {
+  const handleStart = (minutes: number, filter: SessionFilter) => {
     setDurationMinutes(minutes);
-    setActiveTheme(theme);
-    setVerbsOnly(verbsOnly);
+    setSessionFilter(filter);
     setSessionId(Date.now());
     setPhase('running');
   };
@@ -122,8 +120,7 @@ const AppInner: React.FC = () => {
           key={sessionId}
           sessionId={sessionId}
           durationMinutes={durationMinutes}
-          theme={activeTheme}
-          verbsOnly={verbsOnly}
+          sessionFilter={sessionFilter}
           onComplete={handleComplete}
         />
       )}

@@ -5,7 +5,7 @@ import type {
   RecordStreakResult,
   ActiveLevel,
   LearningRate,
-  WordTheme,
+  SessionFilter,
 } from '../Session/sessionStorage';
 
 export interface StorageSnapshot {
@@ -14,8 +14,7 @@ export interface StorageSnapshot {
   streak: StreakData | null;
   activeLevel: ActiveLevel;
   learningRate: LearningRate;
-  activeTheme: WordTheme | null;
-  verbsOnly: boolean;
+  sessionFilter: SessionFilter;
   knownWords: string[];
   sessionTimeout: number;
   flipAnimation: boolean;
@@ -29,8 +28,7 @@ export interface StoragePort {
 
   writeActiveLevel(level: ActiveLevel): void;
   writeLearningRate(rate: LearningRate): void;
-  writeActiveTheme(theme: WordTheme | null): void;
-  writeVerbsOnly(enabled: boolean): void;
+  writeSessionFilter(filter: SessionFilter): void;
   writeSessionTimeout(minutes: number): void;
   writeFlipAnimation(enabled: boolean): void;
   writeHardcoreMode(enabled: boolean): void;

@@ -3,41 +3,33 @@ export type { WordTheme } from '@whitelotus/common-crosslex-view';
 
 export type LearningRate = 'review' | 'easy' | 'balanced' | 'intensive';
 
-const THEME_KEY = 'crosslex:theme';
+// A session is narrowed by at most one filter at a time — a WordTheme, the
+// 'verbs_only' part-of-speech filter, or none. Deliberately not two
+// independently-combinable fields: a theme and a part-of-speech filter can
+// intersect to a tiny or empty word pool with no warning, so mutual
+// exclusivity is enforced by using a single value, not by validation.
+export type SessionFilter = WordTheme | 'verbs_only' | null;
 
-export const readActiveTheme = (): WordTheme | null => {
+const SESSION_FILTER_KEY = 'crosslex:session_filter';
+const VALID_THEMES: WordTheme[] = ['transport', 'health', 'daily_life', 'work', 'bureaucracy', 'finance', 'trennbar'];
+
+export const readSessionFilter = (): SessionFilter => {
   try {
-    const raw = localStorage.getItem(THEME_KEY);
-    const valid: WordTheme[] = ['transport', 'health', 'daily_life', 'work', 'bureaucracy', 'finance', 'trennbar'];
-    return valid.includes(raw as WordTheme) ? (raw as WordTheme) : null;
+    const raw = localStorage.getItem(SESSION_FILTER_KEY);
+    if (raw === 'verbs_only') return 'verbs_only';
+    return VALID_THEMES.includes(raw as WordTheme) ? (raw as WordTheme) : null;
   } catch {
     return null;
   }
 };
 
-export const writeActiveTheme = (theme: WordTheme | null): void => {
+export const writeSessionFilter = (filter: SessionFilter): void => {
   try {
-    if (theme === null) {
-      localStorage.removeItem(THEME_KEY);
+    if (filter === null) {
+      localStorage.removeItem(SESSION_FILTER_KEY);
     } else {
-      localStorage.setItem(THEME_KEY, theme);
+      localStorage.setItem(SESSION_FILTER_KEY, filter);
     }
-  } catch {}
-};
-
-const VERBS_ONLY_KEY = 'crosslex:verbs_only';
-
-export const readVerbsOnly = (): boolean => {
-  try {
-    return localStorage.getItem(VERBS_ONLY_KEY) === 'true';
-  } catch {
-    return false;
-  }
-};
-
-export const writeVerbsOnly = (enabled: boolean): void => {
-  try {
-    localStorage.setItem(VERBS_ONLY_KEY, String(enabled));
   } catch {}
 };
 

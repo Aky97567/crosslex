@@ -16,8 +16,7 @@ export const CHANGELOG: Record<string, ChangelogEntry> = {
       heading: "You're back — something's new",
       body: 'Filter sessions to verbs only.',
       changes: [
-        'New: "Verbs only" checkbox on the session dashboard — drill just the verbs at your level',
-        'Works alongside the existing Theme filter',
+        'New: "Verbs only" option in the session Filter dropdown — drill just the verbs at your level',
       ],
     },
   },
