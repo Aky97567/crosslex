@@ -1,15 +1,15 @@
 import { LearnPageContent } from '@whitelotus/common-crosslex-view';
 
-export const puenktlich: LearnPageContent = {
+export const freundlich: LearnPageContent = {
   content: {
     moduleType: 'content',
     modules: [
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'pünktlich',
+        word: 'freundlich',
         article: null,
-        translation: 'punctual, on time',
+        translation: 'friendly, kind',
         partOfSpeech: 'adjective',
         themes: ['daily_life', 'adjective'],
         level: ['A2'],
@@ -18,17 +18,17 @@ export const puenktlich: LearnPageContent = {
         moduleType: 'wordMeaning',
         heading: { text: 'Meaning' },
         meaning:
-          'Arriving or happening exactly at the agreed time; not late. Punctuality is considered very important in German culture.',
+          'Behaving in a kind and pleasant way toward others.',
       },
       {
         moduleType: 'meaningGuessQuestion',
         heading: { text: 'Guess the Meaning' },
         meaningBestGuessQuestion: {
-          question: "What is the best guess for the meaning of 'pünktlich'?",
+          question: "What is the best guess for the meaning of 'freundlich'?",
           options: [
-            { text: 'early', isCorrect: false },
-            { text: 'on time, punctual', isCorrect: true },
-            { text: 'busy', isCorrect: false },
+            { text: 'friendly, kind', isCorrect: true },
+            { text: 'unfriendly', isCorrect: false },
+            { text: 'shy', isCorrect: false },
           ],
         },
       },
@@ -36,42 +36,26 @@ export const puenktlich: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Der Zug ist {{pünktlich}}.',
-          'Bitte komm {{pünktlich}}!',
-          'Ich bin immer {{pünktlich}}.',
+          'Die Verkäuferin war sehr {{freundlich}}.',
+          'Er hat ein {{freundliches}} Gesicht.',
+          'Bitte antworte {{freundlich}}.',
         ],
       },
       {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:
-          "From Latin 'punctum' (point) via 'Punkt' (point, dot). Pünktlich = to the point in time — exactly on the dot.",
+          "From 'Freund' (friend) + the adjective suffix '-lich' — literally 'friend-like'.",
       },
       {
         moduleType: 'similarWords',
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'rechtzeitig',
+            word: 'nett',
             article: null,
-            translation: 'in time, timely',
-            similarityScore: 5,
-            level: ['A2'],
-            cefrRelevant: true,
-          },
-          {
-            word: 'zeitig',
-            article: null,
-            translation: 'timely, in good time',
+            translation: 'nice',
             similarityScore: 4,
-            level: ['A2'],
-            cefrRelevant: true,
-          },
-          {
-            word: 'termingerecht',
-            article: null,
-            translation: 'on schedule, on time',
-            similarityScore: 3,
             level: ['A2'],
             cefrRelevant: true,
           },
@@ -84,12 +68,12 @@ export const puenktlich: LearnPageContent = {
           {
             id: 1,
             content:
-              "'Pünktlich' contains 'Punkt' (dot). To be pünktlich is to arrive exactly on the dot.",
+              "'Freundlich' contains 'Freund' (friend) — being friendly means acting like a friend.",
           },
           {
             id: 2,
             content:
-              "Think of 'punctual' — same Latin root as pünktlich. The German word just adds an umlaut and a different suffix.",
+              "Think of a friendly smile — 'freundlich' describes exactly that.",
           },
         ],
       },

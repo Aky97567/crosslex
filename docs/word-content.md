@@ -165,10 +165,10 @@ Every word has a `themes` field in `wordIntro` that categorises it for filtering
 `website/common/crosslex/view/src/crosslex/module/content/LearnPageModules.ts` (line 30)
 
 ```ts
-export type WordTheme = 'transport' | 'health' | 'daily_life' | 'work' | 'bureaucracy' | 'finance' | 'trennbar' | 'timetable' | 'reflexiv' | 'irregular';
+export type WordTheme = 'transport' | 'health' | 'daily_life' | 'work' | 'bureaucracy' | 'finance' | 'trennbar' | 'timetable' | 'reflexiv' | 'irregular' | 'adjective' | 'irregular_comparison';
 ```
 
-Two kinds of value live in this one list. `daily_life`, `bureaucracy`, `finance`, `work`, `health`, and `transport` are **topical** — they classify what the word is *about*. `trennbar`, `timetable`, `reflexiv`, and `irregular` are **grammatical/usage-pattern** tags — they classify a structural or pedagogical property of the word, independent of topic and independent of CEFR level (a grammar tag applies at whatever level the word itself is — it's not restricted to A2 or B1). Of these, only `trennbar` is currently load-bearing (`wordIntro.trennbar: true` drives the mandatory 3-sentence context structure below); `timetable`, `reflexiv`, and `irregular` are pure filter tags with no structural behavior behind them, same as the topical tags.
+Two kinds of value live in this one list. `daily_life`, `bureaucracy`, `finance`, `work`, `health`, and `transport` are **topical** — they classify what the word is *about*. `trennbar`, `timetable`, `reflexiv`, `irregular`, `adjective`, and `irregular_comparison` are **grammatical/usage-pattern** tags — they classify a structural or pedagogical property of the word, independent of topic and independent of CEFR level (a grammar tag applies at whatever level the word itself is — it's not restricted to A2 or B1). Of these, only `trennbar` is currently load-bearing (`wordIntro.trennbar: true` drives the mandatory 3-sentence context structure below); the rest are pure filter tags with no structural behavior behind them, same as the topical tags. `adjective` in particular exists so adjectives can be selected via the same `SessionFilter` mechanism `verbs_only` uses, without a second special-cased filter literal — `partOfSpeech` already distinguishes adjectives in the data, but nothing before this let a session be *filtered* to them.
 
 ### Theme taxonomy
 
@@ -184,6 +184,8 @@ Two kinds of value live in this one list. `daily_life`, `bureaucracy`, `finance`
 | `timetable` | Verbs/vocabulary used to narrate a routine or sequenced day — the classic A1/A2 "Tagesablauf" exercise (describing an ideal day, yesterday, or last weekend) | `aufstehen`, `duschen`, `essen`, `schlafen` |
 | `reflexiv` | Reflexive verbs (`sich` + verb) — grammar category spanning both A2 and B1, not level-restricted | `sich freuen`, `sich waschen`, `sich erinnern` |
 | `irregular` | Verbs with a stem-vowel change in the `du`/`er` present-tense form (e→i, e→ie, a→ä) — the specific A2/B1 conjugation pattern where the present tense doesn't just add an ending to the infinitive stem | `essen` (isst), `nehmen` (nimmt), `fahren` (fährt), `sprechen` (spricht) |
+| `adjective` | All adjectives (`partOfSpeech: 'adjective'`) — lets sessions filter to adjectives the same way `verbs_only` filters to verbs | `alt`, `schön`, `schnell`, `freundlich` |
+| `irregular_comparison` | Adjectives whose comparative/superlative form isn't a plain `-er`/`-(e)sten` suffix — either an added umlaut (`alt`→`älter`) or a fully suppletive form (`gut`→`besser`). Note: the comparative/superlative forms themselves aren't stored anywhere in the schema yet — this tag only flags *which* adjectives have the property, pending the "Adjective degrees (Komparation)" icebox item building out an actual module for it | `alt`, `gut`, `hoch`, `nah` |
 
 ### Rules for picking themes
 

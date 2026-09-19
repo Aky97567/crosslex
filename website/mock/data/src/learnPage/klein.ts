@@ -1,15 +1,15 @@
 import { LearnPageContent } from '@whitelotus/common-crosslex-view';
 
-export const puenktlich: LearnPageContent = {
+export const klein: LearnPageContent = {
   content: {
     moduleType: 'content',
     modules: [
       {
         moduleType: 'wordIntro',
         heading: { text: 'Word Introduction' },
-        word: 'pünktlich',
+        word: 'klein',
         article: null,
-        translation: 'punctual, on time',
+        translation: 'small',
         partOfSpeech: 'adjective',
         themes: ['daily_life', 'adjective'],
         level: ['A2'],
@@ -18,17 +18,17 @@ export const puenktlich: LearnPageContent = {
         moduleType: 'wordMeaning',
         heading: { text: 'Meaning' },
         meaning:
-          'Arriving or happening exactly at the agreed time; not late. Punctuality is considered very important in German culture.',
+          'Of a size that is less than normal or usual; not big.',
       },
       {
         moduleType: 'meaningGuessQuestion',
         heading: { text: 'Guess the Meaning' },
         meaningBestGuessQuestion: {
-          question: "What is the best guess for the meaning of 'pünktlich'?",
+          question: "What is the best guess for the meaning of 'klein'?",
           options: [
-            { text: 'early', isCorrect: false },
-            { text: 'on time, punctual', isCorrect: true },
-            { text: 'busy', isCorrect: false },
+            { text: 'small', isCorrect: true },
+            { text: 'big', isCorrect: false },
+            { text: 'tall', isCorrect: false },
           ],
         },
       },
@@ -36,41 +36,25 @@ export const puenktlich: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Der Zug ist {{pünktlich}}.',
-          'Bitte komm {{pünktlich}}!',
-          'Ich bin immer {{pünktlich}}.',
+          'Das ist eine sehr {{kleine}} Wohnung.',
+          'Mein Bruder ist noch {{klein}}.',
+          'Wir haben nur {{kleine}} Probleme.',
         ],
       },
       {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:
-          "From Latin 'punctum' (point) via 'Punkt' (point, dot). Pünktlich = to the point in time — exactly on the dot.",
+          "From Old High German 'kleini', originally meaning 'delicate, fine' — the meaning shifted to 'small' over time.",
       },
       {
         moduleType: 'similarWords',
         heading: { text: 'Similar Words' },
         similarWords: [
           {
-            word: 'rechtzeitig',
+            word: 'winzig',
             article: null,
-            translation: 'in time, timely',
-            similarityScore: 5,
-            level: ['A2'],
-            cefrRelevant: true,
-          },
-          {
-            word: 'zeitig',
-            article: null,
-            translation: 'timely, in good time',
-            similarityScore: 4,
-            level: ['A2'],
-            cefrRelevant: true,
-          },
-          {
-            word: 'termingerecht',
-            article: null,
-            translation: 'on schedule, on time',
+            translation: 'tiny',
             similarityScore: 3,
             level: ['A2'],
             cefrRelevant: true,
@@ -84,12 +68,12 @@ export const puenktlich: LearnPageContent = {
           {
             id: 1,
             content:
-              "'Pünktlich' contains 'Punkt' (dot). To be pünktlich is to arrive exactly on the dot.",
+              "'Klein' sounds like 'cline', as in de-cline — small in size, small in stature.",
           },
           {
             id: 2,
             content:
-              "Think of 'punctual' — same Latin root as pünktlich. The German word just adds an umlaut and a different suffix.",
+              "Think of Calvin Klein — but 'klein' just means small in German.",
           },
         ],
       },
