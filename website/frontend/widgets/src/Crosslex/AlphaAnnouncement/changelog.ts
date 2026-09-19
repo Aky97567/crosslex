@@ -3,9 +3,24 @@ export type ChangelogEntry = {
   returningUser: { heading: string; body: string; changes: string[] };
 };
 
-export const CURRENT_BUILD_ID = 'alpha-2026-09-18-a2-verb-expansion';
+export const CURRENT_BUILD_ID = 'alpha-2026-09-19-a2-adjectives';
 
 export const CHANGELOG: Record<string, ChangelogEntry> = {
+  'alpha-2026-09-19-a2-adjectives': {
+    newUser: {
+      heading: "You're testing Crosslex Alpha",
+      body: "Crosslex is a German vocabulary trainer — built for adults navigating real life in Germany. Choose your level, pick a session length and learning pace, and Crosslex will guide you through words and exercises. Your feedback shapes what we build next.",
+      cta: "Let's go →",
+    },
+    returningUser: {
+      heading: "You're back — something's new",
+      body: '30 new A2 adjectives added.',
+      changes: [
+        'New: 30 A2 adjectives added, including the ones with tricky comparative/superlative forms (alt, gut, hoch, groß, and more)',
+        'New: "Adjectives" filter category in the session Filter dropdown',
+      ],
+    },
+  },
   'alpha-2026-09-18-a2-verb-expansion': {
     newUser: {
       heading: "You're testing Crosslex Alpha",

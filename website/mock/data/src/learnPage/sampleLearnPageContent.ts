@@ -187,6 +187,37 @@ import { setzen } from './setzen';
 import { entspannen } from './entspannen';
 import { interessieren } from './interessieren';
 import { ausruhen } from './ausruhen';
+// A2 adjective expansion
+import { alt } from './alt';
+import { jung } from './jung';
+import { kalt } from './kalt';
+import { warm } from './warm';
+import { stark } from './stark';
+import { lang } from './lang';
+import { kurz } from './kurz';
+import { gross } from './gross';
+import { klug } from './klug';
+import { gesund } from './gesund';
+import { gut } from './gut';
+import { viel } from './viel';
+import { hoch } from './hoch';
+import { nah } from './nah';
+import { klein } from './klein';
+import { schoen } from './schoen';
+import { schnell } from './schnell';
+import { langsam } from './langsam';
+import { neu } from './neu';
+import { billig } from './billig';
+import { teuer } from './teuer';
+import { leicht } from './leicht';
+import { schwer } from './schwer';
+import { laut } from './laut';
+import { leise } from './leise';
+import { sauber } from './sauber';
+import { schmutzig } from './schmutzig';
+import { freundlich } from './freundlich';
+import { traurig } from './traurig';
+import { gluecklich } from './gluecklich';
 
 export const sampleLearnPageContentList = {
   //! A1
@@ -384,6 +415,37 @@ export const sampleLearnPageContentList = {
   entspannen,
   interessieren,
   ausruhen,
+  //! A2 — adjective expansion
+  alt,
+  jung,
+  kalt,
+  warm,
+  stark,
+  lang,
+  kurz,
+  gross,
+  klug,
+  gesund,
+  gut,
+  viel,
+  hoch,
+  nah,
+  klein,
+  schoen,
+  schnell,
+  langsam,
+  neu,
+  billig,
+  teuer,
+  leicht,
+  schwer,
+  laut,
+  leise,
+  sauber,
+  schmutzig,
+  freundlich,
+  traurig,
+  gluecklich,
 };
 
 export type SampleContentKey = keyof typeof sampleLearnPageContentList;
