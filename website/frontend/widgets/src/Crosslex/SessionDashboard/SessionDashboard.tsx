@@ -36,6 +36,8 @@ const THEME_LABELS: Record<WordTheme, string> = {
   timetable:   'Timetable (daily routine)',
   reflexiv:    'Reflexiv (reflexive verbs)',
   irregular:   'Irregular verbs',
+  adjective:   'Adjectives',
+  irregular_comparison: 'Irregular comparison (adjectives)',
 };
 
 const ctaButton =
