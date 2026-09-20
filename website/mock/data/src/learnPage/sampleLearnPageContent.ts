@@ -218,6 +218,68 @@ import { schmutzig } from './schmutzig';
 import { freundlich } from './freundlich';
 import { traurig } from './traurig';
 import { gluecklich } from './gluecklich';
+// B1 verb expansion
+import { informieren } from './informieren';
+import { organisieren } from './organisieren';
+import { reparieren } from './reparieren';
+import { vermieten } from './vermieten';
+import { reservieren } from './reservieren';
+import { diskutieren } from './diskutieren';
+import { planen } from './planen';
+import { sparen } from './sparen';
+import { anschliessen } from './anschliessen';
+import { zunehmen } from './zunehmen';
+import { abnehmen } from './abnehmen';
+import { durchfuehren } from './durchfuehren';
+import { weiterleiten } from './weiterleiten';
+import { feststellen } from './feststellen';
+import { vorschlagen } from './vorschlagen';
+import { ausdrucken } from './ausdrucken';
+import { vergessen } from './vergessen';
+import { empfehlen } from './empfehlen';
+import { gefallen } from './gefallen';
+import { verlassen } from './verlassen';
+import { versprechen } from './versprechen';
+import { behalten } from './behalten';
+import { erhalten } from './erhalten';
+import { bewerben } from './bewerben';
+import { beschweren } from './beschweren';
+import { entschuldigen } from './entschuldigen';
+import { verspaeten } from './verspaeten';
+import { kuemmern } from './kuemmern';
+import { erkundigen } from './erkundigen';
+import { unterhalten } from './unterhalten';
+// B1 adjective expansion
+import { krank } from './krank';
+import { scharf } from './scharf';
+import { schwach } from './schwach';
+import { arm } from './arm';
+import { dumm } from './dumm';
+import { grob } from './grob';
+import { wichtig } from './wichtig';
+import { notwendig } from './notwendig';
+import { moeglich } from './moeglich';
+import { verfuegbar } from './verfuegbar';
+import { gueltig } from './gueltig';
+import { kompliziert } from './kompliziert';
+import { einfach } from './einfach';
+import { beliebt } from './beliebt';
+import { bekannt } from './bekannt';
+import { dringend } from './dringend';
+import { ausreichend } from './ausreichend';
+import { erforderlich } from './erforderlich';
+import { ueblich } from './ueblich';
+import { selten } from './selten';
+import { haeufig } from './haeufig';
+import { sicher } from './sicher';
+import { gefaehrlich } from './gefaehrlich';
+import { ordentlich } from './ordentlich';
+import { ehrlich } from './ehrlich';
+import { hoeflich } from './hoeflich';
+import { geduldig } from './geduldig';
+import { zufrieden } from './zufrieden';
+import { verantwortlich } from './verantwortlich';
+import { zuverlaessig } from './zuverlaessig';
 
 export const sampleLearnPageContentList = {
   //! A1
@@ -446,6 +508,68 @@ export const sampleLearnPageContentList = {
   freundlich,
   traurig,
   gluecklich,
+  //! B1 — verb expansion
+  informieren,
+  organisieren,
+  reparieren,
+  vermieten,
+  reservieren,
+  diskutieren,
+  planen,
+  sparen,
+  anschliessen,
+  zunehmen,
+  abnehmen,
+  durchfuehren,
+  weiterleiten,
+  feststellen,
+  vorschlagen,
+  ausdrucken,
+  vergessen,
+  empfehlen,
+  gefallen,
+  verlassen,
+  versprechen,
+  behalten,
+  erhalten,
+  bewerben,
+  beschweren,
+  entschuldigen,
+  verspaeten,
+  kuemmern,
+  erkundigen,
+  unterhalten,
+  //! B1 — adjective expansion
+  krank,
+  scharf,
+  schwach,
+  arm,
+  dumm,
+  grob,
+  wichtig,
+  notwendig,
+  moeglich,
+  verfuegbar,
+  gueltig,
+  kompliziert,
+  einfach,
+  beliebt,
+  bekannt,
+  dringend,
+  ausreichend,
+  erforderlich,
+  ueblich,
+  selten,
+  haeufig,
+  sicher,
+  gefaehrlich,
+  ordentlich,
+  ehrlich,
+  hoeflich,
+  geduldig,
+  zufrieden,
+  verantwortlich,
+  zuverlaessig,
 };
 
 export type SampleContentKey = keyof typeof sampleLearnPageContentList;
