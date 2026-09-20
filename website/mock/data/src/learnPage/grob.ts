@@ -42,6 +42,13 @@ export const grob: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Sein Ton war {{gröber}} als sonst.',
+        superlativeSentence: 'Er hat {{am gröbsten}} reagiert.',
+        superlativeAttributiveSentence: 'Das war der {{gröbste}} Fehler im Bericht.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

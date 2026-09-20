@@ -72,6 +72,28 @@ export type WordContextModule = Module<
   }
 >;
 
+export type ComparisonModule = Module<
+  'comparison',
+  {
+    heading: Heading;
+    // Adjective-only module — omitted entirely for non-adjective words,
+    // the same way wordIntro.trennbar is opt-in rather than
+    // type-required. All three fields are full example sentences (not
+    // bare inflected phrases), using the same {{...}} occurrence-marking
+    // convention as wordContext.paragraphWithUsage, so the existing
+    // parseAnnotatedParagraph + span-highlighting rendering can be
+    // reused. wordContext itself stays strictly Grundform-only — this
+    // module owns every graded (comparative/superlative) form.
+    comparativeSentence: string;
+    // Predicative/adverbial superlative — the fixed "am ...sten" form,
+    // which never declines (unlike the attributive form below).
+    superlativeSentence: string;
+    // Attributive superlative — one representative declined example
+    // ("der/die/das ...ste"), not an exhaustive case/gender table.
+    superlativeAttributiveSentence: string;
+  }
+>;
+
 export type MeaningGuessQuestionModule = Module<
   'meaningGuessQuestion',
   {
@@ -116,6 +138,7 @@ export type ContentModules =
   | WordIntroModule
   | WordMeaningModule
   | WordContextModule
+  | ComparisonModule
   | MeaningGuessQuestionModule
   | EtymologyModule
   | SimilarWordsModule

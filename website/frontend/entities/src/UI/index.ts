@@ -3,6 +3,7 @@ export { KnownWordDialog } from './KnownWordDialog';
 export { SessionProgressBar } from './SessionProgressBar';
 export { StreakBadgeTrophyCase } from './StreakBadgeTrophyCase';
 export { WordReadinessStat } from './WordReadinessStat';
+export { Comparison } from './Comparison';
 export { ContextBlankQuestion } from './ContextBlankQuestion';
 export type { ContextBlankQuestionData } from './ContextBlankQuestion';
 export { Etymology } from './Etymology';

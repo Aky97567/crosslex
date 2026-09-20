@@ -41,6 +41,13 @@ export const arm: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Diese Familie ist {{ärmer}} als jene.',
+        superlativeSentence: 'Er ist von allen {{am ärmsten}}.',
+        superlativeAttributiveSentence: 'Das ist die {{ärmste}} Familie im Viertel.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

@@ -42,6 +42,13 @@ export const leicht: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Diese Prüfung war {{leichter}} als die letzte.',
+        superlativeSentence: 'Diese Übung war {{am leichtesten}}.',
+        superlativeAttributiveSentence: 'Das war die {{leichteste}} Aufgabe.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

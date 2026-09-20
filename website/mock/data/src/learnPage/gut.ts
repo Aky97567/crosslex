@@ -42,6 +42,13 @@ export const gut: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Dieser Kaffee ist {{besser}} als der andere.',
+        superlativeSentence: 'Das schmeckt {{am besten}}.',
+        superlativeAttributiveSentence: 'Er ist der {{beste}} Freund, den ich kenne.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

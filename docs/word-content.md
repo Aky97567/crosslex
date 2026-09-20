@@ -16,6 +16,7 @@ Word data lives in `mock/data/src/learnPage/`. Each word is its own file.
 - `wordMeaning` — one-paragraph definition
 - `meaningGuessQuestion` — 3 options, exactly 1 `isCorrect: true`
 - `wordContext` — `paragraphWithUsage` is an **array of sentence strings** (one element per sentence, not one long string) using the word **at least 3 times**; wrap every occurrence (any inflected form) in `{{...}}` within each sentence (see below); for trennbar verbs, see trennbar rules below
+- `comparison` — **adjectives only**, omitted entirely for every other part of speech (see below)
 - `etymology` — origin explanation
 - `similarWords` — 2–3 **synonyms** (not thematically related words) with article, translation, similarityScore, level, cefrRelevant
 - `mnemonics` — 2 mnemonics; omit `imageUrl` until a real URL exists
@@ -144,6 +145,30 @@ Add `trennbar: true` to `wordIntro`. The `wordContext` paragraph **must follow t
 3. **Partizip II** — "Er hat … {{nachgewiesen}}." ← blankable in contextBlank
 
 Which sentence gets the "context" styling isn't declared per word — it's derived automatically from `wordIntro.trennbar` (always sentence index 1, per the mandatory order above), so there's nothing extra to set in `wordContext` itself.
+
+**`comparison` module — adjectives only:**
+
+Every adjective (`partOfSpeech: 'adjective'`) gets a `comparison` module, positioned right after `wordContext` in the `modules` array. Every other part of speech omits it entirely — `modules: Array<ContentModules>` isn't a fixed-shape structure, so a module type simply absent from the array needs no placeholder or empty-state handling, the same way `wordIntro.trennbar` is left unset rather than set to `false` for non-trennbar verbs.
+
+This module exists to keep `wordContext` strictly Grundform-only. `wordContext`'s job is base-word recognition; teaching the graded (comparative/superlative) forms is a distinct skill and belongs in its own module, not extra sentences bolted onto `wordContext`. (Precedent for why exposure-via-sentences isn't the same as teaching a grammatical form: verbs already put Partizip II forms inside `wordContext`, and Partizip II is still a separate open Icebox item in `ROADMAP.md` — in-context exposure was already judged, by that precedent, not to count as "teaching" a form.)
+
+Shape — three full example sentences, not bare inflected phrases, each using the same `{{...}}` marking convention as `wordContext`:
+
+```ts
+{
+  moduleType: 'comparison',
+  heading: { text: 'Comparison' },
+  comparativeSentence: 'Er ist {{älter}} als sein Bruder.',
+  superlativeSentence: 'Mein Opa ist von allen {{am ältesten}}.',
+  superlativeAttributiveSentence: 'Er ist der {{älteste}} Mann im Dorf.',
+}
+```
+
+- **`comparativeSentence`** — the `-er` form, in a natural comparison ("X ist Y-er als Z"). Not redundant with the superlative: it's the more frequently used comparison form day-to-day, and for irregular adjectives the stem change (umlaut, suppletion) already shows up here — `alt` → `älter`, not just at the superlative — so dropping it would hide half the pattern.
+- **`superlativeSentence`** — the predicative/adverbial `am ...(e)sten` form. This form never declines, so keep the sentence noun-free after it — don't attach a following noun in this sentence, that's the attributive sentence's job (e.g. write "Ich bin **am glücklichsten**, wenn …", not "… am glücklichsten Tag").
+- **`superlativeAttributiveSentence`** — one representative declined example, not an exhaustive case/gender table. Use a definite article (`der`/`die`/`das`) matching the chosen noun's gender — nominative weak declension after a definite article always ends in `-e` regardless of gender (`der älteste`, `die größte`, `das gesündeste`), which keeps every attributive example's ending predictable without having to reason through mixed declension for `ein`-words.
+
+Regular adjectives follow standard suffix rules (`-er` / `-(e)sten`, with `-e-` inserted before `-sten` when the stem ends in `-t`/`-d`/`-s`/`-ß`/`-z` for pronounceability, e.g. `laut` → `am lautesten`) — but don't assume, verify each word's actual forms; several common exceptions exist (`teuer` → `teurer`, dropping the middle `-e-`; `groß` → `am größten`, no `-e-` insertion despite ending in `-ß`; `hoch` → `höher`, losing the `-c-`). Adjectives whose comparison is grammatically valid but semantically rare (e.g. `möglich`, `gültig`, `verfügbar` — concepts that are often treated as binary rather than gradable) still get all three sentences; lean on a softened, natural framing ("Diese Lösung erscheint mir am möglichsten") rather than skipping the module for those words.
 
 **`similarWords` — design principle:**
 

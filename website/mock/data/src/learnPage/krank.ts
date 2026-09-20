@@ -41,6 +41,13 @@ export const krank: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Er ist {{kränker}} als letzte Woche.',
+        superlativeSentence: 'Heute fühlt er sich {{am kränksten}}.',
+        superlativeAttributiveSentence: 'Das ist der {{kränkste}} Patient auf der Station.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

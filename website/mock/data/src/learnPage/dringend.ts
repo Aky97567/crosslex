@@ -41,6 +41,13 @@ export const dringend: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Diese Sache ist {{dringender}} als jene.',
+        superlativeSentence: 'Dieser Fall ist {{am dringendsten}}.',
+        superlativeAttributiveSentence: 'Das ist die {{dringendste}} Angelegenheit.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

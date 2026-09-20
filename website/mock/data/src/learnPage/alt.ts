@@ -42,6 +42,13 @@ export const alt: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Er ist {{älter}} als sein Bruder.',
+        superlativeSentence: 'Mein Opa ist von allen {{am ältesten}}.',
+        superlativeAttributiveSentence: 'Er ist der {{älteste}} Mann im Dorf.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

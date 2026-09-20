@@ -41,6 +41,13 @@ export const gueltig: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Dieses Argument ist {{gültiger}} als jenes.',
+        superlativeSentence: 'Dieser Grund erscheint mir {{am gültigsten}}.',
+        superlativeAttributiveSentence: 'Das ist das {{gültigste}} Argument in der Diskussion.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

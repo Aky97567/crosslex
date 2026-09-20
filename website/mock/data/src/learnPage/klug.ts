@@ -41,6 +41,13 @@ export const klug: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Sie ist {{klüger}} als ihr Bruder.',
+        superlativeSentence: 'Er hat {{am klügsten}} reagiert.',
+        superlativeAttributiveSentence: 'Das war die {{klügste}} Entscheidung.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

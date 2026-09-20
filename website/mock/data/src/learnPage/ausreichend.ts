@@ -41,6 +41,13 @@ export const ausreichend: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Diese Menge ist {{ausreichender}} als die vorherige.',
+        superlativeSentence: 'Diese Erklärung war {{am ausreichendsten}}.',
+        superlativeAttributiveSentence: 'Das war die {{ausreichendste}} Antwort von allen.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

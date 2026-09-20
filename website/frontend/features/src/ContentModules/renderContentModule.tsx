@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Comparison,
   Etymology,
   MeaningGuessQuestion,
   Mnemonics,
@@ -33,6 +34,8 @@ const resolveModule = (
       return <WordMeaning {...module} {...closeProps} />;
     case 'wordContext':
       return <WordContext {...module} {...closeProps} />;
+    case 'comparison':
+      return <Comparison {...module} {...closeProps} />;
     case 'meaningGuessQuestion':
       return <MeaningGuessQuestion {...module} {...closeProps} />;
     case 'etymology':

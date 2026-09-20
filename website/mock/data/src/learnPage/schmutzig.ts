@@ -41,6 +41,13 @@ export const schmutzig: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Diese Straße ist {{schmutziger}} als jene.',
+        superlativeSentence: 'Nach dem Regen war es {{am schmutzigsten}}.',
+        superlativeAttributiveSentence: 'Das war das {{schmutzigste}} Zimmer im Haus.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

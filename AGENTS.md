@@ -138,3 +138,4 @@ Pending features and tech debt live in `ROADMAP.md`. It is backlog, not instruct
 ### Active plans
 
 - `2026-07-18-backend-build-order.md` — dependency-ordered build chart for the NestJS/GraphQL/RDS/JWT backend (companion to `2026-07-15-nestjs-backend-architecture.md`). Akshay implements each phase himself for interview depth; agents instruct and review, not write. Reference branch `backend-api-skeleton` holds an agent-built Phase 1 skeleton for diffing only — never merge it.
+- `2026-09-20-adjective-komparation-module.md` — structured Komparation (comparative/superlative) data module for adjectives, first pass at the "Adjective degrees" icebox item. Data + passive display only; no exercise type yet. Several open decisions (field shape, backfill scope, card label) still need confirmation before implementation starts.

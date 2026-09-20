@@ -41,6 +41,13 @@ export const erforderlich: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Dieses Dokument ist {{erforderlicher}} als jenes.',
+        superlativeSentence: 'Diese Unterlage ist {{am erforderlichsten}}.',
+        superlativeAttributiveSentence: 'Das ist die {{erforderlichste}} Unterlage im Antrag.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

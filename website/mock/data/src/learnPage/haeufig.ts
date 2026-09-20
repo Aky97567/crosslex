@@ -41,6 +41,13 @@ export const haeufig: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Dieser Fehler ist {{häufiger}} als jener.',
+        superlativeSentence: 'Regen ist im November {{am häufigsten}}.',
+        superlativeAttributiveSentence: 'Das ist der {{häufigste}} Grund für Beschwerden.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:
