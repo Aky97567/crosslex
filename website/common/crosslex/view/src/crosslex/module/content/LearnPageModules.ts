@@ -78,19 +78,23 @@ export type ComparisonModule = Module<
     heading: Heading;
     // Adjective-only module — omitted entirely for non-adjective words,
     // the same way wordIntro.trennbar is opt-in rather than
-    // type-required. All three fields are full example sentences (not
+    // type-required. All six fields are full example sentences (not
     // bare inflected phrases), using the same {{...}} occurrence-marking
     // convention as wordContext.paragraphWithUsage, so the existing
     // parseAnnotatedParagraph + span-highlighting rendering can be
     // reused. wordContext itself stays strictly Grundform-only — this
-    // module owns every graded (comparative/superlative) form.
-    comparativeSentence: string;
-    // Predicative/adverbial superlative — the fixed "am ...sten" form,
-    // which never declines (unlike the attributive form below).
-    superlativeSentence: string;
-    // Attributive superlative — one representative declined example
-    // ("der/die/das ...ste"), not an exhaustive case/gender table.
-    superlativeAttributiveSentence: string;
+    // module owns every graded (positive/comparative/superlative) form.
+    // Predicative forms are uninflected ("... ist alt"); attributive
+    // forms decline the adjective against a noun ("ein alter Mann").
+    // Within each degree, the predicative/attributive pair shares one
+    // scenario (same subject/noun) so they read as two grammatical
+    // framings of the same sentence, not unrelated examples.
+    positivPredicativ: string;
+    positivAttributiv: string;
+    komparativPredicativ: string;
+    komparativAttributiv: string;
+    superlativPredicativ: string;
+    superlativAttributiv: string;
   }
 >;
 

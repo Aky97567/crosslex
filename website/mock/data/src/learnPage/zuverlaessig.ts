@@ -44,9 +44,12 @@ export const zuverlaessig: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Mein Kollege ist {{zuverlässiger}} als der andere.',
-        superlativeSentence: 'Diese Quelle ist {{am zuverlässigsten}}.',
-        superlativeAttributiveSentence: 'Das ist der {{zuverlässigste}} Partner, den wir haben.',
+        positivPredicativ: 'Mein Kollege ist {{zuverlässig}}.',
+        positivAttributiv: 'Das ist ein {{zuverlässiger}} Kollege.',
+        komparativPredicativ: 'Mein Kollege ist {{zuverlässiger}} als der andere.',
+        komparativAttributiv: 'Das ist der {{zuverlässigere}} Kollege.',
+        superlativPredicativ: 'Dieser Partner ist {{am zuverlässigsten}}.',
+        superlativAttributiv: 'Das ist der {{zuverlässigste}} Partner, den wir haben.',
       },
       {
         moduleType: 'etymology',

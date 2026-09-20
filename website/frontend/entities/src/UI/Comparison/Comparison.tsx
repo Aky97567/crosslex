@@ -4,9 +4,12 @@ import { BodyText, Card } from '@whitelotus/front-shared';
 
 type ComparisonProps = {
   heading: Heading;
-  comparativeSentence: string;
-  superlativeSentence: string;
-  superlativeAttributiveSentence: string;
+  positivPredicativ: string;
+  positivAttributiv: string;
+  komparativPredicativ: string;
+  komparativAttributiv: string;
+  superlativPredicativ: string;
+  superlativAttributiv: string;
   needClose?: boolean;
   onClose?: () => void;
   showContent?: boolean;
@@ -27,11 +30,20 @@ const renderSentence = (sentence: string): React.ReactNode =>
 
 const FORMS: {
   label: string;
-  key: 'comparativeSentence' | 'superlativeSentence' | 'superlativeAttributiveSentence';
+  key:
+    | 'positivPredicativ'
+    | 'positivAttributiv'
+    | 'komparativPredicativ'
+    | 'komparativAttributiv'
+    | 'superlativPredicativ'
+    | 'superlativAttributiv';
 }[] = [
-  { label: 'Komparativ', key: 'comparativeSentence' },
-  { label: 'Superlativ (prädikativ)', key: 'superlativeSentence' },
-  { label: 'Superlativ (attributiv)', key: 'superlativeAttributiveSentence' },
+  { label: 'Positiv (prädikativ)', key: 'positivPredicativ' },
+  { label: 'Positiv (attributiv)', key: 'positivAttributiv' },
+  { label: 'Komparativ (prädikativ)', key: 'komparativPredicativ' },
+  { label: 'Komparativ (attributiv)', key: 'komparativAttributiv' },
+  { label: 'Superlativ (prädikativ)', key: 'superlativPredicativ' },
+  { label: 'Superlativ (attributiv)', key: 'superlativAttributiv' },
 ];
 
 export const Comparison: React.FC<ComparisonProps> = ({

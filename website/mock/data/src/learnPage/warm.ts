@@ -43,9 +43,12 @@ export const warm: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Heute ist es {{wärmer}} als gestern.',
-        superlativeSentence: 'Im Sommer ist es {{am wärmsten}}.',
-        superlativeAttributiveSentence: 'Das ist der {{wärmste}} Monat des Jahres.',
+        positivPredicativ: 'Der Tag ist {{warm}}.',
+        positivAttributiv: 'Das ist ein {{warmer}} Tag.',
+        komparativPredicativ: 'Heute ist es {{wärmer}} als gestern.',
+        komparativAttributiv: 'Heute ist der {{wärmere}} Tag.',
+        superlativPredicativ: 'Dieser Monat ist {{am wärmsten}}.',
+        superlativAttributiv: 'Das ist der {{wärmste}} Monat des Jahres.',
       },
       {
         moduleType: 'etymology',

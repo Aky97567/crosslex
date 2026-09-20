@@ -43,9 +43,12 @@ export const nah: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Die Schule ist {{näher}} als die Bibliothek.',
-        superlativeSentence: 'Der Bahnhof liegt {{am nächsten}}.',
-        superlativeAttributiveSentence: 'Das ist der {{nächste}} Supermarkt.',
+        positivPredicativ: 'Die Schule ist {{nah}}.',
+        positivAttributiv: 'Das ist eine {{nahe}} Schule.',
+        komparativPredicativ: 'Die Schule ist {{näher}} als die Bibliothek.',
+        komparativAttributiv: 'Das ist die {{nähere}} Schule.',
+        superlativPredicativ: 'Der Supermarkt liegt {{am nächsten}}.',
+        superlativAttributiv: 'Das ist der {{nächste}} Supermarkt.',
       },
       {
         moduleType: 'etymology',

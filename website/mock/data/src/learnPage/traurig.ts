@@ -43,9 +43,12 @@ export const traurig: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Dieser Film ist {{trauriger}} als der andere.',
-        superlativeSentence: 'Diese Szene war {{am traurigsten}}.',
-        superlativeAttributiveSentence: 'Das war das {{traurigste}} Ende des Films.',
+        positivPredicativ: 'Dieser Film ist {{traurig}}.',
+        positivAttributiv: 'Das ist ein {{trauriger}} Film.',
+        komparativPredicativ: 'Dieser Film ist {{trauriger}} als der andere.',
+        komparativAttributiv: 'Das ist der {{traurigere}} Film.',
+        superlativPredicativ: 'Dieses Ende war {{am traurigsten}}.',
+        superlativAttributiv: 'Das war das {{traurigste}} Ende des Films.',
       },
       {
         moduleType: 'etymology',

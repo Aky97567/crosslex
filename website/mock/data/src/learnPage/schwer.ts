@@ -43,9 +43,12 @@ export const schwer: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Dieser Koffer ist {{schwerer}} als meiner.',
-        superlativeSentence: 'Diese Entscheidung war {{am schwersten}}.',
-        superlativeAttributiveSentence: 'Das war die {{schwerste}} Prüfung.',
+        positivPredicativ: 'Dieser Koffer ist {{schwer}}.',
+        positivAttributiv: 'Das ist ein {{schwerer}} Koffer.',
+        komparativPredicativ: 'Dieser Koffer ist {{schwerer}} als meiner.',
+        komparativAttributiv: 'Das ist der {{schwerere}} Koffer.',
+        superlativPredicativ: 'Diese Prüfung war {{am schwersten}}.',
+        superlativAttributiv: 'Das war die {{schwerste}} Prüfung.',
       },
       {
         moduleType: 'etymology',

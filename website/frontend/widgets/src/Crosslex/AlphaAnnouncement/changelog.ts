@@ -3,9 +3,24 @@ export type ChangelogEntry = {
   returningUser: { heading: string; body: string; changes: string[] };
 };
 
-export const CURRENT_BUILD_ID = 'alpha-2026-09-20-comparison-module';
+export const CURRENT_BUILD_ID = 'alpha-2026-09-20-comparison-full-degrees';
 
 export const CHANGELOG: Record<string, ChangelogEntry> = {
+  'alpha-2026-09-20-comparison-full-degrees': {
+    newUser: {
+      heading: "You're testing Crosslex Alpha",
+      body: "Crosslex is a German vocabulary trainer — built for adults navigating real life in Germany. Choose your level, pick a session length and learning pace, and Crosslex will guide you through words and exercises. Your feedback shapes what we build next.",
+      cta: "Let's go →",
+    },
+    returningUser: {
+      heading: "You're back — something's new",
+      body: 'The Comparison card now covers every degree, in both grammatical forms.',
+      changes: [
+        'New: "Comparison" card now also shows the Positiv (grundform) alongside Komparativ and Superlativ',
+        'New: every degree shows both a predicative sentence ("... ist älter") and an attributive sentence ("ein älterer Mann"), sharing the same scenario',
+      ],
+    },
+  },
   'alpha-2026-09-20-comparison-module': {
     newUser: {
       heading: "You're testing Crosslex Alpha",

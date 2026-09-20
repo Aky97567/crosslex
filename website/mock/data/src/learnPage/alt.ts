@@ -44,9 +44,12 @@ export const alt: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Er ist {{älter}} als sein Bruder.',
-        superlativeSentence: 'Mein Opa ist von allen {{am ältesten}}.',
-        superlativeAttributiveSentence: 'Er ist der {{älteste}} Mann im Dorf.',
+        positivPredicativ: 'Der Mann ist {{alt}}.',
+        positivAttributiv: 'Das ist ein {{alter}} Mann.',
+        komparativPredicativ: 'Er ist {{älter}} als sein Bruder.',
+        komparativAttributiv: 'Das ist der {{ältere}} Mann.',
+        superlativPredicativ: 'Der Mann ist im Dorf {{am ältesten}}.',
+        superlativAttributiv: 'Er ist der {{älteste}} Mann im Dorf.',
       },
       {
         moduleType: 'etymology',

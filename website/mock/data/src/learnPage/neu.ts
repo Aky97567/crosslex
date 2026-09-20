@@ -44,9 +44,12 @@ export const neu: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Mein Handy ist {{neuer}} als deins.',
-        superlativeSentence: 'Dieses Modell ist {{am neuesten}}.',
-        superlativeAttributiveSentence: 'Das ist das {{neueste}} Modell.',
+        positivPredicativ: 'Mein Handy ist {{neu}}.',
+        positivAttributiv: 'Das ist ein {{neues}} Handy.',
+        komparativPredicativ: 'Mein Handy ist {{neuer}} als deins.',
+        komparativAttributiv: 'Das ist das {{neuere}} Handy.',
+        superlativPredicativ: 'Dieses Modell ist {{am neuesten}}.',
+        superlativAttributiv: 'Das ist das {{neueste}} Modell.',
       },
       {
         moduleType: 'etymology',
