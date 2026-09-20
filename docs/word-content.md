@@ -197,6 +197,25 @@ Two kinds of value live in this one list. `daily_life`, `bureaucracy`, `finance`
   2. `website/frontend/features/src/Session/sessionStorage.ts` — the `VALID_THEMES: WordTheme[]` **runtime array** used by `readSessionFilter()`; the type is imported automatically, but this array must be updated manually or the new theme is silently stripped from localStorage on read
   3. `website/frontend/widgets/src/Crosslex/SessionDashboard/SessionDashboard.tsx` — `THEME_LABELS` `Record<WordTheme, string>`; missing it renders a blank option in the theme picker (the `Record` type will catch this as a compile error in the widgets package)
 
+## CEFR Levels
+
+`wordIntro.level` is typed as `('A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2')[]` — the module-schema type has always permitted the full CEFR scale, so adding word content at a new level (e.g. the B2 batch) needs no type change there.
+
+The real constraint isn't that type — it's a separate, narrower `ActiveLevel` type that drives level selection throughout the app:
+
+`website/frontend/features/src/Session/sessionStorage.ts` — `export type ActiveLevel = 'a2' | 'b1' | 'b2';` (lowercase, deliberately only the levels the app actually lets a user select and study — not every CEFR level word content could theoretically use). Every consumer of `ActiveLevel` is a **closed enumeration**, not something that generalizes automatically — each one needs its own literal entry:
+
+1. `sessionStorage.ts` itself — `readActiveLevel()`'s `VALID_LEVELS` array (falls back to `'b1'` for anything not recognized; add the new value or it's silently rejected on read) — this file also has the `LEVEL_WORD_POOLS`-style pattern below to follow in each consumer, not a single central switch.
+2. `website/mock/data/src/learnPage/sampleLearnPageContent.ts` — needs a `<Level>Words` export (e.g. `B2Words`) following the exact pattern of `A2Words`/`B1Words`: filter `sampleLearnPageContentList` keys by `getWordLevel(key).some((l) => l === '<LEVEL>')`. Re-export it from both `learnPage/index.ts` and `mock/data/src/index.ts` — missing either leaves it unimportable from the package's public surface even though the export itself compiles fine.
+3. `website/frontend/features/src/Session/useSessionState.ts` — `getLevelPool()`'s `LEVEL_WORD_POOLS: Record<ActiveLevel, SampleContentKey[]>` map. This used to be a binary ternary (`=== 'a2' ? A2Words : B1Words`) that treated "not A2" as "B1" — i.e. any level that wasn't the special-cased one silently fell into B1's pool. The `Record<ActiveLevel, ...>` shape is deliberate: it makes the compiler refuse to build if a level is missing an entry, instead of silently defaulting wrong.
+4. `website/frontend/widgets/src/Crosslex/SessionDashboard/SessionDashboard.tsx` — the same `LEVEL_WORD_POOLS` pattern, duplicated here (not shared with `useSessionState.ts` — both need updating independently).
+5. `website/frontend/widgets/src/Crosslex/SettingsPanel/LevelSection.tsx` — `LEVEL_OPTIONS` array (the level switcher in Settings); this one *is* array-driven, so a new entry is just one more object in the list.
+6. `website/frontend/widgets/src/Crosslex/AlphaAnnouncement/NewUserOverlay.tsx` — the onboarding "What's your German level?" step; **not** array-driven — each level is its own hardcoded `SelectableCard` JSX block, so a new level means writing a new block, not extending a list.
+
+None of these six sites derive from each other — there's no single flag or central registry that fans out. Treat "add a new level" as "touch all six," and grep for the previous level's lowercase literal (e.g. `'b1'`) across `frontend/` if in doubt about whether something was missed.
+
+Before shipping a new level, also decide whether adding it is purely additive (new level, existing levels unaffected — the case for B2) or changes what an existing level means, since either the app's `Words` export (`mock/data/src/learnPage/sampleLearnPageContent.ts`, currently aliased to `B1Words`) or any A2/B1-specific fallback logic could be relying on assumptions that predate the new level existing.
+
 ## A2 Word Content Guidelines
 
 When adding A2-level words (level `['A2']` in `wordIntro`):
