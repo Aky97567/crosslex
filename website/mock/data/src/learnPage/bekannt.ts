@@ -43,9 +43,12 @@ export const bekannt: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Dieser Sänger ist {{bekannter}} als jener.',
-        superlativeSentence: 'Er ist in Deutschland {{am bekanntesten}}.',
-        superlativeAttributiveSentence: 'Das ist der {{bekannteste}} Sänger des Landes.',
+        positivPredicativ: 'Dieser Sänger ist {{bekannt}}.',
+        positivAttributiv: 'Das ist ein {{bekannter}} Sänger.',
+        komparativPredicativ: 'Dieser Sänger ist {{bekannter}} als jener.',
+        komparativAttributiv: 'Das ist der {{bekanntere}} Sänger.',
+        superlativPredicativ: 'Dieser Sänger ist in Deutschland {{am bekanntesten}}.',
+        superlativAttributiv: 'Das ist der {{bekannteste}} Sänger des Landes.',
       },
       {
         moduleType: 'etymology',

@@ -43,9 +43,12 @@ export const sauber: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Diese Küche ist {{sauberer}} als meine.',
-        superlativeSentence: 'Dieses Zimmer ist {{am saubersten}}.',
-        superlativeAttributiveSentence: 'Das ist das {{sauberste}} Hotelzimmer, in dem ich war.',
+        positivPredicativ: 'Diese Küche ist {{sauber}}.',
+        positivAttributiv: 'Das ist eine {{saubere}} Küche.',
+        komparativPredicativ: 'Diese Küche ist {{sauberer}} als meine.',
+        komparativAttributiv: 'Das ist die {{sauberere}} Küche.',
+        superlativPredicativ: 'Dieses Hotelzimmer ist {{am saubersten}}.',
+        superlativAttributiv: 'Das ist das {{sauberste}} Hotelzimmer, in dem ich war.',
       },
       {
         moduleType: 'etymology',

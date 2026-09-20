@@ -43,9 +43,12 @@ export const selten: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Dieser Fehler ist {{seltener}} als jener.',
-        superlativeSentence: 'Diese Briefmarke ist {{am seltensten}}.',
-        superlativeAttributiveSentence: 'Das ist die {{seltenste}} Briefmarke der Sammlung.',
+        positivPredicativ: 'Dieser Fehler ist {{selten}}.',
+        positivAttributiv: 'Das ist ein {{seltener}} Fehler.',
+        komparativPredicativ: 'Dieser Fehler ist {{seltener}} als jener.',
+        komparativAttributiv: 'Das ist der {{seltenere}} Fehler.',
+        superlativPredicativ: 'Diese Briefmarke ist {{am seltensten}}.',
+        superlativAttributiv: 'Das ist die {{seltenste}} Briefmarke der Sammlung.',
       },
       {
         moduleType: 'etymology',

@@ -43,9 +43,12 @@ export const kurz: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Diese Pause ist {{kürzer}} als die letzte.',
-        superlativeSentence: 'Der Februar ist {{am kürzesten}}.',
-        superlativeAttributiveSentence: 'Das ist der {{kürzeste}} Weg zur Arbeit.',
+        positivPredicativ: 'Diese Pause ist {{kurz}}.',
+        positivAttributiv: 'Das ist eine {{kurze}} Pause.',
+        komparativPredicativ: 'Diese Pause ist {{kürzer}} als die letzte.',
+        komparativAttributiv: 'Das ist die {{kürzere}} Pause.',
+        superlativPredicativ: 'Dieser Weg ist {{am kürzesten}}.',
+        superlativAttributiv: 'Das ist der {{kürzeste}} Weg zur Arbeit.',
       },
       {
         moduleType: 'etymology',

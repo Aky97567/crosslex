@@ -43,9 +43,12 @@ export const schwach: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Das Signal ist hier {{schwächer}} als dort.',
-        superlativeSentence: 'Nach der Krankheit fühlte er sich {{am schwächsten}}.',
-        superlativeAttributiveSentence: 'Das war das {{schwächste}} Argument.',
+        positivPredicativ: 'Das Signal ist {{schwach}}.',
+        positivAttributiv: 'Das ist ein {{schwaches}} Signal.',
+        komparativPredicativ: 'Das Signal ist hier {{schwächer}} als dort.',
+        komparativAttributiv: 'Das ist das {{schwächere}} Signal.',
+        superlativPredicativ: 'Dieses Argument war {{am schwächsten}}.',
+        superlativAttributiv: 'Das war das {{schwächste}} Argument.',
       },
       {
         moduleType: 'etymology',

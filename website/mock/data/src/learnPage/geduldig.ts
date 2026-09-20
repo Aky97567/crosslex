@@ -43,9 +43,12 @@ export const geduldig: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Sie ist {{geduldiger}} als ich.',
-        superlativeSentence: 'Er war {{am geduldigsten}} von allen Eltern.',
-        superlativeAttributiveSentence: 'Das ist die {{geduldigste}} Lehrerin.',
+        positivPredicativ: 'Die Lehrerin ist {{geduldig}}.',
+        positivAttributiv: 'Das ist eine {{geduldige}} Lehrerin.',
+        komparativPredicativ: 'Sie ist {{geduldiger}} als ich.',
+        komparativAttributiv: 'Das ist die {{geduldigere}} Lehrerin.',
+        superlativPredicativ: 'Die Lehrerin war von allen Eltern {{am geduldigsten}}.',
+        superlativAttributiv: 'Das ist die {{geduldigste}} Lehrerin.',
       },
       {
         moduleType: 'etymology',

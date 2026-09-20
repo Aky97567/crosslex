@@ -43,9 +43,12 @@ export const hoch: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Der Berg ist {{höher}} als der andere.',
-        superlativeSentence: 'Im Sommer sind die Preise {{am höchsten}}.',
-        superlativeAttributiveSentence: 'Das ist der {{höchste}} Berg der Alpen.',
+        positivPredicativ: 'Der Berg ist {{hoch}}.',
+        positivAttributiv: 'Das ist ein {{hoher}} Berg.',
+        komparativPredicativ: 'Der Berg ist {{höher}} als der andere.',
+        komparativAttributiv: 'Das ist der {{höhere}} Berg.',
+        superlativPredicativ: 'Der Berg ist {{am höchsten}}.',
+        superlativAttributiv: 'Das ist der {{höchste}} Berg der Alpen.',
       },
       {
         moduleType: 'etymology',

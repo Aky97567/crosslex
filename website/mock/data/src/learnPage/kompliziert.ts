@@ -43,9 +43,12 @@ export const kompliziert: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Dieses Formular ist {{komplizierter}} als jenes.',
-        superlativeSentence: 'Diese Situation ist {{am kompliziertesten}}.',
-        superlativeAttributiveSentence: 'Das ist der {{komplizierteste}} Fall, den ich kenne.',
+        positivPredicativ: 'Dieses Formular ist {{kompliziert}}.',
+        positivAttributiv: 'Das ist ein {{kompliziertes}} Formular.',
+        komparativPredicativ: 'Dieses Formular ist {{komplizierter}} als jenes.',
+        komparativAttributiv: 'Das ist das {{kompliziertere}} Formular.',
+        superlativPredicativ: 'Dieser Fall ist {{am kompliziertesten}}.',
+        superlativAttributiv: 'Das ist der {{komplizierteste}} Fall, den ich kenne.',
       },
       {
         moduleType: 'etymology',

@@ -43,9 +43,12 @@ export const ordentlich: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Sein Zimmer ist {{ordentlicher}} als meins.',
-        superlativeSentence: 'Am Sonntag ist die Wohnung {{am ordentlichsten}}.',
-        superlativeAttributiveSentence: 'Das ist das {{ordentlichste}} Zimmer im Haus.',
+        positivPredicativ: 'Sein Zimmer ist {{ordentlich}}.',
+        positivAttributiv: 'Das ist ein {{ordentliches}} Zimmer.',
+        komparativPredicativ: 'Sein Zimmer ist {{ordentlicher}} als meins.',
+        komparativAttributiv: 'Das ist das {{ordentlichere}} Zimmer.',
+        superlativPredicativ: 'Am Sonntag ist sein Zimmer {{am ordentlichsten}}.',
+        superlativAttributiv: 'Das ist das {{ordentlichste}} Zimmer im Haus.',
       },
       {
         moduleType: 'etymology',

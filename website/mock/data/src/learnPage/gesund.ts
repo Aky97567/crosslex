@@ -44,9 +44,12 @@ export const gesund: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Obst ist {{gesünder}} als Süßigkeiten.',
-        superlativeSentence: 'Diese Mahlzeit ist {{am gesündesten}}.',
-        superlativeAttributiveSentence: 'Das ist das {{gesündeste}} Essen auf der Karte.',
+        positivPredicativ: 'Obst ist {{gesund}}.',
+        positivAttributiv: 'Das ist {{gesundes}} Obst.',
+        komparativPredicativ: 'Obst ist {{gesünder}} als Süßigkeiten.',
+        komparativAttributiv: 'Das ist {{gesünderes}} Obst.',
+        superlativPredicativ: 'Dieses Essen ist {{am gesündesten}}.',
+        superlativAttributiv: 'Das ist das {{gesündeste}} Essen auf der Karte.',
       },
       {
         moduleType: 'etymology',

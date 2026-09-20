@@ -43,9 +43,12 @@ export const gluecklich: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Ich bin heute {{glücklicher}} als gestern.',
-        superlativeSentence: 'Ich bin {{am glücklichsten}}, wenn ich bei meiner Familie bin.',
-        superlativeAttributiveSentence: 'Das war der {{glücklichste}} Tag meines Lebens.',
+        positivPredicativ: 'Ich bin {{glücklich}}.',
+        positivAttributiv: 'Das ist ein {{glücklicher}} Tag.',
+        komparativPredicativ: 'Ich bin heute {{glücklicher}} als gestern.',
+        komparativAttributiv: 'Heute ist der {{glücklichere}} Tag.',
+        superlativPredicativ: 'Ich bin {{am glücklichsten}}, wenn ich bei meiner Familie bin.',
+        superlativAttributiv: 'Das war der {{glücklichste}} Tag meines Lebens.',
       },
       {
         moduleType: 'etymology',

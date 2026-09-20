@@ -43,9 +43,12 @@ export const teuer: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Diese Uhr ist {{teurer}} als jene.',
-        superlativeSentence: 'Dieses Restaurant ist {{am teuersten}}.',
-        superlativeAttributiveSentence: 'Das ist das {{teuerste}} Restaurant der Stadt.',
+        positivPredicativ: 'Diese Uhr ist {{teuer}}.',
+        positivAttributiv: 'Das ist eine {{teure}} Uhr.',
+        komparativPredicativ: 'Diese Uhr ist {{teurer}} als jene.',
+        komparativAttributiv: 'Das ist die {{teurere}} Uhr.',
+        superlativPredicativ: 'Dieses Restaurant ist {{am teuersten}}.',
+        superlativAttributiv: 'Das ist das {{teuerste}} Restaurant der Stadt.',
       },
       {
         moduleType: 'etymology',

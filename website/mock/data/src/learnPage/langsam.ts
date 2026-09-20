@@ -44,9 +44,12 @@ export const langsam: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Diese Schnecke ist {{langsamer}} als die andere.',
-        superlativeSentence: 'Am Morgen fahre ich {{am langsamsten}}.',
-        superlativeAttributiveSentence: 'Das ist der {{langsamste}} Bus der Stadt.',
+        positivPredicativ: 'Diese Schnecke ist {{langsam}}.',
+        positivAttributiv: 'Das ist eine {{langsame}} Schnecke.',
+        komparativPredicativ: 'Diese Schnecke ist {{langsamer}} als die andere.',
+        komparativAttributiv: 'Das ist die {{langsamere}} Schnecke.',
+        superlativPredicativ: 'Am Morgen fährt der Bus {{am langsamsten}}.',
+        superlativAttributiv: 'Das ist der {{langsamste}} Bus der Stadt.',
       },
       {
         moduleType: 'etymology',

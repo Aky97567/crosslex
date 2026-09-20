@@ -43,9 +43,12 @@ export const leise: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Diese Melodie ist {{leiser}} als jene.',
-        superlativeSentence: 'Nachts ist es hier {{am leisesten}}.',
-        superlativeAttributiveSentence: 'Das ist der {{leiseste}} Raum im Haus.',
+        positivPredicativ: 'Diese Melodie ist {{leise}}.',
+        positivAttributiv: 'Das ist eine {{leise}} Melodie.',
+        komparativPredicativ: 'Diese Melodie ist {{leiser}} als jene.',
+        komparativAttributiv: 'Das ist die {{leisere}} Melodie.',
+        superlativPredicativ: 'Nachts ist dieser Raum {{am leisesten}}.',
+        superlativAttributiv: 'Das ist der {{leiseste}} Raum im Haus.',
       },
       {
         moduleType: 'etymology',
