@@ -11,7 +11,7 @@ export const schnell: LearnPageContent = {
         article: null,
         translation: 'fast, quick',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective'],
+        themes: ['daily_life'],
         level: ['A2'],
       },
       {

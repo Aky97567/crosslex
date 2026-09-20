@@ -11,7 +11,7 @@ export const haeufig: LearnPageContent = {
         article: null,
         translation: 'frequent, often',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective'],
+        themes: ['daily_life'],
         level: ['B1'],
       },
       {

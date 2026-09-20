@@ -3,9 +3,24 @@ export type ChangelogEntry = {
   returningUser: { heading: string; body: string; changes: string[] };
 };
 
-export const CURRENT_BUILD_ID = 'alpha-2026-09-20-comparison-full-degrees';
+export const CURRENT_BUILD_ID = 'alpha-2026-09-20-filter-clusters';
 
 export const CHANGELOG: Record<string, ChangelogEntry> = {
+  'alpha-2026-09-20-filter-clusters': {
+    newUser: {
+      heading: "You're testing Crosslex Alpha",
+      body: "Crosslex is a German vocabulary trainer — built for adults navigating real life in Germany. Choose your level, pick a session length and learning pace, and Crosslex will guide you through words and exercises. Your feedback shapes what we build next.",
+      cta: "Let's go →",
+    },
+    returningUser: {
+      heading: "You're back — something's new",
+      body: 'The session Filter dropdown is now organised into four clear groups.',
+      changes: [
+        'New: Filter dropdown now groups into Topic, Part of Speech, Verb Grammar, and Adjective Grammar — no more grammar tags mixed in with topics',
+        'New: "Adjectives only" filter, alongside "Verbs only" — both now only appear when your level actually has that part of speech',
+      ],
+    },
+  },
   'alpha-2026-09-20-comparison-full-degrees': {
     newUser: {
       heading: "You're testing Crosslex Alpha",

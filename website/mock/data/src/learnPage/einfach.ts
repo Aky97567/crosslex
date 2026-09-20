@@ -11,7 +11,7 @@ export const einfach: LearnPageContent = {
         article: null,
         translation: 'simple, easy',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective'],
+        themes: ['daily_life'],
         level: ['B1'],
       },
       {

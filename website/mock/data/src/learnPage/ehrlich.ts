@@ -11,7 +11,7 @@ export const ehrlich: LearnPageContent = {
         article: null,
         translation: 'honest',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective'],
+        themes: ['daily_life'],
         level: ['B1'],
       },
       {

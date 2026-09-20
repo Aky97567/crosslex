@@ -11,7 +11,7 @@ export const gluecklich: LearnPageContent = {
         article: null,
         translation: 'happy',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective'],
+        themes: ['daily_life'],
         level: ['A2'],
       },
       {

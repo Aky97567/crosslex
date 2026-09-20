@@ -11,7 +11,7 @@ export const neu: LearnPageContent = {
         article: null,
         translation: 'new',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective'],
+        themes: ['daily_life'],
         level: ['A2'],
       },
       {

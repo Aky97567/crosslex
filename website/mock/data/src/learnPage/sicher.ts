@@ -11,7 +11,7 @@ export const sicher: LearnPageContent = {
         article: null,
         translation: 'safe, certain',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective'],
+        themes: ['daily_life'],
         level: ['B1'],
       },
       {
