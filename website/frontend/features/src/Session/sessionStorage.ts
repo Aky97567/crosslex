@@ -46,14 +46,16 @@ export const RATE_CONFIG: Record<LearningRate, RateConfig> = {
 
 // ─── Level ───────────────────────────────────────────────────────────────────
 
-export type ActiveLevel = 'a2' | 'b1';
+export type ActiveLevel = 'a2' | 'b1' | 'b2';
 
 const LEVEL_KEY = 'crosslex:level';
 const LEVEL_SELECTED_KEY = 'crosslex:level_selected';
+const VALID_LEVELS: ActiveLevel[] = ['a2', 'b1', 'b2'];
 
 export const readActiveLevel = (): ActiveLevel => {
   try {
-    return localStorage.getItem(LEVEL_KEY) === 'a2' ? 'a2' : 'b1';
+    const raw = localStorage.getItem(LEVEL_KEY);
+    return VALID_LEVELS.includes(raw as ActiveLevel) ? (raw as ActiveLevel) : 'b1';
   } catch {
     return 'b1';
   }

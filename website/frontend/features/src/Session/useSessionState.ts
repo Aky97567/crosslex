@@ -1,5 +1,5 @@
 import { MutableRefObject, useCallback, useRef, useState } from 'react';
-import { sampleLearnPageContentList, A2Words, B1Words, getWordThemes, getWordPartOfSpeech } from '@whitelotus/mock-test';
+import { sampleLearnPageContentList, A2Words, B1Words, B2Words, SampleContentKey, getWordThemes, getWordPartOfSpeech } from '@whitelotus/mock-test';
 import {
   writeWordsSeen,
   updateWordStats,
@@ -9,6 +9,7 @@ import {
   readKnownWords,
   healWordsSeen,
   readActiveLevel,
+  ActiveLevel,
   WordsSeenStore,
   SessionFilter,
 } from './sessionStorage';
@@ -47,7 +48,13 @@ type Params = {
   startedAt: MutableRefObject<number>;
 };
 
-const getLevelPool = () => (readActiveLevel() === 'a2' ? A2Words : B1Words);
+const LEVEL_WORD_POOLS: Record<ActiveLevel, SampleContentKey[]> = {
+  a2: A2Words,
+  b1: B1Words,
+  b2: B2Words,
+};
+
+const getLevelPool = () => LEVEL_WORD_POOLS[readActiveLevel()];
 
 // theme and 'verbs_only' are mutually exclusive — see SessionFilter's comment
 // in sessionStorage.ts for why this isn't two independently-combinable filters.

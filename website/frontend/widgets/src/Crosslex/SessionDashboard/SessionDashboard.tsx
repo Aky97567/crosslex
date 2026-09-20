@@ -5,9 +5,10 @@ import {
   useCoachMark,
   WordTheme,
   SessionFilter,
+  ActiveLevel,
   useCrosslexStorage,
 } from '@whitelotus/front-features';
-import { A2Words, B1Words, getThemesForPool } from '@whitelotus/mock-test';
+import { A2Words, B1Words, B2Words, SampleContentKey, getThemesForPool } from '@whitelotus/mock-test';
 import { WordMetricsPanel } from './WordMetricsPanel';
 
 const PRIZE_COPY_ENABLED = true;
@@ -40,6 +41,12 @@ const THEME_LABELS: Record<WordTheme, string> = {
   irregular_comparison: 'Irregular comparison (adjectives)',
 };
 
+const LEVEL_WORD_POOLS: Record<ActiveLevel, SampleContentKey[]> = {
+  a2: A2Words,
+  b1: B1Words,
+  b2: B2Words,
+};
+
 const ctaButton =
   'bg-brand border-2 border-brand rounded-md text-text-cta px-40 py-10 transition-colors duration-300 w-full mt-20';
 
@@ -61,7 +68,7 @@ const SessionDashboard: React.FC<Props> = ({ onStart, onWordClick, coachMarksEna
   const [rate, setRate] = useState<LearningRate>(() =>
     (savedRate === 'review' || savedRate === 'easy') && !canReview ? 'balanced' : savedRate
   );
-  const wordPool = activeLevel === 'a2' ? A2Words : B1Words;
+  const wordPool = LEVEL_WORD_POOLS[activeLevel];
   const availableThemes = getThemesForPool(wordPool, 5);
   const [filter, setFilter] = useState<SessionFilter>(savedFilter);
   const allWordsSeen = wordPool.every((key) => key in wordsSeenMap);

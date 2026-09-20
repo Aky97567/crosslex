@@ -280,6 +280,37 @@ import { geduldig } from './geduldig';
 import { zufrieden } from './zufrieden';
 import { verantwortlich } from './verantwortlich';
 import { zuverlaessig } from './zuverlaessig';
+// B2 noun expansion
+import { moeglichkeit } from './moeglichkeit';
+import { voraussetzung } from './voraussetzung';
+import { angelegenheit } from './angelegenheit';
+import { zusammenhang } from './zusammenhang';
+import { auswirkung } from './auswirkung';
+import { herausforderung } from './herausforderung';
+import { entwicklung } from './entwicklung';
+import { verhandlung } from './verhandlung';
+import { vereinbarung } from './vereinbarung';
+import { bewertung } from './bewertung';
+import { beschwerde } from './beschwerde';
+import { entschuldigung } from './entschuldigung';
+import { vorschlag } from './vorschlag';
+import { verpflichtung } from './verpflichtung';
+import { berechtigung } from './berechtigung';
+import { zustimmung } from './zustimmung';
+import { ablehnung } from './ablehnung';
+import { nachweis } from './nachweis';
+import { verzoegerung } from './verzoegerung';
+import { erklaerung } from './erklaerung';
+import { regelung } from './regelung';
+import { umgang } from './umgang';
+import { ruecksicht } from './ruecksicht';
+import { gelegenheit } from './gelegenheit';
+import { eindruck } from './eindruck';
+import { wahrnehmung } from './wahrnehmung';
+import { konsequenz } from './konsequenz';
+import { absicht } from './absicht';
+import { beteiligung } from './beteiligung';
+import { zustellung } from './zustellung';
 
 export const sampleLearnPageContentList = {
   //! A1
@@ -570,6 +601,37 @@ export const sampleLearnPageContentList = {
   zufrieden,
   verantwortlich,
   zuverlaessig,
+  //! B2 — noun expansion
+  moeglichkeit,
+  voraussetzung,
+  angelegenheit,
+  zusammenhang,
+  auswirkung,
+  herausforderung,
+  entwicklung,
+  verhandlung,
+  vereinbarung,
+  bewertung,
+  beschwerde,
+  entschuldigung,
+  vorschlag,
+  verpflichtung,
+  berechtigung,
+  zustimmung,
+  ablehnung,
+  nachweis,
+  verzoegerung,
+  erklaerung,
+  regelung,
+  umgang,
+  ruecksicht,
+  gelegenheit,
+  eindruck,
+  wahrnehmung,
+  konsequenz,
+  absicht,
+  beteiligung,
+  zustellung,
 };
 
 export type SampleContentKey = keyof typeof sampleLearnPageContentList;
@@ -589,6 +651,10 @@ export const A2Words = (Object.keys(sampleLearnPageContentList) as SampleContent
 
 export const B1Words = (Object.keys(sampleLearnPageContentList) as SampleContentKeys).filter(
   (key) => getWordLevel(key).some((l) => l === 'B1'),
+);
+
+export const B2Words = (Object.keys(sampleLearnPageContentList) as SampleContentKeys).filter(
+  (key) => getWordLevel(key).some((l) => l === 'B2'),
 );
 
 export const Words = B1Words;
