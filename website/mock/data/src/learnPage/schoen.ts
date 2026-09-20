@@ -41,6 +41,13 @@ export const schoen: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Dieser Park ist {{schöner}} als der andere.',
+        superlativeSentence: 'Der Sonnenuntergang war heute {{am schönsten}}.',
+        superlativeAttributiveSentence: 'Das war der {{schönste}} Abend des Urlaubs.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

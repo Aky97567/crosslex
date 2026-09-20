@@ -41,6 +41,13 @@ export const sicher: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Diese Gegend ist {{sicherer}} als jene.',
+        superlativeSentence: 'Nachts ist es hier {{am sichersten}}.',
+        superlativeAttributiveSentence: 'Das ist die {{sicherste}} Route.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

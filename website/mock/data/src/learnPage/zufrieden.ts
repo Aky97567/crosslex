@@ -41,6 +41,13 @@ export const zufrieden: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Ich bin mit diesem Ergebnis {{zufriedener}} als mit dem letzten.',
+        superlativeSentence: 'Er ist {{am zufriedensten}}, wenn er draußen arbeitet.',
+        superlativeAttributiveSentence: 'Das war der {{zufriedenste}} Kunde des Tages.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

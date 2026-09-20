@@ -41,6 +41,13 @@ export const sauber: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Diese Küche ist {{sauberer}} als meine.',
+        superlativeSentence: 'Dieses Zimmer ist {{am saubersten}}.',
+        superlativeAttributiveSentence: 'Das ist das {{sauberste}} Hotelzimmer, in dem ich war.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

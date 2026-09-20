@@ -41,6 +41,13 @@ export const jung: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Sie ist {{jünger}} als ihre Schwester.',
+        superlativeSentence: 'Von allen Kindern ist er {{am jüngsten}}.',
+        superlativeAttributiveSentence: 'Er ist der {{jüngste}} Sohn.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

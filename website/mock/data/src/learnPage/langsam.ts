@@ -42,6 +42,13 @@ export const langsam: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Diese Schnecke ist {{langsamer}} als die andere.',
+        superlativeSentence: 'Am Morgen fahre ich {{am langsamsten}}.',
+        superlativeAttributiveSentence: 'Das ist der {{langsamste}} Bus der Stadt.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

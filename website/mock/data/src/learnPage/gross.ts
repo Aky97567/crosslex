@@ -41,6 +41,13 @@ export const gross: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Berlin ist {{größer}} als München.',
+        superlativeSentence: 'Dieses Gebäude ist {{am größten}}.',
+        superlativeAttributiveSentence: 'Das ist die {{größte}} Stadt Deutschlands.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

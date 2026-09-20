@@ -41,6 +41,13 @@ export const kalt: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Der Winter hier ist {{kälter}} als in Spanien.',
+        superlativeSentence: 'Im Januar ist es {{am kältesten}}.',
+        superlativeAttributiveSentence: 'Das ist der {{kälteste}} Tag des Jahres.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

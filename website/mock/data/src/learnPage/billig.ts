@@ -42,6 +42,13 @@ export const billig: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Dieses Hotel ist {{billiger}} als das andere.',
+        superlativeSentence: 'Dieser Laden ist {{am billigsten}}.',
+        superlativeAttributiveSentence: 'Das ist das {{billigste}} Hotel der Stadt.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

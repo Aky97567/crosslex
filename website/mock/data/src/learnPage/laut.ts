@@ -41,6 +41,13 @@ export const laut: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Diese Musik ist {{lauter}} als die andere.',
+        superlativeSentence: 'Es war {{am lautesten}} auf der Party.',
+        superlativeAttributiveSentence: 'Das war der {{lauteste}} Moment des Konzerts.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

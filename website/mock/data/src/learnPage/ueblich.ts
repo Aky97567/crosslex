@@ -42,6 +42,13 @@ export const ueblich: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Diese Methode ist {{üblicher}} als jene.',
+        superlativeSentence: 'Diese Vorgehensweise ist {{am üblichsten}}.',
+        superlativeAttributiveSentence: 'Das ist die {{üblichste}} Methode.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

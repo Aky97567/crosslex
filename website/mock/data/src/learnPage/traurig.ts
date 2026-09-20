@@ -41,6 +41,13 @@ export const traurig: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Dieser Film ist {{trauriger}} als der andere.',
+        superlativeSentence: 'Diese Szene war {{am traurigsten}}.',
+        superlativeAttributiveSentence: 'Das war das {{traurigste}} Ende des Films.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

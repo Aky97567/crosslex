@@ -41,6 +41,13 @@ export const schnell: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Der Zug ist {{schneller}} als der Bus.',
+        superlativeSentence: 'Er läuft {{am schnellsten}} in der Klasse.',
+        superlativeAttributiveSentence: 'Das ist das {{schnellste}} Auto der Welt.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

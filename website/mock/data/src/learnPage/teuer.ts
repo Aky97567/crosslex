@@ -41,6 +41,13 @@ export const teuer: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Diese Uhr ist {{teurer}} als jene.',
+        superlativeSentence: 'Dieses Restaurant ist {{am teuersten}}.',
+        superlativeAttributiveSentence: 'Das ist das {{teuerste}} Restaurant der Stadt.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

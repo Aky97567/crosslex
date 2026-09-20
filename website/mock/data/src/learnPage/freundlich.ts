@@ -42,6 +42,13 @@ export const freundlich: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Er ist {{freundlicher}} als sein Bruder.',
+        superlativeSentence: 'Sie war {{am freundlichsten}} zu mir.',
+        superlativeAttributiveSentence: 'Das ist der {{freundlichste}} Nachbar.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

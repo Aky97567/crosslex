@@ -41,6 +41,13 @@ export const lang: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Dieser Weg ist {{länger}} als der andere.',
+        superlativeSentence: 'Der Nil ist {{am längsten}}.',
+        superlativeAttributiveSentence: 'Das ist der {{längste}} Fluss Europas.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

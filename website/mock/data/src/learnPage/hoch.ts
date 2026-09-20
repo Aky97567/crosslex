@@ -41,6 +41,13 @@ export const hoch: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Der Berg ist {{höher}} als der andere.',
+        superlativeSentence: 'Im Sommer sind die Preise {{am höchsten}}.',
+        superlativeAttributiveSentence: 'Das ist der {{höchste}} Berg der Alpen.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

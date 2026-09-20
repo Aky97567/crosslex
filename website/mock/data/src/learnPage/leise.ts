@@ -41,6 +41,13 @@ export const leise: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Diese Melodie ist {{leiser}} als jene.',
+        superlativeSentence: 'Nachts ist es hier {{am leisesten}}.',
+        superlativeAttributiveSentence: 'Das ist der {{leiseste}} Raum im Haus.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

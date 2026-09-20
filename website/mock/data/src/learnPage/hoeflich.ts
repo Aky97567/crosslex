@@ -41,6 +41,13 @@ export const hoeflich: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Der neue Kellner ist {{höflicher}} als der alte.',
+        superlativeSentence: 'Sie war {{am höflichsten}} zu den Gästen.',
+        superlativeAttributiveSentence: 'Das ist der {{höflichste}} Mitarbeiter im Team.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:
