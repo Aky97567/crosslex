@@ -11,7 +11,7 @@ export const klug: LearnPageContent = {
         article: null,
         translation: 'clever, smart',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective', 'irregular_comparison'],
+        themes: ['daily_life', 'irregular_comparison'],
         level: ['A2'],
       },
       {

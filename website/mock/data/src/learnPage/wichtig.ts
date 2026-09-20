@@ -11,7 +11,7 @@ export const wichtig: LearnPageContent = {
         article: null,
         translation: 'important',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective'],
+        themes: ['daily_life'],
         level: ['B1'],
       },
       {

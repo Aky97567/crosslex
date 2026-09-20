@@ -11,7 +11,7 @@ export const erforderlich: LearnPageContent = {
         article: null,
         translation: 'required, necessary',
         partOfSpeech: 'adjective',
-        themes: ['bureaucracy', 'adjective'],
+        themes: ['bureaucracy'],
         level: ['B1'],
       },
       {

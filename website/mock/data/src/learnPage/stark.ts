@@ -11,7 +11,7 @@ export const stark: LearnPageContent = {
         article: null,
         translation: 'strong',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective', 'irregular_comparison'],
+        themes: ['daily_life', 'irregular_comparison'],
         level: ['A2'],
       },
       {

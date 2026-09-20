@@ -11,7 +11,7 @@ export const alt: LearnPageContent = {
         article: null,
         translation: 'old',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective', 'irregular_comparison'],
+        themes: ['daily_life', 'irregular_comparison'],
         level: ['A2'],
       },
       {

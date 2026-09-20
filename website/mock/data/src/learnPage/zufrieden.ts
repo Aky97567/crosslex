@@ -11,7 +11,7 @@ export const zufrieden: LearnPageContent = {
         article: null,
         translation: 'satisfied, content',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective'],
+        themes: ['daily_life'],
         level: ['B1'],
       },
       {

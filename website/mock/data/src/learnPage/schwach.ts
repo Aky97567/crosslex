@@ -11,7 +11,7 @@ export const schwach: LearnPageContent = {
         article: null,
         translation: 'weak',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective', 'irregular_comparison'],
+        themes: ['daily_life', 'irregular_comparison'],
         level: ['B1'],
       },
       {

@@ -3,20 +3,25 @@ export type { WordTheme } from '@whitelotus/common-crosslex-view';
 
 export type LearningRate = 'review' | 'easy' | 'balanced' | 'intensive';
 
-// A session is narrowed by at most one filter at a time — a WordTheme, the
-// 'verbs_only' part-of-speech filter, or none. Deliberately not two
-// independently-combinable fields: a theme and a part-of-speech filter can
-// intersect to a tiny or empty word pool with no warning, so mutual
-// exclusivity is enforced by using a single value, not by validation.
-export type SessionFilter = WordTheme | 'verbs_only' | null;
+// A session is narrowed by at most one filter at a time — a WordTheme, a
+// part-of-speech filter ('verbs_only' / 'adjectives_only'), or none.
+// Deliberately not independently-combinable fields: a theme and a
+// part-of-speech filter can intersect to a tiny or empty word pool with no
+// warning, so mutual exclusivity is enforced by using a single value, not by
+// validation.
+export type PartOfSpeechFilter = 'verbs_only' | 'adjectives_only';
+export type SessionFilter = WordTheme | PartOfSpeechFilter | null;
 
 const SESSION_FILTER_KEY = 'crosslex:session_filter';
-const VALID_THEMES: WordTheme[] = ['transport', 'health', 'daily_life', 'work', 'bureaucracy', 'finance', 'trennbar', 'timetable', 'reflexiv', 'irregular', 'adjective', 'irregular_comparison'];
+const VALID_THEMES: WordTheme[] = ['transport', 'health', 'daily_life', 'work', 'bureaucracy', 'finance', 'trennbar', 'timetable', 'reflexiv', 'irregular', 'irregular_comparison'];
+const VALID_PART_OF_SPEECH_FILTERS: PartOfSpeechFilter[] = ['verbs_only', 'adjectives_only'];
 
 export const readSessionFilter = (): SessionFilter => {
   try {
     const raw = localStorage.getItem(SESSION_FILTER_KEY);
-    if (raw === 'verbs_only') return 'verbs_only';
+    if (VALID_PART_OF_SPEECH_FILTERS.includes(raw as PartOfSpeechFilter)) {
+      return raw as PartOfSpeechFilter;
+    }
     return VALID_THEMES.includes(raw as WordTheme) ? (raw as WordTheme) : null;
   } catch {
     return null;

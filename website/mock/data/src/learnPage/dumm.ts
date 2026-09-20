@@ -11,7 +11,7 @@ export const dumm: LearnPageContent = {
         article: null,
         translation: 'stupid, dumb',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective', 'irregular_comparison'],
+        themes: ['daily_life', 'irregular_comparison'],
         level: ['B1'],
       },
       {

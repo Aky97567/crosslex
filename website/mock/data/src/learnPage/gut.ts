@@ -11,7 +11,7 @@ export const gut: LearnPageContent = {
         article: null,
         translation: 'good',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective', 'irregular_comparison'],
+        themes: ['daily_life', 'irregular_comparison'],
         level: ['A2'],
       },
       {

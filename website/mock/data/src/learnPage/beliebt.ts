@@ -11,7 +11,7 @@ export const beliebt: LearnPageContent = {
         article: null,
         translation: 'popular',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective'],
+        themes: ['daily_life'],
         level: ['B1'],
       },
       {

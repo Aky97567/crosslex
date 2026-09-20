@@ -11,7 +11,7 @@ export const grob: LearnPageContent = {
         article: null,
         translation: 'coarse, rude',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective', 'irregular_comparison'],
+        themes: ['daily_life', 'irregular_comparison'],
         level: ['B1'],
       },
       {

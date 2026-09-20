@@ -11,7 +11,7 @@ export const verfuegbar: LearnPageContent = {
         article: null,
         translation: 'available',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective'],
+        themes: ['daily_life'],
         level: ['B1'],
       },
       {

@@ -11,7 +11,7 @@ export const bekannt: LearnPageContent = {
         article: null,
         translation: 'well-known, known',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective'],
+        themes: ['daily_life'],
         level: ['B1'],
       },
       {
