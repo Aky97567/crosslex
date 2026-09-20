@@ -49,6 +49,13 @@ const NewUserOverlay: React.FC<Props> = ({ entry, buildId, onDismiss }) => {
                 <span className="font-semibold block">B1</span>
                 <span className="text-sm opacity-70">Confident speaker</span>
               </SelectableCard>
+              <SelectableCard
+                active={selectedLevel === 'b2'}
+                onClick={() => setSelectedLevel('b2')}
+              >
+                <span className="font-semibold block">B2</span>
+                <span className="text-sm opacity-70">Advanced fluency</span>
+              </SelectableCard>
             </div>
             <div className="flex justify-center">
               <button

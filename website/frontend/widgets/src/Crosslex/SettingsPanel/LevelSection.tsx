@@ -6,6 +6,7 @@ import { SectionHeading } from './SettingsPrimitives';
 const LEVEL_OPTIONS: { value: ActiveLevel; label: string; subtitle: string }[] = [
   { value: 'a2', label: 'A2', subtitle: 'Everyday basics' },
   { value: 'b1', label: 'B1', subtitle: 'Confident speaker' },
+  { value: 'b2', label: 'B2', subtitle: 'Advanced fluency' },
 ];
 
 const confirmButton =
