@@ -43,9 +43,12 @@ export const schoen: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Dieser Park ist {{schöner}} als der andere.',
-        superlativeSentence: 'Der Sonnenuntergang war heute {{am schönsten}}.',
-        superlativeAttributiveSentence: 'Das war der {{schönste}} Abend des Urlaubs.',
+        positivPredicativ: 'Dieser Park ist {{schön}}.',
+        positivAttributiv: 'Das ist ein {{schöner}} Park.',
+        komparativPredicativ: 'Dieser Park ist {{schöner}} als der andere.',
+        komparativAttributiv: 'Das ist der {{schönere}} Park.',
+        superlativPredicativ: 'Der Abend war heute {{am schönsten}}.',
+        superlativAttributiv: 'Das war der {{schönste}} Abend des Urlaubs.',
       },
       {
         moduleType: 'etymology',

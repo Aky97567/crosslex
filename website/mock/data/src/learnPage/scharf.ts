@@ -44,9 +44,12 @@ export const scharf: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Dieses Curry ist {{schärfer}} als das andere.',
-        superlativeSentence: 'Dieses Gericht schmeckt {{am schärfsten}}.',
-        superlativeAttributiveSentence: 'Das ist das {{schärfste}} Gericht auf der Karte.',
+        positivPredicativ: 'Dieses Curry ist {{scharf}}.',
+        positivAttributiv: 'Das ist ein {{scharfes}} Curry.',
+        komparativPredicativ: 'Dieses Curry ist {{schärfer}} als das andere.',
+        komparativAttributiv: 'Das ist das {{schärfere}} Curry.',
+        superlativPredicativ: 'Dieses Gericht schmeckt {{am schärfsten}}.',
+        superlativAttributiv: 'Das ist das {{schärfste}} Gericht auf der Karte.',
       },
       {
         moduleType: 'etymology',

@@ -43,9 +43,12 @@ export const beliebt: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Dieses Café ist {{beliebter}} als jenes.',
-        superlativeSentence: 'Dieses Restaurant ist {{am beliebtesten}}.',
-        superlativeAttributiveSentence: 'Das ist die {{beliebteste}} Lehrerin der Schule.',
+        positivPredicativ: 'Dieses Café ist {{beliebt}}.',
+        positivAttributiv: 'Das ist ein {{beliebtes}} Café.',
+        komparativPredicativ: 'Dieses Café ist {{beliebter}} als jenes.',
+        komparativAttributiv: 'Das ist das {{beliebtere}} Café.',
+        superlativPredicativ: 'Dieses Café ist {{am beliebtesten}}.',
+        superlativAttributiv: 'Das ist das {{beliebteste}} Café der Stadt.',
       },
       {
         moduleType: 'etymology',

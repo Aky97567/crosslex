@@ -43,9 +43,12 @@ export const arm: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Diese Familie ist {{ärmer}} als jene.',
-        superlativeSentence: 'Er ist von allen {{am ärmsten}}.',
-        superlativeAttributiveSentence: 'Das ist die {{ärmste}} Familie im Viertel.',
+        positivPredicativ: 'Diese Familie ist {{arm}}.',
+        positivAttributiv: 'Das ist eine {{arme}} Familie.',
+        komparativPredicativ: 'Diese Familie ist {{ärmer}} als jene.',
+        komparativAttributiv: 'Das ist die {{ärmere}} Familie.',
+        superlativPredicativ: 'Diese Familie ist von allen {{am ärmsten}}.',
+        superlativAttributiv: 'Das ist die {{ärmste}} Familie im Viertel.',
       },
       {
         moduleType: 'etymology',

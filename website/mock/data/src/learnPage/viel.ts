@@ -43,9 +43,12 @@ export const viel: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Er hat {{mehr}} Zeit als ich.',
-        superlativeSentence: 'Sie arbeitet {{am meisten}}.',
-        superlativeAttributiveSentence: 'Sie hat die {{meiste}} Zeit investiert.',
+        positivPredicativ: 'Er hat {{viel}} Zeit.',
+        positivAttributiv: 'Er investiert {{viel}} Zeit in dieses Projekt.',
+        komparativPredicativ: 'Er hat {{mehr}} Zeit als ich.',
+        komparativAttributiv: 'Er investiert {{mehr}} Zeit als ich.',
+        superlativPredicativ: 'Sie arbeitet {{am meisten}}.',
+        superlativAttributiv: 'Sie hat die {{meiste}} Zeit investiert.',
       },
       {
         moduleType: 'etymology',

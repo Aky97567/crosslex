@@ -44,9 +44,12 @@ export const klein: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Meine Wohnung ist {{kleiner}} als seine.',
-        superlativeSentence: 'Dieses Zimmer ist {{am kleinsten}}.',
-        superlativeAttributiveSentence: 'Das ist das {{kleinste}} Zimmer der Wohnung.',
+        positivPredicativ: 'Meine Wohnung ist {{klein}}.',
+        positivAttributiv: 'Das ist eine {{kleine}} Wohnung.',
+        komparativPredicativ: 'Meine Wohnung ist {{kleiner}} als seine.',
+        komparativAttributiv: 'Das ist die {{kleinere}} Wohnung.',
+        superlativPredicativ: 'Dieses Zimmer ist {{am kleinsten}}.',
+        superlativAttributiv: 'Das ist das {{kleinste}} Zimmer der Wohnung.',
       },
       {
         moduleType: 'etymology',

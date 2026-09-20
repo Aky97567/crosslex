@@ -25,9 +25,12 @@ export default {
 // ältesten / der älteste).
 export const Irregular: StoryObj<typeof Comparison> = {
   args: {
-    comparativeSentence: altComparison.comparativeSentence,
-    superlativeSentence: altComparison.superlativeSentence,
-    superlativeAttributiveSentence: altComparison.superlativeAttributiveSentence,
+    positivPredicativ: altComparison.positivPredicativ,
+    positivAttributiv: altComparison.positivAttributiv,
+    komparativPredicativ: altComparison.komparativPredicativ,
+    komparativAttributiv: altComparison.komparativAttributiv,
+    superlativPredicativ: altComparison.superlativPredicativ,
+    superlativAttributiv: altComparison.superlativAttributiv,
   },
 };
 
@@ -35,9 +38,12 @@ export const Irregular: StoryObj<typeof Comparison> = {
 // besten / der beste).
 export const Suppletive: StoryObj<typeof Comparison> = {
   args: {
-    comparativeSentence: gutComparison.comparativeSentence,
-    superlativeSentence: gutComparison.superlativeSentence,
-    superlativeAttributiveSentence: gutComparison.superlativeAttributiveSentence,
+    positivPredicativ: gutComparison.positivPredicativ,
+    positivAttributiv: gutComparison.positivAttributiv,
+    komparativPredicativ: gutComparison.komparativPredicativ,
+    komparativAttributiv: gutComparison.komparativAttributiv,
+    superlativPredicativ: gutComparison.superlativPredicativ,
+    superlativAttributiv: gutComparison.superlativAttributiv,
   },
 };
 
@@ -45,8 +51,11 @@ export const Suppletive: StoryObj<typeof Comparison> = {
 // einfachsten / die einfachste).
 export const Regular: StoryObj<typeof Comparison> = {
   args: {
-    comparativeSentence: einfachComparison.comparativeSentence,
-    superlativeSentence: einfachComparison.superlativeSentence,
-    superlativeAttributiveSentence: einfachComparison.superlativeAttributiveSentence,
+    positivPredicativ: einfachComparison.positivPredicativ,
+    positivAttributiv: einfachComparison.positivAttributiv,
+    komparativPredicativ: einfachComparison.komparativPredicativ,
+    komparativAttributiv: einfachComparison.komparativAttributiv,
+    superlativPredicativ: einfachComparison.superlativPredicativ,
+    superlativAttributiv: einfachComparison.superlativAttributiv,
   },
 };
