@@ -41,6 +41,13 @@ export const verantwortlich: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Sie ist {{verantwortlicher}} als ihr Vorgänger.',
+        superlativeSentence: 'Er handelt {{am verantwortlichsten}} von allen.',
+        superlativeAttributiveSentence: 'Das ist der {{verantwortlichste}} Mitarbeiter der Abteilung.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

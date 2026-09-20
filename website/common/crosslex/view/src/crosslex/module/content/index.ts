@@ -1,5 +1,6 @@
 export type {
   Article,
+  ComparisonModule,
   ContentModule,
   ContentModules,
   EtymologyModule,

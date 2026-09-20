@@ -42,6 +42,13 @@ export const gesund: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Obst ist {{gesünder}} als Süßigkeiten.',
+        superlativeSentence: 'Diese Mahlzeit ist {{am gesündesten}}.',
+        superlativeAttributiveSentence: 'Das ist das {{gesündeste}} Essen auf der Karte.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

@@ -41,6 +41,13 @@ export const dumm: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Das war {{dümmer}} als ich dachte.',
+        superlativeSentence: 'Diese Idee war {{am dümmsten}}.',
+        superlativeAttributiveSentence: 'Das war die {{dümmste}} Idee überhaupt.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

@@ -41,6 +41,13 @@ export const bekannt: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Dieser Sänger ist {{bekannter}} als jener.',
+        superlativeSentence: 'Er ist in Deutschland {{am bekanntesten}}.',
+        superlativeAttributiveSentence: 'Das ist der {{bekannteste}} Sänger des Landes.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

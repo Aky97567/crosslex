@@ -41,6 +41,13 @@ export const stark: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Er ist {{stärker}} als ich.',
+        superlativeSentence: 'Der Wind war heute {{am stärksten}}.',
+        superlativeAttributiveSentence: 'Das ist der {{stärkste}} Kaffee, den es gibt.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

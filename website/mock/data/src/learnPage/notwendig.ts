@@ -41,6 +41,13 @@ export const notwendig: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Diese Reparatur ist {{notwendiger}} als jene.',
+        superlativeSentence: 'Diese Maßnahme war {{am notwendigsten}}.',
+        superlativeAttributiveSentence: 'Das war die {{notwendigste}} Änderung.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

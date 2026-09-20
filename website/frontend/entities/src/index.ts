@@ -4,6 +4,7 @@ export {
   SessionProgressBar,
   StreakBadgeTrophyCase,
   WordReadinessStat,
+  Comparison,
   ContextBlankQuestion,
   Etymology,
   MeaningGuessQuestion,

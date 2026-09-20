@@ -3,9 +3,23 @@ export type ChangelogEntry = {
   returningUser: { heading: string; body: string; changes: string[] };
 };
 
-export const CURRENT_BUILD_ID = 'alpha-2026-09-20-b2-level';
+export const CURRENT_BUILD_ID = 'alpha-2026-09-20-comparison-module';
 
 export const CHANGELOG: Record<string, ChangelogEntry> = {
+  'alpha-2026-09-20-comparison-module': {
+    newUser: {
+      heading: "You're testing Crosslex Alpha",
+      body: "Crosslex is a German vocabulary trainer — built for adults navigating real life in Germany. Choose your level, pick a session length and learning pace, and Crosslex will guide you through words and exercises. Your feedback shapes what we build next.",
+      cta: "Let's go →",
+    },
+    returningUser: {
+      heading: "You're back — something's new",
+      body: 'Every adjective now shows its comparative and superlative forms.',
+      changes: [
+        'New: "Comparison" card on every adjective word page — see the comparative (schöner) and superlative (am schönsten / der schönste) forms in example sentences',
+      ],
+    },
+  },
   'alpha-2026-09-20-b2-level': {
     newUser: {
       heading: "You're testing Crosslex Alpha",

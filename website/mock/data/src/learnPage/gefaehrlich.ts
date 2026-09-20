@@ -41,6 +41,13 @@ export const gefaehrlich: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Diese Straße ist {{gefährlicher}} als jene.',
+        superlativeSentence: 'Bei Glatteis ist es {{am gefährlichsten}}.',
+        superlativeAttributiveSentence: 'Das ist die {{gefährlichste}} Straße der Stadt.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

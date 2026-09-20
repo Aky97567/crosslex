@@ -41,6 +41,13 @@ export const wichtig: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Diese Entscheidung ist {{wichtiger}} als jene.',
+        superlativeSentence: 'Pünktlichkeit ist mir {{am wichtigsten}}.',
+        superlativeAttributiveSentence: 'Das ist der {{wichtigste}} Termin dieser Woche.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

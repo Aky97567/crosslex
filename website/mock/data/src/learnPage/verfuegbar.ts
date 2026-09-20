@@ -41,6 +41,13 @@ export const verfuegbar: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Dieser Termin ist {{verfügbarer}} als jener.',
+        superlativeSentence: 'Diese Version ist {{am verfügbarsten}}.',
+        superlativeAttributiveSentence: 'Das ist der {{verfügbarste}} Termin diese Woche.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

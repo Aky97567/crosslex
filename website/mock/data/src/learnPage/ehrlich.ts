@@ -41,6 +41,13 @@ export const ehrlich: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Er ist {{ehrlicher}} als sein Kollege.',
+        superlativeSentence: 'Sie war {{am ehrlichsten}} von allen.',
+        superlativeAttributiveSentence: 'Das war die {{ehrlichste}} Antwort.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:

@@ -42,6 +42,13 @@ export const puenktlich: LearnPageContent = {
         ],
       },
       {
+        moduleType: 'comparison',
+        heading: { text: 'Comparison' },
+        comparativeSentence: 'Der Zug ist heute {{pünktlicher}} als gestern.',
+        superlativeSentence: 'Sie kommt {{am pünktlichsten}} von allen Kollegen.',
+        superlativeAttributiveSentence: 'Das ist der {{pünktlichste}} Mitarbeiter im Büro.',
+      },
+      {
         moduleType: 'etymology',
         heading: { text: 'Etymology' },
         etymology:
