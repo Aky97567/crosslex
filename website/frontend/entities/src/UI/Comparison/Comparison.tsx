@@ -30,7 +30,7 @@ const FORMS: {
   key: 'comparativeSentence' | 'superlativeSentence' | 'superlativeAttributiveSentence';
 }[] = [
   { label: 'Komparativ', key: 'comparativeSentence' },
-  { label: 'Superlativ', key: 'superlativeSentence' },
+  { label: 'Superlativ (prädikativ)', key: 'superlativeSentence' },
   { label: 'Superlativ (attributiv)', key: 'superlativeAttributiveSentence' },
 ];
 
