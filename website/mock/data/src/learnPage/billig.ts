@@ -44,9 +44,12 @@ export const billig: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Dieses Hotel ist {{billiger}} als das andere.',
-        superlativeSentence: 'Dieser Laden ist {{am billigsten}}.',
-        superlativeAttributiveSentence: 'Das ist das {{billigste}} Hotel der Stadt.',
+        positivPredicativ: 'Dieses Hotel ist {{billig}}.',
+        positivAttributiv: 'Das ist ein {{billiges}} Hotel.',
+        komparativPredicativ: 'Dieses Hotel ist {{billiger}} als das andere.',
+        komparativAttributiv: 'Das ist das {{billigere}} Hotel.',
+        superlativPredicativ: 'Dieses Hotel ist {{am billigsten}}.',
+        superlativAttributiv: 'Das ist das {{billigste}} Hotel der Stadt.',
       },
       {
         moduleType: 'etymology',

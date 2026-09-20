@@ -43,9 +43,12 @@ export const gueltig: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Dieses Argument ist {{gültiger}} als jenes.',
-        superlativeSentence: 'Dieser Grund erscheint mir {{am gültigsten}}.',
-        superlativeAttributiveSentence: 'Das ist das {{gültigste}} Argument in der Diskussion.',
+        positivPredicativ: 'Dieses Argument ist {{gültig}}.',
+        positivAttributiv: 'Das ist ein {{gültiges}} Argument.',
+        komparativPredicativ: 'Dieses Argument ist {{gültiger}} als jenes.',
+        komparativAttributiv: 'Das ist das {{gültigere}} Argument.',
+        superlativPredicativ: 'Dieses Argument erscheint mir {{am gültigsten}}.',
+        superlativAttributiv: 'Das ist das {{gültigste}} Argument in der Diskussion.',
       },
       {
         moduleType: 'etymology',

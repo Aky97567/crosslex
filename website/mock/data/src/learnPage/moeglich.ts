@@ -43,9 +43,12 @@ export const moeglich: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Diese Lösung ist {{möglicher}} als die andere.',
-        superlativeSentence: 'Diese Lösung erscheint mir {{am möglichsten}}.',
-        superlativeAttributiveSentence: 'Das ist die {{möglichste}} Lösung, die wir haben.',
+        positivPredicativ: 'Diese Lösung ist {{möglich}}.',
+        positivAttributiv: 'Das ist eine {{mögliche}} Lösung.',
+        komparativPredicativ: 'Diese Lösung ist {{möglicher}} als die andere.',
+        komparativAttributiv: 'Das ist die {{möglichere}} Lösung.',
+        superlativPredicativ: 'Diese Lösung erscheint mir {{am möglichsten}}.',
+        superlativAttributiv: 'Das ist die {{möglichste}} Lösung, die wir haben.',
       },
       {
         moduleType: 'etymology',

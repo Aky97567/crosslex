@@ -43,9 +43,12 @@ export const verfuegbar: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Dieser Termin ist {{verfügbarer}} als jener.',
-        superlativeSentence: 'Diese Version ist {{am verfügbarsten}}.',
-        superlativeAttributiveSentence: 'Das ist der {{verfügbarste}} Termin diese Woche.',
+        positivPredicativ: 'Dieser Termin ist {{verfügbar}}.',
+        positivAttributiv: 'Das ist ein {{verfügbarer}} Termin.',
+        komparativPredicativ: 'Dieser Termin ist {{verfügbarer}} als jener.',
+        komparativAttributiv: 'Das ist der {{verfügbarere}} Termin.',
+        superlativPredicativ: 'Dieser Termin ist {{am verfügbarsten}}.',
+        superlativAttributiv: 'Das ist der {{verfügbarste}} Termin diese Woche.',
       },
       {
         moduleType: 'etymology',

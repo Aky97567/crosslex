@@ -43,9 +43,12 @@ export const schnell: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Der Zug ist {{schneller}} als der Bus.',
-        superlativeSentence: 'Er läuft {{am schnellsten}} in der Klasse.',
-        superlativeAttributiveSentence: 'Das ist das {{schnellste}} Auto der Welt.',
+        positivPredicativ: 'Der Zug ist {{schnell}}.',
+        positivAttributiv: 'Das ist ein {{schneller}} Zug.',
+        komparativPredicativ: 'Der Zug ist {{schneller}} als der Bus.',
+        komparativAttributiv: 'Das ist der {{schnellere}} Zug.',
+        superlativPredicativ: 'Dieses Auto ist {{am schnellsten}}.',
+        superlativAttributiv: 'Das ist das {{schnellste}} Auto der Welt.',
       },
       {
         moduleType: 'etymology',

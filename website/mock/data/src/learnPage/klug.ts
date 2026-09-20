@@ -43,9 +43,12 @@ export const klug: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Sie ist {{klüger}} als ihr Bruder.',
-        superlativeSentence: 'Er hat {{am klügsten}} reagiert.',
-        superlativeAttributiveSentence: 'Das war die {{klügste}} Entscheidung.',
+        positivPredicativ: 'Die Schülerin ist {{klug}}.',
+        positivAttributiv: 'Das ist eine {{kluge}} Schülerin.',
+        komparativPredicativ: 'Sie ist {{klüger}} als ihr Bruder.',
+        komparativAttributiv: 'Das ist die {{klügere}} Schülerin.',
+        superlativPredicativ: 'Diese Entscheidung war {{am klügsten}}.',
+        superlativAttributiv: 'Das war die {{klügste}} Entscheidung.',
       },
       {
         moduleType: 'etymology',

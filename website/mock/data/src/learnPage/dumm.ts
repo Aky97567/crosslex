@@ -43,9 +43,12 @@ export const dumm: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Das war {{dümmer}} als ich dachte.',
-        superlativeSentence: 'Diese Idee war {{am dümmsten}}.',
-        superlativeAttributiveSentence: 'Das war die {{dümmste}} Idee überhaupt.',
+        positivPredicativ: 'Diese Idee ist {{dumm}}.',
+        positivAttributiv: 'Das ist eine {{dumme}} Idee.',
+        komparativPredicativ: 'Das war {{dümmer}} als ich dachte.',
+        komparativAttributiv: 'Das ist die {{dümmere}} Idee.',
+        superlativPredicativ: 'Diese Idee war {{am dümmsten}}.',
+        superlativAttributiv: 'Das war die {{dümmste}} Idee überhaupt.',
       },
       {
         moduleType: 'etymology',

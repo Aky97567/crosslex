@@ -43,9 +43,12 @@ export const gefaehrlich: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Diese Straße ist {{gefährlicher}} als jene.',
-        superlativeSentence: 'Bei Glatteis ist es {{am gefährlichsten}}.',
-        superlativeAttributiveSentence: 'Das ist die {{gefährlichste}} Straße der Stadt.',
+        positivPredicativ: 'Diese Straße ist {{gefährlich}}.',
+        positivAttributiv: 'Das ist eine {{gefährliche}} Straße.',
+        komparativPredicativ: 'Diese Straße ist {{gefährlicher}} als jene.',
+        komparativAttributiv: 'Das ist die {{gefährlichere}} Straße.',
+        superlativPredicativ: 'Diese Straße ist bei Glatteis {{am gefährlichsten}}.',
+        superlativAttributiv: 'Das ist die {{gefährlichste}} Straße der Stadt.',
       },
       {
         moduleType: 'etymology',

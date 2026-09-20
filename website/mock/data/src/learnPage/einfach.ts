@@ -43,9 +43,12 @@ export const einfach: LearnPageContent = {
       {
         moduleType: 'comparison',
         heading: { text: 'Comparison' },
-        comparativeSentence: 'Diese Aufgabe ist {{einfacher}} als die andere.',
-        superlativeSentence: 'Diese Methode ist {{am einfachsten}}.',
-        superlativeAttributiveSentence: 'Das ist die {{einfachste}} Lösung.',
+        positivPredicativ: 'Diese Aufgabe ist {{einfach}}.',
+        positivAttributiv: 'Das ist eine {{einfache}} Aufgabe.',
+        komparativPredicativ: 'Diese Aufgabe ist {{einfacher}} als die andere.',
+        komparativAttributiv: 'Das ist die {{einfachere}} Aufgabe.',
+        superlativPredicativ: 'Diese Lösung ist {{am einfachsten}}.',
+        superlativAttributiv: 'Das ist die {{einfachste}} Lösung.',
       },
       {
         moduleType: 'etymology',
