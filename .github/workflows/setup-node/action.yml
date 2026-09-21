@@ -8,18 +8,68 @@ runs:
       with:
         node-version: 20
 
-    - name: Cache dependencies ⚡
-      id: cache_dependencies
-      uses: actions/cache@v3
-      with:
-        path: node_modules
-        key: node-modules-${{ hashFiles('yarn.lock') }}
-
     - name: Enable corepack 🔧
       shell: bash
       run: corepack enable
 
-    - name: Install dependencies 🔧
+    - name: Cache node_modules ⚡
+      # The fast path: if the linked output for this exact lockfile is
+      # already cached, skip installing entirely — no resolution, no
+      # fetch, and (this is the part the Yarn-download-cache layer below
+      # can't cover) no re-running native builds. Several deps here
+      # (argon2, @prisma/engines, sharp, esbuild, @swc/core...) rebuild or
+      # re-download prebuilt binaries on every `yarn install` regardless
+      # of whether the package itself was already fetched, so caching
+      # only the download cache still leaves real build-step latency
+      # (~35s of the ~55s install duration, verified by watching this
+      # workflow run) on every single run.
+      id: node_modules_cache
+      uses: actions/cache@v3
+      with:
+        # Yarn's node-modules linker also creates a nested node_modules
+        # inside individual workspace packages (not just the hoisted root
+        # one) whenever a workspace needs a version that conflicts with
+        # what's hoisted — e.g. backend/api/crosslex/node_modules holds
+        # its own `prisma`. Missing this caused a cache-hit run to pass
+        # install but then fail the very next step with a "Cannot find
+        # module" for prisma, caught by testing an actual cache-hit run
+        # rather than assuming the fix worked. Patterns cover every depth
+        # a workspace glob in package.json's `workspaces` field resolves
+        # to (2-level: frontend/*, sites/*, mock/*, config/*; 3-level:
+        # backend/api/*, backend/runtime/*, common/crosslex/*, lib/core/*,
+        # lib/external/*, lib/system/*).
+        path: |
+          website/node_modules
+          website/*/*/node_modules
+          website/*/*/*/node_modules
+        key: node-modules-${{ hashFiles('website/yarn.lock') }}
+
+    - name: Get Yarn cache directory 📂
+      if: steps.node_modules_cache.outputs.cache-hit != 'true'
+      id: yarn_cache_dir
       shell: bash
-      if: steps.cache_dependencies.outputs.cache-hit != 'true'
+      # Queried at runtime rather than hardcoded — Yarn Berry's cacheFolder
+      # can be a global, user-home-relative path (e.g. when
+      # enableGlobalCache is on) rather than the project-local .yarn/cache
+      # default, and this way the cache step always targets wherever this
+      # exact environment actually resolves it to.
+      run: echo "dir=$(cd website && yarn config get cacheFolder)" >> "$GITHUB_OUTPUT"
+
+    - name: Cache Yarn downloads ⚡
+      # The fallback path, only relevant on a node_modules miss (lockfile
+      # changed): still avoids a full re-fetch over the network for every
+      # package that didn't actually change. restore-keys gives a
+      # partial-match fallback even when the exact key (this exact
+      # lockfile content) isn't found.
+      if: steps.node_modules_cache.outputs.cache-hit != 'true'
+      uses: actions/cache@v3
+      with:
+        path: ${{ steps.yarn_cache_dir.outputs.dir }}
+        key: yarn-cache-${{ hashFiles('website/yarn.lock') }}
+        restore-keys: |
+          yarn-cache-
+
+    - name: Install dependencies 🔧
+      if: steps.node_modules_cache.outputs.cache-hit != 'true'
+      shell: bash
       run: cd website && yarn
