@@ -11,7 +11,7 @@ export const gefaehrlich: LearnPageContent = {
         article: null,
         translation: 'dangerous',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'health', 'adjective'],
+        themes: ['daily_life', 'health'],
         level: ['B1'],
       },
       {

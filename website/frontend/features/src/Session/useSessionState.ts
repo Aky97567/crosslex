@@ -56,11 +56,13 @@ const LEVEL_WORD_POOLS: Record<ActiveLevel, SampleContentKey[]> = {
 
 const getLevelPool = () => LEVEL_WORD_POOLS[readActiveLevel()];
 
-// theme and 'verbs_only' are mutually exclusive — see SessionFilter's comment
-// in sessionStorage.ts for why this isn't two independently-combinable filters.
+// theme and part-of-speech filters are mutually exclusive — see
+// SessionFilter's comment in sessionStorage.ts for why this isn't two
+// independently-combinable filters.
 const getWordPool = (filter?: SessionFilter) => {
   const pool = getLevelPool();
   if (filter === 'verbs_only') return pool.filter((w) => getWordPartOfSpeech(w) === 'verb');
+  if (filter === 'adjectives_only') return pool.filter((w) => getWordPartOfSpeech(w) === 'adjective');
   if (filter) return pool.filter((w) => getWordThemes(w).includes(filter));
   return pool;
 };

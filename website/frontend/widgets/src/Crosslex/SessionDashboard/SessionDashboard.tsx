@@ -8,7 +8,7 @@ import {
   ActiveLevel,
   useCrosslexStorage,
 } from '@whitelotus/front-features';
-import { A2Words, B1Words, B2Words, SampleContentKey, getThemesForPool } from '@whitelotus/mock-test';
+import { A2Words, B1Words, B2Words, SampleContentKey, getThemesForPool, getWordPartOfSpeech } from '@whitelotus/mock-test';
 import { WordMetricsPanel } from './WordMetricsPanel';
 
 const PRIZE_COPY_ENABLED = true;
@@ -33,13 +33,22 @@ const THEME_LABELS: Record<WordTheme, string> = {
   work:        'Work',
   bureaucracy: 'Bureaucracy',
   finance:     'Finance',
-  trennbar:    'Trennbar (separable verbs)',
   timetable:   'Timetable (daily routine)',
-  reflexiv:    'Reflexiv (reflexive verbs)',
-  irregular:   'Irregular verbs',
-  adjective:   'Adjectives',
-  irregular_comparison: 'Irregular comparison (adjectives)',
+  trennbar:    'Trennbar (separable)',
+  reflexiv:    'Reflexiv (reflexive)',
+  irregular:   'Irregular',
+  irregular_comparison: 'Irregular comparison',
 };
+
+// Four filter clusters, replacing the old single "Theme" optgroup that mixed
+// topics (daily_life, work...) with grammar categories (trennbar, irregular)
+// and the hardcoded 'verbs_only' special case. Topic themes describe *what*
+// a word is about; grammar themes describe *how* it inflects, scoped to one
+// part of speech — so they're only useful alongside that part of speech's
+// own filter, not mixed in with topics.
+const TOPIC_THEMES: WordTheme[] = ['daily_life', 'work', 'bureaucracy', 'finance', 'health', 'transport', 'timetable'];
+const VERB_GRAMMAR_THEMES: WordTheme[] = ['trennbar', 'irregular', 'reflexiv'];
+const ADJECTIVE_GRAMMAR_THEMES: WordTheme[] = ['irregular_comparison'];
 
 const LEVEL_WORD_POOLS: Record<ActiveLevel, SampleContentKey[]> = {
   a2: A2Words,
@@ -70,6 +79,11 @@ const SessionDashboard: React.FC<Props> = ({ onStart, onWordClick, coachMarksEna
   );
   const wordPool = LEVEL_WORD_POOLS[activeLevel];
   const availableThemes = getThemesForPool(wordPool, 5);
+  const topicOptions = TOPIC_THEMES.filter((t) => availableThemes.includes(t));
+  const verbGrammarOptions = VERB_GRAMMAR_THEMES.filter((t) => availableThemes.includes(t));
+  const adjectiveGrammarOptions = ADJECTIVE_GRAMMAR_THEMES.filter((t) => availableThemes.includes(t));
+  const hasVerbs = wordPool.some((w) => getWordPartOfSpeech(w) === 'verb');
+  const hasAdjectives = wordPool.some((w) => getWordPartOfSpeech(w) === 'adjective');
   const [filter, setFilter] = useState<SessionFilter>(savedFilter);
   const allWordsSeen = wordPool.every((key) => key in wordsSeenMap);
   const showAllSeenNotice = allWordsSeen && (rate === 'balanced' || rate === 'intensive');
@@ -131,14 +145,33 @@ const SessionDashboard: React.FC<Props> = ({ onStart, onWordClick, coachMarksEna
               className="bg-bg-l2 border-2 border-brand rounded-md px-20 py-10 text-text"
             >
               <option value="">All words</option>
-              <optgroup label="Theme">
-                {availableThemes.map((t) => (
-                  <option key={t} value={t}>{THEME_LABELS[t]}</option>
-                ))}
-              </optgroup>
-              <optgroup label="Parts of Speech">
-                <option value="verbs_only">Verbs only</option>
-              </optgroup>
+              {topicOptions.length > 0 && (
+                <optgroup label="Topic">
+                  {topicOptions.map((t) => (
+                    <option key={t} value={t}>{THEME_LABELS[t]}</option>
+                  ))}
+                </optgroup>
+              )}
+              {(hasVerbs || hasAdjectives) && (
+                <optgroup label="Part of Speech">
+                  {hasVerbs && <option value="verbs_only">Verbs only</option>}
+                  {hasAdjectives && <option value="adjectives_only">Adjectives only</option>}
+                </optgroup>
+              )}
+              {verbGrammarOptions.length > 0 && (
+                <optgroup label="Verb Grammar">
+                  {verbGrammarOptions.map((t) => (
+                    <option key={t} value={t}>{THEME_LABELS[t]}</option>
+                  ))}
+                </optgroup>
+              )}
+              {adjectiveGrammarOptions.length > 0 && (
+                <optgroup label="Adjective Grammar">
+                  {adjectiveGrammarOptions.map((t) => (
+                    <option key={t} value={t}>{THEME_LABELS[t]}</option>
+                  ))}
+                </optgroup>
+              )}
             </select>
           </div>
           {/* Tablet: rate inline with duration + filter */}

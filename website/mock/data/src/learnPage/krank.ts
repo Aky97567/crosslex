@@ -11,7 +11,7 @@ export const krank: LearnPageContent = {
         article: null,
         translation: 'sick, ill',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'health', 'adjective', 'irregular_comparison'],
+        themes: ['daily_life', 'health', 'irregular_comparison'],
         level: ['B1'],
       },
       {

@@ -11,7 +11,7 @@ export const verantwortlich: LearnPageContent = {
         article: null,
         translation: 'responsible',
         partOfSpeech: 'adjective',
-        themes: ['work', 'adjective'],
+        themes: ['work'],
         level: ['B1'],
       },
       {

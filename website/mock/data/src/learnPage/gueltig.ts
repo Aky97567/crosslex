@@ -11,7 +11,7 @@ export const gueltig: LearnPageContent = {
         article: null,
         translation: 'valid',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'bureaucracy', 'adjective'],
+        themes: ['daily_life', 'bureaucracy'],
         level: ['B1'],
       },
       {
