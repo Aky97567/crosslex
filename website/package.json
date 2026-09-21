@@ -26,8 +26,8 @@
     "dev:crosslex-react": "cd sites/crosslex-react && yarn run dev",
     "dev:storybook-next": "cd sites/storybook-next && yarn run start",
     "dev:storybook-react": "cd sites/storybook-react && yarn run start",
-    "test": "yarn workspaces foreach --worktree run test",
-    "test:ci": "yarn workspaces foreach --worktree run test:ci"
+    "test": "yarn workspaces foreach --worktree --parallel run test",
+    "test:ci": "yarn workspaces foreach --worktree --parallel run test:ci"
   },
   "dependencies": {
     "jsonschema": "1.4.1",

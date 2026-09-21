@@ -8,18 +8,36 @@ runs:
       with:
         node-version: 20
 
-    - name: Cache dependencies ⚡
-      id: cache_dependencies
-      uses: actions/cache@v3
-      with:
-        path: node_modules
-        key: node-modules-${{ hashFiles('yarn.lock') }}
-
     - name: Enable corepack 🔧
       shell: bash
       run: corepack enable
 
+    - name: Get Yarn cache directory 📂
+      id: yarn_cache_dir
+      shell: bash
+      # Queried at runtime rather than hardcoded — Yarn Berry's cacheFolder
+      # can be a global, user-home-relative path (e.g. when
+      # enableGlobalCache is on) rather than the project-local .yarn/cache
+      # default, and this way the cache step always targets wherever this
+      # exact environment actually resolves it to.
+      run: echo "dir=$(cd website && yarn config get cacheFolder)" >> "$GITHUB_OUTPUT"
+
+    - name: Cache Yarn downloads ⚡
+      uses: actions/cache@v3
+      with:
+        path: ${{ steps.yarn_cache_dir.outputs.dir }}
+        # Previously this cached `node_modules` itself, keyed on a
+        # repo-root `yarn.lock` that doesn't exist (the real one is
+        # website/yarn.lock) — a silent no-op cache, always a miss, on
+        # every run since it was written. Caching Yarn's own package
+        # download cache instead of the linked node_modules output means a
+        # lockfile change only needs new packages re-fetched, not
+        # everything — restore-keys gives a partial-match fallback even
+        # when the exact key (this exact lockfile content) isn't found.
+        key: yarn-cache-${{ hashFiles('website/yarn.lock') }}
+        restore-keys: |
+          yarn-cache-
+
     - name: Install dependencies 🔧
       shell: bash
-      if: steps.cache_dependencies.outputs.cache-hit != 'true'
       run: cd website && yarn
