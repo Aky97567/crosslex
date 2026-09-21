@@ -14,5 +14,11 @@
     "lint": "yarn lint:js && yarn lint:css",
     "lint:js": "eslint src test",
     "lint:css": "stylelint \"src/**/*.styles.{ts,tsx}\""
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "jest": "^30.4.2",
+    "jest-environment-jsdom": "^30.4.1",
+    "ts-jest": "^29.4.11"
   }
 }
