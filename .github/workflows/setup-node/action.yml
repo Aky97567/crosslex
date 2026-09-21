@@ -12,7 +12,25 @@ runs:
       shell: bash
       run: corepack enable
 
+    - name: Cache node_modules ⚡
+      # The fast path: if the linked output for this exact lockfile is
+      # already cached, skip installing entirely — no resolution, no
+      # fetch, and (this is the part the Yarn-download-cache layer below
+      # can't cover) no re-running native builds. Several deps here
+      # (argon2, @prisma/engines, sharp, esbuild, @swc/core...) rebuild or
+      # re-download prebuilt binaries on every `yarn install` regardless
+      # of whether the package itself was already fetched, so caching
+      # only the download cache still leaves real build-step latency
+      # (~35s of the ~55s install duration, verified by watching this
+      # workflow run) on every single run.
+      id: node_modules_cache
+      uses: actions/cache@v3
+      with:
+        path: website/node_modules
+        key: node-modules-${{ hashFiles('website/yarn.lock') }}
+
     - name: Get Yarn cache directory 📂
+      if: steps.node_modules_cache.outputs.cache-hit != 'true'
       id: yarn_cache_dir
       shell: bash
       # Queried at runtime rather than hardcoded — Yarn Berry's cacheFolder
@@ -23,21 +41,20 @@ runs:
       run: echo "dir=$(cd website && yarn config get cacheFolder)" >> "$GITHUB_OUTPUT"
 
     - name: Cache Yarn downloads ⚡
+      # The fallback path, only relevant on a node_modules miss (lockfile
+      # changed): still avoids a full re-fetch over the network for every
+      # package that didn't actually change. restore-keys gives a
+      # partial-match fallback even when the exact key (this exact
+      # lockfile content) isn't found.
+      if: steps.node_modules_cache.outputs.cache-hit != 'true'
       uses: actions/cache@v3
       with:
         path: ${{ steps.yarn_cache_dir.outputs.dir }}
-        # Previously this cached `node_modules` itself, keyed on a
-        # repo-root `yarn.lock` that doesn't exist (the real one is
-        # website/yarn.lock) — a silent no-op cache, always a miss, on
-        # every run since it was written. Caching Yarn's own package
-        # download cache instead of the linked node_modules output means a
-        # lockfile change only needs new packages re-fetched, not
-        # everything — restore-keys gives a partial-match fallback even
-        # when the exact key (this exact lockfile content) isn't found.
         key: yarn-cache-${{ hashFiles('website/yarn.lock') }}
         restore-keys: |
           yarn-cache-
 
     - name: Install dependencies 🔧
+      if: steps.node_modules_cache.outputs.cache-hit != 'true'
       shell: bash
       run: cd website && yarn
