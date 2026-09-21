@@ -10798,6 +10798,11 @@ __metadata:
 "@whitelotus/front-features@npm:*, @whitelotus/front-features@workspace:frontend/features":
   version: 0.0.0-use.local
   resolution: "@whitelotus/front-features@workspace:frontend/features"
+  dependencies:
+    "@types/jest": "npm:^30.0.0"
+    jest: "npm:^30.4.2"
+    jest-environment-jsdom: "npm:^30.4.1"
+    ts-jest: "npm:^29.4.11"
   languageName: unknown
   linkType: soft
 
