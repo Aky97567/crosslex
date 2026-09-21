@@ -11,7 +11,7 @@ export const ordentlich: LearnPageContent = {
         article: null,
         translation: 'tidy, proper',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective'],
+        themes: ['daily_life'],
         level: ['B1'],
       },
       {

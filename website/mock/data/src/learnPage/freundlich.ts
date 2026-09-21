@@ -11,7 +11,7 @@ export const freundlich: LearnPageContent = {
         article: null,
         translation: 'friendly, kind',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective'],
+        themes: ['daily_life'],
         level: ['A2'],
       },
       {

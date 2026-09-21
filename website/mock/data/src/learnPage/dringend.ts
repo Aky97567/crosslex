@@ -11,7 +11,7 @@ export const dringend: LearnPageContent = {
         article: null,
         translation: 'urgent',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective'],
+        themes: ['daily_life'],
         level: ['B1'],
       },
       {

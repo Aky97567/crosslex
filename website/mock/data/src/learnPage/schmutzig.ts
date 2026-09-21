@@ -11,7 +11,7 @@ export const schmutzig: LearnPageContent = {
         article: null,
         translation: 'dirty',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective'],
+        themes: ['daily_life'],
         level: ['A2'],
       },
       {

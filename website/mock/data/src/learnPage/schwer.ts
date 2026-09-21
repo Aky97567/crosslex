@@ -11,7 +11,7 @@ export const schwer: LearnPageContent = {
         article: null,
         translation: 'heavy, difficult',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective'],
+        themes: ['daily_life'],
         level: ['A2'],
       },
       {

@@ -11,7 +11,7 @@ export const ausreichend: LearnPageContent = {
         article: null,
         translation: 'sufficient, enough',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'bureaucracy', 'adjective'],
+        themes: ['daily_life', 'bureaucracy'],
         level: ['B1'],
       },
       {

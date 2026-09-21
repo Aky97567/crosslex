@@ -152,23 +152,29 @@ Every adjective (`partOfSpeech: 'adjective'`) gets a `comparison` module, positi
 
 This module exists to keep `wordContext` strictly Grundform-only. `wordContext`'s job is base-word recognition; teaching the graded (comparative/superlative) forms is a distinct skill and belongs in its own module, not extra sentences bolted onto `wordContext`. (Precedent for why exposure-via-sentences isn't the same as teaching a grammatical form: verbs already put Partizip II forms inside `wordContext`, and Partizip II is still a separate open Icebox item in `ROADMAP.md` — in-context exposure was already judged, by that precedent, not to count as "teaching" a form.)
 
-Shape — three full example sentences, not bare inflected phrases, each using the same `{{...}}` marking convention as `wordContext`:
+Shape — six full example sentences, not bare inflected phrases, each using the same `{{...}}` marking convention as `wordContext`: one predicative/attributive pair per degree (Positiv, Komparativ, Superlativ). Within each degree, the predicative and attributive sentences share one scenario (same subject/noun) — they're two grammatical framings of the same sentence, not unrelated examples:
 
 ```ts
 {
   moduleType: 'comparison',
   heading: { text: 'Comparison' },
-  comparativeSentence: 'Er ist {{älter}} als sein Bruder.',
-  superlativeSentence: 'Mein Opa ist von allen {{am ältesten}}.',
-  superlativeAttributiveSentence: 'Er ist der {{älteste}} Mann im Dorf.',
+  positivPredicativ: 'Der Mann ist {{alt}}.',
+  positivAttributiv: 'Das ist ein {{alter}} Mann.',
+  komparativPredicativ: 'Er ist {{älter}} als sein Bruder.',
+  komparativAttributiv: 'Das ist der {{ältere}} Mann.',
+  superlativPredicativ: 'Der Mann ist im Dorf {{am ältesten}}.',
+  superlativAttributiv: 'Er ist der {{älteste}} Mann im Dorf.',
 }
 ```
 
-- **`comparativeSentence`** — the `-er` form, in a natural comparison ("X ist Y-er als Z"). Not redundant with the superlative: it's the more frequently used comparison form day-to-day, and for irregular adjectives the stem change (umlaut, suppletion) already shows up here — `alt` → `älter`, not just at the superlative — so dropping it would hide half the pattern.
-- **`superlativeSentence`** — the predicative/adverbial `am ...(e)sten` form. This form never declines, so keep the sentence noun-free after it — don't attach a following noun in this sentence, that's the attributive sentence's job (e.g. write "Ich bin **am glücklichsten**, wenn …", not "… am glücklichsten Tag").
-- **`superlativeAttributiveSentence`** — one representative declined example, not an exhaustive case/gender table. Use a definite article (`der`/`die`/`das`) matching the chosen noun's gender — nominative weak declension after a definite article always ends in `-e` regardless of gender (`der älteste`, `die größte`, `das gesündeste`), which keeps every attributive example's ending predictable without having to reason through mixed declension for `ein`-words.
+- **`positivPredicativ`** — the uninflected Grundform after `sein` ("X ist Y").
+- **`positivAttributiv`** — the same word/scenario as `positivPredicativ`, with the adjective now modifying a noun directly, declined for that noun's gender/case. Indefinite article (`ein`/`eine`) is the natural choice here — it reads as introducing the noun for the first time.
+- **`komparativPredicativ`** — the `-er` form, in a natural comparison ("X ist Y-er als Z"). Not redundant with the superlative: it's the more frequently used comparison form day-to-day, and for irregular adjectives the stem change (umlaut, suppletion) already shows up here — `alt` → `älter`, not just at the superlative — so dropping it would hide half the pattern.
+- **`komparativAttributiv`** — same subject/noun as `komparativPredicativ`, comparative form declined against it. Definite article (`der`/`die`/`das`) — nominative weak declension after a definite article always ends in `-e` regardless of gender (`der ältere`, `die ärmere`, `das billigere`).
+- **`superlativPredicativ`** — the predicative/adverbial `am ...(e)sten` form. This form never declines, so keep the sentence noun-free after it — don't attach a following noun in this sentence, that's the attributive sentence's job (e.g. write "Ich bin **am glücklichsten**, wenn …", not "… am glücklichsten Tag").
+- **`superlativAttributiv`** — same subject/noun as `superlativPredicativ`, not an exhaustive case/gender table — one representative declined example. Definite article, same weak `-e` ending rule as `komparativAttributiv` (`der älteste`, `die größte`, `das gesündeste`).
 
-Regular adjectives follow standard suffix rules (`-er` / `-(e)sten`, with `-e-` inserted before `-sten` when the stem ends in `-t`/`-d`/`-s`/`-ß`/`-z` for pronounceability, e.g. `laut` → `am lautesten`) — but don't assume, verify each word's actual forms; several common exceptions exist (`teuer` → `teurer`, dropping the middle `-e-`; `groß` → `am größten`, no `-e-` insertion despite ending in `-ß`; `hoch` → `höher`, losing the `-c-`). Adjectives whose comparison is grammatically valid but semantically rare (e.g. `möglich`, `gültig`, `verfügbar` — concepts that are often treated as binary rather than gradable) still get all three sentences; lean on a softened, natural framing ("Diese Lösung erscheint mir am möglichsten") rather than skipping the module for those words.
+Regular adjectives follow standard suffix rules (`-er` / `-(e)sten`, with `-e-` inserted before `-sten` when the stem ends in `-t`/`-d`/`-s`/`-ß`/`-z` for pronounceability, e.g. `laut` → `am lautesten`) — but don't assume, verify each word's actual forms; several common exceptions exist (`teuer` → `teurer`, dropping the middle `-e-`; `groß` → `am größten`, no `-e-` insertion despite ending in `-ß`; `hoch` → `höher`, losing the `-c-` — and the attributive Positiv/Komparativ forms of `hoch` use the stem `hoh-`, not `hoch-`: `ein hoher Berg`, `der höhere Berg`). Adjectives whose comparison is grammatically valid but semantically rare (e.g. `möglich`, `gültig`, `verfügbar` — concepts that are often treated as binary rather than gradable) still get all six sentences; lean on a softened, natural framing ("Diese Lösung erscheint mir am möglichsten") rather than skipping the module for those words.
 
 **`similarWords` — design principle:**
 
@@ -190,10 +196,14 @@ Every word has a `themes` field in `wordIntro` that categorises it for filtering
 `website/common/crosslex/view/src/crosslex/module/content/LearnPageModules.ts` (line 30)
 
 ```ts
-export type WordTheme = 'transport' | 'health' | 'daily_life' | 'work' | 'bureaucracy' | 'finance' | 'trennbar' | 'timetable' | 'reflexiv' | 'irregular' | 'adjective' | 'irregular_comparison';
+export type WordTheme = 'transport' | 'health' | 'daily_life' | 'work' | 'bureaucracy' | 'finance' | 'trennbar' | 'timetable' | 'reflexiv' | 'irregular' | 'irregular_comparison';
 ```
 
-Two kinds of value live in this one list. `daily_life`, `bureaucracy`, `finance`, `work`, `health`, and `transport` are **topical** — they classify what the word is *about*. `trennbar`, `timetable`, `reflexiv`, `irregular`, `adjective`, and `irregular_comparison` are **grammatical/usage-pattern** tags — they classify a structural or pedagogical property of the word, independent of topic and independent of CEFR level (a grammar tag applies at whatever level the word itself is — it's not restricted to A2 or B1). Of these, only `trennbar` is currently load-bearing (`wordIntro.trennbar: true` drives the mandatory 3-sentence context structure below); the rest are pure filter tags with no structural behavior behind them, same as the topical tags. `adjective` in particular exists so adjectives can be selected via the same `SessionFilter` mechanism `verbs_only` uses, without a second special-cased filter literal — `partOfSpeech` already distinguishes adjectives in the data, but nothing before this let a session be *filtered* to them.
+Two kinds of value live in this one list. `daily_life`, `bureaucracy`, `finance`, `work`, `health`, `transport`, and `timetable` are **topical** — they classify what the word is *about*. `trennbar`, `reflexiv`, `irregular`, and `irregular_comparison` are **grammatical/usage-pattern** tags — they classify a structural or pedagogical property of the word, scoped to one part of speech, independent of CEFR level (a grammar tag applies at whatever level the word itself is — it's not restricted to A2 or B1). Of these, only `trennbar` is currently load-bearing (`wordIntro.trennbar: true` drives the mandatory 3-sentence context structure below); the rest are pure filter tags with no structural behavior behind them, same as the topical tags.
+
+Part of speech is **not** a `WordTheme` — it's read directly from `wordIntro.partOfSpeech` via `getWordPartOfSpeech()`, and the session filter has two dedicated literals (`'verbs_only'`, `'adjectives_only'`) for it in `SessionFilter` (`website/frontend/features/src/Session/sessionStorage.ts`). An earlier version of this scheme added an `adjective` `WordTheme` purely to route adjectives through the theme-filtering mechanism — that duplicated data already on every word (`partOfSpeech`) and mixed a part-of-speech concept into a list meant for topic/grammar tags. It's been removed; don't reintroduce it. If a future part of speech needs its own filter, add another `PartOfSpeechFilter` literal and a `getWordPartOfSpeech(w) === '...'` branch in `useSessionState.ts`'s `getWordPool`, not a new `WordTheme`.
+
+The filter dropdown in `SessionDashboard.tsx` groups these into four clusters — Topic (topical themes present in the active level's pool), Part of Speech (`verbs_only`/`adjectives_only`, each only shown if the pool actually contains that part of speech), Verb Grammar (`trennbar`, `irregular`, `reflexiv`), and Adjective Grammar (`irregular_comparison`) — via the `TOPIC_THEMES`/`VERB_GRAMMAR_THEMES`/`ADJECTIVE_GRAMMAR_THEMES` classification arrays in that file. A theme not listed in one of those three arrays won't appear in any optgroup even if it's in `WordTheme` — update the relevant array when adding a new theme.
 
 ### Theme taxonomy
 
@@ -205,22 +215,23 @@ Two kinds of value live in this one list. `daily_life`, `bureaucracy`, `finance`
 | `work` | Employment, contracts, workplace, rights | `Arbeitgeber`, `Kündigung`, `Probezeit`, `Gewerkschaft` |
 | `health` | Medical care, illness, prescriptions, insurance | `Arzt`, `Krankenversicherung`, `Rezept`, `Fieber` |
 | `transport` | Getting around — trains, buses, travel, tickets | `Fahrplan`, `Ticket`, `Verspätung`, `Zug` |
+| `timetable` | Verbs/vocabulary used to narrate a routine or sequenced day — the classic A1/A2 "Tagesablauf" exercise (describing an ideal day, yesterday, or last weekend). Topical, not grammatical — it's about the *subject matter* (daily routine), not a structural property of the word | `aufstehen`, `duschen`, `essen`, `schlafen` |
 | `trennbar` | Separable verbs (prefix detaches in conjugation) | `umsteigen`, `anrufen`, `ausfüllen` |
-| `timetable` | Verbs/vocabulary used to narrate a routine or sequenced day — the classic A1/A2 "Tagesablauf" exercise (describing an ideal day, yesterday, or last weekend) | `aufstehen`, `duschen`, `essen`, `schlafen` |
 | `reflexiv` | Reflexive verbs (`sich` + verb) — grammar category spanning both A2 and B1, not level-restricted | `sich freuen`, `sich waschen`, `sich erinnern` |
 | `irregular` | Verbs with a stem-vowel change in the `du`/`er` present-tense form (e→i, e→ie, a→ä) — the specific A2/B1 conjugation pattern where the present tense doesn't just add an ending to the infinitive stem | `essen` (isst), `nehmen` (nimmt), `fahren` (fährt), `sprechen` (spricht) |
-| `adjective` | All adjectives (`partOfSpeech: 'adjective'`) — lets sessions filter to adjectives the same way `verbs_only` filters to verbs | `alt`, `schön`, `schnell`, `freundlich` |
-| `irregular_comparison` | Adjectives whose comparative/superlative form isn't a plain `-er`/`-(e)sten` suffix — either an added umlaut (`alt`→`älter`) or a fully suppletive form (`gut`→`besser`). Note: the comparative/superlative forms themselves aren't stored anywhere in the schema yet — this tag only flags *which* adjectives have the property, pending the "Adjective degrees (Komparation)" icebox item building out an actual module for it | `alt`, `gut`, `hoch`, `nah` |
+| `irregular_comparison` | Adjectives whose comparative/superlative form isn't a plain `-er`/`-(e)sten` suffix — either an added umlaut (`alt`→`älter`) or a fully suppletive form (`gut`→`besser`). The comparative/superlative forms themselves live in the word's `comparison` module (see above) — this tag only flags *which* adjectives have the property, for filtering | `alt`, `gut`, `hoch`, `nah` |
+
+Adjective-hood itself isn't a theme — filter to adjectives via the Part of Speech cluster (`adjectives_only`), driven by `partOfSpeech: 'adjective'` on every adjective's `wordIntro`, not by a tag in `themes`.
 
 ### Rules for picking themes
 
 - Match **every** existing theme that genuinely fits — this list is not capped at 1–3 and is expected to keep growing as new words surface gaps in it.
 - Pick based on the **primary context/usage** in which a German resident would encounter the word, not abstract category membership or a stretch ("could occur near this topic"). (`Krankenversicherung` takes `health`, `work`, and `finance` because a resident deals with it in all three contexts as its primary use, not incidentally.) Check existing tagged words for precedent before adding a theme to a new one — e.g. `bezahlen` has no `finance` tag despite literally meaning "to pay," and `einsteigen`/`aussteigen`/`umsteigen` get `transport` only, no `daily_life` padding; the bar the dataset actually uses is narrower than it first looks.
 - `daily_life` is the catch-all for common vocabulary with no bureaucratic, medical, work, or other specific-topic slant.
-- If a word genuinely fits none of the existing themes, **don't add the literal unilaterally** — propose it (with candidate example words and whether it should be structural like `trennbar` or a pure filter tag) and get an explicit go-ahead first, since adding a `WordTheme` literal is a product decision, not just a content one. Once approved, update all three of these places, then add a row to the table above and document it here:
+- If a word genuinely fits none of the existing themes, **don't add the literal unilaterally** — propose it (with candidate example words, whether it's topical or grammatical, and which of the four filter clusters it belongs in) and get an explicit go-ahead first, since adding a `WordTheme` literal is a product decision, not just a content one. Once approved, update all four of these places, then add a row to the table above and document it here:
   1. `website/common/crosslex/view/src/crosslex/module/content/LearnPageModules.ts` line 30 — **single source of truth** for the type; `sessionStorage.ts` and the word data layer both import from here
   2. `website/frontend/features/src/Session/sessionStorage.ts` — the `VALID_THEMES: WordTheme[]` **runtime array** used by `readSessionFilter()`; the type is imported automatically, but this array must be updated manually or the new theme is silently stripped from localStorage on read
-  3. `website/frontend/widgets/src/Crosslex/SessionDashboard/SessionDashboard.tsx` — `THEME_LABELS` `Record<WordTheme, string>`; missing it renders a blank option in the theme picker (the `Record` type will catch this as a compile error in the widgets package)
+  3. `website/frontend/widgets/src/Crosslex/SessionDashboard/SessionDashboard.tsx` — `THEME_LABELS` `Record<WordTheme, string>` (missing it is a compile error in the widgets package), **and** one of `TOPIC_THEMES`/`VERB_GRAMMAR_THEMES`/`ADJECTIVE_GRAMMAR_THEMES` (missing this doesn't error — the theme just silently never appears in the filter dropdown)
 
 ## CEFR Levels
 

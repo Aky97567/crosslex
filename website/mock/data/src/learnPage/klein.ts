@@ -11,7 +11,7 @@ export const klein: LearnPageContent = {
         article: null,
         translation: 'small',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective'],
+        themes: ['daily_life'],
         level: ['A2'],
       },
       {

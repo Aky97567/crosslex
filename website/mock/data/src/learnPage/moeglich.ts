@@ -11,7 +11,7 @@ export const moeglich: LearnPageContent = {
         article: null,
         translation: 'possible',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective'],
+        themes: ['daily_life'],
         level: ['B1'],
       },
       {

@@ -11,7 +11,7 @@ export const schoen: LearnPageContent = {
         article: null,
         translation: 'beautiful, nice',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective'],
+        themes: ['daily_life'],
         level: ['A2'],
       },
       {

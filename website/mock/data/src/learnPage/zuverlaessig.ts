@@ -11,7 +11,7 @@ export const zuverlaessig: LearnPageContent = {
         article: null,
         translation: 'reliable',
         partOfSpeech: 'adjective',
-        themes: ['work', 'adjective'],
+        themes: ['work'],
         level: ['B1'],
       },
       {

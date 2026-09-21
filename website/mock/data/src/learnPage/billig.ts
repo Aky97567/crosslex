@@ -11,7 +11,7 @@ export const billig: LearnPageContent = {
         article: null,
         translation: 'cheap, inexpensive',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective'],
+        themes: ['daily_life'],
         level: ['A2'],
       },
       {

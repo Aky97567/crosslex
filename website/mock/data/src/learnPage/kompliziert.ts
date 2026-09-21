@@ -11,7 +11,7 @@ export const kompliziert: LearnPageContent = {
         article: null,
         translation: 'complicated',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective'],
+        themes: ['daily_life'],
         level: ['B1'],
       },
       {

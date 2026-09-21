@@ -11,7 +11,7 @@ export const geduldig: LearnPageContent = {
         article: null,
         translation: 'patient',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'adjective'],
+        themes: ['daily_life'],
         level: ['B1'],
       },
       {

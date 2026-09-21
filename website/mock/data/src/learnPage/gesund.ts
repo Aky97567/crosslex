@@ -11,7 +11,7 @@ export const gesund: LearnPageContent = {
         article: null,
         translation: 'healthy',
         partOfSpeech: 'adjective',
-        themes: ['daily_life', 'health', 'adjective', 'irregular_comparison'],
+        themes: ['daily_life', 'health', 'irregular_comparison'],
         level: ['A2'],
       },
       {
