@@ -26,7 +26,22 @@ runs:
       id: node_modules_cache
       uses: actions/cache@v3
       with:
-        path: website/node_modules
+        # Yarn's node-modules linker also creates a nested node_modules
+        # inside individual workspace packages (not just the hoisted root
+        # one) whenever a workspace needs a version that conflicts with
+        # what's hoisted — e.g. backend/api/crosslex/node_modules holds
+        # its own `prisma`. Missing this caused a cache-hit run to pass
+        # install but then fail the very next step with a "Cannot find
+        # module" for prisma, caught by testing an actual cache-hit run
+        # rather than assuming the fix worked. Patterns cover every depth
+        # a workspace glob in package.json's `workspaces` field resolves
+        # to (2-level: frontend/*, sites/*, mock/*, config/*; 3-level:
+        # backend/api/*, backend/runtime/*, common/crosslex/*, lib/core/*,
+        # lib/external/*, lib/system/*).
+        path: |
+          website/node_modules
+          website/*/*/node_modules
+          website/*/*/*/node_modules
         key: node-modules-${{ hashFiles('website/yarn.lock') }}
 
     - name: Get Yarn cache directory 📂
