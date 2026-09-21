@@ -10736,6 +10736,11 @@ __metadata:
 "@whitelotus/common-crosslex-view@npm:*, @whitelotus/common-crosslex-view@workspace:common/crosslex/view":
   version: 0.0.0-use.local
   resolution: "@whitelotus/common-crosslex-view@workspace:common/crosslex/view"
+  dependencies:
+    "@types/jest": "npm:^30.0.0"
+    jest: "npm:^30.4.2"
+    jest-environment-jsdom: "npm:^30.4.1"
+    ts-jest: "npm:^29.4.11"
   languageName: unknown
   linkType: soft
 
@@ -10749,6 +10754,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@whitelotus/crosslex-next@workspace:sites/crosslex-next"
   dependencies:
+    "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^20"
     "@types/react": "npm:^18.3.5"
     "@types/react-dom": "npm:^18.3.0"
@@ -10757,9 +10763,12 @@ __metadata:
     "@whitelotus/front-shared": "npm:*"
     eslint: "npm:^9.9.1"
     eslint-config-next: "npm:14.2.7"
+    jest: "npm:^30.4.2"
+    jest-environment-jsdom: "npm:^30.4.1"
     next: "npm:^14.2.25"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
+    ts-jest: "npm:^29.4.11"
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
@@ -10768,6 +10777,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@whitelotus/crosslex-react@workspace:sites/crosslex-react"
   dependencies:
+    "@types/jest": "npm:^30.0.0"
     "@types/react": "npm:18.3.5"
     "@types/react-dom": "npm:18.3.0"
     "@vitejs/plugin-react": "npm:^4.3.0"
@@ -10778,11 +10788,14 @@ __metadata:
     "@whitelotus/front-widgets": "npm:*"
     "@whitelotus/mock-test": "npm:*"
     autoprefixer: "npm:10.4.15"
+    jest: "npm:^30.4.2"
+    jest-environment-jsdom: "npm:^30.4.1"
     lottie-react: "npm:^2.4.1"
     postcss: "npm:^8.4.39"
     react: "npm:18.3.1"
     react-dom: "npm:18.3.1"
     tailwindcss: "npm:3.4.1"
+    ts-jest: "npm:^29.4.11"
     typescript: "npm:5.5.4"
     vite: "npm:^5.4.0"
     vite-plugin-pwa: "npm:^1.3.0"
@@ -10792,6 +10805,11 @@ __metadata:
 "@whitelotus/front-entities@npm:*, @whitelotus/front-entities@workspace:frontend/entities":
   version: 0.0.0-use.local
   resolution: "@whitelotus/front-entities@workspace:frontend/entities"
+  dependencies:
+    "@types/jest": "npm:^30.0.0"
+    jest: "npm:^30.4.2"
+    jest-environment-jsdom: "npm:^30.4.1"
+    ts-jest: "npm:^29.4.11"
   languageName: unknown
   linkType: soft
 
@@ -10810,15 +10828,19 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@whitelotus/front-pages-next@workspace:frontend/pages-next"
   dependencies:
+    "@types/jest": "npm:^30.0.0"
     "@whitelotus/config-tailwindcss": "npm:*"
     "@whitelotus/front-shared": "npm:*"
     "@whitelotus/mock-test": "npm:*"
+    jest: "npm:^30.4.2"
+    jest-environment-jsdom: "npm:^30.4.1"
     next: "npm:^14.2.25"
     prettier: "npm:^3.0.0"
     prettier-plugin-tailwindcss: "npm:^0.5.1"
     react: "npm:18.3.1"
     react-dom: "npm:18.3.1"
     tailwindcss: "npm:3.4.1"
+    ts-jest: "npm:^29.4.11"
   languageName: unknown
   linkType: soft
 
@@ -10826,10 +10848,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@whitelotus/front-pages-react@workspace:frontend/pages-react"
   dependencies:
+    "@types/jest": "npm:^30.0.0"
     "@whitelotus/common-crosslex-view": "npm:*"
     "@whitelotus/front-widgets": "npm:*"
+    jest: "npm:^30.4.2"
+    jest-environment-jsdom: "npm:^30.4.1"
     react: "npm:18.3.1"
     react-dom: "npm:18.3.1"
+    ts-jest: "npm:^29.4.11"
   languageName: unknown
   linkType: soft
 
@@ -10838,6 +10864,7 @@ __metadata:
   resolution: "@whitelotus/front-shared@workspace:frontend/shared"
   dependencies:
     "@types/eslint": "npm:8.56.12"
+    "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:20.11.28"
     "@types/react": "npm:18.3.5"
     "@types/react-dom": "npm:18.3.0"
@@ -10846,6 +10873,8 @@ __metadata:
     autoprefixer: "npm:10.4.15"
     eslint: "npm:9.9.1"
     eslint-config-next: "npm:^14.2.7"
+    jest: "npm:^30.4.2"
+    jest-environment-jsdom: "npm:^30.4.1"
     postcss: "npm:^8.4.39"
     prettier: "npm:^3.0.0"
     prettier-plugin-tailwindcss: "npm:^0.5.1"
@@ -10854,6 +10883,7 @@ __metadata:
     react-dom: "npm:18.3.1"
     react-use: "npm:^17.5.1"
     tailwindcss: "npm:3.3.3"
+    ts-jest: "npm:^29.4.11"
     typescript: "npm:5.5.4"
   languageName: unknown
   linkType: soft
@@ -10862,23 +10892,35 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@whitelotus/front-widgets@workspace:frontend/widgets"
   dependencies:
+    "@types/jest": "npm:^30.0.0"
     "@whitelotus/common-crosslex-view": "npm:*"
     "@whitelotus/front-features": "npm:*"
     "@whitelotus/front-shared": "npm:*"
+    jest: "npm:^30.4.2"
+    jest-environment-jsdom: "npm:^30.4.1"
     react: "npm:18.3.1"
     react-dom: "npm:18.3.1"
+    ts-jest: "npm:^29.4.11"
   languageName: unknown
   linkType: soft
 
 "@whitelotus/lib-core-logging@npm:*, @whitelotus/lib-core-logging@workspace:lib/core/logging":
   version: 0.0.0-use.local
   resolution: "@whitelotus/lib-core-logging@workspace:lib/core/logging"
+  dependencies:
+    "@types/jest": "npm:^30.0.0"
+    jest: "npm:^30.4.2"
+    ts-jest: "npm:^29.4.11"
   languageName: unknown
   linkType: soft
 
 "@whitelotus/lib-core-perf@workspace:lib/core/perf":
   version: 0.0.0-use.local
   resolution: "@whitelotus/lib-core-perf@workspace:lib/core/perf"
+  dependencies:
+    "@types/jest": "npm:^30.0.0"
+    jest: "npm:^30.4.2"
+    ts-jest: "npm:^29.4.11"
   languageName: unknown
   linkType: soft
 
@@ -10886,7 +10928,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@whitelotus/lib-core-types@workspace:lib/core/types"
   dependencies:
+    "@types/jest": "npm:^30.0.0"
+    jest: "npm:^30.4.2"
     jsonschema: "npm:1.4.1"
+    ts-jest: "npm:^29.4.11"
   languageName: unknown
   linkType: soft
 
@@ -10894,11 +10939,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@whitelotus/lib-ext-next@workspace:lib/external/next"
   dependencies:
+    "@types/jest": "npm:^30.0.0"
     "@types/react": "npm:18.3.5"
     "@types/react-dom": "npm:18.3.0"
+    jest: "npm:^30.4.2"
+    jest-environment-jsdom: "npm:^30.4.1"
     next: "npm:^14.2.25"
     react: "npm:18.3.1"
     react-dom: "npm:18.3.1"
+    ts-jest: "npm:^29.4.11"
   languageName: unknown
   linkType: soft
 
@@ -10906,7 +10955,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@whitelotus/lib-sys-app@workspace:lib/system/app"
   dependencies:
+    "@types/jest": "npm:^30.0.0"
     "@whitelotus/lib-core-logging": "npm:*"
+    jest: "npm:^30.4.2"
+    ts-jest: "npm:^29.4.11"
   languageName: unknown
   linkType: soft
 
@@ -10914,8 +10966,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@whitelotus/lib-sys-runtime@workspace:lib/system/runtime"
   dependencies:
+    "@types/jest": "npm:^30.0.0"
     "@whitelotus/lib-core-logging": "npm:*"
     "@whitelotus/lib-sys-app": "npm:*"
+    jest: "npm:^30.4.2"
+    ts-jest: "npm:^29.4.11"
   languageName: unknown
   linkType: soft
 
@@ -10923,7 +10978,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@whitelotus/mock-test@workspace:mock/data"
   dependencies:
+    "@types/jest": "npm:^30.0.0"
     "@whitelotus/common-crosslex-view": "npm:*"
+    jest: "npm:^30.4.2"
+    ts-jest: "npm:^29.4.11"
   languageName: unknown
   linkType: soft
 

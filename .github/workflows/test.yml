@@ -1,0 +1,30 @@
+# File: .github/workflows/test.yml
+name: Tests
+on:
+  pull_request:
+
+concurrency:
+  group: test-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
+        uses: ./.github/workflows/setup-node
+
+      - name: Generate Prisma client 🔧
+        # backend/api/crosslex's tests import the generated client directly;
+        # it's gitignored codegen output, never committed, so a fresh
+        # checkout needs this before anything there can even load. `generate`
+        # only reads the schema — it never connects to the database — so a
+        # placeholder DATABASE_URL is enough.
+        run: cd website && DATABASE_URL="postgresql://user:pass@localhost:5432/db" yarn workspace @whitelotus/back-api-crosslex exec prisma generate
+
+      - name: Run tests 🧪
+        run: cd website && yarn test
