@@ -162,19 +162,36 @@ export const generateExerciseData = (
     );
     if (fills.length === 0) return null;
 
-    // Reflexive verbs are never blanked out along with their pronoun (e.g.
-    // "Wir müssen uns {{beeilen}}."), so the unblanked pronoun already tells
-    // the learner the answer is reflexive. If a reflexive target's
-    // distractors were drawn from the general pool, "has sich" would often
-    // be a unique, no-knowledge-required tell among mixed options. Drawing
-    // distractors from other reflexive verbs instead removes that signal —
-    // every option is reflexive, so noticing that tells you nothing.
+    // Some grammatical properties of a word leak through the context
+    // sentence itself, before the learner even looks at the options:
+    // - Reflexive verbs never blank their pronoun (e.g. "Wir müssen uns
+    //   {{beeilen}}."), so the unblanked pronoun already tells the learner
+    //   the answer is reflexive.
+    // - Trennbar (separable) verbs always show their designated "context
+    //   sentence" (contextSentenceIndices below) with two separated blanks
+    //   (e.g. "Ich ___ dich morgen früh ___."), which tells the learner the
+    //   word splits into two parts.
+    // If a target with either property drew distractors from the general
+    // pool, that property would often be a unique tell among mixed options.
+    // Restricting distractors to other words sharing the same property
+    // removes the signal instead of trying to hide it — every option has
+    // it, so noticing it tells you nothing. Reflexive takes priority when a
+    // word is tagged both (only 'sich ausruhen' today): it's the stronger
+    // leak — "sich" is a universal, zero-knowledge marker, whereas spotting
+    // a trennbar split still requires already knowing which verbs separate.
     const otherKeys = allWordKeys.filter((k) => k !== wordKey);
     const isReflexiveTarget = intro.themes?.includes('reflexiv') ?? false;
     const reflexiveKeys = isReflexiveTarget
       ? otherKeys.filter((k) => getWordIntroModule(wordData[k])?.themes?.includes('reflexiv'))
       : [];
-    const distractorPool = reflexiveKeys.length >= 3 ? reflexiveKeys : otherKeys;
+    const isTrennbarTarget = intro.trennbar ?? false;
+    const trennbarKeys = isTrennbarTarget
+      ? otherKeys.filter((k) => getWordIntroModule(wordData[k])?.trennbar)
+      : [];
+    const distractorPool =
+      reflexiveKeys.length >= 3 ? reflexiveKeys
+      : trennbarKeys.length >= 3 ? trennbarKeys
+      : otherKeys;
 
     const distractors = distractorPool
       .sort(() => Math.random() - 0.5)

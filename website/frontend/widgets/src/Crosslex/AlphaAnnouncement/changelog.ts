@@ -14,9 +14,10 @@ export const CHANGELOG: Record<string, ChangelogEntry> = {
     },
     returningUser: {
       heading: "You're back — something's new",
-      body: 'Fixed a shortcut in fill-in-the-blank exercises for reflexive verbs.',
+      body: 'Fixed shortcuts in fill-in-the-blank exercises for reflexive and separable verbs.',
       changes: [
         'Fix: "Fill in the Blank" exercises for reflexive verbs (sich freuen, sich beeilen, and others) no longer give away the answer — since the reflexive pronoun (sich/uns/mich/dich) was never blanked, the one multiple-choice option containing "sich" was always the correct one. Distractors are now drawn only from other reflexive verbs when the target word is reflexive.',
+        'Fix: same fix for separable (trennbar) verbs like anrufen, aufstehen — their two-part example sentence ("Ich ___ dich morgen früh ___.") revealed the word splits into two parts before you even looked at the options. Distractors are now drawn only from other separable verbs when the target word is separable.',
       ],
     },
   },

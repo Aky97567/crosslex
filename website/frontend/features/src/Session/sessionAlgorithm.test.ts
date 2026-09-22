@@ -247,6 +247,63 @@ describe('generateExerciseData', () => {
       expect(distractorTexts.sort()).toEqual(['b', 'c', 'd']);
     });
 
+    test('draws distractors only from other trennbar verbs when the target is trennbar', () => {
+      // Trennbar verbs always show their designated context sentence with
+      // two separated blanks (e.g. "Ich ___ dich morgen früh ___."),
+      // revealing the word splits into two parts before the learner picks
+      // an option. Exactly 3 trennbar candidates exist here, so — same
+      // determinism trick as the reflexive tests above — all 3 must be
+      // picked, and the 2 non-trennbar candidates must never appear.
+      const trennbarWord = (word: string): Fixture[string] => ({
+        content: { moduleType: 'content', modules: [wordIntro({ word, trennbar: true })] },
+      });
+      const plain = (word: string): Fixture[string] => ({
+        content: { moduleType: 'content', modules: [wordIntro({ word })] },
+      });
+      const wordData: Fixture = {
+        a: { content: { moduleType: 'content', modules: [wordIntro({ trennbar: true }), wordContext(['x {{y}} z'])] } },
+        b: trennbarWord('b'), c: trennbarWord('c'), d: trennbarWord('d'),
+        e: plain('e'), f: plain('f'),
+      };
+      const result = generateExerciseData('a', 'contextBlank', ['a', 'b', 'c', 'd', 'e', 'f'], wordData);
+      if (result?.cardType !== 'contextBlank') throw new Error('expected contextBlank');
+      const distractorTexts = result.data.options.filter((o) => !o.isCorrect).map((o) => o.text);
+      expect(distractorTexts.sort()).toEqual(['b', 'c', 'd']);
+    });
+
+    test('falls back to the general pool when fewer than 3 other trennbar verbs are available', () => {
+      const wordData: Fixture = {
+        a: { content: { moduleType: 'content', modules: [wordIntro({ trennbar: true }), wordContext(['x {{y}} z'])] } },
+        b: { content: { moduleType: 'content', modules: [wordIntro({ word: 'b', trennbar: true })] } },
+        c: { content: { moduleType: 'content', modules: [wordIntro({ word: 'c' })] } },
+        d: { content: { moduleType: 'content', modules: [wordIntro({ word: 'd' })] } },
+      };
+      const result = generateExerciseData('a', 'contextBlank', ['a', 'b', 'c', 'd'], wordData);
+      if (result?.cardType !== 'contextBlank') throw new Error('expected contextBlank');
+      const distractorTexts = result.data.options.filter((o) => !o.isCorrect).map((o) => o.text);
+      expect(distractorTexts.sort()).toEqual(['b', 'c', 'd']);
+    });
+
+    test('prioritizes reflexive-only distractors over trennbar when a word is tagged both', () => {
+      // 'sich ausruhen' is the one real word tagged both today. Reflexive
+      // is the stronger, zero-knowledge leak ("sich" vs. needing to already
+      // know which verbs separate), so it should win: distractors must come
+      // from the reflexive-only pool (c, d, e), never from the
+      // trennbar-only word (f), even though f would also close the
+      // trennbar-side leak.
+      const wordData: Fixture = {
+        a: { content: { moduleType: 'content', modules: [wordIntro({ themes: ['reflexiv'], trennbar: true }), wordContext(['x {{y}} z'])] } },
+        c: { content: { moduleType: 'content', modules: [wordIntro({ word: 'c', themes: ['reflexiv'] })] } },
+        d: { content: { moduleType: 'content', modules: [wordIntro({ word: 'd', themes: ['reflexiv'] })] } },
+        e: { content: { moduleType: 'content', modules: [wordIntro({ word: 'e', themes: ['reflexiv'] })] } },
+        f: { content: { moduleType: 'content', modules: [wordIntro({ word: 'f', trennbar: true })] } },
+      };
+      const result = generateExerciseData('a', 'contextBlank', ['a', 'c', 'd', 'e', 'f'], wordData);
+      if (result?.cardType !== 'contextBlank') throw new Error('expected contextBlank');
+      const distractorTexts = result.data.options.filter((o) => !o.isCorrect).map((o) => o.text);
+      expect(distractorTexts.sort()).toEqual(['c', 'd', 'e']);
+    });
+
     test('returns null when the word has no wordContext module', () => {
       const wordData: Fixture = { a: { content: { moduleType: 'content', modules: [wordIntro()] } } };
       expect(generateExerciseData('a', 'contextBlank', ['a'], wordData)).toBeNull();
