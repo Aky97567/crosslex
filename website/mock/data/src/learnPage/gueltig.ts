@@ -12,7 +12,7 @@ export const gueltig: LearnPageContent = {
         translation: 'valid',
         partOfSpeech: 'adjective',
         themes: ['daily_life', 'bureaucracy'],
-        level: ['B1'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

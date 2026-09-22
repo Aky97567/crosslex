@@ -13,7 +13,7 @@ export const abholen: LearnPageContent = {
         partOfSpeech: 'verb',
         trennbar: true,
         themes: ['daily_life', 'transport', 'trennbar'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

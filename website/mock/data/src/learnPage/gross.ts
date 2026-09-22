@@ -12,7 +12,7 @@ export const gross: LearnPageContent = {
         translation: 'big, tall',
         partOfSpeech: 'adjective',
         themes: ['daily_life', 'irregular_comparison'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

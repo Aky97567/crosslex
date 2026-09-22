@@ -51,11 +51,11 @@ export const RATE_CONFIG: Record<LearningRate, RateConfig> = {
 
 // ─── Level ───────────────────────────────────────────────────────────────────
 
-export type ActiveLevel = 'a2' | 'b1' | 'b2';
+export type ActiveLevel = 'a1' | 'a2' | 'b1' | 'b2';
 
 const LEVEL_KEY = 'crosslex:level';
 const LEVEL_SELECTED_KEY = 'crosslex:level_selected';
-const VALID_LEVELS: ActiveLevel[] = ['a2', 'b1', 'b2'];
+const VALID_LEVELS: ActiveLevel[] = ['a1', 'a2', 'b1', 'b2'];
 
 export const readActiveLevel = (): ActiveLevel => {
   try {

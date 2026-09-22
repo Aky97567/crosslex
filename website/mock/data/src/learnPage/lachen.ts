@@ -12,7 +12,7 @@ export const lachen: LearnPageContent = {
         translation: 'to laugh',
         partOfSpeech: 'verb',
         themes: ['daily_life'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

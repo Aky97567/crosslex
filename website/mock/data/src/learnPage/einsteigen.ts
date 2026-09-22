@@ -13,7 +13,7 @@ export const einsteigen: LearnPageContent = {
         partOfSpeech: 'verb',
         trennbar: true,
         themes: ['transport', 'trennbar'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

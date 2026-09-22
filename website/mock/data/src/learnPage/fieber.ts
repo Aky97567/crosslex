@@ -12,7 +12,7 @@ export const fieber: LearnPageContent = {
         translation: 'fever, high temperature',
         partOfSpeech: 'noun',
         themes: ['health'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

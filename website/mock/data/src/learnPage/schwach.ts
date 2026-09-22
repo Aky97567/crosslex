@@ -12,7 +12,7 @@ export const schwach: LearnPageContent = {
         translation: 'weak',
         partOfSpeech: 'adjective',
         themes: ['daily_life', 'irregular_comparison'],
-        level: ['B1'],
+        level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',

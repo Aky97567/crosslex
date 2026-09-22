@@ -12,7 +12,7 @@ export const bewerben: LearnPageContent = {
         translation: 'to apply (for a job)',
         partOfSpeech: 'verb',
         themes: ['work', 'reflexiv', 'irregular'],
-        level: ['B1'],
+        level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',

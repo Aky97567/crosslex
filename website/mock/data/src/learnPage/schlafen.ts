@@ -12,7 +12,7 @@ export const schlafen: LearnPageContent = {
         translation: 'to sleep',
         partOfSpeech: 'verb',
         themes: ['daily_life', 'timetable', 'irregular'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

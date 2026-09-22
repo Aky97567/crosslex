@@ -12,7 +12,7 @@ export const voraussetzung: LearnPageContent = {
         translation: 'prerequisite, requirement',
         partOfSpeech: 'noun',
         themes: ['bureaucracy'],
-        level: ['B2'],
+        level: ['B1'],
       },
       {
         moduleType: 'wordMeaning',

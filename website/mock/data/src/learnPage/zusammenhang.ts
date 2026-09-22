@@ -12,7 +12,7 @@ export const zusammenhang: LearnPageContent = {
         translation: 'context, connection',
         partOfSpeech: 'noun',
         themes: ['daily_life'],
-        level: ['B2'],
+        level: ['B1'],
       },
       {
         moduleType: 'wordMeaning',

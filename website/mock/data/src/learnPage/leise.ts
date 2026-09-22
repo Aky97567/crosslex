@@ -12,7 +12,7 @@ export const leise: LearnPageContent = {
         translation: 'quiet, soft (sound)',
         partOfSpeech: 'adjective',
         themes: ['daily_life'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

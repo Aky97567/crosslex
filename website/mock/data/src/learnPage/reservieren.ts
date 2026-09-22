@@ -12,7 +12,7 @@ export const reservieren: LearnPageContent = {
         translation: 'to reserve',
         partOfSpeech: 'verb',
         themes: ['daily_life'],
-        level: ['B1'],
+        level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',

@@ -12,7 +12,7 @@ export const auskunft: LearnPageContent = {
         translation: 'information, enquiry',
         partOfSpeech: 'noun',
         themes: ['daily_life', 'bureaucracy'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

@@ -12,7 +12,7 @@ export const brief: LearnPageContent = {
         translation: 'letter',
         partOfSpeech: 'noun',
         themes: ['daily_life', 'bureaucracy'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

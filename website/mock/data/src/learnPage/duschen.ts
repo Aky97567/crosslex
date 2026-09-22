@@ -12,7 +12,7 @@ export const duschen: LearnPageContent = {
         translation: 'to shower',
         partOfSpeech: 'verb',
         themes: ['daily_life', 'timetable'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

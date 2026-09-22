@@ -12,7 +12,7 @@ export const interessieren: LearnPageContent = {
         translation: 'to be interested (in)',
         partOfSpeech: 'verb',
         themes: ['daily_life', 'reflexiv'],
-        level: ['A2'],
+        level: ['B1'],
       },
       {
         moduleType: 'wordMeaning',

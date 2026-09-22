@@ -12,7 +12,7 @@ export const katze: LearnPageContent = {
         translation: 'cat',
         partOfSpeech: 'noun',
         themes: ['daily_life'],
-        level: ['A1'],
+        level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',

@@ -13,7 +13,7 @@ export const unterschrift: LearnPageContent = {
         translation: 'signature',
         partOfSpeech: 'noun',
         themes: ['bureaucracy'],
-        level: ['B1'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

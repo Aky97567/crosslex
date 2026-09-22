@@ -12,7 +12,7 @@ export const einfach: LearnPageContent = {
         translation: 'simple, easy',
         partOfSpeech: 'adjective',
         themes: ['daily_life'],
-        level: ['B1'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

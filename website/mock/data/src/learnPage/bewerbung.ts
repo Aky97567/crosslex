@@ -12,7 +12,7 @@ export const bewerbung: LearnPageContent = {
         translation: 'job application',
         partOfSpeech: 'noun',
         themes: ['work'],
-        level: ['B1'],
+        level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',

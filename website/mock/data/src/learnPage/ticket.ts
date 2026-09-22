@@ -12,7 +12,7 @@ export const ticket: LearnPageContent = {
         translation: 'ticket',
         partOfSpeech: 'noun',
         themes: ['transport'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

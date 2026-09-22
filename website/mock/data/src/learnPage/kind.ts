@@ -12,7 +12,7 @@ export const kind: LearnPageContent = {
         translation: 'child',
         partOfSpeech: 'noun',
         themes: ['daily_life'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

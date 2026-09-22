@@ -12,7 +12,7 @@ export const verspaetung: LearnPageContent = {
         translation: 'delay, lateness',
         partOfSpeech: 'noun',
         themes: ['transport'],
-        level: ['A2'],
+        level: ['B1'],
       },
       {
         moduleType: 'wordMeaning',

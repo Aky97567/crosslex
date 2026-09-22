@@ -12,7 +12,7 @@ export const kuemmern: LearnPageContent = {
         translation: 'to take care of, deal with',
         partOfSpeech: 'verb',
         themes: ['daily_life', 'reflexiv'],
-        level: ['B1'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

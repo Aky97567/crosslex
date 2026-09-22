@@ -12,7 +12,7 @@ export const anmeldung: LearnPageContent = {
         translation: 'registration',
         partOfSpeech: 'noun',
         themes: ['bureaucracy'],
-        level: ['B1'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

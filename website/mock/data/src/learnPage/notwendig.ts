@@ -12,7 +12,7 @@ export const notwendig: LearnPageContent = {
         translation: 'necessary',
         partOfSpeech: 'adjective',
         themes: ['daily_life', 'bureaucracy'],
-        level: ['B1'],
+        level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',

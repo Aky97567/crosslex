@@ -12,7 +12,7 @@ export const freuen: LearnPageContent = {
         translation: 'to be happy, look forward to',
         partOfSpeech: 'verb',
         themes: ['daily_life', 'reflexiv'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

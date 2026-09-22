@@ -12,7 +12,7 @@ export const brauchen: LearnPageContent = {
         translation: 'to need',
         partOfSpeech: 'verb',
         themes: ['daily_life'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

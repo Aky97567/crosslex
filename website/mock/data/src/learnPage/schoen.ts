@@ -12,7 +12,7 @@ export const schoen: LearnPageContent = {
         translation: 'beautiful, nice',
         partOfSpeech: 'adjective',
         themes: ['daily_life'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

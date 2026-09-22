@@ -12,7 +12,7 @@ export const bekannt: LearnPageContent = {
         translation: 'well-known, known',
         partOfSpeech: 'adjective',
         themes: ['daily_life'],
-        level: ['B1'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

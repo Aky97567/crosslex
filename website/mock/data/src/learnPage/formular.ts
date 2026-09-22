@@ -12,7 +12,7 @@ export const formular: LearnPageContent = {
         translation: 'form',
         partOfSpeech: 'noun',
         themes: ['bureaucracy'],
-        level: ['B1'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

@@ -12,7 +12,7 @@ export const warten: LearnPageContent = {
         translation: 'to wait',
         partOfSpeech: 'verb',
         themes: ['daily_life', 'transport'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

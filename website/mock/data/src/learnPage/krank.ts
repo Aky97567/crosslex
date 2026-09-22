@@ -12,7 +12,7 @@ export const krank: LearnPageContent = {
         translation: 'sick, ill',
         partOfSpeech: 'adjective',
         themes: ['daily_life', 'health', 'irregular_comparison'],
-        level: ['B1'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

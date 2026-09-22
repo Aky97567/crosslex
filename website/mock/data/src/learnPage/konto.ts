@@ -12,7 +12,7 @@ export const konto: LearnPageContent = {
         translation: 'bank account',
         partOfSpeech: 'noun',
         themes: ['finance'],
-        level: ['B1'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

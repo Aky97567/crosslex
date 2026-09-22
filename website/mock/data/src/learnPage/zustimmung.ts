@@ -12,7 +12,7 @@ export const zustimmung: LearnPageContent = {
         translation: 'consent, approval',
         partOfSpeech: 'noun',
         themes: ['bureaucracy', 'daily_life'],
-        level: ['B2'],
+        level: ['B1'],
       },
       {
         moduleType: 'wordMeaning',

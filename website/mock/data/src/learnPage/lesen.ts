@@ -12,7 +12,7 @@ export const lesen: LearnPageContent = {
         translation: 'to read',
         partOfSpeech: 'verb',
         themes: ['daily_life', 'timetable'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

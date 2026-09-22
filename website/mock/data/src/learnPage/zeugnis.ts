@@ -12,7 +12,7 @@ export const zeugnis: LearnPageContent = {
         translation: 'certificate, reference letter, school report',
         partOfSpeech: 'noun',
         themes: ['work', 'bureaucracy'],
-        level: ['B1'],
+        level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',

@@ -12,7 +12,7 @@ export const unterhalten: LearnPageContent = {
         translation: 'to converse, chat',
         partOfSpeech: 'verb',
         themes: ['daily_life', 'reflexiv', 'irregular'],
-        level: ['B1'],
+        level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',

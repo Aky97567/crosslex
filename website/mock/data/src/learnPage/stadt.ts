@@ -12,7 +12,7 @@ export const stadt: LearnPageContent = {
         translation: 'city, town',
         partOfSpeech: 'noun',
         themes: ['daily_life'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

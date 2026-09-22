@@ -12,7 +12,7 @@ export const ausweis: LearnPageContent = {
         translation: 'identity document, ID card',
         partOfSpeech: 'noun',
         themes: ['bureaucracy'],
-        level: ['B1'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

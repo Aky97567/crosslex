@@ -12,7 +12,7 @@ export const supermarkt: LearnPageContent = {
         translation: 'supermarket',
         partOfSpeech: 'noun',
         themes: ['daily_life'],
-        level: ['A2'],
+        level: ['B1'],
       },
       {
         moduleType: 'wordMeaning',

@@ -12,7 +12,7 @@ export const geben: LearnPageContent = {
         translation: 'to give',
         partOfSpeech: 'verb',
         themes: ['daily_life', 'irregular'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

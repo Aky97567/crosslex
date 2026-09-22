@@ -645,6 +645,10 @@ const getWordLevel = (key: SampleContentKey): string[] => {
   return wordIntro?.level ?? [];
 };
 
+export const A1Words = (Object.keys(sampleLearnPageContentList) as SampleContentKeys).filter(
+  (key) => getWordLevel(key).some((l) => l === 'A1'),
+);
+
 export const A2Words = (Object.keys(sampleLearnPageContentList) as SampleContentKeys).filter(
   (key) => getWordLevel(key).some((l) => l === 'A2'),
 );

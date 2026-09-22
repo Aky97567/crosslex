@@ -12,7 +12,7 @@ export const hoeren: LearnPageContent = {
         translation: 'to hear, listen',
         partOfSpeech: 'verb',
         themes: ['daily_life'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

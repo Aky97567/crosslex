@@ -12,7 +12,7 @@ export const informieren: LearnPageContent = {
         translation: 'to inform',
         partOfSpeech: 'verb',
         themes: ['daily_life'],
-        level: ['B1'],
+        level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',

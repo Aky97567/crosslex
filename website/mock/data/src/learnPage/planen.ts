@@ -12,7 +12,7 @@ export const planen: LearnPageContent = {
         translation: 'to plan',
         partOfSpeech: 'verb',
         themes: ['daily_life'],
-        level: ['B1'],
+        level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',

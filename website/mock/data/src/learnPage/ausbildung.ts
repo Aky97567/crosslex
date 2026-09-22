@@ -12,7 +12,7 @@ export const ausbildung: LearnPageContent = {
         translation: 'vocational training, apprenticeship',
         partOfSpeech: 'noun',
         themes: ['work'],
-        level: ['B1'],
+        level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',

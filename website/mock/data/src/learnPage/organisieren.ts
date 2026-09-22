@@ -12,7 +12,7 @@ export const organisieren: LearnPageContent = {
         translation: 'to organize',
         partOfSpeech: 'verb',
         themes: ['daily_life'],
-        level: ['B1'],
+        level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',

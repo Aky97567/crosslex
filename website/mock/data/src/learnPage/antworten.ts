@@ -12,7 +12,7 @@ export const antworten: LearnPageContent = {
         translation: 'to answer',
         partOfSpeech: 'verb',
         themes: ['daily_life'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

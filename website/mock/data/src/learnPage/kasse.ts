@@ -12,7 +12,7 @@ export const kasse: LearnPageContent = {
         translation: 'checkout, cash register, cashier',
         partOfSpeech: 'noun',
         themes: ['daily_life'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

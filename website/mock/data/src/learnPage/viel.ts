@@ -12,7 +12,7 @@ export const viel: LearnPageContent = {
         translation: 'much, a lot (of)',
         partOfSpeech: 'adjective',
         themes: ['daily_life', 'irregular_comparison'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

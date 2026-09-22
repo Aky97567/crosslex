@@ -12,7 +12,7 @@ export const vorschlag: LearnPageContent = {
         translation: 'suggestion, proposal',
         partOfSpeech: 'noun',
         themes: ['daily_life', 'work'],
-        level: ['B2'],
+        level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',

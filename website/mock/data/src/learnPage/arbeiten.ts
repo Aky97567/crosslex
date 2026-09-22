@@ -12,7 +12,7 @@ export const arbeiten: LearnPageContent = {
         translation: 'to work',
         partOfSpeech: 'verb',
         themes: ['daily_life', 'work', 'timetable'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

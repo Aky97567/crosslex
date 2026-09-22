@@ -12,7 +12,7 @@ export const schnell: LearnPageContent = {
         translation: 'fast, quick',
         partOfSpeech: 'adjective',
         themes: ['daily_life'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

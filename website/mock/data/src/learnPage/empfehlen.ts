@@ -12,7 +12,7 @@ export const empfehlen: LearnPageContent = {
         translation: 'to recommend',
         partOfSpeech: 'verb',
         themes: ['daily_life', 'irregular'],
-        level: ['B1'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

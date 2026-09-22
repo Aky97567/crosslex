@@ -12,7 +12,7 @@ export const lang: LearnPageContent = {
         translation: 'long',
         partOfSpeech: 'adjective',
         themes: ['daily_life', 'irregular_comparison'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

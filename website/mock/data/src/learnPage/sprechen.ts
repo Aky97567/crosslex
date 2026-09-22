@@ -12,7 +12,7 @@ export const sprechen: LearnPageContent = {
         translation: 'to speak',
         partOfSpeech: 'verb',
         themes: ['daily_life', 'irregular'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

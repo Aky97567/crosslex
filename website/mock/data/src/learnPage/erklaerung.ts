@@ -12,7 +12,7 @@ export const erklaerung: LearnPageContent = {
         translation: 'explanation, declaration',
         partOfSpeech: 'noun',
         themes: ['daily_life'],
-        level: ['B2'],
+        level: ['B1'],
       },
       {
         moduleType: 'wordMeaning',

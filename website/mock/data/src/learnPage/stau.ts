@@ -12,7 +12,7 @@ export const stau: LearnPageContent = {
         translation: 'traffic jam',
         partOfSpeech: 'noun',
         themes: ['transport'],
-        level: ['A2'],
+        level: ['B1'],
       },
       {
         moduleType: 'wordMeaning',

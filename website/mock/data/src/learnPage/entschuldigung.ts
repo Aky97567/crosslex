@@ -12,7 +12,7 @@ export const entschuldigung: LearnPageContent = {
         translation: 'apology, excuse',
         partOfSpeech: 'noun',
         themes: ['daily_life'],
-        level: ['B2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',
