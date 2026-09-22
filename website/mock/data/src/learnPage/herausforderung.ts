@@ -12,7 +12,7 @@ export const herausforderung: LearnPageContent = {
         translation: 'challenge',
         partOfSpeech: 'noun',
         themes: ['daily_life', 'work'],
-        level: ['B2'],
+        level: ['B1'],
       },
       {
         moduleType: 'wordMeaning',

@@ -12,7 +12,7 @@ export const gehalt: LearnPageContent = {
         translation: 'salary',
         partOfSpeech: 'noun',
         themes: ['work', 'finance'],
-        level: ['B1'],
+        level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',

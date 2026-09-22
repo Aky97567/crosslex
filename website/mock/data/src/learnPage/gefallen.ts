@@ -12,7 +12,7 @@ export const gefallen: LearnPageContent = {
         translation: 'to please, be liked',
         partOfSpeech: 'verb',
         themes: ['daily_life', 'irregular'],
-        level: ['B1'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

@@ -13,7 +13,7 @@ export const vorbereiten: LearnPageContent = {
         partOfSpeech: 'verb',
         trennbar: true,
         themes: ['daily_life', 'work', 'trennbar'],
-        level: ['B1'],
+        level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',

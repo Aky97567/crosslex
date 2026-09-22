@@ -12,7 +12,7 @@ export const termin: LearnPageContent = {
         translation: 'appointment, date',
         partOfSpeech: 'noun',
         themes: ['bureaucracy'],
-        level: ['B1'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

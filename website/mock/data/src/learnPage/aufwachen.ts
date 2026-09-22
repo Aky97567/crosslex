@@ -13,7 +13,7 @@ export const aufwachen: LearnPageContent = {
         partOfSpeech: 'verb',
         trennbar: true,
         themes: ['daily_life', 'trennbar'],
-        level: ['A2'],
+        level: ['B1'],
       },
       {
         moduleType: 'wordMeaning',

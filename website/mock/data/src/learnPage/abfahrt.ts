@@ -12,7 +12,7 @@ export const abfahrt: LearnPageContent = {
         translation: 'departure',
         partOfSpeech: 'noun',
         themes: ['transport'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

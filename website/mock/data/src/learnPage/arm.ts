@@ -12,7 +12,7 @@ export const arm: LearnPageContent = {
         translation: 'poor',
         partOfSpeech: 'adjective',
         themes: ['daily_life', 'irregular_comparison'],
-        level: ['B1'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

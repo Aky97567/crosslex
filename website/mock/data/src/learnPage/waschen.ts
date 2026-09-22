@@ -12,7 +12,7 @@ export const waschen: LearnPageContent = {
         translation: 'to wash oneself',
         partOfSpeech: 'verb',
         themes: ['daily_life', 'timetable', 'reflexiv'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

@@ -12,7 +12,7 @@ export const fragen: LearnPageContent = {
         translation: 'to ask',
         partOfSpeech: 'verb',
         themes: ['daily_life'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

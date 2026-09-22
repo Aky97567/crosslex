@@ -13,7 +13,7 @@ export const mitnehmen: LearnPageContent = {
         partOfSpeech: 'verb',
         trennbar: true,
         themes: ['daily_life', 'transport', 'trennbar', 'irregular'],
-        level: ['B1'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

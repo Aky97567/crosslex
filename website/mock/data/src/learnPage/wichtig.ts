@@ -12,7 +12,7 @@ export const wichtig: LearnPageContent = {
         translation: 'important',
         partOfSpeech: 'adjective',
         themes: ['daily_life'],
-        level: ['B1'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

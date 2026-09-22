@@ -12,7 +12,7 @@ export const kaufen: LearnPageContent = {
         translation: 'to buy',
         partOfSpeech: 'verb',
         themes: ['daily_life'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

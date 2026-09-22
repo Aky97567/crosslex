@@ -12,7 +12,7 @@ export const diskutieren: LearnPageContent = {
         translation: 'to discuss',
         partOfSpeech: 'verb',
         themes: ['daily_life'],
-        level: ['B1'],
+        level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',

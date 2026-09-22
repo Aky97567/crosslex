@@ -12,7 +12,7 @@ export const ankunft: LearnPageContent = {
         translation: 'arrival',
         partOfSpeech: 'noun',
         themes: ['transport'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

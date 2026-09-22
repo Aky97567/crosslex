@@ -12,7 +12,7 @@ export const spielen: LearnPageContent = {
         translation: 'to play',
         partOfSpeech: 'verb',
         themes: ['daily_life', 'timetable'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

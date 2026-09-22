@@ -12,7 +12,7 @@ export const strasse: LearnPageContent = {
         translation: 'street, road',
         partOfSpeech: 'noun',
         themes: ['daily_life'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

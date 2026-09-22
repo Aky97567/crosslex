@@ -3,9 +3,24 @@ export type ChangelogEntry = {
   returningUser: { heading: string; body: string; changes: string[] };
 };
 
-export const CURRENT_BUILD_ID = 'alpha-2026-09-22-reflexiv-distractor-fix';
+export const CURRENT_BUILD_ID = 'alpha-2026-09-22-a1-level-and-cefr-relabel';
 
 export const CHANGELOG: Record<string, ChangelogEntry> = {
+  'alpha-2026-09-22-a1-level-and-cefr-relabel': {
+    newUser: {
+      heading: "You're testing Crosslex Alpha",
+      body: "Crosslex is a German vocabulary trainer — built for adults navigating real life in Germany. Choose your level, pick a session length and learning pace, and Crosslex will guide you through words and exercises. Your feedback shapes what we build next.",
+      cta: "Let's go →",
+    },
+    returningUser: {
+      heading: "You're back — something's new",
+      body: 'A new A1 level, plus every word now sits at its true CEFR level.',
+      changes: [
+        'New: A1 level — select it in Settings or from onboarding',
+        'Fix: 168 words were mislabeled against the official Goethe-Institut word lists (many marked A2 or higher were actually A1) — every word now carries its correct CEFR level, and 129 of them now live in the new A1 tier',
+      ],
+    },
+  },
   'alpha-2026-09-22-reflexiv-distractor-fix': {
     newUser: {
       heading: "You're testing Crosslex Alpha",

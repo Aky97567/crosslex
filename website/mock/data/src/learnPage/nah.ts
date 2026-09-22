@@ -12,7 +12,7 @@ export const nah: LearnPageContent = {
         translation: 'near, close',
         partOfSpeech: 'adjective',
         themes: ['daily_life', 'irregular_comparison'],
-        level: ['A2'],
+        level: ['B1'],
       },
       {
         moduleType: 'wordMeaning',

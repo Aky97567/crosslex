@@ -12,7 +12,7 @@ export const gluecklich: LearnPageContent = {
         translation: 'happy',
         partOfSpeech: 'adjective',
         themes: ['daily_life'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

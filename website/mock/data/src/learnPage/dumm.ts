@@ -12,7 +12,7 @@ export const dumm: LearnPageContent = {
         translation: 'stupid, dumb',
         partOfSpeech: 'adjective',
         themes: ['daily_life', 'irregular_comparison'],
-        level: ['B1'],
+        level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',

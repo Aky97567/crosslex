@@ -13,7 +13,7 @@ export const haltestelle: LearnPageContent = {
         translation: 'stop, bus stop, tram stop',
         partOfSpeech: 'noun',
         themes: ['transport'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

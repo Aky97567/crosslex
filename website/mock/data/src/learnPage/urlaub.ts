@@ -12,7 +12,7 @@ export const urlaub: LearnPageContent = {
         translation: 'holiday, vacation',
         partOfSpeech: 'noun',
         themes: ['daily_life'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

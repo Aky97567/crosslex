@@ -12,7 +12,7 @@ export const sicher: LearnPageContent = {
         translation: 'safe, certain',
         partOfSpeech: 'adjective',
         themes: ['daily_life'],
-        level: ['B1'],
+        level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',

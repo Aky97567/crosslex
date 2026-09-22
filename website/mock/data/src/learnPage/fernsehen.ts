@@ -13,7 +13,7 @@ export const fernsehen: LearnPageContent = {
         partOfSpeech: 'verb',
         trennbar: true,
         themes: ['daily_life', 'trennbar', 'timetable'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

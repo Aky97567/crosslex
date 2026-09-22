@@ -12,7 +12,7 @@ export const arzt: LearnPageContent = {
         translation: 'doctor (male)',
         partOfSpeech: 'noun',
         themes: ['health'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

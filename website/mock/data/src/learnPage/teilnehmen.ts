@@ -13,7 +13,7 @@ export const teilnehmen: LearnPageContent = {
         partOfSpeech: 'verb',
         trennbar: true,
         themes: ['work', 'daily_life', 'trennbar', 'irregular'],
-        level: ['B1'],
+        level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',

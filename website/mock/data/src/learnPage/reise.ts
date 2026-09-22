@@ -12,7 +12,7 @@ export const reise: LearnPageContent = {
         translation: 'trip, journey, travel',
         partOfSpeech: 'noun',
         themes: ['transport'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

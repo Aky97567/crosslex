@@ -12,7 +12,7 @@ export const gemuese: LearnPageContent = {
         translation: 'vegetables',
         partOfSpeech: 'noun',
         themes: ['daily_life'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

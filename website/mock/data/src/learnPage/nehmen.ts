@@ -12,7 +12,7 @@ export const nehmen: LearnPageContent = {
         translation: 'to take',
         partOfSpeech: 'verb',
         themes: ['daily_life', 'transport', 'irregular'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

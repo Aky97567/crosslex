@@ -12,7 +12,7 @@ export const moeglichkeit: LearnPageContent = {
         translation: 'possibility, option',
         partOfSpeech: 'noun',
         themes: ['daily_life'],
-        level: ['B2'],
+        level: ['B1'],
       },
       {
         moduleType: 'wordMeaning',

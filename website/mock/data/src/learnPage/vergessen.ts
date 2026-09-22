@@ -12,7 +12,7 @@ export const vergessen: LearnPageContent = {
         translation: 'to forget',
         partOfSpeech: 'verb',
         themes: ['daily_life', 'irregular'],
-        level: ['B1'],
+        level: ['A2'],
       },
       {
         moduleType: 'wordMeaning',

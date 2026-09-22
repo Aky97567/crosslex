@@ -12,7 +12,7 @@ export const schreiben: LearnPageContent = {
         translation: 'to write',
         partOfSpeech: 'verb',
         themes: ['daily_life'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

@@ -12,7 +12,7 @@ export const treffen: LearnPageContent = {
         translation: 'to meet (with someone)',
         partOfSpeech: 'verb',
         themes: ['daily_life', 'timetable', 'reflexiv'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

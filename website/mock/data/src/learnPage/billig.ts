@@ -12,7 +12,7 @@ export const billig: LearnPageContent = {
         translation: 'cheap, inexpensive',
         partOfSpeech: 'adjective',
         themes: ['daily_life'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

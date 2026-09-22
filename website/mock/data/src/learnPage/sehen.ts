@@ -12,7 +12,7 @@ export const sehen: LearnPageContent = {
         translation: 'to see',
         partOfSpeech: 'verb',
         themes: ['daily_life', 'irregular'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

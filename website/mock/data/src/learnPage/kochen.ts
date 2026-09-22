@@ -12,7 +12,7 @@ export const kochen: LearnPageContent = {
         translation: 'to cook',
         partOfSpeech: 'verb',
         themes: ['daily_life', 'timetable'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

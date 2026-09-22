@@ -13,7 +13,7 @@ export const abgeben: LearnPageContent = {
         partOfSpeech: 'verb',
         trennbar: true,
         themes: ['bureaucracy', 'work', 'trennbar'],
-        level: ['B1'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

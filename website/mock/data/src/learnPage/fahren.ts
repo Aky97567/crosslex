@@ -12,7 +12,7 @@ export const fahren: LearnPageContent = {
         translation: 'to drive, go (by vehicle)',
         partOfSpeech: 'verb',
         themes: ['daily_life', 'transport', 'timetable', 'irregular'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

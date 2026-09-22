@@ -12,7 +12,7 @@ export const vermieten: LearnPageContent = {
         translation: 'to rent out',
         partOfSpeech: 'verb',
         themes: ['daily_life'],
-        level: ['B1'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

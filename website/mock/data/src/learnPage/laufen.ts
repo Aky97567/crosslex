@@ -12,7 +12,7 @@ export const laufen: LearnPageContent = {
         translation: 'to run, walk',
         partOfSpeech: 'verb',
         themes: ['daily_life', 'transport', 'timetable', 'irregular'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

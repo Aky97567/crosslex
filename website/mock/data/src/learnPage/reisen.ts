@@ -12,7 +12,7 @@ export const reisen: LearnPageContent = {
         translation: 'to travel',
         partOfSpeech: 'verb',
         themes: ['daily_life', 'transport', 'timetable'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

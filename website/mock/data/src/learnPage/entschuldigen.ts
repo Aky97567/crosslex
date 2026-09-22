@@ -12,7 +12,7 @@ export const entschuldigen: LearnPageContent = {
         translation: 'to apologize',
         partOfSpeech: 'verb',
         themes: ['daily_life', 'reflexiv'],
-        level: ['B1'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

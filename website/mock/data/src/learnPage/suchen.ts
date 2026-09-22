@@ -12,7 +12,7 @@ export const suchen: LearnPageContent = {
         translation: 'to search, look for',
         partOfSpeech: 'verb',
         themes: ['daily_life'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

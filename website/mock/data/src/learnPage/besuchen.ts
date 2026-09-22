@@ -12,7 +12,7 @@ export const besuchen: LearnPageContent = {
         translation: 'to visit',
         partOfSpeech: 'verb',
         themes: ['daily_life', 'timetable'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

@@ -12,7 +12,7 @@ export const reparieren: LearnPageContent = {
         translation: 'to repair',
         partOfSpeech: 'verb',
         themes: ['daily_life'],
-        level: ['B1'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

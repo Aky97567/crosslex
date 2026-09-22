@@ -12,7 +12,7 @@ export const sagen: LearnPageContent = {
         translation: 'to say',
         partOfSpeech: 'verb',
         themes: ['daily_life'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',

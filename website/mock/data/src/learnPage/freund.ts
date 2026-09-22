@@ -12,7 +12,7 @@ export const freund: LearnPageContent = {
         translation: 'friend (male); boyfriend',
         partOfSpeech: 'noun',
         themes: ['daily_life'],
-        level: ['A2'],
+        level: ['A1'],
       },
       {
         moduleType: 'wordMeaning',
