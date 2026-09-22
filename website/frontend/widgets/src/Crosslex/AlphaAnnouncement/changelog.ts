@@ -3,9 +3,23 @@ export type ChangelogEntry = {
   returningUser: { heading: string; body: string; changes: string[] };
 };
 
-export const CURRENT_BUILD_ID = 'alpha-2026-09-20-filter-clusters';
+export const CURRENT_BUILD_ID = 'alpha-2026-09-22-reflexiv-distractor-fix';
 
 export const CHANGELOG: Record<string, ChangelogEntry> = {
+  'alpha-2026-09-22-reflexiv-distractor-fix': {
+    newUser: {
+      heading: "You're testing Crosslex Alpha",
+      body: "Crosslex is a German vocabulary trainer — built for adults navigating real life in Germany. Choose your level, pick a session length and learning pace, and Crosslex will guide you through words and exercises. Your feedback shapes what we build next.",
+      cta: "Let's go →",
+    },
+    returningUser: {
+      heading: "You're back — something's new",
+      body: 'Fixed a shortcut in fill-in-the-blank exercises for reflexive verbs.',
+      changes: [
+        'Fix: "Fill in the Blank" exercises for reflexive verbs (sich freuen, sich beeilen, and others) no longer give away the answer — since the reflexive pronoun (sich/uns/mich/dich) was never blanked, the one multiple-choice option containing "sich" was always the correct one. Distractors are now drawn only from other reflexive verbs when the target word is reflexive.',
+      ],
+    },
+  },
   'alpha-2026-09-20-filter-clusters': {
     newUser: {
       heading: "You're testing Crosslex Alpha",

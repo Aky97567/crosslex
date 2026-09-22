@@ -203,6 +203,50 @@ describe('generateExerciseData', () => {
       expect(regularResult.data.contextSentenceIndices).toBeUndefined();
     });
 
+    test('draws distractors only from other reflexive verbs when the target is reflexive', () => {
+      // Reflexive verbs never blank their pronoun (e.g. "Wir müssen uns
+      // {{beeilen}}."), so an unblanked "sich"/"uns"/etc. already tells the
+      // learner the answer is reflexive. If a non-reflexive word slipped
+      // into the distractor pool, "has sich" would be a free, no-knowledge
+      // tell. Exactly 3 reflexive candidates exist here, so — like the
+      // "caps distractors at 3" test above — the outcome is deterministic
+      // regardless of shuffle order: all 3 must be picked, and the 2
+      // non-reflexive candidates must never appear.
+      const reflexive = (word: string): Fixture[string] => ({
+        content: { moduleType: 'content', modules: [wordIntro({ word, themes: ['reflexiv'] })] },
+      });
+      const plain = (word: string): Fixture[string] => ({
+        content: { moduleType: 'content', modules: [wordIntro({ word })] },
+      });
+      const wordData: Fixture = {
+        a: { content: { moduleType: 'content', modules: [wordIntro({ themes: ['reflexiv'] }), wordContext(['x {{y}} z'])] } },
+        b: reflexive('b'), c: reflexive('c'), d: reflexive('d'),
+        e: plain('e'), f: plain('f'),
+      };
+      const result = generateExerciseData('a', 'contextBlank', ['a', 'b', 'c', 'd', 'e', 'f'], wordData);
+      if (result?.cardType !== 'contextBlank') throw new Error('expected contextBlank');
+      const distractorTexts = result.data.options.filter((o) => !o.isCorrect).map((o) => o.text);
+      expect(distractorTexts.sort()).toEqual(['b', 'c', 'd']);
+    });
+
+    test('falls back to the general pool when fewer than 3 other reflexive verbs are available', () => {
+      // Only 1 reflexive candidate besides the target, so the reflexive-only
+      // pool can't fill 3 distractor slots — must fall back to the mixed
+      // pool. Exactly 3 other candidates exist in total, so — same
+      // determinism trick — all 3 must be picked regardless of shuffle
+      // order, proving the non-reflexive ones were included.
+      const wordData: Fixture = {
+        a: { content: { moduleType: 'content', modules: [wordIntro({ themes: ['reflexiv'] }), wordContext(['x {{y}} z'])] } },
+        b: { content: { moduleType: 'content', modules: [wordIntro({ word: 'b', themes: ['reflexiv'] })] } },
+        c: { content: { moduleType: 'content', modules: [wordIntro({ word: 'c' })] } },
+        d: { content: { moduleType: 'content', modules: [wordIntro({ word: 'd' })] } },
+      };
+      const result = generateExerciseData('a', 'contextBlank', ['a', 'b', 'c', 'd'], wordData);
+      if (result?.cardType !== 'contextBlank') throw new Error('expected contextBlank');
+      const distractorTexts = result.data.options.filter((o) => !o.isCorrect).map((o) => o.text);
+      expect(distractorTexts.sort()).toEqual(['b', 'c', 'd']);
+    });
+
     test('returns null when the word has no wordContext module', () => {
       const wordData: Fixture = { a: { content: { moduleType: 'content', modules: [wordIntro()] } } };
       expect(generateExerciseData('a', 'contextBlank', ['a'], wordData)).toBeNull();

@@ -162,8 +162,21 @@ export const generateExerciseData = (
     );
     if (fills.length === 0) return null;
 
-    const distractors = allWordKeys
-      .filter((k) => k !== wordKey)
+    // Reflexive verbs are never blanked out along with their pronoun (e.g.
+    // "Wir müssen uns {{beeilen}}."), so the unblanked pronoun already tells
+    // the learner the answer is reflexive. If a reflexive target's
+    // distractors were drawn from the general pool, "has sich" would often
+    // be a unique, no-knowledge-required tell among mixed options. Drawing
+    // distractors from other reflexive verbs instead removes that signal —
+    // every option is reflexive, so noticing that tells you nothing.
+    const otherKeys = allWordKeys.filter((k) => k !== wordKey);
+    const isReflexiveTarget = intro.themes?.includes('reflexiv') ?? false;
+    const reflexiveKeys = isReflexiveTarget
+      ? otherKeys.filter((k) => getWordIntroModule(wordData[k])?.themes?.includes('reflexiv'))
+      : [];
+    const distractorPool = reflexiveKeys.length >= 3 ? reflexiveKeys : otherKeys;
+
+    const distractors = distractorPool
       .sort(() => Math.random() - 0.5)
       .slice(0, 3)
       .map((k) => { const m = getWordIntroModule(wordData[k]); return m ? (m.displayName ?? m.word) : null; })
