@@ -8,7 +8,7 @@ import {
   ActiveLevel,
   useCrosslexStorage,
 } from '@whitelotus/front-features';
-import { A2Words, B1Words, B2Words, SampleContentKey, getThemesForPool, getWordPartOfSpeech } from '@whitelotus/mock-test';
+import { A1Words, A2Words, B1Words, B2Words, SampleContentKey, getThemesForPool, getWordPartOfSpeech } from '@whitelotus/mock-test';
 import { WordMetricsPanel } from './WordMetricsPanel';
 
 const PRIZE_COPY_ENABLED = true;
@@ -51,6 +51,7 @@ const VERB_GRAMMAR_THEMES: WordTheme[] = ['trennbar', 'irregular', 'reflexiv'];
 const ADJECTIVE_GRAMMAR_THEMES: WordTheme[] = ['irregular_comparison'];
 
 const LEVEL_WORD_POOLS: Record<ActiveLevel, SampleContentKey[]> = {
+  a1: A1Words,
   a2: A2Words,
   b1: B1Words,
   b2: B2Words,

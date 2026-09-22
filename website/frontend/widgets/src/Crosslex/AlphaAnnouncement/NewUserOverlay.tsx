@@ -36,6 +36,13 @@ const NewUserOverlay: React.FC<Props> = ({ entry, buildId, onDismiss }) => {
             </p>
             <div className="flex flex-col gap-10 mb-30">
               <SelectableCard
+                active={selectedLevel === 'a1'}
+                onClick={() => setSelectedLevel('a1')}
+              >
+                <span className="font-semibold block">A1</span>
+                <span className="text-sm opacity-70">Getting started</span>
+              </SelectableCard>
+              <SelectableCard
                 active={selectedLevel === 'a2'}
                 onClick={() => setSelectedLevel('a2')}
               >

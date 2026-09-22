@@ -1,5 +1,5 @@
 import { MutableRefObject, useCallback, useRef, useState } from 'react';
-import { sampleLearnPageContentList, A2Words, B1Words, B2Words, SampleContentKey, getWordThemes, getWordPartOfSpeech } from '@whitelotus/mock-test';
+import { sampleLearnPageContentList, A1Words, A2Words, B1Words, B2Words, SampleContentKey, getWordThemes, getWordPartOfSpeech } from '@whitelotus/mock-test';
 import {
   writeWordsSeen,
   updateWordStats,
@@ -49,6 +49,7 @@ type Params = {
 };
 
 const LEVEL_WORD_POOLS: Record<ActiveLevel, SampleContentKey[]> = {
+  a1: A1Words,
   a2: A2Words,
   b1: B1Words,
   b2: B2Words,
