@@ -311,6 +311,44 @@ import { konsequenz } from './konsequenz';
 import { absicht } from './absicht';
 import { beteiligung } from './beteiligung';
 import { zustellung } from './zustellung';
+import { bauen } from './bauen';
+import { biegen } from './biegen';
+import { buersten } from './buersten';
+import { denken } from './denken';
+import { fallen } from './fallen';
+import { feiern } from './feiern';
+import { fotografieren } from './fotografieren';
+import { hoffen } from './hoffen';
+import { haengen } from './haengen';
+import { joggen } from './joggen';
+import { kaemmen } from './kaemmen';
+import { lassen } from './lassen';
+import { leihen } from './leihen';
+import { lieben } from './lieben';
+import { meinen } from './meinen';
+import { nennen } from './nennen';
+import { packen } from './packen';
+import { passen } from './passen';
+import { passieren } from './passieren';
+import { probieren } from './probieren';
+import { rasieren } from './rasieren';
+import { reden } from './reden';
+import { reiten } from './reiten';
+import { rufen } from './rufen';
+import { schaffen } from './schaffen';
+import { schenken } from './schenken';
+import { schneiden } from './schneiden';
+import { schneien } from './schneien';
+import { singen } from './singen';
+import { sterben } from './sterben';
+import { strecken } from './strecken';
+import { surfen } from './surfen';
+import { teilen } from './teilen';
+import { traeumen } from './traeumen';
+import { verlieben } from './verlieben';
+import { verlieren } from './verlieren';
+import { wuenschen } from './wuenschen';
+import { aergern } from './aergern';
 
 export const sampleLearnPageContentList = {
   //! A1
@@ -632,6 +670,45 @@ export const sampleLearnPageContentList = {
   absicht,
   beteiligung,
   zustellung,
+  //! A2 — verb batch (Basic verb list, 2026-09-22)
+  bauen,
+  biegen,
+  buersten,
+  denken,
+  fallen,
+  feiern,
+  fotografieren,
+  hoffen,
+  haengen,
+  joggen,
+  kaemmen,
+  lassen,
+  leihen,
+  lieben,
+  meinen,
+  nennen,
+  packen,
+  passen,
+  passieren,
+  probieren,
+  rasieren,
+  reden,
+  reiten,
+  rufen,
+  schaffen,
+  schenken,
+  schneiden,
+  schneien,
+  singen,
+  sterben,
+  strecken,
+  surfen,
+  teilen,
+  traeumen,
+  verlieben,
+  verlieren,
+  wuenschen,
+  aergern,
 };
 
 export type SampleContentKey = keyof typeof sampleLearnPageContentList;
