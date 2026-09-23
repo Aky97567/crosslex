@@ -349,6 +349,44 @@ import { verlieben } from './verlieben';
 import { verlieren } from './verlieren';
 import { wuenschen } from './wuenschen';
 import { aergern } from './aergern';
+import { beten } from './beten';
+import { bieten } from './bieten';
+import { blicken } from './blicken';
+import { brechen } from './brechen';
+import { entscheiden } from './entscheiden';
+import { erkennen } from './erkennen';
+import { erkaelten } from './erkaelten';
+import { erleben } from './erleben';
+import { fangen } from './fangen';
+import { faulenzen } from './faulenzen';
+import { folgen } from './folgen';
+import { foenen } from './foenen';
+import { handeln } from './handeln';
+import { klettern } from './klettern';
+import { klingen } from './klingen';
+import { konzentrieren } from './konzentrieren';
+import { kuessen } from './kuessen';
+import { leiten } from './leiten';
+import { laecheln } from './laecheln';
+import { rennen } from './rennen';
+import { retten } from './retten';
+import { schaden } from './schaden';
+import { schauen } from './schauen';
+import { schlagen } from './schlagen';
+import { schminken } from './schminken';
+import { schreien } from './schreien';
+import { spinnen } from './spinnen';
+import { springen } from './springen';
+import { steigen } from './steigen';
+import { stimmen } from './stimmen';
+import { trennen } from './trennen';
+import { treten } from './treten';
+import { trocknen } from './trocknen';
+import { toeten } from './toeten';
+import { verloben } from './verloben';
+import { wachsen } from './wachsen';
+import { werfen } from './werfen';
+import { ziehen } from './ziehen';
 
 export const sampleLearnPageContentList = {
   //! A1
@@ -709,6 +747,45 @@ export const sampleLearnPageContentList = {
   verlieren,
   wuenschen,
   aergern,
+  //! B1 — verb batch (Basic verb list, 2026-09-23)
+  beten,
+  bieten,
+  blicken,
+  brechen,
+  entscheiden,
+  erkennen,
+  erkaelten,
+  erleben,
+  fangen,
+  faulenzen,
+  folgen,
+  foenen,
+  handeln,
+  klettern,
+  klingen,
+  konzentrieren,
+  kuessen,
+  leiten,
+  laecheln,
+  rennen,
+  retten,
+  schaden,
+  schauen,
+  schlagen,
+  schminken,
+  schreien,
+  spinnen,
+  springen,
+  steigen,
+  stimmen,
+  trennen,
+  treten,
+  trocknen,
+  toeten,
+  verloben,
+  wachsen,
+  werfen,
+  ziehen,
 };
 
 export type SampleContentKey = keyof typeof sampleLearnPageContentList;
