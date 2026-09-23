@@ -387,6 +387,60 @@ import { verloben } from './verloben';
 import { wachsen } from './wachsen';
 import { werfen } from './werfen';
 import { ziehen } from './ziehen';
+import { aussehen } from './aussehen';
+import { baden } from './baden';
+import { beginnen } from './beginnen';
+import { bekommen } from './bekommen';
+import { bitten } from './bitten';
+import { bleiben } from './bleiben';
+import { bringen } from './bringen';
+import { danken } from './danken';
+import { dauern } from './dauern';
+import { druecken } from './druecken';
+import { erklaeren } from './erklaeren';
+import { erlauben } from './erlauben';
+import { erzaehlen } from './erzaehlen';
+import { fehlen } from './fehlen';
+import { finden } from './finden';
+import { fliegen } from './fliegen';
+import { gehen } from './gehen';
+import { gehoeren } from './gehoeren';
+import { gewinnen } from './gewinnen';
+import { glauben } from './glauben';
+import { gratulieren } from './gratulieren';
+import { haben } from './haben';
+import { halten } from './halten';
+import { heiraten } from './heiraten';
+import { heissen } from './heissen';
+import { holen } from './holen';
+import { kennen } from './kennen';
+import { kommen } from './kommen';
+import { kosten } from './kosten';
+import { kriegen } from './kriegen';
+import { leben } from './leben';
+import { legen } from './legen';
+import { liegen } from './liegen';
+import { oeffnen } from './oeffnen';
+import { regnen } from './regnen';
+import { scheinen } from './scheinen';
+import { schicken } from './schicken';
+import { schliessen } from './schliessen';
+import { schmecken } from './schmecken';
+import { schwimmen } from './schwimmen';
+import { sein } from './sein';
+import { sitzen } from './sitzen';
+import { stehen } from './stehen';
+import { stellen } from './stellen';
+import { studieren } from './studieren';
+import { trinken } from './trinken';
+import { tun } from './tun';
+import { verdienen } from './verdienen';
+import { verstehen } from './verstehen';
+import { wandern } from './wandern';
+import { werden } from './werden';
+import { wiederholen } from './wiederholen';
+import { wissen } from './wissen';
+import { zahlen } from './zahlen';
 
 export const sampleLearnPageContentList = {
   //! A1
@@ -786,6 +840,61 @@ export const sampleLearnPageContentList = {
   wachsen,
   werfen,
   ziehen,
+  //! A1 — verb batch (Basic verb list, 2026-09-23)
+  aussehen,
+  baden,
+  beginnen,
+  bekommen,
+  bitten,
+  bleiben,
+  bringen,
+  danken,
+  dauern,
+  druecken,
+  erklaeren,
+  erlauben,
+  erzaehlen,
+  fehlen,
+  finden,
+  fliegen,
+  gehen,
+  gehoeren,
+  gewinnen,
+  glauben,
+  gratulieren,
+  haben,
+  halten,
+  heiraten,
+  heissen,
+  holen,
+  kennen,
+  kommen,
+  kosten,
+  kriegen,
+  leben,
+  legen,
+  liegen,
+  oeffnen,
+  regnen,
+  scheinen,
+  schicken,
+  schliessen,
+  schmecken,
+  schwimmen,
+  sein,
+  sitzen,
+  stehen,
+  stellen,
+  studieren,
+  trinken,
+  tun,
+  verdienen,
+  verstehen,
+  wandern,
+  werden,
+  wiederholen,
+  wissen,
+  zahlen,
 };
 
 export type SampleContentKey = keyof typeof sampleLearnPageContentList;
