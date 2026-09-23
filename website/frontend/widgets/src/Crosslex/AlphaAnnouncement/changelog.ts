@@ -3,9 +3,51 @@ export type ChangelogEntry = {
   returningUser: { heading: string; body: string; changes: string[] };
 };
 
-export const CURRENT_BUILD_ID = 'alpha-2026-09-22-a1-level-and-cefr-relabel';
+export const CURRENT_BUILD_ID = 'alpha-2026-09-23-a1-verb-batch';
 
 export const CHANGELOG: Record<string, ChangelogEntry> = {
+  'alpha-2026-09-23-a1-verb-batch': {
+    newUser: {
+      heading: "You're testing Crosslex Alpha",
+      body: "Crosslex is a German vocabulary trainer — built for adults navigating real life in Germany. Choose your level, pick a session length and learning pace, and Crosslex will guide you through words and exercises. Your feedback shapes what we build next.",
+      cta: "Let's go →",
+    },
+    returningUser: {
+      heading: "You're back — something's new",
+      body: '54 new A1 verbs added.',
+      changes: [
+        'New: 54 A1 verbs added — the most essential everyday verbs (haben, sein, gehen, kommen, finden, and more)',
+      ],
+    },
+  },
+  'alpha-2026-09-23-b1-verb-batch': {
+    newUser: {
+      heading: "You're testing Crosslex Alpha",
+      body: "Crosslex is a German vocabulary trainer — built for adults navigating real life in Germany. Choose your level, pick a session length and learning pace, and Crosslex will guide you through words and exercises. Your feedback shapes what we build next.",
+      cta: "Let's go →",
+    },
+    returningUser: {
+      heading: "You're back — something's new",
+      body: '38 new B1 verbs added.',
+      changes: [
+        'New: 38 B1 verbs added — everyday verbs like entscheiden, erkennen, klettern, retten, and reflexive verbs like sich erkälten, sich konzentrieren, sich trennen, sich verloben',
+      ],
+    },
+  },
+  'alpha-2026-09-22-a2-verb-batch': {
+    newUser: {
+      heading: "You're testing Crosslex Alpha",
+      body: "Crosslex is a German vocabulary trainer — built for adults navigating real life in Germany. Choose your level, pick a session length and learning pace, and Crosslex will guide you through words and exercises. Your feedback shapes what we build next.",
+      cta: "Let's go →",
+    },
+    returningUser: {
+      heading: "You're back — something's new",
+      body: '38 new A2 verbs added.',
+      changes: [
+        'New: 38 A2 verbs added — everyday verbs like bauen, denken, fallen, hoffen, lieben, schaffen, and reflexive verbs like sich rasieren, sich ärgern',
+      ],
+    },
+  },
   'alpha-2026-09-22-a1-level-and-cefr-relabel': {
     newUser: {
       heading: "You're testing Crosslex Alpha",

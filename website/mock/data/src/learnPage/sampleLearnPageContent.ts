@@ -311,6 +311,136 @@ import { konsequenz } from './konsequenz';
 import { absicht } from './absicht';
 import { beteiligung } from './beteiligung';
 import { zustellung } from './zustellung';
+import { bauen } from './bauen';
+import { biegen } from './biegen';
+import { buersten } from './buersten';
+import { denken } from './denken';
+import { fallen } from './fallen';
+import { feiern } from './feiern';
+import { fotografieren } from './fotografieren';
+import { hoffen } from './hoffen';
+import { haengen } from './haengen';
+import { joggen } from './joggen';
+import { kaemmen } from './kaemmen';
+import { lassen } from './lassen';
+import { leihen } from './leihen';
+import { lieben } from './lieben';
+import { meinen } from './meinen';
+import { nennen } from './nennen';
+import { packen } from './packen';
+import { passen } from './passen';
+import { passieren } from './passieren';
+import { probieren } from './probieren';
+import { rasieren } from './rasieren';
+import { reden } from './reden';
+import { reiten } from './reiten';
+import { rufen } from './rufen';
+import { schaffen } from './schaffen';
+import { schenken } from './schenken';
+import { schneiden } from './schneiden';
+import { schneien } from './schneien';
+import { singen } from './singen';
+import { sterben } from './sterben';
+import { strecken } from './strecken';
+import { surfen } from './surfen';
+import { teilen } from './teilen';
+import { traeumen } from './traeumen';
+import { verlieben } from './verlieben';
+import { verlieren } from './verlieren';
+import { wuenschen } from './wuenschen';
+import { aergern } from './aergern';
+import { beten } from './beten';
+import { bieten } from './bieten';
+import { blicken } from './blicken';
+import { brechen } from './brechen';
+import { entscheiden } from './entscheiden';
+import { erkennen } from './erkennen';
+import { erkaelten } from './erkaelten';
+import { erleben } from './erleben';
+import { fangen } from './fangen';
+import { faulenzen } from './faulenzen';
+import { folgen } from './folgen';
+import { foenen } from './foenen';
+import { handeln } from './handeln';
+import { klettern } from './klettern';
+import { klingen } from './klingen';
+import { konzentrieren } from './konzentrieren';
+import { kuessen } from './kuessen';
+import { leiten } from './leiten';
+import { laecheln } from './laecheln';
+import { rennen } from './rennen';
+import { retten } from './retten';
+import { schaden } from './schaden';
+import { schauen } from './schauen';
+import { schlagen } from './schlagen';
+import { schminken } from './schminken';
+import { schreien } from './schreien';
+import { spinnen } from './spinnen';
+import { springen } from './springen';
+import { steigen } from './steigen';
+import { stimmen } from './stimmen';
+import { trennen } from './trennen';
+import { treten } from './treten';
+import { trocknen } from './trocknen';
+import { toeten } from './toeten';
+import { verloben } from './verloben';
+import { wachsen } from './wachsen';
+import { werfen } from './werfen';
+import { ziehen } from './ziehen';
+import { aussehen } from './aussehen';
+import { baden } from './baden';
+import { beginnen } from './beginnen';
+import { bekommen } from './bekommen';
+import { bitten } from './bitten';
+import { bleiben } from './bleiben';
+import { bringen } from './bringen';
+import { danken } from './danken';
+import { dauern } from './dauern';
+import { druecken } from './druecken';
+import { erklaeren } from './erklaeren';
+import { erlauben } from './erlauben';
+import { erzaehlen } from './erzaehlen';
+import { fehlen } from './fehlen';
+import { finden } from './finden';
+import { fliegen } from './fliegen';
+import { gehen } from './gehen';
+import { gehoeren } from './gehoeren';
+import { gewinnen } from './gewinnen';
+import { glauben } from './glauben';
+import { gratulieren } from './gratulieren';
+import { haben } from './haben';
+import { halten } from './halten';
+import { heiraten } from './heiraten';
+import { heissen } from './heissen';
+import { holen } from './holen';
+import { kennen } from './kennen';
+import { kommen } from './kommen';
+import { kosten } from './kosten';
+import { kriegen } from './kriegen';
+import { leben } from './leben';
+import { legen } from './legen';
+import { liegen } from './liegen';
+import { oeffnen } from './oeffnen';
+import { regnen } from './regnen';
+import { scheinen } from './scheinen';
+import { schicken } from './schicken';
+import { schliessen } from './schliessen';
+import { schmecken } from './schmecken';
+import { schwimmen } from './schwimmen';
+import { sein } from './sein';
+import { sitzen } from './sitzen';
+import { stehen } from './stehen';
+import { stellen } from './stellen';
+import { studieren } from './studieren';
+import { trinken } from './trinken';
+import { tun } from './tun';
+import { verdienen } from './verdienen';
+import { verstehen } from './verstehen';
+import { wandern } from './wandern';
+import { werden } from './werden';
+import { wiederholen } from './wiederholen';
+import { wissen } from './wissen';
+import { zahlen } from './zahlen';
 
 export const sampleLearnPageContentList = {
   //! A1
@@ -632,6 +762,139 @@ export const sampleLearnPageContentList = {
   absicht,
   beteiligung,
   zustellung,
+  //! A2 — verb batch (Basic verb list, 2026-09-22)
+  bauen,
+  biegen,
+  buersten,
+  denken,
+  fallen,
+  feiern,
+  fotografieren,
+  hoffen,
+  haengen,
+  joggen,
+  kaemmen,
+  lassen,
+  leihen,
+  lieben,
+  meinen,
+  nennen,
+  packen,
+  passen,
+  passieren,
+  probieren,
+  rasieren,
+  reden,
+  reiten,
+  rufen,
+  schaffen,
+  schenken,
+  schneiden,
+  schneien,
+  singen,
+  sterben,
+  strecken,
+  surfen,
+  teilen,
+  traeumen,
+  verlieben,
+  verlieren,
+  wuenschen,
+  aergern,
+  //! B1 — verb batch (Basic verb list, 2026-09-23)
+  beten,
+  bieten,
+  blicken,
+  brechen,
+  entscheiden,
+  erkennen,
+  erkaelten,
+  erleben,
+  fangen,
+  faulenzen,
+  folgen,
+  foenen,
+  handeln,
+  klettern,
+  klingen,
+  konzentrieren,
+  kuessen,
+  leiten,
+  laecheln,
+  rennen,
+  retten,
+  schaden,
+  schauen,
+  schlagen,
+  schminken,
+  schreien,
+  spinnen,
+  springen,
+  steigen,
+  stimmen,
+  trennen,
+  treten,
+  trocknen,
+  toeten,
+  verloben,
+  wachsen,
+  werfen,
+  ziehen,
+  //! A1 — verb batch (Basic verb list, 2026-09-23)
+  aussehen,
+  baden,
+  beginnen,
+  bekommen,
+  bitten,
+  bleiben,
+  bringen,
+  danken,
+  dauern,
+  druecken,
+  erklaeren,
+  erlauben,
+  erzaehlen,
+  fehlen,
+  finden,
+  fliegen,
+  gehen,
+  gehoeren,
+  gewinnen,
+  glauben,
+  gratulieren,
+  haben,
+  halten,
+  heiraten,
+  heissen,
+  holen,
+  kennen,
+  kommen,
+  kosten,
+  kriegen,
+  leben,
+  legen,
+  liegen,
+  oeffnen,
+  regnen,
+  scheinen,
+  schicken,
+  schliessen,
+  schmecken,
+  schwimmen,
+  sein,
+  sitzen,
+  stehen,
+  stellen,
+  studieren,
+  trinken,
+  tun,
+  verdienen,
+  verstehen,
+  wandern,
+  werden,
+  wiederholen,
+  wissen,
+  zahlen,
 };
 
 export type SampleContentKey = keyof typeof sampleLearnPageContentList;
