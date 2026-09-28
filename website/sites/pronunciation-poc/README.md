@@ -9,11 +9,18 @@ dataset, and hear it pronounced via the ElevenLabs Text-to-Speech API.
 
 - Integrating the [ElevenLabs TTS API](https://elevenlabs.io/docs/api-reference/text-to-speech)
   (`eleven_multilingual_v2` model) to pronounce arbitrary German text.
-- **The API key never reaches the browser.** A Vite dev-server middleware
-  (`server/elevenLabsProxy.ts`) holds the key server-side and exposes a
-  same-origin `POST /api/tts` endpoint; the client only ever calls that,
-  never `api.elevenlabs.io` directly. Open the browser's network tab —
-  there's no key anywhere in a client-visible request.
+- **The API key stays server-side, in dev mode.** A Vite dev-server
+  middleware (`server/elevenLabsProxy.ts`) holds the key and exposes
+  same-origin `POST /api/tts` / `GET /api/voices`; the client only ever
+  calls those, never `api.elevenlabs.io` directly — every reference to
+  the key in this package is confined to that one file. Open the
+  browser's network tab and check for yourself. Two honest limits on
+  that claim: it only holds under `yarn dev` (the proxy is a
+  `configureServer` hook, which doesn't run in a static build — see
+  Architecture below); and ElevenLabs' own error responses are
+  forwarded to the client as-is, so if their API ever echoed a
+  submitted key back in an error body — not something I've tested for —
+  that's the one path unaccounted for.
 - Reusing real production code from the monorepo: the actual `WordIntro`
   UI component (`@whitelotus/front-entities`) and the actual 400+ word
   Crosslex dataset (`@whitelotus/mock-test`), not mocked/fake data.
