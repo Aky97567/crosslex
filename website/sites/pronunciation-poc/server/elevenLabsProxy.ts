@@ -5,7 +5,36 @@ import dotenv from 'dotenv';
 dotenv.config({ path: '.env.local' });
 
 const ELEVENLABS_API_KEY = process.env.ELEVENLABS_API_KEY;
-const ELEVENLABS_VOICE_ID = process.env.ELEVENLABS_VOICE_ID ?? '21m00Tcm4TlvDq8ikWAM'; // "Rachel" — a stable premade multilingual voice
+const CONFIGURED_VOICE_ID = process.env.ELEVENLABS_VOICE_ID;
+
+// Premade voice IDs aren't guaranteed to exist on every account (ElevenLabs'
+// shared voice library has changed over time), so rather than hardcode one
+// and risk a 404, we ask the account itself which voices it actually has
+// and use the first one — cached for the life of the dev server process.
+let discoveredVoiceId: string | null = null;
+
+const resolveVoiceId = async (): Promise<string> => {
+  if (CONFIGURED_VOICE_ID) return CONFIGURED_VOICE_ID;
+  if (discoveredVoiceId) return discoveredVoiceId;
+
+  const res = await fetch('https://api.elevenlabs.io/v1/voices', {
+    headers: { 'xi-api-key': ELEVENLABS_API_KEY! },
+  });
+  if (!res.ok) {
+    throw new Error(
+      `Could not list ElevenLabs voices for this API key (${res.status}). Set ELEVENLABS_VOICE_ID in .env.local to a voice ID from your account instead.`,
+    );
+  }
+  const data = (await res.json()) as { voices?: { voice_id: string }[] };
+  const firstVoice = data.voices?.[0]?.voice_id;
+  if (!firstVoice) {
+    throw new Error(
+      'This ElevenLabs account has no voices available. Add one at https://elevenlabs.io/app/voice-library, or set ELEVENLABS_VOICE_ID in .env.local.',
+    );
+  }
+  discoveredVoiceId = firstVoice;
+  return firstVoice;
+};
 
 const readJsonBody = (req: IncomingMessage): Promise<unknown> =>
   new Promise((resolve, reject) => {
@@ -69,8 +98,9 @@ export const elevenLabsProxyPlugin = (): Plugin => ({
       }
 
       try {
+        const voiceId = await resolveVoiceId();
         const elevenLabsRes = await fetch(
-          `https://api.elevenlabs.io/v1/text-to-speech/${ELEVENLABS_VOICE_ID}`,
+          `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`,
           {
             method: 'POST',
             headers: {
