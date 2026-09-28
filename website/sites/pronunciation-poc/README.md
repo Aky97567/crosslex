@@ -3,6 +3,8 @@
 A small proof of concept: pick a German word from Crosslex's real word
 dataset, and hear it pronounced via the ElevenLabs Text-to-Speech API.
 
+![Word Pronunciation POC — word/voice/speed pickers and a pronounce button](./screenshot.png)
+
 ## What this demonstrates
 
 - Integrating the [ElevenLabs TTS API](https://elevenlabs.io/docs/api-reference/text-to-speech)
