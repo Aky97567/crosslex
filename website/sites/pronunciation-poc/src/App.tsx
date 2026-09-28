@@ -20,6 +20,9 @@ const wordKeys = (Object.keys(sampleLearnPageContentList) as WordKey[]).sort((a,
 
 type PlaybackState = 'idle' | 'loading' | 'error';
 
+const SPEED_OPTIONS = [0.5, 0.75, 1] as const;
+type Speed = (typeof SPEED_OPTIONS)[number];
+
 type VoicesState =
   | { status: 'loading' }
   | { status: 'ready'; voices: Voice[] }
@@ -31,6 +34,7 @@ const App: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [voicesState, setVoicesState] = useState<VoicesState>({ status: 'loading' });
   const [selectedVoiceId, setSelectedVoiceId] = useState<string | undefined>(undefined);
+  const [speed, setSpeed] = useState<Speed>(1);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
@@ -62,6 +66,11 @@ const App: React.FC = () => {
     setSelectedVoiceId(e.target.value);
   };
 
+  const handleSpeedChange = (next: Speed) => {
+    setSpeed(next);
+    if (audioRef.current) audioRef.current.playbackRate = next;
+  };
+
   const handlePronounce = async () => {
     setPlayback('loading');
     setErrorMessage(null);
@@ -69,6 +78,7 @@ const App: React.FC = () => {
       const audioUrl = await fetchPronunciation(textToSpeak, selectedVoiceId);
       if (audioRef.current) {
         audioRef.current.src = audioUrl;
+        audioRef.current.playbackRate = speed;
         await audioRef.current.play();
       }
       setPlayback('idle');
@@ -151,6 +161,22 @@ const App: React.FC = () => {
         </div>
 
         <div>
+          <label className="text-text font-semibold block mb-10">Playback speed</label>
+          <div className="flex gap-10 mb-20">
+            {SPEED_OPTIONS.map((option) => (
+              <button
+                key={option}
+                onClick={() => handleSpeedChange(option)}
+                aria-pressed={speed === option}
+                className={`border-2 border-brand rounded-md px-20 py-10 transition-colors duration-300 ${
+                  speed === option ? 'bg-brand text-text-cta' : 'text-text'
+                }`}
+              >
+                {option === 1 ? 'Normal' : `${option}x`}
+              </button>
+            ))}
+          </div>
+
           <button
             onClick={handlePronounce}
             disabled={playback === 'loading'}
