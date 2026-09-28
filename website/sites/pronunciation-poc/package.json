@@ -1,0 +1,32 @@
+{
+  "name": "@whitelotus/pronunciation-poc",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@whitelotus/common-crosslex-view": "*",
+    "@whitelotus/config-tailwindcss": "*",
+    "@whitelotus/front-entities": "*",
+    "@whitelotus/front-shared": "*",
+    "@whitelotus/mock-test": "*",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/react": "18.3.5",
+    "@types/react-dom": "18.3.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "autoprefixer": "10.4.15",
+    "dotenv": "^16.4.5",
+    "postcss": "^8.4.39",
+    "tailwindcss": "3.4.1",
+    "typescript": "5.5.4",
+    "vite": "^5.4.0"
+  }
+}

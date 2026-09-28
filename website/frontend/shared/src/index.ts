@@ -15,6 +15,7 @@ export {
   CoachMark,
   Heading,
   SelectableCard,
+  SteppedSlider,
 } from './UI';
 
 export { expandHex, adjustColorShade, hexToRgba } from './utils';
