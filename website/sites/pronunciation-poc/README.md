@@ -35,6 +35,13 @@ pronounce button.
 Get an API key at <https://elevenlabs.io/app/settings/api-keys> (free tier
 works fine for this demo).
 
+**If your key is scoped to Text-to-Speech only** (the more security-conscious
+choice, and what this POC's `.gitignore`d key should probably be): voice
+auto-discovery (below) needs the Voices-read scope, so it will 401 for a
+restricted key. Set `ELEVENLABS_VOICE_ID` in `.env.local` instead — copy a
+voice ID from the **Voices** tab in the ElevenLabs dashboard (each voice's
+menu has a "Copy Voice ID" option) — and restart `yarn dev`.
+
 ## Architecture
 
 ```
