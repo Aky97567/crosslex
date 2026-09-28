@@ -24,6 +24,7 @@
     "dev:api-db": "cd backend/api/crosslex && yarn run db",
     "dev:crosslex-next": "cd sites/crosslex-next && yarn run dev",
     "dev:crosslex-react": "cd sites/crosslex-react && yarn run dev",
+    "dev:pronunciation-poc": "cd sites/pronunciation-poc && yarn run dev",
     "dev:storybook-next": "cd sites/storybook-next && yarn run start",
     "dev:storybook-react": "cd sites/storybook-react && yarn run start",
     "test": "yarn workspaces foreach --worktree --parallel run test",
