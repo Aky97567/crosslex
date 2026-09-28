@@ -1,0 +1,116 @@
+import React, { useMemo, useRef, useState } from 'react';
+import { WordIntro } from '@whitelotus/front-entities';
+import { sampleLearnPageContentList } from '@whitelotus/mock-test';
+import type { WordIntroModule } from '@whitelotus/common-crosslex-view';
+import { fetchPronunciation, TtsError } from './ttsClient';
+
+type WordKey = keyof typeof sampleLearnPageContentList;
+
+const getWordIntro = (key: WordKey): WordIntroModule => {
+  const module = sampleLearnPageContentList[key].content.modules.find(
+    (m): m is WordIntroModule => m.moduleType === 'wordIntro',
+  );
+  if (!module) throw new Error(`No wordIntro module found for '${key}'`);
+  return module;
+};
+
+const wordKeys = (Object.keys(sampleLearnPageContentList) as WordKey[]).sort((a, b) =>
+  getWordIntro(a).word.localeCompare(getWordIntro(b).word, 'de'),
+);
+
+type PlaybackState = 'idle' | 'loading' | 'error';
+
+const App: React.FC = () => {
+  const [selectedKey, setSelectedKey] = useState<WordKey>(wordKeys[0]);
+  const [playback, setPlayback] = useState<PlaybackState>('idle');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const wordIntro = useMemo(() => getWordIntro(selectedKey), [selectedKey]);
+  const textToSpeak = wordIntro.article ? `${wordIntro.article} ${wordIntro.word}` : wordIntro.word;
+
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedKey(e.target.value as WordKey);
+    setPlayback('idle');
+    setErrorMessage(null);
+  };
+
+  const handlePronounce = async () => {
+    setPlayback('loading');
+    setErrorMessage(null);
+    try {
+      const audioUrl = await fetchPronunciation(textToSpeak);
+      if (audioRef.current) {
+        audioRef.current.src = audioUrl;
+        await audioRef.current.play();
+      }
+      setPlayback('idle');
+    } catch (err) {
+      setPlayback('error');
+      setErrorMessage(err instanceof TtsError ? err.message : 'Something went wrong.');
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-bg-l1 text-text px-20 py-40">
+      <div className="max-w-2xl mx-auto flex flex-col gap-30">
+        <div>
+          <h1 className="text-lg font-semibold mb-10">Word Pronunciation POC</h1>
+          <p className="text-sm opacity-70">
+            Crosslex word data + ElevenLabs text-to-speech. Pick a word, then press play to hear it
+            pronounced.
+          </p>
+        </div>
+
+        <div>
+          <label htmlFor="word-select" className="text-text font-semibold block mb-10">
+            Word ({wordKeys.length} available)
+          </label>
+          <select
+            id="word-select"
+            value={selectedKey}
+            onChange={handleSelectChange}
+            className="bg-bg-l2 border-2 border-brand rounded-md px-20 py-10 text-text w-full"
+          >
+            {wordKeys.map((key) => {
+              const intro = getWordIntro(key);
+              const label = intro.article ? `${intro.article} ${intro.word}` : intro.word;
+              return (
+                <option key={key} value={key}>
+                  {label} — {intro.translation}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+
+        <div className="bg-bg-l2 rounded-md p-20">
+          <WordIntro
+            word={wordIntro.word}
+            displayName={wordIntro.displayName}
+            article={wordIntro.article}
+            translation={wordIntro.translation}
+            partOfSpeech={wordIntro.partOfSpeech}
+            trennbar={wordIntro.trennbar}
+          />
+        </div>
+
+        <div>
+          <button
+            onClick={handlePronounce}
+            disabled={playback === 'loading'}
+            className="bg-brand border-2 border-brand rounded-md text-text-cta px-40 py-10 transition-colors duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
+          >
+            {playback === 'loading' ? 'Generating…' : `🔊 Pronounce "${textToSpeak}"`}
+          </button>
+          {playback === 'error' && errorMessage && (
+            <p className="text-sm mt-10 text-red-500">{errorMessage}</p>
+          )}
+          <audio ref={audioRef} className="hidden" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default App;
