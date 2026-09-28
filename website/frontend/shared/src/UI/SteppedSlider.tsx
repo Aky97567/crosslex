@@ -11,22 +11,25 @@ type SteppedSliderProps<T extends string | number> = {
   className?: string;
 };
 
-// Dot diameter (w-60/h-60 = 32px). Track sits at top-40 (16px, exactly half
-// the dot height) then shifts up by half its own height via -translate-y-1/2
-// — this lands the track's vertical center exactly on the dots' center
-// without needing an arbitrary pixel value.
+// Every dot sits inside a fixed-height h-50 (24px) box, centered via flex —
+// regardless of whether it renders as the small unselected dot or the
+// bigger selected ring, its visual center always lands at the same 12px
+// (top-30) from the row's top. The track line is centered on that same
+// point via -translate-y-1/2, so nothing needs an arbitrary pixel value.
+//
+// This project's Tailwind config replaces (not extends) the default
+// spacing/borderRadius scales, so there's no `rounded-full` — `rounded-lg`
+// (24px) is used instead, which still renders as a full circle since it
+// exceeds half the width/height of every shape here. Every class below
+// was checked against the actual compiled CSS before use.
 
 /**
- * A horizontal track with one selectable dot per option, each labelled
- * with its value — for a small, ordered set of discrete choices (playback
- * speed, difficulty level) where a full continuous range input would
- * misrepresent the data (there's no value between the marks) and a plain
- * button row doesn't show that the options are ordered.
- *
- * Note: this project's Tailwind config replaces (not extends) the default
- * spacing/borderRadius scales — there is no `rounded-full` or arbitrary
- * `h-2`/`w-16`-style class here. `rounded-lg` (24px) is used for "circle"
- * shapes since it exceeds half the width/height of every element below.
+ * A horizontal track with one marker per option and a label under each —
+ * the selected option renders as a hollow ring with a solid dot centered
+ * inside it, unselected options as a small plain dot. For a small ordered
+ * set of discrete choices (playback speed, difficulty) where a continuous
+ * range input would misrepresent the data (there's no value between the
+ * marks).
  */
 const SteppedSlider = <T extends string | number>({
   options,
@@ -35,20 +38,12 @@ const SteppedSlider = <T extends string | number>({
   ariaLabel,
   className = '',
 }: SteppedSliderProps<T>) => {
-  const selectedIndex = options.findIndex((opt) => opt.value === value);
-  const lastIndex = options.length - 1;
-  const filledPercent = lastIndex === 0 ? 100 : (selectedIndex / lastIndex) * 100;
-
   return (
     <div className={`relative ${className}`} role="group" aria-label={ariaLabel}>
-      <div className="absolute left-0 right-0 top-40 -translate-y-1/2 h-10 rounded-lg bg-bg-l2" />
-      <div
-        className="absolute left-0 top-40 -translate-y-1/2 h-10 rounded-lg bg-brand transition-all duration-200"
-        style={{ width: `${filledPercent}%` }}
-      />
+      <div className="absolute left-0 right-0 top-30 -translate-y-1/2 h-5 rounded-lg bg-bg-l2" />
       <div className="relative flex justify-between">
-        {options.map((opt, index) => {
-          const active = index === selectedIndex;
+        {options.map((opt) => {
+          const active = opt.value === value;
           return (
             <button
               key={opt.value}
@@ -58,14 +53,15 @@ const SteppedSlider = <T extends string | number>({
               aria-label={opt.label}
               className="group flex flex-col items-center gap-10 cursor-pointer"
             >
-              <span
-                data-active={String(active)}
-                className={`block w-60 h-60 rounded-lg border-2 transition-colors duration-200 ${
-                  active
-                    ? 'bg-brand border-brand ring-4 ring-brand ring-offset-2 ring-offset-[rgb(var(--color-bg-l1))]'
-                    : 'bg-bg-l1 border-brand group-hover:bg-brand-2'
-                }`}
-              />
+              <span className="h-50 flex items-center justify-center">
+                {active ? (
+                  <span className="w-50 h-50 rounded-lg border-2 border-brand bg-bg-l1 flex items-center justify-center">
+                    <span className="w-30 h-30 rounded-lg bg-brand" />
+                  </span>
+                ) : (
+                  <span className="block w-20 h-20 rounded-lg bg-brand opacity-60 transition-opacity duration-200 group-hover:opacity-100" />
+                )}
+              </span>
               <span className={`text-sm ${active ? 'text-text font-semibold' : 'text-text opacity-70'}`}>
                 {opt.label}
               </span>
