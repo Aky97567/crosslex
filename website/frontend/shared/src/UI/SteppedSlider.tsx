@@ -40,7 +40,7 @@ const SteppedSlider = <T extends string | number>({
 }: SteppedSliderProps<T>) => {
   return (
     <div className={`relative ${className}`} role="group" aria-label={ariaLabel}>
-      <div className="absolute left-0 right-0 top-30 -translate-y-1/2 h-5 rounded-lg bg-bg-l2" />
+      <div className="absolute left-0 right-0 top-30 -translate-y-1/2 h-5 rounded-lg bg-brand opacity-60" />
       <div className="relative flex justify-between">
         {options.map((opt) => {
           const active = opt.value === value;
@@ -53,7 +53,11 @@ const SteppedSlider = <T extends string | number>({
               aria-label={opt.label}
               className="group flex flex-col items-center gap-10 cursor-pointer"
             >
-              <span className="h-50 flex items-center justify-center">
+              {/* Fixed w-50/h-50 regardless of active state — the dot/ring
+                  rendered inside never changes this wrapper's own size, so
+                  toggling selection can't shift any button's width (and
+                  therefore can't shift its neighbors via justify-between). */}
+              <span className="w-50 h-50 flex items-center justify-center">
                 {active ? (
                   <span className="w-50 h-50 rounded-lg border-2 border-brand bg-bg-l1 flex items-center justify-center">
                     <span className="w-30 h-30 rounded-lg bg-brand" />
@@ -62,9 +66,10 @@ const SteppedSlider = <T extends string | number>({
                   <span className="block w-20 h-20 rounded-lg bg-brand opacity-60 transition-opacity duration-200 group-hover:opacity-100" />
                 )}
               </span>
-              <span className={`text-sm ${active ? 'text-text font-semibold' : 'text-text opacity-70'}`}>
-                {opt.label}
-              </span>
+              {/* Opacity only, never font-weight — a weight change alters
+                  the label's own text width (bold is wider), which is the
+                  other way this control shifts its neighbors on toggle. */}
+              <span className={`text-sm text-text ${active ? '' : 'opacity-70'}`}>{opt.label}</span>
             </button>
           );
         })}
