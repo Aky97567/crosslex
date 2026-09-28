@@ -11,4 +11,5 @@ export { Card } from './Card';
 export { Checkbox } from './Checkbox';
 export { CoachMark } from './CoachMark';
 export { SelectableCard } from './SelectableCard';
+export { SteppedSlider } from './SteppedSlider';
 export { BodyText, CtaText, Heading } from './Text';

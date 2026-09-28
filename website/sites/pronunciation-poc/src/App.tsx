@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { WordIntro } from '@whitelotus/front-entities';
+import { SteppedSlider } from '@whitelotus/front-shared';
 import { sampleLearnPageContentList } from '@whitelotus/mock-test';
 import type { WordIntroModule } from '@whitelotus/common-crosslex-view';
 import { fetchPronunciation, fetchVoices, TtsError, type Voice } from './ttsClient';
@@ -20,8 +21,12 @@ const wordKeys = (Object.keys(sampleLearnPageContentList) as WordKey[]).sort((a,
 
 type PlaybackState = 'idle' | 'loading' | 'error';
 
-const SPEED_OPTIONS = [0.5, 0.75, 1] as const;
-type Speed = (typeof SPEED_OPTIONS)[number];
+const SPEED_OPTIONS = [
+  { value: 0.5, label: '0.5x' },
+  { value: 0.75, label: '0.75x' },
+  { value: 1, label: 'Normal' },
+] as const;
+type Speed = (typeof SPEED_OPTIONS)[number]['value'];
 
 type VoicesState =
   | { status: 'loading' }
@@ -162,19 +167,13 @@ const App: React.FC = () => {
 
         <div>
           <label className="text-text font-semibold block mb-10">Playback speed</label>
-          <div className="flex gap-10 mb-20">
-            {SPEED_OPTIONS.map((option) => (
-              <button
-                key={option}
-                onClick={() => handleSpeedChange(option)}
-                aria-pressed={speed === option}
-                className={`border-2 border-brand rounded-md px-20 py-10 transition-colors duration-300 ${
-                  speed === option ? 'bg-brand text-text-cta' : 'text-text'
-                }`}
-              >
-                {option === 1 ? 'Normal' : `${option}x`}
-              </button>
-            ))}
+          <div className="max-w-xs mb-10">
+            <SteppedSlider
+              options={[...SPEED_OPTIONS]}
+              value={speed}
+              onChange={handleSpeedChange}
+              ariaLabel="Playback speed"
+            />
           </div>
 
           <button
