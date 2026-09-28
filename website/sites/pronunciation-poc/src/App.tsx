@@ -1,8 +1,8 @@
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { WordIntro } from '@whitelotus/front-entities';
 import { sampleLearnPageContentList } from '@whitelotus/mock-test';
 import type { WordIntroModule } from '@whitelotus/common-crosslex-view';
-import { fetchPronunciation, TtsError } from './ttsClient';
+import { fetchPronunciation, fetchVoices, TtsError, type Voice } from './ttsClient';
 
 type WordKey = keyof typeof sampleLearnPageContentList;
 
@@ -20,11 +20,34 @@ const wordKeys = (Object.keys(sampleLearnPageContentList) as WordKey[]).sort((a,
 
 type PlaybackState = 'idle' | 'loading' | 'error';
 
+type VoicesState =
+  | { status: 'loading' }
+  | { status: 'ready'; voices: Voice[] }
+  | { status: 'unavailable'; message: string };
+
 const App: React.FC = () => {
   const [selectedKey, setSelectedKey] = useState<WordKey>(wordKeys[0]);
   const [playback, setPlayback] = useState<PlaybackState>('idle');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [voicesState, setVoicesState] = useState<VoicesState>({ status: 'loading' });
+  const [selectedVoiceId, setSelectedVoiceId] = useState<string | undefined>(undefined);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    fetchVoices()
+      .then((voices) => {
+        setVoicesState({ status: 'ready', voices });
+        setSelectedVoiceId((current) => current ?? voices[0]?.voice_id);
+      })
+      .catch((err) => {
+        // Not fatal — /api/tts falls back to ELEVENLABS_VOICE_ID or its own
+        // discovery when no voiceId is sent, so pronunciation still works.
+        setVoicesState({
+          status: 'unavailable',
+          message: err instanceof TtsError ? err.message : 'Could not load voice list.',
+        });
+      });
+  }, []);
 
   const wordIntro = useMemo(() => getWordIntro(selectedKey), [selectedKey]);
   const textToSpeak = wordIntro.article ? `${wordIntro.article} ${wordIntro.word}` : wordIntro.word;
@@ -35,11 +58,15 @@ const App: React.FC = () => {
     setErrorMessage(null);
   };
 
+  const handleVoiceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedVoiceId(e.target.value);
+  };
+
   const handlePronounce = async () => {
     setPlayback('loading');
     setErrorMessage(null);
     try {
-      const audioUrl = await fetchPronunciation(textToSpeak);
+      const audioUrl = await fetchPronunciation(textToSpeak, selectedVoiceId);
       if (audioRef.current) {
         audioRef.current.src = audioUrl;
         await audioRef.current.play();
@@ -82,6 +109,34 @@ const App: React.FC = () => {
               );
             })}
           </select>
+        </div>
+
+        <div>
+          <label htmlFor="voice-select" className="text-text font-semibold block mb-10">
+            Voice
+          </label>
+          {voicesState.status === 'loading' && (
+            <p className="text-sm opacity-70">Loading voices…</p>
+          )}
+          {voicesState.status === 'ready' && (
+            <select
+              id="voice-select"
+              value={selectedVoiceId}
+              onChange={handleVoiceChange}
+              className="bg-bg-l2 border-2 border-brand rounded-md px-20 py-10 text-text w-full"
+            >
+              {voicesState.voices.map((voice) => (
+                <option key={voice.voice_id} value={voice.voice_id}>
+                  {voice.name}
+                </option>
+              ))}
+            </select>
+          )}
+          {voicesState.status === 'unavailable' && (
+            <p className="text-sm opacity-70">
+              Voice list unavailable ({voicesState.message}) — using the server's default voice.
+            </p>
+          )}
         </div>
 
         <div className="bg-bg-l2 rounded-md p-20">
