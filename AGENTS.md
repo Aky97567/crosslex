@@ -51,6 +51,8 @@ To run a single test file: `yarn test <path-to-file>` from within the relevant p
 
 **Reference branches**: agent-built code kept only for diffing against (never merged) uses no prefix and a descriptive name, and is noted under Active plans below.
 
+**"Ship it"**: shorthand for the full branch-to-main sequence — push the branch, open a PR, watch CI to green, merge, delete the remote branch, then `git checkout main && git pull origin main` and delete the local branch. Only run this on explicit instruction ("ship it" / "merge this" / equivalent) — never assume approval to merge just because a task is done.
+
 ## Architecture
 
 The monorepo follows a layered frontend architecture (Feature-Sliced Design):
