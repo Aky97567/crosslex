@@ -50,6 +50,115 @@ const COLORS = {
   },
 };
 
+// Theme tokens for the palette system: CSS custom properties, one block per
+// `[data-palette]` value plus a `:root` default, injected as real base CSS
+// via the plugin below (see `plugins` at the bottom of this file) — NOT a
+// separate stylesheet a consuming package has to remember to import.
+//
+// Previously these lived only in `sites/crosslex-next/styles/globals.css`,
+// and every *other* package had to know to `@import` that file across a
+// relative path into an unrelated sibling app. Nothing enforced it: a
+// package that skipped the import still typechecked and built cleanly,
+// with every `bg-brand`/`text-text`/etc. class silently resolving to an
+// undefined CSS variable (no color at all) instead of erroring. Injecting
+// these via the shared preset's own plugin means every site gets them
+// automatically just by extending `presets: [sharedConfig]` — the same
+// thing every site already needs for its regular utility classes to
+// render at all, so there's no separate step left to forget.
+//
+// `sites/crosslex-next/styles/globals.css` still has its own copy of this
+// data — crosslex-next imports it directly and has no Tailwind build of
+// its own to extend with this preset, so it was left untouched rather
+// than risk changing a legacy app's CSS pipeline blind. That's a known,
+// intentional duplication, not a drift risk anyone's likely to hit by
+// accident (both copies define the same fixed set of palettes).
+const THEME_PALETTES = {
+  ':root': {
+    '--color-brand': '#007bff',
+    '--color-brand-2': '#6699cc',
+    '--color-brand-3': '#336699',
+    '--color-text': '#000',
+    '--color-cta-text': '#fff',
+    '--color-bg-l1': '255, 255, 255',
+    '--color-bg-l2': '#fff',
+  },
+  "[data-palette='sober']": {
+    '--color-brand': '#007bff',
+    '--color-brand-2': '#6699cc',
+    '--color-brand-3': '#336699',
+    '--color-text': '#000',
+    '--color-cta-text': '#fff',
+    '--color-bg-l1': '255, 255, 255',
+    '--color-bg-l2': '#fff',
+  },
+  "[data-palette='dark']": {
+    '--color-brand': '#b9c4ff',
+    '--color-brand-2': '#6574cd',
+    '--color-brand-3': '#2d3748',
+    '--color-text': '#fff',
+    '--color-cta-text': '#1f1b54',
+    '--color-bg-l1': '31, 27, 84',
+    '--color-bg-l2': '#2b284e',
+  },
+  "[data-palette='light']": {
+    '--color-brand': '#f6ad55',
+    '--color-brand-2': '#ffd7aa',
+    '--color-brand-3': '#e69945',
+    '--color-text': '#000',
+    '--color-cta-text': '#fff',
+    '--color-bg-l1': '255, 255, 255',
+    '--color-bg-l2': '#fff',
+  },
+  "[data-palette='modern']": {
+    '--color-brand': '#2196f3',
+    '--color-brand-2': '#64b5f6',
+    '--color-brand-3': '#0d47a1',
+  },
+  "[data-palette='coolBlue']": {
+    '--color-brand': '#0099cc',
+    '--color-brand-2': '#66cccc',
+    '--color-brand-3': '#99ffff',
+  },
+  "[data-palette='oceanBlue']": {
+    '--color-brand': '#006699',
+    '--color-brand-2': '#3399cc',
+    '--color-brand-3': '#66ccff',
+  },
+  "[data-palette='skyBlue']": {
+    '--color-brand': '#66b2ff',
+    '--color-brand-2': '#99ccff',
+    '--color-brand-3': '#ccffff',
+  },
+  "[data-palette='pink']": {
+    '--color-brand': '#e91e8c',
+    '--color-brand-2': '#f8a8cc',
+    '--color-brand-3': '#b5125e',
+  },
+  "[data-palette='iris']": {
+    '--color-brand': '#5c4fc3',
+    '--color-brand-2': '#9b8ee8',
+    '--color-brand-3': '#3d30a0',
+  },
+  "[data-palette='classic']": {
+    '--color-brand': '#000',
+    '--color-brand-2': '#333',
+    '--color-brand-3': '#555',
+    '--color-text': '#000',
+    '--color-cta-text': '#fff',
+    '--color-bg-l1': '255, 255, 255',
+    '--color-bg-l2': '#fff',
+  },
+  "[data-palette='overlord']": {
+    '--color-brand': '#fff',
+    '--color-brand-2': '#888',
+    '--color-brand-3': '#444',
+    '--color-text': '#fff',
+    '--color-cta-text': '#000',
+    '--color-bg-l1': '0, 0, 0',
+    '--color-bg-l2': '#111',
+  },
+};
+
 module.exports = {
   theme: {
     screens: {
@@ -279,7 +388,8 @@ module.exports = {
     },
   },
   plugins: [
-    function ({ addUtilities }) {
+    function ({ addBase, addUtilities }) {
+      addBase(THEME_PALETTES);
       addUtilities({
         '.backface-hidden': {
           'backface-visibility': 'hidden',
@@ -289,6 +399,15 @@ module.exports = {
         },
         '.rotate-into': {
           transform: 'rotateY(180deg)',
+        },
+        // Moved here from crosslex-next/styles/globals.css for the same
+        // reason as THEME_PALETTES above — frontend/features's
+        // TabbedCarousel uses this class but isn't specific to
+        // crosslex-next, so any site rendering it needs this defined too.
+        '.scrollbar-hidden': {
+          '&::-webkit-scrollbar': {
+            display: 'none',
+          },
         },
       });
     },
