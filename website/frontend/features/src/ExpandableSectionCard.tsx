@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ContentModule } from '@whitelotus/common-crosslex-view';
-import { renderContentModule } from './ContentModules';
+import { renderContentModule, sortModulesByDisplayOrder } from './ContentModules';
 import { useCrosslexStorage } from './storage';
 import { CtaText } from '@whitelotus/front-shared';
 
@@ -58,7 +58,7 @@ const ExpandableSectionCard: React.FC<Props> = ({
     setShowContent(false);
   };
 
-  const sections = content.modules
+  const sections = sortModulesByDisplayOrder(content.modules)
     .filter(m => m.moduleType !== 'wordIntro')
     .filter(m => !(m.moduleType === 'wordShowcase' && !m.wordShowcaseUrl))
     .filter(m => !(m.moduleType === 'similarWords' && m.similarWords.length === 0))

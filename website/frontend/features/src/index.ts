@@ -1,7 +1,7 @@
 export { TabbedCarousel } from './Carousel';
 export { ExpandableSectionCard } from './ExpandableSectionCard';
 
-export { renderContentModule } from './ContentModules';
+export { renderContentModule, sortModulesByDisplayOrder } from './ContentModules';
 
 export { PaletteSwitcher, PALETTES, getInitialPalette } from './PaletteSwitcher';
 export type { Palette } from './PaletteSwitcher';
