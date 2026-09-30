@@ -20,6 +20,7 @@ to be worked regardless of priority.
 
 ## Onboarding
 - `[P2]` **New user handholding overview** — an explanatory walkthrough for first-time users that introduces the session loop, the learning rate options, and how word cards work; should feel lightweight, not a forced tutorial
+- `[P2]` **Annotated word-detail screen for the first session** — a one-time screen, shaped exactly like the real word-detail layout (same module positions: WordIntro, WordContext, MeaningGuessQuestion, etc.), but with each section's content replaced by a short explanation of what that section is and how to use it, instead of real word data. Distinct from the "New user handholding overview" item above — that one is a generic walkthrough of the session loop/settings; this one teaches the word-detail UI specifically, by having the UI explain itself in place, using its own real layout as the teaching surface rather than a separate tutorial modal or tour overlay.
 
 ## Engagement & retention
 - `[P2]` **Return motivation / streak** — streak counter exists in WordMetricsPanel; missing piece is a push notification or nudge when the user hasn't practiced today
