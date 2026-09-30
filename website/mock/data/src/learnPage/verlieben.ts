@@ -36,9 +36,9 @@ export const verlieben: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Ich habe mich sofort in ihn {{verliebt}}.',
-          'Sie {{verliebt}} sich schnell.',
-          'Wir haben uns auf der Reise {{verliebt}}.',
+          'Ich habe {{mich}} sofort in ihn {{verliebt}}.',
+          'Sie {{verliebt}} {{sich}} schnell.',
+          'Wir haben {{uns}} auf der Reise {{verliebt}}.',
         ],
       },
       {

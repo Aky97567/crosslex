@@ -37,9 +37,9 @@ export const freuen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Ich {{freue}} mich sehr über das Geschenk.',
-          'Er {{freut}} sich auf den Urlaub.',
-          'Wir haben uns über die Nachricht {{gefreut}}.',
+          'Ich {{freue}} {{mich}} sehr über das Geschenk.',
+          'Er {{freut}} {{sich}} auf den Urlaub.',
+          'Wir haben {{uns}} über die Nachricht {{gefreut}}.',
         ],
       },
       {

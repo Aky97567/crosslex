@@ -36,9 +36,9 @@ export const erinnern: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Ich kann mich nicht mehr {{erinnern}}.',
-          'Er {{erinnert}} sich gut an seine Kindheit.',
-          'Wir haben uns an den Urlaub {{erinnert}}.',
+          'Ich kann {{mich}} nicht mehr {{erinnern}}.',
+          'Er {{erinnert}} {{sich}} gut an seine Kindheit.',
+          'Wir haben {{uns}} an den Urlaub {{erinnert}}.',
         ],
       },
       {

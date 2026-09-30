@@ -49,6 +49,12 @@ export const contextBlankStoryFixtures = {
   kaufen: makeContextBlankFixture('kaufen', ['beantragen', 'bezahlen', 'schreiben']),
   schreiben: makeContextBlankFixture('schreiben', ['kaufen', 'beantragen', 'sprechen']),
   nachweisen: makeContextBlankFixture('nachweisen', ['umsteigen', 'arbeiten', 'kaufen']),
+  // Reflexive verbs now wrap both the pronoun and the verb in their own
+  // {{...}} spans (see the "advanced difficulty tier" ROADMAP item) — this
+  // fixture demonstrates a sentence with two live blanks at once, each
+  // needing its own word from the selected option rather than both
+  // repeating the full "sich beeilen" text.
+  beeilen: makeContextBlankFixture('beeilen', ['ausruhen', 'freuen', 'aergern']),
 };
 
 // --- WordDefinitionQuestion fixtures ---

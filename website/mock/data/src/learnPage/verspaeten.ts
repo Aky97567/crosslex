@@ -35,9 +35,9 @@ export const verspaeten: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Der Zug wird sich heute {{verspäten}}.',
-          'Ich {{verspäte}} mich leider um zehn Minuten.',
-          'Er hat sich wegen des Staus {{verspätet}}.',
+          'Der Zug wird {{sich}} heute {{verspäten}}.',
+          'Ich {{verspäte}} {{mich}} leider um zehn Minuten.',
+          'Er hat {{sich}} wegen des Staus {{verspätet}}.',
         ],
       },
       {

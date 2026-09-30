@@ -37,9 +37,9 @@ export const entspannen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Ich möchte mich am Wochenende {{entspannen}}.',
-          'Er {{entspannt}} sich beim Lesen.',
-          'Wir haben uns im Urlaub gut {{entspannt}}.',
+          'Ich möchte {{mich}} am Wochenende {{entspannen}}.',
+          'Er {{entspannt}} {{sich}} beim Lesen.',
+          'Wir haben {{uns}} im Urlaub gut {{entspannt}}.',
         ],
       },
       {

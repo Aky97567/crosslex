@@ -36,9 +36,9 @@ export const aergern: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Ich {{ärgere}} mich über den Stau.',
-          'Er {{ärgert}} sich, weil der Bus zu spät kommt.',
-          'Wir haben uns über die Verspätung {{geärgert}}.',
+          'Ich {{ärgere}} {{mich}} über den Stau.',
+          'Er {{ärgert}} {{sich}}, weil der Bus zu spät kommt.',
+          'Wir haben {{uns}} über die Verspätung {{geärgert}}.',
         ],
       },
       {

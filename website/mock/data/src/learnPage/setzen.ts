@@ -36,9 +36,9 @@ export const setzen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Bitte {{setzen}} Sie sich.',
-          'Ich {{setze}} mich auf den Stuhl.',
-          'Er hat sich neben mich {{gesetzt}}.',
+          'Bitte {{setzen}} Sie {{sich}}.',
+          'Ich {{setze}} {{mich}} auf den Stuhl.',
+          'Er hat {{sich}} neben mich {{gesetzt}}.',
         ],
       },
       {

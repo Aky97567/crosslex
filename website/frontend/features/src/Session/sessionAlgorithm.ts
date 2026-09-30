@@ -5,7 +5,7 @@ import {
   parseAnnotatedParagraph,
 } from '@whitelotus/common-crosslex-view';
 import { ContextBlankQuestionData, WordDefinitionQuestionData, TypeTheWordQuestionData } from '@whitelotus/front-entities';
-import { LearningRate, RATE_CONFIG, WordsSeenStore } from './sessionStorage';
+import { LearningRate, RATE_CONFIG, WordsSeenStore, WordStats } from './sessionStorage';
 
 export type CardType = 'wordIntro' | 'meaningGuess' | 'contextBlank' | 'wordDefinition' | 'typeTheWord';
 
@@ -65,6 +65,10 @@ const getMeaningGuessModule = (wordData: WordData): MeaningGuessQuestionModule |
   return m ? (m as MeaningGuessQuestionModule) : null;
 };
 
+// accuracy = correctCount / count, so count * accuracy = correctCount
+const isMastered = (stats: WordStats | undefined): boolean =>
+  !!stats && Math.round(stats.count * stats.accuracy) >= 3;
+
 const availableExerciseTypes = (
   wordKey: string,
   wordData: WordDataMap,
@@ -73,11 +77,17 @@ const availableExerciseTypes = (
   const types: CardType[] = ['wordDefinition'];
   if (getMeaningGuessModule(wordData[wordKey])) types.push('meaningGuess');
   if (getWordContextModule(wordData[wordKey])) types.push('contextBlank');
-  const stats = wordStats[wordKey];
-  // accuracy = correctCount / count, so count * accuracy = correctCount
-  if (stats && Math.round(stats.count * stats.accuracy) >= 3) types.push('typeTheWord');
+  if (isMastered(wordStats[wordKey])) types.push('typeTheWord');
   return types;
 };
+
+// Reflexive pronouns that may now also be wrapped in {{...}} alongside the
+// verb in a reflexive word's paragraphWithUsage (see REFLEXIVE_PRONOUNS
+// usage below in generateExerciseData's contextBlank branch).
+const REFLEXIVE_PRONOUNS = new Set(['mich', 'dich', 'sich', 'uns', 'euch']);
+
+const stripReflexivePronounPrefix = (text: string): string =>
+  text.replace(/^sich\s+/i, '');
 
 export const pickNextCard = (
   allWordKeys: string[],
@@ -134,6 +144,7 @@ export const generateExerciseData = (
   cardType: Exclude<CardType, 'wordIntro'>,
   allWordKeys: string[],
   wordData: WordDataMap,
+  wordStats: WordsSeenStore = {},
 ): ExerciseData | null => {
   const word = wordData[wordKey];
   if (!word) return null;
@@ -149,18 +160,37 @@ export const generateExerciseData = (
     const intro = getWordIntroModule(word);
     if (!mod || !intro) return null;
 
-    const displayText = intro.displayName ?? intro.word;
+    const isReflexiveTarget = intro.themes?.includes('reflexiv') ?? false;
+    // Advanced difficulty tier, unlocked once the learner has demonstrated
+    // basic mastery of this specific word (same gating shape as
+    // TypeTheWordQuestion's availability check above). Below mastery, a
+    // reflexive word's paragraphWithUsage sentences behave exactly as
+    // before: only the verb is blanked, the pronoun stays visible, and
+    // option labels keep "sich". Once mastered: the pronoun is blanked too
+    // (see REFLEXIVE_PRONOUNS below — paragraphWithUsage now wraps both the
+    // verb and its reflexive pronoun in separate {{...}} spans, wherever
+    // each actually falls in a given sentence), and "sich" is stripped from
+    // every option label, since at that point every option is reflexive
+    // anyway (see the distractor-pool comment below) and the bare form is
+    // the harder, purer test.
+    const isTier1Unlocked = isReflexiveTarget && isMastered(wordStats[wordKey]);
+
     const fills: string[] = [];
     const sentences = mod.paragraphWithUsage.map((rawSentence) =>
       parseAnnotatedParagraph(rawSentence)
         .map((seg) => {
           if (!seg.marked) return seg.text;
+          const isReflexivePronoun = REFLEXIVE_PRONOUNS.has(seg.text.trim().toLowerCase());
+          if (isReflexivePronoun && !isTier1Unlocked) return seg.text;
           fills.push(seg.text);
           return '___';
         })
         .join(''),
     );
     if (fills.length === 0) return null;
+
+    const rawDisplayText = intro.displayName ?? intro.word;
+    const displayText = isTier1Unlocked ? stripReflexivePronounPrefix(rawDisplayText) : rawDisplayText;
 
     // Some grammatical properties of a word leak through the context
     // sentence itself, before the learner even looks at the options:
@@ -180,7 +210,6 @@ export const generateExerciseData = (
     // leak — "sich" is a universal, zero-knowledge marker, whereas spotting
     // a trennbar split still requires already knowing which verbs separate.
     const otherKeys = allWordKeys.filter((k) => k !== wordKey);
-    const isReflexiveTarget = intro.themes?.includes('reflexiv') ?? false;
     const reflexiveKeys = isReflexiveTarget
       ? otherKeys.filter((k) => getWordIntroModule(wordData[k])?.themes?.includes('reflexiv'))
       : [];
@@ -198,7 +227,7 @@ export const generateExerciseData = (
       .slice(0, 3)
       .map((k) => { const m = getWordIntroModule(wordData[k]); return m ? (m.displayName ?? m.word) : null; })
       .filter((w): w is string => !!w)
-      .map((text) => ({ text, isCorrect: false }));
+      .map((text) => ({ text: isTier1Unlocked ? stripReflexivePronounPrefix(text) : text, isCorrect: false }));
 
     return {
       cardType: 'contextBlank',
@@ -251,9 +280,10 @@ export const generateExerciseDataSafe = (
   cardType: Exclude<CardType, 'wordIntro'>,
   allWordKeys: string[],
   wordData: WordDataMap,
+  wordStats: WordsSeenStore = {},
 ): ExerciseData | null => {
-  const result = generateExerciseData(wordKey, cardType, allWordKeys, wordData);
+  const result = generateExerciseData(wordKey, cardType, allWordKeys, wordData, wordStats);
   if (result !== null) return result;
   if (cardType === 'wordDefinition') return null;
-  return generateExerciseData(wordKey, 'wordDefinition', allWordKeys, wordData);
+  return generateExerciseData(wordKey, 'wordDefinition', allWordKeys, wordData, wordStats);
 };

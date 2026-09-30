@@ -36,9 +36,9 @@ export const schneiden: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Pass auf, du {{schneidest}} dich noch!',
-          'Ich habe mich beim Kochen {{geschnitten}}.',
-          'Er {{schneidet}} sich oft beim Rasieren.',
+          'Pass auf, du {{schneidest}} {{dich}} noch!',
+          'Ich habe {{mich}} beim Kochen {{geschnitten}}.',
+          'Er {{schneidet}} {{sich}} oft beim Rasieren.',
         ],
       },
       {

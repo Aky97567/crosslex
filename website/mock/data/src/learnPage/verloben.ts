@@ -36,9 +36,9 @@ export const verloben: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Sie haben sich letzten Sommer {{verlobt}}.',
-          'Wir {{verloben}} uns nächstes Jahr.',
-          'Er hat sich mit seiner Freundin {{verlobt}}.',
+          'Sie haben {{sich}} letzten Sommer {{verlobt}}.',
+          'Wir {{verloben}} {{uns}} nächstes Jahr.',
+          'Er hat {{sich}} mit seiner Freundin {{verlobt}}.',
         ],
       },
       {

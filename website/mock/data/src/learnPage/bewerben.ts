@@ -36,9 +36,9 @@ export const bewerben: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Ich möchte mich für die Stelle {{bewerben}}.',
-          'Er {{bewirbt}} sich bei mehreren Firmen.',
-          'Sie hat sich erfolgreich {{beworben}}.',
+          'Ich möchte {{mich}} für die Stelle {{bewerben}}.',
+          'Er {{bewirbt}} {{sich}} bei mehreren Firmen.',
+          'Sie hat {{sich}} erfolgreich {{beworben}}.',
         ],
       },
       {

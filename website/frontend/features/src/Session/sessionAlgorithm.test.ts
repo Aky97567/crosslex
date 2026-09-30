@@ -343,6 +343,67 @@ describe('generateExerciseData', () => {
       if (result?.cardType !== 'contextBlank') throw new Error('expected contextBlank');
       expect(result.data.options).toHaveLength(1); // just the correct answer, no valid distractors
     });
+
+    describe('advanced difficulty tier for reflexive verbs (unlocked once the word is mastered)', () => {
+      const reflexiveWordData = (paragraphWithUsage: string[]): Fixture => ({
+        a: {
+          content: {
+            moduleType: 'content',
+            modules: [wordIntro({ word: 'sich beeilen', themes: ['reflexiv'] }), wordContext(paragraphWithUsage)],
+          },
+        },
+        b: { content: { moduleType: 'content', modules: [wordIntro({ word: 'sich x', themes: ['reflexiv'] })] } },
+        c: { content: { moduleType: 'content', modules: [wordIntro({ word: 'sich y', themes: ['reflexiv'] })] } },
+        d: { content: { moduleType: 'content', modules: [wordIntro({ word: 'sich z', themes: ['reflexiv'] })] } },
+      });
+      const allKeys = ['a', 'b', 'c', 'd'];
+
+      test('below mastery: pronoun stays unblanked, only the verb blanks, "sich" stays on option labels', () => {
+        const wordData = reflexiveWordData(['Wir müssen {{uns}} {{beeilen}}.']);
+        // No stats passed at all -> not mastered -> identical to the
+        // pre-existing single-blank behavior this tier was layered on top of.
+        const result = generateExerciseData('a', 'contextBlank', allKeys, wordData);
+        if (result?.cardType !== 'contextBlank') throw new Error('expected contextBlank');
+        expect(result.data.sentences[0]).toBe('Wir müssen uns ___.');
+        expect(result.data.fills).toEqual(['beeilen']);
+        expect(result.data.options.find((o) => o.isCorrect)?.text).toBe('sich beeilen');
+      });
+
+      test('once mastered: pronoun blanks too, in its own real sentence position, and "sich" strips from every option', () => {
+        // Math.round(count * accuracy) >= 3, same threshold TypeTheWordQuestion
+        // uses (see availableExerciseTypes / the pickNextCard tests above).
+        const wordStats: WordsSeenStore = { a: { count: 4, accuracy: 0.75, lastSeen: Date.now() } };
+        const wordData = reflexiveWordData(['Wir müssen {{uns}} {{beeilen}}.']);
+        const result = generateExerciseData('a', 'contextBlank', allKeys, wordData, wordStats);
+        if (result?.cardType !== 'contextBlank') throw new Error('expected contextBlank');
+        expect(result.data.sentences[0]).toBe('Wir müssen ___ ___.');
+        expect(result.data.fills).toEqual(['uns', 'beeilen']); // fills stay in each blank's real sentence order
+        const texts = result.data.options.map((o) => o.text).sort();
+        expect(texts).toEqual(['beeilen', 'x', 'y', 'z']); // "sich " stripped from correct answer AND all 3 distractors
+      });
+
+      test('mastery is checked per word key, not globally', () => {
+        // Another word's mastery shouldn't unlock the tier for this one.
+        const wordStats: WordsSeenStore = { other: { count: 10, accuracy: 1, lastSeen: Date.now() } };
+        const wordData = reflexiveWordData(['Wir müssen {{uns}} {{beeilen}}.']);
+        const result = generateExerciseData('a', 'contextBlank', allKeys, wordData, wordStats);
+        if (result?.cardType !== 'contextBlank') throw new Error('expected contextBlank');
+        expect(result.data.sentences[0]).toBe('Wir müssen uns ___.');
+        expect(result.data.fills).toEqual(['beeilen']);
+      });
+
+      test('non-adjacent pronoun and verb each blank at their own real position, not a single combined span', () => {
+        // Regression guard for the "one combined {{uns beeilen}} span" design
+        // that was considered and rejected (see ROADMAP.md) — German word
+        // order often separates them, most visibly in Perfekt.
+        const wordStats: WordsSeenStore = { a: { count: 4, accuracy: 0.75, lastSeen: Date.now() } };
+        const wordData = reflexiveWordData(['Ich habe {{mich}} gestern sehr {{beeilt}}.']);
+        const result = generateExerciseData('a', 'contextBlank', allKeys, wordData, wordStats);
+        if (result?.cardType !== 'contextBlank') throw new Error('expected contextBlank');
+        expect(result.data.sentences[0]).toBe('Ich habe ___ gestern sehr ___.');
+        expect(result.data.fills).toEqual(['mich', 'beeilt']);
+      });
+    });
   });
 
   describe('wordDefinition', () => {

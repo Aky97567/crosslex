@@ -37,9 +37,9 @@ export const treffen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Wir wollen uns morgen {{treffen}}.',
-          'Sie {{trifft}} sich mit Freunden im Café.',
-          'Ich habe mich gestern mit ihm {{getroffen}}.',
+          'Wir wollen {{uns}} morgen {{treffen}}.',
+          'Sie {{trifft}} {{sich}} mit Freunden im Café.',
+          'Ich habe {{mich}} gestern mit ihm {{getroffen}}.',
         ],
       },
       {

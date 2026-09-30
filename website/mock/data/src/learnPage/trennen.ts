@@ -36,9 +36,9 @@ export const trennen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Sie haben sich nach zehn Jahren {{getrennt}}.',
-          'Ich {{trenne}} mich nur ungern von alten Sachen.',
-          'Wann {{trennt}} ihr euch eigentlich?',
+          'Sie haben {{sich}} nach zehn Jahren {{getrennt}}.',
+          'Ich {{trenne}} {{mich}} nur ungern von alten Sachen.',
+          'Wann {{trennt}} ihr {{euch}} eigentlich?',
         ],
       },
       {

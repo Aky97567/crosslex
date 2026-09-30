@@ -37,9 +37,9 @@ export const interessieren: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Ich {{interessiere}} mich für Musik.',
-          'Er {{interessiert}} sich sehr für Geschichte.',
-          'Wir haben uns schon immer für Kunst {{interessiert}}.',
+          'Ich {{interessiere}} {{mich}} für Musik.',
+          'Er {{interessiert}} {{sich}} sehr für Geschichte.',
+          'Wir haben {{uns}} schon immer für Kunst {{interessiert}}.',
         ],
       },
       {
