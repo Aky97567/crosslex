@@ -36,9 +36,9 @@ export const beeilen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Wir müssen uns {{beeilen}}.',
-          'Ich {{beeile}} mich, weil der Bus gleich kommt.',
-          'Er hat sich sehr {{beeilt}}.',
+          'Wir müssen {{uns}} {{beeilen}}.',
+          'Ich {{beeile}} {{mich}}, weil der Bus gleich kommt.',
+          'Er hat {{sich}} sehr {{beeilt}}.',
         ],
       },
       {

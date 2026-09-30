@@ -35,9 +35,9 @@ export const erkundigen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Ich möchte mich nach den Öffnungszeiten {{erkundigen}}.',
-          'Er {{erkundigt}} sich regelmäßig nach ihrem Befinden.',
-          'Sie hat sich nach dem Preis {{erkundigt}}.',
+          'Ich möchte {{mich}} nach den Öffnungszeiten {{erkundigen}}.',
+          'Er {{erkundigt}} {{sich}} regelmäßig nach ihrem Befinden.',
+          'Sie hat {{sich}} nach dem Preis {{erkundigt}}.',
         ],
       },
       {

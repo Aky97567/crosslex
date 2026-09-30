@@ -43,3 +43,7 @@ StrongVerb.args = { word: 'schreiben' };
 
 export const Trennbar: StoryObj<typeof Wrapper> = Template.bind({});
 Trennbar.args = { word: 'nachweisen' };
+
+export const ReflexiveTwoBlanks: StoryObj<typeof Wrapper> = Template.bind({});
+ReflexiveTwoBlanks.args = { word: 'beeilen' };
+ReflexiveTwoBlanks.storyName = 'Reflexive (two live blanks: pronoun + verb)';

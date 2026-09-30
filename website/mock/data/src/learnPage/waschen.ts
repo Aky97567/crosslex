@@ -36,9 +36,9 @@ export const waschen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Ich muss mich noch {{waschen}}.',
-          'Er {{wäscht}} sich jeden Morgen.',
-          'Sie hat sich gründlich {{gewaschen}}.',
+          'Ich muss {{mich}} noch {{waschen}}.',
+          'Er {{wäscht}} {{sich}} jeden Morgen.',
+          'Sie hat {{sich}} gründlich {{gewaschen}}.',
         ],
       },
       {

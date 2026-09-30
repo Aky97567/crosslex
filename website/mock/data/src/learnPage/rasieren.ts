@@ -36,9 +36,9 @@ export const rasieren: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Ich {{rasiere}} mich jeden Morgen.',
-          'Er {{rasiert}} sich vor der Arbeit.',
-          'Ich habe mich heute noch nicht {{rasiert}}.',
+          'Ich {{rasiere}} {{mich}} jeden Morgen.',
+          'Er {{rasiert}} {{sich}} vor der Arbeit.',
+          'Ich habe {{mich}} heute noch nicht {{rasiert}}.',
         ],
       },
       {

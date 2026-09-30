@@ -35,9 +35,9 @@ export const entschuldigen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Ich möchte mich für die Verspätung {{entschuldigen}}.',
-          'Er {{entschuldigt}} sich nie für seine Fehler.',
-          'Sie hat sich sofort {{entschuldigt}}.',
+          'Ich möchte {{mich}} für die Verspätung {{entschuldigen}}.',
+          'Er {{entschuldigt}} {{sich}} nie für seine Fehler.',
+          'Sie hat {{sich}} sofort {{entschuldigt}}.',
         ],
       },
       {

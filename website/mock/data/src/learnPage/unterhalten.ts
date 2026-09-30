@@ -35,9 +35,9 @@ export const unterhalten: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Wir möchten uns über das Wochenende {{unterhalten}}.',
-          'Sie {{unterhält}} sich gern mit ihren Nachbarn.',
-          'Wir haben uns lange {{unterhalten}}.',
+          'Wir möchten {{uns}} über das Wochenende {{unterhalten}}.',
+          'Sie {{unterhält}} {{sich}} gern mit ihren Nachbarn.',
+          'Wir haben {{uns}} lange {{unterhalten}}.',
         ],
       },
       {

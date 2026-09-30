@@ -36,9 +36,9 @@ export const schminken: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Ich {{schminke}} mich nur selten.',
-          'Sie {{schminkt}} sich jeden Morgen vor der Arbeit.',
-          'Sie hat sich für die Party besonders schön {{geschminkt}}.',
+          'Ich {{schminke}} {{mich}} nur selten.',
+          'Sie {{schminkt}} {{sich}} jeden Morgen vor der Arbeit.',
+          'Sie hat {{sich}} für die Party besonders schön {{geschminkt}}.',
         ],
       },
       {

@@ -89,7 +89,7 @@ const buildInitialCard = (
   );
   const exerciseData =
     cardType !== 'wordIntro'
-      ? generateExerciseDataSafe(wordKey, cardType, activeWords, sampleLearnPageContentList)
+      ? generateExerciseDataSafe(wordKey, cardType, activeWords, sampleLearnPageContentList, wordStats)
       : null;
   return { wordKey, cardType, exerciseData };
 };
@@ -200,7 +200,7 @@ export const useSessionState = ({ sessionId, durationMs, sessionFilter, onComple
 
         const exerciseData =
           cardType !== 'wordIntro'
-            ? generateExerciseDataSafe(wordKey, cardType, activeWords, sampleLearnPageContentList)
+            ? generateExerciseDataSafe(wordKey, cardType, activeWords, sampleLearnPageContentList, nextWordStats)
             : null;
 
         const isNewWord = cardType === 'wordIntro';

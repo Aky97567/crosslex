@@ -38,9 +38,9 @@ export const ausruhen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Ich möchte mich jetzt {{ausruhen}}.',
-          'Ich {{ruhe}} mich am Nachmittag {{aus}}.',
-          'Wir haben uns im Urlaub gut {{ausgeruht}}.',
+          'Ich möchte {{mich}} jetzt {{ausruhen}}.',
+          'Ich {{ruhe}} {{mich}} am Nachmittag {{aus}}.',
+          'Wir haben {{uns}} im Urlaub gut {{ausgeruht}}.',
         ],
       },
       {

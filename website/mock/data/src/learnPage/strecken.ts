@@ -36,9 +36,9 @@ export const strecken: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Ich {{strecke}} mich jeden Morgen nach dem Aufwachen.',
-          'Er {{streckt}} sich nach der langen Autofahrt.',
-          'Wir haben uns vor dem Sport {{gestreckt}}.',
+          'Ich {{strecke}} {{mich}} jeden Morgen nach dem Aufwachen.',
+          'Er {{streckt}} {{sich}} nach der langen Autofahrt.',
+          'Wir haben {{uns}} vor dem Sport {{gestreckt}}.',
         ],
       },
       {

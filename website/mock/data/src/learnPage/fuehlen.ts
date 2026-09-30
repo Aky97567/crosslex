@@ -37,9 +37,9 @@ export const fuehlen: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Ich möchte mich heute gut {{fühlen}}.',
-          'Wie {{fühlst}} du dich?',
-          'Er hat sich krank {{gefühlt}}.',
+          'Ich möchte {{mich}} heute gut {{fühlen}}.',
+          'Wie {{fühlst}} du {{dich}}?',
+          'Er hat {{sich}} krank {{gefühlt}}.',
         ],
       },
       {

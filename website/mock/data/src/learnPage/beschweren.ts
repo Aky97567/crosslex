@@ -35,9 +35,9 @@ export const beschweren: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Ich möchte mich über den Service {{beschweren}}.',
-          'Er {{beschwert}} sich ständig über das Wetter.',
-          'Sie hat sich beim Vermieter {{beschwert}}.',
+          'Ich möchte {{mich}} über den Service {{beschweren}}.',
+          'Er {{beschwert}} {{sich}} ständig über das Wetter.',
+          'Sie hat {{sich}} beim Vermieter {{beschwert}}.',
         ],
       },
       {

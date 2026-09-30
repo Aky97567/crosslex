@@ -3,9 +3,24 @@ export type ChangelogEntry = {
   returningUser: { heading: string; body: string; changes: string[] };
 };
 
-export const CURRENT_BUILD_ID = 'alpha-2026-09-30-type-the-word-reflexive';
+export const CURRENT_BUILD_ID = 'alpha-2026-09-30-reflexive-context-blank-hard-mode';
 
 export const CHANGELOG: Record<string, ChangelogEntry> = {
+  'alpha-2026-09-30-reflexive-context-blank-hard-mode': {
+    newUser: {
+      heading: "You're testing Crosslex Alpha",
+      body: "Crosslex is a German vocabulary trainer — built for adults navigating real life in Germany. Choose your level, pick a session length and learning pace, and Crosslex will guide you through words and exercises. Your feedback shapes what we build next.",
+      cta: "Let's go →",
+    },
+    returningUser: {
+      heading: "You're back — something's new",
+      body: 'A harder "Fill in the Blank" mode for reflexive verbs you know well.',
+      changes: [
+        'New: once you\'ve shown you know a reflexive verb (sich freuen, sich beeilen, and others), its "Fill in the Blank" exercise gets harder — the reflexive pronoun (mich/dich/sich/uns/euch) is now blanked too, not just the verb, and "sich" is stripped from every answer option, so you have to know the whole word, not just spot it from a leftover hint',
+        'Below that mastery point, the exercise is unchanged — only the verb is blanked, and "sich" still shows on the options',
+      ],
+    },
+  },
   'alpha-2026-09-30-type-the-word-reflexive': {
     newUser: {
       heading: "You're testing Crosslex Alpha",

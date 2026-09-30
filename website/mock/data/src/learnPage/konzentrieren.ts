@@ -36,9 +36,9 @@ export const konzentrieren: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Ich muss mich auf die Prüfung {{konzentrieren}}.',
-          'Er {{konzentriert}} sich beim Lesen sehr stark.',
-          'Wir haben uns auf das Gespräch {{konzentriert}}.',
+          'Ich muss {{mich}} auf die Prüfung {{konzentrieren}}.',
+          'Er {{konzentriert}} {{sich}} beim Lesen sehr stark.',
+          'Wir haben {{uns}} auf das Gespräch {{konzentriert}}.',
         ],
       },
       {

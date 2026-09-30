@@ -35,9 +35,9 @@ export const kuemmern: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Ich muss mich um die Unterlagen {{kümmern}}.',
-          'Sie {{kümmert}} sich liebevoll um ihre Kinder.',
-          'Er hat sich um alles {{gekümmert}}.',
+          'Ich muss {{mich}} um die Unterlagen {{kümmern}}.',
+          'Sie {{kümmert}} {{sich}} liebevoll um ihre Kinder.',
+          'Er hat {{sich}} um alles {{gekümmert}}.',
         ],
       },
       {

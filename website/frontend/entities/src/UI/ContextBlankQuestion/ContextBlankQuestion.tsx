@@ -59,6 +59,13 @@ const ContextBlankQuestion: React.FC<Props> = ({
 
   const { sentences, fills, options, contextSentenceIndices } = contextBlankQuestion;
   const selectedOptionText = selectedIndex !== null ? options[selectedIndex].text : null;
+  // A sentence can carry more than one active blank (e.g. a reflexive
+  // verb's pronoun and verb, each their own {{...}} span) — split the
+  // selected option's words so each blank previews its own word instead of
+  // every blank in the sentence repeating the full selected text. For the
+  // ordinary single-blank case this is just [wholeText], so behaviour is
+  // unchanged.
+  const selectedOptionWords = selectedOptionText?.split(' ') ?? [];
 
   const blankClassName = `inline-block border-b-2 min-w-60 mx-5 text-center font-bold ${
     isAnswered
@@ -102,7 +109,7 @@ const ContextBlankQuestion: React.FC<Props> = ({
                       ? (fills[offset + i] ?? '')
                       : isContextSentence
                         ? '___'
-                        : (selectedOptionText ?? '      ')}
+                        : (selectedOptionWords[i] ?? selectedOptionText ?? '      ')}
                   </span>
                 )}
               </React.Fragment>

@@ -36,9 +36,9 @@ export const erkaelten: LearnPageContent = {
         moduleType: 'wordContext',
         heading: { text: 'Context' },
         paragraphWithUsage: [
-          'Ich {{erkälte}} mich jeden Winter mindestens einmal.',
-          'Zieh dir eine Jacke an, sonst {{erkältest}} du dich!',
-          'Er hat sich beim Regen {{erkältet}}.',
+          'Ich {{erkälte}} {{mich}} jeden Winter mindestens einmal.',
+          'Zieh dir eine Jacke an, sonst {{erkältest}} du {{dich}}!',
+          'Er hat {{sich}} beim Regen {{erkältet}}.',
         ],
       },
       {
