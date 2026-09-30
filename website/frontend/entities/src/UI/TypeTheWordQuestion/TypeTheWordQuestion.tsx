@@ -50,18 +50,41 @@ const TypeTheWordQuestion: React.FC<Props> = ({
   const { word, article, translation } = typeTheWordQuestion;
   const [inputValue, setInputValue] = useState('');
   const [phase, setPhase] = useState<Phase>('idle');
-  const [revealedIndices, setRevealedIndices] = useState<number[]>([]);
+  const [peekedIndices, setPeekedIndices] = useState<number[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Positions the user must type (everything not peeked)
-  const peekedSet = new Set(revealedIndices);
-  const nonPeekedPositions = Array.from({ length: word.length }, (_, i) => i)
-    .filter(i => !peekedSet.has(i));
+  // `word` is a space-separated sequence of one or more "words" — always
+  // one for a plain word (e.g. 'arbeiten'), always exactly two for a
+  // reflexive verb's dictionary form (e.g. 'sich ausruhen'). Spaces are
+  // pure structure, never something to guess: letters are indexed only
+  // across the non-space characters (`letters` below), and rendering
+  // inserts a visual gap between word-groups instead of a literal blank
+  // box for the space — removing both "is there a space here" and
+  // "where exactly does it go" as things the learner has to discover.
+  const wordGroups = word.split(' ');
+  const letters = wordGroups.join('').split('');
 
-  const maxHints = Math.max(3, Math.floor(word.length * 0.3));
+  // The dictionary/citation form of every reflexive verb in this dataset
+  // is always 'sich <verb>' — 'sich' itself isn't word-specific vocabulary
+  // (every reflexive verb uses the identical 4 letters), so it's revealed
+  // for free rather than spending the learner's attention (or hint
+  // budget) on a near-constant token. Doesn't touch the verb part.
+  const autoRevealedCount =
+    wordGroups.length > 1 && wordGroups[0].toLowerCase() === 'sich' ? wordGroups[0].length : 0;
+  const autoRevealedIndices = Array.from({ length: autoRevealedCount }, (_, i) => i);
+
+  // Positions the user must type (everything not auto-revealed or peeked)
+  const revealedSet = new Set([...autoRevealedIndices, ...peekedIndices]);
+  const typeablePositions = Array.from({ length: letters.length }, (_, i) => i)
+    .filter(i => !revealedSet.has(i));
+
+  // Hint budget scales with the letters actually being tested — the free
+  // 'sich' reveal isn't hint budget spent, so it doesn't shrink how many
+  // Peeks are available for the word that's actually being tested.
+  const maxHints = Math.max(3, Math.floor(typeablePositions.length * 0.3));
   // Only allow peeking future (untyped) positions
-  const peekableCount = nonPeekedPositions.slice(inputValue.length).length;
-  const canHint = !hardcoreMode && phase === 'idle' && revealedIndices.length < maxHints && peekableCount > 0;
+  const peekableCount = typeablePositions.slice(inputValue.length).length;
+  const canHint = !hardcoreMode && phase === 'idle' && peekedIndices.length < maxHints && peekableCount > 0;
 
   useEffect(() => {
     inputRef.current?.focus();
@@ -69,19 +92,33 @@ const TypeTheWordQuestion: React.FC<Props> = ({
 
   const handlePeek = () => {
     if (!canHint) return;
-    const future = nonPeekedPositions.slice(inputValue.length);
+    const future = typeablePositions.slice(inputValue.length);
     const pick = future[Math.floor(Math.random() * future.length)];
-    setRevealedIndices(prev => [...prev, pick]);
+    setPeekedIndices(prev => [...prev, pick]);
     inputRef.current?.focus();
   };
 
-  // Reconstruct the full word from peeked letters + typed letters for answer checking
-  const buildFullInput = (typed: string): string =>
-    Array.from({ length: word.length }, (_, i) => {
-      if (peekedSet.has(i)) return word[i];
-      const typedIndex = nonPeekedPositions.indexOf(i);
+  // Reconstruct the full word (letters only) from revealed + typed letters
+  const buildFullLetters = (typed: string): string =>
+    Array.from({ length: letters.length }, (_, i) => {
+      if (revealedSet.has(i)) return letters[i];
+      const typedIndex = typeablePositions.indexOf(i);
       return typedIndex < typed.length ? typed[typedIndex] : '';
     }).join('');
+
+  // Re-insert spaces at the original word-group boundaries so the
+  // reconstructed string matches `word`'s shape for answer checking.
+  const buildFullInput = (typed: string): string => {
+    const full = buildFullLetters(typed);
+    let cursor = 0;
+    return wordGroups
+      .map(group => {
+        const chunk = full.slice(cursor, cursor + group.length);
+        cursor += group.length;
+        return chunk;
+      })
+      .join(' ');
+  };
 
   const handleSubmit = () => {
     if (phase !== 'idle' || inputValue.length === 0) return;
@@ -98,19 +135,19 @@ const TypeTheWordQuestion: React.FC<Props> = ({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (phase !== 'idle') return;
-    setInputValue(e.target.value.slice(0, nonPeekedPositions.length));
+    setInputValue(e.target.value.slice(0, typeablePositions.length));
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') handleSubmit();
   };
 
-  const cursorBoxIndex = nonPeekedPositions[inputValue.length] ?? -1;
+  const cursorBoxIndex = typeablePositions[inputValue.length] ?? -1;
 
   const getBoxContent = (i: number): string => {
-    if (phase === 'revealed') return word[i];
-    if (peekedSet.has(i)) return word[i];
-    const typedIndex = nonPeekedPositions.indexOf(i);
+    if (phase === 'revealed') return letters[i];
+    if (revealedSet.has(i)) return letters[i];
+    const typedIndex = typeablePositions.indexOf(i);
     return typedIndex < inputValue.length ? inputValue[typedIndex] : ' ';
   };
 
@@ -118,12 +155,20 @@ const TypeTheWordQuestion: React.FC<Props> = ({
     if (phase === 'correct') return 'border-color1 text-color1';
     if (phase === 'wrong') return 'border-color3 text-color3';
     if (phase === 'revealed') return 'border-color1 text-color1';
-    if (peekedSet.has(i)) return 'border-color6 text-text opacity-50';
-    const typedIndex = nonPeekedPositions.indexOf(i);
+    if (revealedSet.has(i)) return 'border-color6 text-text opacity-50';
+    const typedIndex = typeablePositions.indexOf(i);
     if (typedIndex < inputValue.length) return 'border-color7 text-text';
     if (i === cursorBoxIndex) return 'border-brand';
     return 'border-color6 opacity-40';
   };
+
+  // "sich" is revealed for free and isn't being tested, so it shouldn't
+  // count toward the letters the learner is being asked to guess.
+  const typeableGroups = autoRevealedCount > 0 ? wordGroups.slice(1) : wordGroups;
+  const letterCountLabel =
+    typeableGroups.length > 1
+      ? `(${typeableGroups.map(g => g.length).join(' + ')} letters)`
+      : `(${typeableGroups[0].length} letters)`;
 
   return (
     <Card
@@ -142,19 +187,33 @@ const TypeTheWordQuestion: React.FC<Props> = ({
 
       {/* Wrapper is relative so the hidden input can be absolutely positioned */}
       <div className="relative">
-        {/* Letter boxes */}
+        {/* Letter boxes, grouped by word with a clearly bigger gap between groups than within one */}
         <div
-          className={`flex flex-wrap justify-center gap-10 mb-30 cursor-text ${phase === 'wrong' ? 'animate-vibrate' : ''}`}
+          className={`flex flex-wrap justify-center items-end gap-50 mb-30 cursor-text ${phase === 'wrong' ? 'animate-vibrate' : ''}`}
           onClick={() => inputRef.current?.focus()}
         >
-          {Array.from({ length: word.length }, (_, i) => (
-            <div
-              key={i}
-              className={`border-b-2 px-5 h-60 min-w-[20px] flex items-end justify-center pb-5 font-bold text-sm transition-colors duration-200 select-none ${getBoxClass(i)}`}
-            >
-              {getBoxContent(i)}
-            </div>
-          ))}
+          {(() => {
+            let globalIndex = 0;
+            return wordGroups.map((group, gi) => {
+              const startIndex = globalIndex;
+              globalIndex += group.length;
+              return (
+                <div key={gi} className="flex gap-10">
+                  {Array.from({ length: group.length }, (_, li) => {
+                    const i = startIndex + li;
+                    return (
+                      <div
+                        key={i}
+                        className={`border-b-2 px-5 h-60 min-w-[20px] flex items-end justify-center pb-5 font-bold text-sm transition-colors duration-200 select-none ${getBoxClass(i)}`}
+                      >
+                        {getBoxContent(i)}
+                      </div>
+                    );
+                  })}
+                </div>
+              );
+            });
+          })()}
         </div>
 
         {/* Hidden input — keeps keyboard accessible on mobile without visible field */}
@@ -162,7 +221,7 @@ const TypeTheWordQuestion: React.FC<Props> = ({
           ref={inputRef}
           type="text"
           value={inputValue}
-          maxLength={nonPeekedPositions.length}
+          maxLength={typeablePositions.length}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
           autoComplete="off"
@@ -174,7 +233,7 @@ const TypeTheWordQuestion: React.FC<Props> = ({
         />
       </div>
 
-      <p className="text-center text-sm opacity-50 mb-20">({word.length} letters)</p>
+      <p className="text-center text-sm opacity-50 mb-20">{letterCountLabel}</p>
 
       {/* Check + Peek buttons */}
       {phase === 'idle' && (
@@ -191,7 +250,7 @@ const TypeTheWordQuestion: React.FC<Props> = ({
               onClick={handlePeek}
               className="border-2 border-brand rounded-md text-text px-20 py-10 transition-colors duration-300 hover:bg-brand-2 text-sm opacity-60 hover:opacity-100"
             >
-              Peek ({maxHints - revealedIndices.length})
+              Peek ({maxHints - peekedIndices.length})
             </button>
           )}
         </div>
