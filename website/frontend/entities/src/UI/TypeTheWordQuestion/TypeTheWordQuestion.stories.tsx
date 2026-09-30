@@ -4,7 +4,7 @@ import { WordIntroModule } from '@whitelotus/common-crosslex-view';
 import { sampleLearnPageContentList } from '@whitelotus/mock-test';
 import { TypeTheWordQuestion, TypeTheWordQuestionData } from './TypeTheWordQuestion';
 
-const WORD_KEYS = ['wohnung', 'krankenversicherung', 'arbeiten'] as const;
+const WORD_KEYS = ['wohnung', 'krankenversicherung', 'arbeiten', 'ausruhen'] as const;
 
 const getTypeTheWord = (key: (typeof WORD_KEYS)[number]): TypeTheWordQuestionData => {
   const intro = sampleLearnPageContentList[key].content.modules.find(
@@ -63,6 +63,10 @@ LongWord.args = { word: 'krankenversicherung' };
 
 export const Verb: StoryObj<typeof Wrapper> = Template.bind({});
 Verb.args = { word: 'arbeiten' };
+
+export const ReflexiveVerb: StoryObj<typeof Wrapper> = Template.bind({});
+ReflexiveVerb.args = { word: 'ausruhen' };
+ReflexiveVerb.storyName = 'Reflexive verb (sich ausruhen)';
 
 const HardcoreTemplate: StoryFn<typeof HardcoreWrapper> = (args) => <HardcoreWrapper {...args} />;
 
