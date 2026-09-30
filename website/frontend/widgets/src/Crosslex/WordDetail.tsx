@@ -2,6 +2,7 @@ import React from 'react';
 import {
   ExpandableSectionCard,
   renderContentModule,
+  sortModulesByDisplayOrder,
   useCrosslexStorage,
 } from '@whitelotus/front-features';
 import { HasContent, WordIntroModule } from '@whitelotus/common-crosslex-view';
@@ -39,7 +40,7 @@ const WordDetail: React.FC<WordDetailProps> = ({
 
       {/* Full module list — always shown on desktop; also shown on mobile when mobileFullView is on */}
       <div className={`${mobileFullView ? 'flex' : 'hidden md:flex'} flex-col gap-20`}>
-        {content.modules.map((module, index) => (
+        {sortModulesByDisplayOrder(content.modules).map((module, index) => (
           <React.Fragment key={index}>
             {renderContentModule({ module })}
           </React.Fragment>
