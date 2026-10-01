@@ -7,6 +7,8 @@ import {
   readSessionFilter,
   readKnownWords,
   readSessionTimeout,
+  readAutoAdvanceCorrectSeconds,
+  readAutoAdvanceWrongSeconds,
   readFlipAnimation,
   readHardcoreMode,
   readMobileFullView,
@@ -15,6 +17,8 @@ import {
   writeLearningRate,
   writeSessionFilter,
   writeSessionTimeout,
+  writeAutoAdvanceCorrectSeconds,
+  writeAutoAdvanceWrongSeconds,
   writeFlipAnimation,
   writeHardcoreMode,
   writeMobileFullView,
@@ -38,6 +42,8 @@ export class LocalStorageAdapter implements StoragePort {
       sessionFilter:     readSessionFilter(),
       knownWords:        readKnownWords(),
       sessionTimeout:    readSessionTimeout(),
+      autoAdvanceCorrectSeconds: readAutoAdvanceCorrectSeconds(),
+      autoAdvanceWrongSeconds:   readAutoAdvanceWrongSeconds(),
       flipAnimation:     readFlipAnimation(),
       hardcoreMode:      readHardcoreMode(),
       mobileFullView:    readMobileFullView(),
@@ -49,6 +55,8 @@ export class LocalStorageAdapter implements StoragePort {
   writeLearningRate    = writeLearningRate;
   writeSessionFilter   = writeSessionFilter;
   writeSessionTimeout  = writeSessionTimeout;
+  writeAutoAdvanceCorrectSeconds = writeAutoAdvanceCorrectSeconds;
+  writeAutoAdvanceWrongSeconds   = writeAutoAdvanceWrongSeconds;
   writeFlipAnimation   = writeFlipAnimation;
   writeHardcoreMode    = writeHardcoreMode;
   writeMobileFullView  = writeMobileFullView;

@@ -2,6 +2,7 @@ import React from 'react';
 import { Divider } from './SettingsPrimitives';
 import { LevelSection } from './LevelSection';
 import { SessionTimeoutSection } from './SessionTimeoutSection';
+import { AutoAdvanceSection } from './AutoAdvanceSection';
 import { MobileDisplaySection } from './MobileDisplaySection';
 import { HardcoreModeSection } from './HardcoreModeSection';
 import { StorageSection } from './StorageSection';
@@ -42,6 +43,8 @@ const SettingsPanel: React.FC<Props> = ({ isOpen, onClose }) => (
         <LevelSection />
         <Divider />
         <SessionTimeoutSection />
+        <Divider />
+        <AutoAdvanceSection />
         <Divider />
         <div className="md:hidden">
           <MobileDisplaySection />

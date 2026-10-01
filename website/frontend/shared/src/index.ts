@@ -6,6 +6,7 @@ export {
   useIsMobile,
   useIsMobileTouchDevice,
   useIsTablet,
+  AutoAdvanceDialog,
   Badge,
   ModalOverlay,
   BodyText,

@@ -3,9 +3,26 @@ export type ChangelogEntry = {
   returningUser: { heading: string; body: string; changes: string[] };
 };
 
-export const CURRENT_BUILD_ID = 'alpha-2026-09-30-reflexive-context-blank-hard-mode';
+export const CURRENT_BUILD_ID = 'alpha-2026-10-01-auto-advance';
 
 export const CHANGELOG: Record<string, ChangelogEntry> = {
+  'alpha-2026-10-01-auto-advance': {
+    newUser: {
+      heading: "You're testing Crosslex Alpha",
+      body: "Crosslex is a German vocabulary trainer — built for adults navigating real life in Germany. Choose your level, pick a session length and learning pace, and Crosslex will guide you through words and exercises. Your feedback shapes what we build next.",
+      cta: "Let's go →",
+    },
+    returningUser: {
+      heading: "You're back — something's new",
+      body: 'Exercises now auto-advance if you don\'t click Next.',
+      changes: [
+        'New: after answering, a dialog now appears and moves you on by itself after a few seconds if you don\'t tap the button first — a colored ring traces the dialog\'s border to show the time left (green for correct, red for wrong)',
+        'New: on a wrong answer, the same dialog takes you into Review word → automatically, so reviewing stays part of the flow',
+        'New: the dialog never interrupts a coach mark tip — it waits until you\'ve dismissed it',
+        'New: both countdowns (default 4s for correct, 8s for wrong) are configurable in Settings — set either to 0 to turn it off',
+      ],
+    },
+  },
   'alpha-2026-09-30-reflexive-context-blank-hard-mode': {
     newUser: {
       heading: "You're testing Crosslex Alpha",

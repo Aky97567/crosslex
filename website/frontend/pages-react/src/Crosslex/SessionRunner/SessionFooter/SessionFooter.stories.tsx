@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { AUTO_ADVANCE_MAX_SECONDS } from '@whitelotus/front-features';
 import { SessionFooter } from './SessionFooter';
 
 const noMark = { shown: false, dismiss: () => {} };
@@ -19,6 +20,16 @@ export default {
   title: 'Widgets/SessionRunner/SessionFooter',
   component: SessionFooter,
   parameters: { layout: 'fullscreen' },
+  argTypes: {
+    autoAdvanceCorrectSeconds: {
+      control: { type: 'number', min: 0, max: AUTO_ADVANCE_MAX_SECONDS, step: 1 },
+      description: 'Seconds before the auto-advance dialog fires on a correct answer. 0 = off.',
+    },
+    autoAdvanceWrongSeconds: {
+      control: { type: 'number', min: 0, max: AUTO_ADVANCE_MAX_SECONDS, step: 1 },
+      description: 'Seconds before the auto-advance dialog fires on a wrong answer. 0 = off.',
+    },
+  },
 } as Meta<typeof SessionFooter>;
 
 type Story = StoryObj<typeof SessionFooter>;
@@ -56,4 +67,47 @@ export const AnsweredWrong: Story = {
 export const ReviewMode: Story = {
   name: 'Review mode — "Got it →", no "Already know it"',
   args: { ...base, cardType: 'meaningGuess', answered: null, isReviewing: true, isWordIntroCard: false, isExerciseCard: false },
+};
+
+export const AnsweredCorrectWithAutoAdvanceDialog: Story = {
+  name: 'Exercise — answered correctly, auto-advance dialog showing',
+  args: {
+    ...base,
+    cardType: 'meaningGuess',
+    answered: true,
+    isReviewing: false,
+    isWordIntroCard: false,
+    isExerciseCard: false,
+    autoAdvanceCorrectSeconds: 4,
+    autoAdvanceWrongSeconds: 8,
+  },
+};
+
+export const AnsweredWrongWithAutoAdvanceDialog: Story = {
+  name: 'Exercise — answered wrong, auto-advance dialog showing',
+  args: {
+    ...base,
+    cardType: 'meaningGuess',
+    answered: false,
+    isReviewing: false,
+    isWordIntroCard: false,
+    isExerciseCard: false,
+    autoAdvanceCorrectSeconds: 4,
+    autoAdvanceWrongSeconds: 8,
+  },
+};
+
+export const AnsweredWrongAutoAdvanceSuppressedByCoachMark: Story = {
+  name: 'Exercise — answered wrong, auto-advance dialog suppressed by coach mark',
+  args: {
+    ...base,
+    cardType: 'meaningGuess',
+    answered: false,
+    isReviewing: false,
+    isWordIntroCard: false,
+    isExerciseCard: false,
+    autoAdvanceCorrectSeconds: 4,
+    autoAdvanceWrongSeconds: 8,
+    wrongMark: shownMark,
+  },
 };

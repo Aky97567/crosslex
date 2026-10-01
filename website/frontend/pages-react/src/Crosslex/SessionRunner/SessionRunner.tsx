@@ -27,6 +27,8 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, sessionFil
     knownWordConfirmed,
     addKnownWord,
     writeKnownWordConfirmed,
+    autoAdvanceCorrectSeconds,
+    autoAdvanceWrongSeconds,
   } = useCrosslexStorage();
 
   const durationMs = durationMinutes * 60 * 1000;
@@ -117,6 +119,8 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, sessionFil
         isWordIntroCard={isWordIntroCard}
         isExerciseCard={isExerciseCard}
         onAdvance={onAdvance}
+        autoAdvanceCorrectSeconds={autoAdvanceCorrectSeconds}
+        autoAdvanceWrongSeconds={autoAdvanceWrongSeconds}
         onReviewWord={() => setReviewWordKey(runner.wordKey)}
         onEndSession={() => onComplete({ wordsNew: runner.wordsNew, wordsReviewed: runner.wordsReviewed, cardsDone: runner.cardsDone, correctCount: runner.correctCount })}
         onAlreadyKnow={() => {
