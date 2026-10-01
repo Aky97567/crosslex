@@ -281,6 +281,48 @@ export const writeSessionTimeout = (minutes: number): void => {
   } catch {}
 };
 
+// ─── Auto-advance ──────────────────────────────────────────────────────────────
+
+// 0 = auto-advance off entirely; 1 = smallest permissible value when on.
+export const AUTO_ADVANCE_MAX_SECONDS = 20;
+
+const clampAutoAdvanceSeconds = (seconds: number): number =>
+  Math.min(Math.max(seconds, 0), AUTO_ADVANCE_MAX_SECONDS);
+
+export const readAutoAdvanceCorrectSeconds = (): number => {
+  try {
+    const raw = localStorage.getItem('crosslex:auto_advance_correct_seconds');
+    const parsed = raw ? parseInt(raw, 10) : NaN;
+    return isNaN(parsed) ? 4 : clampAutoAdvanceSeconds(parsed);
+  } catch {
+    return 4;
+  }
+};
+
+export const writeAutoAdvanceCorrectSeconds = (seconds: number): void => {
+  try {
+    localStorage.setItem('crosslex:auto_advance_correct_seconds', String(clampAutoAdvanceSeconds(seconds)));
+  } catch {}
+};
+
+// Wrong answers default to a longer window than correct ones — there's more
+// to read (the revealed correction) before moving on.
+export const readAutoAdvanceWrongSeconds = (): number => {
+  try {
+    const raw = localStorage.getItem('crosslex:auto_advance_wrong_seconds');
+    const parsed = raw ? parseInt(raw, 10) : NaN;
+    return isNaN(parsed) ? 8 : clampAutoAdvanceSeconds(parsed);
+  } catch {
+    return 8;
+  }
+};
+
+export const writeAutoAdvanceWrongSeconds = (seconds: number): void => {
+  try {
+    localStorage.setItem('crosslex:auto_advance_wrong_seconds', String(clampAutoAdvanceSeconds(seconds)));
+  } catch {}
+};
+
 // ─── Heal words seen ──────────────────────────────────────────────────────────
 
 export const healWordsSeen = (activePool: string[]): WordsSeenStore => {

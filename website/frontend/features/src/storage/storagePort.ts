@@ -17,6 +17,8 @@ export interface StorageSnapshot {
   sessionFilter: SessionFilter;
   knownWords: string[];
   sessionTimeout: number;
+  autoAdvanceCorrectSeconds: number;
+  autoAdvanceWrongSeconds: number;
   flipAnimation: boolean;
   hardcoreMode: boolean;
   mobileFullView: boolean;
@@ -30,6 +32,8 @@ export interface StoragePort {
   writeLearningRate(rate: LearningRate): void;
   writeSessionFilter(filter: SessionFilter): void;
   writeSessionTimeout(minutes: number): void;
+  writeAutoAdvanceCorrectSeconds(seconds: number): void;
+  writeAutoAdvanceWrongSeconds(seconds: number): void;
   writeFlipAnimation(enabled: boolean): void;
   writeHardcoreMode(enabled: boolean): void;
   writeMobileFullView(enabled: boolean): void;

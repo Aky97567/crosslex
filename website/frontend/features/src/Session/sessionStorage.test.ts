@@ -8,6 +8,11 @@ import {
   seedWordStats,
   healWordsSeen,
   writeWordsSeen,
+  readAutoAdvanceCorrectSeconds,
+  writeAutoAdvanceCorrectSeconds,
+  readAutoAdvanceWrongSeconds,
+  writeAutoAdvanceWrongSeconds,
+  AUTO_ADVANCE_MAX_SECONDS,
   ExerciseEvent,
   WordsSeenStore,
 } from './sessionStorage';
@@ -207,5 +212,36 @@ describe('healWordsSeen', () => {
     expect(result).toEqual({ a: { count: 1, accuracy: 1, lastSeen: 0 } });
     expect(setItemSpy).not.toHaveBeenCalled();
     setItemSpy.mockRestore();
+  });
+});
+
+describe('auto-advance settings', () => {
+  test('defaults: 4s for correct, 8s for wrong, when nothing is stored', () => {
+    expect(readAutoAdvanceCorrectSeconds()).toBe(4);
+    expect(readAutoAdvanceWrongSeconds()).toBe(8);
+  });
+
+  test('round-trips a written value', () => {
+    writeAutoAdvanceCorrectSeconds(6);
+    writeAutoAdvanceWrongSeconds(10);
+    expect(readAutoAdvanceCorrectSeconds()).toBe(6);
+    expect(readAutoAdvanceWrongSeconds()).toBe(10);
+  });
+
+  test('0 is a valid, meaningful value (auto-advance off) — not treated as falsy/missing', () => {
+    writeAutoAdvanceCorrectSeconds(0);
+    expect(readAutoAdvanceCorrectSeconds()).toBe(0);
+  });
+
+  test('clamps negative values up to 0 and values above the max down to it', () => {
+    writeAutoAdvanceCorrectSeconds(-5);
+    expect(readAutoAdvanceCorrectSeconds()).toBe(0);
+    writeAutoAdvanceWrongSeconds(999);
+    expect(readAutoAdvanceWrongSeconds()).toBe(AUTO_ADVANCE_MAX_SECONDS);
+  });
+
+  test('falls back to the default when the stored value is corrupt', () => {
+    localStorage.setItem('crosslex:auto_advance_correct_seconds', 'not-a-number');
+    expect(readAutoAdvanceCorrectSeconds()).toBe(4);
   });
 });

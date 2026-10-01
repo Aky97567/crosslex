@@ -16,6 +16,8 @@ export type CrosslexStorageContextValue = StorageSnapshot & {
   writeLearningRate(rate: LearningRate): void;
   writeSessionFilter(filter: SessionFilter): void;
   writeSessionTimeout(minutes: number): void;
+  writeAutoAdvanceCorrectSeconds(seconds: number): void;
+  writeAutoAdvanceWrongSeconds(seconds: number): void;
   writeFlipAnimation(enabled: boolean): void;
   writeHardcoreMode(enabled: boolean): void;
   writeMobileFullView(enabled: boolean): void;
@@ -60,6 +62,8 @@ const CrosslexStorageProvider: React.FC<Props> = ({ adapter, children }) => {
     writeLearningRate: (rate) => { adapter.writeLearningRate(rate); patch({ learningRate: rate }); },
     writeSessionFilter: (filter) => { adapter.writeSessionFilter(filter); patch({ sessionFilter: filter }); },
     writeSessionTimeout: (m) => { adapter.writeSessionTimeout(m); patch({ sessionTimeout: m }); },
+    writeAutoAdvanceCorrectSeconds: (s) => { adapter.writeAutoAdvanceCorrectSeconds(s); patch({ autoAdvanceCorrectSeconds: s }); },
+    writeAutoAdvanceWrongSeconds: (s) => { adapter.writeAutoAdvanceWrongSeconds(s); patch({ autoAdvanceWrongSeconds: s }); },
     writeFlipAnimation: (v) => { adapter.writeFlipAnimation(v); patch({ flipAnimation: v }); },
     writeHardcoreMode: (v) => { adapter.writeHardcoreMode(v); patch({ hardcoreMode: v }); },
     writeMobileFullView: (v) => { adapter.writeMobileFullView(v); patch({ mobileFullView: v }); },

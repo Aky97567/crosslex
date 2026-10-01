@@ -5,6 +5,7 @@ export {
   useIsMobileTouchDevice,
   useIsTablet,
 } from './mediaQueries';
+export { AutoAdvanceDialog } from './AutoAdvanceDialog';
 export { Badge } from './Badge';
 export { ModalOverlay } from './ModalOverlay';
 export { Card } from './Card';
