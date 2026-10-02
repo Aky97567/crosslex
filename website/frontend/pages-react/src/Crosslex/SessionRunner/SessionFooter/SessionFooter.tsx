@@ -2,7 +2,7 @@ import React from 'react';
 import { CardType } from '@whitelotus/front-features';
 import { CoachMark, AutoAdvanceDialog } from '@whitelotus/front-shared';
 
-type CoachMarkSlot = { shown: boolean; dismiss: () => void };
+type CoachMarkSlot = { hasBeenDismissed: boolean; dismiss: () => void };
 
 type Props = {
   cardType: CardType;
@@ -46,7 +46,15 @@ const SessionFooter: React.FC<Props> = ({
 }) => {
   type FooterAction = { label: string; onClick: () => void };
 
-  const showAnyMark = wordIntroMark.shown || exerciseMark.shown || wrongMark.shown;
+  // Scoped to whichever mark is actually relevant to the current card/state
+  // — matching each <CoachMark> render condition below exactly. A mark
+  // that's merely undismissed but irrelevant right now (e.g. wrongMark
+  // before the learner has ever gotten anything wrong) must not count here,
+  // or it silently blocks auto-advance on every card forever.
+  const showAnyMark =
+    (isWordIntroCard && !wordIntroMark.hasBeenDismissed) ||
+    (isExerciseCard && !exerciseMark.hasBeenDismissed) ||
+    (answered === false && !wrongMark.hasBeenDismissed);
 
   // The exercise-answered branch (not word-intro, not reviewing) is the only
   // one auto-advance applies to — word-intro/review "Got it →" are
@@ -84,19 +92,19 @@ const SessionFooter: React.FC<Props> = ({
       )}
       {showAnyMark && (
         <div className="max-w-4xl mx-auto mb-15 flex flex-col gap-10">
-          {wordIntroMark.shown && isWordIntroCard && (
+          {!wordIntroMark.hasBeenDismissed && isWordIntroCard && (
             <CoachMark
               text="Take your time reading. Tap Got it → when you're ready."
               onDismiss={wordIntroMark.dismiss}
             />
           )}
-          {exerciseMark.shown && isExerciseCard && (
+          {!exerciseMark.hasBeenDismissed && isExerciseCard && (
             <CoachMark
               text="Tap your answer to lock it in."
               onDismiss={exerciseMark.dismiss}
             />
           )}
-          {wrongMark.shown && answered === false && (
+          {!wrongMark.hasBeenDismissed && answered === false && (
             <CoachMark
               text="Tap Review word → to go back and reinforce the word before moving on."
               onDismiss={wrongMark.dismiss}

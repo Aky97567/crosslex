@@ -23,14 +23,14 @@ const markCoachMarkSeen = (key: string): void => {
 const hasSeenCoachMark = (key: string): boolean => readSeenMarks().has(key);
 
 const useCoachMark = (key: string) => {
-  const [shown, setShown] = useState(() => !hasSeenCoachMark(key));
+  const [hasBeenDismissed, setHasBeenDismissed] = useState(() => hasSeenCoachMark(key));
 
   const dismiss = useCallback(() => {
     markCoachMarkSeen(key);
-    setShown(false);
+    setHasBeenDismissed(true);
   }, [key]);
 
-  return { shown, dismiss };
+  return { hasBeenDismissed, dismiss };
 };
 
 export { hasSeenCoachMark, markCoachMarkSeen, useCoachMark };

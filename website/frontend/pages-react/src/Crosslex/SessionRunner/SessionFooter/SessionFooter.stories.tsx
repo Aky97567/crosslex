@@ -2,8 +2,8 @@ import { Meta, StoryObj } from '@storybook/react';
 import { AUTO_ADVANCE_MAX_SECONDS } from '@whitelotus/front-features';
 import { SessionFooter } from './SessionFooter';
 
-const noMark = { shown: false, dismiss: () => {} };
-const shownMark = { shown: true, dismiss: () => {} };
+const noMark = { hasBeenDismissed: true, dismiss: () => {} };
+const shownMark = { hasBeenDismissed: false, dismiss: () => {} };
 
 const base = {
   wordKey: 'kuendigung',
