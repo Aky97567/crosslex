@@ -10,9 +10,8 @@ export interface TokenPair {
   refreshToken: string;
   // Carried out so callers (e.g. the resolver setting the refresh cookie's
   // maxAge) reuse this exact instant instead of re-deriving their own from
-  // REFRESH_TOKEN_TTL_DAYS — a second calculation could drift from this one
-  // (e.g. a fixed-duration ms multiplication vs this setDate() call disagree
-  // across a DST transition).
+  // REFRESH_TOKEN_TTL_DAYS — any second, independent calculation risks
+  // drifting from this one by however long the two calls are apart.
   refreshTokenExpiresAt: Date;
 }
 
@@ -49,8 +48,12 @@ export class TokenService {
     const ttlDays =
       Number(this.configService.get('REFRESH_TOKEN_TTL_DAYS')) ||
       DEFAULT_REFRESH_TOKEN_TTL_DAYS;
-    const expiresAt = new Date();
-    expiresAt.setDate(expiresAt.getDate() + ttlDays);
+    // Fixed duration (ttlDays * 24h in ms), not setDate()'s calendar-day
+    // arithmetic: setDate()/getDate() operate in the server process's local
+    // timezone, so "N calendar days from now" silently diverges from
+    // "N * 24 hours from now" by exactly the DST offset whenever the window
+    // crosses a transition — undesirable for a token's actual lifetime.
+    const expiresAt = new Date(Date.now() + ttlDays * 24 * 60 * 60 * 1000);
 
     await this.prisma.refreshToken.create({
       data: {
