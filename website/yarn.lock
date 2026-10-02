@@ -10738,7 +10738,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@whitelotus/back-runtime-crosslex@workspace:backend/runtime/crosslex"
   dependencies:
+    "@types/jest": "npm:^30.0.0"
     "@whitelotus/lib-ext-next": "npm:*"
+    jest: "npm:^30.4.2"
+    ts-jest: "npm:^29.4.11"
   languageName: unknown
   linkType: soft
 
