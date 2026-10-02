@@ -15,7 +15,7 @@ const emptyAdapter = createMemoryAdapter({
   activeLevel: 'b1',
 });
 
-const noMark = { shown: false, dismiss: jest.fn() };
+const noMark = { hasBeenDismissed: true, dismiss: jest.fn() };
 
 export default {
   title: 'Pages/SessionRunner',

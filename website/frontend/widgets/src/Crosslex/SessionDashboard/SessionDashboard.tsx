@@ -72,7 +72,7 @@ const SessionDashboard: React.FC<Props> = ({ onStart, onWordClick, coachMarksEna
     writeSessionFilter,
   } = useCrosslexStorage();
   const [duration, setDuration] = useState<number>(5);
-  const { shown: showDashboardTip, dismiss: dismissDashboardTip } = useCoachMark('dashboard-intro');
+  const { hasBeenDismissed: dashboardTipDismissed, dismiss: dismissDashboardTip } = useCoachMark('dashboard-intro');
   const wordsSeenCount = Object.keys(wordsSeenMap).length;
   const canReview = wordsSeenCount >= 3;
   const [rate, setRate] = useState<LearningRate>(() =>
@@ -245,7 +245,7 @@ const SessionDashboard: React.FC<Props> = ({ onStart, onWordClick, coachMarksEna
           </div>
         )}
 
-        {showDashboardTip && coachMarksEnabled && (
+        {!dashboardTipDismissed && coachMarksEnabled && (
           <div className="mt-20">
             <CoachMark
               text="Read a word card, then answer questions. The app decides what comes next."

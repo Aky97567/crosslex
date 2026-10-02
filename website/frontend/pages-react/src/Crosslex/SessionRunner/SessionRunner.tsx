@@ -91,9 +91,9 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, sessionFil
   const isWordIntroCard = runner.cardType === 'wordIntro' && !reviewContent;
   const isExerciseCard = runner.cardType !== 'wordIntro' && !reviewContent;
 
-  const { shown: showWordIntroMark, dismiss: dismissWordIntroMark } = useCoachMark('first-word-intro');
-  const { shown: showExerciseMark, dismiss: dismissExerciseMark } = useCoachMark('first-exercise');
-  const { shown: showWrongMark, dismiss: dismissWrongMark } = useCoachMark('first-wrong-answer');
+  const { hasBeenDismissed: wordIntroMarkDismissed, dismiss: dismissWordIntroMark } = useCoachMark('first-word-intro');
+  const { hasBeenDismissed: exerciseMarkDismissed, dismiss: dismissExerciseMark } = useCoachMark('first-exercise');
+  const { hasBeenDismissed: wrongMarkDismissed, dismiss: dismissWrongMark } = useCoachMark('first-wrong-answer');
 
   return (
     <div className="max-w-4xl mx-auto px-20 py-20 pb-[120px]">
@@ -132,9 +132,9 @@ const SessionRunner: React.FC<Props> = ({ sessionId, durationMinutes, sessionFil
             setPendingKnownWordKey(runner.wordKey);
           }
         }}
-        wordIntroMark={{ shown: showWordIntroMark, dismiss: dismissWordIntroMark }}
-        exerciseMark={{ shown: showExerciseMark, dismiss: dismissExerciseMark }}
-        wrongMark={{ shown: showWrongMark, dismiss: dismissWrongMark }}
+        wordIntroMark={{ hasBeenDismissed: wordIntroMarkDismissed, dismiss: dismissWordIntroMark }}
+        exerciseMark={{ hasBeenDismissed: exerciseMarkDismissed, dismiss: dismissExerciseMark }}
+        wrongMark={{ hasBeenDismissed: wrongMarkDismissed, dismiss: dismissWrongMark }}
       />
 
       {pendingKnownWordKey && (
