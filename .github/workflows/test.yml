@@ -26,5 +26,14 @@ jobs:
         # placeholder DATABASE_URL is enough.
         run: cd website && DATABASE_URL="postgresql://user:pass@localhost:5432/db" yarn workspace @whitelotus/back-api-crosslex exec prisma generate
 
-      - name: Run tests 🧪
-        run: cd website && yarn test
+      - name: Run tests with coverage 🧪
+        # Appends --coverage to each workspace's own `test` script rather
+        # than switching to `test:ci` — the backend's `test:ci` has
+        # different semantics (runs e2e too, needs `migrate:test-db`
+        # against a live Postgres this job doesn't provision), while its
+        # `test` script (`jest --selectProjects unit`) is already correctly
+        # scoped for a DB-less CI run. `workspaces foreach ... run test`
+        # passes trailing args straight through to each package's script,
+        # so this becomes `jest --coverage` for frontend packages and
+        # `jest --selectProjects unit --coverage` for the backend.
+        run: cd website && yarn workspaces foreach --worktree --parallel run test --coverage
