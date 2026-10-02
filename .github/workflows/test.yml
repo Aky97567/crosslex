@@ -10,6 +10,12 @@ concurrency:
 jobs:
   test:
     runs-on: ubuntu-latest
+    # Default GITHUB_TOKEN permissions are read-only on many repos —
+    # pull-requests: write is what lets the coverage step below post its
+    # PR comment with that same automatic token (no separate secret).
+    permissions:
+      contents: read
+      pull-requests: write
 
     steps:
       - name: Checkout 🛎️
@@ -37,3 +43,24 @@ jobs:
         # so this becomes `jest --coverage` for frontend packages and
         # `jest --selectProjects unit --coverage` for the backend.
         run: cd website && yarn workspaces foreach --worktree --parallel run test --coverage
+
+      - name: Report coverage 📊
+        # Self-hosted (getsentry/coverage-action): no external account,
+        # dashboard, or token to set up — GITHUB_TOKEN is already provided
+        # automatically by Actions, and results are stored as a GitHub
+        # Artifact rather than sent to a third-party service.
+        # `directory: website` auto-discovers every workspace's
+        # coverage/lcov.info (or coverage-final.json) in one pass and
+        # compares the combined total against the base branch. No JUnit
+        # XML is produced anywhere in this repo, so enable-tests is off —
+        # coverage only. `if: always()` so a result still posts even if a
+        # test step failed (jest writes its coverage report regardless of
+        # pass/fail).
+        if: always()
+        uses: getsentry/coverage-action@0.3.8
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          directory: website
+          enable-tests: false
+          post-pr-comment: true
+          fail-ci-if-error: false
