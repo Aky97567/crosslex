@@ -13,6 +13,10 @@ import {
   readAutoAdvanceWrongSeconds,
   writeAutoAdvanceWrongSeconds,
   AUTO_ADVANCE_MAX_SECONDS,
+  readActiveLevel,
+  writeActiveLevel,
+  readSessionFilter,
+  writeSessionFilter,
   ExerciseEvent,
   WordsSeenStore,
 } from './sessionStorage';
@@ -243,5 +247,40 @@ describe('auto-advance settings', () => {
   test('falls back to the default when the stored value is corrupt', () => {
     localStorage.setItem('crosslex:auto_advance_correct_seconds', 'not-a-number');
     expect(readAutoAdvanceCorrectSeconds()).toBe(4);
+  });
+});
+
+describe('writeActiveLevel', () => {
+  // crosslex:session_filter is global, not leveled like words_seen/
+  // exercise_log/known_words — its valid options (which themes exist, does
+  // this level have verbs/adjectives at all) are level-dependent. A filter
+  // left over from a previous level can silently narrow the new level's
+  // pool to zero with no error — this is the regression this guards.
+  test('clears the session filter as part of changing level', () => {
+    writeSessionFilter('verbs_only');
+    expect(readSessionFilter()).toBe('verbs_only');
+
+    writeActiveLevel('b2');
+
+    expect(readSessionFilter()).toBeNull();
+  });
+
+  test('clears a theme filter too, not just a part-of-speech one', () => {
+    writeSessionFilter('health');
+    writeActiveLevel('a1');
+    expect(readSessionFilter()).toBeNull();
+  });
+
+  test('still writes the level itself alongside clearing the filter', () => {
+    writeSessionFilter('trennbar');
+    writeActiveLevel('a2');
+    expect(readActiveLevel()).toBe('a2');
+    expect(readSessionFilter()).toBeNull();
+  });
+
+  test('is a no-op on the filter when none was set', () => {
+    expect(readSessionFilter()).toBeNull();
+    writeActiveLevel('b1');
+    expect(readSessionFilter()).toBeNull();
   });
 });

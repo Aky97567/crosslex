@@ -29,7 +29,9 @@ export class MemoryStorageAdapter implements StoragePort {
     return { ...this.snapshot };
   }
 
-  writeActiveLevel(level: ActiveLevel): void          { this.snapshot = { ...this.snapshot, activeLevel: level }; }
+  // Mirrors sessionStorage.ts's writeActiveLevel: changing level also
+  // clears sessionFilter, since its valid options are level-dependent.
+  writeActiveLevel(level: ActiveLevel): void          { this.snapshot = { ...this.snapshot, activeLevel: level, sessionFilter: null }; }
   writeLearningRate(rate: LearningRate): void          { this.snapshot = { ...this.snapshot, learningRate: rate }; }
   writeSessionFilter(filter: SessionFilter): void      { this.snapshot = { ...this.snapshot, sessionFilter: filter }; }
   writeSessionTimeout(minutes: number): void           { this.snapshot = { ...this.snapshot, sessionTimeout: minutes }; }
