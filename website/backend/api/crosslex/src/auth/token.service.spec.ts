@@ -53,6 +53,13 @@ describe('TokenService', () => {
     );
   });
 
+  // Always restore real timers, even for tests that never engaged fake
+  // ones (a no-op then) — guarantees no leakage into a later test if an
+  // assertion throws before a test's own cleanup would have run.
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
   describe('issueTokenPair', () => {
     it('signs the access token with the user id as sub', async () => {
       await service.issueTokenPair('user-1');
@@ -86,32 +93,31 @@ describe('TokenService', () => {
 
     it('defaults expiry to 30 days when REFRESH_TOKEN_TTL_DAYS is unset', async () => {
       configService.get.mockReturnValue(undefined);
+      // Freeze the clock rather than tolerate a time window: without this,
+      // `before` and the service's own internal `new Date()` can legitimately
+      // drift apart by more than a tight tolerance under a slow/instrumented
+      // run (e.g. --coverage), which is exactly what flaked here. Modern
+      // Jest fake timers freeze Date itself, not just setTimeout/setInterval,
+      // so both reads land on the identical instant regardless of how long
+      // the actual async work takes.
+      jest.useFakeTimers();
       const before = Date.now();
 
       const { refreshTokenExpiresAt } = await service.issueTokenPair('user-1');
 
       const expectedMs = before + 30 * 24 * 60 * 60 * 1000;
-      expect(refreshTokenExpiresAt.getTime()).toBeGreaterThanOrEqual(
-        expectedMs - 1000,
-      );
-      expect(refreshTokenExpiresAt.getTime()).toBeLessThanOrEqual(
-        expectedMs + 1000,
-      );
+      expect(refreshTokenExpiresAt.getTime()).toBe(expectedMs);
     });
 
     it('honors REFRESH_TOKEN_TTL_DAYS when set', async () => {
       configService.get.mockReturnValue('7');
+      jest.useFakeTimers();
       const before = Date.now();
 
       const { refreshTokenExpiresAt } = await service.issueTokenPair('user-1');
 
       const expectedMs = before + 7 * 24 * 60 * 60 * 1000;
-      expect(refreshTokenExpiresAt.getTime()).toBeGreaterThanOrEqual(
-        expectedMs - 1000,
-      );
-      expect(refreshTokenExpiresAt.getTime()).toBeLessThanOrEqual(
-        expectedMs + 1000,
-      );
+      expect(refreshTokenExpiresAt.getTime()).toBe(expectedMs);
     });
 
     it('returns the same refreshTokenExpiresAt instant that was persisted to the DB', async () => {
