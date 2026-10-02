@@ -55,4 +55,11 @@ frontend/widgets/src/Crosslex/
 - Wrong answer → button reads "Review word →"; clicking shows the full word learn page; "Got it →" advances to the next card and records the answer as incorrect
 - `contextBlank` blanks **all** occurrences of the target word (`gi` regex flag), and the blank always fills with the correct word after answering
 
+**What resets on a CEFR level change** (`writeActiveLevel`, `sessionStorage.ts`): every localStorage key here is global unless noted. A new key added to this file needs a deliberate decision — leveled (scoped via `leveledKey()`, a `:{level}` suffix) if it's about *this level's content/progress*, global if it's a *cross-level user preference* — and that decision belongs in this list, not left implicit.
+
+- **Reset on level change** (cleared by `writeActiveLevel` itself, in the one shared write path — not left to each call site to remember):
+  - `crosslex:session_filter` — its valid *options* are level-dependent (a theme or verbs/adjectives-only filter that exists at one level may not exist at another). Left stale, it silently narrows the new level's pool — in the worst case to zero, with no error, just a blank session screen. This is the one key that's ever needed this; regression-tested in `sessionStorage.test.ts`'s `writeActiveLevel` suite.
+- **Already scoped per level** (not "reset" — switching level just reads an entirely different key, via `leveledKey()`): `crosslex:words_seen`, `crosslex:exercise_log`, `crosslex:known_words`.
+- **Deliberately global, untouched by level changes** — cross-level user preferences, not tied to any one level's content: `crosslex:learning_rate`, `crosslex:hardcore_mode`, `crosslex:session_timeout`, `crosslex:auto_advance_correct_seconds`/`crosslex:auto_advance_wrong_seconds`, `crosslex:flip_animation`, `crosslex:mobile_full_view`, `crosslex:known_word_confirmed`, `crosslex:coach_marks`, streak data.
+
 **Cutting a new build with this feature live:** bump `CURRENT_BUILD_ID` in `AlphaAnnouncement/changelog.ts` and add a changelog entry.

@@ -58,7 +58,10 @@ const CrosslexStorageProvider: React.FC<Props> = ({ adapter, children }) => {
     metricsSummary,
     wordMetrics,
 
-    writeActiveLevel: (level) => { adapter.writeActiveLevel(level); patch({ activeLevel: level }); },
+    // adapter.writeActiveLevel also clears the persisted session filter
+    // (see sessionStorage.ts) — patch the in-memory snapshot to match so a
+    // consumer that doesn't immediately reload doesn't read a stale filter.
+    writeActiveLevel: (level) => { adapter.writeActiveLevel(level); patch({ activeLevel: level, sessionFilter: null }); },
     writeLearningRate: (rate) => { adapter.writeLearningRate(rate); patch({ learningRate: rate }); },
     writeSessionFilter: (filter) => { adapter.writeSessionFilter(filter); patch({ sessionFilter: filter }); },
     writeSessionTimeout: (m) => { adapter.writeSessionTimeout(m); patch({ sessionTimeout: m }); },

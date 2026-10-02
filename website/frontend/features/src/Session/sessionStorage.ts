@@ -70,6 +70,15 @@ export const writeActiveLevel = (level: ActiveLevel): void => {
   try {
     localStorage.setItem(LEVEL_KEY, level);
   } catch {}
+  // crosslex:session_filter is global, not leveled like words_seen/
+  // exercise_log/known_words — its valid *options* (which themes exist,
+  // whether the level has verbs/adjectives at all) are level-dependent, so a
+  // filter left over from the previous level can silently narrow the new
+  // level's pool to zero with no error (see docs/session-loop.md, "What
+  // resets on a CEFR level change"). Clearing it here, in the one shared
+  // write path, covers every call site rather than relying on each one to
+  // remember.
+  writeSessionFilter(null);
 };
 
 export const readLevelSelected = (): boolean => {
